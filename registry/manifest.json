@@ -1,0 +1,435 @@
+{
+  "version": "1.0.0",
+  "items": [
+    {
+      "slug": "claude-md-doctor",
+      "name": "CLAUDE.md Doctor",
+      "type": "skill",
+      "description": "Diagnose and improve CLAUDE.md files and .claude/rules/",
+      "longDescription": "Audit CLAUDE.md files for quality, staleness, and anti-patterns. Evaluate .claude/rules/ for modularity and correctness. Provides detailed health reports with severity ratings, scores, and targeted fixes for optimal Claude Code project context.",
+      "compatibility": ["claude", "copilot", "gemini", "codex", "opencode"],
+      "featured": true,
+      "source": "SKILL.md",
+      "package": "dist/skills/claude-md-doctor.skill",
+      "sourceType": "toolr",
+      "author": {
+        "name": "Toolr Suite",
+        "url": "https://github.com/toolr-suite"
+      }
+    },
+    {
+      "slug": "lint-doctor",
+      "name": "Lint Doctor",
+      "type": "skill",
+      "description": "Diagnose and fix linting issues across multiple languages",
+      "longDescription": "Language-specific lint rule references for Go, Python, Rust, JavaScript, Java, and pre-commit hooks. Helps identify, understand, and resolve linting warnings and errors with best practices.",
+      "compatibility": ["claude", "copilot", "gemini", "codex", "opencode"],
+      "featured": true,
+      "source": "SKILL.md",
+      "package": "dist/skills/lint-doctor.skill",
+      "sourceType": "toolr",
+      "author": {
+        "name": "Toolr Suite",
+        "url": "https://github.com/toolr-suite"
+      }
+    },
+    {
+      "slug": "code-smell-doctor",
+      "name": "Code Smell Doctor",
+      "type": "skill",
+      "description": "Detect and refactor code smells using Martin Fowler's catalog",
+      "longDescription": "Comprehensive code smell detection covering Bloaters, Object-Orientation Abusers, Change Preventers, Dispensables, and Couplers. Includes refactoring recommendations for each smell category.",
+      "compatibility": ["claude", "copilot", "gemini", "codex", "opencode"],
+      "featured": true,
+      "source": "SKILL.md",
+      "package": "dist/skills/code-smell-doctor.skill",
+      "sourceType": "toolr",
+      "author": {
+        "name": "Toolr Suite",
+        "url": "https://github.com/toolr-suite"
+      }
+    },
+    {
+      "slug": "design-patterns",
+      "name": "Design Patterns",
+      "type": "skill",
+      "description": "Apply Gang of Four design patterns effectively",
+      "longDescription": "Reference guide for Creational, Structural, and Behavioral design patterns. Includes when to use each pattern, implementation examples, and common pitfalls to avoid.",
+      "compatibility": ["claude", "copilot", "gemini", "codex", "opencode"],
+      "featured": true,
+      "source": "SKILL.md",
+      "package": "dist/skills/design-patterns.skill",
+      "sourceType": "toolr",
+      "author": {
+        "name": "Toolr Suite",
+        "url": "https://github.com/toolr-suite"
+      }
+    },
+    {
+      "slug": "refactoring-techniques",
+      "name": "Refactoring Techniques",
+      "type": "skill",
+      "description": "Systematic refactoring using proven techniques",
+      "longDescription": "Martin Fowler's refactoring catalog covering Composing Methods, Moving Features, Organizing Data, Simplifying Conditionals, and Simplifying Method Calls. Step-by-step techniques for improving code quality.",
+      "compatibility": ["claude", "copilot", "gemini", "codex", "opencode"],
+      "featured": true,
+      "source": "SKILL.md",
+      "package": "dist/skills/refactoring-techniques.skill",
+      "sourceType": "toolr",
+      "author": {
+        "name": "Toolr Suite",
+        "url": "https://github.com/toolr-suite"
+      }
+    },
+    {
+      "slug": "advanced-prompt-engineering",
+      "name": "Advanced Prompt Engineering",
+      "type": "skill",
+      "description": "Advanced techniques for crafting effective AI prompts",
+      "compatibility": ["claude", "copilot", "gemini", "codex", "opencode"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/advanced-prompt-engineering"
+    },
+    {
+      "slug": "api-integration-patterns",
+      "name": "Api Integration Patterns",
+      "type": "skill",
+      "description": "Best practices for integrating with external APIs",
+      "compatibility": ["claude", "copilot", "gemini", "codex", "opencode"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/api-integration-patterns"
+    },
+    {
+      "slug": "code-review-best-practices",
+      "name": "Code Review Best Practices",
+      "type": "skill",
+      "description": "Guidelines for conducting effective code reviews",
+      "compatibility": ["claude", "copilot", "gemini", "codex", "opencode"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/code-review-best-practices"
+    },
+    {
+      "slug": "debugging-strategies",
+      "name": "Debugging Strategies",
+      "type": "skill",
+      "description": "Systematic approaches to debugging code",
+      "compatibility": ["claude", "copilot", "gemini", "codex", "opencode"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/debugging-strategies"
+    },
+    {
+      "slug": "documentation-writing",
+      "name": "Documentation Writing",
+      "type": "skill",
+      "description": "Best practices for writing clear documentation",
+      "compatibility": ["claude", "copilot", "gemini", "codex", "opencode"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/documentation-writing"
+    },
+    {
+      "slug": "error-handling-patterns",
+      "name": "Error Handling Patterns",
+      "type": "skill",
+      "description": "Robust error handling strategies",
+      "compatibility": ["claude", "copilot", "gemini", "codex", "opencode"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/error-handling-patterns"
+    },
+    {
+      "slug": "git-workflow",
+      "name": "Git Workflow",
+      "type": "skill",
+      "description": "Effective Git workflows and branching strategies",
+      "compatibility": ["claude", "copilot", "gemini", "codex", "opencode"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/git-workflow"
+    },
+    {
+      "slug": "performance-optimization",
+      "name": "Performance Optimization",
+      "type": "skill",
+      "description": "Techniques for optimizing code performance",
+      "compatibility": ["claude", "copilot", "gemini", "codex", "opencode"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/performance-optimization"
+    },
+    {
+      "slug": "security-best-practices",
+      "name": "Security Best Practices",
+      "type": "skill",
+      "description": "Security considerations for software development",
+      "compatibility": ["claude", "copilot", "gemini", "codex", "opencode"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/security-best-practices"
+    },
+    {
+      "slug": "testing-strategies",
+      "name": "Testing Strategies",
+      "type": "skill",
+      "description": "Comprehensive testing approaches and methodologies",
+      "compatibility": ["claude", "copilot", "gemini", "codex", "opencode"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/testing-strategies"
+    },
+    {
+      "slug": "tdd",
+      "name": "Tdd",
+      "type": "skill",
+      "description": "Test-driven development practices",
+      "compatibility": ["claude", "copilot", "gemini", "codex", "opencode"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/tdd"
+    },
+    {
+      "slug": "filesystem",
+      "name": "Filesystem",
+      "type": "plugin",
+      "description": "Extended filesystem operations for Claude Code",
+      "compatibility": ["claude"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/filesystem"
+    },
+    {
+      "slug": "github",
+      "name": "Github",
+      "type": "plugin",
+      "description": "GitHub integration for Claude Code",
+      "compatibility": ["claude"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/github"
+    },
+    {
+      "slug": "jira",
+      "name": "Jira",
+      "type": "plugin",
+      "description": "Jira integration for issue tracking",
+      "compatibility": ["claude"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/jira"
+    },
+    {
+      "slug": "linear",
+      "name": "Linear",
+      "type": "plugin",
+      "description": "Linear integration for project management",
+      "compatibility": ["claude"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/linear"
+    },
+    {
+      "slug": "memory",
+      "name": "Memory",
+      "type": "plugin",
+      "description": "Persistent memory for Claude Code sessions",
+      "compatibility": ["claude"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/memory"
+    },
+    {
+      "slug": "postgres",
+      "name": "Postgres",
+      "type": "plugin",
+      "description": "PostgreSQL database integration",
+      "compatibility": ["claude"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/postgres"
+    },
+    {
+      "slug": "puppeteer",
+      "name": "Puppeteer",
+      "type": "plugin",
+      "description": "Browser automation with Puppeteer",
+      "compatibility": ["claude"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/puppeteer"
+    },
+    {
+      "slug": "sentry",
+      "name": "Sentry",
+      "type": "plugin",
+      "description": "Sentry error tracking integration",
+      "compatibility": ["claude"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/sentry"
+    },
+    {
+      "slug": "slack",
+      "name": "Slack",
+      "type": "plugin",
+      "description": "Slack messaging integration",
+      "compatibility": ["claude"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/slack"
+    },
+    {
+      "slug": "web-search",
+      "name": "Web Search",
+      "type": "plugin",
+      "description": "Web search capabilities for Claude Code",
+      "compatibility": ["claude"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/web-search"
+    },
+    {
+      "slug": "youtube",
+      "name": "Youtube",
+      "type": "plugin",
+      "description": "YouTube video analysis and transcription",
+      "compatibility": ["claude"],
+      "sourceType": "official",
+      "author": { "name": "Anthropic" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/youtube"
+    },
+    {
+      "slug": "asana",
+      "name": "Asana",
+      "type": "plugin",
+      "description": "Asana project management integration",
+      "compatibility": ["claude"],
+      "sourceType": "community",
+      "author": { "name": "Community" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/asana"
+    },
+    {
+      "slug": "confluence",
+      "name": "Confluence",
+      "type": "plugin",
+      "description": "Confluence wiki integration",
+      "compatibility": ["claude"],
+      "sourceType": "community",
+      "author": { "name": "Community" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/confluence"
+    },
+    {
+      "slug": "datadog",
+      "name": "Datadog",
+      "type": "plugin",
+      "description": "Datadog monitoring integration",
+      "compatibility": ["claude"],
+      "sourceType": "community",
+      "author": { "name": "Community" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/datadog"
+    },
+    {
+      "slug": "figma",
+      "name": "Figma",
+      "type": "plugin",
+      "description": "Figma design tool integration",
+      "compatibility": ["claude"],
+      "sourceType": "community",
+      "author": { "name": "Community" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/figma"
+    },
+    {
+      "slug": "google-calendar",
+      "name": "Google Calendar",
+      "type": "plugin",
+      "description": "Google Calendar integration",
+      "compatibility": ["claude"],
+      "sourceType": "community",
+      "author": { "name": "Community" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/google-calendar"
+    },
+    {
+      "slug": "google-drive",
+      "name": "Google Drive",
+      "type": "plugin",
+      "description": "Google Drive file management",
+      "compatibility": ["claude"],
+      "sourceType": "community",
+      "author": { "name": "Community" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/google-drive"
+    },
+    {
+      "slug": "google-maps",
+      "name": "Google Maps",
+      "type": "plugin",
+      "description": "Google Maps location services",
+      "compatibility": ["claude"],
+      "sourceType": "community",
+      "author": { "name": "Community" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/google-maps"
+    },
+    {
+      "slug": "notion",
+      "name": "Notion",
+      "type": "plugin",
+      "description": "Notion workspace integration",
+      "compatibility": ["claude"],
+      "sourceType": "community",
+      "author": { "name": "Community" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/notion"
+    },
+    {
+      "slug": "pagerduty",
+      "name": "Pagerduty",
+      "type": "plugin",
+      "description": "PagerDuty incident management",
+      "compatibility": ["claude"],
+      "sourceType": "community",
+      "author": { "name": "Community" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/pagerduty"
+    },
+    {
+      "slug": "todoist",
+      "name": "Todoist",
+      "type": "plugin",
+      "description": "Todoist task management integration",
+      "compatibility": ["claude"],
+      "sourceType": "community",
+      "author": { "name": "Community" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/todoist"
+    },
+    {
+      "slug": "trello",
+      "name": "Trello",
+      "type": "plugin",
+      "description": "Trello board integration",
+      "compatibility": ["claude"],
+      "sourceType": "community",
+      "author": { "name": "Community" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/trello"
+    },
+    {
+      "slug": "twilio",
+      "name": "Twilio",
+      "type": "plugin",
+      "description": "Twilio communication APIs",
+      "compatibility": ["claude"],
+      "sourceType": "community",
+      "author": { "name": "Community" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/twilio"
+    },
+    {
+      "slug": "zendesk",
+      "name": "Zendesk",
+      "type": "plugin",
+      "description": "Zendesk customer support integration",
+      "compatibility": ["claude"],
+      "sourceType": "community",
+      "author": { "name": "Community" },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/zendesk"
+    }
+  ]
+}

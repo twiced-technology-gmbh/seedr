@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    @apply bg-base text-text;
+  }
+
+  body {
+    @apply min-h-screen;
+  }
+
+  ::selection {
+    @apply bg-accent/30;
+  }
+}
+
+@layer components {
+  /* Card with type indicator support */
+  .card {
+    @apply bg-surface border border-overlay rounded-lg p-3 transition-colors;
+  }
+
+  .card-hover {
+    @apply hover:bg-active hover:border-overlay-hover;
+  }
+
+  /* Badge/Label - matching configr's Label component */
+  .badge {
+    @apply inline-flex items-center rounded text-xs font-bold leading-none;
+  }
+
+  .badge-sm {
+    @apply h-badge-sm px-1.5;
+  }
+
+  .badge-md {
+    @apply h-badge-md px-2;
+  }
+
+  /* Button base */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md font-medium transition-colors;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-blue-600 text-white hover:bg-blue-500;
+  }
+
+  .btn-secondary {
+    @apply btn bg-surface-alt border border-overlay text-text;
+    @apply hover:bg-active hover:border-overlay-hover hover:text-text;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent border-transparent text-subtext;
+    @apply hover:bg-surface-alt hover:text-text;
+  }
+
+  /* Icon button sizes */
+  .icon-btn {
+    @apply btn border border-overlay bg-surface-alt;
+    @apply hover:bg-active hover:border-overlay-hover hover:text-text;
+  }
+
+  .icon-btn-xss {
+    @apply w-[18px] h-[18px];
+  }
+
+  .icon-btn-xs {
+    @apply w-6 h-6;
+  }
+
+  .icon-btn-sm {
+    @apply w-7 h-7;
+  }
+
+  .icon-btn-lg {
+    @apply w-9 h-9;
+  }
+
+  /* Input styling */
+  .input {
+    @apply h-input px-3 py-1.5 text-sm rounded-lg;
+    @apply bg-surface-alt border border-overlay text-text;
+    @apply placeholder:text-text-dim;
+    @apply focus:outline-none focus:border-accent;
+    @apply transition-colors;
+  }
+
+  /* Type indicator border */
+  .type-border {
+    @apply border-l-4;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
