@@ -46,6 +46,7 @@ export function Detail() {
           <TypeBadge type={item.type} size="md" />
           {item.sourceType && <SourceBadge source={item.sourceType} size="md" />}
         </div>
+        <h1 className="text-3xl font-bold text-text mb-2">{item.name}</h1>
         {item.author && <AuthorLink author={item.author} className="text-sm mb-2 block" />}
         <p className="text-lg text-subtext">{item.description}</p>
       </div>

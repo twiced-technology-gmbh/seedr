@@ -1,4 +1,4 @@
-name: Sync Anthropic Skills & Plugins
+name: Sync Registry
 
 on:
   schedule:
@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Sync Anthropic skills and plugins
+      - name: Sync registry
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pnpm sync
@@ -50,5 +50,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add registry/manifest.json
-          git commit -m "chore: sync Anthropic skills & plugins"
+          git commit -m "chore: sync registry"
           git push

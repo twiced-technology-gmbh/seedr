@@ -5,13 +5,14 @@
   "type": "module",
   "description": "AI tools configuration seeder - part of the toolr-suite ecosystem",
   "scripts": {
+    "prebuild": "tsx scripts/sync.ts || echo 'Sync failed, using existing manifest'",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "typecheck": "turbo run typecheck",
     "clean": "turbo run clean && rm -rf node_modules",
-    "sync": "tsx scripts/sync-anthropic.ts"
+    "sync": "tsx scripts/sync.ts"
   },
   "devDependencies": {
     "@eslint/js": "^9.18.0",

@@ -53,11 +53,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/toolr-suite/seedr.git"
+    "url": "https://github.com/twiced-technology-gmbh/seedr.git"
   },
   "homepage": "https://seedr.toolr.dev",
   "bugs": {
-    "url": "https://github.com/toolr-suite/seedr/issues"
+    "url": "https://github.com/twiced-technology-gmbh/seedr/issues"
   },
   "license": "MIT"
 }

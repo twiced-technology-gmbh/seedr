@@ -69,19 +69,13 @@ When a user runs `npx seedr add lint-doctor`:
 ```
 registry/
 ├── manifest.json           # Index of all available items
-├── skills/                 # Source files (browsable)
-│   └── <slug>/
-│       ├── SKILL.md        # Main skill definition
-│       └── references/     # Supporting reference files
-└── dist/
-    └── skills/             # Packaged files (downloadable)
-        └── <slug>.skill    # ZIP archive of skill folder
+└── skills/                 # Skill source files
+    └── <slug>/
+        ├── SKILL.md        # Main skill definition
+        └── references/     # Supporting reference files
 ```
 
-- **Source files** (`skills/<slug>/`) - Raw markdown, used for previews and direct installs
-- **Packaged files** (`dist/skills/<slug>.skill`) - ZIP archives for bundled downloads
-
-Hosted on GitHub, fetched via `raw.githubusercontent.com`.
+Skills are fetched directly from source files via `raw.githubusercontent.com`.
 
 ## Data Flow
 

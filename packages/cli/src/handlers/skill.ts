@@ -29,9 +29,6 @@ async function getSkillContent(
   item: RegistryItem,
   tool: AITool
 ): Promise<string> {
-  if (item.variants?.[tool]) {
-    return getItemContent(item, tool);
-  }
   const canonicalContent = await getItemContent(item);
   return convertSkillToTool(canonicalContent, tool);
 }
@@ -43,12 +40,10 @@ async function writeSkillFile(
   destPath: string,
   method: InstallMethod
 ): Promise<void> {
-  const canSymlink = tool === "claude" || item.variants?.[tool];
-
-  const sourcePath = getItemSourcePath(
-    item,
-    item.variants?.[tool] ? tool : undefined
-  );
+  // Only Claude supports native SKILL.md format, others need conversion
+  // Symlinks only work for toolr items with local source
+  const canSymlink = tool === "claude" && item.sourceType === "toolr";
+  const sourcePath = getItemSourcePath(item);
 
   if (method === "symlink" && canSymlink && sourcePath) {
     await installFile(sourcePath, destPath, "symlink");

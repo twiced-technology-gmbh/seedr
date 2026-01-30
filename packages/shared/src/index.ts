@@ -24,9 +24,6 @@ export interface RegistryItem {
   longDescription?: string;
   compatibility: AITool[];
   featured?: boolean;
-  source?: string;
-  package?: string;
-  variants?: Partial<Record<AITool, string>>;
   sourceType?: SourceType;
   author?: Author;
   externalUrl?: string;

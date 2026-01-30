@@ -122,6 +122,9 @@ export function Browse() {
 
       {/* Header */}
       <div className="mb-8">
+        <h1 className="text-3xl font-bold text-text mb-2">
+          {typeLabelPlural[componentType]}
+        </h1>
         <p className="text-subtext">
           {filteredItems.length} {pluralize(componentType, filteredItems.length)} available
           {hasActiveFilters && items.length !== filteredItems.length && (
