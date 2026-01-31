@@ -58,30 +58,6 @@ npx @toolr/seedr remove <name>    # Remove installed content
 npx @toolr/seedr init             # Initialize AI tool config directories
 ```
 
-## Installation Paths
-
-### Skills (All Tools)
-
-| Tool | Project Path | User Path |
-|------|--------------|-----------|
-| Claude Code | `.claude/skills/<name>/` | `~/.claude/skills/<name>/` |
-| GitHub Copilot | `.github/skills/<name>/` | `~/.github/skills/<name>/` |
-| Gemini Code Assist | `.gemini/skills/<name>/` | `~/.gemini/skills/<name>/` |
-| OpenAI Codex | `.codex/skills/<name>/` | `~/.codex/skills/<name>/` |
-| OpenCode | `.opencode/skills/<name>/` | `~/.opencode/skills/<name>/` |
-
-All tools use the same directory structure with `SKILL.md` as the main file.
-
-### Other Content Types (Claude Only)
-
-| Type | Project | User | Local |
-|------|---------|------|-------|
-| Agents | `.claude/agents/<name>.md` | `~/.claude/agents/<name>.md` | - |
-| Hooks | `.claude/settings.json` | `~/.claude/settings.json` | `.claude/settings.local.json` |
-| Settings | `.claude/settings.json` | `~/.claude/settings.json` | `.claude/settings.local.json` |
-| MCP Servers | `.mcp.json` | `~/.claude.json` | - |
-| Plugins | `~/.claude/plugins/cache/` | `~/.claude/plugins/cache/` | - |
-
 ## Development
 
 ```bash
