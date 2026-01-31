@@ -20,7 +20,23 @@
         "name": "Toolr Suite",
         "url": "https://github.com/toolr-suite"
       },
-      "updatedAt": "2026-01-28T12:00:00Z"
+      "externalUrl": "https://github.com/toolr-suite/seedr/tree/main/registry/skills/claude-md-doctor",
+      "updatedAt": "2026-01-28T12:00:00Z",
+      "contents": {
+        "files": [
+          {
+            "name": "references",
+            "type": "directory",
+            "children": [
+              { "name": "anti-patterns.md", "type": "file" },
+              { "name": "quality-criteria.md", "type": "file" },
+              { "name": "rules-criteria.md", "type": "file" },
+              { "name": "templates.md", "type": "file" }
+            ]
+          },
+          { "name": "SKILL.md", "type": "file" }
+        ]
+      }
     },
     {
       "slug": "lint-doctor",
@@ -41,7 +57,25 @@
         "name": "Toolr Suite",
         "url": "https://github.com/toolr-suite"
       },
-      "updatedAt": "2026-01-28T12:00:00Z"
+      "externalUrl": "https://github.com/toolr-suite/seedr/tree/main/registry/skills/lint-doctor",
+      "updatedAt": "2026-01-28T12:00:00Z",
+      "contents": {
+        "files": [
+          {
+            "name": "references",
+            "type": "directory",
+            "children": [
+              { "name": "go.md", "type": "file" },
+              { "name": "java.md", "type": "file" },
+              { "name": "javascript.md", "type": "file" },
+              { "name": "pre-commit.md", "type": "file" },
+              { "name": "python.md", "type": "file" },
+              { "name": "rust.md", "type": "file" }
+            ]
+          },
+          { "name": "SKILL.md", "type": "file" }
+        ]
+      }
     },
     {
       "slug": "code-smell-doctor",
@@ -62,7 +96,24 @@
         "name": "Toolr Suite",
         "url": "https://github.com/toolr-suite"
       },
-      "updatedAt": "2026-01-28T12:00:00Z"
+      "externalUrl": "https://github.com/toolr-suite/seedr/tree/main/registry/skills/code-smell-doctor",
+      "updatedAt": "2026-01-28T12:00:00Z",
+      "contents": {
+        "files": [
+          {
+            "name": "references",
+            "type": "directory",
+            "children": [
+              { "name": "bloaters.md", "type": "file" },
+              { "name": "change-preventers.md", "type": "file" },
+              { "name": "couplers.md", "type": "file" },
+              { "name": "dispensables.md", "type": "file" },
+              { "name": "oo-abusers.md", "type": "file" }
+            ]
+          },
+          { "name": "SKILL.md", "type": "file" }
+        ]
+      }
     },
     {
       "slug": "design-patterns",
