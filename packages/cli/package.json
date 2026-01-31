@@ -1,5 +1,5 @@
 {
-  "name": "seedr-cli",
+  "name": "@toolr/seedr",
   "version": "0.1.0",
   "description": "Seed your projects with AI configurations",
   "type": "module",
