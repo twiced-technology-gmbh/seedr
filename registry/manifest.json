@@ -134,7 +134,22 @@
         "name": "Toolr Suite",
         "url": "https://github.com/toolr-suite"
       },
-      "updatedAt": "2026-01-28T12:00:00Z"
+      "externalUrl": "https://github.com/toolr-suite/seedr/tree/main/registry/skills/design-patterns",
+      "updatedAt": "2026-01-28T12:00:00Z",
+      "contents": {
+        "files": [
+          {
+            "name": "references",
+            "type": "directory",
+            "children": [
+              { "name": "behavioral.md", "type": "file" },
+              { "name": "creational.md", "type": "file" },
+              { "name": "structural.md", "type": "file" }
+            ]
+          },
+          { "name": "SKILL.md", "type": "file" }
+        ]
+      }
     },
     {
       "slug": "refactoring-techniques",
@@ -155,7 +170,25 @@
         "name": "Toolr Suite",
         "url": "https://github.com/toolr-suite"
       },
-      "updatedAt": "2026-01-28T12:00:00Z"
+      "externalUrl": "https://github.com/toolr-suite/seedr/tree/main/registry/skills/refactoring-techniques",
+      "updatedAt": "2026-01-28T12:00:00Z",
+      "contents": {
+        "files": [
+          {
+            "name": "references",
+            "type": "directory",
+            "children": [
+              { "name": "composing-methods.md", "type": "file" },
+              { "name": "dealing-with-generalization.md", "type": "file" },
+              { "name": "moving-features.md", "type": "file" },
+              { "name": "organizing-data.md", "type": "file" },
+              { "name": "simplifying-conditionals.md", "type": "file" },
+              { "name": "simplifying-method-calls.md", "type": "file" }
+            ]
+          },
+          { "name": "SKILL.md", "type": "file" }
+        ]
+      }
     },
     {
       "slug": "algorithmic-art",
