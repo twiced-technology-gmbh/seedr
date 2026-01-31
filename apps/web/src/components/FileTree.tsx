@@ -433,6 +433,7 @@ function FilePreview({ filePath, content, loading, error, onClose, downloadUrl }
  * Supports:
  * - GitHub: https://github.com/owner/repo/tree/branch/path -> raw.githubusercontent.com
  * - Local dev: local://dev-samples -> /dev-samples (for testing)
+ * - Toolr (dev): github.com/toolr-suite/seedr -> local /registry/ path
  */
 function getRawUrl(externalUrl: string, filePath: string): string | null {
   // Handle local dev files
@@ -445,6 +446,12 @@ function getRawUrl(externalUrl: string, filePath: string): string | null {
   const match = externalUrl.match(/github\.com\/([^/]+)\/([^/]+)\/tree\/([^/]+)(?:\/(.+))?/);
   if (!match) return null;
   const [, owner, repo, branch, basePath] = match;
+
+  // In development, serve Toolr files from local registry
+  if (import.meta.env.DEV && owner === "toolr-suite" && repo === "seedr") {
+    return `/${basePath}/${filePath}`;
+  }
+
   const fullPath = basePath ? `${basePath}/${filePath}` : filePath;
   return `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${fullPath}`;
 }

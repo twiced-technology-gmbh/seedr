@@ -8,10 +8,11 @@ import { SortDropdown } from "@/components/ui/SortDropdown";
 import type { SortOption } from "@/components/ui/SortDropdown";
 import { ItemCard } from "@/components/ItemCard";
 import { ToolIcon } from "@/components/ToolIcon";
+import { TypeIcon } from "@/components/TypeIcon";
 import { getItemsByType } from "@/lib/registry";
 import { pluralize } from "@/lib/text";
 import type { ComponentType, AITool, SourceType, RegistryItem } from "@/lib/types";
-import { toolLabels, sourceLabels, typeLabelPlural } from "@/lib/colors";
+import { toolLabels, sourceLabels, typeLabelPlural, typeTextColors } from "@/lib/colors";
 
 const toolOptions: FilterOption<AITool>[] = [
   { value: "claude", label: toolLabels.claude, icon: <ToolIcon tool="claude" size={14} /> },
@@ -116,7 +117,10 @@ export function Browse() {
     <div className="max-w-6xl mx-auto px-4 py-8">
       {/* Breadcrumb */}
       <Breadcrumb
-        items={[{ label: typeLabelPlural[componentType] }]}
+        items={[{
+          label: typeLabelPlural[componentType],
+          icon: <TypeIcon type={componentType} size={14} className={typeTextColors[componentType]} />,
+        }]}
         className="mb-6"
       />
 

@@ -1,9 +1,7 @@
 import { useParams, Link } from "react-router-dom";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import { Breadcrumb, CodeBlock } from "@/components/ui";
-import { typeLabelPlural } from "@/lib/colors";
-import { TypeBadge } from "@/components/TypeBadge";
+import { typeLabelPlural, typeTextColors } from "@/lib/colors";
+import { TypeIcon } from "@/components/TypeIcon";
 import { SourceBadge } from "@/components/SourceBadge";
 import { AuthorLink } from "@/components/AuthorLink";
 import { CompatibilityBadges } from "@/components/CompatibilityBadges";
@@ -36,7 +34,11 @@ export function Detail() {
       {/* Breadcrumb */}
       <Breadcrumb
         items={[
-          { label: typeLabelPlural[componentType], href: `/${componentType}s` },
+          {
+            label: typeLabelPlural[componentType],
+            href: `/${componentType}s`,
+            icon: <TypeIcon type={componentType} size={14} className={typeTextColors[componentType]} />,
+          },
           { label: item.name },
         ]}
         className="mb-6"
@@ -44,18 +46,22 @@ export function Detail() {
 
       {/* Header */}
       <div className="mb-8">
-        <div className="flex items-center gap-2 mb-3">
-          <TypeBadge type={item.type} size="md" />
-          {item.sourceType && <SourceBadge source={item.sourceType} size="md" />}
-        </div>
+        {item.sourceType && (
+          <div className="mb-3">
+            <SourceBadge source={item.sourceType} size="md" />
+          </div>
+        )}
         <h1 className="text-3xl font-bold text-text mb-2">{item.name}</h1>
         {(item.author || item.sourceType === "toolr") && (
           <AuthorLink
             author={item.sourceType === "toolr" ? { name: "TwiceD Technology" } : item.author!}
-            className="text-sm mb-2 block"
+            className="text-sm mb-8 block"
           />
         )}
         <p className="text-lg text-subtext">{item.description}</p>
+        {item.longDescription && (
+          <p className="text-sm text-text-dim mt-3">{item.longDescription}</p>
+        )}
       </div>
 
       {/* Install command */}
@@ -83,15 +89,6 @@ export function Detail() {
           externalUrl={item.externalUrl}
           className="mb-8"
         />
-      )}
-
-      {/* Long description */}
-      {item.longDescription && (
-        <div className="prose prose-invert max-w-none">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>
-            {item.longDescription}
-          </ReactMarkdown>
-        </div>
       )}
 
       {/* Automation commands */}

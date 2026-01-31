@@ -199,9 +199,9 @@ export function Home() {
           {/* Curation notice */}
           <div className="mt-12 text-center text-sm text-text-dim max-w-2xl mx-auto">
             <p>
-              Seedr is a curated registry. We only include official configurations from tool vendors,
-              our own creations from Toolr Suite, and carefully selected community contributions
-              that meet our quality standards.
+              Quality over quantity. One well-crafted configuration beats a thousand mediocre ones.
+              We only include official configurations, Toolr Suite creations, and carefully
+              vetted community contributions.
             </p>
           </div>
         </>

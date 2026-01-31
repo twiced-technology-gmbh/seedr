@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { ChevronRight, Home } from "lucide-react";
+import type { ReactNode } from "react";
 
 export interface BreadcrumbItem {
   label: string;
   href?: string;
+  icon?: ReactNode;
 }
 
 interface BreadcrumbProps {
@@ -16,7 +18,7 @@ export function Breadcrumb({ items, className = "" }: BreadcrumbProps) {
     <nav className={`flex items-center gap-1.5 text-sm ${className}`}>
       <Link
         to="/"
-        className="text-subtext hover:text-text transition-colors"
+        className="text-emerald-400 hover:text-emerald-300 transition-colors"
       >
         <Home className="w-4 h-4" />
       </Link>
@@ -26,12 +28,16 @@ export function Breadcrumb({ items, className = "" }: BreadcrumbProps) {
           {item.href ? (
             <Link
               to={item.href}
-              className="text-subtext hover:text-text transition-colors"
+              className="flex items-center gap-1.5 text-subtext hover:text-text transition-colors"
             >
+              {item.icon}
               {item.label}
             </Link>
           ) : (
-            <span className="text-text">{item.label}</span>
+            <span className="flex items-center gap-1.5 text-text">
+              {item.icon}
+              {item.label}
+            </span>
           )}
         </span>
       ))}
