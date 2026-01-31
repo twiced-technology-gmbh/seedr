@@ -448,7 +448,7 @@ function getRawUrl(externalUrl: string, filePath: string): string | null {
   const [, owner, repo, branch, basePath] = match;
 
   // In development, serve Toolr files from local registry
-  if (import.meta.env.DEV && owner === "toolr-suite" && repo === "seedr") {
+  if (import.meta.env.DEV && owner === "twiced-technology-gmbh" && repo === "seedr") {
     return `/${basePath}/${filePath}`;
   }
 
