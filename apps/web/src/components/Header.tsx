@@ -53,7 +53,7 @@ export function Header() {
               tooltipAlign="end"
             />
           </a>
-          <a href="https://github.com/toolr-suite/seedr" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/twiced-technology-gmbh/seedr" target="_blank" rel="noopener noreferrer">
             <IconButton
               icon={<Github className="w-3.5 h-3.5" />}
               size="sm"

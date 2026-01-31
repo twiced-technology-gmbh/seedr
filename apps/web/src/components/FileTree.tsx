@@ -433,7 +433,7 @@ function FilePreview({ filePath, content, loading, error, onClose, downloadUrl }
  * Supports:
  * - GitHub: https://github.com/owner/repo/tree/branch/path -> raw.githubusercontent.com
  * - Local dev: local://dev-samples -> /dev-samples (for testing)
- * - Toolr (dev): github.com/toolr-suite/seedr -> local /registry/ path
+ * - Toolr (dev): github.com/twiced-technology-gmbh/seedr -> local /registry/ path
  */
 function getRawUrl(externalUrl: string, filePath: string): string | null {
   // Handle local dev files
