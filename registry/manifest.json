@@ -123,7 +123,33 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/algorithmic-art",
-      "updatedAt": "2025-12-01T18:05:36Z"
+      "updatedAt": "2025-12-01T18:05:36Z",
+      "contents": {
+        "files": [
+          {
+            "name": "templates",
+            "type": "directory",
+            "children": [
+              {
+                "name": "generator_template.js",
+                "type": "file"
+              },
+              {
+                "name": "viewer.html",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "LICENSE.txt",
+            "type": "file"
+          },
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "brand-guidelines",
@@ -142,7 +168,19 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/brand-guidelines",
-      "updatedAt": "2025-12-01T18:05:36Z"
+      "updatedAt": "2025-12-01T18:05:36Z",
+      "contents": {
+        "files": [
+          {
+            "name": "LICENSE.txt",
+            "type": "file"
+          },
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "canvas-design",
@@ -161,7 +199,349 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/canvas-design",
-      "updatedAt": "2025-12-01T18:05:36Z"
+      "updatedAt": "2025-12-01T18:05:36Z",
+      "contents": {
+        "files": [
+          {
+            "name": "canvas-fonts",
+            "type": "directory",
+            "children": [
+              {
+                "name": "ArsenalSC-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "ArsenalSC-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "BigShoulders-Bold.ttf",
+                "type": "file"
+              },
+              {
+                "name": "BigShoulders-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "BigShoulders-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "Boldonse-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "Boldonse-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "BricolageGrotesque-Bold.ttf",
+                "type": "file"
+              },
+              {
+                "name": "BricolageGrotesque-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "BricolageGrotesque-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "CrimsonPro-Bold.ttf",
+                "type": "file"
+              },
+              {
+                "name": "CrimsonPro-Italic.ttf",
+                "type": "file"
+              },
+              {
+                "name": "CrimsonPro-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "CrimsonPro-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "DMMono-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "DMMono-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "EricaOne-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "EricaOne-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "GeistMono-Bold.ttf",
+                "type": "file"
+              },
+              {
+                "name": "GeistMono-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "GeistMono-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "Gloock-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "Gloock-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "IBMPlexMono-Bold.ttf",
+                "type": "file"
+              },
+              {
+                "name": "IBMPlexMono-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "IBMPlexMono-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "IBMPlexSerif-Bold.ttf",
+                "type": "file"
+              },
+              {
+                "name": "IBMPlexSerif-BoldItalic.ttf",
+                "type": "file"
+              },
+              {
+                "name": "IBMPlexSerif-Italic.ttf",
+                "type": "file"
+              },
+              {
+                "name": "IBMPlexSerif-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "InstrumentSans-Bold.ttf",
+                "type": "file"
+              },
+              {
+                "name": "InstrumentSans-BoldItalic.ttf",
+                "type": "file"
+              },
+              {
+                "name": "InstrumentSans-Italic.ttf",
+                "type": "file"
+              },
+              {
+                "name": "InstrumentSans-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "InstrumentSans-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "InstrumentSerif-Italic.ttf",
+                "type": "file"
+              },
+              {
+                "name": "InstrumentSerif-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "Italiana-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "Italiana-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "JetBrainsMono-Bold.ttf",
+                "type": "file"
+              },
+              {
+                "name": "JetBrainsMono-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "JetBrainsMono-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "Jura-Light.ttf",
+                "type": "file"
+              },
+              {
+                "name": "Jura-Medium.ttf",
+                "type": "file"
+              },
+              {
+                "name": "Jura-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "LibreBaskerville-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "LibreBaskerville-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "Lora-Bold.ttf",
+                "type": "file"
+              },
+              {
+                "name": "Lora-BoldItalic.ttf",
+                "type": "file"
+              },
+              {
+                "name": "Lora-Italic.ttf",
+                "type": "file"
+              },
+              {
+                "name": "Lora-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "Lora-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "NationalPark-Bold.ttf",
+                "type": "file"
+              },
+              {
+                "name": "NationalPark-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "NationalPark-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "NothingYouCouldDo-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "NothingYouCouldDo-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "Outfit-Bold.ttf",
+                "type": "file"
+              },
+              {
+                "name": "Outfit-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "Outfit-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "PixelifySans-Medium.ttf",
+                "type": "file"
+              },
+              {
+                "name": "PixelifySans-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "PoiretOne-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "PoiretOne-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "RedHatMono-Bold.ttf",
+                "type": "file"
+              },
+              {
+                "name": "RedHatMono-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "RedHatMono-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "Silkscreen-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "Silkscreen-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "SmoochSans-Medium.ttf",
+                "type": "file"
+              },
+              {
+                "name": "SmoochSans-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "Tektur-Medium.ttf",
+                "type": "file"
+              },
+              {
+                "name": "Tektur-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "Tektur-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "WorkSans-Bold.ttf",
+                "type": "file"
+              },
+              {
+                "name": "WorkSans-BoldItalic.ttf",
+                "type": "file"
+              },
+              {
+                "name": "WorkSans-Italic.ttf",
+                "type": "file"
+              },
+              {
+                "name": "WorkSans-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "WorkSans-Regular.ttf",
+                "type": "file"
+              },
+              {
+                "name": "YoungSerif-OFL.txt",
+                "type": "file"
+              },
+              {
+                "name": "YoungSerif-Regular.ttf",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "LICENSE.txt",
+            "type": "file"
+          },
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "doc-coauthoring",
@@ -180,7 +560,15 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/doc-coauthoring",
-      "updatedAt": "2025-12-04T17:01:46Z"
+      "updatedAt": "2025-12-04T17:01:46Z",
+      "contents": {
+        "files": [
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "docx",
@@ -199,7 +587,295 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/docx",
-      "updatedAt": "2025-12-01T18:05:36Z"
+      "updatedAt": "2025-12-01T18:05:36Z",
+      "contents": {
+        "files": [
+          {
+            "name": "ooxml",
+            "type": "directory",
+            "children": [
+              {
+                "name": "schemas",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "ecma",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "fouth-edition",
+                        "type": "directory"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ISO-IEC29500-4_2016",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "dml-chart.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-chartDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-diagram.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-lockedCanvas.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-main.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-picture.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-spreadsheetDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-wordprocessingDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "pml.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-additionalCharacteristics.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-bibliography.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-commonSimpleTypes.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-customXmlDataProperties.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-customXmlSchemaProperties.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-documentPropertiesCustom.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-documentPropertiesExtended.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-documentPropertiesVariantTypes.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-math.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-relationshipReference.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "sml.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "vml-main.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "vml-officeDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "vml-presentationDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "vml-spreadsheetDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "vml-wordprocessingDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "xml.xsd",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "mce",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "mc.xsd",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "microsoft",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "wml-2010.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml-2012.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml-2018.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml-cex-2018.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml-cid-2016.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml-sdtdatahash-2020.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml-symex-2015.xsd",
+                        "type": "file"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "scripts",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "validation",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "__init__.py",
+                        "type": "file"
+                      },
+                      {
+                        "name": "base.py",
+                        "type": "file"
+                      },
+                      {
+                        "name": "docx.py",
+                        "type": "file"
+                      },
+                      {
+                        "name": "pptx.py",
+                        "type": "file"
+                      },
+                      {
+                        "name": "redlining.py",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "pack.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "unpack.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "validate.py",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "scripts",
+            "type": "directory",
+            "children": [
+              {
+                "name": "templates",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "comments.xml",
+                    "type": "file"
+                  },
+                  {
+                    "name": "commentsExtended.xml",
+                    "type": "file"
+                  },
+                  {
+                    "name": "commentsExtensible.xml",
+                    "type": "file"
+                  },
+                  {
+                    "name": "commentsIds.xml",
+                    "type": "file"
+                  },
+                  {
+                    "name": "people.xml",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "__init__.py",
+                "type": "file"
+              },
+              {
+                "name": "document.py",
+                "type": "file"
+              },
+              {
+                "name": "utilities.py",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "docx-js.md",
+            "type": "file"
+          },
+          {
+            "name": "LICENSE.txt",
+            "type": "file"
+          },
+          {
+            "name": "ooxml.md",
+            "type": "file"
+          },
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "frontend-design",
@@ -218,7 +894,19 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/frontend-design",
-      "updatedAt": "2025-12-04T17:01:46Z"
+      "updatedAt": "2025-12-04T17:01:46Z",
+      "contents": {
+        "files": [
+          {
+            "name": "LICENSE.txt",
+            "type": "file"
+          },
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "internal-comms",
@@ -237,7 +925,41 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/internal-comms",
-      "updatedAt": "2025-12-01T18:05:36Z"
+      "updatedAt": "2025-12-01T18:05:36Z",
+      "contents": {
+        "files": [
+          {
+            "name": "examples",
+            "type": "directory",
+            "children": [
+              {
+                "name": "3p-updates.md",
+                "type": "file"
+              },
+              {
+                "name": "company-newsletter.md",
+                "type": "file"
+              },
+              {
+                "name": "faq-answers.md",
+                "type": "file"
+              },
+              {
+                "name": "general-comms.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "LICENSE.txt",
+            "type": "file"
+          },
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "mcp-builder",
@@ -256,7 +978,63 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/mcp-builder",
-      "updatedAt": "2025-12-01T18:05:36Z"
+      "updatedAt": "2025-12-01T18:05:36Z",
+      "contents": {
+        "files": [
+          {
+            "name": "reference",
+            "type": "directory",
+            "children": [
+              {
+                "name": "evaluation.md",
+                "type": "file"
+              },
+              {
+                "name": "mcp_best_practices.md",
+                "type": "file"
+              },
+              {
+                "name": "node_mcp_server.md",
+                "type": "file"
+              },
+              {
+                "name": "python_mcp_server.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "scripts",
+            "type": "directory",
+            "children": [
+              {
+                "name": "connections.py",
+                "type": "file"
+              },
+              {
+                "name": "evaluation.py",
+                "type": "file"
+              },
+              {
+                "name": "example_evaluation.xml",
+                "type": "file"
+              },
+              {
+                "name": "requirements.txt",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "LICENSE.txt",
+            "type": "file"
+          },
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "pdf",
@@ -275,7 +1053,65 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/pdf",
-      "updatedAt": "2025-12-01T18:05:36Z"
+      "updatedAt": "2025-12-01T18:05:36Z",
+      "contents": {
+        "files": [
+          {
+            "name": "scripts",
+            "type": "directory",
+            "children": [
+              {
+                "name": "check_bounding_boxes_test.py",
+                "type": "file"
+              },
+              {
+                "name": "check_bounding_boxes.py",
+                "type": "file"
+              },
+              {
+                "name": "check_fillable_fields.py",
+                "type": "file"
+              },
+              {
+                "name": "convert_pdf_to_images.py",
+                "type": "file"
+              },
+              {
+                "name": "create_validation_image.py",
+                "type": "file"
+              },
+              {
+                "name": "extract_form_field_info.py",
+                "type": "file"
+              },
+              {
+                "name": "fill_fillable_fields.py",
+                "type": "file"
+              },
+              {
+                "name": "fill_pdf_form_with_annotations.py",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "forms.md",
+            "type": "file"
+          },
+          {
+            "name": "LICENSE.txt",
+            "type": "file"
+          },
+          {
+            "name": "reference.md",
+            "type": "file"
+          },
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "pptx",
@@ -294,7 +1130,277 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/pptx",
-      "updatedAt": "2025-12-01T18:05:36Z"
+      "updatedAt": "2025-12-01T18:05:36Z",
+      "contents": {
+        "files": [
+          {
+            "name": "ooxml",
+            "type": "directory",
+            "children": [
+              {
+                "name": "schemas",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "ecma",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "fouth-edition",
+                        "type": "directory"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "ISO-IEC29500-4_2016",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "dml-chart.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-chartDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-diagram.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-lockedCanvas.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-main.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-picture.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-spreadsheetDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-wordprocessingDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "pml.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-additionalCharacteristics.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-bibliography.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-commonSimpleTypes.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-customXmlDataProperties.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-customXmlSchemaProperties.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-documentPropertiesCustom.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-documentPropertiesExtended.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-documentPropertiesVariantTypes.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-math.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-relationshipReference.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "sml.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "vml-main.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "vml-officeDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "vml-presentationDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "vml-spreadsheetDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "vml-wordprocessingDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "xml.xsd",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "mce",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "mc.xsd",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "microsoft",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "wml-2010.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml-2012.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml-2018.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml-cex-2018.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml-cid-2016.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml-sdtdatahash-2020.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml-symex-2015.xsd",
+                        "type": "file"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "scripts",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "validation",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "__init__.py",
+                        "type": "file"
+                      },
+                      {
+                        "name": "base.py",
+                        "type": "file"
+                      },
+                      {
+                        "name": "docx.py",
+                        "type": "file"
+                      },
+                      {
+                        "name": "pptx.py",
+                        "type": "file"
+                      },
+                      {
+                        "name": "redlining.py",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "pack.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "unpack.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "validate.py",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "scripts",
+            "type": "directory",
+            "children": [
+              {
+                "name": "html2pptx.js",
+                "type": "file"
+              },
+              {
+                "name": "inventory.py",
+                "type": "file"
+              },
+              {
+                "name": "rearrange.py",
+                "type": "file"
+              },
+              {
+                "name": "replace.py",
+                "type": "file"
+              },
+              {
+                "name": "thumbnail.py",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "html2pptx.md",
+            "type": "file"
+          },
+          {
+            "name": "LICENSE.txt",
+            "type": "file"
+          },
+          {
+            "name": "ooxml.md",
+            "type": "file"
+          },
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "skill-creator",
@@ -313,7 +1419,51 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
-      "updatedAt": "2025-12-01T18:05:36Z"
+      "updatedAt": "2025-12-01T18:05:36Z",
+      "contents": {
+        "files": [
+          {
+            "name": "references",
+            "type": "directory",
+            "children": [
+              {
+                "name": "output-patterns.md",
+                "type": "file"
+              },
+              {
+                "name": "workflows.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "scripts",
+            "type": "directory",
+            "children": [
+              {
+                "name": "init_skill.py",
+                "type": "file"
+              },
+              {
+                "name": "package_skill.py",
+                "type": "file"
+              },
+              {
+                "name": "quick_validate.py",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "LICENSE.txt",
+            "type": "file"
+          },
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "slack-gif-creator",
@@ -332,7 +1482,45 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/slack-gif-creator",
-      "updatedAt": "2025-12-04T17:01:46Z"
+      "updatedAt": "2025-12-04T17:01:46Z",
+      "contents": {
+        "files": [
+          {
+            "name": "core",
+            "type": "directory",
+            "children": [
+              {
+                "name": "easing.py",
+                "type": "file"
+              },
+              {
+                "name": "frame_composer.py",
+                "type": "file"
+              },
+              {
+                "name": "gif_builder.py",
+                "type": "file"
+              },
+              {
+                "name": "validators.py",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "LICENSE.txt",
+            "type": "file"
+          },
+          {
+            "name": "requirements.txt",
+            "type": "file"
+          },
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "theme-factory",
@@ -351,7 +1539,69 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/theme-factory",
-      "updatedAt": "2025-12-01T18:05:36Z"
+      "updatedAt": "2025-12-01T18:05:36Z",
+      "contents": {
+        "files": [
+          {
+            "name": "themes",
+            "type": "directory",
+            "children": [
+              {
+                "name": "arctic-frost.md",
+                "type": "file"
+              },
+              {
+                "name": "botanical-garden.md",
+                "type": "file"
+              },
+              {
+                "name": "desert-rose.md",
+                "type": "file"
+              },
+              {
+                "name": "forest-canopy.md",
+                "type": "file"
+              },
+              {
+                "name": "golden-hour.md",
+                "type": "file"
+              },
+              {
+                "name": "midnight-galaxy.md",
+                "type": "file"
+              },
+              {
+                "name": "modern-minimalist.md",
+                "type": "file"
+              },
+              {
+                "name": "ocean-depths.md",
+                "type": "file"
+              },
+              {
+                "name": "sunset-boulevard.md",
+                "type": "file"
+              },
+              {
+                "name": "tech-innovation.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "LICENSE.txt",
+            "type": "file"
+          },
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          },
+          {
+            "name": "theme-showcase.pdf",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "web-artifacts-builder",
@@ -370,7 +1620,37 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder",
-      "updatedAt": "2025-12-01T18:05:36Z"
+      "updatedAt": "2025-12-01T18:05:36Z",
+      "contents": {
+        "files": [
+          {
+            "name": "scripts",
+            "type": "directory",
+            "children": [
+              {
+                "name": "bundle-artifact.sh",
+                "type": "file"
+              },
+              {
+                "name": "init-artifact.sh",
+                "type": "file"
+              },
+              {
+                "name": "shadcn-components.tar.gz",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "LICENSE.txt",
+            "type": "file"
+          },
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "webapp-testing",
@@ -389,7 +1669,47 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/webapp-testing",
-      "updatedAt": "2025-12-01T18:05:36Z"
+      "updatedAt": "2025-12-01T18:05:36Z",
+      "contents": {
+        "files": [
+          {
+            "name": "examples",
+            "type": "directory",
+            "children": [
+              {
+                "name": "console_logging.py",
+                "type": "file"
+              },
+              {
+                "name": "element_discovery.py",
+                "type": "file"
+              },
+              {
+                "name": "static_html_automation.py",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "scripts",
+            "type": "directory",
+            "children": [
+              {
+                "name": "with_server.py",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "LICENSE.txt",
+            "type": "file"
+          },
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "xlsx",
@@ -408,7 +1728,23 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/xlsx",
-      "updatedAt": "2025-12-01T18:05:36Z"
+      "updatedAt": "2025-12-01T18:05:36Z",
+      "contents": {
+        "files": [
+          {
+            "name": "LICENSE.txt",
+            "type": "file"
+          },
+          {
+            "name": "recalc.py",
+            "type": "file"
+          },
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "agent-sdk-dev",
@@ -423,7 +1759,56 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/agent-sdk-dev",
-      "updatedAt": "2025-12-13T00:52:17Z"
+      "updatedAt": "2025-12-13T00:52:17Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "agents",
+            "type": "directory",
+            "children": [
+              {
+                "name": "agent-sdk-verifier-py.md",
+                "type": "file"
+              },
+              {
+                "name": "agent-sdk-verifier-ts.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "new-sdk-app.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ],
+        "agents": [
+          "agent-sdk-verifier-py",
+          "agent-sdk-verifier-ts"
+        ],
+        "commands": [
+          "new-sdk-app"
+        ]
+      }
     },
     {
       "slug": "claude-code-setup",
@@ -438,7 +1823,71 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-code-setup",
-      "updatedAt": "2026-01-21T04:15:08Z"
+      "updatedAt": "2026-01-21T04:15:08Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "claude-automation-recommender",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "references",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "hooks-patterns.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "mcp-servers.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "plugins-reference.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "skills-reference.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "subagent-templates.md",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "automation-recommender-example.png",
+            "type": "file"
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "claude-md-management",
@@ -453,7 +1902,80 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-md-management",
-      "updatedAt": "2026-01-20T21:11:06Z"
+      "updatedAt": "2026-01-20T21:11:06Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "revise-claude-md.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "claude-md-improver",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "references",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "quality-criteria.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "templates.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "update-guidelines.md",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "claude-md-improver-example.png",
+            "type": "file"
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          },
+          {
+            "name": "revise-claude-md-example.png",
+            "type": "file"
+          }
+        ],
+        "commands": [
+          "revise-claude-md"
+        ]
+      }
     },
     {
       "slug": "code-review",
@@ -468,7 +1990,38 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/code-review",
-      "updatedAt": "2025-12-13T00:52:17Z"
+      "updatedAt": "2025-12-13T00:52:17Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "code-review.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ],
+        "commands": [
+          "code-review"
+        ]
+      }
     },
     {
       "slug": "code-simplifier",
@@ -483,7 +2036,34 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/code-simplifier",
-      "updatedAt": "2026-01-09T00:17:19Z"
+      "updatedAt": "2026-01-09T00:17:19Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "agents",
+            "type": "directory",
+            "children": [
+              {
+                "name": "code-simplifier.md",
+                "type": "file"
+              }
+            ]
+          }
+        ],
+        "agents": [
+          "code-simplifier"
+        ]
+      }
     },
     {
       "slug": "commit-commands",
@@ -498,7 +2078,48 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/commit-commands",
-      "updatedAt": "2025-12-02T00:03:02Z"
+      "updatedAt": "2025-12-02T00:03:02Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "clean_gone.md",
+                "type": "file"
+              },
+              {
+                "name": "commit-push-pr.md",
+                "type": "file"
+              },
+              {
+                "name": "commit.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ],
+        "commands": [
+          "clean_gone",
+          "commit-push-pr",
+          "commit"
+        ]
+      }
     },
     {
       "slug": "explanatory-output-style",
@@ -513,7 +2134,45 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/explanatory-output-style",
-      "updatedAt": "2025-12-13T00:52:17Z"
+      "updatedAt": "2025-12-13T00:52:17Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "hooks",
+            "type": "directory",
+            "children": [
+              {
+                "name": "hooks.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "hooks-handlers",
+            "type": "directory",
+            "children": [
+              {
+                "name": "session-start.sh",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "feature-dev",
@@ -528,7 +2187,61 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/feature-dev",
-      "updatedAt": "2025-12-13T00:52:17Z"
+      "updatedAt": "2025-12-13T00:52:17Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "agents",
+            "type": "directory",
+            "children": [
+              {
+                "name": "code-architect.md",
+                "type": "file"
+              },
+              {
+                "name": "code-explorer.md",
+                "type": "file"
+              },
+              {
+                "name": "code-reviewer.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "feature-dev.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ],
+        "agents": [
+          "code-architect",
+          "code-explorer",
+          "code-reviewer"
+        ],
+        "commands": [
+          "feature-dev"
+        ]
+      }
     },
     {
       "slug": "frontend-design",
@@ -543,7 +2256,41 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design",
-      "updatedAt": "2025-12-13T00:52:17Z"
+      "updatedAt": "2025-12-13T00:52:17Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "frontend-design",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "hookify",
@@ -558,7 +2305,176 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/hookify",
-      "updatedAt": "2025-12-19T02:54:38Z"
+      "updatedAt": "2025-12-19T02:54:38Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "agents",
+            "type": "directory",
+            "children": [
+              {
+                "name": "conversation-analyzer.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "configure.md",
+                "type": "file"
+              },
+              {
+                "name": "help.md",
+                "type": "file"
+              },
+              {
+                "name": "hookify.md",
+                "type": "file"
+              },
+              {
+                "name": "list.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "core",
+            "type": "directory",
+            "children": [
+              {
+                "name": "__init__.py",
+                "type": "file"
+              },
+              {
+                "name": "config_loader.py",
+                "type": "file"
+              },
+              {
+                "name": "rule_engine.py",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "examples",
+            "type": "directory",
+            "children": [
+              {
+                "name": "console-log-warning.local.md",
+                "type": "file"
+              },
+              {
+                "name": "dangerous-rm.local.md",
+                "type": "file"
+              },
+              {
+                "name": "require-tests-stop.local.md",
+                "type": "file"
+              },
+              {
+                "name": "sensitive-files-warning.local.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "hooks",
+            "type": "directory",
+            "children": [
+              {
+                "name": "__init__.py",
+                "type": "file"
+              },
+              {
+                "name": "hooks.json",
+                "type": "file"
+              },
+              {
+                "name": "posttooluse.py",
+                "type": "file"
+              },
+              {
+                "name": "pretooluse.py",
+                "type": "file"
+              },
+              {
+                "name": "stop.py",
+                "type": "file"
+              },
+              {
+                "name": "userpromptsubmit.py",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "matchers",
+            "type": "directory",
+            "children": [
+              {
+                "name": "__init__.py",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "writing-rules",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "utils",
+            "type": "directory",
+            "children": [
+              {
+                "name": "__init__.py",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".gitignore",
+            "type": "file"
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ],
+        "agents": [
+          "conversation-analyzer"
+        ],
+        "commands": [
+          "configure",
+          "help",
+          "hookify",
+          "list"
+        ]
+      }
     },
     {
       "slug": "learning-output-style",
@@ -573,7 +2489,45 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/learning-output-style",
-      "updatedAt": "2025-12-13T00:52:17Z"
+      "updatedAt": "2025-12-13T00:52:17Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "hooks",
+            "type": "directory",
+            "children": [
+              {
+                "name": "hooks.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "hooks-handlers",
+            "type": "directory",
+            "children": [
+              {
+                "name": "session-start.sh",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "playground",
@@ -588,7 +2542,71 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/playground",
-      "updatedAt": "2026-01-29T23:24:01Z"
+      "updatedAt": "2026-01-29T23:24:01Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "playground",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "templates",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "code-map.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "concept-map.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "data-explorer.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "design-playground.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "diff-review.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "document-critique.md",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "pr-review-toolkit",
@@ -603,7 +2621,76 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pr-review-toolkit",
-      "updatedAt": "2025-12-13T00:52:17Z"
+      "updatedAt": "2025-12-13T00:52:17Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "agents",
+            "type": "directory",
+            "children": [
+              {
+                "name": "code-reviewer.md",
+                "type": "file"
+              },
+              {
+                "name": "code-simplifier.md",
+                "type": "file"
+              },
+              {
+                "name": "comment-analyzer.md",
+                "type": "file"
+              },
+              {
+                "name": "pr-test-analyzer.md",
+                "type": "file"
+              },
+              {
+                "name": "silent-failure-hunter.md",
+                "type": "file"
+              },
+              {
+                "name": "type-design-analyzer.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "review-pr.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ],
+        "agents": [
+          "code-reviewer",
+          "code-simplifier",
+          "comment-analyzer",
+          "pr-test-analyzer",
+          "silent-failure-hunter",
+          "type-design-analyzer"
+        ],
+        "commands": [
+          "review-pr"
+        ]
+      }
     },
     {
       "slug": "ralph-loop",
@@ -618,7 +2705,72 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/ralph-loop",
-      "updatedAt": "2026-01-06T23:22:54Z"
+      "updatedAt": "2026-01-06T23:22:54Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "cancel-ralph.md",
+                "type": "file"
+              },
+              {
+                "name": "help.md",
+                "type": "file"
+              },
+              {
+                "name": "ralph-loop.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "hooks",
+            "type": "directory",
+            "children": [
+              {
+                "name": "hooks.json",
+                "type": "file"
+              },
+              {
+                "name": "stop-hook.sh",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "scripts",
+            "type": "directory",
+            "children": [
+              {
+                "name": "setup-ralph-loop.sh",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ],
+        "commands": [
+          "cancel-ralph",
+          "help",
+          "ralph-loop"
+        ]
+      }
     },
     {
       "slug": "security-guidance",
@@ -633,7 +2785,35 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/security-guidance",
-      "updatedAt": "2025-12-13T00:52:17Z"
+      "updatedAt": "2025-12-13T00:52:17Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "hooks",
+            "type": "directory",
+            "children": [
+              {
+                "name": "hooks.json",
+                "type": "file"
+              },
+              {
+                "name": "security_reminder_hook.py",
+                "type": "file"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "slug": "asana",
@@ -648,7 +2828,25 @@
         "name": "Asana"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/asana",
-      "updatedAt": "2025-12-02T00:03:02Z"
+      "updatedAt": "2025-12-02T00:03:02Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "context7",
@@ -663,7 +2861,25 @@
         "name": "Upstash"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/context7",
-      "updatedAt": "2025-12-02T00:03:02Z"
+      "updatedAt": "2025-12-02T00:03:02Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "firebase",
@@ -678,7 +2894,25 @@
         "name": "Google"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/firebase",
-      "updatedAt": "2025-12-02T00:03:02Z"
+      "updatedAt": "2025-12-02T00:03:02Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "github",
@@ -693,7 +2927,25 @@
         "name": "GitHub"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/github",
-      "updatedAt": "2025-12-02T00:03:02Z"
+      "updatedAt": "2025-12-02T00:03:02Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "gitlab",
@@ -708,7 +2960,25 @@
         "name": "GitLab"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/gitlab",
-      "updatedAt": "2025-12-02T00:03:02Z"
+      "updatedAt": "2025-12-02T00:03:02Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "greptile",
@@ -724,7 +2994,29 @@
         "url": "https://greptile.com"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/greptile",
-      "updatedAt": "2026-01-06T05:15:35Z"
+      "updatedAt": "2026-01-06T05:15:35Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "laravel-boost",
@@ -739,7 +3031,25 @@
         "name": "Laravel"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/laravel-boost",
-      "updatedAt": "2025-12-02T00:03:02Z"
+      "updatedAt": "2025-12-02T00:03:02Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "linear",
@@ -754,7 +3064,25 @@
         "name": "Linear"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/linear",
-      "updatedAt": "2025-12-16T23:13:40Z"
+      "updatedAt": "2025-12-16T23:13:40Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "playwright",
@@ -769,7 +3097,25 @@
         "name": "Microsoft"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/playwright",
-      "updatedAt": "2025-12-02T00:03:02Z"
+      "updatedAt": "2025-12-02T00:03:02Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "serena",
@@ -784,7 +3130,25 @@
         "name": "Oraios"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/serena",
-      "updatedAt": "2025-12-02T00:03:02Z"
+      "updatedAt": "2025-12-02T00:03:02Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "slack",
@@ -799,7 +3163,25 @@
         "name": "Slack"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/slack",
-      "updatedAt": "2025-12-02T00:03:02Z"
+      "updatedAt": "2025-12-02T00:03:02Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "stripe",
@@ -815,7 +3197,59 @@
         "url": "https://stripe.com"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/stripe",
-      "updatedAt": "2025-12-18T16:58:02Z"
+      "updatedAt": "2025-12-18T16:58:02Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "explain-error.md",
+                "type": "file"
+              },
+              {
+                "name": "test-cards.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "stripe-best-practices",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ],
+        "commands": [
+          "explain-error",
+          "test-cards"
+        ]
+      }
     },
     {
       "slug": "supabase",
@@ -830,7 +3264,25 @@
         "name": "Supabase"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/supabase",
-      "updatedAt": "2025-12-02T00:03:02Z"
+      "updatedAt": "2025-12-02T00:03:02Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
     }
   ]
 }

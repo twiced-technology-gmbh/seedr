@@ -38,11 +38,61 @@ export async function fetchText(url: string): Promise<string | null> {
   }
 }
 
+interface GitHubContentItem {
+  name: string;
+  type: "file" | "dir";
+  path: string;
+}
+
 export async function listDirectory(repo: string, path: string): Promise<string[]> {
   const url = `${GITHUB_API}/repos/${repo}/contents/${path}`;
-  const items = await fetchJson<Array<{ name: string; type: string }>>(url);
+  const items = await fetchJson<GitHubContentItem[]>(url);
   if (!items) return [];
   return items.filter((item) => item.type === "dir").map((item) => item.name);
+}
+
+export async function listDirectoryContents(repo: string, path: string): Promise<GitHubContentItem[]> {
+  const url = `${GITHUB_API}/repos/${repo}/contents/${path}`;
+  const items = await fetchJson<GitHubContentItem[]>(url);
+  return items || [];
+}
+
+import type { FileTreeNode } from "./types.js";
+
+export async function fetchFileTree(
+  repo: string,
+  path: string,
+  maxDepth: number = 3,
+  currentDepth: number = 0
+): Promise<FileTreeNode[]> {
+  if (currentDepth >= maxDepth) return [];
+
+  const items = await listDirectoryContents(repo, path);
+  if (!items.length) return [];
+
+  const nodes: FileTreeNode[] = [];
+
+  for (const item of items) {
+    const node: FileTreeNode = {
+      name: item.name,
+      type: item.type === "dir" ? "directory" : "file",
+    };
+
+    if (item.type === "dir" && currentDepth < maxDepth - 1) {
+      const children = await fetchFileTree(repo, item.path, maxDepth, currentDepth + 1);
+      if (children.length > 0) {
+        node.children = children;
+      }
+    }
+
+    nodes.push(node);
+  }
+
+  // Sort: directories first, then alphabetically
+  return nodes.sort((a, b) => {
+    if (a.type !== b.type) return a.type === "directory" ? -1 : 1;
+    return a.name.localeCompare(b.name);
+  });
 }
 
 interface GitHubCommit {

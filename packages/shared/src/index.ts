@@ -16,6 +16,21 @@ export interface Author {
   url?: string;
 }
 
+export interface PluginContents {
+  skills?: string[];
+  agents?: string[];
+  hooks?: string[];
+  commands?: string[];
+  mcpServers?: string[];
+  files?: FileTreeNode[];
+}
+
+export interface FileTreeNode {
+  name: string;
+  type: "file" | "directory";
+  children?: FileTreeNode[];
+}
+
 export interface RegistryItem {
   slug: string;
   name: string;
@@ -28,6 +43,7 @@ export interface RegistryItem {
   author?: Author;
   externalUrl?: string;
   updatedAt?: string;
+  contents?: PluginContents;
 }
 
 export interface RegistryManifest {

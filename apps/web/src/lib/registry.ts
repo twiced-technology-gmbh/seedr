@@ -3,7 +3,35 @@ import type { RegistryManifest, RegistryItem, ComponentType } from "./types";
 // Import manifest directly (bundled at build time)
 import manifestData from "@registry/manifest.json";
 
-const manifest = manifestData as RegistryManifest;
+// Dev-only test item for testing media previews (uses local files in /public/dev-samples/)
+const devTestItem: RegistryItem = {
+  slug: "media-preview-test",
+  name: "Media Preview Test",
+  type: "skill",
+  description: "Test item for previewing various media formats (dev only)",
+  compatibility: ["claude"],
+  sourceType: "toolr",
+  author: { name: "TwiceD Technology" },
+  externalUrl: "local://dev-samples",
+  contents: {
+    files: [
+      { name: "sample.png", type: "file" },
+      { name: "sample.jpg", type: "file" },
+      { name: "sample.gif", type: "file" },
+      { name: "sample.svg", type: "file" },
+      { name: "sample.webp", type: "file" },
+      { name: "sample.mp3", type: "file" },
+      { name: "sample.mp4", type: "file" },
+      { name: "sample.pdf", type: "file" },
+    ],
+  },
+};
+
+const baseManifest = manifestData as RegistryManifest;
+
+const manifest: RegistryManifest = import.meta.env.DEV
+  ? { ...baseManifest, items: [devTestItem, ...baseManifest.items] }
+  : baseManifest;
 
 export function getManifest(): RegistryManifest {
   return manifest;

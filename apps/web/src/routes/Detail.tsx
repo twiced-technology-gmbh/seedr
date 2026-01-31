@@ -7,6 +7,8 @@ import { TypeBadge } from "@/components/TypeBadge";
 import { SourceBadge } from "@/components/SourceBadge";
 import { AuthorLink } from "@/components/AuthorLink";
 import { CompatibilityBadges } from "@/components/CompatibilityBadges";
+import { PluginContents } from "@/components/PluginContents";
+import { FileTree } from "@/components/FileTree";
 import { getItem } from "@/lib/registry";
 import type { ComponentType } from "@/lib/types";
 
@@ -47,7 +49,12 @@ export function Detail() {
           {item.sourceType && <SourceBadge source={item.sourceType} size="md" />}
         </div>
         <h1 className="text-3xl font-bold text-text mb-2">{item.name}</h1>
-        {item.author && <AuthorLink author={item.author} className="text-sm mb-2 block" />}
+        {(item.author || item.sourceType === "toolr") && (
+          <AuthorLink
+            author={item.sourceType === "toolr" ? { name: "TwiceD Technology" } : item.author!}
+            className="text-sm mb-2 block"
+          />
+        )}
         <p className="text-lg text-subtext">{item.description}</p>
       </div>
 
@@ -64,6 +71,20 @@ export function Detail() {
         <CompatibilityBadges tools={item.compatibility} size="md" />
       </div>
 
+      {/* Plugin contents (skills, agents, hooks counts) */}
+      {item.type === "plugin" && item.contents && (
+        <PluginContents contents={item.contents} className="mb-8" />
+      )}
+
+      {/* File tree (for any item with source files) */}
+      {item.contents?.files && (
+        <FileTree
+          files={item.contents.files}
+          externalUrl={item.externalUrl}
+          className="mb-8"
+        />
+      )}
+
       {/* Long description */}
       {item.longDescription && (
         <div className="prose prose-invert max-w-none">
@@ -73,12 +94,9 @@ export function Detail() {
         </div>
       )}
 
-      {/* Divider */}
-      <hr className="border-overlay my-8" />
-
-      {/* Usage */}
+      {/* Automation commands */}
       <div>
-        <h2 className="text-xl font-semibold text-text mb-4">Usage</h2>
+        <h2 className="text-sm font-medium text-subtext mb-3">Automation</h2>
 
         <div className="space-y-4">
           <CodeBlock

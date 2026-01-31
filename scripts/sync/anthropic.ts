@@ -13,15 +13,91 @@ import {
   fetchText,
   fetchLastCommitDate,
   listDirectory,
+  listDirectoryContents,
+  fetchFileTree,
   formatName,
 } from "./utils.js";
-import type { ManifestItem, ComponentType, SourceType } from "./types.js";
+import type { ManifestItem, ComponentType, SourceType, PluginContents, FileTreeNode } from "./types.js";
 
 const PLUGINS_REPO = "anthropics/claude-plugins-official";
 const SKILLS_REPO = "anthropics/skills";
 
 // Items to exclude
 const EXCLUDED = ["example-plugin", "template"];
+
+/**
+ * Parse plugin contents from file tree.
+ * Plugins can have their content in:
+ * - Root-level directories (skills/, agents/, hooks/, commands/)
+ * - Or under .claude/ directory
+ */
+function parsePluginContents(files: FileTreeNode[]): PluginContents {
+  const contents: PluginContents = { files };
+
+  // Helper to extract item names from a directory
+  const extractItems = (dir: FileTreeNode | undefined): string[] => {
+    if (!dir?.children) return [];
+    return dir.children
+      .filter(f => f.type === "file" && f.name.endsWith(".md"))
+      .map(f => f.name.replace(/\.md$/, ""));
+  };
+
+  // Check root-level directories first (most plugins use this)
+  const rootDirs = files.filter(f => f.type === "directory");
+  for (const dir of rootDirs) {
+    const items = extractItems(dir);
+    if (items.length === 0) continue;
+
+    switch (dir.name) {
+      case "skills":
+        contents.skills = items;
+        break;
+      case "agents":
+        contents.agents = items;
+        break;
+      case "hooks":
+        contents.hooks = items;
+        break;
+      case "commands":
+        contents.commands = items;
+        break;
+      case "mcp-servers":
+        contents.mcpServers = items;
+        break;
+    }
+  }
+
+  // Also check .claude directory (some plugins may use this structure)
+  const claudeDir = files.find(f => f.name === ".claude" && f.type === "directory");
+  if (claudeDir?.children) {
+    for (const subdir of claudeDir.children) {
+      if (subdir.type !== "directory") continue;
+      const items = extractItems(subdir);
+      if (items.length === 0) continue;
+
+      // Only add if not already set from root
+      switch (subdir.name) {
+        case "skills":
+          contents.skills = contents.skills || items;
+          break;
+        case "agents":
+          contents.agents = contents.agents || items;
+          break;
+        case "hooks":
+          contents.hooks = contents.hooks || items;
+          break;
+        case "commands":
+          contents.commands = contents.commands || items;
+          break;
+        case "mcp-servers":
+          contents.mcpServers = contents.mcpServers || items;
+          break;
+      }
+    }
+  }
+
+  return contents;
+}
 
 interface PluginJson {
   name: string;
@@ -70,10 +146,11 @@ interface FetchItemsOptions {
   compatibility: string[];
   defaultAuthor: string;
   fetchMetadata: (repo: string, basePath: string, slug: string) => Promise<{ name: string; description: string; author?: { name: string; url?: string } } | null>;
+  includeFileTree?: boolean;
 }
 
 async function fetchItems(options: FetchItemsOptions): Promise<ManifestItem[]> {
-  const { repo, basePath, type, sourceType, compatibility, defaultAuthor, fetchMetadata } = options;
+  const { repo, basePath, type, sourceType, compatibility, defaultAuthor, fetchMetadata, includeFileTree } = options;
   const slugs = await listDirectory(repo, basePath);
 
   console.log(`Fetching ${slugs.length} ${type}s from ${repo}/${basePath}...`);
@@ -90,6 +167,15 @@ async function fetchItems(options: FetchItemsOptions): Promise<ManifestItem[]> {
 
         const updatedAt = await fetchLastCommitDate(repo, `${basePath}/${slug}`);
 
+        // Fetch file tree for plugins
+        let contents: PluginContents | undefined;
+        if (includeFileTree) {
+          const files = await fetchFileTree(repo, `${basePath}/${slug}`, 4);
+          if (files.length > 0) {
+            contents = parsePluginContents(files);
+          }
+        }
+
         console.log(`  ✓ ${slug}${updatedAt ? ` (${updatedAt.split("T")[0]})` : ""}`);
         return {
           slug,
@@ -101,6 +187,7 @@ async function fetchItems(options: FetchItemsOptions): Promise<ManifestItem[]> {
           author: metadata.author ?? { name: defaultAuthor },
           externalUrl: `https://github.com/${repo}/tree/main/${basePath}/${slug}`,
           ...(updatedAt && { updatedAt }),
+          ...(contents && { contents }),
         } satisfies ManifestItem;
       })
   );
@@ -119,6 +206,7 @@ export async function syncAnthropic(): Promise<ManifestItem[]> {
     sourceType: "official",
     compatibility: ["claude", "copilot", "gemini", "codex", "opencode"],
     defaultAuthor: "Anthropic",
+    includeFileTree: true,
     fetchMetadata: async (repo, basePath, slug) => {
       const skill = await fetchSkillMd(repo, basePath, slug);
       if (!skill) return null;
@@ -134,6 +222,7 @@ export async function syncAnthropic(): Promise<ManifestItem[]> {
     sourceType: "official",
     compatibility: ["claude"],
     defaultAuthor: "Anthropic",
+    includeFileTree: true,
     fetchMetadata: async (repo, basePath, slug) => {
       const plugin = await fetchPluginJson(repo, basePath, slug);
       if (!plugin) return null;
@@ -153,6 +242,7 @@ export async function syncAnthropic(): Promise<ManifestItem[]> {
     sourceType: "community",
     compatibility: ["claude"],
     defaultAuthor: "Community",
+    includeFileTree: true,
     fetchMetadata: async (repo, basePath, slug) => {
       const plugin = await fetchPluginJson(repo, basePath, slug);
       if (!plugin) return null;

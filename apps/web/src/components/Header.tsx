@@ -46,7 +46,7 @@ export function Header() {
               size="sm"
               variant="twiced"
               tooltip={{
-                title: "TwiceD",
+                title: "TwiceD Technology",
                 description: "Visit twiced.de",
               }}
               tooltipPosition="bottom"

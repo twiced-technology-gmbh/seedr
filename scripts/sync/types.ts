@@ -7,6 +7,21 @@
 export type ComponentType = "skill" | "plugin" | "agent" | "hook" | "mcp" | "command" | "settings";
 export type SourceType = "official" | "community" | "toolr";
 
+export interface FileTreeNode {
+  name: string;
+  type: "file" | "directory";
+  children?: FileTreeNode[];
+}
+
+export interface PluginContents {
+  skills?: string[];
+  agents?: string[];
+  hooks?: string[];
+  commands?: string[];
+  mcpServers?: string[];
+  files?: FileTreeNode[];
+}
+
 export interface ManifestItem {
   slug: string;
   name: string;
@@ -19,6 +34,7 @@ export interface ManifestItem {
   author: { name: string; url?: string };
   externalUrl?: string;
   updatedAt?: string;
+  contents?: PluginContents;
 }
 
 export interface Manifest {
