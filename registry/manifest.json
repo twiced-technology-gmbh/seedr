@@ -1,0 +1,836 @@
+{
+  "version": "1.0.0",
+  "items": [
+    {
+      "slug": "claude-md-doctor",
+      "name": "CLAUDE.md Doctor",
+      "type": "skill",
+      "description": "Diagnose and improve CLAUDE.md files and .claude/rules/",
+      "longDescription": "Audit CLAUDE.md files for quality, staleness, and anti-patterns. Evaluate .claude/rules/ for modularity and correctness. Provides detailed health reports with severity ratings, scores, and targeted fixes for optimal Claude Code project context.",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "featured": true,
+      "sourceType": "toolr",
+      "author": {
+        "name": "Toolr Suite",
+        "url": "https://github.com/toolr-suite"
+      },
+      "updatedAt": "2026-01-28T12:00:00Z"
+    },
+    {
+      "slug": "lint-doctor",
+      "name": "Lint Doctor",
+      "type": "skill",
+      "description": "Diagnose and fix linting issues across multiple languages",
+      "longDescription": "Language-specific lint rule references for Go, Python, Rust, JavaScript, Java, and pre-commit hooks. Helps identify, understand, and resolve linting warnings and errors with best practices.",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "featured": true,
+      "sourceType": "toolr",
+      "author": {
+        "name": "Toolr Suite",
+        "url": "https://github.com/toolr-suite"
+      },
+      "updatedAt": "2026-01-28T12:00:00Z"
+    },
+    {
+      "slug": "code-smell-doctor",
+      "name": "Code Smell Doctor",
+      "type": "skill",
+      "description": "Detect and refactor code smells using Martin Fowler's catalog",
+      "longDescription": "Comprehensive code smell detection covering Bloaters, Object-Orientation Abusers, Change Preventers, Dispensables, and Couplers. Includes refactoring recommendations for each smell category.",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "featured": true,
+      "sourceType": "toolr",
+      "author": {
+        "name": "Toolr Suite",
+        "url": "https://github.com/toolr-suite"
+      },
+      "updatedAt": "2026-01-28T12:00:00Z"
+    },
+    {
+      "slug": "design-patterns",
+      "name": "Design Patterns",
+      "type": "skill",
+      "description": "Apply Gang of Four design patterns effectively",
+      "longDescription": "Reference guide for Creational, Structural, and Behavioral design patterns. Includes when to use each pattern, implementation examples, and common pitfalls to avoid.",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "featured": true,
+      "sourceType": "toolr",
+      "author": {
+        "name": "Toolr Suite",
+        "url": "https://github.com/toolr-suite"
+      },
+      "updatedAt": "2026-01-28T12:00:00Z"
+    },
+    {
+      "slug": "refactoring-techniques",
+      "name": "Refactoring Techniques",
+      "type": "skill",
+      "description": "Systematic refactoring using proven techniques",
+      "longDescription": "Martin Fowler's refactoring catalog covering Composing Methods, Moving Features, Organizing Data, Simplifying Conditionals, and Simplifying Method Calls. Step-by-step techniques for improving code quality.",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "featured": true,
+      "sourceType": "toolr",
+      "author": {
+        "name": "Toolr Suite",
+        "url": "https://github.com/toolr-suite"
+      },
+      "updatedAt": "2026-01-28T12:00:00Z"
+    },
+    {
+      "slug": "algorithmic-art",
+      "name": "Algorithmic Art",
+      "type": "skill",
+      "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations.",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/algorithmic-art",
+      "updatedAt": "2025-12-01T18:05:36Z"
+    },
+    {
+      "slug": "brand-guidelines",
+      "name": "Brand Guidelines",
+      "type": "skill",
+      "description": "Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/brand-guidelines",
+      "updatedAt": "2025-12-01T18:05:36Z"
+    },
+    {
+      "slug": "canvas-design",
+      "name": "Canvas Design",
+      "type": "skill",
+      "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/canvas-design",
+      "updatedAt": "2025-12-01T18:05:36Z"
+    },
+    {
+      "slug": "doc-coauthoring",
+      "name": "Doc Coauthoring",
+      "type": "skill",
+      "description": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/doc-coauthoring",
+      "updatedAt": "2025-12-04T17:01:46Z"
+    },
+    {
+      "slug": "docx",
+      "name": "Docx",
+      "type": "skill",
+      "description": "\"Comprehensive document creation, editing, and analysis with support for tracked changes, comments, formatting preservation, and text extraction. When Claude needs to work with professional documents (.docx files) for: (1) Creating new documents, (2) Modifying or editing content, (3) Working with tracked changes, (4) Adding comments, or any other document tasks\"",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/docx",
+      "updatedAt": "2025-12-01T18:05:36Z"
+    },
+    {
+      "slug": "frontend-design",
+      "name": "Frontend Design",
+      "type": "skill",
+      "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples include websites, landing pages, dashboards, React components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates creative, polished code and UI design that avoids generic AI aesthetics.",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/frontend-design",
+      "updatedAt": "2025-12-04T17:01:46Z"
+    },
+    {
+      "slug": "internal-comms",
+      "name": "Internal Comms",
+      "type": "skill",
+      "description": "A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude should use this skill whenever asked to write some sort of internal communications (status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, project updates, etc.).",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/internal-comms",
+      "updatedAt": "2025-12-01T18:05:36Z"
+    },
+    {
+      "slug": "mcp-builder",
+      "name": "Mcp Builder",
+      "type": "skill",
+      "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/mcp-builder",
+      "updatedAt": "2025-12-01T18:05:36Z"
+    },
+    {
+      "slug": "pdf",
+      "name": "Pdf",
+      "type": "skill",
+      "description": "Comprehensive PDF manipulation toolkit for extracting text and tables, creating new PDFs, merging/splitting documents, and handling forms. When Claude needs to fill in a PDF form or programmatically process, generate, or analyze PDF documents at scale.",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/pdf",
+      "updatedAt": "2025-12-01T18:05:36Z"
+    },
+    {
+      "slug": "pptx",
+      "name": "Pptx",
+      "type": "skill",
+      "description": "\"Presentation creation, editing, and analysis. When Claude needs to work with presentations (.pptx files) for: (1) Creating new presentations, (2) Modifying or editing content, (3) Working with layouts, (4) Adding comments or speaker notes, or any other presentation tasks\"",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/pptx",
+      "updatedAt": "2025-12-01T18:05:36Z"
+    },
+    {
+      "slug": "skill-creator",
+      "name": "Skill Creator",
+      "type": "skill",
+      "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
+      "updatedAt": "2025-12-01T18:05:36Z"
+    },
+    {
+      "slug": "slack-gif-creator",
+      "name": "Slack Gif Creator",
+      "type": "skill",
+      "description": "Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation concepts. Use when users request animated GIFs for Slack like \"make me a GIF of X doing Y for Slack.\"",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/slack-gif-creator",
+      "updatedAt": "2025-12-04T17:01:46Z"
+    },
+    {
+      "slug": "theme-factory",
+      "name": "Theme Factory",
+      "type": "skill",
+      "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/theme-factory",
+      "updatedAt": "2025-12-01T18:05:36Z"
+    },
+    {
+      "slug": "web-artifacts-builder",
+      "name": "Web Artifacts Builder",
+      "type": "skill",
+      "description": "Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder",
+      "updatedAt": "2025-12-01T18:05:36Z"
+    },
+    {
+      "slug": "webapp-testing",
+      "name": "Webapp Testing",
+      "type": "skill",
+      "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/webapp-testing",
+      "updatedAt": "2025-12-01T18:05:36Z"
+    },
+    {
+      "slug": "xlsx",
+      "name": "Xlsx",
+      "type": "skill",
+      "description": "\"Comprehensive spreadsheet creation, editing, and analysis with support for formulas, formatting, data analysis, and visualization. When Claude needs to work with spreadsheets (.xlsx, .xlsm, .csv, .tsv, etc) for: (1) Creating new spreadsheets with formulas and formatting, (2) Reading or analyzing data, (3) Modify existing spreadsheets while preserving formulas, (4) Data analysis and visualization in spreadsheets, or (5) Recalculating formulas\"",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/xlsx",
+      "updatedAt": "2025-12-01T18:05:36Z"
+    },
+    {
+      "slug": "agent-sdk-dev",
+      "name": "Agent Sdk Dev",
+      "type": "plugin",
+      "description": "Claude Agent SDK Development Plugin",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/agent-sdk-dev",
+      "updatedAt": "2025-12-13T00:52:17Z"
+    },
+    {
+      "slug": "claude-code-setup",
+      "name": "Claude Code Setup",
+      "type": "plugin",
+      "description": "Analyze codebases and recommend tailored Claude Code automations such as hooks, skills, MCP servers, and subagents.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-code-setup",
+      "updatedAt": "2026-01-21T04:15:08Z"
+    },
+    {
+      "slug": "claude-md-management",
+      "name": "Claude Md Management",
+      "type": "plugin",
+      "description": "Tools to maintain and improve CLAUDE.md files - audit quality, capture session learnings, and keep project memory current.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-md-management",
+      "updatedAt": "2026-01-20T21:11:06Z"
+    },
+    {
+      "slug": "code-review",
+      "name": "Code Review",
+      "type": "plugin",
+      "description": "Automated code review for pull requests using multiple specialized agents with confidence-based scoring",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/code-review",
+      "updatedAt": "2025-12-13T00:52:17Z"
+    },
+    {
+      "slug": "code-simplifier",
+      "name": "Code Simplifier",
+      "type": "plugin",
+      "description": "Agent that simplifies and refines code for clarity, consistency, and maintainability while preserving functionality",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/code-simplifier",
+      "updatedAt": "2026-01-09T00:17:19Z"
+    },
+    {
+      "slug": "commit-commands",
+      "name": "Commit Commands",
+      "type": "plugin",
+      "description": "Streamline your git workflow with simple commands for committing, pushing, and creating pull requests",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/commit-commands",
+      "updatedAt": "2025-12-02T00:03:02Z"
+    },
+    {
+      "slug": "explanatory-output-style",
+      "name": "Explanatory Output Style",
+      "type": "plugin",
+      "description": "Adds educational insights about implementation choices and codebase patterns (mimics the deprecated Explanatory output style)",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/explanatory-output-style",
+      "updatedAt": "2025-12-13T00:52:17Z"
+    },
+    {
+      "slug": "feature-dev",
+      "name": "Feature Dev",
+      "type": "plugin",
+      "description": "Comprehensive feature development workflow with specialized agents for codebase exploration, architecture design, and quality review",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/feature-dev",
+      "updatedAt": "2025-12-13T00:52:17Z"
+    },
+    {
+      "slug": "frontend-design",
+      "name": "Frontend Design",
+      "type": "plugin",
+      "description": "Frontend design skill for UI/UX implementation",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design",
+      "updatedAt": "2025-12-13T00:52:17Z"
+    },
+    {
+      "slug": "hookify",
+      "name": "Hookify",
+      "type": "plugin",
+      "description": "Easily create hooks to prevent unwanted behaviors by analyzing conversation patterns",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/hookify",
+      "updatedAt": "2025-12-19T02:54:38Z"
+    },
+    {
+      "slug": "learning-output-style",
+      "name": "Learning Output Style",
+      "type": "plugin",
+      "description": "Interactive learning mode that requests meaningful code contributions at decision points (mimics the unshipped Learning output style)",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/learning-output-style",
+      "updatedAt": "2025-12-13T00:52:17Z"
+    },
+    {
+      "slug": "playground",
+      "name": "Playground",
+      "type": "plugin",
+      "description": "Creates interactive HTML playgrounds — self-contained single-file explorers with visual controls, live preview, and prompt output with copy button",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/playground",
+      "updatedAt": "2026-01-29T23:24:01Z"
+    },
+    {
+      "slug": "pr-review-toolkit",
+      "name": "Pr Review Toolkit",
+      "type": "plugin",
+      "description": "Comprehensive PR review agents specializing in comments, tests, error handling, type design, code quality, and code simplification",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pr-review-toolkit",
+      "updatedAt": "2025-12-13T00:52:17Z"
+    },
+    {
+      "slug": "ralph-loop",
+      "name": "Ralph Loop",
+      "type": "plugin",
+      "description": "Continuous self-referential AI loops for interactive iterative development, implementing the Ralph Wiggum technique. Run Claude in a while-true loop with the same prompt until task completion.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/ralph-loop",
+      "updatedAt": "2026-01-06T23:22:54Z"
+    },
+    {
+      "slug": "security-guidance",
+      "name": "Security Guidance",
+      "type": "plugin",
+      "description": "Security reminder hook that warns about potential security issues when editing files, including command injection, XSS, and unsafe code patterns",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/security-guidance",
+      "updatedAt": "2025-12-13T00:52:17Z"
+    },
+    {
+      "slug": "asana",
+      "name": "Asana",
+      "type": "plugin",
+      "description": "Asana project management integration. Create and manage tasks, search projects, update assignments, track progress, and integrate your development workflow with Asana's work management platform.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Asana"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/asana",
+      "updatedAt": "2025-12-02T00:03:02Z"
+    },
+    {
+      "slug": "context7",
+      "name": "Context7",
+      "type": "plugin",
+      "description": "Upstash Context7 MCP server for up-to-date documentation lookup. Pull version-specific documentation and code examples directly from source repositories into your LLM context.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Upstash"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/context7",
+      "updatedAt": "2025-12-02T00:03:02Z"
+    },
+    {
+      "slug": "firebase",
+      "name": "Firebase",
+      "type": "plugin",
+      "description": "Google Firebase MCP integration. Manage Firestore databases, authentication, cloud functions, hosting, and storage. Build and manage your Firebase backend directly from your development workflow.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Google"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/firebase",
+      "updatedAt": "2025-12-02T00:03:02Z"
+    },
+    {
+      "slug": "github",
+      "name": "Github",
+      "type": "plugin",
+      "description": "Official GitHub MCP server for repository management. Create issues, manage pull requests, review code, search repositories, and interact with GitHub's full API directly from Claude Code.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "GitHub"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/github",
+      "updatedAt": "2025-12-02T00:03:02Z"
+    },
+    {
+      "slug": "gitlab",
+      "name": "Gitlab",
+      "type": "plugin",
+      "description": "GitLab DevOps platform integration. Manage repositories, merge requests, CI/CD pipelines, issues, and wikis. Full access to GitLab's comprehensive DevOps lifecycle tools.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "GitLab"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/gitlab",
+      "updatedAt": "2025-12-02T00:03:02Z"
+    },
+    {
+      "slug": "greptile",
+      "name": "Greptile",
+      "type": "plugin",
+      "description": "AI code review agent for GitHub and GitLab. View and resolve Greptile's PR review comments directly from Claude Code.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Greptile",
+        "url": "https://greptile.com"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/greptile",
+      "updatedAt": "2026-01-06T05:15:35Z"
+    },
+    {
+      "slug": "laravel-boost",
+      "name": "Laravel Boost",
+      "type": "plugin",
+      "description": "Laravel development toolkit MCP server. Provides intelligent assistance for Laravel applications including Artisan commands, Eloquent queries, routing, migrations, and framework-specific code generation.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Laravel"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/laravel-boost",
+      "updatedAt": "2025-12-02T00:03:02Z"
+    },
+    {
+      "slug": "linear",
+      "name": "Linear",
+      "type": "plugin",
+      "description": "Linear issue tracking integration. Create issues, manage projects, update statuses, search across workspaces, and streamline your software development workflow with Linear's modern issue tracker.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Linear"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/linear",
+      "updatedAt": "2025-12-16T23:13:40Z"
+    },
+    {
+      "slug": "playwright",
+      "name": "Playwright",
+      "type": "plugin",
+      "description": "Browser automation and end-to-end testing MCP server by Microsoft. Enables Claude to interact with web pages, take screenshots, fill forms, click elements, and perform automated browser testing workflows.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Microsoft"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/playwright",
+      "updatedAt": "2025-12-02T00:03:02Z"
+    },
+    {
+      "slug": "serena",
+      "name": "Serena",
+      "type": "plugin",
+      "description": "Semantic code analysis MCP server providing intelligent code understanding, refactoring suggestions, and codebase navigation through language server protocol integration.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Oraios"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/serena",
+      "updatedAt": "2025-12-02T00:03:02Z"
+    },
+    {
+      "slug": "slack",
+      "name": "Slack",
+      "type": "plugin",
+      "description": "Slack workspace integration. Search messages, access channels, read threads, and stay connected with your team's communications while coding. Find relevant discussions and context quickly.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Slack"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/slack",
+      "updatedAt": "2025-12-02T00:03:02Z"
+    },
+    {
+      "slug": "stripe",
+      "name": "Stripe",
+      "type": "plugin",
+      "description": "Stripe development plugin for Claude",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Stripe",
+        "url": "https://stripe.com"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/stripe",
+      "updatedAt": "2025-12-18T16:58:02Z"
+    },
+    {
+      "slug": "supabase",
+      "name": "Supabase",
+      "type": "plugin",
+      "description": "Supabase MCP integration for database operations, authentication, storage, and real-time subscriptions. Manage your Supabase projects, run SQL queries, and interact with your backend directly.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Supabase"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/supabase",
+      "updatedAt": "2025-12-02T00:03:02Z"
+    }
+  ]
+}
