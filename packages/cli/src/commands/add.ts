@@ -154,7 +154,7 @@ export const addCommand = new Command("add")
   .action(async (name, options) => {
     try {
       ui.printLogo();
-      ui.intro("seedr");
+      ui.intro("Seedr");
 
       const itemName = name ?? options.skill;
       const contentType = options.type as ComponentType | undefined;

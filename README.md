@@ -1,10 +1,10 @@
-# seedr
+# Seedr
 
 Seed your projects with AI configurations. Part of the [toolr-suite](https://toolr.dev) ecosystem.
 
-## What is seedr?
+## What is Seedr?
 
-seedr is a CLI tool and registry for AI coding assistant content. Install curated skills, agents, hooks, plugins, MCP servers, and settings for Claude Code, GitHub Copilot, Gemini, Codex, and OpenCode with a single command.
+Seedr is a CLI tool and registry for AI coding assistant content. Install curated skills, agents, hooks, plugins, MCP servers, and settings for Claude Code, GitHub Copilot, Gemini, Codex, and OpenCode with a single command.
 
 ## Installation
 

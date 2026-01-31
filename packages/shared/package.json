@@ -1,7 +1,7 @@
 {
   "name": "@seedr/shared",
   "version": "0.1.0",
-  "description": "Shared types for seedr packages",
+  "description": "Shared types for Seedr packages",
   "type": "module",
   "exports": {
     ".": {

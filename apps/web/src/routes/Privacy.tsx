@@ -137,7 +137,7 @@ export function Privacy() {
         <section>
           <h2 className="text-xl font-semibold text-text mb-3">CLI Usage</h2>
           <p className="text-subtext">
-            The seedr CLI fetches registry data from GitHub. No usage data or
+            The Seedr CLI fetches registry data from GitHub. No usage data or
             personal information is collected or transmitted during this process.
           </p>
         </section>
