@@ -28,13 +28,28 @@
             "name": "references",
             "type": "directory",
             "children": [
-              { "name": "anti-patterns.md", "type": "file" },
-              { "name": "quality-criteria.md", "type": "file" },
-              { "name": "rules-criteria.md", "type": "file" },
-              { "name": "templates.md", "type": "file" }
+              {
+                "name": "anti-patterns.md",
+                "type": "file"
+              },
+              {
+                "name": "quality-criteria.md",
+                "type": "file"
+              },
+              {
+                "name": "rules-criteria.md",
+                "type": "file"
+              },
+              {
+                "name": "templates.md",
+                "type": "file"
+              }
             ]
           },
-          { "name": "SKILL.md", "type": "file" }
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
         ]
       }
     },
@@ -65,15 +80,36 @@
             "name": "references",
             "type": "directory",
             "children": [
-              { "name": "go.md", "type": "file" },
-              { "name": "java.md", "type": "file" },
-              { "name": "javascript.md", "type": "file" },
-              { "name": "pre-commit.md", "type": "file" },
-              { "name": "python.md", "type": "file" },
-              { "name": "rust.md", "type": "file" }
+              {
+                "name": "go.md",
+                "type": "file"
+              },
+              {
+                "name": "java.md",
+                "type": "file"
+              },
+              {
+                "name": "javascript.md",
+                "type": "file"
+              },
+              {
+                "name": "pre-commit.md",
+                "type": "file"
+              },
+              {
+                "name": "python.md",
+                "type": "file"
+              },
+              {
+                "name": "rust.md",
+                "type": "file"
+              }
             ]
           },
-          { "name": "SKILL.md", "type": "file" }
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
         ]
       }
     },
@@ -104,14 +140,32 @@
             "name": "references",
             "type": "directory",
             "children": [
-              { "name": "bloaters.md", "type": "file" },
-              { "name": "change-preventers.md", "type": "file" },
-              { "name": "couplers.md", "type": "file" },
-              { "name": "dispensables.md", "type": "file" },
-              { "name": "oo-abusers.md", "type": "file" }
+              {
+                "name": "bloaters.md",
+                "type": "file"
+              },
+              {
+                "name": "change-preventers.md",
+                "type": "file"
+              },
+              {
+                "name": "couplers.md",
+                "type": "file"
+              },
+              {
+                "name": "dispensables.md",
+                "type": "file"
+              },
+              {
+                "name": "oo-abusers.md",
+                "type": "file"
+              }
             ]
           },
-          { "name": "SKILL.md", "type": "file" }
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
         ]
       }
     },
@@ -142,12 +196,24 @@
             "name": "references",
             "type": "directory",
             "children": [
-              { "name": "behavioral.md", "type": "file" },
-              { "name": "creational.md", "type": "file" },
-              { "name": "structural.md", "type": "file" }
+              {
+                "name": "behavioral.md",
+                "type": "file"
+              },
+              {
+                "name": "creational.md",
+                "type": "file"
+              },
+              {
+                "name": "structural.md",
+                "type": "file"
+              }
             ]
           },
-          { "name": "SKILL.md", "type": "file" }
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
         ]
       }
     },
@@ -178,15 +244,36 @@
             "name": "references",
             "type": "directory",
             "children": [
-              { "name": "composing-methods.md", "type": "file" },
-              { "name": "dealing-with-generalization.md", "type": "file" },
-              { "name": "moving-features.md", "type": "file" },
-              { "name": "organizing-data.md", "type": "file" },
-              { "name": "simplifying-conditionals.md", "type": "file" },
-              { "name": "simplifying-method-calls.md", "type": "file" }
+              {
+                "name": "composing-methods.md",
+                "type": "file"
+              },
+              {
+                "name": "dealing-with-generalization.md",
+                "type": "file"
+              },
+              {
+                "name": "moving-features.md",
+                "type": "file"
+              },
+              {
+                "name": "organizing-data.md",
+                "type": "file"
+              },
+              {
+                "name": "simplifying-conditionals.md",
+                "type": "file"
+              },
+              {
+                "name": "simplifying-method-calls.md",
+                "type": "file"
+              }
             ]
           },
-          { "name": "SKILL.md", "type": "file" }
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
         ]
       }
     },
