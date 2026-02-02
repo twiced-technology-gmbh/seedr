@@ -1,5 +1,6 @@
-import { useState, useMemo } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useMemo } from "react";
+import { useParams, Link, useSearchParams } from "react-router-dom";
+import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import Fuse from "fuse.js";
 import { X } from "lucide-react";
 import { Breadcrumb, SearchInput, FilterDropdown, IconButton } from "@/components/ui";
@@ -57,11 +58,32 @@ function sortItems(items: RegistryItem[], sort: SortValue): RegistryItem[] {
 export function Browse() {
   const { type } = useParams<{ type: string }>();
   const componentType = type?.replace(/s$/, "") as ComponentType;
+  const [searchParams, setSearchParams] = useSearchParams();
+  useScrollRestoration();
 
-  const [query, setQuery] = useState("");
-  const [toolFilter, setToolFilter] = useState<AITool | null>(null);
-  const [sourceFilter, setSourceFilter] = useState<SourceType | null>(null);
-  const [sort, setSort] = useState<SortValue>("name-asc");
+  // Read state from URL search params
+  const query = searchParams.get("q") ?? "";
+  const toolFilter = (searchParams.get("tool") as AITool | null);
+  const sourceFilter = (searchParams.get("source") as SourceType | null);
+  const sort = (searchParams.get("sort") as SortValue) ?? "name-asc";
+
+  // Update URL params helper
+  const updateParams = (updates: Record<string, string | null>) => {
+    const newParams = new URLSearchParams(searchParams);
+    for (const [key, value] of Object.entries(updates)) {
+      if (value === null || value === "") {
+        newParams.delete(key);
+      } else {
+        newParams.set(key, value);
+      }
+    }
+    setSearchParams(newParams, { replace: true });
+  };
+
+  const setQuery = (value: string) => updateParams({ q: value || null });
+  const setToolFilter = (value: AITool | null) => updateParams({ tool: value });
+  const setSourceFilter = (value: SourceType | null) => updateParams({ source: value });
+  const setSort = (value: SortValue) => updateParams({ sort: value === "name-asc" ? null : value });
 
   const items = getItemsByType(componentType);
 

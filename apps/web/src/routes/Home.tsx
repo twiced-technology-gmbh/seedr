@@ -1,5 +1,6 @@
-import { useState, useMemo, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useMemo } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import Fuse from "fuse.js";
 import { X } from "lucide-react";
 import { SearchInput, FilterDropdown, IconButton } from "@/components/ui";
@@ -59,20 +60,40 @@ const sourceOptions: FilterOption<SourceType>[] = [
 ];
 
 export function Home() {
-  const [query, setQuery] = useState("");
-  const [toolFilter, setToolFilter] = useState<AITool | null>(null);
-  const [sourceFilter, setSourceFilter] = useState<SourceType | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  useScrollRestoration();
+
+  // Read state from URL search params
+  const query = searchParams.get("q") ?? "";
+  const toolFilter = (searchParams.get("tool") as AITool | null);
+  const sourceFilter = (searchParams.get("source") as SourceType | null);
+
+  // Update URL params helper
+  const updateParams = (updates: Record<string, string | null>) => {
+    const newParams = new URLSearchParams(searchParams);
+    for (const [key, value] of Object.entries(updates)) {
+      if (value === null || value === "") {
+        newParams.delete(key);
+      } else {
+        newParams.set(key, value);
+      }
+    }
+    setSearchParams(newParams, { replace: true });
+  };
+
+  const setQuery = (value: string) => {
+    // When clearing query, also clear filters
+    if (!value) {
+      setSearchParams({}, { replace: true });
+    } else {
+      updateParams({ q: value });
+    }
+  };
+  const setToolFilter = (value: AITool | null) => updateParams({ tool: value });
+  const setSourceFilter = (value: SourceType | null) => updateParams({ source: value });
 
   const allItems = getAllItems();
   const counts = getTypeCounts();
-
-  // Reset filters when search is cleared
-  useEffect(() => {
-    if (!query) {
-      setToolFilter(null);
-      setSourceFilter(null);
-    }
-  }, [query]);
 
   const fuse = useMemo(
     () =>
@@ -117,6 +138,7 @@ export function Home() {
         <SearchInput
           placeholder="Search skills, hooks, agents, MCP servers..."
           className="max-w-md mx-auto"
+          value={query}
           onSearch={setQuery}
         />
       </div>

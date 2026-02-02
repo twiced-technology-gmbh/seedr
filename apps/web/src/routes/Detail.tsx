@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import { Breadcrumb, CodeBlock } from "@/components/ui";
 import { typeLabelPlural, typeTextColors } from "@/lib/colors";
 import { TypeIcon } from "@/components/TypeIcon";
@@ -13,6 +14,7 @@ import type { ComponentType } from "@/lib/types";
 export function Detail() {
   const { type, slug } = useParams<{ type: string; slug: string }>();
   const componentType = type?.replace(/s$/, "") as ComponentType;
+  useScrollRestoration();
 
   const item = slug ? getItem(slug) : undefined;
 
