@@ -4,7 +4,10 @@ import chalk from "chalk";
 import ora from "ora";
 import type { AITool, InstallScope, InstallMethod } from "../types.js";
 import type { RegistryItem } from "@seedr/shared";
-import { getItemSourcePath } from "../config/registry.js";
+import {
+  getItemSourcePath,
+  fetchItemToDestination,
+} from "../config/registry.js";
 import { getContentPath, AI_TOOLS } from "../config/tools.js";
 import {
   exists,
@@ -21,7 +24,7 @@ import type { ContentHandler, InstallResult } from "./types.js";
  */
 async function installToCentralLocation(
   item: RegistryItem,
-  sourcePath: string,
+  sourcePath: string | null,
   cwd: string
 ): Promise<string> {
   const centralPath = getAgentsPath("skill", item.slug, cwd);
@@ -32,8 +35,12 @@ async function installToCentralLocation(
     await rm(centralPath, { recursive: true });
   }
 
-  // Copy content to central location
-  await copyDirectory(sourcePath, centralPath);
+  // Copy from local or fetch from remote
+  if (sourcePath && (await exists(sourcePath))) {
+    await copyDirectory(sourcePath, centralPath);
+  } else {
+    await fetchItemToDestination(item, centralPath);
+  }
 
   return centralPath;
 }
@@ -82,11 +89,12 @@ async function installSkillForTool(
     if (method === "symlink" && centralPath) {
       // Symlink mode: link from tool folder to central .agents location
       await createToolSymlink(centralPath, destPath);
-    } else if (sourcePath) {
-      // Copy mode: copy directly to tool folder
+    } else if (sourcePath && (await exists(sourcePath))) {
+      // Copy mode: copy directly from local registry
       await installDirectory(sourcePath, destPath, "copy");
     } else {
-      throw new Error("External skill installation not yet implemented");
+      // Fetch from remote (when running via npx or for external items)
+      await fetchItemToDestination(item, destPath);
     }
 
     spinner.succeed(
@@ -112,9 +120,9 @@ export async function installSkill(
   const results: InstallResult[] = [];
   const sourcePath = getItemSourcePath(item);
 
-  // For symlink mode, first copy to central .agents location
+  // For symlink mode, first install to central .agents location
   let centralPath: string | undefined;
-  if (method === "symlink" && sourcePath) {
+  if (method === "symlink") {
     centralPath = await installToCentralLocation(item, sourcePath, cwd);
   }
 

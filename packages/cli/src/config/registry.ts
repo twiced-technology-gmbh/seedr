@@ -185,3 +185,31 @@ export async function listItemFiles(item: RegistryItem): Promise<string[]> {
 export function clearCache(): void {
   manifestCache.clear();
 }
+
+/**
+ * Fetch an item's content from remote and write to a destination directory.
+ * Used when local registry is not available (e.g., running via npx).
+ */
+export async function fetchItemToDestination(
+  item: RegistryItem,
+  destPath: string
+): Promise<void> {
+  const { writeFile, mkdir } = await import("node:fs/promises");
+  const { dirname, join } = await import("node:path");
+
+  const { remote } = getItemBaseUrl(item);
+
+  // Determine files to fetch based on item type
+  // For now, skills have SKILL.md as the main file
+  const filesToFetch = item.type === "skill" ? ["SKILL.md"] : [`${item.type}.md`];
+
+  await mkdir(destPath, { recursive: true });
+
+  for (const file of filesToFetch) {
+    const content = await fetchRemote(`${remote}/${file}`);
+    const filePath = join(destPath, file);
+    await mkdir(dirname(filePath), { recursive: true });
+    await writeFile(filePath, content, "utf-8");
+  }
+}
+
