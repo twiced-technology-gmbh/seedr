@@ -97,9 +97,9 @@ const iconButtonVariants = {
     active: "bg-[#0F80D0]/20 text-[#0F80D0] border-[#0F80D0]/50",
   },
   toolr: {
-    base: "text-[#a855f7]/70 border-[#a855f7]/30 bg-[#1e1e2e]",
-    hover: "hover:bg-[#a855f7]/20 hover:border-[#a855f7]/50 hover:text-[#a855f7]",
-    active: "bg-[#a855f7]/20 text-[#a855f7] border-[#a855f7]/50",
+    base: "text-[#60a5fa]/70 border-[#60a5fa]/30 bg-[#1e1e2e]",
+    hover: "hover:bg-[#60a5fa]/20 hover:border-[#60a5fa]/50 hover:text-[#60a5fa]",
+    active: "bg-[#60a5fa]/20 text-[#60a5fa] border-[#60a5fa]/50",
   },
 };
 
