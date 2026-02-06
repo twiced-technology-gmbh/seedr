@@ -8,12 +8,13 @@ Seedr uses GitHub Actions to automatically sync content from upstream sources an
 
 **Trigger:** Daily at 6:00 UTC + manual dispatch
 
-**Purpose:** Fetches skills and plugins from Anthropic repositories and updates the registry manifest.
+**Purpose:** Fetches skills and plugins from upstream sources and re-syncs community items from their GitHub repos.
 
 **Sources:**
 - `anthropics/skills` → Official skills (all AI tools)
 - `anthropics/claude-plugins-official/plugins` → Official plugins (Claude only)
 - `anthropics/claude-plugins-official/external_plugins` → Community plugins (Claude only)
+- Manually-added community items → Re-fetched from their `externalUrl` GitHub repos
 
 **Flow:**
 ```
@@ -21,12 +22,22 @@ Schedule (6:00 UTC) or Manual Trigger
             ↓
     Fetch from Anthropic repos
             ↓
+    Re-sync community items from their GitHub repos
+    (updates metadata, file trees, last commit dates)
+            ↓
+    Merge: toolr items + community items + Anthropic items
+            ↓
     Update registry/manifest.json
             ↓
     If changes detected:
       → Commit to main
       → Push to main AND prod
 ```
+
+**Item ordering in manifest:**
+1. Toolr items (manually maintained, always preserved)
+2. Community items (manually added via `/add-community`, re-synced from GitHub)
+3. Anthropic items (synced from Anthropic repos)
 
 ### 2. Deploy (`deploy.yml`)
 
@@ -71,30 +82,33 @@ Version bump logic:
 
 ## End-to-End Flow
 
-When Anthropic adds a new skill:
+When Anthropic adds a new skill or a community plugin is updated:
 
 ```
 1. Daily sync runs at 6:00 UTC
         ↓
-2. Fetches new skill from anthropics/skills
+2. Fetches new/updated items from Anthropic repos
         ↓
-3. Updates registry/manifest.json
+3. Re-syncs community items from their GitHub repos
+   (refreshes metadata, file trees, commit dates)
         ↓
-4. Commits: "chore: sync registry from Anthropic"
+4. Updates registry/manifest.json
         ↓
-5. Pushes to main AND prod
+5. Commits: "chore: sync registry from Anthropic"
         ↓
-6. Push to prod triggers deploy.yml
+6. Pushes to main AND prod
         ↓
-7. Deploy detects registry/ changed
+7. Push to prod triggers deploy.yml
         ↓
-8. Bumps CLI version (0.1.4 → 0.1.5)
+8. Deploy detects registry/ changed
         ↓
-9. Commits: "chore(cli): bump version to 0.1.5 [skip ci]"
+9. Bumps CLI version (0.1.4 → 0.1.5)
         ↓
-10. Publishes @toolr/seedr@0.1.5 to npm
+10. Commits: "chore(cli): bump version to 0.1.5 [skip ci]"
         ↓
-11. Users get new skill via: npx @toolr/seedr add <new-skill>
+11. Publishes @toolr/seedr@0.1.5 to npm
+        ↓
+12. Users get new/updated items via: npx @toolr/seedr add <name>
 ```
 
 ## Manual Triggers
@@ -112,4 +126,7 @@ Both workflows can be triggered manually from GitHub Actions:
 | `.github/workflows/deploy.yml` | Deploy + publish workflow |
 | `scripts/sync.ts` | Main sync orchestrator |
 | `scripts/sync/anthropic.ts` | Anthropic-specific fetch logic |
+| `scripts/sync/community.ts` | Community item re-sync logic |
+| `scripts/sync/types.ts` | Shared types for sync scripts |
+| `scripts/sync/utils.ts` | Shared utilities (GitHub API, file trees) |
 | `registry/manifest.json` | Registry index (source of truth) |
