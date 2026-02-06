@@ -95,9 +95,50 @@ export function Detail() {
         />
       )}
 
-      {/* Automation commands */}
+      {/* CLI Reference */}
+      <div className="mb-8">
+        <h2 className="text-sm font-medium text-subtext mb-3">CLI Reference</h2>
+        <div className="bg-surface border border-overlay rounded-lg overflow-hidden">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-overlay bg-active">
+                <th className="text-left px-4 py-2 text-text font-medium">Option</th>
+                <th className="text-left px-4 py-2 text-text font-medium">Description</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-overlay">
+              <tr>
+                <td className="px-4 py-2 font-mono text-xs text-accent">-a, --agents &lt;tools&gt;</td>
+                <td className="px-4 py-2 text-subtext">AI tools to install for: <code className="text-text-dim">claude</code>, <code className="text-text-dim">copilot</code>, <code className="text-text-dim">gemini</code>, <code className="text-text-dim">codex</code>, <code className="text-text-dim">opencode</code>, or <code className="text-text-dim">all</code></td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 font-mono text-xs text-accent">--scope &lt;scope&gt;</td>
+                <td className="px-4 py-2 text-subtext">Installation scope: <code className="text-text-dim">project</code> (.claude/), <code className="text-text-dim">user</code> (~/.claude/), or <code className="text-text-dim">local</code> (.claude/local/)</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 font-mono text-xs text-accent">-m, --method &lt;method&gt;</td>
+                <td className="px-4 py-2 text-subtext">Installation method: <code className="text-text-dim">symlink</code> or <code className="text-text-dim">copy</code></td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 font-mono text-xs text-accent">-y, --yes</td>
+                <td className="px-4 py-2 text-subtext">Skip confirmation prompts (non-interactive)</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 font-mono text-xs text-accent">-f, --force</td>
+                <td className="px-4 py-2 text-subtext">Overwrite existing files</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 font-mono text-xs text-accent">-n, --dry-run</td>
+                <td className="px-4 py-2 text-subtext">Show what would be installed without making changes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Example commands */}
       <div>
-        <h2 className="text-sm font-medium text-subtext mb-3">Automation</h2>
+        <h2 className="text-sm font-medium text-subtext mb-3">Examples</h2>
 
         <div className="space-y-4">
           <CodeBlock
