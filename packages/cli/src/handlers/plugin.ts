@@ -13,6 +13,8 @@ import type { ContentHandler, InstallResult } from "./types.js";
 const home = homedir();
 const PLUGINS_CACHE_DIR = join(home, ".claude/plugins/cache");
 const INSTALLED_PLUGINS_PATH = join(home, ".claude/plugins/installed_plugins.json");
+const KNOWN_MARKETPLACES_PATH = join(home, ".claude/plugins/known_marketplaces.json");
+const MARKETPLACES_DIR = join(home, ".claude/plugins/marketplaces");
 
 interface PluginInstallInfo {
   scope: InstallScope;
@@ -38,6 +40,12 @@ interface MarketplaceJson {
   name?: string;
 }
 
+interface KnownMarketplaceEntry {
+  source: { source: string; repo?: string; url?: string };
+  installLocation: string;
+  lastUpdated: string;
+}
+
 interface SettingsJson {
   enabledPlugins?: Record<string, boolean>;
   [key: string]: unknown;
@@ -61,6 +69,57 @@ function getPluginCachePath(
  */
 function getPluginId(name: string, marketplace: string): string {
   return `${name}@${marketplace}`;
+}
+
+/**
+ * Extract "owner/repo" from a GitHub URL.
+ */
+function extractGitHubRepo(url: string): string | null {
+  const match = url.match(/github\.com\/([^/]+\/[^/]+)/);
+  return match?.[1]?.replace(/\.git$/, "") ?? null;
+}
+
+/**
+ * Ensure the plugin's marketplace is registered in known_marketplaces.json
+ * and cloned to ~/.claude/plugins/marketplaces/. Claude Code requires this
+ * for the plugin to be recognized (otherwise it reports "orphaned").
+ */
+async function ensureMarketplaceRegistered(
+  marketplace: string,
+  item: RegistryItem
+): Promise<void> {
+  const known = await readJson<Record<string, KnownMarketplaceEntry>>(
+    KNOWN_MARKETPLACES_PATH
+  );
+
+  if (known[marketplace]) return;
+
+  const repo = item.externalUrl ? extractGitHubRepo(item.externalUrl) : null;
+  if (!repo) return;
+
+  const installLocation = join(MARKETPLACES_DIR, marketplace);
+  const { execFile } = await import("node:child_process");
+  const { mkdir } = await import("node:fs/promises");
+  const { promisify } = await import("node:util");
+  const execFileAsync = promisify(execFile);
+
+  await mkdir(MARKETPLACES_DIR, { recursive: true });
+
+  await execFileAsync("git", [
+    "clone",
+    "--depth",
+    "1",
+    `https://github.com/${repo}.git`,
+    installLocation,
+  ]);
+
+  known[marketplace] = {
+    source: { source: "github", repo },
+    installLocation,
+    lastUpdated: new Date().toISOString(),
+  };
+
+  await writeJson(KNOWN_MARKETPLACES_PATH, known);
 }
 
 async function installPluginForTool(
@@ -100,6 +159,13 @@ async function installPluginForTool(
     const pluginName = pluginJson.name || item.slug;
     const version = pluginJson.version || "1.0.0";
     const pluginId = getPluginId(pluginName, marketplace);
+
+    // Step 2b: Ensure marketplace is registered (non-fatal if it fails)
+    try {
+      await ensureMarketplaceRegistered(marketplace, item);
+    } catch {
+      // Marketplace registration is best-effort — plugin still works without it
+    }
 
     // Step 3: Move to final cache path
     const cachePath = getPluginCachePath(marketplace, pluginName, version);

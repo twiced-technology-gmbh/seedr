@@ -207,8 +207,12 @@ export async function fetchItemToDestination(
   }
 
   // Determine files to fetch based on item type
-  // For now, skills have SKILL.md as the main file
-  const filesToFetch = item.type === "skill" ? ["SKILL.md"] : [`${item.type}.md`];
+  const filesToFetch =
+    item.type === "skill"
+      ? ["SKILL.md"]
+      : item.type === "plugin"
+        ? [".claude-plugin/plugin.json", ".claude-plugin/marketplace.json"]
+        : [`${item.type}.md`];
 
   await mkdir(destPath, { recursive: true });
 
