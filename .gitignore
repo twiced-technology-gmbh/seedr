@@ -31,3 +31,7 @@ coverage/
 # Misc
 *.tgz
 .cache/
+
+# Override global gitignore to include project config
+!.claude/
+!CLAUDE.md
