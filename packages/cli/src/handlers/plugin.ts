@@ -181,7 +181,7 @@ async function installPluginForTool(
 
     const installInfo: PluginInstallInfo = {
       scope,
-      ...(scope === "project" ? { projectPath: cwd } : {}),
+      ...(scope !== "user" ? { projectPath: cwd } : {}),
       installPath: cachePath,
       version,
       installedAt: now,
@@ -193,7 +193,7 @@ async function installPluginForTool(
     const existingEntries = registry.plugins[pluginId] || [];
     const filteredEntries = existingEntries.filter(
       (e) =>
-        !(e.scope === scope && (scope !== "project" || e.projectPath === cwd))
+        !(e.scope === scope && (scope === "user" || e.projectPath === cwd))
     );
     registry.plugins[pluginId] = [...filteredEntries, installInfo];
 
@@ -257,7 +257,7 @@ export async function uninstallPlugin(
   // Remove from installed_plugins.json
   const entries = registry.plugins[matchingKey] || [];
   const filteredEntries = entries.filter(
-    (e) => !(e.scope === scope && (scope !== "project" || e.projectPath === cwd))
+    (e) => !(e.scope === scope && (scope === "user" || e.projectPath === cwd))
   );
 
   if (filteredEntries.length === 0) {
@@ -294,7 +294,7 @@ export async function getInstalledPlugins(
     for (const entry of entries) {
       if (
         entry.scope === scope &&
-        (scope !== "project" || entry.projectPath === cwd)
+        (scope === "user" || entry.projectPath === cwd)
       ) {
         installed.push(pluginId);
         break;

@@ -201,7 +201,8 @@ export const addCommand = new Command("add")
       if (options.scope) {
         scope = options.scope;
       } else {
-        const selected = await ui.selectScope();
+        const supportsLocal = ["plugin", "settings", "hook"].includes(item.type);
+        const selected = await ui.selectScope(supportsLocal);
         if (ui.prompts.isCancel(selected)) {
           ui.cancelled();
           return;

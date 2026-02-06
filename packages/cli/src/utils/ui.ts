@@ -65,14 +65,15 @@ export async function selectTools(compatible: AITool[]): Promise<AITool[] | symb
   return result as AITool[] | symbol;
 }
 
-export async function selectScope(): Promise<InstallScope | symbol> {
-  const result = await p.select({
-    message: "Installation scope",
-    options: [
-      { label: "Project", value: "project" as const, hint: "current directory" },
-      { label: "User", value: "user" as const, hint: "home directory" },
-    ],
-  });
+export async function selectScope(includeLocal = false): Promise<InstallScope | symbol> {
+  const options: { label: string; value: InstallScope; hint: string }[] = [
+    { label: "Project", value: "project", hint: includeLocal ? "current directory, settings.json" : "current directory" },
+    ...(includeLocal
+      ? [{ label: "Local", value: "local" as InstallScope, hint: "current directory, settings.local.json" }]
+      : []),
+    { label: "User", value: "user", hint: "home directory" },
+  ];
+  const result = await p.select({ message: "Installation scope", options });
   return result as InstallScope | symbol;
 }
 
