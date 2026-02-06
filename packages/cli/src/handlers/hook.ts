@@ -70,7 +70,7 @@ async function installHookForTool(
   item: RegistryItem,
   tool: AITool,
   scope: InstallScope,
-  method: InstallMethod,
+  _method: InstallMethod,
   cwd: string
 ): Promise<InstallResult> {
   const spinner = ora(

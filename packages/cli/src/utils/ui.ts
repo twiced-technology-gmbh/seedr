@@ -76,12 +76,12 @@ export async function selectScope(): Promise<InstallScope | symbol> {
   return result as InstallScope | symbol;
 }
 
-export async function selectMethod(): Promise<InstallMethod | symbol> {
+export async function selectMethod(symlinkPath: string): Promise<InstallMethod | symbol> {
   const result = await p.select({
     message: "Installation method",
     options: [
-      { label: "Symlink", value: "symlink" as const, hint: "recommended - single source of truth" },
-      { label: "Copy", value: "copy" as const, hint: "standalone copy of file" },
+      { label: "Symlink", value: "symlink" as const, hint: `shared at ${symlinkPath}` },
+      { label: "Copy", value: "copy" as const, hint: "standalone copy per tool" },
     ],
   });
   return result as InstallMethod | symbol;

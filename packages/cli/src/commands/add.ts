@@ -211,12 +211,16 @@ export const addCommand = new Command("add")
 
       ui.step(`Scope: ${chalk.cyan(scope)}`);
 
-      // Step 4: Get or prompt for method
+      // Step 4: Get or prompt for method (only if multiple tools selected)
       let method: InstallMethod;
       if (options.method) {
         method = options.method;
+      } else if (tools.length === 1) {
+        // Single tool - always use copy (symlink only makes sense for shared central storage)
+        method = "copy";
       } else {
-        const selected = await ui.selectMethod();
+        const symlinkPath = getAgentsPath(item.type, item.slug, process.cwd());
+        const selected = await ui.selectMethod(symlinkPath);
         if (ui.prompts.isCancel(selected)) {
           ui.cancelled();
           return;
