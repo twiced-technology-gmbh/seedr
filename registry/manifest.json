@@ -51,7 +51,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "recommendedScope": "project"
     },
     {
       "slug": "lint-doctor",
@@ -111,7 +112,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "recommendedScope": "project"
     },
     {
       "slug": "code-smell-doctor",
@@ -167,7 +169,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "recommendedScope": "project"
     },
     {
       "slug": "design-patterns",
@@ -215,7 +218,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "recommendedScope": "project"
     },
     {
       "slug": "refactoring-techniques",
@@ -275,7 +279,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "recommendedScope": "project"
     },
     {
       "slug": "algorithmic-art",
@@ -320,7 +325,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "recommendedScope": "project"
     },
     {
       "slug": "brand-guidelines",
@@ -351,7 +357,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "recommendedScope": "project"
     },
     {
       "slug": "canvas-design",
@@ -712,7 +719,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "recommendedScope": "project"
     },
     {
       "slug": "doc-coauthoring",
@@ -739,7 +747,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "recommendedScope": "project"
     },
     {
       "slug": "docx",
@@ -767,117 +776,11 @@
             "children": [
               {
                 "name": "office",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "helpers",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "__init__.py",
-                        "type": "file"
-                      },
-                      {
-                        "name": "merge_runs.py",
-                        "type": "file"
-                      },
-                      {
-                        "name": "simplify_redlines.py",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "schemas",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "ecma",
-                        "type": "directory"
-                      },
-                      {
-                        "name": "ISO-IEC29500-4_2016",
-                        "type": "directory"
-                      },
-                      {
-                        "name": "mce",
-                        "type": "directory"
-                      },
-                      {
-                        "name": "microsoft",
-                        "type": "directory"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "validators",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "__init__.py",
-                        "type": "file"
-                      },
-                      {
-                        "name": "base.py",
-                        "type": "file"
-                      },
-                      {
-                        "name": "docx.py",
-                        "type": "file"
-                      },
-                      {
-                        "name": "pptx.py",
-                        "type": "file"
-                      },
-                      {
-                        "name": "redlining.py",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "pack.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "soffice.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "unpack.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "validate.py",
-                    "type": "file"
-                  }
-                ]
+                "type": "directory"
               },
               {
                 "name": "templates",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "comments.xml",
-                    "type": "file"
-                  },
-                  {
-                    "name": "commentsExtended.xml",
-                    "type": "file"
-                  },
-                  {
-                    "name": "commentsExtensible.xml",
-                    "type": "file"
-                  },
-                  {
-                    "name": "commentsIds.xml",
-                    "type": "file"
-                  },
-                  {
-                    "name": "people.xml",
-                    "type": "file"
-                  }
-                ]
+                "type": "directory"
               },
               {
                 "name": "__init__.py",
@@ -902,7 +805,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "recommendedScope": "project"
     },
     {
       "slug": "frontend-design",
@@ -933,7 +837,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "recommendedScope": "project"
     },
     {
       "slug": "internal-comms",
@@ -986,7 +891,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "recommendedScope": "project"
     },
     {
       "slug": "mcp-builder",
@@ -1061,7 +967,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "recommendedScope": "project"
     },
     {
       "slug": "pdf",
@@ -1138,7 +1045,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "recommendedScope": "project"
     },
     {
       "slug": "pptx",
@@ -1166,91 +1074,7 @@
             "children": [
               {
                 "name": "office",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "helpers",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "__init__.py",
-                        "type": "file"
-                      },
-                      {
-                        "name": "merge_runs.py",
-                        "type": "file"
-                      },
-                      {
-                        "name": "simplify_redlines.py",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "schemas",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "ecma",
-                        "type": "directory"
-                      },
-                      {
-                        "name": "ISO-IEC29500-4_2016",
-                        "type": "directory"
-                      },
-                      {
-                        "name": "mce",
-                        "type": "directory"
-                      },
-                      {
-                        "name": "microsoft",
-                        "type": "directory"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "validators",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "__init__.py",
-                        "type": "file"
-                      },
-                      {
-                        "name": "base.py",
-                        "type": "file"
-                      },
-                      {
-                        "name": "docx.py",
-                        "type": "file"
-                      },
-                      {
-                        "name": "pptx.py",
-                        "type": "file"
-                      },
-                      {
-                        "name": "redlining.py",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "pack.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "soffice.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "unpack.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "validate.py",
-                    "type": "file"
-                  }
-                ]
+                "type": "directory"
               },
               {
                 "name": "__init__.py",
@@ -1287,7 +1111,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "recommendedScope": "project"
     },
     {
       "slug": "skill-creator",
@@ -1325,21 +1150,7 @@
           },
           {
             "name": "scripts",
-            "type": "directory",
-            "children": [
-              {
-                "name": "init_skill.py",
-                "type": "file"
-              },
-              {
-                "name": "package_skill.py",
-                "type": "file"
-              },
-              {
-                "name": "quick_validate.py",
-                "type": "file"
-              }
-            ]
+            "type": "directory"
           },
           {
             "name": "LICENSE.txt",
@@ -1350,7 +1161,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "recommendedScope": "project"
     },
     {
       "slug": "slack-gif-creator",
@@ -1407,7 +1219,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "recommendedScope": "project"
     },
     {
       "slug": "theme-factory",
@@ -1488,7 +1301,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "recommendedScope": "project"
     },
     {
       "slug": "web-artifacts-builder",
@@ -1537,7 +1351,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "recommendedScope": "project"
     },
     {
       "slug": "webapp-testing",
@@ -1596,7 +1411,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "recommendedScope": "project"
     },
     {
       "slug": "xlsx",
@@ -1628,69 +1444,15 @@
                 "children": [
                   {
                     "name": "helpers",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "__init__.py",
-                        "type": "file"
-                      },
-                      {
-                        "name": "merge_runs.py",
-                        "type": "file"
-                      },
-                      {
-                        "name": "simplify_redlines.py",
-                        "type": "file"
-                      }
-                    ]
+                    "type": "directory"
                   },
                   {
                     "name": "schemas",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "ecma",
-                        "type": "directory"
-                      },
-                      {
-                        "name": "ISO-IEC29500-4_2016",
-                        "type": "directory"
-                      },
-                      {
-                        "name": "mce",
-                        "type": "directory"
-                      },
-                      {
-                        "name": "microsoft",
-                        "type": "directory"
-                      }
-                    ]
+                    "type": "directory"
                   },
                   {
                     "name": "validators",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "__init__.py",
-                        "type": "file"
-                      },
-                      {
-                        "name": "base.py",
-                        "type": "file"
-                      },
-                      {
-                        "name": "docx.py",
-                        "type": "file"
-                      },
-                      {
-                        "name": "pptx.py",
-                        "type": "file"
-                      },
-                      {
-                        "name": "redlining.py",
-                        "type": "file"
-                      }
-                    ]
+                    "type": "directory"
                   },
                   {
                     "name": "pack.py",
@@ -1725,1545 +1487,8 @@
             "type": "file"
           }
         ]
-      }
-    },
-    {
-      "slug": "agent-sdk-dev",
-      "name": "Agent Sdk Dev",
-      "type": "plugin",
-      "description": "Claude Agent SDK Development Plugin",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "official",
-      "author": {
-        "name": "Anthropic"
       },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/agent-sdk-dev",
-      "updatedAt": "2025-12-13T00:52:17Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "agents",
-            "type": "directory",
-            "children": [
-              {
-                "name": "agent-sdk-verifier-py.md",
-                "type": "file"
-              },
-              {
-                "name": "agent-sdk-verifier-ts.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "new-sdk-app.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "agents": [
-          "agent-sdk-verifier-py",
-          "agent-sdk-verifier-ts"
-        ],
-        "commands": [
-          "new-sdk-app"
-        ]
-      }
-    },
-    {
-      "slug": "claude-code-setup",
-      "name": "Claude Code Setup",
-      "type": "plugin",
-      "description": "Analyze codebases and recommend tailored Claude Code automations such as hooks, skills, MCP servers, and subagents.",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "official",
-      "author": {
-        "name": "Anthropic"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-code-setup",
-      "updatedAt": "2026-01-21T04:15:08Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "claude-automation-recommender",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "references",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "hooks-patterns.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "mcp-servers.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "plugins-reference.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "skills-reference.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "subagent-templates.md",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "automation-recommender-example.png",
-            "type": "file"
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ]
-      }
-    },
-    {
-      "slug": "claude-md-management",
-      "name": "Claude Md Management",
-      "type": "plugin",
-      "description": "Tools to maintain and improve CLAUDE.md files - audit quality, capture session learnings, and keep project memory current.",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "official",
-      "author": {
-        "name": "Anthropic"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-md-management",
-      "updatedAt": "2026-01-20T21:11:06Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "revise-claude-md.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "claude-md-improver",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "references",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "quality-criteria.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "templates.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "update-guidelines.md",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "claude-md-improver-example.png",
-            "type": "file"
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          },
-          {
-            "name": "revise-claude-md-example.png",
-            "type": "file"
-          }
-        ],
-        "commands": [
-          "revise-claude-md"
-        ]
-      }
-    },
-    {
-      "slug": "code-review",
-      "name": "Code Review",
-      "type": "plugin",
-      "description": "Automated code review for pull requests using multiple specialized agents with confidence-based scoring",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "official",
-      "author": {
-        "name": "Anthropic"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/code-review",
-      "updatedAt": "2025-12-13T00:52:17Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "code-review.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "commands": [
-          "code-review"
-        ]
-      }
-    },
-    {
-      "slug": "code-simplifier",
-      "name": "Code Simplifier",
-      "type": "plugin",
-      "description": "Agent that simplifies and refines code for clarity, consistency, and maintainability while preserving functionality",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "official",
-      "author": {
-        "name": "Anthropic"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/code-simplifier",
-      "updatedAt": "2026-01-09T00:17:19Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "agents",
-            "type": "directory",
-            "children": [
-              {
-                "name": "code-simplifier.md",
-                "type": "file"
-              }
-            ]
-          }
-        ],
-        "agents": [
-          "code-simplifier"
-        ]
-      }
-    },
-    {
-      "slug": "commit-commands",
-      "name": "Commit Commands",
-      "type": "plugin",
-      "description": "Streamline your git workflow with simple commands for committing, pushing, and creating pull requests",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "official",
-      "author": {
-        "name": "Anthropic"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/commit-commands",
-      "updatedAt": "2025-12-02T00:03:02Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "clean_gone.md",
-                "type": "file"
-              },
-              {
-                "name": "commit-push-pr.md",
-                "type": "file"
-              },
-              {
-                "name": "commit.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "commands": [
-          "clean_gone",
-          "commit-push-pr",
-          "commit"
-        ]
-      }
-    },
-    {
-      "slug": "explanatory-output-style",
-      "name": "Explanatory Output Style",
-      "type": "plugin",
-      "description": "Adds educational insights about implementation choices and codebase patterns (mimics the deprecated Explanatory output style)",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "official",
-      "author": {
-        "name": "Anthropic"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/explanatory-output-style",
-      "updatedAt": "2025-12-13T00:52:17Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "hooks",
-            "type": "directory",
-            "children": [
-              {
-                "name": "hooks.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "hooks-handlers",
-            "type": "directory",
-            "children": [
-              {
-                "name": "session-start.sh",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ]
-      }
-    },
-    {
-      "slug": "feature-dev",
-      "name": "Feature Dev",
-      "type": "plugin",
-      "description": "Comprehensive feature development workflow with specialized agents for codebase exploration, architecture design, and quality review",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "official",
-      "author": {
-        "name": "Anthropic"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/feature-dev",
-      "updatedAt": "2025-12-13T00:52:17Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "agents",
-            "type": "directory",
-            "children": [
-              {
-                "name": "code-architect.md",
-                "type": "file"
-              },
-              {
-                "name": "code-explorer.md",
-                "type": "file"
-              },
-              {
-                "name": "code-reviewer.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "feature-dev.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "agents": [
-          "code-architect",
-          "code-explorer",
-          "code-reviewer"
-        ],
-        "commands": [
-          "feature-dev"
-        ]
-      }
-    },
-    {
-      "slug": "frontend-design",
-      "name": "Frontend Design",
-      "type": "plugin",
-      "description": "Frontend design skill for UI/UX implementation",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "official",
-      "author": {
-        "name": "Anthropic"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design",
-      "updatedAt": "2025-12-13T00:52:17Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "frontend-design",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ]
-      }
-    },
-    {
-      "slug": "hookify",
-      "name": "Hookify",
-      "type": "plugin",
-      "description": "Easily create hooks to prevent unwanted behaviors by analyzing conversation patterns",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "official",
-      "author": {
-        "name": "Anthropic"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/hookify",
-      "updatedAt": "2026-02-05T17:21:57Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "agents",
-            "type": "directory",
-            "children": [
-              {
-                "name": "conversation-analyzer.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "configure.md",
-                "type": "file"
-              },
-              {
-                "name": "help.md",
-                "type": "file"
-              },
-              {
-                "name": "hookify.md",
-                "type": "file"
-              },
-              {
-                "name": "list.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "core",
-            "type": "directory",
-            "children": [
-              {
-                "name": "__init__.py",
-                "type": "file"
-              },
-              {
-                "name": "config_loader.py",
-                "type": "file"
-              },
-              {
-                "name": "rule_engine.py",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "examples",
-            "type": "directory",
-            "children": [
-              {
-                "name": "console-log-warning.local.md",
-                "type": "file"
-              },
-              {
-                "name": "dangerous-rm.local.md",
-                "type": "file"
-              },
-              {
-                "name": "require-tests-stop.local.md",
-                "type": "file"
-              },
-              {
-                "name": "sensitive-files-warning.local.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "hooks",
-            "type": "directory",
-            "children": [
-              {
-                "name": "__init__.py",
-                "type": "file"
-              },
-              {
-                "name": "hooks.json",
-                "type": "file"
-              },
-              {
-                "name": "posttooluse.py",
-                "type": "file"
-              },
-              {
-                "name": "pretooluse.py",
-                "type": "file"
-              },
-              {
-                "name": "stop.py",
-                "type": "file"
-              },
-              {
-                "name": "userpromptsubmit.py",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "matchers",
-            "type": "directory",
-            "children": [
-              {
-                "name": "__init__.py",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "writing-rules",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "utils",
-            "type": "directory",
-            "children": [
-              {
-                "name": "__init__.py",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".gitignore",
-            "type": "file"
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "agents": [
-          "conversation-analyzer"
-        ],
-        "commands": [
-          "configure",
-          "help",
-          "hookify",
-          "list"
-        ]
-      }
-    },
-    {
-      "slug": "learning-output-style",
-      "name": "Learning Output Style",
-      "type": "plugin",
-      "description": "Interactive learning mode that requests meaningful code contributions at decision points (mimics the unshipped Learning output style)",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "official",
-      "author": {
-        "name": "Anthropic"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/learning-output-style",
-      "updatedAt": "2025-12-13T00:52:17Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "hooks",
-            "type": "directory",
-            "children": [
-              {
-                "name": "hooks.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "hooks-handlers",
-            "type": "directory",
-            "children": [
-              {
-                "name": "session-start.sh",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ]
-      }
-    },
-    {
-      "slug": "playground",
-      "name": "Playground",
-      "type": "plugin",
-      "description": "Creates interactive HTML playgrounds — self-contained single-file explorers with visual controls, live preview, and prompt output with copy button",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "official",
-      "author": {
-        "name": "Anthropic"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/playground",
-      "updatedAt": "2026-01-29T23:24:01Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "playground",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "templates",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "code-map.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "concept-map.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "data-explorer.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "design-playground.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "diff-review.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "document-critique.md",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ]
-      }
-    },
-    {
-      "slug": "pr-review-toolkit",
-      "name": "Pr Review Toolkit",
-      "type": "plugin",
-      "description": "Comprehensive PR review agents specializing in comments, tests, error handling, type design, code quality, and code simplification",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "official",
-      "author": {
-        "name": "Anthropic"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pr-review-toolkit",
-      "updatedAt": "2026-02-04T23:59:39Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "agents",
-            "type": "directory",
-            "children": [
-              {
-                "name": "code-reviewer.md",
-                "type": "file"
-              },
-              {
-                "name": "code-simplifier.md",
-                "type": "file"
-              },
-              {
-                "name": "comment-analyzer.md",
-                "type": "file"
-              },
-              {
-                "name": "pr-test-analyzer.md",
-                "type": "file"
-              },
-              {
-                "name": "silent-failure-hunter.md",
-                "type": "file"
-              },
-              {
-                "name": "type-design-analyzer.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "review-pr.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "agents": [
-          "code-reviewer",
-          "code-simplifier",
-          "comment-analyzer",
-          "pr-test-analyzer",
-          "silent-failure-hunter",
-          "type-design-analyzer"
-        ],
-        "commands": [
-          "review-pr"
-        ]
-      }
-    },
-    {
-      "slug": "ralph-loop",
-      "name": "Ralph Loop",
-      "type": "plugin",
-      "description": "Continuous self-referential AI loops for interactive iterative development, implementing the Ralph Wiggum technique. Run Claude in a while-true loop with the same prompt until task completion.",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "official",
-      "author": {
-        "name": "Anthropic"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/ralph-loop",
-      "updatedAt": "2026-01-06T23:22:54Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "cancel-ralph.md",
-                "type": "file"
-              },
-              {
-                "name": "help.md",
-                "type": "file"
-              },
-              {
-                "name": "ralph-loop.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "hooks",
-            "type": "directory",
-            "children": [
-              {
-                "name": "hooks.json",
-                "type": "file"
-              },
-              {
-                "name": "stop-hook.sh",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "scripts",
-            "type": "directory",
-            "children": [
-              {
-                "name": "setup-ralph-loop.sh",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "commands": [
-          "cancel-ralph",
-          "help",
-          "ralph-loop"
-        ]
-      }
-    },
-    {
-      "slug": "security-guidance",
-      "name": "Security Guidance",
-      "type": "plugin",
-      "description": "Security reminder hook that warns about potential security issues when editing files, including command injection, XSS, and unsafe code patterns",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "official",
-      "author": {
-        "name": "Anthropic"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/security-guidance",
-      "updatedAt": "2025-12-13T00:52:17Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "hooks",
-            "type": "directory",
-            "children": [
-              {
-                "name": "hooks.json",
-                "type": "file"
-              },
-              {
-                "name": "security_reminder_hook.py",
-                "type": "file"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "slug": "asana",
-      "name": "Asana",
-      "type": "plugin",
-      "description": "Asana project management integration. Create and manage tasks, search projects, update assignments, track progress, and integrate your development workflow with Asana's work management platform.",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "community",
-      "author": {
-        "name": "Asana"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/asana",
-      "updatedAt": "2025-12-02T00:03:02Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ]
-      }
-    },
-    {
-      "slug": "context7",
-      "name": "Context7",
-      "type": "plugin",
-      "description": "Upstash Context7 MCP server for up-to-date documentation lookup. Pull version-specific documentation and code examples directly from source repositories into your LLM context.",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "community",
-      "author": {
-        "name": "Upstash"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/context7",
-      "updatedAt": "2025-12-02T00:03:02Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ]
-      }
-    },
-    {
-      "slug": "firebase",
-      "name": "Firebase",
-      "type": "plugin",
-      "description": "Google Firebase MCP integration. Manage Firestore databases, authentication, cloud functions, hosting, and storage. Build and manage your Firebase backend directly from your development workflow.",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "community",
-      "author": {
-        "name": "Google"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/firebase",
-      "updatedAt": "2025-12-02T00:03:02Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ]
-      }
-    },
-    {
-      "slug": "github",
-      "name": "Github",
-      "type": "plugin",
-      "description": "Official GitHub MCP server for repository management. Create issues, manage pull requests, review code, search repositories, and interact with GitHub's full API directly from Claude Code.",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "community",
-      "author": {
-        "name": "GitHub"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/github",
-      "updatedAt": "2025-12-02T00:03:02Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ]
-      }
-    },
-    {
-      "slug": "gitlab",
-      "name": "Gitlab",
-      "type": "plugin",
-      "description": "GitLab DevOps platform integration. Manage repositories, merge requests, CI/CD pipelines, issues, and wikis. Full access to GitLab's comprehensive DevOps lifecycle tools.",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "community",
-      "author": {
-        "name": "GitLab"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/gitlab",
-      "updatedAt": "2025-12-02T00:03:02Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ]
-      }
-    },
-    {
-      "slug": "greptile",
-      "name": "Greptile",
-      "type": "plugin",
-      "description": "AI code review agent for GitHub and GitLab. View and resolve Greptile's PR review comments directly from Claude Code.",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "community",
-      "author": {
-        "name": "Greptile",
-        "url": "https://greptile.com"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/greptile",
-      "updatedAt": "2026-01-06T05:15:35Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ]
-      }
-    },
-    {
-      "slug": "laravel-boost",
-      "name": "Laravel Boost",
-      "type": "plugin",
-      "description": "Laravel development toolkit MCP server. Provides intelligent assistance for Laravel applications including Artisan commands, Eloquent queries, routing, migrations, and framework-specific code generation.",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "community",
-      "author": {
-        "name": "Laravel"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/laravel-boost",
-      "updatedAt": "2025-12-02T00:03:02Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ]
-      }
-    },
-    {
-      "slug": "linear",
-      "name": "Linear",
-      "type": "plugin",
-      "description": "Linear issue tracking integration. Create issues, manage projects, update statuses, search across workspaces, and streamline your software development workflow with Linear's modern issue tracker.",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "community",
-      "author": {
-        "name": "Linear"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/linear",
-      "updatedAt": "2025-12-16T23:13:40Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ]
-      }
-    },
-    {
-      "slug": "playwright",
-      "name": "Playwright",
-      "type": "plugin",
-      "description": "Browser automation and end-to-end testing MCP server by Microsoft. Enables Claude to interact with web pages, take screenshots, fill forms, click elements, and perform automated browser testing workflows.",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "community",
-      "author": {
-        "name": "Microsoft"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/playwright",
-      "updatedAt": "2025-12-02T00:03:02Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ]
-      }
-    },
-    {
-      "slug": "serena",
-      "name": "Serena",
-      "type": "plugin",
-      "description": "Semantic code analysis MCP server providing intelligent code understanding, refactoring suggestions, and codebase navigation through language server protocol integration.",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "community",
-      "author": {
-        "name": "Oraios"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/serena",
-      "updatedAt": "2025-12-02T00:03:02Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ]
-      }
-    },
-    {
-      "slug": "slack",
-      "name": "Slack",
-      "type": "plugin",
-      "description": "Slack workspace integration. Search messages, access channels, read threads, and stay connected with your team's communications while coding. Find relevant discussions and context quickly.",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "community",
-      "author": {
-        "name": "Slack"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/slack",
-      "updatedAt": "2025-12-02T00:03:02Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ]
-      }
-    },
-    {
-      "slug": "stripe",
-      "name": "Stripe",
-      "type": "plugin",
-      "description": "Stripe development plugin for Claude",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "community",
-      "author": {
-        "name": "Stripe",
-        "url": "https://stripe.com"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/stripe",
-      "updatedAt": "2025-12-18T16:58:02Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "explain-error.md",
-                "type": "file"
-              },
-              {
-                "name": "test-cards.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "stripe-best-practices",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ],
-        "commands": [
-          "explain-error",
-          "test-cards"
-        ]
-      }
-    },
-    {
-      "slug": "supabase",
-      "name": "Supabase",
-      "type": "plugin",
-      "description": "Supabase MCP integration for database operations, authentication, storage, and real-time subscriptions. Manage your Supabase projects, run SQL queries, and interact with your backend directly.",
-      "compatibility": [
-        "claude"
-      ],
-      "sourceType": "community",
-      "author": {
-        "name": "Supabase"
-      },
-      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/supabase",
-      "updatedAt": "2025-12-02T00:03:02Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ]
-      }
+      "recommendedScope": "project"
     }
   ]
 }

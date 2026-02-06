@@ -11,6 +11,8 @@ export type ComponentType =
 
 export type SourceType = "official" | "toolr" | "community";
 
+export type ScopeType = "user" | "project" | "local";
+
 export interface Author {
   name: string;
   url?: string;
@@ -40,6 +42,7 @@ export interface RegistryItem {
   compatibility: AITool[];
   featured?: boolean;
   sourceType?: SourceType;
+  recommendedScope?: ScopeType;
   author?: Author;
   externalUrl?: string;
   updatedAt?: string;

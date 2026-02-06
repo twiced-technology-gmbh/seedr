@@ -10,8 +10,8 @@ import { ToolIcon } from "@/components/ToolIcon";
 import { typeIcons } from "@/components/TypeIcon";
 import { getAllItems, getTypeCounts } from "@/lib/registry";
 import { pluralize } from "@/lib/text";
-import type { ComponentType, AITool, SourceType } from "@/lib/types";
-import { typeTextColors, toolLabels, sourceLabels } from "@/lib/colors";
+import type { ComponentType, AITool, SourceType, ScopeType } from "@/lib/types";
+import { typeTextColors, toolLabels, sourceLabels, scopeLabels } from "@/lib/colors";
 
 // Type labels for display (plural form)
 const typePluralLabels: Record<ComponentType, string> = {
@@ -59,6 +59,12 @@ const sourceOptions: FilterOption<SourceType>[] = [
   { value: "community", label: sourceLabels.community },
 ];
 
+const scopeOptions: FilterOption<ScopeType>[] = [
+  { value: "user", label: scopeLabels.user },
+  { value: "project", label: scopeLabels.project },
+  { value: "local", label: scopeLabels.local },
+];
+
 export function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
   useScrollRestoration();
@@ -67,6 +73,7 @@ export function Home() {
   const query = searchParams.get("q") ?? "";
   const toolFilter = (searchParams.get("tool") as AITool | null);
   const sourceFilter = (searchParams.get("source") as SourceType | null);
+  const scopeFilter = (searchParams.get("scope") as ScopeType | null);
 
   // Update URL params helper
   const updateParams = (updates: Record<string, string | null>) => {
@@ -91,6 +98,7 @@ export function Home() {
   };
   const setToolFilter = (value: AITool | null) => updateParams({ tool: value });
   const setSourceFilter = (value: SourceType | null) => updateParams({ source: value });
+  const setScopeFilter = (value: ScopeType | null) => updateParams({ scope: value });
 
   const allItems = getAllItems();
   const counts = getTypeCounts();
@@ -117,14 +125,19 @@ export function Home() {
       results = results.filter((item) => (item.sourceType ?? "toolr") === sourceFilter);
     }
 
-    return results;
-  }, [query, toolFilter, sourceFilter, fuse]);
+    if (scopeFilter) {
+      results = results.filter((item) => (item.recommendedScope ?? "project") === scopeFilter);
+    }
 
-  const hasActiveFilters = toolFilter !== null || sourceFilter !== null;
+    return results;
+  }, [query, toolFilter, sourceFilter, scopeFilter, fuse]);
+
+  const hasActiveFilters = toolFilter !== null || sourceFilter !== null || scopeFilter !== null;
 
   const resetFilters = () => {
     setToolFilter(null);
     setSourceFilter(null);
+    setScopeFilter(null);
   };
 
   return (
@@ -160,6 +173,15 @@ export function Home() {
                 placeholder="Source"
                 allLabel="All Sources"
                 minWidth={120}
+              />
+
+              <FilterDropdown
+                value={scopeFilter}
+                options={scopeOptions}
+                onChange={setScopeFilter}
+                placeholder="Scope"
+                allLabel="All Scopes"
+                minWidth={110}
               />
 
               <FilterDropdown

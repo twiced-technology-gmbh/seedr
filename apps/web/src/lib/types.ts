@@ -3,6 +3,7 @@ export type {
   AITool,
   ComponentType,
   SourceType,
+  ScopeType,
   Author,
   RegistryItem,
   RegistryManifest,

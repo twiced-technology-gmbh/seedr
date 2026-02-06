@@ -1,4 +1,4 @@
-import type { ComponentType, AITool, SourceType } from "./types";
+import type { ComponentType, AITool, SourceType, ScopeType } from "./types";
 
 // Badge color type matching the Badge component
 export type BadgeColor =
@@ -102,4 +102,17 @@ export const toolToBadgeColor: Record<AITool, BadgeColor> = {
   gemini: "blue",
   codex: "emerald",
   opencode: "purple",
+};
+
+// Scope to badge color mapping
+export const scopeToBadgeColor: Record<ScopeType, BadgeColor> = {
+  user: "violet",
+  project: "sky",
+  local: "slate",
+};
+
+export const scopeLabels: Record<ScopeType, string> = {
+  user: "User",
+  project: "Project",
+  local: "Local",
 };

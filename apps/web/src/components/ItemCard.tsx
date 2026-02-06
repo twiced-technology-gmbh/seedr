@@ -4,6 +4,7 @@ import { Card } from "./ui/Card";
 import { Tooltip } from "./ui/Tooltip";
 import { TypeIcon } from "./TypeIcon";
 import { SourceBadge } from "./SourceBadge";
+import { ScopeBadge } from "./ScopeBadge";
 import { CompatibilityBadges } from "./CompatibilityBadges";
 import { formatRelativeTime } from "@/lib/text";
 import { typeLabels, typeTextColors } from "@/lib/colors";
@@ -58,6 +59,7 @@ export function ItemCard({ item }: ItemCardProps) {
         <div className="flex items-start justify-between gap-2 mb-2">
           <div className="flex items-center gap-1.5">
             {item.sourceType && <SourceBadge source={item.sourceType} />}
+            {item.recommendedScope && <ScopeBadge scope={item.recommendedScope} />}
           </div>
           <Tooltip content={{ title: typeLabels[item.type] }} position="top">
             <TypeIcon type={item.type} size={16} className="opacity-60" />

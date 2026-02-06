@@ -4,6 +4,7 @@ import { Breadcrumb, CodeBlock } from "@/components/ui";
 import { typeLabelPlural, typeTextColors } from "@/lib/colors";
 import { TypeIcon } from "@/components/TypeIcon";
 import { SourceBadge } from "@/components/SourceBadge";
+import { ScopeBadge } from "@/components/ScopeBadge";
 import { AuthorLink } from "@/components/AuthorLink";
 import { CompatibilityBadges } from "@/components/CompatibilityBadges";
 import { PluginContents } from "@/components/PluginContents";
@@ -48,9 +49,10 @@ export function Detail() {
 
       {/* Header */}
       <div className="mb-8">
-        {item.sourceType && (
-          <div className="mb-3">
-            <SourceBadge source={item.sourceType} size="md" />
+        {(item.sourceType || item.recommendedScope) && (
+          <div className="flex items-center gap-2 mb-3">
+            {item.sourceType && <SourceBadge source={item.sourceType} size="md" />}
+            {item.recommendedScope && <ScopeBadge scope={item.recommendedScope} size="md" />}
           </div>
         )}
         <h1 className="text-3xl font-bold text-text mb-2">{item.name}</h1>
