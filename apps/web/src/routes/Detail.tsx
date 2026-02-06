@@ -108,10 +108,6 @@ export function Detail() {
             </thead>
             <tbody className="divide-y divide-overlay">
               <tr>
-                <td className="px-4 py-2 font-mono text-xs text-accent">-s, --skill &lt;name&gt;</td>
-                <td className="px-4 py-2 text-subtext">Item name (alternative to positional argument)</td>
-              </tr>
-              <tr>
                 <td className="px-4 py-2 font-mono text-xs text-accent">-t, --type &lt;type&gt;</td>
                 <td className="px-4 py-2 text-subtext">Content type: <code className="text-text-dim">skill</code>, <code className="text-text-dim">agent</code>, <code className="text-text-dim">hook</code>, <code className="text-text-dim">mcp</code>, <code className="text-text-dim">plugin</code>, <code className="text-text-dim">settings</code></td>
               </tr>
@@ -120,7 +116,7 @@ export function Detail() {
                 <td className="px-4 py-2 text-subtext">AI tools to install for: <code className="text-text-dim">claude</code>, <code className="text-text-dim">copilot</code>, <code className="text-text-dim">gemini</code>, <code className="text-text-dim">codex</code>, <code className="text-text-dim">opencode</code>, or <code className="text-text-dim">all</code></td>
               </tr>
               <tr>
-                <td className="px-4 py-2 font-mono text-xs text-accent">--scope &lt;scope&gt;</td>
+                <td className="px-4 py-2 font-mono text-xs text-accent">-s, --scope &lt;scope&gt;</td>
                 <td className="px-4 py-2 text-subtext">Installation scope: <code className="text-text-dim">project</code>, <code className="text-text-dim">user</code>, or <code className="text-text-dim">local</code> (gitignored)</td>
               </tr>
               <tr>

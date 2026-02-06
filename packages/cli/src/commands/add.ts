@@ -140,13 +140,12 @@ function printInstallSummary(results: InstallResult[]): void {
 export const addCommand = new Command("add")
   .description("Install a skill, agent, hook, or other configuration")
   .argument("[name]", "Name of the item to install")
-  .option("-s, --skill <name>", "Skill name (alternative to positional arg)")
   .option("-t, --type <type>", "Content type: skill, agent, hook, mcp, plugin, settings")
   .option(
     "-a, --agents <tools>",
     "Comma-separated AI tools or 'all' (claude,copilot,gemini,codex,opencode)"
   )
-  .option("--scope <scope>", "Installation scope: project, user, or local")
+  .option("-s, --scope <scope>", "Installation scope: project, user, or local")
   .option("-m, --method <method>", "Installation method: symlink or copy")
   .option("-y, --yes", "Skip confirmation prompts")
   .option("-f, --force", "Overwrite existing files")
@@ -156,7 +155,7 @@ export const addCommand = new Command("add")
       ui.printLogo();
       ui.intro("Seedr");
 
-      const itemName = name ?? options.skill;
+      const itemName = name;
       const contentType = options.type as ComponentType | undefined;
 
       // Step 1: Get or prompt for item
