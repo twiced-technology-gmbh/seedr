@@ -13,104 +13,18 @@ import {
   fetchText,
   fetchLastCommitDate,
   listDirectory,
-  listDirectoryContents,
   fetchFileTree,
   formatName,
+  parsePluginContents,
 } from "./utils.js";
-import type { ManifestItem, ComponentType, SourceType, PluginContents, FileTreeNode } from "./types.js";
+import type { PluginJson } from "./utils.js";
+import type { ManifestItem, ComponentType, SourceType, PluginContents } from "./types.js";
 
 const PLUGINS_REPO = "anthropics/claude-plugins-official";
 const SKILLS_REPO = "anthropics/skills";
 
 // Items to exclude
 const EXCLUDED = ["example-plugin", "template"];
-
-/**
- * Parse plugin contents from file tree.
- * Plugins can have their content in:
- * - Root-level directories (skills/, agents/, hooks/, commands/)
- * - Or under .claude/ directory
- */
-function parsePluginContents(files: FileTreeNode[]): PluginContents {
-  const contents: PluginContents = { files };
-
-  // Helper to extract item names from a directory
-  const extractItems = (dir: FileTreeNode | undefined): string[] => {
-    if (!dir?.children) return [];
-    return dir.children
-      .filter(f => f.type === "file" && f.name.endsWith(".md"))
-      .map(f => f.name.replace(/\.md$/, ""));
-  };
-
-  // Check root-level directories first (most plugins use this)
-  const rootDirs = files.filter(f => f.type === "directory");
-  for (const dir of rootDirs) {
-    const items = extractItems(dir);
-    if (items.length === 0) continue;
-
-    switch (dir.name) {
-      case "skills":
-        contents.skills = items;
-        break;
-      case "agents":
-        contents.agents = items;
-        break;
-      case "hooks":
-        contents.hooks = items;
-        break;
-      case "commands":
-        contents.commands = items;
-        break;
-      case "mcp-servers":
-        contents.mcpServers = items;
-        break;
-    }
-  }
-
-  // Also check .claude directory (some plugins may use this structure)
-  const claudeDir = files.find(f => f.name === ".claude" && f.type === "directory");
-  if (claudeDir?.children) {
-    for (const subdir of claudeDir.children) {
-      if (subdir.type !== "directory") continue;
-      const items = extractItems(subdir);
-      if (items.length === 0) continue;
-
-      // Only add if not already set from root
-      switch (subdir.name) {
-        case "skills":
-          contents.skills = contents.skills || items;
-          break;
-        case "agents":
-          contents.agents = contents.agents || items;
-          break;
-        case "hooks":
-          contents.hooks = contents.hooks || items;
-          break;
-        case "commands":
-          contents.commands = contents.commands || items;
-          break;
-        case "mcp-servers":
-          contents.mcpServers = contents.mcpServers || items;
-          break;
-      }
-    }
-  }
-
-  return contents;
-}
-
-interface PluginJson {
-  name: string;
-  description: string;
-  version?: string;
-  author?: {
-    name: string;
-    email?: string;
-    url?: string;
-  };
-  homepage?: string;
-  keywords?: string[];
-}
 
 async function fetchPluginJson(repo: string, basePath: string, slug: string): Promise<PluginJson | null> {
   const url = `${GITHUB_RAW}/${repo}/main/${basePath}/${slug}/.claude-plugin/plugin.json`;

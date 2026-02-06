@@ -59,7 +59,7 @@ export function ItemCard({ item }: ItemCardProps) {
         <div className="flex items-start justify-between gap-2 mb-2">
           <div className="flex items-center gap-1.5">
             {item.sourceType && <SourceBadge source={item.sourceType} />}
-            {item.recommendedScope && <ScopeBadge scope={item.recommendedScope} />}
+            {item.sourceType === "toolr" && item.recommendedScope && <ScopeBadge scope={item.recommendedScope} />}
           </div>
           <Tooltip content={{ title: typeLabels[item.type] }} position="top">
             <TypeIcon type={item.type} size={16} className="opacity-60" />

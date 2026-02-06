@@ -97,7 +97,14 @@ export function Home() {
     }
   };
   const setToolFilter = (value: AITool | null) => updateParams({ tool: value });
-  const setSourceFilter = (value: SourceType | null) => updateParams({ source: value });
+  const setSourceFilter = (value: SourceType | null) => {
+    // Clear scope filter when switching away from toolr
+    if (value !== "toolr") {
+      updateParams({ source: value, scope: null });
+    } else {
+      updateParams({ source: value });
+    }
+  };
   const setScopeFilter = (value: ScopeType | null) => updateParams({ scope: value });
 
   const allItems = getAllItems();
@@ -175,14 +182,16 @@ export function Home() {
                 minWidth={120}
               />
 
-              <FilterDropdown
-                value={scopeFilter}
-                options={scopeOptions}
-                onChange={setScopeFilter}
-                placeholder="Scope"
-                allLabel="All Scopes"
-                minWidth={110}
-              />
+              {sourceFilter === "toolr" && (
+                <FilterDropdown
+                  value={scopeFilter}
+                  options={scopeOptions}
+                  onChange={setScopeFilter}
+                  placeholder="Scope recommendation"
+                  allLabel="All Scopes"
+                  minWidth={170}
+                />
+              )}
 
               <FilterDropdown
                 value={toolFilter}

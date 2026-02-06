@@ -89,7 +89,14 @@ export function Browse() {
 
   const setQuery = (value: string) => updateParams({ q: value || null });
   const setToolFilter = (value: AITool | null) => updateParams({ tool: value });
-  const setSourceFilter = (value: SourceType | null) => updateParams({ source: value });
+  const setSourceFilter = (value: SourceType | null) => {
+    // Clear scope filter when switching away from toolr
+    if (value !== "toolr") {
+      updateParams({ source: value, scope: null });
+    } else {
+      updateParams({ source: value });
+    }
+  };
   const setScopeFilter = (value: ScopeType | null) => updateParams({ scope: value });
   const setSort = (value: SortValue) => updateParams({ sort: value === "name-asc" ? null : value });
 
@@ -196,14 +203,16 @@ export function Browse() {
           minWidth={120}
         />
 
-        <FilterDropdown
-          value={scopeFilter}
-          options={scopeOptions}
-          onChange={setScopeFilter}
-          placeholder="Scope"
-          allLabel="All Scopes"
-          minWidth={110}
-        />
+        {sourceFilter === "toolr" && (
+          <FilterDropdown
+            value={scopeFilter}
+            options={scopeOptions}
+            onChange={setScopeFilter}
+            placeholder="Scope recommendation"
+            allLabel="All Scopes"
+            minWidth={170}
+          />
+        )}
 
         <FilterDropdown
           value={toolFilter}
