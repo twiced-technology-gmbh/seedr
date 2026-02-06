@@ -113,11 +113,11 @@ export function Detail() {
               </tr>
               <tr>
                 <td className="px-4 py-2 font-mono text-xs text-accent">--scope &lt;scope&gt;</td>
-                <td className="px-4 py-2 text-subtext">Installation scope: <code className="text-text-dim">project</code> (.claude/), <code className="text-text-dim">user</code> (~/.claude/), or <code className="text-text-dim">local</code> (.claude/local/)</td>
+                <td className="px-4 py-2 text-subtext">Installation scope: <code className="text-text-dim">project</code>, <code className="text-text-dim">user</code>, or <code className="text-text-dim">local</code> (gitignored)</td>
               </tr>
               <tr>
                 <td className="px-4 py-2 font-mono text-xs text-accent">-m, --method &lt;method&gt;</td>
-                <td className="px-4 py-2 text-subtext">Installation method: <code className="text-text-dim">symlink</code> or <code className="text-text-dim">copy</code></td>
+                <td className="px-4 py-2 text-subtext">Installation method: <code className="text-text-dim">symlink</code> or <code className="text-text-dim">copy</code> (only when installing for multiple agents)</td>
               </tr>
               <tr>
                 <td className="px-4 py-2 font-mono text-xs text-accent">-y, --yes</td>
