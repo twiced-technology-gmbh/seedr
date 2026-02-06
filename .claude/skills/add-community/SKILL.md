@@ -136,18 +136,17 @@ questions:
 
 ### 7. Check for duplicates
 
-Before adding, check if the slug already exists in `registry/manifest.json`:
-```bash
-grep '"slug": "<slug>"' registry/manifest.json
-```
+Before adding, check if `registry/<type>s/<slug>/item.json` already exists.
 
 If found, warn the user and ask: **Update existing** or **Abort**.
 
-### 8. Update manifest.json
+### 8. Write item.json and compile manifest
 
-Read `registry/manifest.json`, parse as JSON.
+Create the directory and write `registry/<type>s/<slug>/item.json`:
 
-Add the new item. Insert **at the end** of the items array (after toolr and synced items).
+```bash
+mkdir -p registry/<type>s/<slug>
+```
 
 Item shape:
 
@@ -180,7 +179,12 @@ Note: Community items do NOT include `recommendedScope` — that field is only f
 
 Only include `contents` sub-fields that have items (omit empty arrays).
 
-Write back with `JSON.stringify(manifest, null, 2) + "\n"`.
+Write with `JSON.stringify(item, null, 2) + "\n"`.
+
+Then recompile the manifest:
+```bash
+npx tsx scripts/compile-manifest.ts
+```
 
 ### 9. Confirm
 

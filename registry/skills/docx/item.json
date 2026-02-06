@@ -1,0 +1,119 @@
+{
+  "slug": "docx",
+  "name": "Docx",
+  "type": "skill",
+  "description": "\"Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files). Triggers include: any mention of \\\"Word doc\\\", \\\"word document\\\", \\\".docx\\\", or requests to produce professional documents with formatting like tables of contents, headings, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx files, inserting or replacing images in documents, performing find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a \\\"report\\\", \\\"memo\\\", \\\"letter\\\", \\\"template\\\", or similar deliverable as a Word or .docx file, use this skill. Do NOT use for PDFs, spreadsheets, Google Docs, or general coding tasks unrelated to document generation.\"",
+  "compatibility": [
+    "claude",
+    "copilot",
+    "gemini",
+    "codex",
+    "opencode"
+  ],
+  "sourceType": "official",
+  "author": {
+    "name": "Anthropic"
+  },
+  "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/docx",
+  "updatedAt": "2026-02-04T02:09:36Z",
+  "contents": {
+    "files": [
+      {
+        "name": "scripts",
+        "type": "directory",
+        "children": [
+          {
+            "name": "office",
+            "type": "directory",
+            "children": [
+              {
+                "name": "helpers",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "__init__.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "merge_runs.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "simplify_redlines.py",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "schemas",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "ecma",
+                    "type": "directory"
+                  },
+                  {
+                    "name": "ISO-IEC29500-4_2016",
+                    "type": "directory"
+                  },
+                  {
+                    "name": "mce",
+                    "type": "directory"
+                  },
+                  {
+                    "name": "microsoft",
+                    "type": "directory"
+                  }
+                ]
+              },
+              {
+                "name": "validators",
+                "type": "directory"
+              },
+              {
+                "name": "pack.py",
+                "type": "file"
+              },
+              {
+                "name": "soffice.py",
+                "type": "file"
+              },
+              {
+                "name": "unpack.py",
+                "type": "file"
+              },
+              {
+                "name": "validate.py",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "templates",
+            "type": "directory"
+          },
+          {
+            "name": "__init__.py",
+            "type": "file"
+          },
+          {
+            "name": "accept_changes.py",
+            "type": "file"
+          },
+          {
+            "name": "comment.py",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "LICENSE.txt",
+        "type": "file"
+      },
+      {
+        "name": "SKILL.md",
+        "type": "file"
+      }
+    ]
+  }
+}

@@ -17,11 +17,9 @@ Remove a community-sourced item from the seedr registry by slug.
 
 Extract `<slug>` from the user's input (e.g. `/remove-community superpowers`).
 
-### 2. Look up the item in the manifest
+### 2. Look up the item
 
-Read `registry/manifest.json`, parse as JSON.
-
-Search the `items[]` array for an entry where `slug` matches and `sourceType === "community"`.
+Search for `registry/*/slug/item.json` files to find the item. Read the matching `item.json` and verify `sourceType === "community"`.
 
 **If not found:** Check if the slug exists with a different `sourceType`. If so, tell the user:
 > "Found `<slug>` but it has sourceType `<actual>`, not `community`. Use `/remove-toolr` instead."
@@ -46,24 +44,29 @@ questions:
 
 If the user selects "No, cancel", abort with a message.
 
-### 4. Remove from manifest.json
+### 4. Delete item directory and recompile
 
-Read `registry/manifest.json` again (to avoid stale data), parse as JSON.
+Remove the directory at `registry/<type>s/<slug>/`:
 
-Filter out the matching item from `items[]`.
+```bash
+rm -rf registry/<type>s/<slug>/
+```
 
-Write the updated manifest back with `JSON.stringify(manifest, null, 2) + "\n"`.
+Then recompile the manifest:
+```bash
+npx tsx scripts/compile-manifest.ts
+```
 
 ### 5. Print summary
 
 Print:
 - Removed: `<name>` (`<slug>`, type: `<type>`)
-- Updated: `registry/manifest.json`
-- Note: No local files to clean up (community items are metadata-only)
+- Deleted: `registry/<type>s/<slug>/`
+- Manifest recompiled
 - Remind user to commit and push
 
 ## Important notes
 
-- Only removes items with `sourceType: "community"` — refuse to remove toolr items via this skill
+- Only removes items with `sourceType: "community"` or `sourceType: "official"` — refuse to remove toolr items via this skill
 - Always confirm before removing — no `--force` shortcut
-- Community items removed this way will NOT reappear after `pnpm sync` unless they match a freshly synced item from the Anthropic registry
+- Items removed this way will NOT reappear after `pnpm sync` unless they match a freshly synced item from the Anthropic registry

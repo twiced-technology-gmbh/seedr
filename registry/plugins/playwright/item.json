@@ -1,0 +1,33 @@
+{
+  "slug": "playwright",
+  "name": "Playwright",
+  "type": "plugin",
+  "description": "Browser automation and end-to-end testing MCP server by Microsoft. Enables Claude to interact with web pages, take screenshots, fill forms, click elements, and perform automated browser testing workflows.",
+  "compatibility": [
+    "claude"
+  ],
+  "sourceType": "community",
+  "author": {
+    "name": "Microsoft"
+  },
+  "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/playwright",
+  "updatedAt": "2025-12-02T00:03:02Z",
+  "contents": {
+    "files": [
+      {
+        "name": ".claude-plugin",
+        "type": "directory",
+        "children": [
+          {
+            "name": "plugin.json",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": ".mcp.json",
+        "type": "file"
+      }
+    ]
+  }
+}

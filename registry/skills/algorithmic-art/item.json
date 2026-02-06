@@ -1,0 +1,45 @@
+{
+  "slug": "algorithmic-art",
+  "name": "Algorithmic Art",
+  "type": "skill",
+  "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations.",
+  "compatibility": [
+    "claude",
+    "copilot",
+    "gemini",
+    "codex",
+    "opencode"
+  ],
+  "sourceType": "official",
+  "author": {
+    "name": "Anthropic"
+  },
+  "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/algorithmic-art",
+  "updatedAt": "2025-12-01T18:05:36Z",
+  "contents": {
+    "files": [
+      {
+        "name": "templates",
+        "type": "directory",
+        "children": [
+          {
+            "name": "generator_template.js",
+            "type": "file"
+          },
+          {
+            "name": "viewer.html",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "LICENSE.txt",
+        "type": "file"
+      },
+      {
+        "name": "SKILL.md",
+        "type": "file"
+      }
+    ]
+  }
+}

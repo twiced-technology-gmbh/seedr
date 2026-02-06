@@ -1,0 +1,570 @@
+{
+  "slug": "superpowers",
+  "name": "Superpowers",
+  "type": "plugin",
+  "description": "Core skills library for Claude Code: TDD, debugging, collaboration patterns, and proven techniques",
+  "compatibility": [
+    "claude"
+  ],
+  "sourceType": "community",
+  "author": {
+    "name": "Jesse Vincent"
+  },
+  "externalUrl": "https://github.com/obra/superpowers/tree/main",
+  "updatedAt": "2026-02-06T01:34:36Z",
+  "contents": {
+    "files": [
+      {
+        "name": ".claude-plugin",
+        "type": "directory",
+        "children": [
+          {
+            "name": "marketplace.json",
+            "type": "file"
+          },
+          {
+            "name": "plugin.json",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": ".codex",
+        "type": "directory",
+        "children": [
+          {
+            "name": "INSTALL.md",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": ".github",
+        "type": "directory",
+        "children": [
+          {
+            "name": "FUNDING.yml",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": ".opencode",
+        "type": "directory",
+        "children": [
+          {
+            "name": "plugins",
+            "type": "directory",
+            "children": [
+              {
+                "name": "superpowers.js",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "INSTALL.md",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "agents",
+        "type": "directory",
+        "children": [
+          {
+            "name": "code-reviewer.md",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "commands",
+        "type": "directory",
+        "children": [
+          {
+            "name": "brainstorm.md",
+            "type": "file"
+          },
+          {
+            "name": "execute-plan.md",
+            "type": "file"
+          },
+          {
+            "name": "write-plan.md",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "docs",
+        "type": "directory",
+        "children": [
+          {
+            "name": "plans",
+            "type": "directory",
+            "children": [
+              {
+                "name": "2025-11-22-opencode-support-design.md",
+                "type": "file"
+              },
+              {
+                "name": "2025-11-22-opencode-support-implementation.md",
+                "type": "file"
+              },
+              {
+                "name": "2025-11-28-skills-improvements-from-user-feedback.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "windows",
+            "type": "directory",
+            "children": [
+              {
+                "name": "polyglot-hooks.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "README.codex.md",
+            "type": "file"
+          },
+          {
+            "name": "README.opencode.md",
+            "type": "file"
+          },
+          {
+            "name": "testing.md",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "hooks",
+        "type": "directory",
+        "children": [
+          {
+            "name": "hooks.json",
+            "type": "file"
+          },
+          {
+            "name": "run-hook.cmd",
+            "type": "file"
+          },
+          {
+            "name": "session-start.sh",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "lib",
+        "type": "directory",
+        "children": [
+          {
+            "name": "skills-core.js",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "skills",
+        "type": "directory",
+        "children": [
+          {
+            "name": "brainstorming",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "dispatching-parallel-agents",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "executing-plans",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "finishing-a-development-branch",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "receiving-code-review",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "requesting-code-review",
+            "type": "directory",
+            "children": [
+              {
+                "name": "code-reviewer.md",
+                "type": "file"
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "subagent-driven-development",
+            "type": "directory",
+            "children": [
+              {
+                "name": "code-quality-reviewer-prompt.md",
+                "type": "file"
+              },
+              {
+                "name": "implementer-prompt.md",
+                "type": "file"
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              },
+              {
+                "name": "spec-reviewer-prompt.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "systematic-debugging",
+            "type": "directory",
+            "children": [
+              {
+                "name": "condition-based-waiting-example.ts",
+                "type": "file"
+              },
+              {
+                "name": "condition-based-waiting.md",
+                "type": "file"
+              },
+              {
+                "name": "CREATION-LOG.md",
+                "type": "file"
+              },
+              {
+                "name": "defense-in-depth.md",
+                "type": "file"
+              },
+              {
+                "name": "find-polluter.sh",
+                "type": "file"
+              },
+              {
+                "name": "root-cause-tracing.md",
+                "type": "file"
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              },
+              {
+                "name": "test-academic.md",
+                "type": "file"
+              },
+              {
+                "name": "test-pressure-1.md",
+                "type": "file"
+              },
+              {
+                "name": "test-pressure-2.md",
+                "type": "file"
+              },
+              {
+                "name": "test-pressure-3.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "test-driven-development",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              },
+              {
+                "name": "testing-anti-patterns.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "using-git-worktrees",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "using-superpowers",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "verification-before-completion",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "writing-plans",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "writing-skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "examples",
+                "type": "directory"
+              },
+              {
+                "name": "anthropic-best-practices.md",
+                "type": "file"
+              },
+              {
+                "name": "graphviz-conventions.dot",
+                "type": "file"
+              },
+              {
+                "name": "persuasion-principles.md",
+                "type": "file"
+              },
+              {
+                "name": "render-graphs.js",
+                "type": "file"
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              },
+              {
+                "name": "testing-skills-with-subagents.md",
+                "type": "file"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tests",
+        "type": "directory",
+        "children": [
+          {
+            "name": "claude-code",
+            "type": "directory",
+            "children": [
+              {
+                "name": "analyze-token-usage.py",
+                "type": "file"
+              },
+              {
+                "name": "README.md",
+                "type": "file"
+              },
+              {
+                "name": "run-skill-tests.sh",
+                "type": "file"
+              },
+              {
+                "name": "test-helpers.sh",
+                "type": "file"
+              },
+              {
+                "name": "test-subagent-driven-development-integration.sh",
+                "type": "file"
+              },
+              {
+                "name": "test-subagent-driven-development.sh",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "explicit-skill-requests",
+            "type": "directory",
+            "children": [
+              {
+                "name": "prompts",
+                "type": "directory"
+              },
+              {
+                "name": "run-all.sh",
+                "type": "file"
+              },
+              {
+                "name": "run-claude-describes-sdd.sh",
+                "type": "file"
+              },
+              {
+                "name": "run-extended-multiturn-test.sh",
+                "type": "file"
+              },
+              {
+                "name": "run-haiku-test.sh",
+                "type": "file"
+              },
+              {
+                "name": "run-multiturn-test.sh",
+                "type": "file"
+              },
+              {
+                "name": "run-test.sh",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "opencode",
+            "type": "directory",
+            "children": [
+              {
+                "name": "run-tests.sh",
+                "type": "file"
+              },
+              {
+                "name": "setup.sh",
+                "type": "file"
+              },
+              {
+                "name": "test-plugin-loading.sh",
+                "type": "file"
+              },
+              {
+                "name": "test-priority.sh",
+                "type": "file"
+              },
+              {
+                "name": "test-skills-core.sh",
+                "type": "file"
+              },
+              {
+                "name": "test-tools.sh",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skill-triggering",
+            "type": "directory",
+            "children": [
+              {
+                "name": "prompts",
+                "type": "directory"
+              },
+              {
+                "name": "run-all.sh",
+                "type": "file"
+              },
+              {
+                "name": "run-test.sh",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "subagent-driven-dev",
+            "type": "directory",
+            "children": [
+              {
+                "name": "go-fractals",
+                "type": "directory"
+              },
+              {
+                "name": "svelte-todo",
+                "type": "directory"
+              },
+              {
+                "name": "run-test.sh",
+                "type": "file"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": ".gitattributes",
+        "type": "file"
+      },
+      {
+        "name": ".gitignore",
+        "type": "file"
+      },
+      {
+        "name": "LICENSE",
+        "type": "file"
+      },
+      {
+        "name": "README.md",
+        "type": "file"
+      },
+      {
+        "name": "RELEASE-NOTES.md",
+        "type": "file"
+      }
+    ],
+    "agents": [
+      "code-reviewer"
+    ],
+    "commands": [
+      "brainstorm",
+      "execute-plan",
+      "write-plan"
+    ]
+  },
+  "recommendedScope": "project"
+}

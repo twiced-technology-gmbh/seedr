@@ -19,6 +19,7 @@ pnpm dev                  # Run all dev servers
 pnpm lint                 # Lint all packages
 pnpm typecheck            # Type-check all packages
 pnpm clean                # Clean all build artifacts
+pnpm compile              # Compile item.json files into manifest.json
 
 # CLI package (from packages/cli/)
 pnpm build                # Build CLI
@@ -83,9 +84,10 @@ seedr/
 ├── apps/web/             # React web app (seedr.toolr.dev)
 ├── packages/cli/         # CLI package (npx seedr)
 ├── registry/
-│   ├── manifest.json     # Registry index (source of truth)
-│   ├── skills/           # Skill content
-│   └── plugins/          # Plugin content
+│   ├── manifest.json     # Compiled output (do not edit directly)
+│   ├── skills/           # Skill content + item.json per item
+│   ├── plugins/          # Plugin item.json files
+│   └── hooks/            # Hook content + item.json per item
 ├── .claude/skills/       # Local skill definitions (dev)
 ├── turbo.json            # Build orchestration
 └── pnpm-workspace.yaml   # Workspace config
@@ -116,9 +118,10 @@ seedr/
 
 ### Registry
 
-- `registry/manifest.json` - Index of all available items
+- `registry/<type>s/<slug>/item.json` - Source of truth for each item's metadata
+- `registry/manifest.json` - Compiled output assembled from all `item.json` files (run `pnpm compile`)
 - Items can be symlinked (dev) or copied (published)
-- Manifest structure: `{ skills: [...], agents: [...], ... }`
+- Manifest structure: `{ version: "1.0.0", items: [...] }`
 
 ## Managing Registry Items
 
@@ -184,7 +187,7 @@ Removes a community-sourced item by slug. Removes the manifest entry only (no lo
 - **pnpm workspaces** - Shared dependencies, hoisted node_modules
 - **CLI-first** - Main interaction via `seedr add`, `seedr init`
 - **Web for discovery** - Browse and preview before installing
-- **Registry as data** - manifest.json is the source of truth
+- **Registry as data** - individual `item.json` files are the source of truth, compiled into `manifest.json`
 
 ## TypeScript Configuration
 

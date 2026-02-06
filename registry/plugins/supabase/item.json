@@ -1,0 +1,33 @@
+{
+  "slug": "supabase",
+  "name": "Supabase",
+  "type": "plugin",
+  "description": "Supabase MCP integration for database operations, authentication, storage, and real-time subscriptions. Manage your Supabase projects, run SQL queries, and interact with your backend directly.",
+  "compatibility": [
+    "claude"
+  ],
+  "sourceType": "community",
+  "author": {
+    "name": "Supabase"
+  },
+  "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/supabase",
+  "updatedAt": "2025-12-02T00:03:02Z",
+  "contents": {
+    "files": [
+      {
+        "name": ".claude-plugin",
+        "type": "directory",
+        "children": [
+          {
+            "name": "plugin.json",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": ".mcp.json",
+        "type": "file"
+      }
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "slug": "stripe",
+  "name": "Stripe",
+  "type": "plugin",
+  "description": "Stripe development plugin for Claude",
+  "compatibility": [
+    "claude"
+  ],
+  "sourceType": "community",
+  "author": {
+    "name": "Stripe",
+    "url": "https://stripe.com"
+  },
+  "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/stripe",
+  "updatedAt": "2025-12-18T16:58:02Z",
+  "contents": {
+    "files": [
+      {
+        "name": ".claude-plugin",
+        "type": "directory",
+        "children": [
+          {
+            "name": "plugin.json",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "commands",
+        "type": "directory",
+        "children": [
+          {
+            "name": "explain-error.md",
+            "type": "file"
+          },
+          {
+            "name": "test-cards.md",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "skills",
+        "type": "directory",
+        "children": [
+          {
+            "name": "stripe-best-practices",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": ".mcp.json",
+        "type": "file"
+      }
+    ],
+    "commands": [
+      "explain-error",
+      "test-cards"
+    ]
+  }
+}

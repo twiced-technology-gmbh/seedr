@@ -1,0 +1,33 @@
+{
+  "slug": "linear",
+  "name": "Linear",
+  "type": "plugin",
+  "description": "Linear issue tracking integration. Create issues, manage projects, update statuses, search across workspaces, and streamline your software development workflow with Linear's modern issue tracker.",
+  "compatibility": [
+    "claude"
+  ],
+  "sourceType": "community",
+  "author": {
+    "name": "Linear"
+  },
+  "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/linear",
+  "updatedAt": "2025-12-16T23:13:40Z",
+  "contents": {
+    "files": [
+      {
+        "name": ".claude-plugin",
+        "type": "directory",
+        "children": [
+          {
+            "name": "plugin.json",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": ".mcp.json",
+        "type": "file"
+      }
+    ]
+  }
+}

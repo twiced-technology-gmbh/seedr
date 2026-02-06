@@ -1,0 +1,33 @@
+{
+  "slug": "slack",
+  "name": "Slack",
+  "type": "plugin",
+  "description": "Slack workspace integration. Search messages, access channels, read threads, and stay connected with your team's communications while coding. Find relevant discussions and context quickly.",
+  "compatibility": [
+    "claude"
+  ],
+  "sourceType": "community",
+  "author": {
+    "name": "Slack"
+  },
+  "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/slack",
+  "updatedAt": "2025-12-02T00:03:02Z",
+  "contents": {
+    "files": [
+      {
+        "name": ".claude-plugin",
+        "type": "directory",
+        "children": [
+          {
+            "name": "plugin.json",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": ".mcp.json",
+        "type": "file"
+      }
+    ]
+  }
+}

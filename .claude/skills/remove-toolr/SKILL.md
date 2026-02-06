@@ -17,11 +17,9 @@ Remove a toolr-sourced item from the seedr registry by slug.
 
 Extract `<slug>` from the user's input (e.g. `/remove-toolr pre-commit-lint`).
 
-### 2. Look up the item in the manifest
+### 2. Look up the item
 
-Read `registry/manifest.json`, parse as JSON.
-
-Search the `items[]` array for an entry where `slug` matches and `sourceType === "toolr"`.
+Search for `registry/*/slug/item.json` files to find the item. Read the matching `item.json` and verify `sourceType === "toolr"`.
 
 **If not found:** Check if the slug exists with a different `sourceType`. If so, tell the user:
 > "Found `<slug>` but it has sourceType `<actual>`, not `toolr`. Use `/remove-community` instead."
@@ -46,7 +44,7 @@ questions:
 
 If the user selects "No, cancel", abort with a message.
 
-### 4. Delete local files
+### 4. Delete directory and recompile
 
 Remove the directory at `registry/<type>s/<slug>/` using:
 
@@ -54,24 +52,21 @@ Remove the directory at `registry/<type>s/<slug>/` using:
 rm -rf registry/<type>s/<slug>/
 ```
 
-Where `<type>s` is the pluralized type from the manifest entry (e.g. `skills`, `hooks`, `plugins`).
+Where `<type>s` is the pluralized type from the item (e.g. `skills`, `hooks`, `plugins`).
 
 Verify the directory no longer exists.
 
-### 5. Remove from manifest.json
+Then recompile the manifest:
+```bash
+npx tsx scripts/compile-manifest.ts
+```
 
-Read `registry/manifest.json` again (to avoid stale data), parse as JSON.
-
-Filter out the matching item from `items[]`.
-
-Write the updated manifest back with `JSON.stringify(manifest, null, 2) + "\n"`.
-
-### 6. Print summary
+### 5. Print summary
 
 Print:
 - Removed: `<name>` (`<slug>`, type: `<type>`)
 - Deleted: `registry/<type>s/<slug>/`
-- Updated: `registry/manifest.json`
+- Manifest recompiled
 - Remind user to commit and push
 
 ## Important notes

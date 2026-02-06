@@ -1,0 +1,77 @@
+{
+  "slug": "pdf",
+  "name": "Pdf",
+  "type": "skill",
+  "description": "Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding watermarks, creating new PDFs, filling PDF forms, encrypting/decrypting PDFs, extracting images, and OCR on scanned PDFs to make them searchable. If the user mentions a .pdf file or asks to produce one, use this skill.",
+  "compatibility": [
+    "claude",
+    "copilot",
+    "gemini",
+    "codex",
+    "opencode"
+  ],
+  "sourceType": "official",
+  "author": {
+    "name": "Anthropic"
+  },
+  "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/pdf",
+  "updatedAt": "2026-02-04T02:09:36Z",
+  "contents": {
+    "files": [
+      {
+        "name": "scripts",
+        "type": "directory",
+        "children": [
+          {
+            "name": "check_bounding_boxes.py",
+            "type": "file"
+          },
+          {
+            "name": "check_fillable_fields.py",
+            "type": "file"
+          },
+          {
+            "name": "convert_pdf_to_images.py",
+            "type": "file"
+          },
+          {
+            "name": "create_validation_image.py",
+            "type": "file"
+          },
+          {
+            "name": "extract_form_field_info.py",
+            "type": "file"
+          },
+          {
+            "name": "extract_form_structure.py",
+            "type": "file"
+          },
+          {
+            "name": "fill_fillable_fields.py",
+            "type": "file"
+          },
+          {
+            "name": "fill_pdf_form_with_annotations.py",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "forms.md",
+        "type": "file"
+      },
+      {
+        "name": "LICENSE.txt",
+        "type": "file"
+      },
+      {
+        "name": "reference.md",
+        "type": "file"
+      },
+      {
+        "name": "SKILL.md",
+        "type": "file"
+      }
+    ]
+  }
+}

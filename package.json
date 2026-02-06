@@ -12,6 +12,7 @@
     "lint:fix": "turbo run lint:fix",
     "typecheck": "turbo run typecheck",
     "clean": "turbo run clean && rm -rf node_modules",
+    "compile": "tsx scripts/compile-manifest.ts",
     "sync": "tsx scripts/sync.ts"
   },
   "devDependencies": {

@@ -153,13 +153,9 @@ FileTreeNode = { name: string, type: "file" | "directory", children?: FileTreeNo
 
 Use `find <dir> | sort` and parse the output to build the tree.
 
-### 8. Update manifest.json
+### 8. Write item.json and compile manifest
 
-Read `registry/manifest.json`, parse as JSON.
-
-Add the new item to `items[]` array. Insert it **after the last toolr item** (toolr items come first, before synced items).
-
-New item shape:
+Write the item metadata as `registry/<type>s/<slug>/item.json`:
 
 ```json
 {
@@ -191,20 +187,25 @@ New item shape:
 }
 ```
 
-Write the updated manifest back with `JSON.stringify(manifest, null, 2) + "\n"`.
+Write with `JSON.stringify(item, null, 2) + "\n"`.
+
+Then recompile the manifest:
+```bash
+npx tsx scripts/compile-manifest.ts
+```
 
 ### 9. Confirm
 
 Print a summary:
 - Type, slug, name
 - Path copied to
-- Manifest entry added
+- `item.json` written and manifest compiled
 - Remind user to commit and push
 
 ## Important notes
 
 - `sourceType` is always `"toolr"` — this skill is for manually-maintained items only
 - The sync script (`pnpm sync`) preserves toolr items and only replaces synced items
-- If a slug already exists in the manifest, warn the user and ask whether to update or abort
+- If `registry/<type>s/<slug>/item.json` already exists, warn the user and ask whether to update or abort
 - For skills, validate that a `SKILL.md` exists in the source directory
 - `featured` defaults to `false` — do not set it unless the user asks

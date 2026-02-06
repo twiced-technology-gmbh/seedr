@@ -1,0 +1,81 @@
+{
+  "slug": "theme-factory",
+  "name": "Theme Factory",
+  "type": "skill",
+  "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
+  "compatibility": [
+    "claude",
+    "copilot",
+    "gemini",
+    "codex",
+    "opencode"
+  ],
+  "sourceType": "official",
+  "author": {
+    "name": "Anthropic"
+  },
+  "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/theme-factory",
+  "updatedAt": "2025-12-01T18:05:36Z",
+  "contents": {
+    "files": [
+      {
+        "name": "themes",
+        "type": "directory",
+        "children": [
+          {
+            "name": "arctic-frost.md",
+            "type": "file"
+          },
+          {
+            "name": "botanical-garden.md",
+            "type": "file"
+          },
+          {
+            "name": "desert-rose.md",
+            "type": "file"
+          },
+          {
+            "name": "forest-canopy.md",
+            "type": "file"
+          },
+          {
+            "name": "golden-hour.md",
+            "type": "file"
+          },
+          {
+            "name": "midnight-galaxy.md",
+            "type": "file"
+          },
+          {
+            "name": "modern-minimalist.md",
+            "type": "file"
+          },
+          {
+            "name": "ocean-depths.md",
+            "type": "file"
+          },
+          {
+            "name": "sunset-boulevard.md",
+            "type": "file"
+          },
+          {
+            "name": "tech-innovation.md",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "LICENSE.txt",
+        "type": "file"
+      },
+      {
+        "name": "SKILL.md",
+        "type": "file"
+      },
+      {
+        "name": "theme-showcase.pdf",
+        "type": "file"
+      }
+    ]
+  }
+}

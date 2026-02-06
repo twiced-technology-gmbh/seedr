@@ -32,6 +32,12 @@ coverage/
 *.tgz
 .cache/
 
+# Python
+__pycache__/
+
+# Claude Code local settings
+.claude/settings.local.json
+
 # Override global gitignore to include project config
 !.claude/
 !CLAUDE.md

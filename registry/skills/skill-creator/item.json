@@ -1,0 +1,63 @@
+{
+  "slug": "skill-creator",
+  "name": "Skill Creator",
+  "type": "skill",
+  "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.",
+  "compatibility": [
+    "claude",
+    "copilot",
+    "gemini",
+    "codex",
+    "opencode"
+  ],
+  "sourceType": "official",
+  "author": {
+    "name": "Anthropic"
+  },
+  "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
+  "updatedAt": "2025-12-01T18:05:36Z",
+  "contents": {
+    "files": [
+      {
+        "name": "references",
+        "type": "directory",
+        "children": [
+          {
+            "name": "output-patterns.md",
+            "type": "file"
+          },
+          {
+            "name": "workflows.md",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "scripts",
+        "type": "directory",
+        "children": [
+          {
+            "name": "init_skill.py",
+            "type": "file"
+          },
+          {
+            "name": "package_skill.py",
+            "type": "file"
+          },
+          {
+            "name": "quick_validate.py",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "LICENSE.txt",
+        "type": "file"
+      },
+      {
+        "name": "SKILL.md",
+        "type": "file"
+      }
+    ]
+  }
+}
