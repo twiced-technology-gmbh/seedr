@@ -199,6 +199,13 @@ export async function fetchItemToDestination(
 
   const { remote } = getItemBaseUrl(item);
 
+  // For plugins with a file tree, fetch the entire directory structure
+  if (item.type === "plugin" && item.contents?.files) {
+    await mkdir(destPath, { recursive: true });
+    await fetchFileTree(item.contents.files, remote, destPath);
+    return;
+  }
+
   // Determine files to fetch based on item type
   // For now, skills have SKILL.md as the main file
   const filesToFetch = item.type === "skill" ? ["SKILL.md"] : [`${item.type}.md`];
@@ -210,6 +217,36 @@ export async function fetchItemToDestination(
     const filePath = join(destPath, file);
     await mkdir(dirname(filePath), { recursive: true });
     await writeFile(filePath, content, "utf-8");
+  }
+}
+
+/**
+ * Recursively fetch files from a remote file tree to a local destination.
+ */
+async function fetchFileTree(
+  nodes: { name: string; type: string; children?: { name: string; type: string; children?: any[] }[] }[],
+  baseUrl: string,
+  destPath: string
+): Promise<void> {
+  const { writeFile, mkdir } = await import("node:fs/promises");
+  const { join } = await import("node:path");
+
+  for (const node of nodes) {
+    const nodePath = join(destPath, node.name);
+
+    if (node.type === "directory") {
+      await mkdir(nodePath, { recursive: true });
+      if (node.children) {
+        await fetchFileTree(node.children, `${baseUrl}/${node.name}`, nodePath);
+      }
+    } else {
+      try {
+        const content = await fetchRemote(`${baseUrl}/${node.name}`);
+        await writeFile(nodePath, content, "utf-8");
+      } catch {
+        // Skip files that can't be fetched
+      }
+    }
   }
 }
 

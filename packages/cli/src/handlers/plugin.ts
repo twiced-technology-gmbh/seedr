@@ -4,7 +4,7 @@ import chalk from "chalk";
 import ora from "ora";
 import type { AITool, InstallScope, InstallMethod } from "../types.js";
 import type { RegistryItem } from "@seedr/shared";
-import { getItemSourcePath } from "../config/registry.js";
+import { getItemSourcePath, fetchItemToDestination } from "../config/registry.js";
 import { getSettingsPath, AI_TOOLS } from "../config/tools.js";
 import { installDirectory } from "../utils/fs.js";
 import { readJson, writeJson } from "../utils/json.js";
@@ -67,11 +67,6 @@ async function installPluginForTool(
       throw new Error("Plugins are only supported for Claude Code");
     }
 
-    const sourcePath = getItemSourcePath(item);
-    if (!sourcePath) {
-      throw new Error("Plugin source not found - external plugins not yet supported");
-    }
-
     // Extract plugin metadata
     const marketplace = item.author?.name || "seedr";
     const version = "1.0.0"; // TODO: Extract from plugin manifest
@@ -79,7 +74,13 @@ async function installPluginForTool(
 
     // Step 1: Install to cache
     const cachePath = getPluginCachePath(marketplace, item.slug, version);
-    await installDirectory(sourcePath, cachePath, method);
+    const sourcePath = getItemSourcePath(item);
+    if (sourcePath) {
+      await installDirectory(sourcePath, cachePath, method);
+    } else {
+      // Community/external item — fetch from GitHub
+      await fetchItemToDestination(item, cachePath);
+    }
 
     // Step 2: Update installed_plugins.json
     const registry = await readJson<InstalledPluginsRegistry>(INSTALLED_PLUGINS_PATH);
