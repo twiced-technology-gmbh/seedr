@@ -1,15 +1,16 @@
+import { join } from "node:path";
+import { mkdir, copyFile, chmod } from "node:fs/promises";
 import chalk from "chalk";
 import ora from "ora";
 import type { AITool, InstallScope, InstallMethod } from "../types.js";
 import type { RegistryItem } from "@seedr/shared";
-import { getItemContent } from "../config/registry.js";
+import { getItemSourcePath, fetchItemToDestination } from "../config/registry.js";
 import { getSettingsPath, AI_TOOLS } from "../config/tools.js";
 import { exists } from "../utils/fs.js";
 import { readJson, writeJson } from "../utils/json.js";
 import type { ContentHandler, InstallResult } from "./types.js";
 
-interface HookDefinition {
-  event: string;
+interface HookEntry {
   matcher?: string;
   hooks: Array<{
     type: "command";
@@ -18,27 +19,58 @@ interface HookDefinition {
 }
 
 interface SettingsJson {
-  hooks?: Record<string, HookDefinition["hooks"]>;
+  hooks?: Record<string, HookEntry[]>;
   [key: string]: unknown;
 }
 
 /**
- * Parse hook definition from registry item content.
- * Expected format is JSON with event, matcher (optional), and hooks array.
+ * Get the hooks directory path based on scope.
  */
-function parseHookDefinition(content: string): HookDefinition {
-  try {
-    return JSON.parse(content) as HookDefinition;
-  } catch {
-    throw new Error("Invalid hook definition: must be valid JSON");
+function getHooksDir(scope: InstallScope, cwd: string): string {
+  switch (scope) {
+    case "user":
+      return join(process.env.HOME || "~", ".claude", "hooks");
+    case "project":
+    case "local":
+      return join(cwd, ".claude", "hooks");
   }
+}
+
+/**
+ * Get the script path to use in settings.json based on scope.
+ */
+function getScriptPath(scope: InstallScope, scriptName: string): string {
+  switch (scope) {
+    case "user":
+      return `~/.claude/hooks/${scriptName}`;
+    case "project":
+    case "local":
+      return `.claude/hooks/${scriptName}`;
+  }
+}
+
+/**
+ * Find the main script file from the item's files.
+ */
+function findScriptFile(item: RegistryItem): string | null {
+  const files = item.contents?.files;
+  if (!files) return null;
+
+  // Look for .sh files at the top level
+  for (const file of files) {
+    if (file.type === "file" && file.name.endsWith(".sh")) {
+      return file.name;
+    }
+  }
+
+  return null;
 }
 
 async function installHookForTool(
   item: RegistryItem,
   tool: AITool,
   scope: InstallScope,
-  _method: InstallMethod,
+  method: InstallMethod,
   cwd: string
 ): Promise<InstallResult> {
   const spinner = ora(
@@ -50,30 +82,91 @@ async function installHookForTool(
       throw new Error("Hooks are only supported for Claude Code");
     }
 
-    const content = await getItemContent(item);
-    const hookDef = parseHookDefinition(content);
+    // Get triggers from manifest
+    const triggers = item.contents?.triggers;
+    if (!triggers || triggers.length === 0) {
+      throw new Error("No triggers defined for this hook");
+    }
 
+    // Find the script file
+    const scriptFile = findScriptFile(item);
+    if (!scriptFile) {
+      throw new Error("No script file found in hook");
+    }
+
+    // Step 1: Copy script to hooks directory
+    const hooksDir = getHooksDir(scope, cwd);
+    await mkdir(hooksDir, { recursive: true });
+
+    const sourcePath = getItemSourcePath(item);
+    const destScriptPath = join(hooksDir, scriptFile);
+
+    if (sourcePath && (await exists(sourcePath))) {
+      // Local registry - copy or symlink based on method
+      const sourceScriptPath = join(sourcePath, scriptFile);
+      await copyFile(sourceScriptPath, destScriptPath);
+    } else {
+      // Remote - fetch to temp then copy script
+      const tempDir = join(cwd, ".claude", ".tmp", item.slug);
+      await fetchItemToDestination(item, tempDir);
+      await copyFile(join(tempDir, scriptFile), destScriptPath);
+      // Clean up temp dir
+      const { rm } = await import("node:fs/promises");
+      await rm(tempDir, { recursive: true, force: true });
+    }
+
+    // Make script executable
+    await chmod(destScriptPath, 0o755);
+
+    // Step 2: Update settings with triggers
     const settingsPath = getSettingsPath(scope, cwd);
     const settings = await readJson<SettingsJson>(settingsPath);
-
-    // Initialize hooks object if needed
     settings.hooks = settings.hooks || {};
 
-    // Get the hook key (event + optional matcher)
-    const hookKey = hookDef.matcher
-      ? `${hookDef.event}:${hookDef.matcher}`
-      : hookDef.event;
+    const scriptPath = getScriptPath(scope, scriptFile);
 
-    // Merge hooks - append to existing or create new
-    const existingHooks = settings.hooks[hookKey] || [];
-    settings.hooks[hookKey] = [...existingHooks, ...hookDef.hooks];
+    for (const trigger of triggers) {
+      const event = trigger.event;
+      const matcher = trigger.matcher;
+
+      // Initialize event array if needed
+      if (!settings.hooks[event]) {
+        settings.hooks[event] = [];
+      }
+
+      // Check if there's already an entry with this matcher
+      const existingEntry = settings.hooks[event].find(
+        (e) => e.matcher === matcher
+      );
+
+      const hookCommand = { type: "command" as const, command: scriptPath };
+
+      if (existingEntry) {
+        // Add to existing entry if not already present
+        const alreadyExists = existingEntry.hooks.some(
+          (h) => h.command === scriptPath
+        );
+        if (!alreadyExists) {
+          existingEntry.hooks.push(hookCommand);
+        }
+      } else {
+        // Create new entry
+        const newEntry: HookEntry = {
+          hooks: [hookCommand],
+        };
+        if (matcher) {
+          newEntry.matcher = matcher;
+        }
+        settings.hooks[event].push(newEntry);
+      }
+    }
 
     await writeJson(settingsPath, settings);
 
     spinner.succeed(
       chalk.green(`Installed ${item.name} for ${AI_TOOLS[tool].name}`)
     );
-    return { tool, success: true, path: settingsPath };
+    return { tool, success: true, path: destScriptPath };
   } catch (error) {
     const errorMsg = error instanceof Error ? error.message : "Unknown error";
     spinner.fail(

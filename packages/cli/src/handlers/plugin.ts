@@ -20,10 +20,22 @@ interface PluginInstallInfo {
   installPath: string;
   version: string;
   installedAt: string;
+  lastUpdated: string;
+  gitCommitSha: string;
 }
 
 interface InstalledPluginsRegistry {
+  version?: number;
   plugins: Record<string, PluginInstallInfo[]>;
+}
+
+interface PluginJson {
+  name?: string;
+  version?: string;
+}
+
+interface MarketplaceJson {
+  name?: string;
 }
 
 interface SettingsJson {
@@ -67,36 +79,52 @@ async function installPluginForTool(
       throw new Error("Plugins are only supported for Claude Code");
     }
 
-    // Extract plugin metadata
-    const marketplace = item.author?.name || "seedr";
-    const version = "1.0.0"; // TODO: Extract from plugin manifest
-    const pluginId = getPluginId(item.slug, marketplace);
-
-    // Step 1: Install to cache
-    const cachePath = getPluginCachePath(marketplace, item.slug, version);
+    // Step 1: Fetch to temporary cache location
+    const tmpPath = join(PLUGINS_CACHE_DIR, ".tmp", item.slug);
     const sourcePath = getItemSourcePath(item);
     if (sourcePath) {
-      await installDirectory(sourcePath, cachePath, method);
+      await installDirectory(sourcePath, tmpPath, method);
     } else {
-      // Community/external item — fetch from GitHub
-      await fetchItemToDestination(item, cachePath);
+      await fetchItemToDestination(item, tmpPath);
     }
 
-    // Step 2: Update installed_plugins.json
+    // Step 2: Read plugin metadata from fetched content
+    const pluginJson = await readJson<PluginJson>(
+      join(tmpPath, ".claude-plugin", "plugin.json")
+    );
+    const marketplaceJson = await readJson<MarketplaceJson>(
+      join(tmpPath, ".claude-plugin", "marketplace.json")
+    );
+
+    const marketplace = marketplaceJson.name || item.author?.name || "seedr";
+    const pluginName = pluginJson.name || item.slug;
+    const version = pluginJson.version || "1.0.0";
+    const pluginId = getPluginId(pluginName, marketplace);
+
+    // Step 3: Move to final cache path
+    const cachePath = getPluginCachePath(marketplace, pluginName, version);
+    const { rm } = await import("node:fs/promises");
+    await installDirectory(tmpPath, cachePath, "copy");
+    await rm(tmpPath, { recursive: true, force: true });
+
+    // Step 4: Update installed_plugins.json
+    const now = new Date().toISOString();
     const registry = await readJson<InstalledPluginsRegistry>(INSTALLED_PLUGINS_PATH);
+    registry.version = registry.version || 2;
     registry.plugins = registry.plugins || {};
 
     const installInfo: PluginInstallInfo = {
       scope,
-      projectPath: scope === "project" ? cwd : undefined,
+      ...(scope === "project" ? { projectPath: cwd } : {}),
       installPath: cachePath,
       version,
-      installedAt: new Date().toISOString(),
+      installedAt: now,
+      lastUpdated: now,
+      gitCommitSha: "",
     };
 
     // Add or update the plugin entry
     const existingEntries = registry.plugins[pluginId] || [];
-    // Remove existing entry for same scope/project
     const filteredEntries = existingEntries.filter(
       (e) =>
         !(e.scope === scope && (scope !== "project" || e.projectPath === cwd))
@@ -105,7 +133,7 @@ async function installPluginForTool(
 
     await writeJson(INSTALLED_PLUGINS_PATH, registry);
 
-    // Step 3: Enable in settings.json
+    // Step 5: Enable in settings.json
     const settingsPath = getSettingsPath(scope, cwd);
     const settings = await readJson<SettingsJson>(settingsPath);
     settings.enabledPlugins = settings.enabledPlugins || {};

@@ -18,6 +18,11 @@ export interface Author {
   url?: string;
 }
 
+export interface HookTrigger {
+  event: string;
+  matcher?: string;
+}
+
 export interface PluginContents {
   skills?: string[];
   agents?: string[];
@@ -25,6 +30,7 @@ export interface PluginContents {
   commands?: string[];
   mcpServers?: string[];
   files?: FileTreeNode[];
+  triggers?: HookTrigger[];
 }
 
 export interface FileTreeNode {
