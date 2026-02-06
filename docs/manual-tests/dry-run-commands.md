@@ -90,14 +90,14 @@ npx tsx src/cli.ts add my-settings -t settings -a claude --scope local --dry-run
 
 ## Plugins (Claude Only)
 
-Plugins are cached and registered in installed_plugins.json.
+Plugins are cached in `~/.claude/plugins/cache/`, registered in `installed_plugins.json`, and their marketplace is registered in `known_marketplaces.json`.
 
 ```bash
-# Project scope
-npx tsx src/cli.ts add my-plugin -t plugin -a claude --scope project --dry-run -y
+# Project scope (using a real registry item)
+npx tsx src/cli.ts add superpowers -a claude --scope project --dry-run -y
 
 # User scope
-npx tsx src/cli.ts add my-plugin -t plugin -a claude --scope user --dry-run -y
+npx tsx src/cli.ts add superpowers -a claude --scope user --dry-run -y
 ```
 
 ---
@@ -123,7 +123,7 @@ npx tsx src/cli.ts add my-plugin -t plugin -a claude --scope user --dry-run -y
 | mcp | user | claude | `~/.claude.json` (merge) |
 | settings | project | claude | `.claude/settings.json` (merge) |
 | settings | local | claude | `.claude/settings.local.json` (merge) |
-| plugin | project | claude | `~/.claude/plugins/cache/<marketplace>/<name>/<version>/` |
+| plugin | project | claude | `~/.claude/plugins/cache/<marketplace>/<name>/<version>/` + `known_marketplaces.json` + `marketplaces/<name>/` |
 
 ### Symlink Method
 
@@ -144,7 +144,9 @@ This allows a single source of truth when installing skills for multiple AI tool
 
 ## Notes
 
-- The registry syncs **skills** and **plugins** from Anthropic repositories (`anthropics/skills`, `anthropics/claude-plugins-official`). If plugins are missing, run `pnpm build` with a `GITHUB_TOKEN` to avoid rate limiting.
-- **Hooks**, **agents**, **MCP servers**, and **settings** are not yet in the registry. These dry-runs will fail with "not found" until those content types are added.
-- Use `--dry-run` to verify paths without writing files.
+- The registry currently contains **skills** and **plugins**. Skills are synced from Anthropic repos (`anthropics/skills`, `anthropics/claude-plugins-official`) and community items are re-synced from their GitHub repos.
+- **Hooks**, **agents**, **MCP servers**, and **settings** are not yet in the registry. Dry-runs for these types will fail with "not found" until items are added.
+- Plugin install also registers the marketplace in `known_marketplaces.json` and clones the repo to `~/.claude/plugins/marketplaces/` (required by Claude Code).
+- Use `--dry-run` (`-n`) to verify paths without writing files.
 - Use `-y` to skip confirmation prompts.
+- Shorthand flags: `-s` (scope), `-m` (method), `-n` (dry-run), `-f` (force).
