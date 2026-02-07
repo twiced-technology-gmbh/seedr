@@ -2321,7 +2321,29 @@
               },
               {
                 "name": "templates",
-                "type": "directory"
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "comments.xml",
+                    "type": "file"
+                  },
+                  {
+                    "name": "commentsExtended.xml",
+                    "type": "file"
+                  },
+                  {
+                    "name": "commentsExtensible.xml",
+                    "type": "file"
+                  },
+                  {
+                    "name": "commentsIds.xml",
+                    "type": "file"
+                  },
+                  {
+                    "name": "people.xml",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "__init__.py",
@@ -3717,7 +3739,13 @@
           },
           {
             "name": "scripts",
-            "type": "directory"
+            "type": "directory",
+            "children": [
+              {
+                "name": "with_server.py",
+                "type": "file"
+              }
+            ]
           },
           {
             "name": "LICENSE.txt",
