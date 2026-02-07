@@ -1,0 +1,88 @@
+{
+  "slug": "claude-md-management",
+  "name": "Claude Md Management",
+  "type": "plugin",
+  "description": "Tools to maintain and improve CLAUDE.md files - audit quality, capture session learnings, and keep project memory current.",
+  "compatibility": [
+    "claude"
+  ],
+  "sourceType": "official",
+  "author": {
+    "name": "Anthropic"
+  },
+  "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-md-management",
+  "updatedAt": "2026-01-20T21:11:06Z",
+  "contents": {
+    "files": [
+      {
+        "name": ".claude-plugin",
+        "type": "directory",
+        "children": [
+          {
+            "name": "plugin.json",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "commands",
+        "type": "directory",
+        "children": [
+          {
+            "name": "revise-claude-md.md",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "skills",
+        "type": "directory",
+        "children": [
+          {
+            "name": "claude-md-improver",
+            "type": "directory",
+            "children": [
+              {
+                "name": "references",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "quality-criteria.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "templates.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "update-guidelines.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "claude-md-improver-example.png",
+        "type": "file"
+      },
+      {
+        "name": "README.md",
+        "type": "file"
+      },
+      {
+        "name": "revise-claude-md-example.png",
+        "type": "file"
+      }
+    ],
+    "commands": [
+      "revise-claude-md"
+    ]
+  }
+}

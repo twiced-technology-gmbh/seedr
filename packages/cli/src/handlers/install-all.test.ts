@@ -53,9 +53,17 @@ vi.mock("../config/registry.js", () => ({
         return `# ${item.name}\n\nMock content.`;
     }
   }),
-  fetchItemToDestination: vi.fn(async (_item: RegistryItem, destPath: string) => {
+  fetchItemToDestination: vi.fn(async (item: RegistryItem, destPath: string) => {
     vol.mkdirSync(destPath, { recursive: true });
-    vol.writeFileSync(join(destPath, "STUB"), "stub");
+    if (item.contents?.files) {
+      for (const file of item.contents.files) {
+        if (file.type === "file") {
+          vol.writeFileSync(join(destPath, file.name), `stub: ${file.name}`);
+        }
+      }
+    } else {
+      vol.writeFileSync(join(destPath, "STUB"), "stub");
+    }
   }),
 }));
 
@@ -70,12 +78,21 @@ vi.mock("node:os", () => ({
 describe("install all manifest items (mocked)", () => {
   beforeEach(() => {
     vol.reset();
-    // Set up local source dirs for toolr items
+    // Set up local source dirs for toolr items with correct content files
     for (const item of manifest.items) {
       if (item.sourceType === "toolr") {
         const srcPath = `/registry/${item.type}s/${item.slug}`;
         vol.mkdirSync(srcPath, { recursive: true });
-        vol.writeFileSync(join(srcPath, "SKILL.md"), `# ${item.name}\n`);
+
+        if (item.type === "hook" && item.contents?.files) {
+          for (const file of item.contents.files) {
+            if (file.type === "file") {
+              vol.writeFileSync(join(srcPath, file.name), `#!/bin/bash\necho "${item.slug}"\n`);
+            }
+          }
+        } else {
+          vol.writeFileSync(join(srcPath, "SKILL.md"), `# ${item.name}\n`);
+        }
       }
     }
   });
@@ -177,6 +194,13 @@ describe.runIf(LIVE)("manifest URL validation (live)", () => {
         expect(res.status, `plugin.json missing for ${item.slug}`).toBe(200);
         const json = (await res.json()) as { name?: string };
         expect(json.name, `plugin.json missing "name" for ${item.slug}`).toBeDefined();
+      } else if (item.type === "hook" && item.contents?.files) {
+        for (const file of item.contents.files) {
+          if (file.type === "file") {
+            const res = await fetch(`${rawBase}/${file.name}`);
+            expect(res.status, `${file.name} missing for ${item.slug}`).toBe(200);
+          }
+        }
       }
     }, 30_000);
   }

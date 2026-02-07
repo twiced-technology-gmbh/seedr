@@ -8,7 +8,8 @@ import {
   fetchJson,
   fetchText,
   fetchLastCommitDate,
-  fetchFileTree,
+  fetchRepoTree,
+  extractSubtree,
   formatName,
   parsePluginContents,
 } from "./utils.js";
@@ -29,8 +30,9 @@ async function refreshPlugin(item: ManifestItem, repo: string, basePath: string)
   const pluginJsonUrl = `${GITHUB_RAW}/${repo}/main/${basePath ? basePath + "/" : ""}.claude-plugin/plugin.json`;
   const pluginJson = await fetchJson<PluginJson>(pluginJsonUrl);
 
+  const repoTree = await fetchRepoTree(repo);
   const updatedAt = await fetchLastCommitDate(repo, basePath || ".");
-  const files = await fetchFileTree(repo, basePath || ".", 3);
+  const files = repoTree.length > 0 ? extractSubtree(repoTree, basePath, 3) : [];
   const contents: PluginContents = files.length > 0 ? parsePluginContents(files) : item.contents ?? {};
 
   return {
@@ -61,8 +63,9 @@ async function refreshSkill(item: ManifestItem, repo: string, basePath: string):
     }
   }
 
+  const repoTree = await fetchRepoTree(repo);
   const updatedAt = await fetchLastCommitDate(repo, basePath || ".");
-  const files = await fetchFileTree(repo, basePath || ".", 3);
+  const files = repoTree.length > 0 ? extractSubtree(repoTree, basePath, 3) : [];
 
   return {
     ...item,

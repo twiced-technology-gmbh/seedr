@@ -38,13 +38,7 @@
       },
       {
         "name": "scripts",
-        "type": "directory",
-        "children": [
-          {
-            "name": "with_server.py",
-            "type": "file"
-          }
-        ]
+        "type": "directory"
       },
       {
         "name": "LICENSE.txt",

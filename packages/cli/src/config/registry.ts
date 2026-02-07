@@ -199,8 +199,8 @@ export async function fetchItemToDestination(
 
   const { remote } = getItemBaseUrl(item);
 
-  // For plugins with a file tree, fetch the entire directory structure
-  if (item.type === "plugin" && item.contents?.files) {
+  // For items with a file tree (plugins, hooks, etc.), fetch the entire structure
+  if (item.contents?.files) {
     await mkdir(destPath, { recursive: true });
     await fetchFileTree(item.contents.files, remote, destPath);
     return;

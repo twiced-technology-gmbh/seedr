@@ -39,7 +39,7 @@ jobs:
 
       - name: Sync registry
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
         run: pnpm sync
 
       - name: Check for changes

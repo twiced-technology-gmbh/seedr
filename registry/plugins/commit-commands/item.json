@@ -1,0 +1,56 @@
+{
+  "slug": "commit-commands",
+  "name": "Commit Commands",
+  "type": "plugin",
+  "description": "Streamline your git workflow with simple commands for committing, pushing, and creating pull requests",
+  "compatibility": [
+    "claude"
+  ],
+  "sourceType": "official",
+  "author": {
+    "name": "Anthropic"
+  },
+  "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/commit-commands",
+  "updatedAt": "2025-12-02T00:03:02Z",
+  "contents": {
+    "files": [
+      {
+        "name": ".claude-plugin",
+        "type": "directory",
+        "children": [
+          {
+            "name": "plugin.json",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "commands",
+        "type": "directory",
+        "children": [
+          {
+            "name": "clean_gone.md",
+            "type": "file"
+          },
+          {
+            "name": "commit-push-pr.md",
+            "type": "file"
+          },
+          {
+            "name": "commit.md",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "README.md",
+        "type": "file"
+      }
+    ],
+    "commands": [
+      "clean_gone",
+      "commit-push-pr",
+      "commit"
+    ]
+  }
+}

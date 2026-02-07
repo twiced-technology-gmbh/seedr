@@ -41,3 +41,17 @@ export interface Manifest {
   version: string;
   items: ManifestItem[];
 }
+
+export interface GitTreeItem {
+  path: string;
+  mode: string;
+  type: "blob" | "tree";
+  sha: string;
+  size?: number;
+}
+
+export interface GitTreeResponse {
+  sha: string;
+  tree: GitTreeItem[];
+  truncated: boolean;
+}

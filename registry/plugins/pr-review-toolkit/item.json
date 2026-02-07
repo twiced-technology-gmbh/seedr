@@ -1,0 +1,84 @@
+{
+  "slug": "pr-review-toolkit",
+  "name": "Pr Review Toolkit",
+  "type": "plugin",
+  "description": "Comprehensive PR review agents specializing in comments, tests, error handling, type design, code quality, and code simplification",
+  "compatibility": [
+    "claude"
+  ],
+  "sourceType": "official",
+  "author": {
+    "name": "Anthropic"
+  },
+  "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pr-review-toolkit",
+  "updatedAt": "2026-02-04T23:59:39Z",
+  "contents": {
+    "files": [
+      {
+        "name": ".claude-plugin",
+        "type": "directory",
+        "children": [
+          {
+            "name": "plugin.json",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "agents",
+        "type": "directory",
+        "children": [
+          {
+            "name": "code-reviewer.md",
+            "type": "file"
+          },
+          {
+            "name": "code-simplifier.md",
+            "type": "file"
+          },
+          {
+            "name": "comment-analyzer.md",
+            "type": "file"
+          },
+          {
+            "name": "pr-test-analyzer.md",
+            "type": "file"
+          },
+          {
+            "name": "silent-failure-hunter.md",
+            "type": "file"
+          },
+          {
+            "name": "type-design-analyzer.md",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "commands",
+        "type": "directory",
+        "children": [
+          {
+            "name": "review-pr.md",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "README.md",
+        "type": "file"
+      }
+    ],
+    "agents": [
+      "code-reviewer",
+      "code-simplifier",
+      "comment-analyzer",
+      "pr-test-analyzer",
+      "silent-failure-hunter",
+      "type-design-analyzer"
+    ],
+    "commands": [
+      "review-pr"
+    ]
+  }
+}

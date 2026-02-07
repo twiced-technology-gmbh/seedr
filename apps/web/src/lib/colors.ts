@@ -77,8 +77,8 @@ export const typeTextColors: Record<ComponentType, string> = {
 // Source to badge color mapping
 export const sourceToBadgeColor: Record<SourceType, BadgeColor> = {
   official: "amber",
-  toolr: "emerald",
-  community: "blue",
+  toolr: "blue",
+  community: "emerald",
 };
 
 export const sourceLabels: Record<SourceType, string> = {
@@ -107,7 +107,7 @@ export const toolToBadgeColor: Record<AITool, BadgeColor> = {
 // Scope to badge color mapping
 export const scopeToBadgeColor: Record<ScopeType, BadgeColor> = {
   user: "violet",
-  project: "sky",
+  project: "cyan",
   local: "slate",
 };
 

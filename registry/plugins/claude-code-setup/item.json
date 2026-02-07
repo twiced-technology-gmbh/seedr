@@ -1,0 +1,79 @@
+{
+  "slug": "claude-code-setup",
+  "name": "Claude Code Setup",
+  "type": "plugin",
+  "description": "Analyze codebases and recommend tailored Claude Code automations such as hooks, skills, MCP servers, and subagents.",
+  "compatibility": [
+    "claude"
+  ],
+  "sourceType": "official",
+  "author": {
+    "name": "Anthropic"
+  },
+  "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-code-setup",
+  "updatedAt": "2026-01-21T04:15:08Z",
+  "contents": {
+    "files": [
+      {
+        "name": ".claude-plugin",
+        "type": "directory",
+        "children": [
+          {
+            "name": "plugin.json",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "skills",
+        "type": "directory",
+        "children": [
+          {
+            "name": "claude-automation-recommender",
+            "type": "directory",
+            "children": [
+              {
+                "name": "references",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "hooks-patterns.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "mcp-servers.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "plugins-reference.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "skills-reference.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "subagent-templates.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "automation-recommender-example.png",
+        "type": "file"
+      },
+      {
+        "name": "README.md",
+        "type": "file"
+      }
+    ]
+  }
+}

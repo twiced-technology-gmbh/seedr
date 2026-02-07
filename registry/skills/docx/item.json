@@ -15,7 +15,7 @@
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/docx",
-  "updatedAt": "2026-02-04T02:09:36Z",
+  "updatedAt": "2026-02-06T21:19:32Z",
   "contents": {
     "files": [
       {
@@ -68,7 +68,29 @@
               },
               {
                 "name": "validators",
-                "type": "directory"
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "__init__.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "base.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "docx.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "pptx.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "redlining.py",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "pack.py",

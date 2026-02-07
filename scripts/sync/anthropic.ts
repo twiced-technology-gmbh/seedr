@@ -12,13 +12,14 @@ import {
   fetchJson,
   fetchText,
   fetchLastCommitDate,
-  listDirectory,
-  fetchFileTree,
+  fetchRepoTree,
+  listDirectoryFromTree,
+  extractSubtree,
   formatName,
   parsePluginContents,
 } from "./utils.js";
 import type { PluginJson } from "./utils.js";
-import type { ManifestItem, ComponentType, SourceType, PluginContents } from "./types.js";
+import type { ManifestItem, ComponentType, SourceType, GitTreeItem, PluginContents } from "./types.js";
 
 const PLUGINS_REPO = "anthropics/claude-plugins-official";
 const SKILLS_REPO = "anthropics/skills";
@@ -59,13 +60,14 @@ interface FetchItemsOptions {
   sourceType: SourceType;
   compatibility: string[];
   defaultAuthor: string;
+  repoTree: GitTreeItem[];
   fetchMetadata: (repo: string, basePath: string, slug: string) => Promise<{ name: string; description: string; author?: { name: string; url?: string } } | null>;
   includeFileTree?: boolean;
 }
 
 async function fetchItems(options: FetchItemsOptions): Promise<ManifestItem[]> {
-  const { repo, basePath, type, sourceType, compatibility, defaultAuthor, fetchMetadata, includeFileTree } = options;
-  const slugs = await listDirectory(repo, basePath);
+  const { repo, basePath, type, sourceType, compatibility, defaultAuthor, repoTree, fetchMetadata, includeFileTree } = options;
+  const slugs = listDirectoryFromTree(repoTree, basePath);
 
   console.log(`Fetching ${slugs.length} ${type}s from ${repo}/${basePath}...`);
 
@@ -81,10 +83,9 @@ async function fetchItems(options: FetchItemsOptions): Promise<ManifestItem[]> {
 
         const updatedAt = await fetchLastCommitDate(repo, `${basePath}/${slug}`);
 
-        // Fetch file tree for plugins
         let contents: PluginContents | undefined;
         if (includeFileTree) {
-          const files = await fetchFileTree(repo, `${basePath}/${slug}`, 4);
+          const files = extractSubtree(repoTree, `${basePath}/${slug}`, 4);
           if (files.length > 0) {
             contents = parsePluginContents(files);
           }
@@ -112,30 +113,45 @@ async function fetchItems(options: FetchItemsOptions): Promise<ManifestItem[]> {
 export async function syncAnthropic(): Promise<ManifestItem[]> {
   console.log("\n=== Syncing from Anthropic ===\n");
 
+  // Pre-fetch entire repo trees (1 API call each, cached for reuse)
+  const [skillsTree, pluginsTree] = await Promise.all([
+    fetchRepoTree(SKILLS_REPO),
+    fetchRepoTree(PLUGINS_REPO),
+  ]);
+
+  if (skillsTree.length === 0) {
+    console.warn("⚠ Failed to fetch skills repo tree — skipping skills");
+  }
+  if (pluginsTree.length === 0) {
+    console.warn("⚠ Failed to fetch plugins repo tree — skipping plugins");
+  }
+
   // Fetch official skills (compatible with all tools)
-  const officialSkills = await fetchItems({
+  const officialSkills = skillsTree.length > 0 ? await fetchItems({
     repo: SKILLS_REPO,
     basePath: "skills",
     type: "skill",
     sourceType: "official",
     compatibility: ["claude", "copilot", "gemini", "codex", "opencode"],
     defaultAuthor: "Anthropic",
+    repoTree: skillsTree,
     includeFileTree: true,
     fetchMetadata: async (repo, basePath, slug) => {
       const skill = await fetchSkillMd(repo, basePath, slug);
       if (!skill) return null;
       return { name: skill.name, description: skill.description, author: { name: "Anthropic" } };
     },
-  });
+  }) : [];
 
   // Fetch official plugins (Claude-only)
-  const officialPlugins = await fetchItems({
+  const officialPlugins = pluginsTree.length > 0 ? await fetchItems({
     repo: PLUGINS_REPO,
     basePath: "plugins",
     type: "plugin",
     sourceType: "official",
     compatibility: ["claude"],
     defaultAuthor: "Anthropic",
+    repoTree: pluginsTree,
     includeFileTree: true,
     fetchMetadata: async (repo, basePath, slug) => {
       const plugin = await fetchPluginJson(repo, basePath, slug);
@@ -146,16 +162,17 @@ export async function syncAnthropic(): Promise<ManifestItem[]> {
         author: plugin.author ? { name: plugin.author.name, url: plugin.author.url } : undefined,
       };
     },
-  });
+  }) : [];
 
   // Fetch community plugins (Claude-only)
-  const communityPlugins = await fetchItems({
+  const communityPlugins = pluginsTree.length > 0 ? await fetchItems({
     repo: PLUGINS_REPO,
     basePath: "external_plugins",
     type: "plugin",
     sourceType: "community",
     compatibility: ["claude"],
     defaultAuthor: "Community",
+    repoTree: pluginsTree,
     includeFileTree: true,
     fetchMetadata: async (repo, basePath, slug) => {
       const plugin = await fetchPluginJson(repo, basePath, slug);
@@ -166,7 +183,7 @@ export async function syncAnthropic(): Promise<ManifestItem[]> {
         author: plugin.author ? { name: plugin.author.name, url: plugin.author.url } : undefined,
       };
     },
-  });
+  }) : [];
 
   const items = [...officialSkills, ...officialPlugins, ...communityPlugins];
   console.log(`\nAnthropic sync complete: ${items.length} items`);
