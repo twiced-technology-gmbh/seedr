@@ -171,7 +171,8 @@ describe("install all manifest items (mocked)", () => {
 // Verifies every externalUrl is reachable and content files are valid.
 // ---------------------------------------------------------------------------
 
-describe.runIf(LIVE)("manifest URL validation (live)", () => {
+// Use conditional block instead of describe.runIf to avoid registering skipped tests
+if (!LIVE) { /* noop — run with SEEDR_LIVE=true to enable */ } else describe("manifest URL validation (live)", () => {
   function toRawUrl(externalUrl: string): string {
     return externalUrl
       .replace("github.com", "raw.githubusercontent.com")
