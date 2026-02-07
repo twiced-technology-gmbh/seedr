@@ -12,7 +12,7 @@
     "url": "https://github.com/toolr-suite"
   },
   "externalUrl": "https://github.com/twiced-technology-gmbh/seedr/tree/main/registry/hooks/security-guard",
-  "updatedAt": "2026-02-06T00:00:00Z",
+  "updatedAt": "2026-02-07T00:00:00Z",
   "contents": {
     "files": [
       {
@@ -43,5 +43,6 @@
       }
     ]
   },
-  "recommendedScope": "project"
+  "targetScope": "project",
+  "contentHash": "0faa1688ee79f04d"
 }

@@ -11,6 +11,7 @@
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-code-setup",
+  "contentHash": "d0b3b68824258024",
   "updatedAt": "2026-01-21T04:15:08Z",
   "contents": {
     "files": [

@@ -11,6 +11,7 @@
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/code-simplifier",
+  "contentHash": "5c5eb50c7d32dffe",
   "updatedAt": "2026-01-09T00:17:19Z",
   "contents": {
     "files": [

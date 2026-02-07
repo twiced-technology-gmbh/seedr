@@ -4,9 +4,9 @@ import { scopeToBadgeColor, scopeLabels } from "@/lib/colors";
 import type { ScopeType } from "@/lib/types";
 
 const scopeDescriptions: Record<ScopeType, string> = {
-  user: "Recommended for user-level installation\nThis is our recommendation only. You can install any item at any scope.",
-  project: "Recommended for project-level installation\nThis is our recommendation only. You can install any item at any scope.",
-  local: "Recommended for local settings (gitignored)\nThis is our recommendation only. You can install any item at any scope.",
+  user: "Built for user-level installation. May not work correctly in other scopes.",
+  project: "Built for project-level installation. May not work correctly in other scopes.",
+  local: "Built for local settings (gitignored). May not work correctly in other scopes.",
 };
 
 interface ScopeBadgeProps {

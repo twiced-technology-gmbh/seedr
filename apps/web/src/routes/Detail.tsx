@@ -49,10 +49,10 @@ export function Detail() {
 
       {/* Header */}
       <div className="mb-8">
-        {(item.sourceType || (item.sourceType === "toolr" && item.recommendedScope)) && (
+        {(item.sourceType || (item.sourceType === "toolr" && item.targetScope)) && (
           <div className="flex items-center gap-2 mb-3">
             {item.sourceType && <SourceBadge source={item.sourceType} size="md" />}
-            {item.sourceType === "toolr" && item.recommendedScope && <ScopeBadge scope={item.recommendedScope} size="md" />}
+            {item.sourceType === "toolr" && item.targetScope && <ScopeBadge scope={item.targetScope} size="md" />}
           </div>
         )}
         <h1 className="text-3xl font-bold text-text mb-2">{item.name}</h1>

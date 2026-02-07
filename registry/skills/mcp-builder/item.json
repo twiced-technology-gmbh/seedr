@@ -15,6 +15,7 @@
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/mcp-builder",
+  "contentHash": "55df9723ec52057a",
   "updatedAt": "2025-12-01T18:05:36Z",
   "contents": {
     "files": [

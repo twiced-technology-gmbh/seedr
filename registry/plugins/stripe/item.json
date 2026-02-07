@@ -12,6 +12,7 @@
     "url": "https://stripe.com"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/stripe",
+  "contentHash": "eb0721627c9671d7",
   "updatedAt": "2025-12-18T16:58:02Z",
   "contents": {
     "files": [

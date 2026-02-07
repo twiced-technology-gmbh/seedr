@@ -127,7 +127,7 @@ export function Browse() {
     }
 
     if (scopeFilter) {
-      result = result.filter((item) => (item.recommendedScope ?? "project") === scopeFilter);
+      result = result.filter((item) => (item.targetScope ?? "project") === scopeFilter);
     }
 
     return sortItems(result, sort);

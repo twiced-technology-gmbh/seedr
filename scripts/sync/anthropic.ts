@@ -15,6 +15,7 @@ import {
   fetchRepoTree,
   listDirectoryFromTree,
   extractSubtree,
+  computeContentHash,
   formatName,
   parsePluginContents,
 } from "./utils.js";
@@ -82,6 +83,7 @@ async function fetchItems(options: FetchItemsOptions): Promise<ManifestItem[]> {
         }
 
         const updatedAt = await fetchLastCommitDate(repo, `${basePath}/${slug}`);
+        const contentHash = computeContentHash(repoTree, `${basePath}/${slug}`);
 
         let contents: PluginContents | undefined;
         if (includeFileTree) {
@@ -101,6 +103,7 @@ async function fetchItems(options: FetchItemsOptions): Promise<ManifestItem[]> {
           sourceType,
           author: metadata.author ?? { name: defaultAuthor },
           externalUrl: `https://github.com/${repo}/tree/main/${basePath}/${slug}`,
+          ...(contentHash && { contentHash }),
           ...(updatedAt && { updatedAt }),
           ...(contents && { contents }),
         } satisfies ManifestItem;

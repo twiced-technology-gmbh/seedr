@@ -8,8 +8,9 @@
  * and writes the assembled manifest.
  */
 
-import { existsSync, readdirSync, readFileSync, writeFileSync } from "fs";
-import { basename, dirname, join } from "path";
+import { createHash } from "node:crypto";
+import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "fs";
+import { basename, dirname, join, relative } from "path";
 import { fileURLToPath } from "url";
 import type { Manifest, ManifestItem, SourceType } from "./sync/types.js";
 
@@ -23,6 +24,32 @@ const SOURCE_ORDER: Record<SourceType, number> = {
   official: 2,
 };
 
+function collectFiles(dir: string): string[] {
+  const files: string[] = [];
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const full = join(dir, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...collectFiles(full));
+    } else if (entry.name !== "item.json") {
+      files.push(full);
+    }
+  }
+  return files;
+}
+
+function computeLocalContentHash(itemDir: string): string | null {
+  const files = collectFiles(itemDir).sort();
+  if (files.length === 0) return null;
+
+  const hash = createHash("sha256");
+  for (const file of files) {
+    const rel = relative(itemDir, file);
+    const content = readFileSync(file);
+    hash.update(`${rel}:${createHash("sha1").update(content).digest("hex")}\n`);
+  }
+  return hash.digest("hex").slice(0, 16);
+}
+
 export function readAllItems(): ManifestItem[] {
   const items: ManifestItem[] = [];
 
@@ -34,11 +61,22 @@ export function readAllItems(): ManifestItem[] {
     // Each subdir is a slug
     for (const slugDir of readdirSync(typePath, { withFileTypes: true })) {
       if (!slugDir.isDirectory()) continue;
-      const itemJsonPath = join(typePath, slugDir.name, "item.json");
+      const itemDir = join(typePath, slugDir.name);
+      const itemJsonPath = join(itemDir, "item.json");
       if (!existsSync(itemJsonPath)) continue;
 
       const content = readFileSync(itemJsonPath, "utf-8");
-      items.push(JSON.parse(content) as ManifestItem);
+      const item = JSON.parse(content) as ManifestItem;
+
+      // Compute content hash for toolr items from local files
+      if (item.sourceType === "toolr") {
+        const contentHash = computeLocalContentHash(itemDir);
+        if (contentHash) {
+          item.contentHash = contentHash;
+        }
+      }
+
+      items.push(item);
     }
   }
 

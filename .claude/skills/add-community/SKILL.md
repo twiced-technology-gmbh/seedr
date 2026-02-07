@@ -119,7 +119,7 @@ questions:
 Notes:
 - Plugins are generally Claude-only (`["claude"]`), since `.claude-plugin` is a Claude concept.
 - Skills may be multi-tool compatible.
-- Community items do NOT have recommendedScope (scope is only for Toolr items).
+- Community items do NOT have targetScope (scope is only for Toolr items).
 
 **Batch 2 — Description:**
 
@@ -175,7 +175,7 @@ Item shape:
 }
 ```
 
-Note: Community items do NOT include `recommendedScope` — that field is only for Toolr items.
+Note: Community items do NOT include `targetScope` — that field is only for Toolr items.
 
 Only include `contents` sub-fields that have items (omit empty arrays).
 

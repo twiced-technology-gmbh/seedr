@@ -31,6 +31,7 @@ export interface ManifestItem {
   compatibility: string[];
   featured?: boolean;
   sourceType: SourceType;
+  contentHash?: string;
   author: { name: string; url?: string };
   externalUrl?: string;
   updatedAt?: string;

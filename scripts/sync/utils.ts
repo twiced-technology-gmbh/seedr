@@ -11,7 +11,7 @@
  *   3. Unauthenticated       — 60 req/hr
  */
 
-import { createSign } from "node:crypto";
+import { createHash, createSign } from "node:crypto";
 import { readFileSync } from "node:fs";
 
 export const GITHUB_API = "https://api.github.com";
@@ -229,6 +229,33 @@ export function extractSubtree(tree: GitTreeItem[], prefix: string, maxDepth: nu
   }
 
   return buildLevel("", 0);
+}
+
+/**
+ * Compute a content hash from git tree blob SHAs under a given prefix.
+ * Sorts blobs by path and hashes their "path:sha" pairs with SHA-256.
+ */
+export function computeContentHash(tree: GitTreeItem[], prefix: string): string | null {
+  const isRoot = !prefix || prefix === ".";
+  const normalizedPrefix = isRoot ? "" : (prefix.endsWith("/") ? prefix : prefix + "/");
+
+  const blobs: { path: string; sha: string }[] = [];
+  for (const item of tree) {
+    if (item.type !== "blob") continue;
+    if (!isRoot && !item.path.startsWith(normalizedPrefix)) continue;
+    const relative = isRoot ? item.path : item.path.slice(normalizedPrefix.length);
+    if (!relative) continue;
+    blobs.push({ path: relative, sha: item.sha });
+  }
+
+  if (blobs.length === 0) return null;
+
+  blobs.sort((a, b) => a.path.localeCompare(b.path));
+  const hash = createHash("sha256");
+  for (const blob of blobs) {
+    hash.update(`${blob.path}:${blob.sha}\n`);
+  }
+  return hash.digest("hex").slice(0, 16);
 }
 
 interface GitHubCommit {

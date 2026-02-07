@@ -56,7 +56,7 @@ questions:
       - label: "Custom name"
         description: "Enter a custom display name"
 
-  - question: "What is the recommended install scope?"
+  - question: "What scope should this install to?"
     header: "Scope"
     options:
       - label: "project (Recommended)"
@@ -169,7 +169,7 @@ Write the item metadata as `registry/<type>s/<slug>/item.json`:
   "externalUrl": "https://github.com/twiced-technology-gmbh/seedr/tree/main/registry/<type>s/<slug>",
   "updatedAt": "<current ISO 8601 date>",
   "contents": { "files": [<file tree>] },
-  "recommendedScope": "<scope from user>"
+  "targetScope": "<scope from user>"
 }
 ```
 

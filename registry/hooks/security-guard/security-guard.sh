@@ -23,6 +23,7 @@
 #  12. Auto-approve safe developer workflow commands
 
 set -euo pipefail
+trap 'echo "security-guard.sh crashed at line $LINENO (tool: ${tool_name:-unknown}, path: ${fp:-n/a})" >&2' ERR
 
 input=$(cat)
 tool_name=$(echo "$input" | jq -r '.tool_name')
@@ -34,6 +35,7 @@ PROJECT_SETTINGS="${project_dir}/.claude/settings.json"
 # ── Helpers ──────────────────────────────────────────────────
 
 deny_with() {
+  echo "$1" >&2
   jq -n --arg r "$1" \
     '{hookSpecificOutput:{hookEventName:"PreToolUse",permissionDecision:"deny",permissionDecisionReason:$r}}'
   exit 0

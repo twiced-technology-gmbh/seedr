@@ -11,6 +11,7 @@
     "name": "GitHub"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/github",
+  "contentHash": "80967cdd32c1e94a",
   "updatedAt": "2025-12-02T00:03:02Z",
   "contents": {
     "files": [

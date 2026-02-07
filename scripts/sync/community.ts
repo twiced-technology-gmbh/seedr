@@ -10,6 +10,7 @@ import {
   fetchLastCommitDate,
   fetchRepoTree,
   extractSubtree,
+  computeContentHash,
   formatName,
   parsePluginContents,
 } from "./utils.js";
@@ -32,6 +33,7 @@ async function refreshPlugin(item: ManifestItem, repo: string, basePath: string)
 
   const repoTree = await fetchRepoTree(repo);
   const updatedAt = await fetchLastCommitDate(repo, basePath || ".");
+  const contentHash = repoTree.length > 0 ? computeContentHash(repoTree, basePath) : null;
   const files = repoTree.length > 0 ? extractSubtree(repoTree, basePath, 3) : [];
   const contents: PluginContents = files.length > 0 ? parsePluginContents(files) : item.contents ?? {};
 
@@ -40,6 +42,7 @@ async function refreshPlugin(item: ManifestItem, repo: string, basePath: string)
     ...(pluginJson && { description: pluginJson.description }),
     ...(pluginJson && { name: formatName(pluginJson.name || item.slug) }),
     ...(pluginJson?.author && { author: { name: pluginJson.author.name, url: pluginJson.author.url } }),
+    ...(contentHash && { contentHash }),
     ...(updatedAt && { updatedAt }),
     contents,
   };
@@ -65,12 +68,14 @@ async function refreshSkill(item: ManifestItem, repo: string, basePath: string):
 
   const repoTree = await fetchRepoTree(repo);
   const updatedAt = await fetchLastCommitDate(repo, basePath || ".");
+  const contentHash = repoTree.length > 0 ? computeContentHash(repoTree, basePath) : null;
   const files = repoTree.length > 0 ? extractSubtree(repoTree, basePath, 3) : [];
 
   return {
     ...item,
     name,
     description,
+    ...(contentHash && { contentHash }),
     ...(updatedAt && { updatedAt }),
     ...(files.length > 0 && { contents: { files } }),
   };

@@ -133,7 +133,7 @@ export function Home() {
     }
 
     if (scopeFilter) {
-      results = results.filter((item) => (item.recommendedScope ?? "project") === scopeFilter);
+      results = results.filter((item) => (item.targetScope ?? "project") === scopeFilter);
     }
 
     return results;
