@@ -687,9 +687,9 @@
     },
     {
       "slug": "react-best-practices",
-      "name": "React Best Practices",
+      "name": "Vercel React Best Practices",
       "type": "skill",
-      "description": "React and Next.js performance optimization guidelines from Vercel Engineering. 57 rules across 8 categories covering waterfalls, bundle size, server-side performance, client-side data fetching, re-render optimization, rendering, JS performance, and advanced patterns.",
+      "description": "React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.",
       "compatibility": [
         "claude",
         "copilot",
@@ -706,22 +706,6 @@
       "updatedAt": "2026-01-26T02:01:51Z",
       "contents": {
         "files": [
-          {
-            "name": "AGENTS.md",
-            "type": "file"
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          },
-          {
-            "name": "SKILL.md",
-            "type": "file"
-          },
-          {
-            "name": "metadata.json",
-            "type": "file"
-          },
           {
             "name": "rules",
             "type": "directory",
@@ -963,15 +947,32 @@
                 "type": "file"
               }
             ]
+          },
+          {
+            "name": "AGENTS.md",
+            "type": "file"
+          },
+          {
+            "name": "metadata.json",
+            "type": "file"
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          },
+          {
+            "name": "SKILL.md",
+            "type": "file"
           }
         ]
-      }
+      },
+      "contentHash": "33746f397c2c1e23"
     },
     {
       "slug": "react-composition-patterns",
-      "name": "React Composition Patterns",
+      "name": "Vercel Composition Patterns",
       "type": "skill",
-      "description": "React composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, or designing reusable APIs. Includes compound components, render props, context providers, and React 19 API changes.",
+      "description": "React composition patterns that scale. Use when refactoring components with",
       "compatibility": [
         "claude",
         "copilot",
@@ -988,22 +989,6 @@
       "updatedAt": "2026-01-28T16:23:54Z",
       "contents": {
         "files": [
-          {
-            "name": "AGENTS.md",
-            "type": "file"
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          },
-          {
-            "name": "SKILL.md",
-            "type": "file"
-          },
-          {
-            "name": "metadata.json",
-            "type": "file"
-          },
           {
             "name": "rules",
             "type": "directory",
@@ -1049,33 +1034,13 @@
                 "type": "file"
               }
             ]
-          }
-        ]
-      }
-    },
-    {
-      "slug": "react-native-skills",
-      "name": "React Native Skills",
-      "type": "skill",
-      "description": "React Native and Expo best practices for building performant mobile apps. Use when building React Native components, optimizing list performance, implementing animations, or working with native modules. Triggers on tasks involving React Native, Expo, mobile performance, or native platform APIs.",
-      "compatibility": [
-        "claude",
-        "copilot",
-        "gemini",
-        "opencode",
-        "codex"
-      ],
-      "sourceType": "community",
-      "author": {
-        "name": "vercel",
-        "url": "https://github.com/vercel-labs"
-      },
-      "externalUrl": "https://github.com/vercel-labs/agent-skills/tree/main/skills/react-native-skills",
-      "updatedAt": "2026-01-27T17:20:04Z",
-      "contents": {
-        "files": [
+          },
           {
             "name": "AGENTS.md",
+            "type": "file"
+          },
+          {
+            "name": "metadata.json",
             "type": "file"
           },
           {
@@ -1085,171 +1050,10 @@
           {
             "name": "SKILL.md",
             "type": "file"
-          },
-          {
-            "name": "metadata.json",
-            "type": "file"
-          },
-          {
-            "name": "rules",
-            "type": "directory",
-            "children": [
-              {
-                "name": "_sections.md",
-                "type": "file"
-              },
-              {
-                "name": "_template.md",
-                "type": "file"
-              },
-              {
-                "name": "animation-derived-value.md",
-                "type": "file"
-              },
-              {
-                "name": "animation-gesture-detector-press.md",
-                "type": "file"
-              },
-              {
-                "name": "animation-gpu-properties.md",
-                "type": "file"
-              },
-              {
-                "name": "design-system-compound-components.md",
-                "type": "file"
-              },
-              {
-                "name": "fonts-config-plugin.md",
-                "type": "file"
-              },
-              {
-                "name": "imports-design-system-folder.md",
-                "type": "file"
-              },
-              {
-                "name": "js-hoist-intl.md",
-                "type": "file"
-              },
-              {
-                "name": "list-performance-callbacks.md",
-                "type": "file"
-              },
-              {
-                "name": "list-performance-function-references.md",
-                "type": "file"
-              },
-              {
-                "name": "list-performance-images.md",
-                "type": "file"
-              },
-              {
-                "name": "list-performance-inline-objects.md",
-                "type": "file"
-              },
-              {
-                "name": "list-performance-item-expensive.md",
-                "type": "file"
-              },
-              {
-                "name": "list-performance-item-memo.md",
-                "type": "file"
-              },
-              {
-                "name": "list-performance-item-types.md",
-                "type": "file"
-              },
-              {
-                "name": "list-performance-virtualize.md",
-                "type": "file"
-              },
-              {
-                "name": "monorepo-native-deps-in-app.md",
-                "type": "file"
-              },
-              {
-                "name": "monorepo-single-dependency-versions.md",
-                "type": "file"
-              },
-              {
-                "name": "navigation-native-navigators.md",
-                "type": "file"
-              },
-              {
-                "name": "react-compiler-destructure-functions.md",
-                "type": "file"
-              },
-              {
-                "name": "react-compiler-reanimated-shared-values.md",
-                "type": "file"
-              },
-              {
-                "name": "react-state-dispatcher.md",
-                "type": "file"
-              },
-              {
-                "name": "react-state-fallback.md",
-                "type": "file"
-              },
-              {
-                "name": "react-state-minimize.md",
-                "type": "file"
-              },
-              {
-                "name": "rendering-no-falsy-and.md",
-                "type": "file"
-              },
-              {
-                "name": "rendering-text-in-text-component.md",
-                "type": "file"
-              },
-              {
-                "name": "scroll-position-no-state.md",
-                "type": "file"
-              },
-              {
-                "name": "state-ground-truth.md",
-                "type": "file"
-              },
-              {
-                "name": "ui-expo-image.md",
-                "type": "file"
-              },
-              {
-                "name": "ui-image-gallery.md",
-                "type": "file"
-              },
-              {
-                "name": "ui-measure-views.md",
-                "type": "file"
-              },
-              {
-                "name": "ui-menus.md",
-                "type": "file"
-              },
-              {
-                "name": "ui-native-modals.md",
-                "type": "file"
-              },
-              {
-                "name": "ui-pressable.md",
-                "type": "file"
-              },
-              {
-                "name": "ui-safe-area-scroll.md",
-                "type": "file"
-              },
-              {
-                "name": "ui-scrollview-content-inset.md",
-                "type": "file"
-              },
-              {
-                "name": "ui-styling.md",
-                "type": "file"
-              }
-            ]
           }
         ]
-      }
+      },
+      "contentHash": "c6bf26e7684c5abc"
     },
     {
       "slug": "serena",
@@ -1991,34 +1795,6 @@
         ]
       },
       "contentHash": "89442db4ac25cb42"
-    },
-    {
-      "slug": "web-design-review",
-      "name": "Web Design Review",
-      "type": "skill",
-      "description": "Review UI code for Web Interface Guidelines compliance. Use when asked to \"review my UI\", \"check accessibility\", \"audit design\", \"review UX\", or \"check my site against best practices\".",
-      "compatibility": [
-        "claude",
-        "copilot",
-        "gemini",
-        "opencode",
-        "codex"
-      ],
-      "sourceType": "community",
-      "author": {
-        "name": "vercel",
-        "url": "https://github.com/vercel-labs"
-      },
-      "externalUrl": "https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines",
-      "updatedAt": "2026-01-16T23:47:11Z",
-      "contents": {
-        "files": [
-          {
-            "name": "SKILL.md",
-            "type": "file"
-          }
-        ]
-      }
     },
     {
       "slug": "agent-sdk-dev",
