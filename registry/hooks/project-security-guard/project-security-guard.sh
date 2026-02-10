@@ -15,12 +15,17 @@
 #   4. System modification (services, cron, users, firewall, kernel)
 #   5. macOS-specific (osascript broadly, keychain extras, system defaults)
 #   6. Privilege escalation extras (su, chmod 666)
-#   7. Dangerous git ops (force push, remote hijack, filter-branch)
+#   7. Dangerous git ops (force push, checkout --, restore, reset --hard,
+#      clean -f, stash drop/clear, branch -D, remote hijack, filter-branch)
 #   8. Package publishing (npm/cargo/gem/twine publish)
-#   9. rm / .env outside project (project-aware)
-#  10. Redirect to sensitive paths
-#  11. Sensitive file Read/Glob/Write/Edit outside project (SENS regex)
-#  12. Auto-approve safe developer workflow commands
+#   9. Database destructive ops (DROP, TRUNCATE, DELETE w/o WHERE, FLUSH)
+#  10. Cloud CLI destructive ops (AWS/GCP/Azure delete/destroy)
+#  11. Container destructive ops (docker prune, kubectl delete)
+#  12. Infrastructure destructive ops (terraform destroy, state rm)
+#  13. rm / .env outside project (project-aware)
+#  14. Redirect to sensitive paths
+#  15. Sensitive file Read/Glob/Write/Edit outside project (SENS regex)
+#  16. Auto-approve safe developer workflow commands
 
 set -euo pipefail
 trap 'echo "security-guard.sh crashed at line $LINENO (tool: ${tool_name:-unknown}, path: ${fp:-n/a})" >&2' ERR
@@ -307,13 +312,135 @@ if [[ "$tool_name" == "Bash" ]]; then
     deny_with "BLOCKED: git remote modification (redirect risk)"
   fi
 
+  # git checkout -- (discards unstaged changes to paths)
+  if echo "$cmd" | grep -qE '\bgit\b\s+checkout\s+.*--\s'; then
+    deny_with "BLOCKED: git checkout -- (discards unstaged changes)"
+  fi
+
+  # git checkout . (discards all unstaged changes)
+  if echo "$cmd" | grep -qE '\bgit\b\s+checkout\s+\.(\s|$)'; then
+    deny_with "BLOCKED: git checkout . (discards all unstaged changes)"
+  fi
+
+  # git checkout -f/--force (force checkout, may overwrite work)
+  if echo "$cmd" | grep -qE '\bgit\b\s+checkout\s+(-f|--force)\b'; then
+    deny_with "BLOCKED: git checkout --force (may overwrite unstaged work)"
+  fi
+
+  # git restore without --staged discards working tree changes
+  if echo "$cmd" | grep -qE '\bgit\b\s+restore\b'; then
+    if echo "$cmd" | grep -qE '\bgit\b\s+restore\b.*--worktree'; then
+      deny_with "BLOCKED: git restore --worktree (discards unstaged changes)"
+    elif ! echo "$cmd" | grep -qE '\bgit\b\s+restore\b.*--staged'; then
+      deny_with "BLOCKED: git restore (discards unstaged changes; use --staged to unstage only)"
+    fi
+  fi
+
+  # git reset --hard (destroys all uncommitted work)
+  if echo "$cmd" | grep -qE '\bgit\b\s+reset\s+--hard\b'; then
+    deny_with "BLOCKED: git reset --hard (destroys all uncommitted work)"
+  fi
+
+  # git clean -f (permanently removes untracked files)
+  if echo "$cmd" | grep -qE '\bgit\b\s+clean\b.*-[a-zA-Z]*f'; then
+    deny_with "BLOCKED: git clean -f (permanently removes untracked files)"
+  fi
+
+  # git stash drop/clear (destroys saved changes)
+  if echo "$cmd" | grep -qE '\bgit\b\s+stash\s+(drop|clear)\b'; then
+    deny_with "BLOCKED: git stash drop/clear (destroys saved changes)"
+  fi
+
+  # git branch -D (force delete, even if not merged)
+  if echo "$cmd" | grep -qE '\bgit\b\s+branch\s+-D\b'; then
+    deny_with "BLOCKED: git branch -D (force-deletes potentially unmerged branch)"
+  fi
+
   # ─── 8. Package publishing ─────────────────────────────────
 
   if echo "$cmd" | grep -qE '\b(npm|yarn|pnpm)\s+publish\b|\bcargo\s+publish\b|\bgem\s+push\b|\btwine\s+upload\b|\bpoetry\s+publish\b'; then
     deny_with "BLOCKED: Package publishing (data exfiltration risk)"
   fi
 
-  # ─── 9. rm outside project ─────────────────────────────────
+  # ─── 9. Database destructive operations ────────────────────
+
+  # SQL destructive commands (via psql, mysql, sqlite3, or inline)
+  if echo "$cmd" | grep -qiE '\b(DROP|TRUNCATE)\s+(DATABASE|TABLE|INDEX|SCHEMA|VIEW|TRIGGER|FUNCTION|PROCEDURE)\b'; then
+    deny_with "BLOCKED: Destructive SQL operation (DROP/TRUNCATE)"
+  fi
+
+  # DELETE FROM without WHERE clause (deletes all rows)
+  if echo "$cmd" | grep -qiE '\bDELETE\s+FROM\b' && ! echo "$cmd" | grep -qiE '\bWHERE\b'; then
+    deny_with "BLOCKED: DELETE FROM without WHERE clause (deletes all rows)"
+  fi
+
+  # Redis destructive commands
+  if echo "$cmd" | grep -qiE '\b(redis-cli|redis)\b.*\b(FLUSHALL|FLUSHDB)\b'; then
+    deny_with "BLOCKED: Redis FLUSHALL/FLUSHDB (destroys all data)"
+  fi
+
+  # MongoDB destructive commands
+  if echo "$cmd" | grep -qiE '\b(mongosh?|mongo)\b.*\b(dropDatabase|\.drop\s*\()\b'; then
+    deny_with "BLOCKED: MongoDB drop operation"
+  fi
+
+  # ─── 10. Cloud CLI destructive operations ──────────────────
+
+  # AWS destructive operations
+  if echo "$cmd" | grep -qE '\baws\b.*\b(delete-|terminate-|remove-|deregister-)'; then
+    deny_with "BLOCKED: AWS destructive operation"
+  fi
+
+  # GCP destructive operations
+  if echo "$cmd" | grep -qE '\bgcloud\b.*\bdelete\b'; then
+    deny_with "BLOCKED: GCP destructive operation"
+  fi
+
+  # Azure destructive operations
+  if echo "$cmd" | grep -qE '\baz\s+\S+\s+(delete|purge)\b'; then
+    deny_with "BLOCKED: Azure destructive operation"
+  fi
+
+  # ─── 11. Container destructive operations ──────────────────
+
+  # Docker prune operations (bulk removal)
+  if echo "$cmd" | grep -qE '\bdocker\s+(system|container|image|volume|network)\s+prune\b'; then
+    deny_with "BLOCKED: Docker prune operation (bulk removal)"
+  fi
+
+  # docker compose down --volumes (destroys persistent data)
+  if echo "$cmd" | grep -qE '\bdocker\s+compose\s+down\b.*(-v|--volumes)\b'; then
+    deny_with "BLOCKED: docker compose down --volumes (destroys persistent data)"
+  fi
+
+  # Kubernetes destructive operations on critical resources
+  if echo "$cmd" | grep -qE '\bkubectl\s+delete\s+(namespace|ns|deployment|deploy|statefulset|sts|daemonset|ds|pv|pvc|secret|configmap|cm|service|svc|ingress|node)\b'; then
+    deny_with "BLOCKED: kubectl delete (destructive cluster operation)"
+  fi
+
+  # kubectl delete --all (bulk deletion)
+  if echo "$cmd" | grep -qE '\bkubectl\s+delete\b.*--all\b'; then
+    deny_with "BLOCKED: kubectl delete --all (bulk deletion)"
+  fi
+
+  # ─── 12. Infrastructure destructive operations ─────────────
+
+  # Terraform destroy
+  if echo "$cmd" | grep -qE '\bterraform\s+destroy\b'; then
+    deny_with "BLOCKED: terraform destroy (tears down infrastructure)"
+  fi
+
+  # Terraform state removal
+  if echo "$cmd" | grep -qE '\bterraform\s+state\s+rm\b'; then
+    deny_with "BLOCKED: terraform state rm (removes resource from state)"
+  fi
+
+  # Pulumi destroy
+  if echo "$cmd" | grep -qE '\bpulumi\s+destroy\b'; then
+    deny_with "BLOCKED: pulumi destroy (tears down infrastructure)"
+  fi
+
+  # ─── 13. rm outside project ────────────────────────────────
 
   if echo "$cmd" | grep -qE '(^|[;&|]\s*)rm\s'; then
     # Catch dangerous rm targets regardless of project
@@ -330,7 +457,7 @@ if [[ "$tool_name" == "Bash" ]]; then
     done
   fi
 
-  # ─── 10. .env access outside project ───────────────────────
+  # ─── 14. .env access outside project ──────────────────────
 
   if echo "$cmd" | grep -qE '\.env\b'; then
     for word in $cmd; do
@@ -342,7 +469,7 @@ if [[ "$tool_name" == "Bash" ]]; then
     done
   fi
 
-  # ─── 11. Redirect to sensitive paths ───────────────────────
+  # ─── 15. Redirect to sensitive paths ──────────────────────
 
   if echo "$cmd" | grep -qE '(>|>>)\s*/(etc|boot|usr/(lib|bin)|sbin)/'; then
     deny_with "BLOCKED: Redirect to system path"

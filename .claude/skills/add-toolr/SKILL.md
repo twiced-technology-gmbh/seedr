@@ -70,6 +70,8 @@ questions:
     header: "Compat"
     multiSelect: true
     options:
+      - label: "All"
+        description: "Compatible with claude, copilot, gemini, opencode, and codex"
       - label: "claude"
         description: "Anthropic Claude Code"
       - label: "copilot"
@@ -78,9 +80,13 @@ questions:
         description: "Google Gemini CLI"
       - label: "opencode"
         description: "OpenCode CLI"
+      - label: "codex"
+        description: "OpenAI Codex CLI"
 ```
 
-Note: For hooks, agents, settings, and commands, default compatibility to `["claude"]` only since those types are Claude-specific. Pre-select accordingly.
+Notes:
+- If the user selects "All", expand to `["claude", "copilot", "gemini", "opencode", "codex"]` in the compatibility array.
+- For hooks, agents, settings, and commands, default compatibility to `["claude"]` only since those types are Claude-specific. Pre-select accordingly.
 
 **Batch 2 — Description:**
 

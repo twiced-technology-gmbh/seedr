@@ -1,0 +1,86 @@
+{
+  "slug": "composition-patterns",
+  "name": "React Composition Patterns",
+  "type": "skill",
+  "description": "React composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, or designing reusable APIs. Includes compound components, render props, context providers, and React 19 API changes.",
+  "compatibility": [
+    "claude",
+    "copilot",
+    "gemini",
+    "opencode",
+    "codex"
+  ],
+  "sourceType": "community",
+  "author": {
+    "name": "Vercel",
+    "url": "https://github.com/vercel-labs"
+  },
+  "externalUrl": "https://github.com/vercel-labs/agent-skills/tree/main/skills/composition-patterns",
+  "updatedAt": "2026-01-28T16:23:54Z",
+  "contents": {
+    "files": [
+      {
+        "name": "AGENTS.md",
+        "type": "file"
+      },
+      {
+        "name": "README.md",
+        "type": "file"
+      },
+      {
+        "name": "SKILL.md",
+        "type": "file"
+      },
+      {
+        "name": "metadata.json",
+        "type": "file"
+      },
+      {
+        "name": "rules",
+        "type": "directory",
+        "children": [
+          {
+            "name": "_sections.md",
+            "type": "file"
+          },
+          {
+            "name": "_template.md",
+            "type": "file"
+          },
+          {
+            "name": "architecture-avoid-boolean-props.md",
+            "type": "file"
+          },
+          {
+            "name": "architecture-compound-components.md",
+            "type": "file"
+          },
+          {
+            "name": "patterns-children-over-render-props.md",
+            "type": "file"
+          },
+          {
+            "name": "patterns-explicit-variants.md",
+            "type": "file"
+          },
+          {
+            "name": "react19-no-forwardref.md",
+            "type": "file"
+          },
+          {
+            "name": "state-context-interface.md",
+            "type": "file"
+          },
+          {
+            "name": "state-decouple-implementation.md",
+            "type": "file"
+          },
+          {
+            "name": "state-lift-state.md",
+            "type": "file"
+          }
+        ]
+      }
+    ]
+  }
+}

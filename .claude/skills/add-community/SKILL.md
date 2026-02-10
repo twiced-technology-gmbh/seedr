@@ -106,6 +106,8 @@ questions:
     header: "Compat"
     multiSelect: true
     options:
+      - label: "All"
+        description: "Compatible with claude, copilot, gemini, opencode, and codex"
       - label: "claude"
         description: "Anthropic Claude Code"
       - label: "copilot"
@@ -114,9 +116,12 @@ questions:
         description: "Google Gemini CLI"
       - label: "opencode"
         description: "OpenCode CLI"
+      - label: "codex"
+        description: "OpenAI Codex CLI"
 ```
 
 Notes:
+- If the user selects "All", expand to `["claude", "copilot", "gemini", "opencode", "codex"]` in the compatibility array.
 - Plugins are generally Claude-only (`["claude"]`), since `.claude-plugin` is a Claude concept.
 - Skills may be multi-tool compatible.
 - Community items do NOT have targetScope (scope is only for Toolr items).
