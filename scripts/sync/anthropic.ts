@@ -7,6 +7,9 @@
  * - anthropics/claude-plugins-official/external_plugins → plugins, sourceType: "community"
  */
 
+import { existsSync, readFileSync } from "fs";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
 import {
   GITHUB_RAW,
   fetchJson,
@@ -21,6 +24,27 @@ import {
 } from "./utils.js";
 import type { PluginJson } from "./utils.js";
 import type { ManifestItem, ComponentType, SourceType, GitTreeItem, PluginContents } from "./types.js";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const registryDir = join(__dirname, "..", "..", "registry");
+
+function pluralizeType(type: string): string {
+  if (type === "settings") return "settings";
+  return type + "s";
+}
+
+/**
+ * Read existing item.json to preserve manually-set fields like compatibility.
+ */
+function readExistingItem(type: string, slug: string): ManifestItem | null {
+  const itemPath = join(registryDir, pluralizeType(type), slug, "item.json");
+  if (!existsSync(itemPath)) return null;
+  try {
+    return JSON.parse(readFileSync(itemPath, "utf-8"));
+  } catch {
+    return null;
+  }
+}
 
 const PLUGINS_REPO = "anthropics/claude-plugins-official";
 const SKILLS_REPO = "anthropics/skills";
@@ -93,13 +117,17 @@ async function fetchItems(options: FetchItemsOptions): Promise<ManifestItem[]> {
           }
         }
 
+        // Preserve manually-set compatibility from existing item.json
+        const existing = readExistingItem(type, slug);
+        const itemCompatibility = existing?.compatibility ?? compatibility;
+
         console.log(`  ✓ ${slug}${updatedAt ? ` (${updatedAt.split("T")[0]})` : ""}`);
         return {
           slug,
           name: formatName(metadata.name || slug),
           type,
           description: metadata.description || "",
-          compatibility,
+          compatibility: itemCompatibility,
           sourceType,
           author: metadata.author ?? { name: defaultAuthor },
           externalUrl: `https://github.com/${repo}/tree/main/${basePath}/${slug}`,

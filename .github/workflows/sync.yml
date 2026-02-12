@@ -51,12 +51,56 @@ jobs:
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
 
+      - name: Detect new items
+        id: new-items
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          NEW_FILES=$(git ls-files --others --exclude-standard registry/*/*/item.json)
+          if [ -n "$NEW_FILES" ]; then
+            echo "found=true" >> $GITHUB_OUTPUT
+            # Build a human-readable list of new items
+            ITEMS=""
+            for f in $NEW_FILES; do
+              SLUG=$(echo "$f" | sed 's|registry/[^/]*/\([^/]*\)/item.json|\1|')
+              TYPE=$(echo "$f" | sed 's|registry/\([^/]*\)/.*|\1|' | sed 's/s$//')
+              NAME=$(grep -o '"name": *"[^"]*"' "$f" | head -1 | sed 's/"name": *"\([^"]*\)"/\1/')
+              ITEMS="${ITEMS}- **${NAME}** (${TYPE}: \`${SLUG}\`)\n"
+            done
+            # Use a delimiter for multiline output
+            echo "list<<EOF" >> $GITHUB_OUTPUT
+            echo -e "$ITEMS" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          else
+            echo "found=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Commit and push to main and prod
         if: steps.changes.outputs.changed == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add registry/
           git add registry/manifest.json
           git commit -m "chore: sync registry from Anthropic"
           git push origin main
           git push origin main:prod
+
+      - name: Send new items email
+        if: steps.new-items.outputs.found == 'true'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_HOST }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "Seedr Registry: New items detected"
+          to: daniel.deusing@twiced.de
+          from: ${{ secrets.SMTP_USERNAME }}
+          content_type: text/plain
+          body: |
+            New items were added to the seedr registry during today's sync:
+
+            ${{ steps.new-items.outputs.list }}
+
+            View the registry: https://seedr.toolr.dev
+            GitHub: https://github.com/twiced-technology-gmbh/seedr
