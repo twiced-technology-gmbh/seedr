@@ -1,0 +1,27 @@
+name: Test Email
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send test email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_HOST }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "Seedr Registry: Test email"
+          to: daniel.deusing@twiced.de
+          from: ${{ secrets.SMTP_USERNAME }}
+          content_type: text/plain
+          body: |
+            This is a test email from the seedr registry CI.
+
+            If you received this, SMTP is configured correctly.
+
+            - Host: ${{ secrets.SMTP_HOST }}
+            - Port: ${{ secrets.SMTP_PORT }}
