@@ -1,0 +1,22 @@
+{
+  "slug": "web-design-guidelines",
+  "name": "Web Design Guidelines",
+  "type": "skill",
+  "description": "Review UI code for Web Interface Guidelines compliance. Use when asked to review UI, check accessibility, audit design, review UX, or check against best practices.",
+  "compatibility": ["claude", "copilot", "gemini", "opencode", "codex"],
+  "sourceType": "community",
+  "author": {
+    "name": "Vercel",
+    "url": "https://github.com/vercel-labs"
+  },
+  "externalUrl": "https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines",
+  "updatedAt": "2026-01-29T11:15:56Z",
+  "contents": {
+    "files": [
+      {
+        "name": "SKILL.md",
+        "type": "file"
+      }
+    ]
+  }
+}
