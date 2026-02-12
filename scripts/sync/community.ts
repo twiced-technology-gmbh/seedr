@@ -40,7 +40,7 @@ async function refreshPlugin(item: ManifestItem, repo: string, basePath: string)
   return {
     ...item,
     ...(pluginJson && { description: pluginJson.description }),
-    ...(pluginJson && { name: formatName(pluginJson.name || item.slug) }),
+    ...(!item.name && pluginJson && { name: formatName(pluginJson.name || item.slug) }),
     ...(pluginJson?.author && { author: { name: pluginJson.author.name, url: pluginJson.author.url } }),
     ...(contentHash && { contentHash }),
     ...(updatedAt && { updatedAt }),
@@ -61,7 +61,7 @@ async function refreshSkill(item: ManifestItem, repo: string, basePath: string):
       const frontmatter = match[1];
       const nameMatch = frontmatter.match(/^name:\s*(.+)$/m);
       const descMatch = frontmatter.match(/^description:\s*(.+)$/m);
-      if (nameMatch) name = formatName(nameMatch[1].trim());
+      if (nameMatch && !item.name) name = formatName(nameMatch[1].trim());
       if (descMatch) description = descMatch[1].trim();
     }
   }
