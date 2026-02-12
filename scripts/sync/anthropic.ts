@@ -117,14 +117,15 @@ async function fetchItems(options: FetchItemsOptions): Promise<ManifestItem[]> {
           }
         }
 
-        // Preserve manually-set compatibility from existing item.json
+        // Preserve manually-set fields from existing item.json
         const existing = readExistingItem(type, slug);
+        const itemName = existing?.name ?? formatName(metadata.name || slug);
         const itemCompatibility = existing?.compatibility ?? compatibility;
 
         console.log(`  ✓ ${slug}${updatedAt ? ` (${updatedAt.split("T")[0]})` : ""}`);
         return {
           slug,
-          name: formatName(metadata.name || slug),
+          name: itemName,
           type,
           description: metadata.description || "",
           compatibility: itemCompatibility,
