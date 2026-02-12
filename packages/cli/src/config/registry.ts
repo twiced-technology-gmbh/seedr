@@ -47,7 +47,7 @@ export async function loadManifest(): Promise<RegistryManifest> {
     manifestCache.set(manifest);
     return manifest;
   } catch {
-    // Fall back to remote (GitHub)
+    // Local not available (expected when running via npx) — fetch from remote
     try {
       const content = await fetchRemote(`${GITHUB_RAW_URL}/manifest.json`);
       const manifest = JSON.parse(content) as RegistryManifest;
@@ -125,7 +125,7 @@ export async function getItemContent(item: RegistryItem): Promise<string> {
     try {
       return await readFile(join(local, mainFile), "utf-8");
     } catch {
-      // Fall through to remote
+      // Local not available — fall through to remote fetch
     }
   }
 
@@ -173,12 +173,7 @@ export async function listItemFiles(item: RegistryItem): Promise<string[]> {
     }
   }
 
-  try {
-    await walkDir(local);
-  } catch {
-    // Directory doesn't exist locally
-  }
-
+  await walkDir(local);
   return files;
 }
 
@@ -244,12 +239,8 @@ async function fetchFileTree(
         await fetchFileTree(node.children, `${baseUrl}/${node.name}`, nodePath);
       }
     } else {
-      try {
-        const content = await fetchRemote(`${baseUrl}/${node.name}`);
-        await writeFile(nodePath, content, "utf-8");
-      } catch {
-        // Skip files that can't be fetched
-      }
+      const content = await fetchRemote(`${baseUrl}/${node.name}`);
+      await writeFile(nodePath, content, "utf-8");
     }
   }
 }

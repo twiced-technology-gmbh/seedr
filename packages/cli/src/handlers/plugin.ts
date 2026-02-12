@@ -161,11 +161,7 @@ async function installPluginForTool(
     const pluginId = getPluginId(pluginName, marketplace);
 
     // Step 2b: Ensure marketplace is registered (non-fatal if it fails)
-    try {
-      await ensureMarketplaceRegistered(marketplace, item);
-    } catch {
-      // Marketplace registration is best-effort — plugin still works without it
-    }
+    await ensureMarketplaceRegistered(marketplace, item);
 
     // Step 3: Move to final cache path
     const cachePath = getPluginCachePath(marketplace, pluginName, version);

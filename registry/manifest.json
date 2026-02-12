@@ -2057,34 +2057,6 @@
       }
     },
     {
-      "slug": "web-design-review",
-      "name": "Web Design Review",
-      "type": "skill",
-      "description": "Review UI code for Web Interface Guidelines compliance. Use when asked to \"review my UI\", \"check accessibility\", \"audit design\", \"review UX\", or \"check my site against best practices\".",
-      "compatibility": [
-        "claude",
-        "copilot",
-        "gemini",
-        "opencode",
-        "codex"
-      ],
-      "sourceType": "community",
-      "author": {
-        "name": "vercel",
-        "url": "https://github.com/vercel-labs"
-      },
-      "externalUrl": "https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines",
-      "updatedAt": "2026-01-16T23:47:11Z",
-      "contents": {
-        "files": [
-          {
-            "name": "SKILL.md",
-            "type": "file"
-          }
-        ]
-      }
-    },
-    {
       "slug": "agent-sdk-dev",
       "name": "Agent Sdk Dev",
       "type": "plugin",

@@ -5,7 +5,7 @@
   "type": "module",
   "description": "AI tools configuration seeder - part of the toolr-suite ecosystem",
   "scripts": {
-    "prebuild": "tsx scripts/sync.ts || echo 'Sync failed, using existing manifest'",
+    "prebuild": "tsx scripts/sync.ts",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",

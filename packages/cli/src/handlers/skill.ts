@@ -167,12 +167,8 @@ export async function uninstallSkill(
 
   // Remove directory
   const { rm } = await import("node:fs/promises");
-  try {
-    await rm(destPath, { recursive: true });
-    return true;
-  } catch {
-    return false;
-  }
+  await rm(destPath, { recursive: true });
+  return true;
 }
 
 export async function getInstalledSkills(

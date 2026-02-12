@@ -114,8 +114,7 @@ export async function syncCommunity(items: ManifestItem[]): Promise<ManifestItem
       console.log(`  ✓ ${item.slug}${updated.updatedAt ? ` (${updated.updatedAt.split("T")[0]})` : ""}`);
       results.push(updated);
     } catch (err) {
-      console.warn(`  ⚠ ${item.slug} failed to sync, keeping existing`);
-      results.push(item);
+      throw new Error(`Failed to sync community item ${item.slug}: ${err instanceof Error ? err.message : err}`);
     }
   }
 

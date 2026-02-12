@@ -70,3 +70,4 @@ Print:
 - Only removes items with `sourceType: "community"` or `sourceType: "official"` — refuse to remove toolr items via this skill
 - Always confirm before removing — no `--force` shortcut
 - Items removed this way will NOT reappear after `pnpm sync` unless they match a freshly synced item from the Anthropic registry
+- **Do NOT edit `manifest.json` directly** — it is a compiled output generated from individual `item.json` files. Always delete the `item.json` (and its directory) and then run `pnpm compile` to regenerate the manifest. Manual edits to `manifest.json` will be overwritten on the next build or sync.

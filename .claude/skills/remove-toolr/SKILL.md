@@ -74,3 +74,4 @@ Print:
 - Only removes items with `sourceType: "toolr"` — refuse to remove community items via this skill
 - Always confirm before deleting — no `--force` shortcut
 - If the local directory doesn't exist (already deleted), proceed with manifest removal anyway and note it
+- **Do NOT edit `manifest.json` directly** — it is a compiled output generated from individual `item.json` files. Always delete the `item.json` (and its directory) and then run `pnpm compile` to regenerate the manifest. Manual edits to `manifest.json` will be overwritten on the next build or sync.

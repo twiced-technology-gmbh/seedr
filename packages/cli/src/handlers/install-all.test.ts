@@ -28,6 +28,10 @@ vi.mock("node:fs/promises", async () => {
   return memfs.fs.promises;
 });
 
+vi.mock("node:child_process", () => ({
+  execFile: vi.fn((_cmd: string, _args: string[], cb: (err: null) => void) => cb(null)),
+}));
+
 vi.mock("../config/registry.js", () => ({
   getItemSourcePath: vi.fn((item: RegistryItem) => {
     if (item.sourceType === "toolr") {
