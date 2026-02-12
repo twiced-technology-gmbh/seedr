@@ -5,11 +5,7 @@
   "description": "Diagnose and improve CLAUDE.md files and .claude/rules/",
   "longDescription": "Audit CLAUDE.md files for quality, staleness, and anti-patterns. Evaluate .claude/rules/ for modularity and correctness. Provides detailed health reports with severity ratings, scores, and targeted fixes for optimal Claude Code project context.",
   "compatibility": [
-    "claude",
-    "copilot",
-    "gemini",
-    "codex",
-    "opencode"
+    "claude"
   ],
   "featured": true,
   "sourceType": "toolr",

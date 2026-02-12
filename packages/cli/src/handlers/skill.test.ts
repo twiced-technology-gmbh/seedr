@@ -141,6 +141,47 @@ describe("skill handler", () => {
       const copilotStats = vol.lstatSync("/my/project/.github/skills/test-skill");
       expect(copilotStats.isSymbolicLink()).toBe(true);
     });
+
+    it("should skip symlink for tools that read .agents/ directly", async () => {
+      const { installSkill } = await import("./skill.js");
+
+      const item: RegistryItem = {
+        slug: "test-skill",
+        name: "Test Skill",
+        type: "skill",
+        description: "A test skill",
+        compatibility: ["claude", "gemini", "codex", "opencode"],
+        sourceType: "toolr",
+      };
+
+      const results = await installSkill(
+        item,
+        ["claude", "gemini", "codex", "opencode"],
+        "project",
+        "symlink",
+        "/my/project"
+      );
+
+      expect(results.every((r) => r.success)).toBe(true);
+
+      // Central location should exist with content
+      expect(vol.existsSync("/my/project/.agents/skills/test-skill/SKILL.md")).toBe(true);
+
+      // Claude should have a symlink
+      const claudeStats = vol.lstatSync("/my/project/.claude/skills/test-skill");
+      expect(claudeStats.isSymbolicLink()).toBe(true);
+
+      // Gemini, Codex, OpenCode should NOT have symlinks (they read .agents/skills/ directly)
+      expect(vol.existsSync("/my/project/.gemini/skills/test-skill")).toBe(false);
+      expect(vol.existsSync("/my/project/.codex/skills/test-skill")).toBe(false);
+      expect(vol.existsSync("/my/project/.opencode/skills/test-skill")).toBe(false);
+
+      // Their results should point to the central path
+      for (const tool of ["gemini", "codex", "opencode"] as const) {
+        const result = results.find((r) => r.tool === tool);
+        expect(result?.path).toBe("/my/project/.agents/skills/test-skill");
+      }
+    });
   });
 
   describe("uninstallSkill", () => {

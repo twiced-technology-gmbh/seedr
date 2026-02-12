@@ -127,6 +127,15 @@ export async function installSkill(
   }
 
   for (const tool of tools) {
+    // Gemini, Codex, and OpenCode already read .agents/skills/, so skip
+    // the symlink when content is installed centrally. For single-tool
+    // installs, copy directly to the tool's own directory instead.
+    const readsAgentsDir = tool === "gemini" || tool === "codex" || tool === "opencode";
+    if (readsAgentsDir && method === "symlink" && centralPath) {
+      results.push({ tool, success: true, path: centralPath });
+      continue;
+    }
+
     const result = await installSkillForTool(
       item,
       tool,
