@@ -725,7 +725,7 @@
       "slug": "react-best-practices",
       "name": "React Best Practices",
       "type": "skill",
-      "description": "React and Next.js performance optimization guidelines from Vercel Engineering. 57 rules across 8 categories covering waterfalls, bundle size, server-side performance, client-side data fetching, re-render optimization, rendering, JS performance, and advanced patterns.",
+      "description": "React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.",
       "compatibility": [
         "claude",
         "copilot",
@@ -742,22 +742,6 @@
       "updatedAt": "2026-01-26T02:01:51Z",
       "contents": {
         "files": [
-          {
-            "name": "AGENTS.md",
-            "type": "file"
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          },
-          {
-            "name": "SKILL.md",
-            "type": "file"
-          },
-          {
-            "name": "metadata.json",
-            "type": "file"
-          },
           {
             "name": "rules",
             "type": "directory",
@@ -999,15 +983,32 @@
                 "type": "file"
               }
             ]
+          },
+          {
+            "name": "AGENTS.md",
+            "type": "file"
+          },
+          {
+            "name": "metadata.json",
+            "type": "file"
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          },
+          {
+            "name": "SKILL.md",
+            "type": "file"
           }
         ]
-      }
+      },
+      "contentHash": "33746f397c2c1e23"
     },
     {
       "slug": "react-composition-patterns",
       "name": "React Composition Patterns",
       "type": "skill",
-      "description": "React composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, or designing reusable APIs. Includes compound components, render props, context providers, and React 19 API changes.",
+      "description": "React composition patterns that scale. Use when refactoring components with",
       "compatibility": [
         "claude",
         "copilot",
@@ -1024,22 +1025,6 @@
       "updatedAt": "2026-01-28T16:23:54Z",
       "contents": {
         "files": [
-          {
-            "name": "AGENTS.md",
-            "type": "file"
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          },
-          {
-            "name": "SKILL.md",
-            "type": "file"
-          },
-          {
-            "name": "metadata.json",
-            "type": "file"
-          },
           {
             "name": "rules",
             "type": "directory",
@@ -1085,15 +1070,32 @@
                 "type": "file"
               }
             ]
+          },
+          {
+            "name": "AGENTS.md",
+            "type": "file"
+          },
+          {
+            "name": "metadata.json",
+            "type": "file"
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          },
+          {
+            "name": "SKILL.md",
+            "type": "file"
           }
         ]
-      }
+      },
+      "contentHash": "c6bf26e7684c5abc"
     },
     {
       "slug": "react-native-skills",
       "name": "React Native Skills",
       "type": "skill",
-      "description": "React Native and Expo best practices for building performant mobile apps. Use when building React Native components, optimizing list performance, implementing animations, or working with native modules. Triggers on tasks involving React Native, Expo, mobile performance, or native platform APIs.",
+      "description": "React Native and Expo best practices for building performant mobile apps. Use",
       "compatibility": [
         "claude",
         "copilot",
@@ -1110,22 +1112,6 @@
       "updatedAt": "2026-01-27T17:20:04Z",
       "contents": {
         "files": [
-          {
-            "name": "AGENTS.md",
-            "type": "file"
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          },
-          {
-            "name": "SKILL.md",
-            "type": "file"
-          },
-          {
-            "name": "metadata.json",
-            "type": "file"
-          },
           {
             "name": "rules",
             "type": "directory",
@@ -1283,9 +1269,26 @@
                 "type": "file"
               }
             ]
+          },
+          {
+            "name": "AGENTS.md",
+            "type": "file"
+          },
+          {
+            "name": "metadata.json",
+            "type": "file"
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          },
+          {
+            "name": "SKILL.md",
+            "type": "file"
           }
         ]
-      }
+      },
+      "contentHash": "c3de016fed23abea"
     },
     {
       "slug": "serena",
@@ -2032,7 +2035,7 @@
       "slug": "web-design-guidelines",
       "name": "Web Design Guidelines",
       "type": "skill",
-      "description": "Review UI code for Web Interface Guidelines compliance. Use when asked to review UI, check accessibility, audit design, review UX, or check against best practices.",
+      "description": "Review UI code for Web Interface Guidelines compliance. Use when asked to \"review my UI\", \"check accessibility\", \"audit design\", \"review UX\", or \"check my site against best practices\".",
       "compatibility": [
         "claude",
         "copilot",
@@ -2046,7 +2049,7 @@
         "url": "https://github.com/vercel-labs"
       },
       "externalUrl": "https://github.com/vercel-labs/agent-skills/tree/main/skills/web-design-guidelines",
-      "updatedAt": "2026-01-29T11:15:56Z",
+      "updatedAt": "2026-01-16T23:47:11Z",
       "contents": {
         "files": [
           {
@@ -2054,7 +2057,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "contentHash": "4e1f08914cfa06e1"
     },
     {
       "slug": "agent-sdk-dev",
