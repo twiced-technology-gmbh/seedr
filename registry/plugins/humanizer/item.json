@@ -1,0 +1,64 @@
+{
+  "slug": "humanizer",
+  "name": "Humanizer",
+  "type": "plugin",
+  "description": "Identify and remove AI writing patterns from text, replacing inflated language with concrete, human-sounding prose.",
+  "longDescription": "Plugin with a single `humanizer` skill and a `patterns.md` reference covering 24 AI writing pattern categories: inflated significance, vague attributions, promotional language, AI vocabulary words, copula avoidance, rule of three, em dash overuse, inline-header lists, decorative emojis, chatbot phrases, and sycophantic tone. Goes beyond pattern removal by guiding the addition of authentic voice — opinions, varied rhythm, and specific details. Based on Wikipedia's Signs of AI Writing reference maintained by WikiProject AI Cleanup.",
+  "compatibility": [
+    "claude"
+  ],
+  "sourceType": "community",
+  "author": {
+    "name": "Trail of Bits",
+    "url": "https://github.com/trailofbits"
+  },
+  "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/humanizer",
+  "updatedAt": "2026-02-06T16:22:35Z",
+  "contents": {
+    "skills": [
+      "humanizer"
+    ],
+    "files": [
+      {
+        "name": ".claude-plugin",
+        "type": "directory",
+        "children": [
+          {
+            "name": "plugin.json",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "skills",
+        "type": "directory",
+        "children": [
+          {
+            "name": "humanizer",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              },
+              {
+                "name": "references",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "patterns.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "README.md",
+        "type": "file"
+      }
+    ]
+  }
+}

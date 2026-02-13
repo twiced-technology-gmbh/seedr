@@ -1,0 +1,166 @@
+{
+  "slug": "wooyun-legacy",
+  "name": "WooYun Legacy",
+  "type": "plugin",
+  "description": "Web vulnerability testing methodology distilled from 88,636 real-world cases covering SQL injection, XSS, command execution, file upload, and more.",
+  "longDescription": "Plugin with a single `wooyun-legacy` skill backed by 8 full vulnerability reference docs (SQL injection, XSS, command execution, file upload, path traversal, unauthorized access, info disclosure, logic flaws) and 14 testing checklists (adding CSRF, SSRF, weak passwords, misconfiguration, RCE, XXE). Also includes 2 anonymized case studies: a financial institution attack chain and a telecom carrier penetration. All content distilled from 88,636 WooYun vulnerability database cases (2010–2016), translated from Chinese and anonymized. For authorized security testing and educational use only.",
+  "compatibility": [
+    "claude"
+  ],
+  "sourceType": "community",
+  "author": {
+    "name": "Trail of Bits",
+    "url": "https://github.com/trailofbits"
+  },
+  "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/wooyun-legacy",
+  "updatedAt": "2026-02-12T00:10:00Z",
+  "contents": {
+    "skills": [
+      "wooyun-legacy"
+    ],
+    "files": [
+      {
+        "name": ".claude-plugin",
+        "type": "directory",
+        "children": [
+          {
+            "name": "plugin.json",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "skills",
+        "type": "directory",
+        "children": [
+          {
+            "name": "wooyun-legacy",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              },
+              {
+                "name": "references",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "bank-penetration.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "checklists",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "command-execution-checklist.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "csrf-checklist.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "file-upload-checklist.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "info-disclosure-checklist.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "logic-flaws-checklist.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "misconfig-checklist.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "path-traversal-checklist.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "rce-checklist.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "sql-injection-checklist.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "ssrf-checklist.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "unauthorized-access-checklist.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "weak-password-checklist.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "xss-checklist.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "xxe-checklist.md",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "command-execution.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "file-upload.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "info-disclosure.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "logic-flaws.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "path-traversal.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "sql-injection.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "telecom-penetration.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "unauthorized-access.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "xss.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "LICENSE",
+        "type": "file"
+      },
+      {
+        "name": "README.md",
+        "type": "file"
+      }
+    ]
+  }
+}

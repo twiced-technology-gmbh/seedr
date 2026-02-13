@@ -1,0 +1,54 @@
+{
+  "slug": "ask-questions-if-underspecified",
+  "name": "Ask Questions If Underspecified",
+  "type": "plugin",
+  "description": "Pause before implementing to ask 1-5 targeted clarifying questions when requirements have multiple plausible interpretations.",
+  "longDescription": "Plugin with a single `ask-questions-if-underspecified` skill that activates when requests are ambiguous — unclear objectives, scope, constraints, or acceptance criteria. Asks 1–5 scannable, multiple-choice questions with recommended defaults before any code changes. Supports a fast-path `defaults` reply to accept all recommendations. Includes question templates for scope, compatibility targets, and done criteria, plus anti-patterns to avoid over-questioning.",
+  "compatibility": [
+    "claude"
+  ],
+  "sourceType": "community",
+  "author": {
+    "name": "Trail of Bits",
+    "url": "https://github.com/trailofbits"
+  },
+  "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified",
+  "updatedAt": "2026-02-12T15:28:33Z",
+  "contents": {
+    "skills": [
+      "ask-questions-if-underspecified"
+    ],
+    "files": [
+      {
+        "name": ".claude-plugin",
+        "type": "directory",
+        "children": [
+          {
+            "name": "plugin.json",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "skills",
+        "type": "directory",
+        "children": [
+          {
+            "name": "ask-questions-if-underspecified",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "README.md",
+        "type": "file"
+      }
+    ]
+  }
+}

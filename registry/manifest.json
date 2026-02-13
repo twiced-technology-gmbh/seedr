@@ -7,7 +7,7 @@
     },
     "plugin": {
       "file": "plugins/manifest.json",
-      "count": 30
+      "count": 39
     },
     "hook": {
       "file": "hooks/manifest.json",

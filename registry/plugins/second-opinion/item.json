@@ -1,0 +1,68 @@
+{
+  "slug": "second-opinion",
+  "name": "Second Opinion",
+  "type": "plugin",
+  "description": "Run code reviews on uncommitted changes, branch diffs, or specific commits using external LLM CLIs like OpenAI Codex and Google Gemini.",
+  "longDescription": "Plugin with a single `second-opinion` skill invoked via `/second-opinion`. Shells out to `codex review` and/or `gemini` CLI to review uncommitted changes, branch diffs, or specific commits. Supports 4 review focus areas: general, security, performance, and error handling. Runs both tools by default and presents results side by side. Includes 2 reference docs (`codex-invocation.md`, `gemini-invocation.md`) with model configurations. Optionally passes `CLAUDE.md`/`AGENTS.md` as project context for project-aware reviews.",
+  "compatibility": [
+    "claude"
+  ],
+  "sourceType": "community",
+  "author": {
+    "name": "Trail of Bits",
+    "url": "https://github.com/trailofbits"
+  },
+  "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/second-opinion",
+  "updatedAt": "2026-02-13T00:53:29Z",
+  "contents": {
+    "skills": [
+      "second-opinion"
+    ],
+    "files": [
+      {
+        "name": ".claude-plugin",
+        "type": "directory",
+        "children": [
+          {
+            "name": "plugin.json",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "skills",
+        "type": "directory",
+        "children": [
+          {
+            "name": "second-opinion",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              },
+              {
+                "name": "references",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "codex-invocation.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "gemini-invocation.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "README.md",
+        "type": "file"
+      }
+    ]
+  }
+}

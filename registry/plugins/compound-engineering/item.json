@@ -1,0 +1,204 @@
+{
+  "slug": "compound-engineering",
+  "name": "Compound Engineering",
+  "type": "plugin",
+  "description": "AI-powered development toolkit with specialized agents, commands, and skills for planning, reviewing, researching, and compounding engineering knowledge.",
+  "longDescription": "Marketplace plugin containing 2 sub-plugins. The main `compound-engineering` plugin ships 29 agents (15 reviewers including Rails, TypeScript, Python, security, performance, and data integrity specialists; 5 research agents; 3 design agents; 5 workflow agents), 22 commands (including `/workflows:plan`, `/workflows:work`, `/workflows:review`, `/workflows:compound`), 19 skills (browser automation, git worktree management, image generation, swarm orchestration, and more), and 1 MCP server (`context7`). Also includes a `coding-tutor` sub-plugin with 3 commands and 1 skill for spaced-repetition coding tutorials. Includes a CLI (`bunx @every-env/compound-plugin`) for syncing to OpenCode, Codex, Cursor, Droid, and Pi.",
+  "compatibility": [
+    "claude"
+  ],
+  "sourceType": "community",
+  "author": {
+    "name": "Kieran Klaassen",
+    "url": "https://github.com/kieranklaassen"
+  },
+  "externalUrl": "https://github.com/EveryInc/compound-engineering-plugin",
+  "updatedAt": "2026-02-13T17:54:42Z",
+  "contents": {
+    "skills": [
+      "agent-browser",
+      "agent-native-architecture",
+      "andrew-kane-gem-writer",
+      "brainstorming",
+      "compound-docs",
+      "create-agent-skills",
+      "dhh-rails-style",
+      "document-review",
+      "dspy-ruby",
+      "every-style-editor",
+      "file-todos",
+      "frontend-design",
+      "gemini-imagegen",
+      "git-worktree",
+      "orchestrating-swarms",
+      "rclone",
+      "resolve-pr-parallel",
+      "setup",
+      "skill-creator",
+      "coding-tutor"
+    ],
+    "agents": [
+      "design-implementation-reviewer",
+      "design-iterator",
+      "figma-design-sync",
+      "ankane-readme-writer",
+      "best-practices-researcher",
+      "framework-docs-researcher",
+      "git-history-analyzer",
+      "learnings-researcher",
+      "repo-research-analyst",
+      "agent-native-reviewer",
+      "architecture-strategist",
+      "code-simplicity-reviewer",
+      "data-integrity-guardian",
+      "data-migration-expert",
+      "deployment-verification-agent",
+      "dhh-rails-reviewer",
+      "julik-frontend-races-reviewer",
+      "kieran-python-reviewer",
+      "kieran-rails-reviewer",
+      "kieran-typescript-reviewer",
+      "pattern-recognition-specialist",
+      "performance-oracle",
+      "schema-drift-detector",
+      "security-sentinel",
+      "bug-reproduction-validator",
+      "every-style-editor",
+      "lint",
+      "pr-comment-resolver",
+      "spec-flow-analyzer"
+    ],
+    "commands": [
+      "agent-native-audit",
+      "changelog",
+      "create-agent-skill",
+      "deepen-plan",
+      "deploy-docs",
+      "feature-video",
+      "generate_command",
+      "heal-skill",
+      "lfg",
+      "report-bug",
+      "reproduce-bug",
+      "resolve_parallel",
+      "resolve_todo_parallel",
+      "slfg",
+      "test-browser",
+      "test-xcode",
+      "triage",
+      "workflows:brainstorm",
+      "workflows:compound",
+      "workflows:plan",
+      "workflows:review",
+      "workflows:work",
+      "quiz-me",
+      "sync-tutorials",
+      "teach-me"
+    ],
+    "mcpServers": [
+      "context7"
+    ],
+    "files": [
+      {
+        "name": ".claude-plugin",
+        "type": "directory",
+        "children": [
+          {
+            "name": "marketplace.json",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": ".claude",
+        "type": "directory",
+        "children": [
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "release-docs.md",
+                "type": "file"
+              },
+              {
+                "name": "triage-prs.md",
+                "type": "file"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "plugins",
+        "type": "directory",
+        "children": [
+          {
+            "name": "compound-engineering",
+            "type": "directory",
+            "children": [
+              {
+                "name": ".claude-plugin",
+                "type": "directory"
+              },
+              {
+                "name": "agents",
+                "type": "directory"
+              },
+              {
+                "name": "commands",
+                "type": "directory"
+              },
+              {
+                "name": "skills",
+                "type": "directory"
+              },
+              {
+                "name": "CLAUDE.md",
+                "type": "file"
+              },
+              {
+                "name": "README.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "coding-tutor",
+            "type": "directory",
+            "children": [
+              {
+                "name": ".claude-plugin",
+                "type": "directory"
+              },
+              {
+                "name": "commands",
+                "type": "directory"
+              },
+              {
+                "name": "skills",
+                "type": "directory"
+              },
+              {
+                "name": "README.md",
+                "type": "file"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "AGENTS.md",
+        "type": "file"
+      },
+      {
+        "name": "CLAUDE.md",
+        "type": "file"
+      },
+      {
+        "name": "README.md",
+        "type": "file"
+      }
+    ]
+  }
+}

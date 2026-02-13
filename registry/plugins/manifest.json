@@ -36,6 +36,59 @@
       "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
+      "slug": "ask-questions-if-underspecified",
+      "name": "Ask Questions If Underspecified",
+      "type": "plugin",
+      "description": "Pause before implementing to ask 1-5 targeted clarifying questions when requirements have multiple plausible interpretations.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Trail of Bits",
+        "url": "https://github.com/trailofbits"
+      },
+      "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified",
+      "updatedAt": "2026-02-12T15:28:33Z",
+      "contents": {
+        "skills": [
+          "ask-questions-if-underspecified"
+        ],
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "ask-questions-if-underspecified",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
       "slug": "audit-context-building",
       "name": "Audit Context Building",
       "type": "plugin",
@@ -117,6 +170,209 @@
       "contentHash": "82a4cebe1d0a5668"
     },
     {
+      "slug": "compound-engineering",
+      "name": "Compound Engineering",
+      "type": "plugin",
+      "description": "AI-powered development toolkit with specialized agents, commands, and skills for planning, reviewing, researching, and compounding engineering knowledge.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Kieran Klaassen",
+        "url": "https://github.com/kieranklaassen"
+      },
+      "externalUrl": "https://github.com/EveryInc/compound-engineering-plugin",
+      "updatedAt": "2026-02-13T17:54:42Z",
+      "contents": {
+        "skills": [
+          "agent-browser",
+          "agent-native-architecture",
+          "andrew-kane-gem-writer",
+          "brainstorming",
+          "compound-docs",
+          "create-agent-skills",
+          "dhh-rails-style",
+          "document-review",
+          "dspy-ruby",
+          "every-style-editor",
+          "file-todos",
+          "frontend-design",
+          "gemini-imagegen",
+          "git-worktree",
+          "orchestrating-swarms",
+          "rclone",
+          "resolve-pr-parallel",
+          "setup",
+          "skill-creator",
+          "coding-tutor"
+        ],
+        "agents": [
+          "design-implementation-reviewer",
+          "design-iterator",
+          "figma-design-sync",
+          "ankane-readme-writer",
+          "best-practices-researcher",
+          "framework-docs-researcher",
+          "git-history-analyzer",
+          "learnings-researcher",
+          "repo-research-analyst",
+          "agent-native-reviewer",
+          "architecture-strategist",
+          "code-simplicity-reviewer",
+          "data-integrity-guardian",
+          "data-migration-expert",
+          "deployment-verification-agent",
+          "dhh-rails-reviewer",
+          "julik-frontend-races-reviewer",
+          "kieran-python-reviewer",
+          "kieran-rails-reviewer",
+          "kieran-typescript-reviewer",
+          "pattern-recognition-specialist",
+          "performance-oracle",
+          "schema-drift-detector",
+          "security-sentinel",
+          "bug-reproduction-validator",
+          "every-style-editor",
+          "lint",
+          "pr-comment-resolver",
+          "spec-flow-analyzer"
+        ],
+        "commands": [
+          "agent-native-audit",
+          "changelog",
+          "create-agent-skill",
+          "deepen-plan",
+          "deploy-docs",
+          "feature-video",
+          "generate_command",
+          "heal-skill",
+          "lfg",
+          "report-bug",
+          "reproduce-bug",
+          "resolve_parallel",
+          "resolve_todo_parallel",
+          "slfg",
+          "test-browser",
+          "test-xcode",
+          "triage",
+          "workflows:brainstorm",
+          "workflows:compound",
+          "workflows:plan",
+          "workflows:review",
+          "workflows:work",
+          "quiz-me",
+          "sync-tutorials",
+          "teach-me"
+        ],
+        "mcpServers": [
+          "context7"
+        ],
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "marketplace.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".claude",
+            "type": "directory",
+            "children": [
+              {
+                "name": "commands",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "release-docs.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "triage-prs.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "plugins",
+            "type": "directory",
+            "children": [
+              {
+                "name": "compound-engineering",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": ".claude-plugin",
+                    "type": "directory"
+                  },
+                  {
+                    "name": "agents",
+                    "type": "directory"
+                  },
+                  {
+                    "name": "commands",
+                    "type": "directory"
+                  },
+                  {
+                    "name": "skills",
+                    "type": "directory"
+                  },
+                  {
+                    "name": "CLAUDE.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "README.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "coding-tutor",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": ".claude-plugin",
+                    "type": "directory"
+                  },
+                  {
+                    "name": "commands",
+                    "type": "directory"
+                  },
+                  {
+                    "name": "skills",
+                    "type": "directory"
+                  },
+                  {
+                    "name": "README.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "AGENTS.md",
+            "type": "file"
+          },
+          {
+            "name": "CLAUDE.md",
+            "type": "file"
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
       "slug": "context7",
       "name": "Context7",
       "type": "plugin",
@@ -183,6 +439,190 @@
         ]
       },
       "updatedAt": "2025-12-02T00:03:02Z"
+    },
+    {
+      "slug": "gh-cli",
+      "name": "GH CLI",
+      "type": "plugin",
+      "description": "Intercept GitHub URL fetches and curl/wget commands, redirecting to the authenticated `gh` CLI for private repo access and higher rate limits.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Trail of Bits",
+        "url": "https://github.com/trailofbits"
+      },
+      "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/gh-cli",
+      "updatedAt": "2026-02-13T02:16:05Z",
+      "contents": {
+        "skills": [
+          "using-gh-cli"
+        ],
+        "hooks": [
+          "intercept-github-curl.sh",
+          "intercept-github-fetch.sh",
+          "cleanup-clones.sh",
+          "persist-session-id.sh"
+        ],
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "hooks",
+            "type": "directory",
+            "children": [
+              {
+                "name": "cleanup-clones.sh",
+                "type": "file"
+              },
+              {
+                "name": "hooks.json",
+                "type": "file"
+              },
+              {
+                "name": "intercept-github-curl.bats",
+                "type": "file"
+              },
+              {
+                "name": "intercept-github-curl.sh",
+                "type": "file"
+              },
+              {
+                "name": "intercept-github-fetch.bats",
+                "type": "file"
+              },
+              {
+                "name": "intercept-github-fetch.sh",
+                "type": "file"
+              },
+              {
+                "name": "persist-session-id.sh",
+                "type": "file"
+              },
+              {
+                "name": "session-hooks.bats",
+                "type": "file"
+              },
+              {
+                "name": "test_helper.bash",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "using-gh-cli",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "references",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "actions.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "api.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "issues.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "pull-requests.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "releases.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "repos-and-files.md",
+                        "type": "file"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "git-cleanup",
+      "name": "Git Cleanup",
+      "type": "plugin",
+      "description": "Analyze and safely clean up accumulated local git branches and worktrees by categorizing them as merged, squash-merged, superseded, or active.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Trail of Bits",
+        "url": "https://github.com/trailofbits"
+      },
+      "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/git-cleanup",
+      "updatedAt": "2026-02-12T00:59:33Z",
+      "contents": {
+        "skills": [
+          "git-cleanup"
+        ],
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "git-cleanup",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "github",
@@ -292,6 +732,69 @@
       "updatedAt": "2026-01-06T05:15:35Z"
     },
     {
+      "slug": "humanizer",
+      "name": "Humanizer",
+      "type": "plugin",
+      "description": "Identify and remove AI writing patterns from text, replacing inflated language with concrete, human-sounding prose.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Trail of Bits",
+        "url": "https://github.com/trailofbits"
+      },
+      "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/humanizer",
+      "updatedAt": "2026-02-06T16:22:35Z",
+      "contents": {
+        "skills": [
+          "humanizer"
+        ],
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "humanizer",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "references",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "patterns.md",
+                        "type": "file"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
       "slug": "laravel-boost",
       "name": "Laravel Boost",
       "type": "plugin",
@@ -324,6 +827,143 @@
         ]
       },
       "updatedAt": "2025-12-02T00:03:02Z"
+    },
+    {
+      "slug": "last30days",
+      "name": "Last 30 Days",
+      "type": "plugin",
+      "description": "Research any topic from the last 30 days across Reddit, X/Twitter, and the web, surfacing real discussions with engagement metrics.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Trail of Bits",
+        "url": "https://github.com/trailofbits"
+      },
+      "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/last30days",
+      "updatedAt": "2026-02-12T07:49:07Z",
+      "contents": {
+        "skills": [
+          "last30days"
+        ],
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "scripts",
+            "type": "directory",
+            "children": [
+              {
+                "name": "last30days.py",
+                "type": "file"
+              },
+              {
+                "name": "lib",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "__init__.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "cache.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "dates.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "dedupe.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "entity_extract.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "env.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "http.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "models.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "normalize.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "openai_reddit.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "reddit_enrich.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "render.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "schema.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "score.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "ui.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "websearch.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "xai_x.py",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "last30days",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "linear",
@@ -394,6 +1034,73 @@
       "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
+      "slug": "second-opinion",
+      "name": "Second Opinion",
+      "type": "plugin",
+      "description": "Run code reviews on uncommitted changes, branch diffs, or specific commits using external LLM CLIs like OpenAI Codex and Google Gemini.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Trail of Bits",
+        "url": "https://github.com/trailofbits"
+      },
+      "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/second-opinion",
+      "updatedAt": "2026-02-13T00:53:29Z",
+      "contents": {
+        "skills": [
+          "second-opinion"
+        ],
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "second-opinion",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "references",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "codex-invocation.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "gemini-invocation.md",
+                        "type": "file"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
       "slug": "serena",
       "name": "Serena",
       "type": "plugin",
@@ -426,6 +1133,77 @@
         ]
       },
       "updatedAt": "2025-12-02T00:03:02Z"
+    },
+    {
+      "slug": "skill-extractor",
+      "name": "Skill Extractor",
+      "type": "plugin",
+      "description": "Extract reusable skills from work sessions by analyzing conversations for non-trivial, verified solutions worth capturing.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Trail of Bits",
+        "url": "https://github.com/trailofbits"
+      },
+      "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/skill-extractor",
+      "updatedAt": "2026-02-06T16:22:35Z",
+      "contents": {
+        "skills": [
+          "skill-extractor"
+        ],
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "skill-extractor",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "references",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "quality-guide.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "skill-lifecycle.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "skill-template.md",
+                        "type": "file"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "slack",
@@ -1133,6 +1911,171 @@
         ]
       },
       "contentHash": "331d072c4ed12aa0"
+    },
+    {
+      "slug": "wooyun-legacy",
+      "name": "WooYun Legacy",
+      "type": "plugin",
+      "description": "Web vulnerability testing methodology distilled from 88,636 real-world cases covering SQL injection, XSS, command execution, file upload, and more.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Trail of Bits",
+        "url": "https://github.com/trailofbits"
+      },
+      "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/wooyun-legacy",
+      "updatedAt": "2026-02-12T00:10:00Z",
+      "contents": {
+        "skills": [
+          "wooyun-legacy"
+        ],
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "wooyun-legacy",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "references",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "bank-penetration.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "checklists",
+                        "type": "directory",
+                        "children": [
+                          {
+                            "name": "command-execution-checklist.md",
+                            "type": "file"
+                          },
+                          {
+                            "name": "csrf-checklist.md",
+                            "type": "file"
+                          },
+                          {
+                            "name": "file-upload-checklist.md",
+                            "type": "file"
+                          },
+                          {
+                            "name": "info-disclosure-checklist.md",
+                            "type": "file"
+                          },
+                          {
+                            "name": "logic-flaws-checklist.md",
+                            "type": "file"
+                          },
+                          {
+                            "name": "misconfig-checklist.md",
+                            "type": "file"
+                          },
+                          {
+                            "name": "path-traversal-checklist.md",
+                            "type": "file"
+                          },
+                          {
+                            "name": "rce-checklist.md",
+                            "type": "file"
+                          },
+                          {
+                            "name": "sql-injection-checklist.md",
+                            "type": "file"
+                          },
+                          {
+                            "name": "ssrf-checklist.md",
+                            "type": "file"
+                          },
+                          {
+                            "name": "unauthorized-access-checklist.md",
+                            "type": "file"
+                          },
+                          {
+                            "name": "weak-password-checklist.md",
+                            "type": "file"
+                          },
+                          {
+                            "name": "xss-checklist.md",
+                            "type": "file"
+                          },
+                          {
+                            "name": "xxe-checklist.md",
+                            "type": "file"
+                          }
+                        ]
+                      },
+                      {
+                        "name": "command-execution.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "file-upload.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "info-disclosure.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "logic-flaws.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "path-traversal.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "sql-injection.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "telecom-penetration.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "unauthorized-access.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "xss.md",
+                        "type": "file"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "LICENSE",
+            "type": "file"
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
     },
     {
       "slug": "agent-sdk-dev",
