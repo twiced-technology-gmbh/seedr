@@ -90,8 +90,31 @@ Notes:
 
 **Batch 2 — Description:**
 
-After the user answers batch 1, read the source content to auto-generate a description.
-Then ask:
+After the user answers batch 1, read ALL source content (SKILL.md, hook scripts, plugin.json, agent .md files, etc.) to deeply understand what the item does. Then write a comprehensive description following these rules:
+
+**Description quality requirements:**
+
+- **Length**: 1-2 concise sentences, 25-50 words
+- **Lead with action**: Start with what the item *does*, not what it *is* (good: "Analyze code for all 23 classic code smells..." / bad: "A code analysis tool that...")
+- **Be specific**: Mention concrete capabilities, categories, techniques, or differentiators (good: "Covers waterfall prevention, bundle size reduction, and re-render elimination" / bad: "Covers many performance topics")
+- **No title-restatements**: Never just restate the name (bad: "X plugin for Claude", "X development toolkit")
+- **No trigger instructions**: Don't include "Use when..." or "Trigger on..." — that's for the skill frontmatter, not the registry description
+- **Show value**: Explain why someone would want this, not just what it does mechanically
+- **Mention key numbers**: If the item covers a specific count of rules, patterns, or techniques, include it (e.g., "57 performance rules", "23 design patterns", "66 refactoring techniques")
+
+**Examples of good descriptions:**
+
+- "Analyze code for all 23 classic code smells from Martin Fowler's catalog, with severity ratings and targeted refactoring recommendations for each detected smell."
+- "Launches parallel review agents that independently audit PRs for guideline compliance, bugs, and historical context issues. Only findings scoring 80+ confidence are posted as GitHub comments."
+- "Pull version-specific library documentation and code examples directly into your prompt context. Eliminates hallucinated APIs by fetching real docs from source repositories instead of relying on training data."
+
+**Examples of bad descriptions:**
+
+- "X plugin for Claude" (title restatement)
+- "A tool for doing Y" (starts with "A tool")
+- "Use when the user wants to..." (trigger instruction, not description)
+
+Then present the description to the user:
 
 ```
 questions:

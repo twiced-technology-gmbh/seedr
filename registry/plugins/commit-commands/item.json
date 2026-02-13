@@ -2,7 +2,7 @@
   "slug": "commit-commands",
   "name": "Commit Commands",
   "type": "plugin",
-  "description": "Streamline your git workflow with simple commands for committing, pushing, and creating pull requests",
+  "description": "Slash commands for common git operations: /commit analyzes changes and matches your repo's commit style, /commit-push-pr handles branching through PR creation with auto-generated descriptions, and /clean_gone removes stale local branches deleted from the remote.",
   "compatibility": [
     "claude"
   ],

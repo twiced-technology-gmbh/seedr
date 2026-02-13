@@ -2,7 +2,7 @@
   "slug": "firebase",
   "name": "Firebase",
   "type": "plugin",
-  "description": "Google Firebase MCP integration. Manage Firestore databases, authentication, cloud functions, hosting, and storage. Build and manage your Firebase backend directly from your development workflow.",
+  "description": "Manage Firestore databases, authentication, cloud functions, hosting, and storage directly from Claude Code. Build and iterate on your Firebase backend without switching to the Google Cloud console.",
   "compatibility": [
     "claude"
   ],

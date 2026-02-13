@@ -2,7 +2,7 @@
   "slug": "brand-guidelines",
   "name": "Brand Guidelines",
   "type": "skill",
-  "description": "Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.",
+  "description": "Apply Anthropic's official brand identity -- colors, typography, and visual style -- to any artifact. Ensures slides, documents, web pages, and other outputs match Anthropic's design standards for a consistent, professional look.",
   "compatibility": [
     "claude"
   ],

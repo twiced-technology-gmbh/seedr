@@ -2,7 +2,7 @@
   "slug": "laravel-boost",
   "name": "Laravel Boost",
   "type": "plugin",
-  "description": "Laravel development toolkit MCP server. Provides intelligent assistance for Laravel applications including Artisan commands, Eloquent queries, routing, migrations, and framework-specific code generation.",
+  "description": "Laravel-aware development assistance via MCP. Run Artisan commands, scaffold Eloquent models, manage routes and migrations, and generate framework-idiomatic code with knowledge of Laravel conventions and best practices.",
   "compatibility": [
     "claude"
   ],

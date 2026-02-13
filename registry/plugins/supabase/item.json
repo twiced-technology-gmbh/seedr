@@ -2,7 +2,7 @@
   "slug": "supabase",
   "name": "Supabase",
   "type": "plugin",
-  "description": "Supabase MCP integration for database operations, authentication, storage, and real-time subscriptions. Manage your Supabase projects, run SQL queries, and interact with your backend directly.",
+  "description": "Manage Supabase projects, run SQL queries, configure auth, and interact with storage and real-time subscriptions directly from Claude Code. Lets you build and iterate on your Supabase backend without switching to the dashboard.",
   "compatibility": [
     "claude"
   ],

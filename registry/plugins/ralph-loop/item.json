@@ -2,7 +2,7 @@
   "slug": "ralph-loop",
   "name": "Ralph Loop",
   "type": "plugin",
-  "description": "Continuous self-referential AI loops for interactive iterative development, implementing the Ralph Wiggum technique. Run Claude in a while-true loop with the same prompt until task completion.",
+  "description": "Runs Claude in a persistent feedback loop that re-executes your prompt after each iteration, letting it self-correct based on test failures, lint errors, and file changes until the task is complete. Ideal for well-defined tasks with automated verification.",
   "compatibility": [
     "claude"
   ],

@@ -2,7 +2,7 @@
   "slug": "feature-dev",
   "name": "Feature Dev",
   "type": "plugin",
-  "description": "Comprehensive feature development workflow with specialized agents for codebase exploration, architecture design, and quality review",
+  "description": "Guided 7-phase feature development workflow that launches parallel agents to explore your codebase, design multiple architecture options with trade-off analysis, implement changes, and run confidence-scored quality review before merging.",
   "compatibility": [
     "claude"
   ],

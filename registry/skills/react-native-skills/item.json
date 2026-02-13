@@ -2,7 +2,7 @@
   "slug": "react-native-skills",
   "name": "React Native Skills",
   "type": "skill",
-  "description": "React Native and Expo best practices for building performant mobile apps. Use",
+  "description": "38 rules from Vercel for building performant React Native and Expo apps. Covers list virtualization, Reanimated animations, native UI components, navigation, monorepo setup, and React Compiler compatibility to catch mobile performance pitfalls during development.",
   "compatibility": [
     "claude",
     "copilot",

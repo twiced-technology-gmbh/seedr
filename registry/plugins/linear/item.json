@@ -2,7 +2,7 @@
   "slug": "linear",
   "name": "Linear",
   "type": "plugin",
-  "description": "Linear issue tracking integration. Create issues, manage projects, update statuses, search across workspaces, and streamline your software development workflow with Linear's modern issue tracker.",
+  "description": "Create and update Linear issues, manage projects and cycles, and search across workspaces from Claude Code. Keeps your issue tracker in sync with your code changes without context-switching to the Linear app.",
   "compatibility": [
     "claude"
   ],

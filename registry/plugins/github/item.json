@@ -2,7 +2,7 @@
   "slug": "github",
   "name": "Github",
   "type": "plugin",
-  "description": "Official GitHub MCP server for repository management. Create issues, manage pull requests, review code, search repositories, and interact with GitHub's full API directly from Claude Code.",
+  "description": "Create issues, manage pull requests, review code, search repos, and access GitHub's full API without leaving Claude Code. Complements the built-in gh CLI with structured MCP tool access to the GitHub platform.",
   "compatibility": [
     "claude"
   ],

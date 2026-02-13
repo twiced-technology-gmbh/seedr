@@ -2,7 +2,7 @@
   "slug": "agent-creator",
   "name": "Agent Creator",
   "type": "skill",
-  "description": "Guide for creating and configuring Claude Code agents — covers frontmatter fields, tools, permissions, models, memory, hooks, skills, and best practices.",
+  "description": "Create well-configured Claude Code agents with the right tools, permissions, and model for the job. Covers all frontmatter fields, permission modes, model selection tradeoffs, agent lifecycle, common mistakes, and battle-tested patterns for research agents, reviewers, and multi-agent teams.",
   "compatibility": ["claude"],
   "sourceType": "toolr",
   "author": { "name": "Toolr Suite", "url": "https://github.com/toolr-suite" },

@@ -2,7 +2,7 @@
   "slug": "project-security-guard",
   "name": "Project Security Guard",
   "type": "hook",
-  "description": "Project-level PreToolUse security hook that blocks destructive operations, data exfiltration, code injection, system modification, sensitive file access, database destructive ops, cloud/container/infrastructure teardown, and git work-overwriting commands. Auto-approves safe developer workflow commands and remembers permissions.",
+  "description": "Project-scoped PreToolUse hook that blocks dangerous Bash commands (rm outside project, force push, DROP TABLE, terraform destroy, docker prune, eval, network exfiltration) and sensitive file access, while auto-approving safe dev workflow commands and remembering granted permissions.",
   "compatibility": [
     "claude"
   ],

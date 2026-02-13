@@ -2,7 +2,7 @@
   "slug": "greptile",
   "name": "Greptile",
   "type": "plugin",
-  "description": "AI code review agent for GitHub and GitLab. View and resolve Greptile's PR review comments directly from Claude Code.",
+  "description": "View and resolve Greptile's AI-powered PR review comments directly from Claude Code. Connects to Greptile's codebase-aware code review for GitHub and GitLab pull requests.",
   "compatibility": [
     "claude"
   ],

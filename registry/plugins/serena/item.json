@@ -2,7 +2,7 @@
   "slug": "serena",
   "name": "Serena",
   "type": "plugin",
-  "description": "Semantic code analysis MCP server providing intelligent code understanding, refactoring suggestions, and codebase navigation through language server protocol integration.",
+  "description": "Adds LSP-powered semantic code intelligence to Claude Code. Navigate symbols, find references, get refactoring suggestions, and understand code structure using language server protocol analysis instead of text-based search.",
   "compatibility": [
     "claude"
   ],

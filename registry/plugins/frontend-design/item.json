@@ -2,7 +2,7 @@
   "slug": "frontend-design",
   "name": "Frontend Design",
   "type": "plugin",
-  "description": "Frontend design skill for UI/UX implementation",
+  "description": "Generates production-ready web interfaces with intentional design direction, distinctive typography, cohesive color systems, and polished animations. Automatically activates for frontend tasks across HTML/CSS, React, Vue, and other frameworks to avoid generic AI-generated aesthetics.",
   "compatibility": [
     "claude"
   ],

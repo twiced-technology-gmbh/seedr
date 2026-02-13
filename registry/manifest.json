@@ -5,7 +5,7 @@
       "slug": "agent-creator",
       "name": "Agent Creator",
       "type": "skill",
-      "description": "Guide for creating and configuring Claude Code agents — covers frontmatter fields, tools, permissions, models, memory, hooks, skills, and best practices.",
+      "description": "Create well-configured Claude Code agents with the right tools, permissions, and model for the job. Covers all frontmatter fields, permission modes, model selection tradeoffs, agent lifecycle, common mistakes, and battle-tested patterns for research agents, reviewers, and multi-agent teams.",
       "compatibility": [
         "claude"
       ],
@@ -45,8 +45,8 @@
       "slug": "claude-md-doctor",
       "name": "CLAUDE.md Doctor",
       "type": "skill",
-      "description": "Diagnose and improve CLAUDE.md files and .claude/rules/",
-      "longDescription": "Audit CLAUDE.md files for quality, staleness, and anti-patterns. Evaluate .claude/rules/ for modularity and correctness. Provides detailed health reports with severity ratings, scores, and targeted fixes for optimal Claude Code project context.",
+      "description": "Audit your CLAUDE.md files and .claude/rules/ for quality issues, staleness, anti-patterns, and token bloat, then generate a scored health report with severity-rated fixes you can apply interactively.",
+      "longDescription": "Scans all project instruction files (root CLAUDE.md, package-level overrides, .claude.local.md, and modular rules) to evaluate token efficiency, command accuracy, path validity, frontmatter correctness, and rule modularity. Produces a file-by-file scorecard with critical/warning/low findings, then offers automatic, critical-only, or per-fix approval workflows.",
       "compatibility": [
         "claude"
       ],
@@ -94,8 +94,8 @@
       "slug": "code-smell-doctor",
       "name": "Code Smell Doctor",
       "type": "skill",
-      "description": "Detect and refactor code smells using Martin Fowler's catalog",
-      "longDescription": "Comprehensive code smell detection covering Bloaters, Object-Orientation Abusers, Change Preventers, Dispensables, and Couplers. Includes refactoring recommendations for each smell category.",
+      "description": "Analyze code for all 23 classic code smells from Martin Fowler's catalog, with severity ratings and targeted refactoring recommendations for each detected smell.",
+      "longDescription": "Systematically scans code across five smell categories: Bloaters (Long Method, Large Class, Primitive Obsession, Long Parameter List, Data Clumps), OO Abusers, Change Preventers, Dispensables, and Couplers. Reports each finding with severity, exact location, evidence from the code, and the specific refactoring technique to fix it.",
       "compatibility": [
         "claude",
         "copilot",
@@ -151,8 +151,8 @@
       "slug": "design-patterns",
       "name": "Design Patterns",
       "type": "skill",
-      "description": "Apply Gang of Four design patterns effectively",
-      "longDescription": "Reference guide for Creational, Structural, and Behavioral design patterns. Includes when to use each pattern, implementation examples, and common pitfalls to avoid.",
+      "description": "Identify when and how to apply the 23 Gang of Four design patterns, with a problem-to-pattern selection guide and implementation examples in TypeScript.",
+      "longDescription": "Covers all Creational (Factory Method, Abstract Factory, Builder, Prototype, Singleton), Structural (Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy), and Behavioral patterns (Chain of Responsibility, Command, Iterator, Mediator, Memento, Observer, State, Strategy, Template Method, Visitor). Each pattern includes intent, when to use, quick implementation examples, and common pitfalls.",
       "compatibility": [
         "claude",
         "copilot",
@@ -200,8 +200,8 @@
       "slug": "lint-doctor",
       "name": "Lint Doctor",
       "type": "skill",
-      "description": "Diagnose and fix linting issues across multiple languages",
-      "longDescription": "Language-specific lint rule references for Go, Python, Rust, JavaScript, Java, and pre-commit hooks. Helps identify, understand, and resolve linting warnings and errors with best practices.",
+      "description": "Detect your project's language and framework, then configure linting with sensible defaults -- supports ESLint (with sonarjs/unicorn), Ruff, Clippy, golangci-lint, and Checkstyle, plus optional pre-commit hooks.",
+      "longDescription": "Auto-detects your stack from config files (package.json, Cargo.toml, go.mod, pyproject.toml, pom.xml, etc.) and applies best-practice lint rules with bug/security errors and style warnings. Supports JavaScript/TypeScript with React/Vue/Angular, Python via Ruff, Rust via Clippy, Go via golangci-lint, and Java via Checkstyle. Handles monorepos and offers interactive or automatic configuration with optional husky/lint-staged or pre-commit hook setup.",
       "compatibility": [
         "claude",
         "copilot",
@@ -261,7 +261,7 @@
       "slug": "project-security-guard",
       "name": "Project Security Guard",
       "type": "hook",
-      "description": "Project-level PreToolUse security hook that blocks destructive operations, data exfiltration, code injection, system modification, sensitive file access, database destructive ops, cloud/container/infrastructure teardown, and git work-overwriting commands. Auto-approves safe developer workflow commands and remembers permissions.",
+      "description": "Project-scoped PreToolUse hook that blocks dangerous Bash commands (rm outside project, force push, DROP TABLE, terraform destroy, docker prune, eval, network exfiltration) and sensitive file access, while auto-approving safe dev workflow commands and remembering granted permissions.",
       "compatibility": [
         "claude"
       ],
@@ -309,8 +309,8 @@
       "slug": "refactoring-techniques",
       "name": "Refactoring Techniques",
       "type": "skill",
-      "description": "Systematic refactoring using proven techniques",
-      "longDescription": "Martin Fowler's refactoring catalog covering Composing Methods, Moving Features, Organizing Data, Simplifying Conditionals, and Simplifying Method Calls. Step-by-step techniques for improving code quality.",
+      "description": "Apply the right refactoring technique from Martin Fowler's catalog of 66 techniques, organized by the code problem you are trying to solve: long methods, misplaced features, messy data, complex conditionals, or awkward APIs.",
+      "longDescription": "Covers six categories with step-by-step mechanics: Composing Methods (Extract Method, Inline Temp, etc.), Moving Features (Move Method/Field, Extract/Inline Class), Organizing Data (Encapsulate Field, Replace Type Code), Simplifying Conditionals (Decompose Conditional, Replace with Polymorphism, Guard Clauses), Simplifying Method Calls (Introduce Parameter Object, Separate Query from Modifier), and Dealing with Generalization (Pull Up/Push Down, Extract Superclass/Interface).",
       "compatibility": [
         "claude",
         "copilot",
@@ -370,7 +370,7 @@
       "slug": "universal-security-guard",
       "name": "Universal Security Guard",
       "type": "hook",
-      "description": "Global PreToolUse security hook that denies universally dangerous operations without auto-approving. Blocks reverse shells, privilege escalation, persistence mechanisms, credential access, data exfiltration, container escapes, library injection, and macOS-specific attacks across Bash, Write, Edit, and Read tools.",
+      "description": "User-scoped PreToolUse hook that blocks universally dangerous operations across all projects: reverse shells, sudo/privilege escalation, credential file reads, keychain access, persistence mechanisms (crontab, launchctl, systemd), library injection, container escapes, and git config attacks. Never auto-approves -- only denies threats and defers safe commands to normal permission flow.",
       "compatibility": [
         "claude"
       ],
@@ -414,7 +414,7 @@
       "slug": "asana",
       "name": "Asana",
       "type": "plugin",
-      "description": "Asana project management integration. Create and manage tasks, search projects, update assignments, track progress, and integrate your development workflow with Asana's work management platform.",
+      "description": "Create and manage Asana tasks, search projects, and update assignments from Claude Code. Link code changes to project tasks and keep your team's work management in sync without leaving your editor.",
       "compatibility": [
         "claude"
       ],
@@ -445,10 +445,107 @@
       }
     },
     {
+      "slug": "audit-context-building",
+      "name": "Audit Context Building",
+      "type": "plugin",
+      "description": "Security audit plugin from Trail of Bits that builds deep architectural context through ultra-granular function-level code analysis before vulnerability hunting. Includes a function-analyzer agent and completeness checklists to ensure thorough coverage.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Trail of Bits",
+        "url": "https://github.com/trailofbits"
+      },
+      "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/audit-context-building",
+      "updatedAt": "2026-02-13T04:08:06Z",
+      "contents": {
+        "skills": [
+          "audit-context-building"
+        ],
+        "agents": [
+          "function-analyzer"
+        ],
+        "commands": [
+          "audit-context"
+        ],
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          },
+          {
+            "name": "agents",
+            "type": "directory",
+            "children": [
+              {
+                "name": "function-analyzer.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "audit-context.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "audit-context-building",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "resources",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "COMPLETENESS_CHECKLIST.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "FUNCTION_MICRO_ANALYSIS_EXAMPLE.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "OUTPUT_REQUIREMENTS.md",
+                        "type": "file"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
       "slug": "context7",
       "name": "Context7",
       "type": "plugin",
-      "description": "Upstash Context7 MCP server for up-to-date documentation lookup. Pull version-specific documentation and code examples directly from source repositories into your LLM context.",
+      "description": "Pull version-specific library documentation and code examples directly into your prompt context. Eliminates hallucinated APIs by fetching real docs from source repositories instead of relying on training data.",
       "compatibility": [
         "claude"
       ],
@@ -482,7 +579,7 @@
       "slug": "firebase",
       "name": "Firebase",
       "type": "plugin",
-      "description": "Google Firebase MCP integration. Manage Firestore databases, authentication, cloud functions, hosting, and storage. Build and manage your Firebase backend directly from your development workflow.",
+      "description": "Manage Firestore databases, authentication, cloud functions, hosting, and storage directly from Claude Code. Build and iterate on your Firebase backend without switching to the Google Cloud console.",
       "compatibility": [
         "claude"
       ],
@@ -516,7 +613,7 @@
       "slug": "github",
       "name": "Github",
       "type": "plugin",
-      "description": "Official GitHub MCP server for repository management. Create issues, manage pull requests, review code, search repositories, and interact with GitHub's full API directly from Claude Code.",
+      "description": "Create issues, manage pull requests, review code, search repos, and access GitHub's full API without leaving Claude Code. Complements the built-in gh CLI with structured MCP tool access to the GitHub platform.",
       "compatibility": [
         "claude"
       ],
@@ -550,7 +647,7 @@
       "slug": "gitlab",
       "name": "Gitlab",
       "type": "plugin",
-      "description": "GitLab DevOps platform integration. Manage repositories, merge requests, CI/CD pipelines, issues, and wikis. Full access to GitLab's comprehensive DevOps lifecycle tools.",
+      "description": "Manage GitLab repositories, merge requests, CI/CD pipelines, issues, and wikis directly from Claude Code. Provides MCP access to GitLab's full DevOps lifecycle without leaving your editor.",
       "compatibility": [
         "claude"
       ],
@@ -584,7 +681,7 @@
       "slug": "greptile",
       "name": "Greptile",
       "type": "plugin",
-      "description": "AI code review agent for GitHub and GitLab. View and resolve Greptile's PR review comments directly from Claude Code.",
+      "description": "View and resolve Greptile's AI-powered PR review comments directly from Claude Code. Connects to Greptile's codebase-aware code review for GitHub and GitLab pull requests.",
       "compatibility": [
         "claude"
       ],
@@ -623,7 +720,7 @@
       "slug": "laravel-boost",
       "name": "Laravel Boost",
       "type": "plugin",
-      "description": "Laravel development toolkit MCP server. Provides intelligent assistance for Laravel applications including Artisan commands, Eloquent queries, routing, migrations, and framework-specific code generation.",
+      "description": "Laravel-aware development assistance via MCP. Run Artisan commands, scaffold Eloquent models, manage routes and migrations, and generate framework-idiomatic code with knowledge of Laravel conventions and best practices.",
       "compatibility": [
         "claude"
       ],
@@ -657,7 +754,7 @@
       "slug": "linear",
       "name": "Linear",
       "type": "plugin",
-      "description": "Linear issue tracking integration. Create issues, manage projects, update statuses, search across workspaces, and streamline your software development workflow with Linear's modern issue tracker.",
+      "description": "Create and update Linear issues, manage projects and cycles, and search across workspaces from Claude Code. Keeps your issue tracker in sync with your code changes without context-switching to the Linear app.",
       "compatibility": [
         "claude"
       ],
@@ -691,7 +788,7 @@
       "slug": "playwright",
       "name": "Playwright",
       "type": "plugin",
-      "description": "Browser automation and end-to-end testing MCP server by Microsoft. Enables Claude to interact with web pages, take screenshots, fill forms, click elements, and perform automated browser testing workflows.",
+      "description": "Gives Claude Code browser automation capabilities via Microsoft's Playwright. Interact with web pages, take screenshots, fill forms, click elements, and run end-to-end test workflows across Chromium, Firefox, and WebKit.",
       "compatibility": [
         "claude"
       ],
@@ -725,7 +822,7 @@
       "slug": "react-best-practices",
       "name": "React Best Practices",
       "type": "skill",
-      "description": "React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.",
+      "description": "57 performance rules from Vercel Engineering for React and Next.js apps. Covers waterfall prevention, bundle size reduction, server/client optimization, re-render elimination, and JS performance patterns to catch performance issues during code generation and review.",
       "compatibility": [
         "claude",
         "copilot",
@@ -1008,7 +1105,7 @@
       "slug": "react-composition-patterns",
       "name": "React Composition Patterns",
       "type": "skill",
-      "description": "React composition patterns that scale. Use when refactoring components with",
+      "description": "Vercel's guide to scalable React component architecture. Teaches compound components, explicit variants, context-based state, and React 19 patterns to replace boolean prop proliferation with flexible, composable component APIs.",
       "compatibility": [
         "claude",
         "copilot",
@@ -1095,7 +1192,7 @@
       "slug": "react-native-skills",
       "name": "React Native Skills",
       "type": "skill",
-      "description": "React Native and Expo best practices for building performant mobile apps. Use",
+      "description": "38 rules from Vercel for building performant React Native and Expo apps. Covers list virtualization, Reanimated animations, native UI components, navigation, monorepo setup, and React Compiler compatibility to catch mobile performance pitfalls during development.",
       "compatibility": [
         "claude",
         "copilot",
@@ -1294,7 +1391,7 @@
       "slug": "serena",
       "name": "Serena",
       "type": "plugin",
-      "description": "Semantic code analysis MCP server providing intelligent code understanding, refactoring suggestions, and codebase navigation through language server protocol integration.",
+      "description": "Adds LSP-powered semantic code intelligence to Claude Code. Navigate symbols, find references, get refactoring suggestions, and understand code structure using language server protocol analysis instead of text-based search.",
       "compatibility": [
         "claude"
       ],
@@ -1328,7 +1425,7 @@
       "slug": "slack",
       "name": "Slack",
       "type": "plugin",
-      "description": "Slack workspace integration. Search messages, access channels, read threads, and stay connected with your team's communications while coding. Find relevant discussions and context quickly.",
+      "description": "Search Slack messages, read channels and threads, and pull team discussions into your coding context. Useful for finding prior decisions, debugging context, or relevant conversations without leaving Claude Code.",
       "compatibility": [
         "claude"
       ],
@@ -1362,7 +1459,7 @@
       "slug": "stripe",
       "name": "Stripe",
       "type": "plugin",
-      "description": "Stripe development plugin for Claude",
+      "description": "Stripe integration with MCP tools, best-practices skill, and slash commands for explaining errors and looking up test cards. Helps you build and debug Stripe payment integrations following official patterns.",
       "compatibility": [
         "claude"
       ],
@@ -1431,7 +1528,7 @@
       "slug": "supabase",
       "name": "Supabase",
       "type": "plugin",
-      "description": "Supabase MCP integration for database operations, authentication, storage, and real-time subscriptions. Manage your Supabase projects, run SQL queries, and interact with your backend directly.",
+      "description": "Manage Supabase projects, run SQL queries, configure auth, and interact with storage and real-time subscriptions directly from Claude Code. Lets you build and iterate on your Supabase backend without switching to the dashboard.",
       "compatibility": [
         "claude"
       ],
@@ -1465,7 +1562,7 @@
       "slug": "superpowers",
       "name": "Superpowers",
       "type": "plugin",
-      "description": "Core skills library for Claude Code: TDD, debugging, collaboration patterns, and proven techniques",
+      "description": "Comprehensive skills library by Jesse Vincent that teaches Claude Code proven development workflows: TDD, systematic debugging, subagent-driven development, code review, git worktrees, plan writing, and brainstorming. Includes a code-reviewer agent and slash commands for planning and execution.",
       "compatibility": [
         "claude"
       ],
@@ -2035,7 +2132,7 @@
       "slug": "web-design-guidelines",
       "name": "Web Design Guidelines",
       "type": "skill",
-      "description": "Review UI code for Web Interface Guidelines compliance. Use when asked to \"review my UI\", \"check accessibility\", \"audit design\", \"review UX\", or \"check my site against best practices\".",
+      "description": "Vercel's web interface design guidelines for reviewing UI code. Checks accessibility, UX patterns, and design best practices to catch common issues in HTML, CSS, and component markup before they reach production.",
       "compatibility": [
         "claude",
         "copilot",
@@ -2064,7 +2161,7 @@
       "slug": "agent-sdk-dev",
       "name": "Agent Sdk Dev",
       "type": "plugin",
-      "description": "Claude Agent SDK Development Plugin",
+      "description": "Scaffolds new Claude Agent SDK projects in Python or TypeScript with /new-sdk-app, then validates them against SDK best practices using language-specific verifier agents that check API usage, type safety, security, and environment configuration.",
       "compatibility": [
         "claude"
       ],
@@ -2129,7 +2226,7 @@
       "slug": "algorithmic-art",
       "name": "Algorithmic Art",
       "type": "skill",
-      "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations.",
+      "description": "Generate original algorithmic art using p5.js with seeded randomness and interactive parameter controls. Supports flow fields, particle systems, and other generative techniques, producing reproducible artwork with a built-in HTML viewer for exploration.",
       "compatibility": [
         "claude",
         "copilot",
@@ -2175,7 +2272,7 @@
       "slug": "brand-guidelines",
       "name": "Brand Guidelines",
       "type": "skill",
-      "description": "Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.",
+      "description": "Apply Anthropic's official brand identity -- colors, typography, and visual style -- to any artifact. Ensures slides, documents, web pages, and other outputs match Anthropic's design standards for a consistent, professional look.",
       "compatibility": [
         "claude"
       ],
@@ -2203,7 +2300,7 @@
       "slug": "canvas-design",
       "name": "Canvas Design",
       "type": "skill",
-      "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
+      "description": "Design original static visuals -- posters, art prints, infographics, and other graphic pieces -- exported as PNG or PDF. Ships with 30+ bundled fonts for rich typography and applies design-first principles to produce polished, print-ready output.",
       "compatibility": [
         "claude",
         "copilot",
@@ -2565,7 +2662,7 @@
       "slug": "claude-code-setup",
       "name": "Claude Code Setup",
       "type": "plugin",
-      "description": "Analyze codebases and recommend tailored Claude Code automations such as hooks, skills, MCP servers, and subagents.",
+      "description": "Scans your project structure and recommends the best Claude Code automations to set up, including MCP servers, skills, hooks, subagents, and slash commands tailored to your specific codebase.",
       "compatibility": [
         "claude"
       ],
@@ -2645,7 +2742,7 @@
       "slug": "claude-md-management",
       "name": "Claude Md Management",
       "type": "plugin",
-      "description": "Tools to maintain and improve CLAUDE.md files - audit quality, capture session learnings, and keep project memory current.",
+      "description": "Audit and improve your CLAUDE.md files to keep them in sync with your codebase. Includes a quality checker for periodic maintenance and a /revise-claude-md command to capture session learnings before they're lost.",
       "compatibility": [
         "claude"
       ],
@@ -2734,7 +2831,7 @@
       "slug": "code-review",
       "name": "Code Review",
       "type": "plugin",
-      "description": "Automated code review for pull requests using multiple specialized agents with confidence-based scoring",
+      "description": "Launches parallel review agents that independently audit PRs for guideline compliance, bugs, and historical context issues. Only findings scoring 80+ confidence are posted as GitHub comments, reducing false positives while maintaining thorough coverage.",
       "compatibility": [
         "claude"
       ],
@@ -2781,7 +2878,7 @@
       "slug": "code-simplifier",
       "name": "Code Simplifier",
       "type": "plugin",
-      "description": "Agent that simplifies and refines code for clarity, consistency, and maintainability while preserving functionality",
+      "description": "Autonomous refactoring agent that improves recently modified code by reducing nesting, consolidating logic, improving naming, and enforcing project conventions. Preserves all existing behavior while making code more readable and maintainable.",
       "compatibility": [
         "claude"
       ],
@@ -2824,7 +2921,7 @@
       "slug": "commit-commands",
       "name": "Commit Commands",
       "type": "plugin",
-      "description": "Streamline your git workflow with simple commands for committing, pushing, and creating pull requests",
+      "description": "Slash commands for common git operations: /commit analyzes changes and matches your repo's commit style, /commit-push-pr handles branching through PR creation with auto-generated descriptions, and /clean_gone removes stale local branches deleted from the remote.",
       "compatibility": [
         "claude"
       ],
@@ -2881,7 +2978,7 @@
       "slug": "doc-coauthoring",
       "name": "Doc Coauthoring",
       "type": "skill",
-      "description": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.",
+      "description": "Co-author documentation through a structured, iterative workflow. Helps you write proposals, technical specs, decision docs, and similar structured content by guiding context transfer, collaborative refinement, and reader verification.",
       "compatibility": [
         "claude",
         "copilot",
@@ -2909,7 +3006,7 @@
       "slug": "docx",
       "name": "Docx",
       "type": "skill",
-      "description": "\"Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files). Triggers include: any mention of \\\"Word doc\\\", \\\"word document\\\", \\\".docx\\\", or requests to produce professional documents with formatting like tables of contents, headings, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx files, inserting or replacing images in documents, performing find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a \\\"report\\\", \\\"memo\\\", \\\"letter\\\", \\\"template\\\", or similar deliverable as a Word or .docx file, use this skill. Do NOT use for PDFs, spreadsheets, Google Docs, or general coding tasks unrelated to document generation.\"",
+      "description": "Create, read, and edit Word documents (.docx) with professional formatting. Supports tables of contents, headings, page numbers, images, tracked changes, comments, find-and-replace, and OOXML validation for reliable, polished output.",
       "compatibility": [
         "claude",
         "copilot",
@@ -3073,7 +3170,7 @@
       "slug": "explanatory-output-style",
       "name": "Explanatory Output Style",
       "type": "plugin",
-      "description": "Adds educational insights about implementation choices and codebase patterns (mimics the deprecated Explanatory output style)",
+      "description": "Restores the deprecated Explanatory output style via a session-start hook. Claude automatically includes bordered insight sections explaining implementation trade-offs, codebase-specific patterns, and design decisions relevant to your project.",
       "compatibility": [
         "claude"
       ],
@@ -3127,7 +3224,7 @@
       "slug": "feature-dev",
       "name": "Feature Dev",
       "type": "plugin",
-      "description": "Comprehensive feature development workflow with specialized agents for codebase exploration, architecture design, and quality review",
+      "description": "Guided 7-phase feature development workflow that launches parallel agents to explore your codebase, design multiple architecture options with trade-off analysis, implement changes, and run confidence-scored quality review before merging.",
       "compatibility": [
         "claude"
       ],
@@ -3197,7 +3294,7 @@
       "slug": "frontend-design",
       "name": "Frontend Design",
       "type": "plugin",
-      "description": "Frontend design skill for UI/UX implementation",
+      "description": "Generates production-ready web interfaces with intentional design direction, distinctive typography, cohesive color systems, and polished animations. Automatically activates for frontend tasks across HTML/CSS, React, Vue, and other frameworks to avoid generic AI-generated aesthetics.",
       "compatibility": [
         "claude"
       ],
@@ -3247,7 +3344,7 @@
       "slug": "frontend-design",
       "name": "Frontend Design",
       "type": "skill",
-      "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples include websites, landing pages, dashboards, React components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates creative, polished code and UI design that avoids generic AI aesthetics.",
+      "description": "Generate production-grade frontend interfaces with distinctive, non-generic design. Produces polished websites, landing pages, dashboards, and React components with thoughtful typography, spacing, and color that stand apart from typical AI-generated UI.",
       "compatibility": [
         "claude",
         "copilot",
@@ -3279,7 +3376,7 @@
       "slug": "hookify",
       "name": "Hookify",
       "type": "plugin",
-      "description": "Easily create hooks to prevent unwanted behaviors by analyzing conversation patterns",
+      "description": "Create custom behavioral rules from natural language descriptions or by analyzing recent conversation patterns. Rules use regex pattern matching to warn or block on bash commands, file edits, and prompts, taking effect immediately without restarts.",
       "compatibility": [
         "claude"
       ],
@@ -3464,7 +3561,7 @@
       "slug": "internal-comms",
       "name": "Internal Comms",
       "type": "skill",
-      "description": "A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude should use this skill whenever asked to write some sort of internal communications (status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, project updates, etc.).",
+      "description": "Draft polished internal communications following proven corporate formats. Includes templates and examples for status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, and project updates.",
       "compatibility": [
         "claude",
         "copilot",
@@ -3518,7 +3615,7 @@
       "slug": "learning-output-style",
       "name": "Learning Output Style",
       "type": "plugin",
-      "description": "Interactive learning mode that requests meaningful code contributions at decision points (mimics the unshipped Learning output style)",
+      "description": "Transforms Claude into a coding tutor that pauses at key decision points and asks you to write 5-10 lines of meaningful code, such as business logic and algorithm choices, while handling boilerplate automatically. Restores the unshipped Learning output style.",
       "compatibility": [
         "claude"
       ],
@@ -3572,7 +3669,7 @@
       "slug": "mcp-builder",
       "name": "Mcp Builder",
       "type": "skill",
-      "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).",
+      "description": "Build and evaluate MCP (Model Context Protocol) servers in Python (FastMCP) or Node/TypeScript (MCP SDK). Provides best-practice references, connection testing scripts, and an evaluation framework to ensure your server integrates cleanly with LLM toolchains.",
       "compatibility": [
         "claude"
       ],
@@ -3644,7 +3741,7 @@
       "slug": "pdf",
       "name": "Pdf",
       "type": "skill",
-      "description": "Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding watermarks, creating new PDFs, filling PDF forms, encrypting/decrypting PDFs, extracting images, and OCR on scanned PDFs to make them searchable. If the user mentions a .pdf file or asks to produce one, use this skill.",
+      "description": "Full-featured PDF toolkit for reading, creating, merging, splitting, and editing PDF files. Supports form filling (both native and annotation-based), text/table extraction, page rotation, watermarks, encryption, image extraction, and OCR for scanned documents.",
       "compatibility": [
         "claude",
         "copilot",
@@ -3722,7 +3819,7 @@
       "slug": "playground",
       "name": "Playground",
       "type": "plugin",
-      "description": "Creates interactive HTML playgrounds — self-contained single-file explorers with visual controls, live preview, and prompt output with copy button",
+      "description": "Generates self-contained interactive HTML playgrounds with visual controls, live preview, and copyable prompt output. Includes templates for design exploration, data queries, concept maps, code visualization, diff review, and document critique.",
       "compatibility": [
         "claude"
       ],
@@ -3802,7 +3899,7 @@
       "slug": "pptx",
       "name": "Pptx",
       "type": "skill",
-      "description": "\"Use this skill any time a .pptx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from any .pptx file (even if the extracted content will be used elsewhere, like in an email or summary); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates, layouts, speaker notes, or comments. Trigger whenever the user mentions \\\"deck,\\\" \\\"slides,\\\" \\\"presentation,\\\" or references a .pptx filename, regardless of what they plan to do with the content afterward. If a .pptx file needs to be opened, created, or touched, use this skill.\"",
+      "description": "Create, read, and edit PowerPoint presentations (.pptx). Handles slide creation, deck assembly, text extraction, template application, speaker notes, comments, and layout management. Includes PptxGenJS integration, OOXML validation, and thumbnail generation for reliable output.",
       "compatibility": [
         "claude",
         "copilot",
@@ -3952,7 +4049,7 @@
       "slug": "pr-review-toolkit",
       "name": "Pr Review Toolkit",
       "type": "plugin",
-      "description": "Comprehensive PR review agents specializing in comments, tests, error handling, type design, code quality, and code simplification",
+      "description": "Six specialized PR review agents that analyze comment accuracy, test coverage gaps, silent error handling, type design quality, guideline compliance, and code simplification opportunities. Run them in parallel or sequentially for staged review workflows.",
       "compatibility": [
         "claude"
       ],
@@ -4037,7 +4134,7 @@
       "slug": "ralph-loop",
       "name": "Ralph Loop",
       "type": "plugin",
-      "description": "Continuous self-referential AI loops for interactive iterative development, implementing the Ralph Wiggum technique. Run Claude in a while-true loop with the same prompt until task completion.",
+      "description": "Runs Claude in a persistent feedback loop that re-executes your prompt after each iteration, letting it self-correct based on test failures, lint errors, and file changes until the task is complete. Ideal for well-defined tasks with automated verification.",
       "compatibility": [
         "claude"
       ],
@@ -4118,7 +4215,7 @@
       "slug": "security-guidance",
       "name": "Security Guidance",
       "type": "plugin",
-      "description": "Security reminder hook that warns about potential security issues when editing files, including command injection, XSS, and unsafe code patterns",
+      "description": "Pre-tool-use hook that intercepts file edits and blocks writes containing vulnerable patterns like shell injection, eval(), dangerouslySetInnerHTML, pickle deserialization, and GitHub Actions command injection. Tracks warnings per session to avoid duplicate alerts.",
       "compatibility": [
         "claude"
       ],
@@ -4162,7 +4259,7 @@
       "slug": "skill-creator",
       "name": "Skill Creator",
       "type": "skill",
-      "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.",
+      "description": "Scaffold, validate, and package new Claude Code skills. Walks you through creating SKILL.md files with proper structure, output patterns, and workflow definitions, then validates and bundles the result for distribution.",
       "compatibility": [
         "claude"
       ],
@@ -4222,7 +4319,7 @@
       "slug": "slack-gif-creator",
       "name": "Slack Gif Creator",
       "type": "skill",
-      "description": "Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation concepts. Use when users request animated GIFs for Slack like \"make me a GIF of X doing Y for Slack.\"",
+      "description": "Create animated GIFs optimized for Slack's size and display constraints. Provides a frame composer, easing functions, GIF builder, and validators to produce smooth, compact animations that look great in Slack channels.",
       "compatibility": [
         "claude",
         "copilot",
@@ -4280,7 +4377,7 @@
       "slug": "theme-factory",
       "name": "Theme Factory",
       "type": "skill",
-      "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
+      "description": "Apply professional visual themes to any artifact -- slides, documents, reports, landing pages, and more. Includes 10 curated themes (Arctic Frost, Golden Hour, Midnight Galaxy, etc.) with coordinated colors and fonts, plus the ability to generate custom themes on the fly.",
       "compatibility": [
         "claude",
         "copilot",
@@ -4362,7 +4459,7 @@
       "slug": "web-artifacts-builder",
       "name": "Web Artifacts Builder",
       "type": "skill",
-      "description": "Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.",
+      "description": "Build multi-component HTML artifacts for claude.ai using React, Tailwind CSS, and shadcn/ui. Scaffolds, bundles, and packages complex artifacts with state management and routing into a single deployable file.",
       "compatibility": [
         "claude",
         "copilot",
@@ -4412,7 +4509,7 @@
       "slug": "webapp-testing",
       "name": "Webapp Testing",
       "type": "skill",
-      "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.",
+      "description": "Test and debug local web applications using Playwright. Automates browser interactions, captures screenshots, reads console logs, discovers elements, and verifies frontend behavior -- all without needing a separate testing framework setup.",
       "compatibility": [
         "claude",
         "copilot",
@@ -4472,7 +4569,7 @@
       "slug": "xlsx",
       "name": "Xlsx",
       "type": "skill",
-      "description": "\"Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path — even casually (like \\\"the xlsx in my downloads\\\") — and wants something done to it or produced from it. Also trigger for cleaning or restructuring messy tabular data files (malformed rows, misplaced headers, junk data) into proper spreadsheets. The deliverable must be a spreadsheet file. Do NOT trigger when the primary deliverable is a Word document, HTML report, standalone Python script, database pipeline, or Google Sheets API integration, even if tabular data is involved.\"",
+      "description": "Create, read, edit, and transform spreadsheet files (.xlsx, .xlsm, .csv, .tsv). Handles formula computation, formatting, charting, data cleaning, column manipulation, and format conversion. Includes OOXML schema validation and recalculation tooling for reliable output.",
       "compatibility": [
         "claude",
         "copilot",

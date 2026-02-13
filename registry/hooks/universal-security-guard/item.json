@@ -2,7 +2,7 @@
   "slug": "universal-security-guard",
   "name": "Universal Security Guard",
   "type": "hook",
-  "description": "Global PreToolUse security hook that denies universally dangerous operations without auto-approving. Blocks reverse shells, privilege escalation, persistence mechanisms, credential access, data exfiltration, container escapes, library injection, and macOS-specific attacks across Bash, Write, Edit, and Read tools.",
+  "description": "User-scoped PreToolUse hook that blocks universally dangerous operations across all projects: reverse shells, sudo/privilege escalation, credential file reads, keychain access, persistence mechanisms (crontab, launchctl, systemd), library injection, container escapes, and git config attacks. Never auto-approves -- only denies threats and defers safe commands to normal permission flow.",
   "compatibility": [
     "claude"
   ],

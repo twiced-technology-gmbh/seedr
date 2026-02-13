@@ -2,7 +2,7 @@
   "slug": "security-guidance",
   "name": "Security Guidance",
   "type": "plugin",
-  "description": "Security reminder hook that warns about potential security issues when editing files, including command injection, XSS, and unsafe code patterns",
+  "description": "Pre-tool-use hook that intercepts file edits and blocks writes containing vulnerable patterns like shell injection, eval(), dangerouslySetInnerHTML, pickle deserialization, and GitHub Actions command injection. Tracks warnings per session to avoid duplicate alerts.",
   "compatibility": [
     "claude"
   ],

@@ -2,7 +2,7 @@
   "slug": "slack",
   "name": "Slack",
   "type": "plugin",
-  "description": "Slack workspace integration. Search messages, access channels, read threads, and stay connected with your team's communications while coding. Find relevant discussions and context quickly.",
+  "description": "Search Slack messages, read channels and threads, and pull team discussions into your coding context. Useful for finding prior decisions, debugging context, or relevant conversations without leaving Claude Code.",
   "compatibility": [
     "claude"
   ],

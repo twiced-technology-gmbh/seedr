@@ -2,7 +2,7 @@
   "slug": "learning-output-style",
   "name": "Learning Output Style",
   "type": "plugin",
-  "description": "Interactive learning mode that requests meaningful code contributions at decision points (mimics the unshipped Learning output style)",
+  "description": "Transforms Claude into a coding tutor that pauses at key decision points and asks you to write 5-10 lines of meaningful code, such as business logic and algorithm choices, while handling boilerplate automatically. Restores the unshipped Learning output style.",
   "compatibility": [
     "claude"
   ],

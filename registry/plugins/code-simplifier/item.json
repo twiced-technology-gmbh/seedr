@@ -2,7 +2,7 @@
   "slug": "code-simplifier",
   "name": "Code Simplifier",
   "type": "plugin",
-  "description": "Agent that simplifies and refines code for clarity, consistency, and maintainability while preserving functionality",
+  "description": "Autonomous refactoring agent that improves recently modified code by reducing nesting, consolidating logic, improving naming, and enforcing project conventions. Preserves all existing behavior while making code more readable and maintainable.",
   "compatibility": [
     "claude"
   ],

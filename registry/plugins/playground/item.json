@@ -2,7 +2,7 @@
   "slug": "playground",
   "name": "Playground",
   "type": "plugin",
-  "description": "Creates interactive HTML playgrounds — self-contained single-file explorers with visual controls, live preview, and prompt output with copy button",
+  "description": "Generates self-contained interactive HTML playgrounds with visual controls, live preview, and copyable prompt output. Includes templates for design exploration, data queries, concept maps, code visualization, diff review, and document critique.",
   "compatibility": [
     "claude"
   ],

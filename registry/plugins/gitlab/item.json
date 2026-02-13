@@ -2,7 +2,7 @@
   "slug": "gitlab",
   "name": "Gitlab",
   "type": "plugin",
-  "description": "GitLab DevOps platform integration. Manage repositories, merge requests, CI/CD pipelines, issues, and wikis. Full access to GitLab's comprehensive DevOps lifecycle tools.",
+  "description": "Manage GitLab repositories, merge requests, CI/CD pipelines, issues, and wikis directly from Claude Code. Provides MCP access to GitLab's full DevOps lifecycle without leaving your editor.",
   "compatibility": [
     "claude"
   ],

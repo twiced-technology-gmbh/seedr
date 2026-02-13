@@ -2,8 +2,8 @@
   "slug": "lint-doctor",
   "name": "Lint Doctor",
   "type": "skill",
-  "description": "Diagnose and fix linting issues across multiple languages",
-  "longDescription": "Language-specific lint rule references for Go, Python, Rust, JavaScript, Java, and pre-commit hooks. Helps identify, understand, and resolve linting warnings and errors with best practices.",
+  "description": "Detect your project's language and framework, then configure linting with sensible defaults -- supports ESLint (with sonarjs/unicorn), Ruff, Clippy, golangci-lint, and Checkstyle, plus optional pre-commit hooks.",
+  "longDescription": "Auto-detects your stack from config files (package.json, Cargo.toml, go.mod, pyproject.toml, pom.xml, etc.) and applies best-practice lint rules with bug/security errors and style warnings. Supports JavaScript/TypeScript with React/Vue/Angular, Python via Ruff, Rust via Clippy, Go via golangci-lint, and Java via Checkstyle. Handles monorepos and offers interactive or automatic configuration with optional husky/lint-staged or pre-commit hook setup.",
   "compatibility": [
     "claude",
     "copilot",

@@ -2,7 +2,7 @@
   "slug": "algorithmic-art",
   "name": "Algorithmic Art",
   "type": "skill",
-  "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations.",
+  "description": "Generate original algorithmic art using p5.js with seeded randomness and interactive parameter controls. Supports flow fields, particle systems, and other generative techniques, producing reproducible artwork with a built-in HTML viewer for exploration.",
   "compatibility": [
     "claude",
     "copilot",

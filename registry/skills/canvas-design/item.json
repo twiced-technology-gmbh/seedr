@@ -2,7 +2,7 @@
   "slug": "canvas-design",
   "name": "Canvas Design",
   "type": "skill",
-  "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
+  "description": "Design original static visuals -- posters, art prints, infographics, and other graphic pieces -- exported as PNG or PDF. Ships with 30+ bundled fonts for rich typography and applies design-first principles to produce polished, print-ready output.",
   "compatibility": [
     "claude",
     "copilot",

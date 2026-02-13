@@ -2,7 +2,7 @@
   "slug": "hookify",
   "name": "Hookify",
   "type": "plugin",
-  "description": "Easily create hooks to prevent unwanted behaviors by analyzing conversation patterns",
+  "description": "Create custom behavioral rules from natural language descriptions or by analyzing recent conversation patterns. Rules use regex pattern matching to warn or block on bash commands, file edits, and prompts, taking effect immediately without restarts.",
   "compatibility": [
     "claude"
   ],

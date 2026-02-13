@@ -2,7 +2,7 @@
   "slug": "claude-md-management",
   "name": "Claude Md Management",
   "type": "plugin",
-  "description": "Tools to maintain and improve CLAUDE.md files - audit quality, capture session learnings, and keep project memory current.",
+  "description": "Audit and improve your CLAUDE.md files to keep them in sync with your codebase. Includes a quality checker for periodic maintenance and a /revise-claude-md command to capture session learnings before they're lost.",
   "compatibility": [
     "claude"
   ],

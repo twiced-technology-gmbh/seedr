@@ -2,8 +2,8 @@
   "slug": "design-patterns",
   "name": "Design Patterns",
   "type": "skill",
-  "description": "Apply Gang of Four design patterns effectively",
-  "longDescription": "Reference guide for Creational, Structural, and Behavioral design patterns. Includes when to use each pattern, implementation examples, and common pitfalls to avoid.",
+  "description": "Identify when and how to apply the 23 Gang of Four design patterns, with a problem-to-pattern selection guide and implementation examples in TypeScript.",
+  "longDescription": "Covers all Creational (Factory Method, Abstract Factory, Builder, Prototype, Singleton), Structural (Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy), and Behavioral patterns (Chain of Responsibility, Command, Iterator, Mediator, Memento, Observer, State, Strategy, Template Method, Visitor). Each pattern includes intent, when to use, quick implementation examples, and common pitfalls.",
   "compatibility": [
     "claude",
     "copilot",

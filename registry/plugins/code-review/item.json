@@ -2,7 +2,7 @@
   "slug": "code-review",
   "name": "Code Review",
   "type": "plugin",
-  "description": "Automated code review for pull requests using multiple specialized agents with confidence-based scoring",
+  "description": "Launches parallel review agents that independently audit PRs for guideline compliance, bugs, and historical context issues. Only findings scoring 80+ confidence are posted as GitHub comments, reducing false positives while maintaining thorough coverage.",
   "compatibility": [
     "claude"
   ],

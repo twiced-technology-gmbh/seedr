@@ -2,7 +2,7 @@
   "slug": "pr-review-toolkit",
   "name": "Pr Review Toolkit",
   "type": "plugin",
-  "description": "Comprehensive PR review agents specializing in comments, tests, error handling, type design, code quality, and code simplification",
+  "description": "Six specialized PR review agents that analyze comment accuracy, test coverage gaps, silent error handling, type design quality, guideline compliance, and code simplification opportunities. Run them in parallel or sequentially for staged review workflows.",
   "compatibility": [
     "claude"
   ],

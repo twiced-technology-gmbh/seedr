@@ -2,7 +2,7 @@
   "slug": "asana",
   "name": "Asana",
   "type": "plugin",
-  "description": "Asana project management integration. Create and manage tasks, search projects, update assignments, track progress, and integrate your development workflow with Asana's work management platform.",
+  "description": "Create and manage Asana tasks, search projects, and update assignments from Claude Code. Link code changes to project tasks and keep your team's work management in sync without leaving your editor.",
   "compatibility": [
     "claude"
   ],

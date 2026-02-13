@@ -2,8 +2,8 @@
   "slug": "claude-md-doctor",
   "name": "CLAUDE.md Doctor",
   "type": "skill",
-  "description": "Diagnose and improve CLAUDE.md files and .claude/rules/",
-  "longDescription": "Audit CLAUDE.md files for quality, staleness, and anti-patterns. Evaluate .claude/rules/ for modularity and correctness. Provides detailed health reports with severity ratings, scores, and targeted fixes for optimal Claude Code project context.",
+  "description": "Audit your CLAUDE.md files and .claude/rules/ for quality issues, staleness, anti-patterns, and token bloat, then generate a scored health report with severity-rated fixes you can apply interactively.",
+  "longDescription": "Scans all project instruction files (root CLAUDE.md, package-level overrides, .claude.local.md, and modular rules) to evaluate token efficiency, command accuracy, path validity, frontmatter correctness, and rule modularity. Produces a file-by-file scorecard with critical/warning/low findings, then offers automatic, critical-only, or per-fix approval workflows.",
   "compatibility": [
     "claude"
   ],

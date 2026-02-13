@@ -2,7 +2,7 @@
   "slug": "claude-code-setup",
   "name": "Claude Code Setup",
   "type": "plugin",
-  "description": "Analyze codebases and recommend tailored Claude Code automations such as hooks, skills, MCP servers, and subagents.",
+  "description": "Scans your project structure and recommends the best Claude Code automations to set up, including MCP servers, skills, hooks, subagents, and slash commands tailored to your specific codebase.",
   "compatibility": [
     "claude"
   ],

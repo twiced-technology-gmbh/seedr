@@ -2,7 +2,7 @@
   "slug": "skill-creator",
   "name": "Skill Creator",
   "type": "skill",
-  "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.",
+  "description": "Scaffold, validate, and package new Claude Code skills. Walks you through creating SKILL.md files with proper structure, output patterns, and workflow definitions, then validates and bundles the result for distribution.",
   "compatibility": [
     "claude"
   ],

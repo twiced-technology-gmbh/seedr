@@ -2,7 +2,7 @@
   "slug": "explanatory-output-style",
   "name": "Explanatory Output Style",
   "type": "plugin",
-  "description": "Adds educational insights about implementation choices and codebase patterns (mimics the deprecated Explanatory output style)",
+  "description": "Restores the deprecated Explanatory output style via a session-start hook. Claude automatically includes bordered insight sections explaining implementation trade-offs, codebase-specific patterns, and design decisions relevant to your project.",
   "compatibility": [
     "claude"
   ],

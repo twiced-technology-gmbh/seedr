@@ -2,7 +2,7 @@
   "slug": "stripe",
   "name": "Stripe",
   "type": "plugin",
-  "description": "Stripe development plugin for Claude",
+  "description": "Stripe integration with MCP tools, best-practices skill, and slash commands for explaining errors and looking up test cards. Helps you build and debug Stripe payment integrations following official patterns.",
   "compatibility": [
     "claude"
   ],

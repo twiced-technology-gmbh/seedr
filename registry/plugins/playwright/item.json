@@ -2,7 +2,7 @@
   "slug": "playwright",
   "name": "Playwright",
   "type": "plugin",
-  "description": "Browser automation and end-to-end testing MCP server by Microsoft. Enables Claude to interact with web pages, take screenshots, fill forms, click elements, and perform automated browser testing workflows.",
+  "description": "Gives Claude Code browser automation capabilities via Microsoft's Playwright. Interact with web pages, take screenshots, fill forms, click elements, and run end-to-end test workflows across Chromium, Firefox, and WebKit.",
   "compatibility": [
     "claude"
   ],
