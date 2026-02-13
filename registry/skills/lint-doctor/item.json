@@ -3,7 +3,7 @@
   "name": "Lint Doctor",
   "type": "skill",
   "description": "Diagnose and fix linting issues across multiple languages",
-  "longDescription": "Auto-detects your stack from config files (package.json, Cargo.toml, go.mod, pyproject.toml, pom.xml, build.gradle) and configures linting with best-practice rules. Supports 5 language ecosystems: JavaScript/TypeScript with React/Vue/Angular (ESLint + sonarjs, unicorn), Python (Ruff), Rust (Clippy), Go (golangci-lint), and Java (Checkstyle, Google style). Includes 6 dedicated reference docs per language plus pre-commit hook setup. Offers interactive or automatic modes with 3 strictness levels, handles monorepos with workspace detection, and optionally sets up husky/lint-staged or pre-commit hooks. Classifies rules by severity: errors for bugs/security, warnings for complexity/style, off for formatting.",
+  "longDescription": "Auto-detects your stack from config files (`package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`, `pom.xml`, `build.gradle`) and configures linting with best-practice rules. Supports 5 language ecosystems: JavaScript/TypeScript with React/Vue/Angular (ESLint + sonarjs, unicorn), Python (Ruff), Rust (Clippy), Go (`golangci-lint`), and Java (Checkstyle, Google style). Includes 6 dedicated reference docs per language plus pre-commit hook setup. Offers interactive or automatic modes with 3 strictness levels, handles monorepos with workspace detection, and optionally sets up husky/`lint-staged` or pre-commit hooks. Classifies rules by severity: errors for bugs/security, warnings for complexity/style, off for formatting.",
   "compatibility": [
     "claude",
     "copilot",

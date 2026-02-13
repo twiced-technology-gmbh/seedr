@@ -50,17 +50,20 @@ For each item missing `longDescription` (or `description`):
    - For hooks: read the hook script file
    - For community items (no local files): use `gh api` to fetch content from the `externalUrl` GitHub path
 
-2. **Generate descriptions** following the rules in `.claude/rules/registry-descriptions.md`:
+2. **Generate descriptions** following these rules:
 
    **`description`** — answers "What does this do?"
    - One clear sentence about the core capability
    - Lead with what it *does*, not what it *is*
    - No trigger instructions, no title restatements
 
-   **`longDescription`** — answers "Should I install this?"
-   - All concrete specifics needed to make an install decision
-   - Supported languages/frameworks, number of rules/patterns, included agents/commands
-   - No filler — just the facts
+   **`longDescription`** — answers "Should I install this?" with implementation-level detail.
+   - Name specific files, scripts, modules, agents, and commands included (e.g. "Ships with recalc.py for formula recalculation" not "includes formula support")
+   - Include exact counts: number of patterns, rules, themes, agents, commands, skills
+   - Describe the technical approach or architecture
+   - List concrete capabilities by name, not by category
+   - No filler, no marketing speak — just the implementation facts
+   - 3-5 sentences, typically 50-90 words (minimum 30 words, enforced by pre-commit hook)
 
 3. **Present to user for approval** before writing:
 

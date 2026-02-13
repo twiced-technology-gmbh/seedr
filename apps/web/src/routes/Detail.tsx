@@ -1,4 +1,7 @@
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import { Breadcrumb, CodeBlock } from "@/components/ui";
 import { typeLabelPlural, typeTextColors } from "@/lib/colors";
@@ -9,7 +12,7 @@ import { AuthorLink } from "@/components/AuthorLink";
 import { CompatibilityBadges } from "@/components/CompatibilityBadges";
 import { PluginContents } from "@/components/PluginContents";
 import { FileTree } from "@/components/FileTree";
-import { getItem } from "@/lib/registry";
+import { getItem, getLongDescription } from "@/lib/registry";
 import type { ComponentType } from "@/lib/types";
 
 export function Detail() {
@@ -18,6 +21,12 @@ export function Detail() {
   useScrollRestoration();
 
   const item = slug ? getItem(slug) : undefined;
+
+  const [longDescription, setLongDescription] = useState<string>();
+  useEffect(() => {
+    if (!slug) return;
+    getLongDescription(slug).then(setLongDescription);
+  }, [slug]);
 
   if (!item) {
     return (
@@ -62,10 +71,14 @@ export function Detail() {
             className="text-sm mb-8 block"
           />
         )}
-        <p className="text-sm text-subtext">{item.description}</p>
-        {item.longDescription && (
-          <p className="text-sm text-text-dim mt-3">{item.longDescription}</p>
-        )}
+        <div className="text-sm text-subtext [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded [&_code]:bg-overlay/50 [&_code]:text-text-dim [&_code]:font-mono [&_code]:text-xs">
+          <Markdown
+            remarkPlugins={[remarkGfm]}
+            components={{ p: ({ children }) => <p>{children}</p> }}
+          >
+            {item.description}
+          </Markdown>
+        </div>
       </div>
 
       {/* Install command */}
@@ -73,9 +86,26 @@ export function Detail() {
         <CodeBlock code={installCommand} />
       </div>
 
+      <hr className="border-overlay/50 mb-8" />
+
+      {/* Long description */}
+      {longDescription && (
+        <div className="mb-8">
+          <h2 className="text-xs font-medium text-subtext uppercase tracking-wider mb-2">About</h2>
+          <div className="text-sm text-subtext [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded [&_code]:bg-overlay/50 [&_code]:text-text-dim [&_code]:font-mono [&_code]:text-xs">
+            <Markdown
+              remarkPlugins={[remarkGfm]}
+              components={{ p: ({ children }) => <p>{children}</p> }}
+            >
+              {longDescription}
+            </Markdown>
+          </div>
+        </div>
+      )}
+
       {/* Compatibility */}
       <div className="mb-8">
-        <h2 className="text-sm font-medium text-subtext mb-2">
+        <h2 className="text-xs font-medium text-subtext uppercase tracking-wider mb-2">
           Compatible with
         </h2>
         <CompatibilityBadges tools={item.compatibility} size="md" />
@@ -91,13 +121,14 @@ export function Detail() {
         <FileTree
           files={item.contents.files}
           externalUrl={item.externalUrl}
+          rootName={item.slug}
           className="mb-8"
         />
       )}
 
       {/* CLI Reference */}
       <div className="mb-8">
-        <h2 className="text-sm font-medium text-subtext mb-3">CLI Reference</h2>
+        <h2 className="text-xs font-medium text-subtext uppercase tracking-wider mb-3">CLI Reference</h2>
         <div className="bg-surface border border-overlay rounded-lg overflow-hidden">
           <table className="w-full text-sm">
             <thead>
@@ -142,7 +173,7 @@ export function Detail() {
 
       {/* Example commands */}
       <div>
-        <h2 className="text-sm font-medium text-subtext mb-3">Examples</h2>
+        <h2 className="text-xs font-medium text-subtext uppercase tracking-wider mb-3">Examples</h2>
 
         <div className="space-y-4">
           <CodeBlock

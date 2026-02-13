@@ -70,6 +70,35 @@ export function getItem(slug: string): RegistryItem | undefined {
   return manifest.items.find((item) => item.slug === slug);
 }
 
+// Lazy-import item.json files for longDescription lookup (stripped from manifests).
+// Each entry is an async () => module, loaded only when requested.
+const itemJsonLoaders = import.meta.glob<{ default: RegistryItem }>(
+  "@registry/*/*/item.json",
+);
+
+// Build a slug → loader map for O(1) lookup
+const loaderBySlug = new Map<string, () => Promise<{ default: RegistryItem }>>();
+for (const [path, loader] of Object.entries(itemJsonLoaders)) {
+  // path: /registry/<type>/<slug>/item.json → extract slug
+  const parts = path.split("/");
+  const slug = parts[parts.length - 2];
+  if (slug) loaderBySlug.set(slug, loader);
+}
+
+const longDescriptionCache = new Map<string, string>();
+
+export async function getLongDescription(slug: string): Promise<string | undefined> {
+  if (longDescriptionCache.has(slug)) return longDescriptionCache.get(slug);
+
+  const loader = loaderBySlug.get(slug);
+  if (!loader) return undefined;
+
+  const mod = await loader();
+  const desc = mod.default?.longDescription;
+  if (desc) longDescriptionCache.set(slug, desc);
+  return desc;
+}
+
 export function getFeaturedItems(): RegistryItem[] {
   return manifest.items.filter((item) => item.featured);
 }

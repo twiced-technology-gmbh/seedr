@@ -3,7 +3,7 @@
   "name": "Pr Review Toolkit",
   "type": "plugin",
   "description": "Comprehensive PR review agents specializing in comments, tests, error handling, type design, code quality, and code simplification",
-  "longDescription": "Adds a /review-pr command that dispatches 6 specialized agents in parallel: code-reviewer for general quality, code-simplifier for unnecessary complexity, comment-analyzer for comment accuracy and staleness, pr-test-analyzer for test coverage gaps, silent-failure-hunter for swallowed errors and missing error paths, and type-design-analyzer for type safety and design issues. Each agent reviews independently for thorough PR coverage.",
+  "longDescription": "Adds a `/review-pr` command that dispatches 6 specialized agents in parallel: code-reviewer for general quality, code-simplifier for unnecessary complexity, comment-analyzer for comment accuracy and staleness, pr-test-analyzer for test coverage gaps, silent-failure-hunter for swallowed errors and missing error paths, and type-design-analyzer for type safety and design issues. Each agent reviews independently for thorough PR coverage.",
   "compatibility": [
     "claude"
   ],

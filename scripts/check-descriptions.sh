@@ -22,28 +22,43 @@ desc = d.get('description', '')
 sys.exit(0 if desc.strip() else 1)
 " 2>/dev/null && echo "yes" || echo "no")
 
-  # Check longDescription
-  has_long=$(python3 -c "
-import json, sys
+  # Check longDescription (must exist, be at least 30 words, and contain markdown backticks)
+  long_check=$(python3 -c "
+import json, sys, re
 d = json.load(open('$item_json'))
 long = d.get('longDescription', '')
-sys.exit(0 if long.strip() else 1)
-" 2>/dev/null && echo "yes" || echo "no")
+words = len(long.split())
+if not long.strip():
+    print('missing')
+elif words < 30:
+    print(f'short:{words}')
+elif '\`' not in long:
+    print('no_markdown')
+else:
+    print('ok')
+" 2>/dev/null || echo "missing")
 
   if [ "$has_desc" = "no" ]; then
     echo "ERROR: $rel_path ($slug) is missing 'description'"
     errors=$((errors + 1))
   fi
 
-  if [ "$has_long" = "no" ]; then
+  if [ "$long_check" = "missing" ]; then
     echo "ERROR: $rel_path ($slug) is missing 'longDescription'"
+    errors=$((errors + 1))
+  elif [[ "$long_check" == short:* ]]; then
+    word_count="${long_check#short:}"
+    echo "ERROR: $rel_path ($slug) longDescription too short ($word_count words, minimum 30)"
+    errors=$((errors + 1))
+  elif [ "$long_check" = "no_markdown" ]; then
+    echo "ERROR: $rel_path ($slug) longDescription has no markdown formatting (use backticks for file names, commands, code identifiers)"
     errors=$((errors + 1))
   fi
 done
 
 if [ $errors -gt 0 ]; then
   echo ""
-  echo "$errors description error(s) found. Every item.json must have both 'description' and 'longDescription'."
+  echo "$errors description error(s) found. Every item.json must have 'description' and 'longDescription' (min 30 words, with markdown backticks)."
   echo "Run '/audit-descriptions' to generate missing descriptions."
   exit 1
 fi

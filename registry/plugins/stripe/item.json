@@ -3,7 +3,7 @@
   "name": "Stripe",
   "type": "plugin",
   "description": "Stripe development plugin for Claude",
-  "longDescription": "Stripe's official plugin combining an MCP server (HTTP to mcp.stripe.com) with 2 commands and 1 skill. /explain-error provides root cause analysis, actionable fixes, and production-ready code samples for any Stripe error code. /test-cards supplies test card numbers for development. The stripe-best-practices skill covers Checkout Sessions, Payment Elements, Connect platforms, subscriptions, PCI compliance, and deprecated API migration.",
+  "longDescription": "Stripe's official plugin combining an MCP server (HTTP to `mcp.stripe.com`) with 2 commands and 1 skill. `/explain-error` provides root cause analysis, actionable fixes, and production-ready code samples for any Stripe error code. `/test-cards` supplies test card numbers for development. The stripe-best-practices skill covers Checkout Sessions, Payment Elements, Connect platforms, subscriptions, PCI compliance, and deprecated API migration.",
   "compatibility": [
     "claude"
   ],

@@ -1,89 +1,73 @@
 import { useState, useRef, useCallback } from "react";
 import { ChevronRight, ChevronDown, File, Folder, FolderOpen, X, Loader2, GripVertical, Download } from "lucide-react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import type { CSSProperties } from "react";
+import Editor, { type Monaco } from "@monaco-editor/react";
 import type { FileTreeNode } from "@/lib/types";
 
-// Custom theme based on oneDark but without token backgrounds
-const customTheme: { [key: string]: CSSProperties } = {
-  'code[class*="language-"]': {
-    color: "#abb2bf",
-    fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
-    direction: "ltr",
-    textAlign: "left",
-    whiteSpace: "pre",
-    wordSpacing: "normal",
-    wordBreak: "normal",
-    lineHeight: "1.5",
-    tabSize: 2,
-    hyphens: "none",
-  },
-  'pre[class*="language-"]': {
-    color: "#abb2bf",
-    fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
-    direction: "ltr",
-    textAlign: "left",
-    whiteSpace: "pre",
-    wordSpacing: "normal",
-    wordBreak: "normal",
-    lineHeight: "1.5",
-    tabSize: 2,
-    hyphens: "none",
-    padding: "1em",
-    margin: "0",
-    overflow: "auto",
-  },
-  comment: { color: "#5c6370", fontStyle: "italic" },
-  prolog: { color: "#5c6370" },
-  doctype: { color: "#5c6370" },
-  cdata: { color: "#5c6370" },
-  punctuation: { color: "#abb2bf" },
-  property: { color: "#e06c75" },
-  tag: { color: "#e06c75" },
-  boolean: { color: "#d19a66" },
-  number: { color: "#d19a66" },
-  constant: { color: "#d19a66" },
-  symbol: { color: "#56b6c2" },
-  deleted: { color: "#e06c75" },
-  selector: { color: "#98c379" },
-  "attr-name": { color: "#d19a66" },
-  string: { color: "#98c379" },
-  char: { color: "#98c379" },
-  builtin: { color: "#e5c07b" },
-  inserted: { color: "#98c379" },
-  operator: { color: "#56b6c2" },
-  entity: { color: "#d19a66", cursor: "help" },
-  url: { color: "#56b6c2" },
-  variable: { color: "#e06c75" },
-  atrule: { color: "#c678dd" },
-  "attr-value": { color: "#98c379" },
-  function: { color: "#61afef" },
-  "class-name": { color: "#e5c07b" },
-  keyword: { color: "#c678dd" },
-  regex: { color: "#56b6c2" },
-  important: { color: "#c678dd", fontWeight: "bold" },
-  bold: { fontWeight: "bold" },
-  italic: { fontStyle: "italic" },
-};
+const PREVIEW_THEME = "seedr-preview";
+
+function handleEditorWillMount(monaco: Monaco) {
+  monaco.editor.defineTheme(PREVIEW_THEME, {
+    base: "vs-dark",
+    inherit: true,
+    rules: [],
+    colors: {
+      "editor.background": "#030712",
+      "editorGutter.background": "#030712",
+      "scrollbar.shadow": "#00000000",
+      "scrollbarSlider.background": "#31324480",
+      "scrollbarSlider.hoverBackground": "#6c708640",
+    },
+  });
+}
+
+function getLanguageFromPath(fileName: string): string {
+  const ext = fileName.split(".").pop()?.toLowerCase() || "";
+  const map: Record<string, string> = {
+    js: "javascript",
+    ts: "typescript",
+    jsx: "javascript",
+    tsx: "typescript",
+    json: "json",
+    md: "markdown",
+    yml: "yaml",
+    yaml: "yaml",
+    sh: "shell",
+    bash: "shell",
+    zsh: "shell",
+    cmd: "bat",
+    rs: "rust",
+    py: "python",
+    rb: "ruby",
+    go: "go",
+    html: "html",
+    css: "css",
+    scss: "scss",
+    toml: "ini",
+    xml: "xml",
+    sql: "sql",
+    txt: "plaintext",
+  };
+  return map[ext] || "plaintext";
+}
 
 interface FileTreeProps {
   files: FileTreeNode[];
   externalUrl?: string;
   className?: string;
+  rootName?: string;
 }
 
 interface TreeNodeProps {
   node: FileTreeNode;
   path: string;
   depth?: number;
+  defaultOpen?: boolean;
   selectedPath?: string | null;
   onFileClick?: (path: string, name: string) => void;
 }
 
-function TreeNode({ node, path, depth = 0, selectedPath, onFileClick }: TreeNodeProps) {
-  const [isOpen, setIsOpen] = useState(false);
+function TreeNode({ node, path, depth = 0, defaultOpen = false, selectedPath, onFileClick }: TreeNodeProps) {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
   const isDir = node.type === "directory";
   const hasChildren = isDir && node.children && node.children.length > 0;
   const fullPath = path ? `${path}/${node.name}` : node.name;
@@ -152,14 +136,6 @@ function TreeNode({ node, path, depth = 0, selectedPath, onFileClick }: TreeNode
 }
 
 /**
- * Check if file is a markdown file that should be rendered
- */
-function isMarkdownFile(fileName: string): boolean {
-  const ext = fileName.split(".").pop()?.toLowerCase() || "";
-  return ext === "md";
-}
-
-/**
  * Check if file is an image that can be previewed
  */
 function isImageFile(fileName: string): boolean {
@@ -212,37 +188,6 @@ function isBinaryFile(fileName: string): boolean {
     "bin", "dat", "db", "sqlite", "avi", "tif", "tiff",
   ]);
   return binaryExtensions.has(ext);
-}
-
-/**
- * Get language for syntax highlighting based on file extension
- */
-function getLanguage(fileName: string): string {
-  const ext = fileName.split(".").pop()?.toLowerCase() || "";
-  const languageMap: Record<string, string> = {
-    js: "javascript",
-    jsx: "jsx",
-    ts: "typescript",
-    tsx: "tsx",
-    json: "json",
-    md: "markdown",
-    sh: "bash",
-    bash: "bash",
-    zsh: "bash",
-    py: "python",
-    rb: "ruby",
-    go: "go",
-    rs: "rust",
-    yaml: "yaml",
-    yml: "yaml",
-    toml: "toml",
-    html: "html",
-    css: "css",
-    scss: "scss",
-    sql: "sql",
-    txt: "text",
-  };
-  return languageMap[ext] || "text";
 }
 
 interface FilePreviewProps {
@@ -298,7 +243,6 @@ function FilePreview({ filePath, content, loading, error, onClose, downloadUrl }
   }, [height, width]);
 
   const fileName = filePath.split("/").pop() || filePath;
-  const language = getLanguage(fileName);
   const isImage = isImageFile(fileName);
   const isAudio = isAudioFile(fileName);
   const isVideo = isVideoFile(fileName);
@@ -320,7 +264,7 @@ function FilePreview({ filePath, content, loading, error, onClose, downloadUrl }
           <X className="w-4 h-4 text-subtext" />
         </button>
       </div>
-      <div className="overflow-auto" style={{ height: `${height}px` }}>
+      <div className="overflow-hidden" style={{ height: `${height}px` }}>
         {loading && (
           <div className="flex items-center justify-center h-full gap-2 text-subtext">
             <Loader2 className="w-4 h-4 animate-spin" />
@@ -401,37 +345,33 @@ function FilePreview({ filePath, content, loading, error, onClose, downloadUrl }
           </div>
         )}
         {content && !isBinary && !isImage && !isAudio && !isVideo && !isPdf && (
-          isMarkdownFile(fileName) ? (
-            <div className="p-4 prose prose-invert prose-sm max-w-none
-              prose-headings:text-text prose-p:text-subtext prose-strong:text-text
-              prose-code:text-accent prose-code:bg-overlay prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:before:content-none prose-code:after:content-none
-              prose-a:text-accent prose-a:no-underline hover:prose-a:underline
-              prose-li:text-subtext prose-li:marker:text-text-dim
-              prose-table:border-collapse
-              prose-th:border prose-th:border-overlay prose-th:bg-surface prose-th:px-3 prose-th:py-1.5 prose-th:text-left prose-th:text-text prose-th:text-xs prose-th:font-medium
-              prose-td:border prose-td:border-overlay prose-td:px-3 prose-td:py-1.5 prose-td:text-subtext prose-td:text-xs
-              prose-pre:bg-surface prose-pre:border prose-pre:border-overlay
-              prose-hr:border-overlay
-              prose-blockquote:border-accent/40 prose-blockquote:text-subtext
-            ">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
-            </div>
-          ) : (
-            <SyntaxHighlighter
-              language={language}
-              style={customTheme}
-              customStyle={{
-                margin: 0,
-                padding: "1rem",
-                background: "transparent",
-                fontSize: "0.875rem",
-                minHeight: "100%",
-              }}
-              wrapLongLines
-            >
-              {content}
-            </SyntaxHighlighter>
-          )
+          <Editor
+            height="100%"
+            language={getLanguageFromPath(fileName)}
+            value={content}
+            theme={PREVIEW_THEME}
+            beforeMount={handleEditorWillMount}
+            options={{
+              readOnly: true,
+              minimap: { enabled: false },
+              lineNumbers: "off",
+              glyphMargin: false,
+              folding: false,
+              lineDecorationsWidth: 12,
+              lineNumbersMinChars: 0,
+              renderLineHighlight: "none",
+              scrollBeyondLastLine: false,
+              overviewRulerLanes: 0,
+              overviewRulerBorder: false,
+              hideCursorInOverviewRuler: true,
+              scrollbar: { vertical: "auto", horizontal: "auto", verticalScrollbarSize: 6, horizontalScrollbarSize: 6 },
+              padding: { top: 12, bottom: 12 },
+              fontSize: 13,
+              wordWrap: "on",
+              domReadOnly: true,
+              contextmenu: false,
+            }}
+          />
         )}
       </div>
       {/* Resize handle - bottom */}
@@ -483,7 +423,7 @@ function getRawUrl(externalUrl: string, filePath: string): string | null {
   return `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${fullPath}`;
 }
 
-export function FileTree({ files, externalUrl, className = "" }: FileTreeProps) {
+export function FileTree({ files, externalUrl, className = "", rootName }: FileTreeProps) {
   const [selectedFile, setSelectedFile] = useState<{ path: string; name: string } | null>(null);
   const [fileContent, setFileContent] = useState<string | null>(null);
   const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
@@ -501,7 +441,9 @@ export function FileTree({ files, externalUrl, className = "" }: FileTreeProps) 
       return;
     }
 
-    const rawUrl = getRawUrl(externalUrl, path);
+    // Strip virtual root folder prefix from path for URL resolution
+    const fetchPath = rootName ? path.replace(`${rootName}/`, "") : path;
+    const rawUrl = getRawUrl(externalUrl, fetchPath);
     setSelectedFile({ path, name });
     setFileContent(null);
     setDownloadUrl(rawUrl);
@@ -544,17 +486,27 @@ export function FileTree({ files, externalUrl, className = "" }: FileTreeProps) 
 
   return (
     <div className={className}>
-      <h2 className="text-sm font-medium text-subtext mb-3">File Structure</h2>
+      <h2 className="text-xs font-medium text-subtext uppercase tracking-wider mb-3">File Structure</h2>
       <div className="bg-surface rounded-lg py-2 overflow-hidden">
-        {files.map((node, i) => (
+        {rootName ? (
           <TreeNode
-            key={`${node.name}-${i}`}
-            node={node}
+            node={{ name: rootName, type: "directory", children: files }}
             path=""
+            defaultOpen
             selectedPath={selectedFile?.path}
             onFileClick={externalUrl ? handleFileClick : undefined}
           />
-        ))}
+        ) : (
+          files.map((node, i) => (
+            <TreeNode
+              key={`${node.name}-${i}`}
+              node={node}
+              path=""
+              selectedPath={selectedFile?.path}
+              onFileClick={externalUrl ? handleFileClick : undefined}
+            />
+          ))
+        )}
       </div>
       {selectedFile && (
         <FilePreview

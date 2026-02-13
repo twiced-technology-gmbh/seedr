@@ -3,7 +3,7 @@
   "name": "Slack",
   "type": "plugin",
   "description": "Slack workspace integration. Search messages, access channels, read threads, and stay connected with your team's communications while coding. Find relevant discussions and context quickly.",
-  "longDescription": "Connects to Slack's hosted MCP endpoint via SSE at mcp.slack.com. Search messages, read channel history and threads, and find relevant discussions for development context without switching to the Slack app. No local server to install -- authenticates through Slack's OAuth flow.",
+  "longDescription": "Connects to Slack's hosted MCP endpoint via SSE at `mcp.slack.com`. Search messages, read channel history and threads, and find relevant discussions for development context without switching to the Slack app. No local server to install -- authenticates through Slack's OAuth flow.",
   "compatibility": [
     "claude"
   ],

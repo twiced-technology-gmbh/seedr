@@ -3,7 +3,7 @@
   "name": "Playground",
   "type": "plugin",
   "description": "Creates interactive HTML playgrounds — self-contained single-file explorers with visual controls, live preview, and prompt output with copy button",
-  "longDescription": "Provides a playground skill with 6 templates: code-map (codebase structure visualization), concept-map (knowledge exploration), data-explorer (SQL/API/regex query building), design-playground (component and layout prototyping), diff-review (line-by-line PR commenting), and document-critique (approve/reject/comment workflow). Each generates a self-contained single-file HTML with live controls, instant preview, and a copy-to-clipboard prompt for iterating with Claude.",
+  "longDescription": "Provides a playground skill with 6 templates: `code-map` (codebase structure visualization), `concept-map` (knowledge exploration), `data-explorer` (SQL/API/regex query building), `design-playground` (component and layout prototyping), `diff-review` (line-by-line PR commenting), and `document-critique` (approve/reject/comment workflow). Each generates a self-contained single-file HTML with live controls, instant preview, and a copy-to-clipboard prompt for iterating with Claude.",
   "compatibility": [
     "claude"
   ],

@@ -6,7 +6,6 @@
       "name": "Asana",
       "type": "plugin",
       "description": "Asana project management integration. Create and manage tasks, search projects, update assignments, track progress, and integrate your development workflow with Asana's work management platform.",
-      "longDescription": "Connects to Asana's hosted MCP endpoint via SSE. Create, update, and search tasks, manage project assignments, and track progress from Claude Code. No local server to install -- connects directly to mcp.asana.com. Requires an Asana access token.",
       "compatibility": [
         "claude"
       ],
@@ -41,7 +40,6 @@
       "name": "Audit Context Building",
       "type": "plugin",
       "description": "Build deep architectural context through ultra-granular code analysis before vulnerability hunting",
-      "longDescription": "Security audit plugin from Trail of Bits with a /audit-context command, a function-analyzer agent, and an audit-context-building skill with completeness checklists. Maps codebase architecture at function-level granularity before hunting vulnerabilities, so findings include full context about impact and interactions. Supports a --focus flag for targeted module analysis.",
       "compatibility": [
         "claude"
       ],
@@ -123,7 +121,6 @@
       "name": "Context7",
       "type": "plugin",
       "description": "Upstash Context7 MCP server for up-to-date documentation lookup. Pull version-specific documentation and code examples directly from source repositories into your LLM context.",
-      "longDescription": "MCP server by Upstash (runs via npx @upstash/context7-mcp) that fetches version-specific library documentation and code examples on demand from source repositories. Replaces outdated training-data knowledge with current docs for any library or framework, so Claude generates code against the latest APIs.",
       "compatibility": [
         "claude"
       ],
@@ -158,7 +155,6 @@
       "name": "Firebase",
       "type": "plugin",
       "description": "Google Firebase MCP integration. Manage Firestore databases, authentication, cloud functions, hosting, and storage. Build and manage your Firebase backend directly from your development workflow.",
-      "longDescription": "Official Google MCP server (runs via npx firebase-tools@latest mcp). Manage Firestore databases, Authentication users, Cloud Functions, Hosting deployments, and Cloud Storage directly from Claude Code. Run queries, deploy functions, and configure services without switching to the Firebase console.",
       "compatibility": [
         "claude"
       ],
@@ -193,7 +189,6 @@
       "name": "Github",
       "type": "plugin",
       "description": "Official GitHub MCP server for repository management. Create issues, manage pull requests, review code, search repositories, and interact with GitHub's full API directly from Claude Code.",
-      "longDescription": "Official GitHub MCP server connecting via HTTP to api.githubcopilot.com. Exposes the GitHub API for creating and searching issues, managing pull requests, reviewing code, browsing repositories, and interacting with GitHub Actions. Requires a GitHub Personal Access Token for authentication.",
       "compatibility": [
         "claude"
       ],
@@ -228,7 +223,6 @@
       "name": "Gitlab",
       "type": "plugin",
       "description": "GitLab DevOps platform integration. Manage repositories, merge requests, CI/CD pipelines, issues, and wikis. Full access to GitLab's comprehensive DevOps lifecycle tools.",
-      "longDescription": "MCP server connecting via HTTP to GitLab's API v4 endpoint. Manage repositories, create and review merge requests, trigger CI/CD pipelines, file issues, and edit wikis from Claude Code. Connects to gitlab.com by default; configurable for self-hosted GitLab instances.",
       "compatibility": [
         "claude"
       ],
@@ -263,7 +257,6 @@
       "name": "Greptile",
       "type": "plugin",
       "description": "AI code review agent for GitHub and GitLab. View and resolve Greptile's PR review comments directly from Claude Code.",
-      "longDescription": "MCP server connecting via HTTP to api.greptile.com that surfaces Greptile's AI-generated PR review comments inside Claude Code. View, resolve, and act on findings for GitHub and GitLab pull requests without switching to the browser. Requires a Greptile API key for authentication.",
       "compatibility": [
         "claude"
       ],
@@ -303,7 +296,6 @@
       "name": "Laravel Boost",
       "type": "plugin",
       "description": "Laravel development toolkit MCP server. Provides intelligent assistance for Laravel applications including Artisan commands, Eloquent queries, routing, migrations, and framework-specific code generation.",
-      "longDescription": "MCP server that runs via php artisan boost:mcp inside your Laravel project. Provides context-aware tools for running Artisan commands, building Eloquent queries, managing routes, generating migrations, and scaffolding Laravel-specific code. Requires Laravel Boost to be installed as a Composer dependency in your project.",
       "compatibility": [
         "claude"
       ],
@@ -338,7 +330,6 @@
       "name": "Linear",
       "type": "plugin",
       "description": "Linear issue tracking integration. Create issues, manage projects, update statuses, search across workspaces, and streamline your software development workflow with Linear's modern issue tracker.",
-      "longDescription": "Connects to Linear's hosted MCP endpoint via HTTP at mcp.linear.app. Create and update issues, manage projects and cycles, search across teams, and update statuses from Claude Code. No local server to install -- authenticates through Linear's OAuth flow.",
       "compatibility": [
         "claude"
       ],
@@ -373,7 +364,6 @@
       "name": "Playwright",
       "type": "plugin",
       "description": "Browser automation and end-to-end testing MCP server by Microsoft. Enables Claude to interact with web pages, take screenshots, fill forms, click elements, and perform automated browser testing workflows.",
-      "longDescription": "Microsoft's Playwright MCP server (runs via npx @playwright/mcp@latest). Enables Claude to navigate pages, take screenshots, fill forms, click elements, and run end-to-end tests across Chromium, Firefox, and WebKit browsers. Useful for automated testing workflows, web scraping, and UI verification without manual browser setup.",
       "compatibility": [
         "claude"
       ],
@@ -408,7 +398,6 @@
       "name": "Serena",
       "type": "plugin",
       "description": "Semantic code analysis MCP server providing intelligent code understanding, refactoring suggestions, and codebase navigation through language server protocol integration.",
-      "longDescription": "MCP server by Oraios (runs via uvx from its GitHub repo) that integrates Language Server Protocol for semantic code analysis. Provides go-to-definition, find-references, symbol search, and refactoring suggestions with full type awareness -- significantly more accurate than text-based grep for navigating and understanding codebases.",
       "compatibility": [
         "claude"
       ],
@@ -443,7 +432,6 @@
       "name": "Slack",
       "type": "plugin",
       "description": "Slack workspace integration. Search messages, access channels, read threads, and stay connected with your team's communications while coding. Find relevant discussions and context quickly.",
-      "longDescription": "Connects to Slack's hosted MCP endpoint via SSE at mcp.slack.com. Search messages, read channel history and threads, and find relevant discussions for development context without switching to the Slack app. No local server to install -- authenticates through Slack's OAuth flow.",
       "compatibility": [
         "claude"
       ],
@@ -478,7 +466,6 @@
       "name": "Stripe",
       "type": "plugin",
       "description": "Stripe development plugin for Claude",
-      "longDescription": "Stripe's official plugin combining an MCP server (HTTP to mcp.stripe.com) with 2 commands and 1 skill. /explain-error provides root cause analysis, actionable fixes, and production-ready code samples for any Stripe error code. /test-cards supplies test card numbers for development. The stripe-best-practices skill covers Checkout Sessions, Payment Elements, Connect platforms, subscriptions, PCI compliance, and deprecated API migration.",
       "compatibility": [
         "claude"
       ],
@@ -548,7 +535,6 @@
       "name": "Supabase",
       "type": "plugin",
       "description": "Supabase MCP integration for database operations, authentication, storage, and real-time subscriptions. Manage your Supabase projects, run SQL queries, and interact with your backend directly.",
-      "longDescription": "Connects to Supabase's hosted MCP endpoint via HTTP at mcp.supabase.com. Run SQL queries, manage authentication users and policies, configure storage buckets, and set up real-time subscriptions from Claude Code. No local server to install -- authenticates through Supabase's connection flow.",
       "compatibility": [
         "claude"
       ],
@@ -583,7 +569,6 @@
       "name": "Superpowers",
       "type": "plugin",
       "description": "Core skills library for Claude Code: TDD, debugging, collaboration patterns, and proven techniques",
-      "longDescription": "Comprehensive skills library by Jesse Vincent with 14 skills, 1 agent, and 3 commands. Skills cover TDD (with anti-patterns doc), systematic debugging (root cause tracing, defense in depth, condition-based waiting), subagent-driven development (with implementer, spec-reviewer, and quality-reviewer prompts), code review (requesting and receiving), git worktrees, plan writing, brainstorming, dispatching parallel agents, and verification before completion. Commands: /brainstorm, /write-plan, /execute-plan. Includes a session-start hook and a code-reviewer agent.",
       "compatibility": [
         "claude"
       ],
@@ -1154,7 +1139,6 @@
       "name": "Agent Sdk Dev",
       "type": "plugin",
       "description": "Claude Agent SDK Development Plugin",
-      "longDescription": "Includes 2 agents (agent-sdk-verifier-py, agent-sdk-verifier-ts) that validate SDK implementations by checking type correctness, imports, and package versions, plus a /new-sdk-app command that scaffolds new projects in Python or TypeScript with interactive prompts for agent type, complexity level, and tooling. Generates starter code, environment files, and optional .claude/ directory with agents and commands.",
       "compatibility": [
         "claude"
       ],
@@ -1220,7 +1204,6 @@
       "name": "Claude Code Setup",
       "type": "plugin",
       "description": "Analyze codebases and recommend tailored Claude Code automations such as hooks, skills, MCP servers, and subagents.",
-      "longDescription": "Provides a claude-automation-recommender skill that scans your project structure, dependencies, and config files, then recommends the top 1-2 automations per category across 5 areas: MCP servers, skills, hooks, subagents, and plugins. Includes 5 reference docs covering hook patterns, MCP servers, plugins, skills, and subagent templates. Read-only -- analyzes and recommends without creating files.",
       "compatibility": [
         "claude"
       ],
@@ -1301,7 +1284,6 @@
       "name": "Claude Md Management",
       "type": "plugin",
       "description": "Tools to maintain and improve CLAUDE.md files - audit quality, capture session learnings, and keep project memory current.",
-      "longDescription": "Adds a /revise-claude-md command and a claude-md-improver skill backed by 3 reference docs: quality criteria, templates, and update guidelines. Audits your CLAUDE.md for completeness, captures learnings from coding sessions, and suggests concrete improvements to keep project memory accurate and actionable.",
       "compatibility": [
         "claude"
       ],
@@ -1391,7 +1373,6 @@
       "name": "Code Review",
       "type": "plugin",
       "description": "Automated code review for pull requests using multiple specialized agents with confidence-based scoring",
-      "longDescription": "Adds a /code-review command that dispatches 5 parallel agents: CLAUDE.md compliance, bug detection, git-blame historical context, prior PR pattern matching, and code comment compliance. Each agent scores findings on a 0-100 confidence scale, and only issues scoring 80+ are included in the final PR comment to reduce noise.",
       "compatibility": [
         "claude"
       ],
@@ -1439,7 +1420,6 @@
       "name": "Code Simplifier",
       "type": "plugin",
       "description": "Agent that simplifies and refines code for clarity, consistency, and maintainability while preserving functionality",
-      "longDescription": "Provides a code-simplifier agent that proactively refines recently modified code. Targets nested ternaries, dense one-liners, redundant abstractions, inconsistent syntax, poor naming, and unnecessary comments. Works across any language, preserving existing behavior while enforcing project conventions for function syntax, type annotations, and module style.",
       "compatibility": [
         "claude"
       ],
@@ -1483,7 +1463,6 @@
       "name": "Commit Commands",
       "type": "plugin",
       "description": "Streamline your git workflow with simple commands for committing, pushing, and creating pull requests",
-      "longDescription": "Adds 3 slash commands for git workflow: /commit stages changes and generates a commit message, /commit-push-pr commits, pushes, and opens a PR in one step, and /clean_gone prunes local branches whose remote tracking branches have been deleted. Reduces multi-step git operations to single commands.",
       "compatibility": [
         "claude"
       ],
@@ -1541,7 +1520,6 @@
       "name": "Explanatory Output Style",
       "type": "plugin",
       "description": "Adds educational insights about implementation choices and codebase patterns (mimics the deprecated Explanatory output style)",
-      "longDescription": "Installs a session-start hook (shell script) that injects instructions making Claude add educational insight blocks before and after code changes. Each block contains 2-3 points explaining why specific implementations were chosen, what codebase patterns were followed, and what trade-offs exist. Recreates the deprecated Explanatory output style from Claude Code settings.",
       "compatibility": [
         "claude"
       ],
@@ -1596,7 +1574,6 @@
       "name": "Feature Dev",
       "type": "plugin",
       "description": "Comprehensive feature development workflow with specialized agents for codebase exploration, architecture design, and quality review",
-      "longDescription": "Adds a /feature-dev command that orchestrates a 7-phase workflow: discovery, codebase exploration, clarifying questions, architecture design, implementation, quality review, and summary. Dispatches 3 agents (code-explorer, code-architect, code-reviewer) in parallel at key phases -- exploration launches 2-3 agents targeting similar features, patterns, and conventions; architecture compares minimal, clean, and pragmatic approaches; review checks simplicity, correctness, and conventions.",
       "compatibility": [
         "claude"
       ],
@@ -1667,7 +1644,6 @@
       "name": "Frontend Design",
       "type": "plugin",
       "description": "Frontend design skill for UI/UX implementation",
-      "longDescription": "Provides a frontend-design skill that steers Claude toward intentional UI/UX choices rather than generic defaults. Covers typography and font selection, color systems via CSS variables, motion and scroll-triggered animations, spatial composition (asymmetry, overlap, grid-breaking), and visual depth techniques. Works with vanilla HTML/CSS, React, Vue, and other frameworks, scaling complexity to match the chosen aesthetic direction.",
       "compatibility": [
         "claude"
       ],
@@ -1718,7 +1694,6 @@
       "name": "Hookify",
       "type": "plugin",
       "description": "Easily create hooks to prevent unwanted behaviors by analyzing conversation patterns",
-      "longDescription": "Hook creation toolkit with 4 commands (/hookify, /configure, /list, /help), a conversation-analyzer agent, a writing-rules skill, and a Python rule engine. Generates hooks for 5 event types: bash commands, file edits, prompt submissions, session stops, and a catch-all. Each hook can warn or block. Includes 4 example rules: console.log warnings, dangerous rm prevention, test requirements, and sensitive file protection.",
       "compatibility": [
         "claude"
       ],
@@ -1904,7 +1879,6 @@
       "name": "Learning Output Style",
       "type": "plugin",
       "description": "Interactive learning mode that requests meaningful code contributions at decision points (mimics the unshipped Learning output style)",
-      "longDescription": "Installs a session-start hook (shell script) that injects instructions turning Claude into a guided coding tutor. At decision points involving business logic, error handling, algorithms, or architectural choices, Claude pauses, prepares file context and function signatures, explains the trade-offs, and asks you to write 5-10 lines of meaningful code. Recreates the unshipped Learning output style.",
       "compatibility": [
         "claude"
       ],
@@ -1959,7 +1933,6 @@
       "name": "Playground",
       "type": "plugin",
       "description": "Creates interactive HTML playgrounds — self-contained single-file explorers with visual controls, live preview, and prompt output with copy button",
-      "longDescription": "Provides a playground skill with 6 templates: code-map (codebase structure visualization), concept-map (knowledge exploration), data-explorer (SQL/API/regex query building), design-playground (component and layout prototyping), diff-review (line-by-line PR commenting), and document-critique (approve/reject/comment workflow). Each generates a self-contained single-file HTML with live controls, instant preview, and a copy-to-clipboard prompt for iterating with Claude.",
       "compatibility": [
         "claude"
       ],
@@ -2040,7 +2013,6 @@
       "name": "Pr Review Toolkit",
       "type": "plugin",
       "description": "Comprehensive PR review agents specializing in comments, tests, error handling, type design, code quality, and code simplification",
-      "longDescription": "Adds a /review-pr command that dispatches 6 specialized agents in parallel: code-reviewer for general quality, code-simplifier for unnecessary complexity, comment-analyzer for comment accuracy and staleness, pr-test-analyzer for test coverage gaps, silent-failure-hunter for swallowed errors and missing error paths, and type-design-analyzer for type safety and design issues. Each agent reviews independently for thorough PR coverage.",
       "compatibility": [
         "claude"
       ],
@@ -2126,7 +2098,6 @@
       "name": "Ralph Loop",
       "type": "plugin",
       "description": "Continuous self-referential AI loops for interactive iterative development, implementing the Ralph Wiggum technique. Run Claude in a while-true loop with the same prompt until task completion.",
-      "longDescription": "Uses a stop hook to intercept Claude's exit and re-feed the original prompt, creating a continuous self-correcting loop. Provides 3 commands: /ralph-loop to start with a task description, /cancel-ralph to stop, and /help for usage. Supports --max-iterations to prevent runaway loops. Each iteration sees prior file changes and git history, enabling autonomous refinement for tasks like fixing test suites or processing file batches.",
       "compatibility": [
         "claude"
       ],
@@ -2208,7 +2179,6 @@
       "name": "Security Guidance",
       "type": "plugin",
       "description": "Security reminder hook that warns about potential security issues when editing files, including command injection, XSS, and unsafe code patterns",
-      "longDescription": "Installs a Python-based post-tool-use hook that scans file edits for 9 vulnerability patterns: GitHub Actions workflow injection, child_process command injection, dynamic Function() creation, eval(), React dangerouslySetInnerHTML XSS, document.write DOM XSS, innerHTML XSS, Python pickle deserialization, and os.system() injection. Warns on detection without blocking, acting as a passive safety net.",
       "compatibility": [
         "claude"
       ],

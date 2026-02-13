@@ -145,27 +145,29 @@ A single sentence that tells the user what the extension is capable of.
 
 **`longDescription` rules:**
 
-Everything the user needs to decide whether to install, without reading the README.
+Implementation-level detail that tells the user exactly what they're getting — specific files, component names, agent roles, and concrete counts.
 
-- All concrete specifics: supported languages/frameworks, number of rules/patterns/techniques, included agents/commands, approach taken
-- Differentiators: what makes this different from doing it manually or using alternatives
-- No filler, no marketing speak — just the facts
-- After reading this, the user should be able to make an informed install/skip decision
-- 1-3 sentences, typically 30-60 words
+- Name specific skills, agents, commands, MCP servers, and hooks included (e.g. "Ships with a function-analyzer agent and completeness checklists" not "includes analysis tools")
+- Include exact counts: number of skills, agents, commands, rules, techniques
+- Describe what the plugin enables concretely (e.g. "manage issues, create branches, review PRs, trigger CI pipelines" not "interact with GitHub")
+- For well-known integrations, focus on *what operations are available*, not what the service itself does
+- No filler, no marketing speak — just the implementation facts
+- After reading this, the user should know exactly what agents/skills/commands they'll get
+- 3-5 sentences, typically 40-70 words. The pre-commit hook enforces a minimum of 30 words.
 
 **Examples of good description pairs:**
 
 | description | longDescription |
 |---|---|
-| "Search Slack messages, read channels, and pull team discussions into context." | "Find prior decisions, debugging context, or relevant conversations without leaving Claude Code. Connects via Slack MCP server with channel, thread, and message search." |
-| "Build deep architectural context through ultra-granular code analysis before vulnerability hunting." | "Includes a function-analyzer agent and completeness checklists to ensure thorough coverage. Designed for security audits where understanding every function's role is critical before hunting bugs." |
-| "Browser automation and end-to-end testing via Microsoft's Playwright MCP server." | "Interact with web pages, take screenshots, fill forms, click elements, and run end-to-end test workflows across Chromium, Firefox, and WebKit without separate test framework setup." |
+| "Search Slack messages, read channels, and pull team discussions into context." | "Connects via Slack MCP server to search messages, list channels, read threads, and pull conversation history into context. Find prior decisions, debugging discussions, or relevant context without leaving Claude Code. Supports channel filtering, thread navigation, and full-text message search across your workspace." |
+| "Hook creation toolkit that generates event-driven hooks from natural language rules." | "Hook creation toolkit with 4 commands (/hookify, /configure, /list, /help), a conversation-analyzer agent, a writing-rules skill, and a Python rule engine. Generates hooks for 5 event types: bash commands, file edits, prompt submissions, session stops, and a catch-all. Each hook can warn or block. Includes 4 example rules: console.log warnings, dangerous rm prevention, test requirements, and sensitive file protection." |
+| "Build deep architectural context through ultra-granular code analysis before vulnerability hunting." | "Includes a function-analyzer agent and completeness checklists to ensure thorough coverage of every function before hunting bugs. Designed for security audits where understanding call chains, data flows, and trust boundaries is critical. The agent builds a complete architectural map before any vulnerability analysis begins." |
 
-**Examples of bad descriptions:**
+**Examples of bad longDescriptions:**
 
-- "Stripe development plugin for Claude" (title restatement — says nothing about capability)
-- "Slack workspace integration" (just restates what everyone already knows)
-- "Use when asked to review UI, check accessibility..." (trigger instruction, not user-facing description)
+- "Find prior decisions and relevant conversations without leaving Claude Code." (too vague — doesn't name what's included or how)
+- "Interact with web pages and run test workflows." (says nothing about agents, commands, or approach)
+- "Comprehensive Stripe integration for development." (marketing speak, no specifics)
 
 Then present both descriptions to the user:
 

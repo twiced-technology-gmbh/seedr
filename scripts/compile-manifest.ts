@@ -112,8 +112,9 @@ export function compileManifest(): Manifest {
   }
 
   // Write per-type manifest files into their type folders
+  // Exclude longDescription — it stays in item.json and is loaded on demand
   for (const type of ALL_TYPES) {
-    const typeItems = byType.get(type) ?? [];
+    const typeItems = (byType.get(type) ?? []).map(({ longDescription, ...rest }) => rest);
     const typeManifest: TypeManifest = { type, items: typeItems };
     const dirPath = join(registryDir, typeDirName(type));
     if (!existsSync(dirPath)) {

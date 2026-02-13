@@ -3,7 +3,7 @@
   "name": "Web Artifacts Builder",
   "type": "skill",
   "description": "Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.",
-  "longDescription": "Build multi-component claude.ai artifacts using React, Tailwind CSS, and shadcn/ui for cases too complex for a single HTML file. Ships with 2 shell scripts: init-artifact.sh for scaffolding a new artifact project and bundle-artifact.sh for packaging it into a deployable artifact. Includes a pre-packaged shadcn-components.tar.gz archive so components are available offline without npm install. Handles state management, client-side routing, and component composition within Claude's artifact sandbox.",
+  "longDescription": "Build multi-component claude.ai artifacts using React, Tailwind CSS, and `shadcn/ui` for cases too complex for a single HTML file. Ships with 2 shell scripts: `init-artifact.sh` for scaffolding a new artifact project and `bundle-artifact.sh` for packaging it into a deployable artifact. Includes a pre-packaged `shadcn-components.tar.gz` archive so components are available offline without npm install. Handles state management, client-side routing, and component composition within Claude's artifact sandbox.",
   "compatibility": [
     "claude",
     "copilot",

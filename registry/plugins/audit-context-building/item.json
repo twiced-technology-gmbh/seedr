@@ -3,7 +3,7 @@
   "name": "Audit Context Building",
   "type": "plugin",
   "description": "Build deep architectural context through ultra-granular code analysis before vulnerability hunting",
-  "longDescription": "Security audit plugin from Trail of Bits with a /audit-context command, a function-analyzer agent, and an audit-context-building skill with completeness checklists. Maps codebase architecture at function-level granularity before hunting vulnerabilities, so findings include full context about impact and interactions. Supports a --focus flag for targeted module analysis.",
+  "longDescription": "Security audit plugin from Trail of Bits with a `/audit-context` command, a function-analyzer agent, and an audit-context-building skill with completeness checklists. Maps codebase architecture at function-level granularity before hunting vulnerabilities, so findings include full context about impact and interactions. Supports a `--focus` flag for targeted module analysis.",
   "compatibility": [
     "claude"
   ],

@@ -3,7 +3,7 @@
   "name": "Supabase",
   "type": "plugin",
   "description": "Supabase MCP integration for database operations, authentication, storage, and real-time subscriptions. Manage your Supabase projects, run SQL queries, and interact with your backend directly.",
-  "longDescription": "Connects to Supabase's hosted MCP endpoint via HTTP at mcp.supabase.com. Run SQL queries, manage authentication users and policies, configure storage buckets, and set up real-time subscriptions from Claude Code. No local server to install -- authenticates through Supabase's connection flow.",
+  "longDescription": "Connects to Supabase's hosted MCP endpoint via HTTP at `mcp.supabase.com`. Run SQL queries, manage authentication users and policies, configure storage buckets, and set up real-time subscriptions from Claude Code. No local server to install -- authenticates through Supabase's connection flow.",
   "compatibility": [
     "claude"
   ],

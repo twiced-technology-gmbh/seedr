@@ -3,7 +3,7 @@
   "name": "Asana",
   "type": "plugin",
   "description": "Asana project management integration. Create and manage tasks, search projects, update assignments, track progress, and integrate your development workflow with Asana's work management platform.",
-  "longDescription": "Connects to Asana's hosted MCP endpoint via SSE. Create, update, and search tasks, manage project assignments, and track progress from Claude Code. No local server to install -- connects directly to mcp.asana.com. Requires an Asana access token.",
+  "longDescription": "Connects to Asana's hosted MCP endpoint via SSE. Create, update, and search tasks, manage project assignments, and track progress from Claude Code. No local server to install -- connects directly to `mcp.asana.com`. Requires an Asana access token.",
   "compatibility": [
     "claude"
   ],

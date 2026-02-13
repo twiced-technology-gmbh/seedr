@@ -3,7 +3,7 @@
   "name": "Doc Coauthoring",
   "type": "skill",
   "description": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.",
-  "longDescription": "Structured multi-phase workflow for co-authoring documentation, proposals, technical specs, and decision docs. Guides you through context transfer (what you know and want to say), iterative section-by-section drafting with feedback loops, and reader verification to ensure the final document reflects your intent and expertise rather than generic AI-generated prose. Single SKILL.md with no additional scripts or dependencies.",
+  "longDescription": "Structured multi-phase workflow for co-authoring documentation, proposals, technical specs, and decision docs. Guides you through context transfer (what you know and want to say), iterative section-by-section drafting with feedback loops, and reader verification to ensure the final document reflects your intent and expertise rather than generic AI-generated prose. Single `SKILL.md` with no additional scripts or dependencies.",
   "compatibility": [
     "claude",
     "copilot",

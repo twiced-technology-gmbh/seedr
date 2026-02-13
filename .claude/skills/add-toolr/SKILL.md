@@ -106,27 +106,30 @@ A single sentence that tells the user what the extension is capable of.
 
 **`longDescription` rules:**
 
-Everything the user needs to decide whether to install, without reading the README.
+Implementation-level detail that tells the user exactly what they're getting — specific files, component names, agent roles, and concrete counts.
 
-- All concrete specifics: supported languages/frameworks, number of rules/patterns/techniques, included agents/commands, approach taken
-- Differentiators: what makes this different from doing it manually or using alternatives
-- No filler, no marketing speak — just the facts
-- After reading this, the user should be able to make an informed install/skip decision
-- 1-3 sentences, typically 30-60 words
+- Name specific files, scripts, modules, agents, and commands included (e.g. "Ships with recalc.py for formula recalculation" not "includes formula support")
+- Include exact counts: number of patterns, rules, themes, agents, commands, skills
+- Describe the technical approach or architecture (e.g. "works directly with OOXML rather than openpyxl")
+- List concrete capabilities by name, not by category (e.g. "cell styles, named ranges, charts, conditional formatting" not "various spreadsheet features")
+- No filler, no marketing speak — just the implementation facts
+- After reading this, the user should know exactly what files/tools they'll get and how they work
+- 3-5 sentences, typically 50-90 words. The pre-commit hook enforces a minimum of 30 words.
+- **Use backticks** around file names, paths, extensions, field names, command names, and code-like identifiers (e.g. `` `recalc.py` ``, `` `.claude/agents/` ``, `` `/hookify` ``). Do NOT backtick brand names (React, Tailwind CSS), pattern names (Factory Method), or agent role names (code reviewer).
 
 **Examples of good description pairs:**
 
 | description | longDescription |
 |---|---|
-| "Apply Gang of Four design patterns effectively" | "Covers all 23 GoF patterns (Creational, Structural, Behavioral) with a problem-to-pattern selection guide, implementation examples in TypeScript, and common pitfalls. Each pattern includes intent, when to use, and quick implementation." |
-| "Create animated GIFs optimized for Slack's size and display constraints." | "Provides a frame composer, easing functions, GIF builder, and validators to produce smooth, compact animations that look great in Slack channels." |
-| "57 React and Next.js performance optimization rules from Vercel Engineering." | "Covers waterfall prevention, bundle size reduction, server/client optimization, re-render elimination, and JS performance patterns to catch issues during code generation and review." |
+| "Create, read, edit, and fix .xlsx, .xlsm, .csv, and .tsv spreadsheet files." | "Create, read, edit, and fix `.xlsx`, `.xlsm`, `.csv`, and `.tsv` files by working directly with spreadsheet OOXML rather than relying on openpyxl. Includes `recalc.py` for formula recalculation, plus shared office scripts for OOXML pack/unpack, schema validation against ECMA and ISO-IEC29500-4 standards, and LibreOffice conversion. Provides full control over cell styles, named ranges, charts, conditional formatting, and complex workbook structures. Handles messy data cleanup: malformed rows, misplaced headers, and format conversion between tabular file types." |
+| "Analyze code for 23 classic code smells across 5 categories with refactoring guidance." | "Detects all 23 classic code smells organized into 5 categories: Bloaters (Long Method, Large Class, Primitive Obsession, Long Parameter List, Data Clumps), OO Abusers (Switch Statements, Temporary Field, Refused Bequest, Alternative Classes), Change Preventers (Divergent Change, Shotgun Surgery, Parallel Inheritance), Dispensables (Dead Code, Duplicate Code, Lazy Class, Speculative Generality, Data Class, Comments), and Couplers (Feature Envy, Inappropriate Intimacy, Message Chains, Middle Man, Incomplete Library Class). Each smell includes detection criteria, severity rating, and specific refactoring techniques to fix it." |
+| "Hook creation toolkit that generates event-driven hooks from natural language rules." | "Hook creation toolkit with 4 commands (`/hookify`, `/configure`, `/list`, `/help`), a conversation-analyzer agent, a writing-rules skill, and a Python rule engine. Generates hooks for 5 event types: bash commands, file edits, prompt submissions, session stops, and a catch-all. Each hook can warn or block. Includes 4 example rules: `console.log` warnings, dangerous `rm` prevention, test requirements, and sensitive file protection." |
 
-**Examples of bad descriptions:**
+**Examples of bad longDescriptions:**
 
-- "X plugin for Claude" (title restatement — says nothing about capability)
-- "A tool for doing Y" (starts with "A tool" — lead with the action)
-- "Use when the user wants to..." (trigger instruction, not user-facing description)
+- "Covers all 23 GoF patterns with implementation examples and common pitfalls." (too vague — doesn't name patterns, files, or approach)
+- "Provides tools for working with spreadsheets." (says nothing about what tools or how)
+- "A comprehensive toolkit for code analysis." (marketing speak, no specifics)
 
 Then present both descriptions to the user:
 
