@@ -33,7 +33,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
       "slug": "audit-context-building",
@@ -149,7 +150,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
       "slug": "firebase",
@@ -183,7 +185,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
       "slug": "github",
@@ -217,7 +220,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
       "slug": "gitlab",
@@ -251,7 +255,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
       "slug": "greptile",
@@ -290,7 +295,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2026-01-06T05:15:35Z"
     },
     {
       "slug": "laravel-boost",
@@ -324,7 +330,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
       "slug": "linear",
@@ -358,7 +365,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-16T23:13:40Z"
     },
     {
       "slug": "playwright",
@@ -392,7 +400,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
       "slug": "serena",
@@ -426,7 +435,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
       "slug": "slack",
@@ -460,7 +470,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
       "slug": "stripe",
@@ -529,7 +540,8 @@
           "explain-error",
           "test-cards"
         ]
-      }
+      },
+      "updatedAt": "2025-12-18T16:58:02Z"
     },
     {
       "slug": "supabase",
@@ -563,7 +575,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
       "slug": "superpowers",
@@ -1199,7 +1212,8 @@
         "commands": [
           "new-sdk-app"
         ]
-      }
+      },
+      "updatedAt": "2025-12-13T00:52:17Z"
     },
     {
       "slug": "claude-code-setup",
@@ -1279,7 +1293,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2026-01-21T04:15:08Z"
     },
     {
       "slug": "claude-md-management",
@@ -1368,7 +1383,8 @@
         "commands": [
           "revise-claude-md"
         ]
-      }
+      },
+      "updatedAt": "2026-01-20T21:11:06Z"
     },
     {
       "slug": "code-review",
@@ -1415,7 +1431,8 @@
         "commands": [
           "code-review"
         ]
-      }
+      },
+      "updatedAt": "2025-12-13T00:52:17Z"
     },
     {
       "slug": "code-simplifier",
@@ -1458,7 +1475,8 @@
         "agents": [
           "code-simplifier"
         ]
-      }
+      },
+      "updatedAt": "2026-01-09T00:17:19Z"
     },
     {
       "slug": "commit-commands",
@@ -1515,7 +1533,8 @@
           "commit-push-pr",
           "commit"
         ]
-      }
+      },
+      "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
       "slug": "explanatory-output-style",
@@ -1569,7 +1588,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-13T00:52:17Z"
     },
     {
       "slug": "feature-dev",
@@ -1639,7 +1659,8 @@
         "commands": [
           "feature-dev"
         ]
-      }
+      },
+      "updatedAt": "2025-12-13T00:52:17Z"
     },
     {
       "slug": "frontend-design",
@@ -1689,7 +1710,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-13T00:52:17Z"
     },
     {
       "slug": "hookify",
@@ -1874,7 +1896,8 @@
           "hookify",
           "list"
         ]
-      }
+      },
+      "updatedAt": "2026-02-05T17:21:57Z"
     },
     {
       "slug": "learning-output-style",
@@ -1928,7 +1951,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-13T00:52:17Z"
     },
     {
       "slug": "playground",
@@ -2008,7 +2032,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2026-01-29T23:24:01Z"
     },
     {
       "slug": "pr-review-toolkit",
@@ -2093,7 +2118,8 @@
         "commands": [
           "review-pr"
         ]
-      }
+      },
+      "updatedAt": "2026-02-04T23:59:39Z"
     },
     {
       "slug": "ralph-loop",
@@ -2174,7 +2200,8 @@
           "help",
           "ralph-loop"
         ]
-      }
+      },
+      "updatedAt": "2026-01-06T23:22:54Z"
     },
     {
       "slug": "security-guidance",
@@ -2218,7 +2245,8 @@
             ]
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-13T00:52:17Z"
     }
   ]
 }

@@ -965,7 +965,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-01T18:05:36Z"
     },
     {
       "slug": "brand-guidelines",
@@ -993,7 +994,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-01T18:05:36Z"
     },
     {
       "slug": "canvas-design",
@@ -1355,7 +1357,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-01T18:05:36Z"
     },
     {
       "slug": "doc-coauthoring",
@@ -1548,7 +1551,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2026-02-06T21:19:32Z"
     },
     {
       "slug": "frontend-design",
@@ -1580,7 +1584,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-04T17:01:46Z"
     },
     {
       "slug": "internal-comms",
@@ -1707,7 +1712,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-01T18:05:36Z"
     },
     {
       "slug": "pdf",
@@ -1785,7 +1791,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2026-02-06T21:19:32Z"
     },
     {
       "slug": "pptx",
@@ -1935,7 +1942,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2026-02-06T21:19:32Z"
     },
     {
       "slug": "skill-creator",
@@ -2054,7 +2062,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-04T17:01:46Z"
     },
     {
       "slug": "theme-factory",
@@ -2136,7 +2145,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-01T18:05:36Z"
     },
     {
       "slug": "web-artifacts-builder",
@@ -2186,7 +2196,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-01T18:05:36Z"
     },
     {
       "slug": "webapp-testing",
@@ -2246,7 +2257,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2025-12-01T18:05:36Z"
     },
     {
       "slug": "xlsx",
@@ -2376,7 +2388,8 @@
             "type": "file"
           }
         ]
-      }
+      },
+      "updatedAt": "2026-02-06T21:19:32Z"
     }
   ]
 }
