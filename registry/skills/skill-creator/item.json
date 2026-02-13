@@ -3,7 +3,7 @@
   "name": "Skill Creator",
   "type": "skill",
   "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.",
-  "longDescription": "Walks through creating Claude Code skills with references on output patterns and workflow design. Includes Python scripts for scaffolding (init), packaging, and quick-validating skills. Covers SKILL.md structure, frontmatter fields, script bundling, and best practices for making skills that work reliably across sessions.",
+  "longDescription": "Guide for creating Claude Code skills that extend Claude's capabilities. Ships with 3 Python scripts: init_skill.py for scaffolding a new skill directory, package_skill.py for bundling skills for distribution, and quick_validate.py for checking skill structure and frontmatter. Includes 2 reference docs on output patterns (how skills produce artifacts) and workflow design (multi-step skill flows). Covers SKILL.md structure, frontmatter fields, script bundling, reference file organization, and best practices for reliable cross-session behavior.",
   "compatibility": [
     "claude"
   ],

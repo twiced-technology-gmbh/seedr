@@ -6,7 +6,7 @@
       "name": "Project Security Guard",
       "type": "hook",
       "description": "Project-scoped security hook that blocks dangerous Bash commands and sensitive file access while auto-approving safe dev workflows.",
-      "longDescription": "Project-scoped PreToolUse hook that blocks dangerous Bash commands (rm outside project, force push, DROP TABLE, terraform destroy, docker prune, eval, network exfiltration) and sensitive file access, while auto-approving safe dev workflow commands and remembering granted permissions.",
+      "longDescription": "Intercepts Bash, Read, Write, Edit, and Glob calls at the project level. Blocks destructive disk operations, network exfiltration (curl uploads, netcat, paste services, DNS exfil, cloud storage uploads), code injection (eval, hex obfuscation), system modification (services, cron, users, firewall, kernel), dangerous git operations (force push, reset --hard, clean -f, checkout --, branch -D, remote hijack), package publishing, destructive database and cloud/container/infrastructure commands, and rm or .env access outside the project. Sensitive credential paths outside the project are blocked for all file tools. Safe developer commands are auto-approved and persisted to the project allow list.",
       "compatibility": [
         "claude"
       ],
@@ -55,7 +55,7 @@
       "name": "Universal Security Guard",
       "type": "hook",
       "description": "User-scoped security hook that blocks universally dangerous operations like reverse shells, privilege escalation, and credential access across all projects.",
-      "longDescription": "User-scoped PreToolUse hook that blocks universally dangerous operations across all projects: reverse shells, sudo/privilege escalation, credential file reads, keychain access, persistence mechanisms (crontab, launchctl, systemd), library injection, container escapes, and git config attacks. Never auto-approves -- only denies threats and defers safe commands to normal permission flow.",
+      "longDescription": "Intercepts Bash, Read, Write, and Edit calls globally across all projects. Blocks reverse shells (/dev/tcp, netcat exec, socat bridges), privilege escalation (sudo, chmod SUID/777), download-and-execute chains, encoding bypass to shell, library injection (LD_PRELOAD, DYLD_INSERT_LIBRARIES), persistence mechanisms (crontab, launchctl, systemd), macOS attacks (osascript, keychain access, Gatekeeper/SIP bypass), dangerous git config changes, credential file reads (SSH keys, cloud creds, browser passwords, crypto wallets, shell histories, Terraform state), system directory writes, container escapes, firewall and kernel manipulation, and fork bombs. Never auto-approves -- only denies threats and defers safe commands to the normal permission flow.",
       "compatibility": [
         "claude"
       ],

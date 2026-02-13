@@ -3,7 +3,7 @@
   "name": "Code Smell Doctor",
   "type": "skill",
   "description": "Detect and refactor code smells using Martin Fowler's catalog",
-  "longDescription": "Systematically scans code across five smell categories: Bloaters (Long Method, Large Class, Primitive Obsession, Long Parameter List, Data Clumps), OO Abusers, Change Preventers, Dispensables, and Couplers. Reports each finding with severity, exact location, evidence from the code, and the specific refactoring technique to fix it.",
+  "longDescription": "Detects all 23 classic code smells from Martin Fowler's catalog across 5 categories: Bloaters (Long Method, Large Class, Primitive Obsession, Long Parameter List, Data Clumps), OO Abusers (4 smells), Change Preventers (3 smells), Dispensables (6 smells), and Couplers (5 smells). Each category has a dedicated reference doc with concrete detection heuristics (e.g., method >15 lines, class >300 lines, >4 parameters) and the specific refactoring technique to fix each smell. Reports findings with severity rating, exact file:line location, evidence from the code, and recommended fix. Language-agnostic -- works on any codebase.",
   "compatibility": [
     "claude",
     "copilot",

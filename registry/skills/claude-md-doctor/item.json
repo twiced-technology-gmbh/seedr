@@ -3,7 +3,7 @@
   "name": "CLAUDE.md Doctor",
   "type": "skill",
   "description": "Diagnose and improve CLAUDE.md files and .claude/rules/",
-  "longDescription": "Scans all project instruction files (root CLAUDE.md, package-level overrides, .claude.local.md, and modular rules) to evaluate token efficiency, command accuracy, path validity, frontmatter correctness, and rule modularity. Produces a file-by-file scorecard with critical/warning/low findings, then offers automatic, critical-only, or per-fix approval workflows.",
+  "longDescription": "Scans all project instruction files (root CLAUDE.md, package-level overrides, .claude.local.md, and .claude/rules/) across 8 diagnostic checks: command accuracy, architecture clarity, token efficiency (<300 lines), actionability, currency, gotcha coverage, rule modularity, and frontmatter correctness. Produces a scored health report with file-by-file grades and severity-classified findings (critical/warning/low), then offers 4 triage modes: fix all, critical-only, per-fix approval, or report-only. Includes 4 reference docs covering anti-patterns, quality criteria, rules-specific criteria, and templates for different project types.",
   "compatibility": [
     "claude"
   ],

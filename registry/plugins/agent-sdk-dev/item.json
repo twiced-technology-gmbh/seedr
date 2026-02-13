@@ -3,7 +3,7 @@
   "name": "Agent Sdk Dev",
   "type": "plugin",
   "description": "Claude Agent SDK Development Plugin",
-  "longDescription": "Scaffolds and verifies Claude Agent SDK applications in Python and TypeScript. Includes 2 agents (agent-sdk-verifier-py, agent-sdk-verifier-ts) for validating SDK implementations and a /new-sdk-app command to generate new projects.",
+  "longDescription": "Includes 2 agents (agent-sdk-verifier-py, agent-sdk-verifier-ts) that validate SDK implementations by checking type correctness, imports, and package versions, plus a /new-sdk-app command that scaffolds new projects in Python or TypeScript with interactive prompts for agent type, complexity level, and tooling. Generates starter code, environment files, and optional .claude/ directory with agents and commands.",
   "compatibility": [
     "claude"
   ],

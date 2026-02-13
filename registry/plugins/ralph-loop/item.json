@@ -3,7 +3,7 @@
   "name": "Ralph Loop",
   "type": "plugin",
   "description": "Continuous self-referential AI loops for interactive iterative development, implementing the Ralph Wiggum technique. Run Claude in a while-true loop with the same prompt until task completion.",
-  "longDescription": "Runs Claude in a continuous loop with the same prompt until the task is complete, using a stop hook to re-invoke automatically. Provides /ralph-loop to start, /cancel-ralph to stop, and /help for usage. Useful for iterative tasks like fixing test suites or processing file batches.",
+  "longDescription": "Uses a stop hook to intercept Claude's exit and re-feed the original prompt, creating a continuous self-correcting loop. Provides 3 commands: /ralph-loop to start with a task description, /cancel-ralph to stop, and /help for usage. Supports --max-iterations to prevent runaway loops. Each iteration sees prior file changes and git history, enabling autonomous refinement for tasks like fixing test suites or processing file batches.",
   "compatibility": [
     "claude"
   ],

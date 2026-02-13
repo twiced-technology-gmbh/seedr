@@ -3,7 +3,7 @@
   "name": "Project Security Guard",
   "type": "hook",
   "description": "Project-scoped security hook that blocks dangerous Bash commands and sensitive file access while auto-approving safe dev workflows.",
-  "longDescription": "Project-scoped PreToolUse hook that blocks dangerous Bash commands (rm outside project, force push, DROP TABLE, terraform destroy, docker prune, eval, network exfiltration) and sensitive file access, while auto-approving safe dev workflow commands and remembering granted permissions.",
+  "longDescription": "Intercepts Bash, Read, Write, Edit, and Glob calls at the project level. Blocks destructive disk operations, network exfiltration (curl uploads, netcat, paste services, DNS exfil, cloud storage uploads), code injection (eval, hex obfuscation), system modification (services, cron, users, firewall, kernel), dangerous git operations (force push, reset --hard, clean -f, checkout --, branch -D, remote hijack), package publishing, destructive database and cloud/container/infrastructure commands, and rm or .env access outside the project. Sensitive credential paths outside the project are blocked for all file tools. Safe developer commands are auto-approved and persisted to the project allow list.",
   "compatibility": [
     "claude"
   ],

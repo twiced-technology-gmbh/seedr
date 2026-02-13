@@ -3,7 +3,7 @@
   "name": "Learning Output Style",
   "type": "plugin",
   "description": "Interactive learning mode that requests meaningful code contributions at decision points (mimics the unshipped Learning output style)",
-  "longDescription": "Uses a session-start hook to inject system instructions that pause Claude at key decision points and ask you to write the code yourself. Recreates the unshipped Learning output style, turning Claude into a guided coding tutor rather than an auto-completer.",
+  "longDescription": "Installs a session-start hook (shell script) that injects instructions turning Claude into a guided coding tutor. At decision points involving business logic, error handling, algorithms, or architectural choices, Claude pauses, prepares file context and function signatures, explains the trade-offs, and asks you to write 5-10 lines of meaningful code. Recreates the unshipped Learning output style.",
   "compatibility": [
     "claude"
   ],

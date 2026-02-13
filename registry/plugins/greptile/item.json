@@ -3,7 +3,7 @@
   "name": "Greptile",
   "type": "plugin",
   "description": "AI code review agent for GitHub and GitLab. View and resolve Greptile's PR review comments directly from Claude Code.",
-  "longDescription": "MCP server that surfaces Greptile's AI-generated PR review comments inside Claude Code. View, resolve, and act on Greptile findings for GitHub and GitLab pull requests without switching to the browser. Requires a Greptile account.",
+  "longDescription": "MCP server connecting via HTTP to api.greptile.com that surfaces Greptile's AI-generated PR review comments inside Claude Code. View, resolve, and act on findings for GitHub and GitLab pull requests without switching to the browser. Requires a Greptile API key for authentication.",
   "compatibility": [
     "claude"
   ],

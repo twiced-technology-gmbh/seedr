@@ -3,7 +3,7 @@
   "name": "Frontend Design",
   "type": "plugin",
   "description": "Frontend design skill for UI/UX implementation",
-  "longDescription": "Provides a frontend-design skill that guides Claude through UI/UX implementation decisions. Covers component structure, layout patterns, responsive design, and visual hierarchy to produce more polished frontend code.",
+  "longDescription": "Provides a frontend-design skill that steers Claude toward intentional UI/UX choices rather than generic defaults. Covers typography and font selection, color systems via CSS variables, motion and scroll-triggered animations, spatial composition (asymmetry, overlap, grid-breaking), and visual depth techniques. Works with vanilla HTML/CSS, React, Vue, and other frameworks, scaling complexity to match the chosen aesthetic direction.",
   "compatibility": [
     "claude"
   ],

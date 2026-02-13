@@ -3,7 +3,7 @@
   "name": "Refactoring Techniques",
   "type": "skill",
   "description": "Systematic refactoring using proven techniques",
-  "longDescription": "Covers six categories with step-by-step mechanics: Composing Methods (Extract Method, Inline Temp, etc.), Moving Features (Move Method/Field, Extract/Inline Class), Organizing Data (Encapsulate Field, Replace Type Code), Simplifying Conditionals (Decompose Conditional, Replace with Polymorphism, Guard Clauses), Simplifying Method Calls (Introduce Parameter Object, Separate Query from Modifier), and Dealing with Generalization (Pull Up/Push Down, Extract Superclass/Interface).",
+  "longDescription": "Reference for 66 classic refactoring techniques across 6 categories: Composing Methods (9 techniques including Extract Method, Replace Temp with Query), Moving Features (8 including Move Method/Field, Extract/Inline Class), Organizing Data (16 including Encapsulate Field, Replace Type Code), Simplifying Conditionals (8 including Decompose Conditional, Guard Clauses, Replace with Polymorphism), Simplifying Method Calls (14 including Introduce Parameter Object, Separate Query from Modifier), and Dealing with Generalization (12 including Pull Up/Push Down, Extract Superclass/Interface). Each technique has step-by-step mechanics in dedicated reference docs. Includes a smell-to-technique selection guide for choosing the right refactoring. Language-agnostic.",
   "compatibility": [
     "claude",
     "copilot",

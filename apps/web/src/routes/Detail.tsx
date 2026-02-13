@@ -55,14 +55,14 @@ export function Detail() {
             {item.sourceType === "toolr" && item.targetScope && <ScopeBadge scope={item.targetScope} size="md" />}
           </div>
         )}
-        <h1 className="text-3xl font-bold text-text mb-2">{item.name}</h1>
+        <h1 className="text-2xl font-bold text-text mb-2">{item.name}</h1>
         {(item.author || item.sourceType === "toolr") && (
           <AuthorLink
             author={item.sourceType === "toolr" ? { name: "TwiceD Technology" } : item.author!}
             className="text-sm mb-8 block"
           />
         )}
-        <p className="text-lg text-subtext">{item.description}</p>
+        <p className="text-sm text-subtext">{item.description}</p>
         {item.longDescription && (
           <p className="text-sm text-text-dim mt-3">{item.longDescription}</p>
         )}

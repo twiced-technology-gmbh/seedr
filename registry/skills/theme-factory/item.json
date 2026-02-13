@@ -3,7 +3,7 @@
   "name": "Theme Factory",
   "type": "skill",
   "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
-  "longDescription": "Ships with 10 ready-made themes (Arctic Frost, Botanical Garden, Desert Rose, Forest Canopy, Golden Hour, Midnight Galaxy, Modern Minimalist, Ocean Depths, Sunset Boulevard, Tech Innovation) each defining colors, fonts, and styling rules. Apply any theme to slides, docs, reports, or HTML pages, or generate a custom theme on-the-fly. Includes a PDF showcase for visual comparison.",
+  "longDescription": "Ships with 10 ready-made themes as individual markdown files: Arctic Frost, Botanical Garden, Desert Rose, Forest Canopy, Golden Hour, Midnight Galaxy, Modern Minimalist, Ocean Depths, Sunset Boulevard, and Tech Innovation. Each theme defines a complete color palette, font stack, and styling rules. Apply any theme to slides, docs, reports, or HTML pages, or generate a custom theme on the fly by describing the mood. Includes a PDF showcase (theme-showcase.pdf) for visual comparison of all 10 themes side by side.",
   "compatibility": [
     "claude",
     "copilot",

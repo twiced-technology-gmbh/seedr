@@ -3,7 +3,7 @@
   "name": "Agent Creator",
   "type": "skill",
   "description": "Guide for creating and configuring Claude Code agents — covers frontmatter fields, tools, permissions, models, memory, hooks, skills, and best practices.",
-  "longDescription": "Create well-configured Claude Code agents with the right tools, permissions, and model for the job. Covers all frontmatter fields, permission modes, model selection tradeoffs, agent lifecycle, common mistakes, and battle-tested patterns for research agents, reviewers, and multi-agent teams.",
+  "longDescription": "Reference for creating Claude Code agents (subagents) stored as markdown files in .claude/agents/. Documents all 10 frontmatter fields (tools, model, permissionMode, maxTurns, memory, hooks, skills, mcpServers, disallowedTools), 6 permission modes, 3 model tiers with cost/accuracy tradeoffs, and the full agent lifecycle (spawn, execute, return, resume). Includes 7 ready-made agent patterns (code reviewer, test writer, debugger, doc generator, security auditor, architecture reviewer, explorer), 4 orchestration strategies (leader, pipeline, swarm, council), and coverage of Agent Teams for multi-instance collaboration. Ships with two reference docs: memory-and-hooks.md for persistent memory and lifecycle hooks, and patterns-and-teams.md for common configurations.",
   "compatibility": [
     "claude"
   ],

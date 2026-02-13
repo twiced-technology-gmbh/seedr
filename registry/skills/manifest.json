@@ -6,7 +6,7 @@
       "name": "Agent Creator",
       "type": "skill",
       "description": "Guide for creating and configuring Claude Code agents — covers frontmatter fields, tools, permissions, models, memory, hooks, skills, and best practices.",
-      "longDescription": "Create well-configured Claude Code agents with the right tools, permissions, and model for the job. Covers all frontmatter fields, permission modes, model selection tradeoffs, agent lifecycle, common mistakes, and battle-tested patterns for research agents, reviewers, and multi-agent teams.",
+      "longDescription": "Reference for creating Claude Code agents (subagents) stored as markdown files in .claude/agents/. Documents all 10 frontmatter fields (tools, model, permissionMode, maxTurns, memory, hooks, skills, mcpServers, disallowedTools), 6 permission modes, 3 model tiers with cost/accuracy tradeoffs, and the full agent lifecycle (spawn, execute, return, resume). Includes 7 ready-made agent patterns (code reviewer, test writer, debugger, doc generator, security auditor, architecture reviewer, explorer), 4 orchestration strategies (leader, pipeline, swarm, council), and coverage of Agent Teams for multi-instance collaboration. Ships with two reference docs: memory-and-hooks.md for persistent memory and lifecycle hooks, and patterns-and-teams.md for common configurations.",
       "compatibility": [
         "claude"
       ],
@@ -47,7 +47,7 @@
       "name": "CLAUDE.md Doctor",
       "type": "skill",
       "description": "Diagnose and improve CLAUDE.md files and .claude/rules/",
-      "longDescription": "Scans all project instruction files (root CLAUDE.md, package-level overrides, .claude.local.md, and modular rules) to evaluate token efficiency, command accuracy, path validity, frontmatter correctness, and rule modularity. Produces a file-by-file scorecard with critical/warning/low findings, then offers automatic, critical-only, or per-fix approval workflows.",
+      "longDescription": "Scans all project instruction files (root CLAUDE.md, package-level overrides, .claude.local.md, and .claude/rules/) across 8 diagnostic checks: command accuracy, architecture clarity, token efficiency (<300 lines), actionability, currency, gotcha coverage, rule modularity, and frontmatter correctness. Produces a scored health report with file-by-file grades and severity-classified findings (critical/warning/low), then offers 4 triage modes: fix all, critical-only, per-fix approval, or report-only. Includes 4 reference docs covering anti-patterns, quality criteria, rules-specific criteria, and templates for different project types.",
       "compatibility": [
         "claude"
       ],
@@ -96,7 +96,7 @@
       "name": "Code Smell Doctor",
       "type": "skill",
       "description": "Detect and refactor code smells using Martin Fowler's catalog",
-      "longDescription": "Systematically scans code across five smell categories: Bloaters (Long Method, Large Class, Primitive Obsession, Long Parameter List, Data Clumps), OO Abusers, Change Preventers, Dispensables, and Couplers. Reports each finding with severity, exact location, evidence from the code, and the specific refactoring technique to fix it.",
+      "longDescription": "Detects all 23 classic code smells from Martin Fowler's catalog across 5 categories: Bloaters (Long Method, Large Class, Primitive Obsession, Long Parameter List, Data Clumps), OO Abusers (4 smells), Change Preventers (3 smells), Dispensables (6 smells), and Couplers (5 smells). Each category has a dedicated reference doc with concrete detection heuristics (e.g., method >15 lines, class >300 lines, >4 parameters) and the specific refactoring technique to fix each smell. Reports findings with severity rating, exact file:line location, evidence from the code, and recommended fix. Language-agnostic -- works on any codebase.",
       "compatibility": [
         "claude",
         "copilot",
@@ -153,7 +153,7 @@
       "name": "Design Patterns",
       "type": "skill",
       "description": "Apply Gang of Four design patterns effectively",
-      "longDescription": "Covers all Creational (Factory Method, Abstract Factory, Builder, Prototype, Singleton), Structural (Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy), and Behavioral patterns (Chain of Responsibility, Command, Iterator, Mediator, Memento, Observer, State, Strategy, Template Method, Visitor). Each pattern includes intent, when to use, quick implementation examples, and common pitfalls.",
+      "longDescription": "Reference for all 23 Gang of Four design patterns: 5 Creational (Factory Method, Abstract Factory, Builder, Prototype, Singleton), 7 Structural (Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy), and 11 Behavioral (Chain of Responsibility, Command, Iterator, Mediator, Memento, Observer, State, Strategy, Template Method, Visitor). Includes a problem-to-pattern selection guide, TypeScript implementation examples for key patterns, and 3 dedicated reference docs with intent, participants, when-to-use guidance, and common pitfalls for each pattern. Language-agnostic concepts with TypeScript examples.",
       "compatibility": [
         "claude",
         "copilot",
@@ -202,7 +202,7 @@
       "name": "Lint Doctor",
       "type": "skill",
       "description": "Diagnose and fix linting issues across multiple languages",
-      "longDescription": "Auto-detects your stack from config files (package.json, Cargo.toml, go.mod, pyproject.toml, pom.xml, etc.) and applies best-practice lint rules with bug/security errors and style warnings. Supports JavaScript/TypeScript with React/Vue/Angular, Python via Ruff, Rust via Clippy, Go via golangci-lint, and Java via Checkstyle. Handles monorepos and offers interactive or automatic configuration with optional husky/lint-staged or pre-commit hook setup.",
+      "longDescription": "Auto-detects your stack from config files (package.json, Cargo.toml, go.mod, pyproject.toml, pom.xml, build.gradle) and configures linting with best-practice rules. Supports 5 language ecosystems: JavaScript/TypeScript with React/Vue/Angular (ESLint + sonarjs, unicorn), Python (Ruff), Rust (Clippy), Go (golangci-lint), and Java (Checkstyle, Google style). Includes 6 dedicated reference docs per language plus pre-commit hook setup. Offers interactive or automatic modes with 3 strictness levels, handles monorepos with workspace detection, and optionally sets up husky/lint-staged or pre-commit hooks. Classifies rules by severity: errors for bugs/security, warnings for complexity/style, off for formatting.",
       "compatibility": [
         "claude",
         "copilot",
@@ -263,7 +263,7 @@
       "name": "Refactoring Techniques",
       "type": "skill",
       "description": "Systematic refactoring using proven techniques",
-      "longDescription": "Covers six categories with step-by-step mechanics: Composing Methods (Extract Method, Inline Temp, etc.), Moving Features (Move Method/Field, Extract/Inline Class), Organizing Data (Encapsulate Field, Replace Type Code), Simplifying Conditionals (Decompose Conditional, Replace with Polymorphism, Guard Clauses), Simplifying Method Calls (Introduce Parameter Object, Separate Query from Modifier), and Dealing with Generalization (Pull Up/Push Down, Extract Superclass/Interface).",
+      "longDescription": "Reference for 66 classic refactoring techniques across 6 categories: Composing Methods (9 techniques including Extract Method, Replace Temp with Query), Moving Features (8 including Move Method/Field, Extract/Inline Class), Organizing Data (16 including Encapsulate Field, Replace Type Code), Simplifying Conditionals (8 including Decompose Conditional, Guard Clauses, Replace with Polymorphism), Simplifying Method Calls (14 including Introduce Parameter Object, Separate Query from Modifier), and Dealing with Generalization (12 including Pull Up/Push Down, Extract Superclass/Interface). Each technique has step-by-step mechanics in dedicated reference docs. Includes a smell-to-technique selection guide for choosing the right refactoring. Language-agnostic.",
       "compatibility": [
         "claude",
         "copilot",
@@ -324,7 +324,7 @@
       "name": "React Best Practices",
       "type": "skill",
       "description": "React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.",
-      "longDescription": "57 performance rules from Vercel Engineering for React and Next.js apps. Covers waterfall prevention, bundle size reduction, server/client optimization, re-render elimination, and JS performance patterns to catch performance issues during code generation and review.",
+      "longDescription": "57 individual performance rules from Vercel Engineering organized across 8 categories: async patterns (5 rules for waterfall prevention and Suspense boundaries), bundle optimization (5 rules for barrel imports, dynamic imports, preloading), client-side patterns (4 rules for event listeners, localStorage, SWR dedup), JS performance (10 rules for caching, Set/Map lookups, loop optimization), rendering (9 rules for hydration, content-visibility, useTransition), re-render prevention (12 rules for memo, derived state, refs), and server optimization (7 rules for caching, parallel fetching, serialization). Each rule is a standalone markdown file with problem, solution, and code examples.",
       "compatibility": [
         "claude",
         "copilot",
@@ -608,7 +608,7 @@
       "name": "React Composition Patterns",
       "type": "skill",
       "description": "React composition patterns that scale. Use when refactoring components with",
-      "longDescription": "Vercel's guide to scalable React component architecture. Teaches compound components, explicit variants, context-based state, and React 19 patterns to replace boolean prop proliferation with flexible, composable component APIs.",
+      "longDescription": "8 composition rules from Vercel for scalable React component architecture. Covers compound components, avoiding boolean prop proliferation, explicit variants over conditional props, children-over-render-props, context-based state interfaces, decoupled implementation patterns, state lifting strategies, and React 19 updates (no-forwardRef). Each rule is a standalone markdown file with problem, solution, and code examples. Designed to replace ad-hoc prop-drilling and boolean flags with flexible, composable component APIs.",
       "compatibility": [
         "claude",
         "copilot",
@@ -696,7 +696,7 @@
       "name": "React Native Skills",
       "type": "skill",
       "description": "React Native and Expo best practices for building performant mobile apps. Use",
-      "longDescription": "38 rules from Vercel for building performant React Native and Expo apps. Covers list virtualization, Reanimated animations, native UI components, navigation, monorepo setup, and React Compiler compatibility to catch mobile performance pitfalls during development.",
+      "longDescription": "38 individual rules from Vercel for performant React Native and Expo apps. Covers list performance (8 rules for virtualization, memo, image handling, stable references), native UI (10 rules for Expo Image, modals, menus, Pressable, safe areas, StyleSheet), Reanimated animation (3 rules for derived values, gestures, GPU properties), state management (4 rules), React Compiler compatibility (2 rules), monorepo setup (2 rules), plus navigation, fonts, and rendering patterns. Each rule is a standalone markdown file with problem, solution, and code examples.",
       "compatibility": [
         "claude",
         "copilot",
@@ -896,7 +896,7 @@
       "name": "Web Design Guidelines",
       "type": "skill",
       "description": "Review UI code for Web Interface Guidelines compliance. Use when asked to \"review my UI\", \"check accessibility\", \"audit design\", \"review UX\", or \"check my site against best practices\".",
-      "longDescription": "Vercel's web interface design guidelines for reviewing UI code. Checks accessibility, UX patterns, and design best practices to catch common issues in HTML, CSS, and component markup before they reach production.",
+      "longDescription": "Vercel's web interface design guidelines condensed into a single SKILL.md reference. Reviews UI code for accessibility compliance, UX patterns, responsive design, interaction design, and visual consistency. Catches common issues in HTML, CSS, and component markup -- missing ARIA attributes, poor contrast ratios, non-semantic markup, broken keyboard navigation -- before they reach production. No additional scripts or dependencies.",
       "compatibility": [
         "claude",
         "copilot",
@@ -926,7 +926,7 @@
       "name": "Algorithmic Art",
       "type": "skill",
       "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations.",
-      "longDescription": "Generates generative art using p5.js with seeded randomness for reproducible outputs. Includes a JavaScript generator template and an HTML viewer for interactive parameter exploration. Supports flow fields, particle systems, fractals, and other algorithmic techniques with real-time tweaking.",
+      "longDescription": "Generates generative art using p5.js with seeded randomness for reproducible outputs. Ships with 2 templates: a JavaScript generator template with configurable parameters and an HTML viewer for interactive real-time parameter exploration. Supports flow fields, particle systems, fractals, and other algorithmic techniques. Seeds ensure the same parameters always produce the same output, making results shareable and reproducible.",
       "compatibility": [
         "claude",
         "copilot",
@@ -972,7 +972,7 @@
       "name": "Brand Guidelines",
       "type": "skill",
       "description": "Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.",
-      "longDescription": "Applies Anthropic's official brand colors, typography, and visual identity to slides, documents, landing pages, and other artifacts. Ensures consistent use of brand standards so outputs match Anthropic's look-and-feel without manually referencing style guides.",
+      "longDescription": "Defines Anthropic's official brand identity -- colors, typography, spacing, and visual style -- in a single SKILL.md reference. Apply it to slides, documents, landing pages, and other generated artifacts so outputs match Anthropic's look-and-feel without manually referencing separate style guides. Primarily useful for Anthropic employees or partners producing branded content.",
       "compatibility": [
         "claude"
       ],
@@ -1000,7 +1000,7 @@
       "name": "Canvas Design",
       "type": "skill",
       "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
-      "longDescription": "Creates posters, artwork, and static visual designs as .png and .pdf files using HTML5 Canvas rendering. Ships with 30+ bundled fonts (serif, sans-serif, mono, display) so designs use real typography without external dependencies. Applies design principles like composition, color theory, and visual hierarchy rather than generic templates.",
+      "longDescription": "Creates posters, artwork, and static visual designs as .png and .pdf files using HTML5 Canvas rendering. Bundles 30+ fonts across serif (Lora, CrimsonPro, LibreBaskerville), sans-serif (Outfit, InstrumentSans, WorkSans), monospace (JetBrainsMono, GeistMono, DMMono), and display (Boldonse, EricaOne, NationalPark) families so designs render real typography with zero external dependencies. Applies composition, color theory, and visual hierarchy principles rather than generic templates.",
       "compatibility": [
         "claude",
         "copilot",
@@ -1362,7 +1362,7 @@
       "name": "Doc Coauthoring",
       "type": "skill",
       "description": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.",
-      "longDescription": "Walks through a structured co-authoring workflow for documentation, proposals, technical specs, and decision docs. Guides context transfer, iterative refinement, and reader verification so the final document reflects your intent rather than generic AI-generated prose.",
+      "longDescription": "Structured multi-phase workflow for co-authoring documentation, proposals, technical specs, and decision docs. Guides you through context transfer (what you know and want to say), iterative section-by-section drafting with feedback loops, and reader verification to ensure the final document reflects your intent and expertise rather than generic AI-generated prose. Single SKILL.md with no additional scripts or dependencies.",
       "compatibility": [
         "claude",
         "copilot",
@@ -1391,7 +1391,7 @@
       "name": "Docx",
       "type": "skill",
       "description": "\"Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files). Triggers include: any mention of \\\"Word doc\\\", \\\"word document\\\", \\\".docx\\\", or requests to produce professional documents with formatting like tables of contents, headings, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx files, inserting or replacing images in documents, performing find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a \\\"report\\\", \\\"memo\\\", \\\"letter\\\", \\\"template\\\", or similar deliverable as a Word or .docx file, use this skill. Do NOT use for PDFs, spreadsheets, Google Docs, or general coding tasks unrelated to document generation.\"",
-      "longDescription": "Create, read, edit, and manipulate .docx files with full support for tables of contents, headings, page numbers, letterheads, images, find-and-replace, tracked changes, and comments. Includes Python scripts for packing/unpacking OOXML, schema validation against ECMA/ISO standards, and redline simplification. Works directly with the Word XML format rather than relying on external libraries.",
+      "longDescription": "Create, read, edit, and manipulate .docx files by working directly with Word's OOXML format. Includes 7 Python scripts: pack.py/unpack.py for OOXML assembly, validate.py for schema validation against ECMA and ISO-IEC29500-4 standards, accept_changes.py and comment.py for tracked changes and comments, merge_runs.py and simplify_redlines.py for redline processing. Also bundles 5 XML templates for comments and people metadata, plus soffice.py for LibreOffice conversion. Supports tables of contents, headings, page numbers, letterheads, images, and find-and-replace without relying on python-docx.",
       "compatibility": [
         "claude",
         "copilot",
@@ -1555,7 +1555,7 @@
       "name": "Frontend Design",
       "type": "skill",
       "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples include websites, landing pages, dashboards, React components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates creative, polished code and UI design that avoids generic AI aesthetics.",
-      "longDescription": "Generates production-grade web UIs -- landing pages, dashboards, React components, HTML/CSS layouts -- with deliberate design choices that avoid the generic AI look. Focuses on typography, spacing, color, and visual hierarchy to produce polished, distinctive interfaces rather than template-style output.",
+      "longDescription": "Design-focused instructions for generating production-grade web UIs -- landing pages, dashboards, React components, HTML/CSS layouts -- that avoid the generic AI aesthetic. Encodes specific rules around typography pairing, spacing systems, color palette construction, visual hierarchy, and layout composition so generated code makes deliberate design choices rather than falling back to default Bootstrap/Tailwind patterns. Single SKILL.md reference with no additional scripts or dependencies.",
       "compatibility": [
         "claude",
         "copilot",
@@ -1587,7 +1587,7 @@
       "name": "Internal Comms",
       "type": "skill",
       "description": "A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude should use this skill whenever asked to write some sort of internal communications (status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, project updates, etc.).",
-      "longDescription": "Includes templates and examples for status reports, leadership updates, 3P updates, company newsletters, FAQs, and general internal comms. Each format comes with a worked example showing Anthropic's preferred structure, tone, and level of detail so outputs match existing company conventions.",
+      "longDescription": "Templates and worked examples for 6 internal communication formats: status reports, leadership updates, 3P (progress/plans/problems) updates, company newsletters, FAQ answers, and general comms. Ships with 4 example files (3p-updates.md, company-newsletter.md, faq-answers.md, general-comms.md) demonstrating Anthropic's preferred structure, tone, and level of detail. Primarily useful for Anthropic employees matching internal conventions, though the templates apply to any organization.",
       "compatibility": [
         "claude",
         "copilot",
@@ -1642,7 +1642,7 @@
       "name": "Mcp Builder",
       "type": "skill",
       "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).",
-      "longDescription": "Covers building MCP servers in both Python (FastMCP) and Node/TypeScript (MCP SDK) with reference docs for best practices, connection handling, and evaluation. Includes scripts for testing connections and evaluating server quality. Provides patterns for tool design, error handling, and API integration so servers work reliably with Claude and other LLM clients.",
+      "longDescription": "Guide for building MCP (Model Context Protocol) servers in both Python (FastMCP) and Node/TypeScript (MCP SDK). Includes 4 reference docs covering best practices, Python server patterns, Node server patterns, and evaluation criteria. Ships with 3 Python scripts: connections.py for testing server connectivity, evaluation.py for automated server quality scoring, plus an example evaluation XML. Covers tool design, error handling, transport configuration, and API integration patterns for servers that work with Claude and other LLM clients.",
       "compatibility": [
         "claude"
       ],
@@ -1714,7 +1714,7 @@
       "name": "Pdf",
       "type": "skill",
       "description": "Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding watermarks, creating new PDFs, filling PDF forms, encrypting/decrypting PDFs, extracting images, and OCR on scanned PDFs to make them searchable. If the user mentions a .pdf file or asks to produce one, use this skill.",
-      "longDescription": "Read, create, merge, split, rotate, watermark, encrypt, decrypt, and OCR PDF files. Includes 8 Python scripts for form operations: detecting fillable fields, extracting form structure, filling forms via both native fields and annotation overlays, bounding-box inspection, and visual validation image generation. Handles both interactive and flat-form PDFs.",
+      "longDescription": "Read, create, merge, split, rotate, watermark, encrypt, decrypt, and OCR PDF files. Includes 8 Python scripts: check_fillable_fields.py and extract_form_field_info.py for field detection, extract_form_structure.py for form layout analysis, fill_fillable_fields.py and fill_pdf_form_with_annotations.py for both native and annotation-overlay form filling, check_bounding_boxes.py for coordinate inspection, convert_pdf_to_images.py for rasterization, and create_validation_image.py for visual fill verification. Also ships with forms.md and reference.md covering both interactive and flat-form PDFs.",
       "compatibility": [
         "claude",
         "copilot",
@@ -1792,7 +1792,7 @@
       "name": "Pptx",
       "type": "skill",
       "description": "\"Use this skill any time a .pptx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from any .pptx file (even if the extracted content will be used elsewhere, like in an email or summary); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates, layouts, speaker notes, or comments. Trigger whenever the user mentions \\\"deck,\\\" \\\"slides,\\\" \\\"presentation,\\\" or references a .pptx filename, regardless of what they plan to do with the content afterward. If a .pptx file needs to be opened, created, or touched, use this skill.\"",
-      "longDescription": "Create, read, edit, and manipulate .pptx files with full support for slide layouts, speaker notes, comments, and templates. Includes Python scripts for adding slides, cleaning XML, generating thumbnails, and OOXML pack/unpack with schema validation against ECMA/ISO standards. Also provides a pptxgenjs reference for JavaScript-based slide generation.",
+      "longDescription": "Create, read, edit, and manipulate .pptx files by working directly with PowerPoint's OOXML format. Includes Python scripts for slide operations (add_slide.py, clean.py, thumbnail.py), OOXML pack/unpack with schema validation against ECMA and ISO-IEC29500-4 standards, plus shared office validators for docx/pptx and redline processing. Ships with 2 reference docs: editing.md for XML-level slide manipulation and pptxgenjs.md for JavaScript-based generation via pptxgenjs. Supports slide layouts, speaker notes, comments, templates, and LibreOffice conversion via soffice.py.",
       "compatibility": [
         "claude",
         "copilot",
@@ -1942,7 +1942,7 @@
       "name": "Skill Creator",
       "type": "skill",
       "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.",
-      "longDescription": "Walks through creating Claude Code skills with references on output patterns and workflow design. Includes Python scripts for scaffolding (init), packaging, and quick-validating skills. Covers SKILL.md structure, frontmatter fields, script bundling, and best practices for making skills that work reliably across sessions.",
+      "longDescription": "Guide for creating Claude Code skills that extend Claude's capabilities. Ships with 3 Python scripts: init_skill.py for scaffolding a new skill directory, package_skill.py for bundling skills for distribution, and quick_validate.py for checking skill structure and frontmatter. Includes 2 reference docs on output patterns (how skills produce artifacts) and workflow design (multi-step skill flows). Covers SKILL.md structure, frontmatter fields, script bundling, reference file organization, and best practices for reliable cross-session behavior.",
       "compatibility": [
         "claude"
       ],
@@ -2003,7 +2003,7 @@
       "name": "Slack Gif Creator",
       "type": "skill",
       "description": "Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation concepts. Use when users request animated GIFs for Slack like \"make me a GIF of X doing Y for Slack.\"",
-      "longDescription": "Generates animated GIFs that meet Slack's size and dimension constraints. Includes a Python toolkit with easing functions, a frame composer, a GIF builder, and validators that check file size and resolution before upload. Handles the tricky parts of GIF optimization so animations actually display correctly in Slack.",
+      "longDescription": "Generates animated GIFs optimized for Slack's display constraints. Ships with a 4-module Python toolkit: easing.py with animation timing functions, frame_composer.py for compositing individual frames, gif_builder.py for assembling and optimizing the final GIF, and validators.py for checking file size and resolution limits before upload. Handles the tricky parts of GIF optimization (frame count, palette reduction, dimension limits) so animations display correctly in Slack without manual tuning. Requires Pillow (see requirements.txt).",
       "compatibility": [
         "claude",
         "copilot",
@@ -2061,7 +2061,7 @@
       "name": "Theme Factory",
       "type": "skill",
       "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
-      "longDescription": "Ships with 10 ready-made themes (Arctic Frost, Botanical Garden, Desert Rose, Forest Canopy, Golden Hour, Midnight Galaxy, Modern Minimalist, Ocean Depths, Sunset Boulevard, Tech Innovation) each defining colors, fonts, and styling rules. Apply any theme to slides, docs, reports, or HTML pages, or generate a custom theme on-the-fly. Includes a PDF showcase for visual comparison.",
+      "longDescription": "Ships with 10 ready-made themes as individual markdown files: Arctic Frost, Botanical Garden, Desert Rose, Forest Canopy, Golden Hour, Midnight Galaxy, Modern Minimalist, Ocean Depths, Sunset Boulevard, and Tech Innovation. Each theme defines a complete color palette, font stack, and styling rules. Apply any theme to slides, docs, reports, or HTML pages, or generate a custom theme on the fly by describing the mood. Includes a PDF showcase (theme-showcase.pdf) for visual comparison of all 10 themes side by side.",
       "compatibility": [
         "claude",
         "copilot",
@@ -2143,7 +2143,7 @@
       "name": "Web Artifacts Builder",
       "type": "skill",
       "description": "Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.",
-      "longDescription": "Build multi-component claude.ai artifacts using React, Tailwind CSS, and shadcn/ui. Includes shell scripts for scaffolding and bundling artifacts plus a pre-packaged shadcn component archive. Handles state management, routing, and component composition for artifacts too complex for a single HTML file.",
+      "longDescription": "Build multi-component claude.ai artifacts using React, Tailwind CSS, and shadcn/ui for cases too complex for a single HTML file. Ships with 2 shell scripts: init-artifact.sh for scaffolding a new artifact project and bundle-artifact.sh for packaging it into a deployable artifact. Includes a pre-packaged shadcn-components.tar.gz archive so components are available offline without npm install. Handles state management, client-side routing, and component composition within Claude's artifact sandbox.",
       "compatibility": [
         "claude",
         "copilot",
@@ -2193,7 +2193,7 @@
       "name": "Webapp Testing",
       "type": "skill",
       "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.",
-      "longDescription": "Test local web applications using Playwright with included Python examples for element discovery, console log capture, and static HTML automation. Provides a server wrapper script that starts your app, runs tests, and tears down cleanly. Covers screenshots, DOM inspection, and browser log viewing for debugging frontend issues without manual browser interaction.",
+      "longDescription": "Test local web applications using Playwright without manual browser interaction. Ships with 3 Python examples: element_discovery.py for finding and inspecting DOM elements, console_logging.py for capturing browser console output, and static_html_automation.py for automating static HTML pages. Includes a server wrapper script (with_server.py) that starts your dev server, runs tests, and tears down cleanly. Covers screenshots, DOM inspection, form interaction, and browser log viewing for debugging frontend behavior programmatically.",
       "compatibility": [
         "claude",
         "copilot",
@@ -2253,7 +2253,7 @@
       "name": "Xlsx",
       "type": "skill",
       "description": "\"Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path — even casually (like \\\"the xlsx in my downloads\\\") — and wants something done to it or produced from it. Also trigger for cleaning or restructuring messy tabular data files (malformed rows, misplaced headers, junk data) into proper spreadsheets. The deliverable must be a spreadsheet file. Do NOT trigger when the primary deliverable is a Word document, HTML report, standalone Python script, database pipeline, or Google Sheets API integration, even if tabular data is involved.\"",
-      "longDescription": "Create, read, edit, and fix .xlsx, .xlsm, .csv, and .tsv files with support for formulas, formatting, charts, and data cleaning. Includes Python scripts for OOXML pack/unpack, schema validation against ECMA/ISO standards, and formula recalculation. Works directly with spreadsheet XML rather than relying on openpyxl for full control over cell styles, named ranges, and complex workbook structures.",
+      "longDescription": "Create, read, edit, and fix .xlsx, .xlsm, .csv, and .tsv files by working directly with spreadsheet OOXML rather than relying on openpyxl. Includes recalc.py for formula recalculation, plus shared office scripts for OOXML pack/unpack, schema validation against ECMA and ISO-IEC29500-4 standards, and LibreOffice conversion. Provides full control over cell styles, named ranges, charts, conditional formatting, and complex workbook structures. Handles messy data cleanup: malformed rows, misplaced headers, and format conversion between tabular file types.",
       "compatibility": [
         "claude",
         "copilot",

@@ -3,7 +3,7 @@
   "name": "React Composition Patterns",
   "type": "skill",
   "description": "React composition patterns that scale. Use when refactoring components with",
-  "longDescription": "Vercel's guide to scalable React component architecture. Teaches compound components, explicit variants, context-based state, and React 19 patterns to replace boolean prop proliferation with flexible, composable component APIs.",
+  "longDescription": "8 composition rules from Vercel for scalable React component architecture. Covers compound components, avoiding boolean prop proliferation, explicit variants over conditional props, children-over-render-props, context-based state interfaces, decoupled implementation patterns, state lifting strategies, and React 19 updates (no-forwardRef). Each rule is a standalone markdown file with problem, solution, and code examples. Designed to replace ad-hoc prop-drilling and boolean flags with flexible, composable component APIs.",
   "compatibility": [
     "claude",
     "copilot",

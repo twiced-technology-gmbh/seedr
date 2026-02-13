@@ -3,7 +3,7 @@
   "name": "Claude Md Management",
   "type": "plugin",
   "description": "Tools to maintain and improve CLAUDE.md files - audit quality, capture session learnings, and keep project memory current.",
-  "longDescription": "Provides a /revise-claude-md command and a claude-md-improver skill with quality criteria, templates, and update guidelines. Audits your CLAUDE.md for completeness, captures learnings from sessions, and suggests concrete improvements to keep project memory accurate.",
+  "longDescription": "Adds a /revise-claude-md command and a claude-md-improver skill backed by 3 reference docs: quality criteria, templates, and update guidelines. Audits your CLAUDE.md for completeness, captures learnings from coding sessions, and suggests concrete improvements to keep project memory accurate and actionable.",
   "compatibility": [
     "claude"
   ],

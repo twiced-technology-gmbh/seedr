@@ -1,6 +1,8 @@
 import { useState, useRef, useCallback } from "react";
 import { ChevronRight, ChevronDown, File, Folder, FolderOpen, X, Loader2, GripVertical, Download } from "lucide-react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import type { CSSProperties } from "react";
 import type { FileTreeNode } from "@/lib/types";
 
@@ -147,6 +149,14 @@ function TreeNode({ node, path, depth = 0, selectedPath, onFileClick }: TreeNode
       )}
     </div>
   );
+}
+
+/**
+ * Check if file is a markdown file that should be rendered
+ */
+function isMarkdownFile(fileName: string): boolean {
+  const ext = fileName.split(".").pop()?.toLowerCase() || "";
+  return ext === "md";
 }
 
 /**
@@ -391,20 +401,37 @@ function FilePreview({ filePath, content, loading, error, onClose, downloadUrl }
           </div>
         )}
         {content && !isBinary && !isImage && !isAudio && !isVideo && !isPdf && (
-          <SyntaxHighlighter
-            language={language}
-            style={customTheme}
-            customStyle={{
-              margin: 0,
-              padding: "1rem",
-              background: "transparent",
-              fontSize: "0.875rem",
-              minHeight: "100%",
-            }}
-            wrapLongLines
-          >
-            {content}
-          </SyntaxHighlighter>
+          isMarkdownFile(fileName) ? (
+            <div className="p-4 prose prose-invert prose-sm max-w-none
+              prose-headings:text-text prose-p:text-subtext prose-strong:text-text
+              prose-code:text-accent prose-code:bg-overlay prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:before:content-none prose-code:after:content-none
+              prose-a:text-accent prose-a:no-underline hover:prose-a:underline
+              prose-li:text-subtext prose-li:marker:text-text-dim
+              prose-table:border-collapse
+              prose-th:border prose-th:border-overlay prose-th:bg-surface prose-th:px-3 prose-th:py-1.5 prose-th:text-left prose-th:text-text prose-th:text-xs prose-th:font-medium
+              prose-td:border prose-td:border-overlay prose-td:px-3 prose-td:py-1.5 prose-td:text-subtext prose-td:text-xs
+              prose-pre:bg-surface prose-pre:border prose-pre:border-overlay
+              prose-hr:border-overlay
+              prose-blockquote:border-accent/40 prose-blockquote:text-subtext
+            ">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+            </div>
+          ) : (
+            <SyntaxHighlighter
+              language={language}
+              style={customTheme}
+              customStyle={{
+                margin: 0,
+                padding: "1rem",
+                background: "transparent",
+                fontSize: "0.875rem",
+                minHeight: "100%",
+              }}
+              wrapLongLines
+            >
+              {content}
+            </SyntaxHighlighter>
+          )
         )}
       </div>
       {/* Resize handle - bottom */}

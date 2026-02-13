@@ -3,7 +3,7 @@
   "name": "Explanatory Output Style",
   "type": "plugin",
   "description": "Adds educational insights about implementation choices and codebase patterns (mimics the deprecated Explanatory output style)",
-  "longDescription": "Uses a session-start hook to inject system instructions that make Claude explain why it chose specific implementations, what codebase patterns it followed, and what trade-offs exist. Recreates the deprecated Explanatory output style from Claude Code settings.",
+  "longDescription": "Installs a session-start hook (shell script) that injects instructions making Claude add educational insight blocks before and after code changes. Each block contains 2-3 points explaining why specific implementations were chosen, what codebase patterns were followed, and what trade-offs exist. Recreates the deprecated Explanatory output style from Claude Code settings.",
   "compatibility": [
     "claude"
   ],

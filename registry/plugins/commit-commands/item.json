@@ -3,7 +3,7 @@
   "name": "Commit Commands",
   "type": "plugin",
   "description": "Streamline your git workflow with simple commands for committing, pushing, and creating pull requests",
-  "longDescription": "Adds 3 slash commands: /commit for staging and committing with a generated message, /commit-push-pr for committing, pushing, and opening a PR in one step, and /clean_gone for pruning local branches whose remotes are deleted.",
+  "longDescription": "Adds 3 slash commands for git workflow: /commit stages changes and generates a commit message, /commit-push-pr commits, pushes, and opens a PR in one step, and /clean_gone prunes local branches whose remote tracking branches have been deleted. Reduces multi-step git operations to single commands.",
   "compatibility": [
     "claude"
   ],

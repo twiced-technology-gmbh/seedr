@@ -3,7 +3,7 @@
   "name": "Code Simplifier",
   "type": "plugin",
   "description": "Agent that simplifies and refines code for clarity, consistency, and maintainability while preserving functionality",
-  "longDescription": "Provides a code-simplifier agent that analyzes code for unnecessary complexity, inconsistent patterns, and maintainability issues. Suggests concrete simplifications while preserving existing behavior, working across any language.",
+  "longDescription": "Provides a code-simplifier agent that proactively refines recently modified code. Targets nested ternaries, dense one-liners, redundant abstractions, inconsistent syntax, poor naming, and unnecessary comments. Works across any language, preserving existing behavior while enforcing project conventions for function syntax, type annotations, and module style.",
   "compatibility": [
     "claude"
   ],
