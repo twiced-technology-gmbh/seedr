@@ -2,7 +2,8 @@
   "slug": "learning-output-style",
   "name": "Learning Output Style",
   "type": "plugin",
-  "description": "Transforms Claude into a coding tutor that pauses at key decision points and asks you to write 5-10 lines of meaningful code, such as business logic and algorithm choices, while handling boilerplate automatically. Restores the unshipped Learning output style.",
+  "description": "Interactive learning mode that requests meaningful code contributions at decision points (mimics the unshipped Learning output style)",
+  "longDescription": "Uses a session-start hook to inject system instructions that pause Claude at key decision points and ask you to write the code yourself. Recreates the unshipped Learning output style, turning Claude into a guided coding tutor rather than an auto-completer.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/learning-output-style",
   "contentHash": "2df9cbf8714731f8",
-  "updatedAt": "2025-12-13T00:52:17Z",
   "contents": {
     "files": [
       {

@@ -2,7 +2,8 @@
   "slug": "firebase",
   "name": "Firebase",
   "type": "plugin",
-  "description": "Manage Firestore databases, authentication, cloud functions, hosting, and storage directly from Claude Code. Build and iterate on your Firebase backend without switching to the Google Cloud console.",
+  "description": "Google Firebase MCP integration. Manage Firestore databases, authentication, cloud functions, hosting, and storage. Build and manage your Firebase backend directly from your development workflow.",
+  "longDescription": "Official Google MCP server for Firebase. Manage Firestore, Authentication, Cloud Functions, Hosting, and Storage directly from Claude Code. Run queries, deploy functions, and configure services without switching to the Firebase console.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/firebase",
   "contentHash": "00327bba1bbb769f",
-  "updatedAt": "2025-12-02T00:03:02Z",
   "contents": {
     "files": [
       {

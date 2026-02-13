@@ -2,7 +2,8 @@
   "slug": "linear",
   "name": "Linear",
   "type": "plugin",
-  "description": "Create and update Linear issues, manage projects and cycles, and search across workspaces from Claude Code. Keeps your issue tracker in sync with your code changes without context-switching to the Linear app.",
+  "description": "Linear issue tracking integration. Create issues, manage projects, update statuses, search across workspaces, and streamline your software development workflow with Linear's modern issue tracker.",
+  "longDescription": "MCP server that connects Claude Code to your Linear workspace. Create and update issues, manage projects and cycles, search across teams, and update statuses without leaving your terminal. Requires a Linear API key.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/linear",
   "contentHash": "5e00001b7c5d7106",
-  "updatedAt": "2025-12-16T23:13:40Z",
   "contents": {
     "files": [
       {

@@ -2,10 +2,16 @@
   "slug": "agent-creator",
   "name": "Agent Creator",
   "type": "skill",
-  "description": "Create well-configured Claude Code agents with the right tools, permissions, and model for the job. Covers all frontmatter fields, permission modes, model selection tradeoffs, agent lifecycle, common mistakes, and battle-tested patterns for research agents, reviewers, and multi-agent teams.",
-  "compatibility": ["claude"],
+  "description": "Guide for creating and configuring Claude Code agents — covers frontmatter fields, tools, permissions, models, memory, hooks, skills, and best practices.",
+  "longDescription": "Create well-configured Claude Code agents with the right tools, permissions, and model for the job. Covers all frontmatter fields, permission modes, model selection tradeoffs, agent lifecycle, common mistakes, and battle-tested patterns for research agents, reviewers, and multi-agent teams.",
+  "compatibility": [
+    "claude"
+  ],
   "sourceType": "toolr",
-  "author": { "name": "Toolr Suite", "url": "https://github.com/toolr-suite" },
+  "author": {
+    "name": "Toolr Suite",
+    "url": "https://github.com/toolr-suite"
+  },
   "externalUrl": "https://github.com/twiced-technology-gmbh/seedr/tree/main/registry/skills/agent-creator",
   "updatedAt": "2026-02-11",
   "contents": {
@@ -18,8 +24,14 @@
         "name": "references",
         "type": "directory",
         "children": [
-          { "name": "memory-and-hooks.md", "type": "file" },
-          { "name": "patterns-and-teams.md", "type": "file" }
+          {
+            "name": "memory-and-hooks.md",
+            "type": "file"
+          },
+          {
+            "name": "patterns-and-teams.md",
+            "type": "file"
+          }
         ]
       }
     ]

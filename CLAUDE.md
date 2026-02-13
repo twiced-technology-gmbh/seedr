@@ -19,7 +19,7 @@ pnpm dev                  # Run all dev servers
 pnpm lint                 # Lint all packages
 pnpm typecheck            # Type-check all packages
 pnpm clean                # Clean all build artifacts
-pnpm compile              # Compile item.json files into manifest.json
+pnpm compile              # Compile item.json files into split manifest files
 
 # CLI package (from packages/cli/)
 pnpm build                # Build CLI
@@ -84,10 +84,11 @@ seedr/
 ├── apps/web/             # React web app (seedr.toolr.dev)
 ├── packages/cli/         # CLI package (npx seedr)
 ├── registry/
-│   ├── manifest.json     # Compiled output (do not edit directly)
-│   ├── skills/           # Skill content + item.json per item
-│   ├── plugins/          # Plugin item.json files
-│   └── hooks/            # Hook content + item.json per item
+│   ├── manifest.json           # Index: version + type descriptors
+│   ├── skills/                 # Skill content + item.json + manifest.json
+│   ├── plugins/                # Plugin item.json files + manifest.json
+│   ├── hooks/                  # Hook content + item.json + manifest.json
+│   └── (agents, mcp, settings, commands — empty, with manifest.json)
 ├── .claude/skills/       # Local skill definitions (dev)
 ├── turbo.json            # Build orchestration
 └── pnpm-workspace.yaml   # Workspace config
@@ -118,10 +119,42 @@ seedr/
 
 ### Registry
 
-- `registry/<type>s/<slug>/item.json` - Source of truth for each item's metadata
-- `registry/manifest.json` - Compiled output assembled from all `item.json` files (run `pnpm compile`)
-- Items can be symlinked (dev) or copied (published)
-- Manifest structure: `{ version: "1.0.0", items: [...] }`
+Each item has a source-of-truth `item.json` in `registry/<type>s/<slug>/`. Running `pnpm compile` assembles these into split manifest files:
+
+**`item.json`** — one per item, the editable source:
+```json
+{ "slug": "pdf", "name": "PDF", "type": "skill", "description": "...", ... }
+```
+
+**`manifest.json`** — lightweight index (never contains item data):
+```json
+{
+  "version": "2.0.0",
+  "types": {
+    "skill": { "file": "skills/manifest.json", "count": 26 },
+    "plugin": { "file": "plugins/manifest.json", "count": 30 },
+    "hook": { "file": "hooks/manifest.json", "count": 2 },
+    "agent": { "file": "agents/manifest.json", "count": 0 }
+  }
+}
+```
+
+**`<type>/manifest.json`** — all items of one type, lives in its type folder:
+```json
+{
+  "type": "skill",
+  "items": [{ "slug": "pdf", "name": "PDF", "type": "skill", ... }]
+}
+```
+
+Consumers load only what they need. The web app imports all type files at build time and assembles them for rendering cards:
+
+```typescript
+import skillsData from "@registry/skills/manifest.json";
+import pluginsData from "@registry/plugins/manifest.json";
+// ...
+const allItems = [...skillsData.items, ...pluginsData.items, ...];
+```
 
 ## Managing Registry Items
 
@@ -187,7 +220,7 @@ Removes a community-sourced item by slug. Removes the manifest entry only (no lo
 - **pnpm workspaces** - Shared dependencies, hoisted node_modules
 - **CLI-first** - Main interaction via `seedr add`, `seedr init`
 - **Web for discovery** - Browse and preview before installing
-- **Registry as data** - individual `item.json` files are the source of truth, compiled into `manifest.json`
+- **Registry as data** - individual `item.json` files are the source of truth, compiled into split per-type manifests
 
 ## TypeScript Configuration
 
@@ -201,6 +234,32 @@ pnpm --filter @seedr/web typecheck
 # Or from package directory
 npx tsc --noEmit
 ```
+
+## Forking This Repo
+
+To create your own registry from this repo, update these references:
+
+**1. GitHub org/repo** — replace `twiced-technology-gmbh/seedr` in:
+- `packages/cli/src/config/registry.ts` — `GITHUB_RAW_URL` (runtime content fetching)
+- `packages/cli/package.json` — repository/bugs URLs
+- `apps/web/src/components/Header.tsx` — GitHub link
+- `apps/web/src/components/FileTree.tsx` — hardcoded org/repo check
+- `registry/*/item.json` — `externalUrl` fields for toolr-sourced items
+- `.github/workflows/sync.yml` — notification links
+
+**2. Domain** — replace `seedr.toolr.dev` in:
+- `packages/cli/package.json` — homepage
+- `packages/cli/src/utils/ui.ts` and `src/commands/init.ts` — user-facing links
+- `CLAUDE.md` — docs
+
+**3. Package names** — rename `@toolr/seedr`, `@seedr/shared`, `@seedr/web` in all `package.json` files and update corresponding imports
+
+**4. Workflows** (`.github/workflows/`):
+- `deploy.yml` — Cloudflare Pages project name + npm publish. Secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `APP_ID`, `APP_PRIVATE_KEY`
+- `sync.yml` — daily registry sync from Anthropic. Secrets: `GITHUB_TOKEN`, SMTP vars. Update email recipient (`daniel.deusing@twiced.de`)
+- `test-email.yml` — update email recipient
+
+**5. Registry content** — clear `registry/*/` directories and add your own items, then run `pnpm compile`
 
 ## Gotchas
 

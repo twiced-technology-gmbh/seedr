@@ -43,6 +43,16 @@ export interface Manifest {
   items: ManifestItem[];
 }
 
+export interface ManifestIndex {
+  version: string;
+  types: Record<ComponentType, { file: string; count: number }>;
+}
+
+export interface TypeManifest {
+  type: ComponentType;
+  items: ManifestItem[];
+}
+
 export interface GitTreeItem {
   path: string;
   mode: string;

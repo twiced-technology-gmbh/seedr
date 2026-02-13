@@ -2,7 +2,8 @@
   "slug": "serena",
   "name": "Serena",
   "type": "plugin",
-  "description": "Adds LSP-powered semantic code intelligence to Claude Code. Navigate symbols, find references, get refactoring suggestions, and understand code structure using language server protocol analysis instead of text-based search.",
+  "description": "Semantic code analysis MCP server providing intelligent code understanding, refactoring suggestions, and codebase navigation through language server protocol integration.",
+  "longDescription": "MCP server by Oraios that uses Language Server Protocol integration for semantic code analysis. Provides go-to-definition, find-references, symbol search, and refactoring suggestions with full type awareness, going beyond text-based grep searches.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/serena",
   "contentHash": "608eb296db4c4821",
-  "updatedAt": "2025-12-02T00:03:02Z",
   "contents": {
     "files": [
       {

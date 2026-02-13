@@ -2,7 +2,8 @@
   "slug": "agent-sdk-dev",
   "name": "Agent Sdk Dev",
   "type": "plugin",
-  "description": "Scaffolds new Claude Agent SDK projects in Python or TypeScript with /new-sdk-app, then validates them against SDK best practices using language-specific verifier agents that check API usage, type safety, security, and environment configuration.",
+  "description": "Claude Agent SDK Development Plugin",
+  "longDescription": "Scaffolds and verifies Claude Agent SDK applications in Python and TypeScript. Includes 2 agents (agent-sdk-verifier-py, agent-sdk-verifier-ts) for validating SDK implementations and a /new-sdk-app command to generate new projects.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/agent-sdk-dev",
   "contentHash": "794e61bf58c55e22",
-  "updatedAt": "2025-12-13T00:52:17Z",
   "contents": {
     "files": [
       {

@@ -2,7 +2,8 @@
   "slug": "doc-coauthoring",
   "name": "Doc Coauthoring",
   "type": "skill",
-  "description": "Co-author documentation through a structured, iterative workflow. Helps you write proposals, technical specs, decision docs, and similar structured content by guiding context transfer, collaborative refinement, and reader verification.",
+  "description": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.",
+  "longDescription": "Walks through a structured co-authoring workflow for documentation, proposals, technical specs, and decision docs. Guides context transfer, iterative refinement, and reader verification so the final document reflects your intent rather than generic AI-generated prose.",
   "compatibility": [
     "claude",
     "copilot",

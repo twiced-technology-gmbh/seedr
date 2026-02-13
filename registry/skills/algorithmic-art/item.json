@@ -2,7 +2,8 @@
   "slug": "algorithmic-art",
   "name": "Algorithmic Art",
   "type": "skill",
-  "description": "Generate original algorithmic art using p5.js with seeded randomness and interactive parameter controls. Supports flow fields, particle systems, and other generative techniques, producing reproducible artwork with a built-in HTML viewer for exploration.",
+  "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations.",
+  "longDescription": "Generates generative art using p5.js with seeded randomness for reproducible outputs. Includes a JavaScript generator template and an HTML viewer for interactive parameter exploration. Supports flow fields, particle systems, fractals, and other algorithmic techniques with real-time tweaking.",
   "compatibility": [
     "claude",
     "copilot",
@@ -16,7 +17,6 @@
   },
   "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/algorithmic-art",
   "contentHash": "0c1c21f5d1208a06",
-  "updatedAt": "2025-12-01T18:05:36Z",
   "contents": {
     "files": [
       {

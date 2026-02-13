@@ -2,7 +2,8 @@
   "slug": "docx",
   "name": "Docx",
   "type": "skill",
-  "description": "Create, read, and edit Word documents (.docx) with professional formatting. Supports tables of contents, headings, page numbers, images, tracked changes, comments, find-and-replace, and OOXML validation for reliable, polished output.",
+  "description": "\"Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files). Triggers include: any mention of \\\"Word doc\\\", \\\"word document\\\", \\\".docx\\\", or requests to produce professional documents with formatting like tables of contents, headings, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx files, inserting or replacing images in documents, performing find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a \\\"report\\\", \\\"memo\\\", \\\"letter\\\", \\\"template\\\", or similar deliverable as a Word or .docx file, use this skill. Do NOT use for PDFs, spreadsheets, Google Docs, or general coding tasks unrelated to document generation.\"",
+  "longDescription": "Create, read, edit, and manipulate .docx files with full support for tables of contents, headings, page numbers, letterheads, images, find-and-replace, tracked changes, and comments. Includes Python scripts for packing/unpacking OOXML, schema validation against ECMA/ISO standards, and redline simplification. Works directly with the Word XML format rather than relying on external libraries.",
   "compatibility": [
     "claude",
     "copilot",
@@ -16,7 +17,6 @@
   },
   "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/docx",
   "contentHash": "c7ad768b3ef4a9b6",
-  "updatedAt": "2026-02-06T21:19:32Z",
   "contents": {
     "files": [
       {

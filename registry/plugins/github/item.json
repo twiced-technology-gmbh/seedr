@@ -2,7 +2,8 @@
   "slug": "github",
   "name": "Github",
   "type": "plugin",
-  "description": "Create issues, manage pull requests, review code, search repos, and access GitHub's full API without leaving Claude Code. Complements the built-in gh CLI with structured MCP tool access to the GitHub platform.",
+  "description": "Official GitHub MCP server for repository management. Create issues, manage pull requests, review code, search repositories, and interact with GitHub's full API directly from Claude Code.",
+  "longDescription": "Official GitHub MCP server that exposes the GitHub API to Claude Code. Create and search issues, manage pull requests, review code, browse repositories, and interact with GitHub Actions without leaving your terminal.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/github",
   "contentHash": "80967cdd32c1e94a",
-  "updatedAt": "2025-12-02T00:03:02Z",
   "contents": {
     "files": [
       {

@@ -2,40 +2,81 @@
   "slug": "audit-context-building",
   "name": "Audit Context Building",
   "type": "plugin",
-  "description": "Security audit plugin from Trail of Bits that builds deep architectural context through ultra-granular function-level code analysis before vulnerability hunting. Includes a function-analyzer agent and completeness checklists to ensure thorough coverage.",
-  "compatibility": ["claude"],
+  "description": "Build deep architectural context through ultra-granular code analysis before vulnerability hunting",
+  "longDescription": "Builds deep architectural context through ultra-granular function-level code analysis before vulnerability hunting. Includes a function-analyzer agent and completeness checklists to ensure thorough coverage.",
+  "compatibility": [
+    "claude"
+  ],
   "sourceType": "community",
   "author": {
-    "name": "Trail of Bits",
+    "name": "Omar Inuwa",
     "url": "https://github.com/trailofbits"
   },
   "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/audit-context-building",
   "updatedAt": "2026-02-13T04:08:06Z",
   "contents": {
-    "skills": ["audit-context-building"],
-    "agents": ["function-analyzer"],
-    "commands": ["audit-context"],
     "files": [
-      { "name": ".claude-plugin", "type": "directory", "children": [
-        { "name": "plugin.json", "type": "file" }
-      ]},
-      { "name": "README.md", "type": "file" },
-      { "name": "agents", "type": "directory", "children": [
-        { "name": "function-analyzer.md", "type": "file" }
-      ]},
-      { "name": "commands", "type": "directory", "children": [
-        { "name": "audit-context.md", "type": "file" }
-      ]},
-      { "name": "skills", "type": "directory", "children": [
-        { "name": "audit-context-building", "type": "directory", "children": [
-          { "name": "SKILL.md", "type": "file" },
-          { "name": "resources", "type": "directory", "children": [
-            { "name": "COMPLETENESS_CHECKLIST.md", "type": "file" },
-            { "name": "FUNCTION_MICRO_ANALYSIS_EXAMPLE.md", "type": "file" },
-            { "name": "OUTPUT_REQUIREMENTS.md", "type": "file" }
-          ]}
-        ]}
-      ]}
+      {
+        "name": ".claude-plugin",
+        "type": "directory",
+        "children": [
+          {
+            "name": "plugin.json",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "agents",
+        "type": "directory",
+        "children": [
+          {
+            "name": "function-analyzer.md",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "commands",
+        "type": "directory",
+        "children": [
+          {
+            "name": "audit-context.md",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "skills",
+        "type": "directory",
+        "children": [
+          {
+            "name": "audit-context-building",
+            "type": "directory",
+            "children": [
+              {
+                "name": "resources",
+                "type": "directory"
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "README.md",
+        "type": "file"
+      }
+    ],
+    "agents": [
+      "function-analyzer"
+    ],
+    "commands": [
+      "audit-context"
     ]
-  }
+  },
+  "contentHash": "82a4cebe1d0a5668"
 }

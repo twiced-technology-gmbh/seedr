@@ -2,7 +2,8 @@
   "slug": "gitlab",
   "name": "Gitlab",
   "type": "plugin",
-  "description": "Manage GitLab repositories, merge requests, CI/CD pipelines, issues, and wikis directly from Claude Code. Provides MCP access to GitLab's full DevOps lifecycle without leaving your editor.",
+  "description": "GitLab DevOps platform integration. Manage repositories, merge requests, CI/CD pipelines, issues, and wikis. Full access to GitLab's comprehensive DevOps lifecycle tools.",
+  "longDescription": "MCP server for GitLab's DevOps platform. Manage repositories, create and review merge requests, trigger CI/CD pipelines, file issues, and edit wikis directly from Claude Code. Supports self-hosted and gitlab.com instances.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/gitlab",
   "contentHash": "db03dbeecccbb0d3",
-  "updatedAt": "2025-12-02T00:03:02Z",
   "contents": {
     "files": [
       {

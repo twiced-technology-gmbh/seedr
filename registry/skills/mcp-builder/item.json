@@ -2,7 +2,8 @@
   "slug": "mcp-builder",
   "name": "Mcp Builder",
   "type": "skill",
-  "description": "Build and evaluate MCP (Model Context Protocol) servers in Python (FastMCP) or Node/TypeScript (MCP SDK). Provides best-practice references, connection testing scripts, and an evaluation framework to ensure your server integrates cleanly with LLM toolchains.",
+  "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).",
+  "longDescription": "Covers building MCP servers in both Python (FastMCP) and Node/TypeScript (MCP SDK) with reference docs for best practices, connection handling, and evaluation. Includes scripts for testing connections and evaluating server quality. Provides patterns for tool design, error handling, and API integration so servers work reliably with Claude and other LLM clients.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/mcp-builder",
   "contentHash": "55df9723ec52057a",
-  "updatedAt": "2025-12-01T18:05:36Z",
   "contents": {
     "files": [
       {

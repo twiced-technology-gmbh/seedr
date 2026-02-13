@@ -2,7 +2,8 @@
   "slug": "greptile",
   "name": "Greptile",
   "type": "plugin",
-  "description": "View and resolve Greptile's AI-powered PR review comments directly from Claude Code. Connects to Greptile's codebase-aware code review for GitHub and GitLab pull requests.",
+  "description": "AI code review agent for GitHub and GitLab. View and resolve Greptile's PR review comments directly from Claude Code.",
+  "longDescription": "MCP server that surfaces Greptile's AI-generated PR review comments inside Claude Code. View, resolve, and act on Greptile findings for GitHub and GitLab pull requests without switching to the browser. Requires a Greptile account.",
   "compatibility": [
     "claude"
   ],
@@ -13,7 +14,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/greptile",
   "contentHash": "da5815a63e4d2b1a",
-  "updatedAt": "2026-01-06T05:15:35Z",
   "contents": {
     "files": [
       {

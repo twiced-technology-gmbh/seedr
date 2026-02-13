@@ -2,7 +2,8 @@
   "slug": "universal-security-guard",
   "name": "Universal Security Guard",
   "type": "hook",
-  "description": "User-scoped PreToolUse hook that blocks universally dangerous operations across all projects: reverse shells, sudo/privilege escalation, credential file reads, keychain access, persistence mechanisms (crontab, launchctl, systemd), library injection, container escapes, and git config attacks. Never auto-approves -- only denies threats and defers safe commands to normal permission flow.",
+  "description": "User-scoped security hook that blocks universally dangerous operations like reverse shells, privilege escalation, and credential access across all projects.",
+  "longDescription": "User-scoped PreToolUse hook that blocks universally dangerous operations across all projects: reverse shells, sudo/privilege escalation, credential file reads, keychain access, persistence mechanisms (crontab, launchctl, systemd), library injection, container escapes, and git config attacks. Never auto-approves -- only denies threats and defers safe commands to normal permission flow.",
   "compatibility": [
     "claude"
   ],

@@ -2,7 +2,8 @@
   "slug": "superpowers",
   "name": "Superpowers",
   "type": "plugin",
-  "description": "Comprehensive skills library by Jesse Vincent that teaches Claude Code proven development workflows: TDD, systematic debugging, subagent-driven development, code review, git worktrees, plan writing, and brainstorming. Includes a code-reviewer agent and slash commands for planning and execution.",
+  "description": "Core skills library for Claude Code: TDD, debugging, collaboration patterns, and proven techniques",
+  "longDescription": "Comprehensive skills library by Jesse Vincent that teaches Claude Code proven development workflows: TDD, systematic debugging, subagent-driven development, code review, git worktrees, plan writing, and brainstorming. Includes a code-reviewer agent and slash commands for planning and execution.",
   "compatibility": [
     "claude"
   ],

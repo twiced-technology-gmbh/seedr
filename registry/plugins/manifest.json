@@ -1,0 +1,2224 @@
+{
+  "type": "plugin",
+  "items": [
+    {
+      "slug": "asana",
+      "name": "Asana",
+      "type": "plugin",
+      "description": "Asana project management integration. Create and manage tasks, search projects, update assignments, track progress, and integrate your development workflow with Asana's work management platform.",
+      "longDescription": "MCP server that connects Claude Code to your Asana workspace. Create and update tasks, search projects, manage assignments, and track progress without leaving your terminal. Requires an Asana access token.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Asana"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/asana",
+      "contentHash": "ffb39e4599a22686",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "audit-context-building",
+      "name": "Audit Context Building",
+      "type": "plugin",
+      "description": "Build deep architectural context through ultra-granular code analysis before vulnerability hunting",
+      "longDescription": "Builds deep architectural context through ultra-granular function-level code analysis before vulnerability hunting. Includes a function-analyzer agent and completeness checklists to ensure thorough coverage.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Omar Inuwa",
+        "url": "https://github.com/trailofbits"
+      },
+      "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/audit-context-building",
+      "updatedAt": "2026-02-13T04:08:06Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "agents",
+            "type": "directory",
+            "children": [
+              {
+                "name": "function-analyzer.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "audit-context.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "audit-context-building",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "resources",
+                    "type": "directory"
+                  },
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ],
+        "agents": [
+          "function-analyzer"
+        ],
+        "commands": [
+          "audit-context"
+        ]
+      },
+      "contentHash": "82a4cebe1d0a5668"
+    },
+    {
+      "slug": "context7",
+      "name": "Context7",
+      "type": "plugin",
+      "description": "Upstash Context7 MCP server for up-to-date documentation lookup. Pull version-specific documentation and code examples directly from source repositories into your LLM context.",
+      "longDescription": "MCP server by Upstash that fetches version-specific library documentation and code examples directly from source repos. Avoids outdated training data by pulling current docs on demand for any library or framework.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Upstash"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/context7",
+      "contentHash": "05193833b43e4cd1",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "firebase",
+      "name": "Firebase",
+      "type": "plugin",
+      "description": "Google Firebase MCP integration. Manage Firestore databases, authentication, cloud functions, hosting, and storage. Build and manage your Firebase backend directly from your development workflow.",
+      "longDescription": "Official Google MCP server for Firebase. Manage Firestore, Authentication, Cloud Functions, Hosting, and Storage directly from Claude Code. Run queries, deploy functions, and configure services without switching to the Firebase console.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Google"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/firebase",
+      "contentHash": "00327bba1bbb769f",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "github",
+      "name": "Github",
+      "type": "plugin",
+      "description": "Official GitHub MCP server for repository management. Create issues, manage pull requests, review code, search repositories, and interact with GitHub's full API directly from Claude Code.",
+      "longDescription": "Official GitHub MCP server that exposes the GitHub API to Claude Code. Create and search issues, manage pull requests, review code, browse repositories, and interact with GitHub Actions without leaving your terminal.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "GitHub"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/github",
+      "contentHash": "80967cdd32c1e94a",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "gitlab",
+      "name": "Gitlab",
+      "type": "plugin",
+      "description": "GitLab DevOps platform integration. Manage repositories, merge requests, CI/CD pipelines, issues, and wikis. Full access to GitLab's comprehensive DevOps lifecycle tools.",
+      "longDescription": "MCP server for GitLab's DevOps platform. Manage repositories, create and review merge requests, trigger CI/CD pipelines, file issues, and edit wikis directly from Claude Code. Supports self-hosted and gitlab.com instances.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "GitLab"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/gitlab",
+      "contentHash": "db03dbeecccbb0d3",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "greptile",
+      "name": "Greptile",
+      "type": "plugin",
+      "description": "AI code review agent for GitHub and GitLab. View and resolve Greptile's PR review comments directly from Claude Code.",
+      "longDescription": "MCP server that surfaces Greptile's AI-generated PR review comments inside Claude Code. View, resolve, and act on Greptile findings for GitHub and GitLab pull requests without switching to the browser. Requires a Greptile account.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Greptile",
+        "url": "https://greptile.com"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/greptile",
+      "contentHash": "da5815a63e4d2b1a",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "laravel-boost",
+      "name": "Laravel Boost",
+      "type": "plugin",
+      "description": "Laravel development toolkit MCP server. Provides intelligent assistance for Laravel applications including Artisan commands, Eloquent queries, routing, migrations, and framework-specific code generation.",
+      "longDescription": "MCP server for Laravel development. Provides tools for running Artisan commands, building Eloquent queries, managing routes, generating migrations, and scaffolding Laravel-specific code. Understands Laravel conventions and best practices.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Laravel"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/laravel-boost",
+      "contentHash": "e5d77d87db7d7d92",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "linear",
+      "name": "Linear",
+      "type": "plugin",
+      "description": "Linear issue tracking integration. Create issues, manage projects, update statuses, search across workspaces, and streamline your software development workflow with Linear's modern issue tracker.",
+      "longDescription": "MCP server that connects Claude Code to your Linear workspace. Create and update issues, manage projects and cycles, search across teams, and update statuses without leaving your terminal. Requires a Linear API key.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Linear"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/linear",
+      "contentHash": "5e00001b7c5d7106",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "playwright",
+      "name": "Playwright",
+      "type": "plugin",
+      "description": "Browser automation and end-to-end testing MCP server by Microsoft. Enables Claude to interact with web pages, take screenshots, fill forms, click elements, and perform automated browser testing workflows.",
+      "longDescription": "Microsoft's Playwright MCP server for browser automation. Enables Claude to navigate pages, take screenshots, fill forms, click elements, and run end-to-end tests across Chromium, Firefox, and WebKit. Useful for testing workflows, scraping, and UI verification.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Microsoft"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/playwright",
+      "contentHash": "43d217d3320c4029",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "serena",
+      "name": "Serena",
+      "type": "plugin",
+      "description": "Semantic code analysis MCP server providing intelligent code understanding, refactoring suggestions, and codebase navigation through language server protocol integration.",
+      "longDescription": "MCP server by Oraios that uses Language Server Protocol integration for semantic code analysis. Provides go-to-definition, find-references, symbol search, and refactoring suggestions with full type awareness, going beyond text-based grep searches.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Oraios"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/serena",
+      "contentHash": "608eb296db4c4821",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "slack",
+      "name": "Slack",
+      "type": "plugin",
+      "description": "Slack workspace integration. Search messages, access channels, read threads, and stay connected with your team's communications while coding. Find relevant discussions and context quickly.",
+      "longDescription": "MCP server that connects Claude Code to your Slack workspace. Search messages, read channel history and threads, and find relevant discussions for context without switching to the Slack app. Requires a Slack Bot token.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Slack"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/slack",
+      "contentHash": "b25546d5030930c2",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "stripe",
+      "name": "Stripe",
+      "type": "plugin",
+      "description": "Stripe development plugin for Claude",
+      "longDescription": "Stripe's official plugin combining an MCP server with 2 commands (/explain-error, /test-cards) and a stripe-best-practices skill. Provides API access, explains Stripe error codes in context, and supplies test card numbers for development.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Stripe",
+        "url": "https://stripe.com"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/stripe",
+      "contentHash": "eb0721627c9671d7",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "explain-error.md",
+                "type": "file"
+              },
+              {
+                "name": "test-cards.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "stripe-best-practices",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ],
+        "commands": [
+          "explain-error",
+          "test-cards"
+        ]
+      }
+    },
+    {
+      "slug": "supabase",
+      "name": "Supabase",
+      "type": "plugin",
+      "description": "Supabase MCP integration for database operations, authentication, storage, and real-time subscriptions. Manage your Supabase projects, run SQL queries, and interact with your backend directly.",
+      "longDescription": "Official Supabase MCP server for managing your backend from Claude Code. Run SQL queries, manage authentication and storage, configure real-time subscriptions, and interact with your Supabase project without switching to the dashboard.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Supabase"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/supabase",
+      "contentHash": "8f4caf2119de3077",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".mcp.json",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "superpowers",
+      "name": "Superpowers",
+      "type": "plugin",
+      "description": "Core skills library for Claude Code: TDD, debugging, collaboration patterns, and proven techniques",
+      "longDescription": "Comprehensive skills library by Jesse Vincent that teaches Claude Code proven development workflows: TDD, systematic debugging, subagent-driven development, code review, git worktrees, plan writing, and brainstorming. Includes a code-reviewer agent and slash commands for planning and execution.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "community",
+      "author": {
+        "name": "Jesse Vincent"
+      },
+      "externalUrl": "https://github.com/obra/superpowers/tree/main",
+      "updatedAt": "2026-02-12T19:03:32Z",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "marketplace.json",
+                "type": "file"
+              },
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".codex",
+            "type": "directory",
+            "children": [
+              {
+                "name": "INSTALL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".github",
+            "type": "directory",
+            "children": [
+              {
+                "name": "FUNDING.yml",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".opencode",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugins",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "superpowers.js",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "INSTALL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "agents",
+            "type": "directory",
+            "children": [
+              {
+                "name": "code-reviewer.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "brainstorm.md",
+                "type": "file"
+              },
+              {
+                "name": "execute-plan.md",
+                "type": "file"
+              },
+              {
+                "name": "write-plan.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "docs",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plans",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "2025-11-22-opencode-support-design.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "2025-11-22-opencode-support-implementation.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "2025-11-28-skills-improvements-from-user-feedback.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "windows",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "polyglot-hooks.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "README.codex.md",
+                "type": "file"
+              },
+              {
+                "name": "README.opencode.md",
+                "type": "file"
+              },
+              {
+                "name": "testing.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "hooks",
+            "type": "directory",
+            "children": [
+              {
+                "name": "hooks.json",
+                "type": "file"
+              },
+              {
+                "name": "run-hook.cmd",
+                "type": "file"
+              },
+              {
+                "name": "session-start.sh",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "lib",
+            "type": "directory",
+            "children": [
+              {
+                "name": "skills-core.js",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "brainstorming",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "dispatching-parallel-agents",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "executing-plans",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "finishing-a-development-branch",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "receiving-code-review",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "requesting-code-review",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "code-reviewer.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "subagent-driven-development",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "code-quality-reviewer-prompt.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "implementer-prompt.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "spec-reviewer-prompt.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "systematic-debugging",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "condition-based-waiting-example.ts",
+                    "type": "file"
+                  },
+                  {
+                    "name": "condition-based-waiting.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "CREATION-LOG.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "defense-in-depth.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "find-polluter.sh",
+                    "type": "file"
+                  },
+                  {
+                    "name": "root-cause-tracing.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "test-academic.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "test-pressure-1.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "test-pressure-2.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "test-pressure-3.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "test-driven-development",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "testing-anti-patterns.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "using-git-worktrees",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "using-superpowers",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "verification-before-completion",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "writing-plans",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "writing-skills",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "examples",
+                    "type": "directory"
+                  },
+                  {
+                    "name": "anthropic-best-practices.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "graphviz-conventions.dot",
+                    "type": "file"
+                  },
+                  {
+                    "name": "persuasion-principles.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "render-graphs.js",
+                    "type": "file"
+                  },
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "testing-skills-with-subagents.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "tests",
+            "type": "directory",
+            "children": [
+              {
+                "name": "claude-code",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "analyze-token-usage.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "README.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "run-skill-tests.sh",
+                    "type": "file"
+                  },
+                  {
+                    "name": "test-helpers.sh",
+                    "type": "file"
+                  },
+                  {
+                    "name": "test-subagent-driven-development-integration.sh",
+                    "type": "file"
+                  },
+                  {
+                    "name": "test-subagent-driven-development.sh",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "explicit-skill-requests",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "prompts",
+                    "type": "directory"
+                  },
+                  {
+                    "name": "run-all.sh",
+                    "type": "file"
+                  },
+                  {
+                    "name": "run-claude-describes-sdd.sh",
+                    "type": "file"
+                  },
+                  {
+                    "name": "run-extended-multiturn-test.sh",
+                    "type": "file"
+                  },
+                  {
+                    "name": "run-haiku-test.sh",
+                    "type": "file"
+                  },
+                  {
+                    "name": "run-multiturn-test.sh",
+                    "type": "file"
+                  },
+                  {
+                    "name": "run-test.sh",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "opencode",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "run-tests.sh",
+                    "type": "file"
+                  },
+                  {
+                    "name": "setup.sh",
+                    "type": "file"
+                  },
+                  {
+                    "name": "test-plugin-loading.sh",
+                    "type": "file"
+                  },
+                  {
+                    "name": "test-priority.sh",
+                    "type": "file"
+                  },
+                  {
+                    "name": "test-skills-core.sh",
+                    "type": "file"
+                  },
+                  {
+                    "name": "test-tools.sh",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "skill-triggering",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "prompts",
+                    "type": "directory"
+                  },
+                  {
+                    "name": "run-all.sh",
+                    "type": "file"
+                  },
+                  {
+                    "name": "run-test.sh",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "subagent-driven-dev",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "go-fractals",
+                    "type": "directory"
+                  },
+                  {
+                    "name": "svelte-todo",
+                    "type": "directory"
+                  },
+                  {
+                    "name": "run-test.sh",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": ".gitattributes",
+            "type": "file"
+          },
+          {
+            "name": ".gitignore",
+            "type": "file"
+          },
+          {
+            "name": "LICENSE",
+            "type": "file"
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          },
+          {
+            "name": "RELEASE-NOTES.md",
+            "type": "file"
+          }
+        ],
+        "agents": [
+          "code-reviewer"
+        ],
+        "commands": [
+          "brainstorm",
+          "execute-plan",
+          "write-plan"
+        ]
+      },
+      "contentHash": "331d072c4ed12aa0"
+    },
+    {
+      "slug": "agent-sdk-dev",
+      "name": "Agent Sdk Dev",
+      "type": "plugin",
+      "description": "Claude Agent SDK Development Plugin",
+      "longDescription": "Scaffolds and verifies Claude Agent SDK applications in Python and TypeScript. Includes 2 agents (agent-sdk-verifier-py, agent-sdk-verifier-ts) for validating SDK implementations and a /new-sdk-app command to generate new projects.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/agent-sdk-dev",
+      "contentHash": "794e61bf58c55e22",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "agents",
+            "type": "directory",
+            "children": [
+              {
+                "name": "agent-sdk-verifier-py.md",
+                "type": "file"
+              },
+              {
+                "name": "agent-sdk-verifier-ts.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "new-sdk-app.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ],
+        "agents": [
+          "agent-sdk-verifier-py",
+          "agent-sdk-verifier-ts"
+        ],
+        "commands": [
+          "new-sdk-app"
+        ]
+      }
+    },
+    {
+      "slug": "claude-code-setup",
+      "name": "Claude Code Setup",
+      "type": "plugin",
+      "description": "Analyze codebases and recommend tailored Claude Code automations such as hooks, skills, MCP servers, and subagents.",
+      "longDescription": "Scans your codebase and recommends Claude Code automations tailored to your stack. The claude-automation-recommender skill references patterns for hooks, MCP servers, plugins, skills, and subagent templates to suggest specific configurations worth adding.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-code-setup",
+      "contentHash": "d0b3b68824258024",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "claude-automation-recommender",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "references",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "hooks-patterns.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "mcp-servers.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "plugins-reference.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "skills-reference.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "subagent-templates.md",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "automation-recommender-example.png",
+            "type": "file"
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "claude-md-management",
+      "name": "Claude Md Management",
+      "type": "plugin",
+      "description": "Tools to maintain and improve CLAUDE.md files - audit quality, capture session learnings, and keep project memory current.",
+      "longDescription": "Provides a /revise-claude-md command and a claude-md-improver skill with quality criteria, templates, and update guidelines. Audits your CLAUDE.md for completeness, captures learnings from sessions, and suggests concrete improvements to keep project memory accurate.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-md-management",
+      "contentHash": "56cc8ddbfdc15cbf",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "revise-claude-md.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "claude-md-improver",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "references",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "quality-criteria.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "templates.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "update-guidelines.md",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "claude-md-improver-example.png",
+            "type": "file"
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          },
+          {
+            "name": "revise-claude-md-example.png",
+            "type": "file"
+          }
+        ],
+        "commands": [
+          "revise-claude-md"
+        ]
+      }
+    },
+    {
+      "slug": "code-review",
+      "name": "Code Review",
+      "type": "plugin",
+      "description": "Automated code review for pull requests using multiple specialized agents with confidence-based scoring",
+      "longDescription": "Adds a /code-review command that dispatches multiple specialized agents to review pull requests in parallel. Each agent scores findings by confidence level, filtering out low-signal noise and surfacing actionable issues.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/code-review",
+      "contentHash": "14bbe9287db0195c",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "code-review.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ],
+        "commands": [
+          "code-review"
+        ]
+      }
+    },
+    {
+      "slug": "code-simplifier",
+      "name": "Code Simplifier",
+      "type": "plugin",
+      "description": "Agent that simplifies and refines code for clarity, consistency, and maintainability while preserving functionality",
+      "longDescription": "Provides a code-simplifier agent that analyzes code for unnecessary complexity, inconsistent patterns, and maintainability issues. Suggests concrete simplifications while preserving existing behavior, working across any language.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/code-simplifier",
+      "contentHash": "5c5eb50c7d32dffe",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "agents",
+            "type": "directory",
+            "children": [
+              {
+                "name": "code-simplifier.md",
+                "type": "file"
+              }
+            ]
+          }
+        ],
+        "agents": [
+          "code-simplifier"
+        ]
+      }
+    },
+    {
+      "slug": "commit-commands",
+      "name": "Commit Commands",
+      "type": "plugin",
+      "description": "Streamline your git workflow with simple commands for committing, pushing, and creating pull requests",
+      "longDescription": "Adds 3 slash commands: /commit for staging and committing with a generated message, /commit-push-pr for committing, pushing, and opening a PR in one step, and /clean_gone for pruning local branches whose remotes are deleted.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/commit-commands",
+      "contentHash": "c71eb28d5915f776",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "clean_gone.md",
+                "type": "file"
+              },
+              {
+                "name": "commit-push-pr.md",
+                "type": "file"
+              },
+              {
+                "name": "commit.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ],
+        "commands": [
+          "clean_gone",
+          "commit-push-pr",
+          "commit"
+        ]
+      }
+    },
+    {
+      "slug": "explanatory-output-style",
+      "name": "Explanatory Output Style",
+      "type": "plugin",
+      "description": "Adds educational insights about implementation choices and codebase patterns (mimics the deprecated Explanatory output style)",
+      "longDescription": "Uses a session-start hook to inject system instructions that make Claude explain why it chose specific implementations, what codebase patterns it followed, and what trade-offs exist. Recreates the deprecated Explanatory output style from Claude Code settings.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/explanatory-output-style",
+      "contentHash": "33bcf2ec4585a419",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "hooks",
+            "type": "directory",
+            "children": [
+              {
+                "name": "hooks.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "hooks-handlers",
+            "type": "directory",
+            "children": [
+              {
+                "name": "session-start.sh",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "feature-dev",
+      "name": "Feature Dev",
+      "type": "plugin",
+      "description": "Comprehensive feature development workflow with specialized agents for codebase exploration, architecture design, and quality review",
+      "longDescription": "Provides a /feature-dev command backed by 3 agents: code-explorer for codebase analysis, code-architect for design decisions, and code-reviewer for quality checks. Runs the full feature lifecycle from exploration through implementation and review.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/feature-dev",
+      "contentHash": "4299680eae0dfa5e",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "agents",
+            "type": "directory",
+            "children": [
+              {
+                "name": "code-architect.md",
+                "type": "file"
+              },
+              {
+                "name": "code-explorer.md",
+                "type": "file"
+              },
+              {
+                "name": "code-reviewer.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "feature-dev.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ],
+        "agents": [
+          "code-architect",
+          "code-explorer",
+          "code-reviewer"
+        ],
+        "commands": [
+          "feature-dev"
+        ]
+      }
+    },
+    {
+      "slug": "frontend-design",
+      "name": "Frontend Design",
+      "type": "plugin",
+      "description": "Frontend design skill for UI/UX implementation",
+      "longDescription": "Provides a frontend-design skill that guides Claude through UI/UX implementation decisions. Covers component structure, layout patterns, responsive design, and visual hierarchy to produce more polished frontend code.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design",
+      "contentHash": "6f9d7a34a44e46aa",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "frontend-design",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "hookify",
+      "name": "Hookify",
+      "type": "plugin",
+      "description": "Easily create hooks to prevent unwanted behaviors by analyzing conversation patterns",
+      "longDescription": "Hook creation toolkit with a conversation-analyzer agent, rule engine, and 4 commands (/hookify, /configure, /list, /help). Analyzes conversation patterns to generate pre-tool-use, post-tool-use, stop, and user-prompt-submit hooks. Includes 4 example rules covering console.log warnings, dangerous rm prevention, test requirements, and sensitive file protection.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/hookify",
+      "contentHash": "e7171ec76f27ce74",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "agents",
+            "type": "directory",
+            "children": [
+              {
+                "name": "conversation-analyzer.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "configure.md",
+                "type": "file"
+              },
+              {
+                "name": "help.md",
+                "type": "file"
+              },
+              {
+                "name": "hookify.md",
+                "type": "file"
+              },
+              {
+                "name": "list.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "core",
+            "type": "directory",
+            "children": [
+              {
+                "name": "__init__.py",
+                "type": "file"
+              },
+              {
+                "name": "config_loader.py",
+                "type": "file"
+              },
+              {
+                "name": "rule_engine.py",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "examples",
+            "type": "directory",
+            "children": [
+              {
+                "name": "console-log-warning.local.md",
+                "type": "file"
+              },
+              {
+                "name": "dangerous-rm.local.md",
+                "type": "file"
+              },
+              {
+                "name": "require-tests-stop.local.md",
+                "type": "file"
+              },
+              {
+                "name": "sensitive-files-warning.local.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "hooks",
+            "type": "directory",
+            "children": [
+              {
+                "name": "__init__.py",
+                "type": "file"
+              },
+              {
+                "name": "hooks.json",
+                "type": "file"
+              },
+              {
+                "name": "posttooluse.py",
+                "type": "file"
+              },
+              {
+                "name": "pretooluse.py",
+                "type": "file"
+              },
+              {
+                "name": "stop.py",
+                "type": "file"
+              },
+              {
+                "name": "userpromptsubmit.py",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "matchers",
+            "type": "directory",
+            "children": [
+              {
+                "name": "__init__.py",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "writing-rules",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "utils",
+            "type": "directory",
+            "children": [
+              {
+                "name": "__init__.py",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": ".gitignore",
+            "type": "file"
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ],
+        "agents": [
+          "conversation-analyzer"
+        ],
+        "commands": [
+          "configure",
+          "help",
+          "hookify",
+          "list"
+        ]
+      }
+    },
+    {
+      "slug": "learning-output-style",
+      "name": "Learning Output Style",
+      "type": "plugin",
+      "description": "Interactive learning mode that requests meaningful code contributions at decision points (mimics the unshipped Learning output style)",
+      "longDescription": "Uses a session-start hook to inject system instructions that pause Claude at key decision points and ask you to write the code yourself. Recreates the unshipped Learning output style, turning Claude into a guided coding tutor rather than an auto-completer.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/learning-output-style",
+      "contentHash": "2df9cbf8714731f8",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "hooks",
+            "type": "directory",
+            "children": [
+              {
+                "name": "hooks.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "hooks-handlers",
+            "type": "directory",
+            "children": [
+              {
+                "name": "session-start.sh",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "playground",
+      "name": "Playground",
+      "type": "plugin",
+      "description": "Creates interactive HTML playgrounds — self-contained single-file explorers with visual controls, live preview, and prompt output with copy button",
+      "longDescription": "Generates self-contained single-file HTML playgrounds with live preview and interactive controls. Includes 6 templates: code-map, concept-map, data-explorer, design-playground, diff-review, and document-critique. Each playground runs entirely in the browser with no dependencies.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/playground",
+      "contentHash": "a568884802664ae7",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "playground",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "templates",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "code-map.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "concept-map.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "data-explorer.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "design-playground.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "diff-review.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "document-critique.md",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "slug": "pr-review-toolkit",
+      "name": "Pr Review Toolkit",
+      "type": "plugin",
+      "description": "Comprehensive PR review agents specializing in comments, tests, error handling, type design, code quality, and code simplification",
+      "longDescription": "Adds a /review-pr command backed by 6 specialized agents: code-reviewer, code-simplifier, comment-analyzer, pr-test-analyzer, silent-failure-hunter, and type-design-analyzer. Each agent focuses on a specific review dimension for thorough PR coverage.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pr-review-toolkit",
+      "contentHash": "99cdff1f6950626e",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "agents",
+            "type": "directory",
+            "children": [
+              {
+                "name": "code-reviewer.md",
+                "type": "file"
+              },
+              {
+                "name": "code-simplifier.md",
+                "type": "file"
+              },
+              {
+                "name": "comment-analyzer.md",
+                "type": "file"
+              },
+              {
+                "name": "pr-test-analyzer.md",
+                "type": "file"
+              },
+              {
+                "name": "silent-failure-hunter.md",
+                "type": "file"
+              },
+              {
+                "name": "type-design-analyzer.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "review-pr.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ],
+        "agents": [
+          "code-reviewer",
+          "code-simplifier",
+          "comment-analyzer",
+          "pr-test-analyzer",
+          "silent-failure-hunter",
+          "type-design-analyzer"
+        ],
+        "commands": [
+          "review-pr"
+        ]
+      }
+    },
+    {
+      "slug": "ralph-loop",
+      "name": "Ralph Loop",
+      "type": "plugin",
+      "description": "Continuous self-referential AI loops for interactive iterative development, implementing the Ralph Wiggum technique. Run Claude in a while-true loop with the same prompt until task completion.",
+      "longDescription": "Runs Claude in a continuous loop with the same prompt until the task is complete, using a stop hook to re-invoke automatically. Provides /ralph-loop to start, /cancel-ralph to stop, and /help for usage. Useful for iterative tasks like fixing test suites or processing file batches.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/ralph-loop",
+      "contentHash": "b4d40bafaf8560e8",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "cancel-ralph.md",
+                "type": "file"
+              },
+              {
+                "name": "help.md",
+                "type": "file"
+              },
+              {
+                "name": "ralph-loop.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "hooks",
+            "type": "directory",
+            "children": [
+              {
+                "name": "hooks.json",
+                "type": "file"
+              },
+              {
+                "name": "stop-hook.sh",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "scripts",
+            "type": "directory",
+            "children": [
+              {
+                "name": "setup-ralph-loop.sh",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ],
+        "commands": [
+          "cancel-ralph",
+          "help",
+          "ralph-loop"
+        ]
+      }
+    },
+    {
+      "slug": "security-guidance",
+      "name": "Security Guidance",
+      "type": "plugin",
+      "description": "Security reminder hook that warns about potential security issues when editing files, including command injection, XSS, and unsafe code patterns",
+      "longDescription": "Installs a Python-based hook that runs on file edits and warns about potential security issues: command injection, XSS, unsafe deserialization, SQL injection, and other common vulnerability patterns. Acts as a passive safety net during development.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/security-guidance",
+      "contentHash": "9e6878c6831413a8",
+      "contents": {
+        "files": [
+          {
+            "name": ".claude-plugin",
+            "type": "directory",
+            "children": [
+              {
+                "name": "plugin.json",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "hooks",
+            "type": "directory",
+            "children": [
+              {
+                "name": "hooks.json",
+                "type": "file"
+              },
+              {
+                "name": "security_reminder_hook.py",
+                "type": "file"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

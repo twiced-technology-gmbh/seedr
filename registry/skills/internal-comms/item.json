@@ -2,7 +2,8 @@
   "slug": "internal-comms",
   "name": "Internal Comms",
   "type": "skill",
-  "description": "Draft polished internal communications following proven corporate formats. Includes templates and examples for status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, and project updates.",
+  "description": "A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude should use this skill whenever asked to write some sort of internal communications (status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, project updates, etc.).",
+  "longDescription": "Includes templates and examples for status reports, leadership updates, 3P updates, company newsletters, FAQs, and general internal comms. Each format comes with a worked example showing Anthropic's preferred structure, tone, and level of detail so outputs match existing company conventions.",
   "compatibility": [
     "claude",
     "copilot",

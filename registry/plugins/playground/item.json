@@ -2,7 +2,8 @@
   "slug": "playground",
   "name": "Playground",
   "type": "plugin",
-  "description": "Generates self-contained interactive HTML playgrounds with visual controls, live preview, and copyable prompt output. Includes templates for design exploration, data queries, concept maps, code visualization, diff review, and document critique.",
+  "description": "Creates interactive HTML playgrounds — self-contained single-file explorers with visual controls, live preview, and prompt output with copy button",
+  "longDescription": "Generates self-contained single-file HTML playgrounds with live preview and interactive controls. Includes 6 templates: code-map, concept-map, data-explorer, design-playground, diff-review, and document-critique. Each playground runs entirely in the browser with no dependencies.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/playground",
   "contentHash": "a568884802664ae7",
-  "updatedAt": "2026-01-29T23:24:01Z",
   "contents": {
     "files": [
       {

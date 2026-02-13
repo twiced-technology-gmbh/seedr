@@ -2,7 +2,8 @@
   "slug": "canvas-design",
   "name": "Canvas Design",
   "type": "skill",
-  "description": "Design original static visuals -- posters, art prints, infographics, and other graphic pieces -- exported as PNG or PDF. Ships with 30+ bundled fonts for rich typography and applies design-first principles to produce polished, print-ready output.",
+  "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
+  "longDescription": "Creates posters, artwork, and static visual designs as .png and .pdf files using HTML5 Canvas rendering. Ships with 30+ bundled fonts (serif, sans-serif, mono, display) so designs use real typography without external dependencies. Applies design principles like composition, color theory, and visual hierarchy rather than generic templates.",
   "compatibility": [
     "claude",
     "copilot",
@@ -16,7 +17,6 @@
   },
   "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/canvas-design",
   "contentHash": "793436ef2b673f87",
-  "updatedAt": "2025-12-01T18:05:36Z",
   "contents": {
     "files": [
       {

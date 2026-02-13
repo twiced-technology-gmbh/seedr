@@ -2,7 +2,8 @@
   "slug": "code-review",
   "name": "Code Review",
   "type": "plugin",
-  "description": "Launches parallel review agents that independently audit PRs for guideline compliance, bugs, and historical context issues. Only findings scoring 80+ confidence are posted as GitHub comments, reducing false positives while maintaining thorough coverage.",
+  "description": "Automated code review for pull requests using multiple specialized agents with confidence-based scoring",
+  "longDescription": "Adds a /code-review command that dispatches multiple specialized agents to review pull requests in parallel. Each agent scores findings by confidence level, filtering out low-signal noise and surfacing actionable issues.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/code-review",
   "contentHash": "14bbe9287db0195c",
-  "updatedAt": "2025-12-13T00:52:17Z",
   "contents": {
     "files": [
       {

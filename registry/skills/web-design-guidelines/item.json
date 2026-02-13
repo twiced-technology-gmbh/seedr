@@ -2,7 +2,8 @@
   "slug": "web-design-guidelines",
   "name": "Web Design Guidelines",
   "type": "skill",
-  "description": "Vercel's web interface design guidelines for reviewing UI code. Checks accessibility, UX patterns, and design best practices to catch common issues in HTML, CSS, and component markup before they reach production.",
+  "description": "Review UI code for Web Interface Guidelines compliance. Use when asked to \"review my UI\", \"check accessibility\", \"audit design\", \"review UX\", or \"check my site against best practices\".",
+  "longDescription": "Vercel's web interface design guidelines for reviewing UI code. Checks accessibility, UX patterns, and design best practices to catch common issues in HTML, CSS, and component markup before they reach production.",
   "compatibility": [
     "claude",
     "copilot",

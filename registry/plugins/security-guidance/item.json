@@ -2,7 +2,8 @@
   "slug": "security-guidance",
   "name": "Security Guidance",
   "type": "plugin",
-  "description": "Pre-tool-use hook that intercepts file edits and blocks writes containing vulnerable patterns like shell injection, eval(), dangerouslySetInnerHTML, pickle deserialization, and GitHub Actions command injection. Tracks warnings per session to avoid duplicate alerts.",
+  "description": "Security reminder hook that warns about potential security issues when editing files, including command injection, XSS, and unsafe code patterns",
+  "longDescription": "Installs a Python-based hook that runs on file edits and warns about potential security issues: command injection, XSS, unsafe deserialization, SQL injection, and other common vulnerability patterns. Acts as a passive safety net during development.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/security-guidance",
   "contentHash": "9e6878c6831413a8",
-  "updatedAt": "2025-12-13T00:52:17Z",
   "contents": {
     "files": [
       {

@@ -1,7 +1,13 @@
 import { readFile, readdir } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import type { RegistryManifest, RegistryItem, ComponentType } from "../types.js";
+import type {
+  RegistryManifest,
+  RegistryManifestIndex,
+  RegistryItem,
+  ComponentType,
+  TypeManifest,
+} from "../types.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -11,19 +17,19 @@ const REGISTRY_PATH = join(__dirname, "../../../../registry");
 // Remote registry URL (GitHub raw content)
 const GITHUB_RAW_URL = "https://raw.githubusercontent.com/twiced-technology-gmbh/seedr/main/registry";
 
-/** Encapsulated manifest cache */
-const manifestCache = {
-  data: null as RegistryManifest | null,
-  get(): RegistryManifest | null {
-    return this.data;
-  },
-  set(manifest: RegistryManifest): void {
-    this.data = manifest;
-  },
-  clear(): void {
-    this.data = null;
-  },
+const cache = {
+  index: null as RegistryManifestIndex | null,
+  types: new Map<ComponentType, RegistryItem[]>(),
+  assembled: null as RegistryManifest | null,
 };
+
+async function loadFile(filename: string): Promise<string> {
+  try {
+    return await readFile(join(REGISTRY_PATH, filename), "utf-8");
+  } catch {
+    return fetchRemote(`${GITHUB_RAW_URL}/${filename}`);
+  }
+}
 
 async function fetchRemote(url: string): Promise<string> {
   const response = await fetch(url);
@@ -33,32 +39,42 @@ async function fetchRemote(url: string): Promise<string> {
   return response.text();
 }
 
-export async function loadManifest(): Promise<RegistryManifest> {
-  const cached = manifestCache.get();
-  if (cached) {
-    return cached;
-  }
+async function loadIndex(): Promise<RegistryManifestIndex> {
+  if (cache.index) return cache.index;
 
-  // Try local registry first (for development)
-  try {
-    const manifestPath = join(REGISTRY_PATH, "manifest.json");
-    const content = await readFile(manifestPath, "utf-8");
-    const manifest = JSON.parse(content) as RegistryManifest;
-    manifestCache.set(manifest);
-    return manifest;
-  } catch {
-    // Local not available (expected when running via npx) — fetch from remote
-    try {
-      const content = await fetchRemote(`${GITHUB_RAW_URL}/manifest.json`);
-      const manifest = JSON.parse(content) as RegistryManifest;
-      manifestCache.set(manifest);
-      return manifest;
-    } catch (error) {
-      throw new Error(
-        `Could not load registry manifest: ${error instanceof Error ? error.message : "Unknown error"}`
-      );
-    }
-  }
+  const content = await loadFile("manifest.json");
+  const data = JSON.parse(content) as RegistryManifestIndex;
+  cache.index = data;
+  return data;
+}
+
+async function loadTypeItems(type: ComponentType): Promise<RegistryItem[]> {
+  const cached = cache.types.get(type);
+  if (cached) return cached;
+
+  const index = await loadIndex();
+  const desc = index.types[type];
+  const content = await loadFile(desc.file);
+  const typeManifest = JSON.parse(content) as TypeManifest;
+  cache.types.set(type, typeManifest.items);
+  return typeManifest.items;
+}
+
+export async function loadManifest(): Promise<RegistryManifest> {
+  if (cache.assembled) return cache.assembled;
+
+  const index = await loadIndex();
+
+  // Fetch all type files in parallel
+  const typeEntries = Object.entries(index.types) as [ComponentType, { file: string; count: number }][];
+  const typeResults = await Promise.all(
+    typeEntries.map(async ([type]) => loadTypeItems(type))
+  );
+
+  const items: RegistryItem[] = typeResults.flat();
+  const manifest: RegistryManifest = { version: index.version, items };
+  cache.assembled = manifest;
+  return manifest;
 }
 
 export async function getItem(slug: string): Promise<RegistryItem | undefined> {
@@ -69,10 +85,10 @@ export async function getItem(slug: string): Promise<RegistryItem | undefined> {
 export async function listItems(
   type?: ComponentType
 ): Promise<RegistryItem[]> {
-  const manifest = await loadManifest();
   if (type) {
-    return manifest.items.filter((item) => item.type === type);
+    return loadTypeItems(type);
   }
+  const manifest = await loadManifest();
   return manifest.items;
 }
 
@@ -178,7 +194,9 @@ export async function listItemFiles(item: RegistryItem): Promise<string[]> {
 }
 
 export function clearCache(): void {
-  manifestCache.clear();
+  cache.index = null;
+  cache.types.clear();
+  cache.assembled = null;
 }
 
 /**
@@ -244,4 +262,3 @@ async function fetchFileTree(
     }
   }
 }
-

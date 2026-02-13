@@ -2,7 +2,8 @@
   "slug": "commit-commands",
   "name": "Commit Commands",
   "type": "plugin",
-  "description": "Slash commands for common git operations: /commit analyzes changes and matches your repo's commit style, /commit-push-pr handles branching through PR creation with auto-generated descriptions, and /clean_gone removes stale local branches deleted from the remote.",
+  "description": "Streamline your git workflow with simple commands for committing, pushing, and creating pull requests",
+  "longDescription": "Adds 3 slash commands: /commit for staging and committing with a generated message, /commit-push-pr for committing, pushing, and opening a PR in one step, and /clean_gone for pruning local branches whose remotes are deleted.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/commit-commands",
   "contentHash": "c71eb28d5915f776",
-  "updatedAt": "2025-12-02T00:03:02Z",
   "contents": {
     "files": [
       {

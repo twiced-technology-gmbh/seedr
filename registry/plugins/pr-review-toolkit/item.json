@@ -2,7 +2,8 @@
   "slug": "pr-review-toolkit",
   "name": "Pr Review Toolkit",
   "type": "plugin",
-  "description": "Six specialized PR review agents that analyze comment accuracy, test coverage gaps, silent error handling, type design quality, guideline compliance, and code simplification opportunities. Run them in parallel or sequentially for staged review workflows.",
+  "description": "Comprehensive PR review agents specializing in comments, tests, error handling, type design, code quality, and code simplification",
+  "longDescription": "Adds a /review-pr command backed by 6 specialized agents: code-reviewer, code-simplifier, comment-analyzer, pr-test-analyzer, silent-failure-hunter, and type-design-analyzer. Each agent focuses on a specific review dimension for thorough PR coverage.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pr-review-toolkit",
   "contentHash": "99cdff1f6950626e",
-  "updatedAt": "2026-02-04T23:59:39Z",
   "contents": {
     "files": [
       {

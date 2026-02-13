@@ -9,10 +9,10 @@
  */
 
 import { createHash } from "node:crypto";
-import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from "fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "fs";
 import { basename, dirname, join, relative } from "path";
 import { fileURLToPath } from "url";
-import type { Manifest, ManifestItem, SourceType } from "./sync/types.js";
+import type { ComponentType, Manifest, ManifestIndex, ManifestItem, SourceType, TypeManifest } from "./sync/types.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const registryDir = join(__dirname, "..", "registry");
@@ -83,6 +83,16 @@ export function readAllItems(): ManifestItem[] {
   return items;
 }
 
+const ALL_TYPES: ComponentType[] = ["skill", "plugin", "hook", "agent", "mcp", "settings", "command"];
+
+function typeDirName(type: ComponentType): string {
+  return type === "settings" || type === "mcp" ? type : type + "s";
+}
+
+function typeManifestPath(type: ComponentType): string {
+  return `${typeDirName(type)}/manifest.json`;
+}
+
 export function compileManifest(): Manifest {
   const items = readAllItems();
 
@@ -93,25 +103,44 @@ export function compileManifest(): Manifest {
     return a.slug.localeCompare(b.slug);
   });
 
-  const manifest: Manifest = {
-    version: "1.0.0",
-    items,
-  };
+  // Group items by type
+  const byType = new Map<ComponentType, ManifestItem[]>();
+  for (const item of items) {
+    const group = byType.get(item.type) ?? [];
+    group.push(item);
+    byType.set(item.type, group);
+  }
 
-  writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
+  // Write per-type manifest files into their type folders
+  for (const type of ALL_TYPES) {
+    const typeItems = byType.get(type) ?? [];
+    const typeManifest: TypeManifest = { type, items: typeItems };
+    const dirPath = join(registryDir, typeDirName(type));
+    if (!existsSync(dirPath)) {
+      mkdirSync(dirPath, { recursive: true });
+    }
+    writeFileSync(join(registryDir, typeManifestPath(type)), JSON.stringify(typeManifest, null, 2) + "\n");
+  }
 
-  console.log(`Compiled ${items.length} items into manifest.json`);
-  console.log(
-    `  - toolr: ${items.filter((i) => i.sourceType === "toolr").length}`
-  );
-  console.log(
-    `  - community: ${items.filter((i) => i.sourceType === "community").length}`
-  );
-  console.log(
-    `  - official: ${items.filter((i) => i.sourceType === "official").length}`
-  );
+  // Build index with all types
+  const types = {} as ManifestIndex["types"];
+  for (const type of ALL_TYPES) {
+    types[type] = { file: typeManifestPath(type), count: byType.get(type)?.length ?? 0 };
+  }
 
-  return manifest;
+  const index: ManifestIndex = { version: "2.0.0", types };
+  writeFileSync(manifestPath, JSON.stringify(index, null, 2) + "\n");
+
+  console.log(`Compiled ${items.length} items into split manifests`);
+  for (const type of ALL_TYPES) {
+    const count = byType.get(type)?.length ?? 0;
+    if (count > 0) {
+      console.log(`  - ${typeManifestPath(type)}: ${count} items`);
+    }
+  }
+
+  // Return assembled Manifest for callers (e.g. sync.ts)
+  return { version: "2.0.0", items };
 }
 
 // Run directly when invoked as a script

@@ -4,6 +4,8 @@ export type {
   ComponentType,
   RegistryItem,
   RegistryManifest,
+  RegistryManifestIndex,
+  TypeManifest,
 } from "@seedr/shared";
 
 import type { ComponentType } from "@seedr/shared";

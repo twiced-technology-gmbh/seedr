@@ -2,7 +2,8 @@
   "slug": "frontend-design",
   "name": "Frontend Design",
   "type": "plugin",
-  "description": "Generates production-ready web interfaces with intentional design direction, distinctive typography, cohesive color systems, and polished animations. Automatically activates for frontend tasks across HTML/CSS, React, Vue, and other frameworks to avoid generic AI-generated aesthetics.",
+  "description": "Frontend design skill for UI/UX implementation",
+  "longDescription": "Provides a frontend-design skill that guides Claude through UI/UX implementation decisions. Covers component structure, layout patterns, responsive design, and visual hierarchy to produce more polished frontend code.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design",
   "contentHash": "6f9d7a34a44e46aa",
-  "updatedAt": "2025-12-13T00:52:17Z",
   "contents": {
     "files": [
       {

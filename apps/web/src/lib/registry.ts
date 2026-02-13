@@ -1,7 +1,14 @@
 import type { RegistryManifest, RegistryItem, ComponentType } from "./types";
 
-// Import manifest directly (bundled at build time)
-import manifestData from "@registry/manifest.json";
+// Import split manifest files (bundled at build time)
+import indexData from "@registry/manifest.json";
+import skillsData from "@registry/skills/manifest.json";
+import pluginsData from "@registry/plugins/manifest.json";
+import hooksData from "@registry/hooks/manifest.json";
+import agentsData from "@registry/agents/manifest.json";
+import mcpData from "@registry/mcp/manifest.json";
+import settingsData from "@registry/settings/manifest.json";
+import commandsData from "@registry/commands/manifest.json";
 
 // Dev-only test item for testing media previews (uses local files in /public/dev-samples/)
 const devTestItem: RegistryItem = {
@@ -27,7 +34,21 @@ const devTestItem: RegistryItem = {
   },
 };
 
-const baseManifest = manifestData as RegistryManifest;
+// Assemble all type manifests into a single RegistryManifest
+const allItems: RegistryItem[] = [
+  ...skillsData.items,
+  ...pluginsData.items,
+  ...hooksData.items,
+  ...agentsData.items,
+  ...mcpData.items,
+  ...settingsData.items,
+  ...commandsData.items,
+] as RegistryItem[];
+
+const baseManifest: RegistryManifest = {
+  version: indexData.version,
+  items: allItems,
+};
 
 const manifest: RegistryManifest = import.meta.env.DEV
   ? { ...baseManifest, items: [devTestItem, ...baseManifest.items] }

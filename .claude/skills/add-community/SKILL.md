@@ -126,43 +126,57 @@ Notes:
 - Skills may be multi-tool compatible.
 - Community items do NOT have targetScope (scope is only for Toolr items).
 
-**Batch 2 — Description:**
+**Batch 2 — Descriptions:**
 
-Do NOT blindly use the description from plugin.json or SKILL.md frontmatter. Instead, read the actual content files (README.md, SKILL.md body, plugin skills/agents) to understand what the item *really* does, then write a comprehensive description following these rules:
+Do NOT blindly use the description from plugin.json or SKILL.md frontmatter. Instead, read the actual content files (README.md, SKILL.md body, plugin skills/agents) to understand what the item *really* does, then write TWO descriptions:
 
-**Description quality requirements:**
+1. **`description`** — answers "What does this do?"
+2. **`longDescription`** — answers "Should I install this?"
 
-- **Length**: 1-2 concise sentences, 25-50 words
-- **Lead with action**: Start with what the item *does*, not what it *is* (good: "Manage GitLab repositories, merge requests, and CI/CD pipelines directly from Claude Code" / bad: "GitLab DevOps platform integration")
-- **Be specific**: Mention concrete capabilities, categories, or differentiators (good: "Includes a code-reviewer agent and slash commands for planning and execution" / bad: "Includes various development tools")
-- **No title-restatements**: Never just restate the name (bad: "X plugin for Claude", "X integration")
-- **No trigger instructions**: Don't include "Use when..." or "Trigger on..." — that belongs in skill frontmatter, not the registry description
-- **Show value**: Explain why someone would want this, not just what it does mechanically
-- **For well-known tools** (GitHub, Slack, Linear, etc.): Focus on what the integration *enables in-editor*, not what the tool itself is. Everyone knows what Slack is — describe what the integration lets you do
-- **Mention key numbers**: If the item covers a specific count of rules, patterns, or agents, include it (e.g., "57 performance rules", "6 specialized review agents")
+**`description` rules:**
 
-**Examples of good descriptions:**
+A single sentence that tells the user what the extension is capable of.
 
-- "Search Slack messages, read channels and threads, and pull team discussions into your coding context. Useful for finding prior decisions, debugging context, or relevant conversations without leaving Claude Code."
-- "57 performance rules from Vercel Engineering for React and Next.js apps. Covers waterfall prevention, bundle size reduction, server/client optimization, re-render elimination, and JS performance patterns."
-- "Security audit plugin from Trail of Bits that builds deep architectural context through ultra-granular function-level code analysis before vulnerability hunting. Includes a function-analyzer agent and completeness checklists."
+- One clear sentence — naturally short because it focuses on the core capability
+- Lead with what it *does*, not what it *is* ("Manage GitLab repos, MRs, and CI/CD pipelines from Claude Code" not "GitLab DevOps platform integration")
+- No trigger instructions ("Use when..."), no title restatements ("X plugin for Claude")
+- For well-known tools (GitHub, Slack, Linear, etc.): focus on what the integration *enables*, not what the tool itself is
+- Must work at a glance in a list view — users scan, they don't read
+
+**`longDescription` rules:**
+
+Everything the user needs to decide whether to install, without reading the README.
+
+- All concrete specifics: supported languages/frameworks, number of rules/patterns/techniques, included agents/commands, approach taken
+- Differentiators: what makes this different from doing it manually or using alternatives
+- No filler, no marketing speak — just the facts
+- After reading this, the user should be able to make an informed install/skip decision
+- 1-3 sentences, typically 30-60 words
+
+**Examples of good description pairs:**
+
+| description | longDescription |
+|---|---|
+| "Search Slack messages, read channels, and pull team discussions into context." | "Find prior decisions, debugging context, or relevant conversations without leaving Claude Code. Connects via Slack MCP server with channel, thread, and message search." |
+| "Build deep architectural context through ultra-granular code analysis before vulnerability hunting." | "Includes a function-analyzer agent and completeness checklists to ensure thorough coverage. Designed for security audits where understanding every function's role is critical before hunting bugs." |
+| "Browser automation and end-to-end testing via Microsoft's Playwright MCP server." | "Interact with web pages, take screenshots, fill forms, click elements, and run end-to-end test workflows across Chromium, Firefox, and WebKit without separate test framework setup." |
 
 **Examples of bad descriptions:**
 
-- "Stripe development plugin for Claude" (title restatement, says nothing about capabilities)
+- "Stripe development plugin for Claude" (title restatement — says nothing about capability)
 - "Slack workspace integration" (just restates what everyone already knows)
-- "Use when asked to review UI, check accessibility..." (trigger instruction, not description)
+- "Use when asked to review UI, check accessibility..." (trigger instruction, not user-facing description)
 
-Then present the description to the user:
+Then present both descriptions to the user:
 
 ```
 questions:
-  - question: "Use this description? '<auto-generated description>'"
+  - question: "Use these descriptions?\n\nShort: '<description>'\n\nDetailed: '<longDescription>'"
     header: "Description"
     options:
-      - label: "Yes, use it (Recommended)"
-        description: "Accept the auto-generated description"
-      - label: "Edit it"
+      - label: "Yes, use them (Recommended)"
+        description: "Accept both descriptions"
+      - label: "Edit them"
         description: "Provide your own"
 ```
 
@@ -187,7 +201,8 @@ Item shape:
   "slug": "<slug>",
   "name": "<confirmed name>",
   "type": "<detected type>",
-  "description": "<confirmed description>",
+  "description": "<short description>",
+  "longDescription": "<detailed description>",
   "compatibility": ["<from user>"],
   "sourceType": "community",
   "author": {

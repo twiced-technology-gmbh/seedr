@@ -2,7 +2,7 @@
   "slug": "refactoring-techniques",
   "name": "Refactoring Techniques",
   "type": "skill",
-  "description": "Apply the right refactoring technique from Martin Fowler's catalog of 66 techniques, organized by the code problem you are trying to solve: long methods, misplaced features, messy data, complex conditionals, or awkward APIs.",
+  "description": "Systematic refactoring using proven techniques",
   "longDescription": "Covers six categories with step-by-step mechanics: Composing Methods (Extract Method, Inline Temp, etc.), Moving Features (Move Method/Field, Extract/Inline Class), Organizing Data (Encapsulate Field, Replace Type Code), Simplifying Conditionals (Decompose Conditional, Replace with Polymorphism, Guard Clauses), Simplifying Method Calls (Introduce Parameter Object, Separate Query from Modifier), and Dealing with Generalization (Pull Up/Push Down, Extract Superclass/Interface).",
   "compatibility": [
     "claude",

@@ -2,7 +2,8 @@
   "slug": "feature-dev",
   "name": "Feature Dev",
   "type": "plugin",
-  "description": "Guided 7-phase feature development workflow that launches parallel agents to explore your codebase, design multiple architecture options with trade-off analysis, implement changes, and run confidence-scored quality review before merging.",
+  "description": "Comprehensive feature development workflow with specialized agents for codebase exploration, architecture design, and quality review",
+  "longDescription": "Provides a /feature-dev command backed by 3 agents: code-explorer for codebase analysis, code-architect for design decisions, and code-reviewer for quality checks. Runs the full feature lifecycle from exploration through implementation and review.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/feature-dev",
   "contentHash": "4299680eae0dfa5e",
-  "updatedAt": "2025-12-13T00:52:17Z",
   "contents": {
     "files": [
       {

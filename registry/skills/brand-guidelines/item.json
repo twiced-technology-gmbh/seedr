@@ -2,7 +2,8 @@
   "slug": "brand-guidelines",
   "name": "Brand Guidelines",
   "type": "skill",
-  "description": "Apply Anthropic's official brand identity -- colors, typography, and visual style -- to any artifact. Ensures slides, documents, web pages, and other outputs match Anthropic's design standards for a consistent, professional look.",
+  "description": "Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.",
+  "longDescription": "Applies Anthropic's official brand colors, typography, and visual identity to slides, documents, landing pages, and other artifacts. Ensures consistent use of brand standards so outputs match Anthropic's look-and-feel without manually referencing style guides.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/brand-guidelines",
   "contentHash": "64c04d9ae154aa91",
-  "updatedAt": "2025-12-01T18:05:36Z",
   "contents": {
     "files": [
       {

@@ -7,6 +7,9 @@ export type {
   Author,
   RegistryItem,
   RegistryManifest,
+  RegistryManifestIndex,
+  TypeManifest,
+  ManifestTypeDescriptor,
   PluginContents,
   FileTreeNode,
 } from "@seedr/shared";

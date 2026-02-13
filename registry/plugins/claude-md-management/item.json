@@ -2,7 +2,8 @@
   "slug": "claude-md-management",
   "name": "Claude Md Management",
   "type": "plugin",
-  "description": "Audit and improve your CLAUDE.md files to keep them in sync with your codebase. Includes a quality checker for periodic maintenance and a /revise-claude-md command to capture session learnings before they're lost.",
+  "description": "Tools to maintain and improve CLAUDE.md files - audit quality, capture session learnings, and keep project memory current.",
+  "longDescription": "Provides a /revise-claude-md command and a claude-md-improver skill with quality criteria, templates, and update guidelines. Audits your CLAUDE.md for completeness, captures learnings from sessions, and suggests concrete improvements to keep project memory accurate.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-md-management",
   "contentHash": "56cc8ddbfdc15cbf",
-  "updatedAt": "2026-01-20T21:11:06Z",
   "contents": {
     "files": [
       {

@@ -2,7 +2,8 @@
   "slug": "pptx",
   "name": "Pptx",
   "type": "skill",
-  "description": "Create, read, and edit PowerPoint presentations (.pptx). Handles slide creation, deck assembly, text extraction, template application, speaker notes, comments, and layout management. Includes PptxGenJS integration, OOXML validation, and thumbnail generation for reliable output.",
+  "description": "\"Use this skill any time a .pptx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from any .pptx file (even if the extracted content will be used elsewhere, like in an email or summary); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates, layouts, speaker notes, or comments. Trigger whenever the user mentions \\\"deck,\\\" \\\"slides,\\\" \\\"presentation,\\\" or references a .pptx filename, regardless of what they plan to do with the content afterward. If a .pptx file needs to be opened, created, or touched, use this skill.\"",
+  "longDescription": "Create, read, edit, and manipulate .pptx files with full support for slide layouts, speaker notes, comments, and templates. Includes Python scripts for adding slides, cleaning XML, generating thumbnails, and OOXML pack/unpack with schema validation against ECMA/ISO standards. Also provides a pptxgenjs reference for JavaScript-based slide generation.",
   "compatibility": [
     "claude",
     "copilot",
@@ -16,7 +17,6 @@
   },
   "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/pptx",
   "contentHash": "330172efa3b2478f",
-  "updatedAt": "2026-02-06T21:19:32Z",
   "contents": {
     "files": [
       {

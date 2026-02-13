@@ -2,7 +2,8 @@
   "slug": "theme-factory",
   "name": "Theme Factory",
   "type": "skill",
-  "description": "Apply professional visual themes to any artifact -- slides, documents, reports, landing pages, and more. Includes 10 curated themes (Arctic Frost, Golden Hour, Midnight Galaxy, etc.) with coordinated colors and fonts, plus the ability to generate custom themes on the fly.",
+  "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
+  "longDescription": "Ships with 10 ready-made themes (Arctic Frost, Botanical Garden, Desert Rose, Forest Canopy, Golden Hour, Midnight Galaxy, Modern Minimalist, Ocean Depths, Sunset Boulevard, Tech Innovation) each defining colors, fonts, and styling rules. Apply any theme to slides, docs, reports, or HTML pages, or generate a custom theme on-the-fly. Includes a PDF showcase for visual comparison.",
   "compatibility": [
     "claude",
     "copilot",
@@ -16,7 +17,6 @@
   },
   "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/theme-factory",
   "contentHash": "1b7b2d03239748ca",
-  "updatedAt": "2025-12-01T18:05:36Z",
   "contents": {
     "files": [
       {

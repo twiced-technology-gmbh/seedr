@@ -2,7 +2,8 @@
   "slug": "webapp-testing",
   "name": "Webapp Testing",
   "type": "skill",
-  "description": "Test and debug local web applications using Playwright. Automates browser interactions, captures screenshots, reads console logs, discovers elements, and verifies frontend behavior -- all without needing a separate testing framework setup.",
+  "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.",
+  "longDescription": "Test local web applications using Playwright with included Python examples for element discovery, console log capture, and static HTML automation. Provides a server wrapper script that starts your app, runs tests, and tears down cleanly. Covers screenshots, DOM inspection, and browser log viewing for debugging frontend issues without manual browser interaction.",
   "compatibility": [
     "claude",
     "copilot",
@@ -16,7 +17,6 @@
   },
   "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/webapp-testing",
   "contentHash": "9903ebec012698a8",
-  "updatedAt": "2025-12-01T18:05:36Z",
   "contents": {
     "files": [
       {

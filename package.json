@@ -5,7 +5,9 @@
   "type": "module",
   "description": "AI tools configuration seeder - part of the toolr-suite ecosystem",
   "scripts": {
+    "prepare": "git config core.hooksPath .githooks",
     "prebuild": "tsx scripts/sync.ts",
+    "check-descriptions": "bash scripts/check-descriptions.sh",
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",

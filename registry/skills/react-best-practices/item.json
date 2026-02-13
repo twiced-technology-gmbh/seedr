@@ -2,7 +2,8 @@
   "slug": "react-best-practices",
   "name": "React Best Practices",
   "type": "skill",
-  "description": "57 performance rules from Vercel Engineering for React and Next.js apps. Covers waterfall prevention, bundle size reduction, server/client optimization, re-render elimination, and JS performance patterns to catch performance issues during code generation and review.",
+  "description": "React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.",
+  "longDescription": "57 performance rules from Vercel Engineering for React and Next.js apps. Covers waterfall prevention, bundle size reduction, server/client optimization, re-render elimination, and JS performance patterns to catch performance issues during code generation and review.",
   "compatibility": [
     "claude",
     "copilot",

@@ -2,7 +2,8 @@
   "slug": "pdf",
   "name": "Pdf",
   "type": "skill",
-  "description": "Full-featured PDF toolkit for reading, creating, merging, splitting, and editing PDF files. Supports form filling (both native and annotation-based), text/table extraction, page rotation, watermarks, encryption, image extraction, and OCR for scanned documents.",
+  "description": "Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding watermarks, creating new PDFs, filling PDF forms, encrypting/decrypting PDFs, extracting images, and OCR on scanned PDFs to make them searchable. If the user mentions a .pdf file or asks to produce one, use this skill.",
+  "longDescription": "Read, create, merge, split, rotate, watermark, encrypt, decrypt, and OCR PDF files. Includes 8 Python scripts for form operations: detecting fillable fields, extracting form structure, filling forms via both native fields and annotation overlays, bounding-box inspection, and visual validation image generation. Handles both interactive and flat-form PDFs.",
   "compatibility": [
     "claude",
     "copilot",
@@ -16,7 +17,6 @@
   },
   "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/pdf",
   "contentHash": "99de0ac21fc38ac9",
-  "updatedAt": "2026-02-06T21:19:32Z",
   "contents": {
     "files": [
       {

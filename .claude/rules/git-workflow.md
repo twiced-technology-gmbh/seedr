@@ -1,5 +1,9 @@
 # Git Workflow
 
+## Never Skip Hooks
+
+Do NOT use `--no-verify` to bypass pre-commit hooks. If a hook blocks the commit, fix the underlying issue instead of bypassing it.
+
 ## Never Cherry-Pick Between Branches
 
 Do NOT use `git cherry-pick` to sync commits across branches (`main`, `prod`, `feat/*`).

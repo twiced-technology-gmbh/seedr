@@ -2,7 +2,8 @@
   "slug": "stripe",
   "name": "Stripe",
   "type": "plugin",
-  "description": "Stripe integration with MCP tools, best-practices skill, and slash commands for explaining errors and looking up test cards. Helps you build and debug Stripe payment integrations following official patterns.",
+  "description": "Stripe development plugin for Claude",
+  "longDescription": "Stripe's official plugin combining an MCP server with 2 commands (/explain-error, /test-cards) and a stripe-best-practices skill. Provides API access, explains Stripe error codes in context, and supplies test card numbers for development.",
   "compatibility": [
     "claude"
   ],
@@ -13,7 +14,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/stripe",
   "contentHash": "eb0721627c9671d7",
-  "updatedAt": "2025-12-18T16:58:02Z",
   "contents": {
     "files": [
       {

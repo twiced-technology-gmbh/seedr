@@ -2,7 +2,8 @@
   "slug": "context7",
   "name": "Context7",
   "type": "plugin",
-  "description": "Pull version-specific library documentation and code examples directly into your prompt context. Eliminates hallucinated APIs by fetching real docs from source repositories instead of relying on training data.",
+  "description": "Upstash Context7 MCP server for up-to-date documentation lookup. Pull version-specific documentation and code examples directly from source repositories into your LLM context.",
+  "longDescription": "MCP server by Upstash that fetches version-specific library documentation and code examples directly from source repos. Avoids outdated training data by pulling current docs on demand for any library or framework.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/context7",
   "contentHash": "05193833b43e4cd1",
-  "updatedAt": "2025-12-02T00:03:02Z",
   "contents": {
     "files": [
       {

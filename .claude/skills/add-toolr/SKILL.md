@@ -88,43 +88,57 @@ Notes:
 - If the user selects "All", expand to `["claude", "copilot", "gemini", "opencode", "codex"]` in the compatibility array.
 - For hooks, agents, settings, and commands, default compatibility to `["claude"]` only since those types are Claude-specific. Pre-select accordingly.
 
-**Batch 2 — Description:**
+**Batch 2 — Descriptions:**
 
-After the user answers batch 1, read ALL source content (SKILL.md, hook scripts, plugin.json, agent .md files, etc.) to deeply understand what the item does. Then write a comprehensive description following these rules:
+After the user answers batch 1, read ALL source content (SKILL.md, hook scripts, plugin.json, agent .md files, etc.) to deeply understand what the item does. Then write TWO descriptions:
 
-**Description quality requirements:**
+1. **`description`** — answers "What does this do?"
+2. **`longDescription`** — answers "Should I install this?"
 
-- **Length**: 1-2 concise sentences, 25-50 words
-- **Lead with action**: Start with what the item *does*, not what it *is* (good: "Analyze code for all 23 classic code smells..." / bad: "A code analysis tool that...")
-- **Be specific**: Mention concrete capabilities, categories, techniques, or differentiators (good: "Covers waterfall prevention, bundle size reduction, and re-render elimination" / bad: "Covers many performance topics")
-- **No title-restatements**: Never just restate the name (bad: "X plugin for Claude", "X development toolkit")
-- **No trigger instructions**: Don't include "Use when..." or "Trigger on..." — that's for the skill frontmatter, not the registry description
-- **Show value**: Explain why someone would want this, not just what it does mechanically
-- **Mention key numbers**: If the item covers a specific count of rules, patterns, or techniques, include it (e.g., "57 performance rules", "23 design patterns", "66 refactoring techniques")
+**`description` rules:**
 
-**Examples of good descriptions:**
+A single sentence that tells the user what the extension is capable of.
 
-- "Analyze code for all 23 classic code smells from Martin Fowler's catalog, with severity ratings and targeted refactoring recommendations for each detected smell."
-- "Launches parallel review agents that independently audit PRs for guideline compliance, bugs, and historical context issues. Only findings scoring 80+ confidence are posted as GitHub comments."
-- "Pull version-specific library documentation and code examples directly into your prompt context. Eliminates hallucinated APIs by fetching real docs from source repositories instead of relying on training data."
+- One clear sentence — naturally short because it focuses on the core capability
+- Lead with what it *does*, not what it *is* ("Analyze code for 23 classic code smells" not "A code analysis tool")
+- No trigger instructions ("Use when..."), no title restatements ("X plugin for Claude")
+- Must work at a glance in a list view — users scan, they don't read
+
+**`longDescription` rules:**
+
+Everything the user needs to decide whether to install, without reading the README.
+
+- All concrete specifics: supported languages/frameworks, number of rules/patterns/techniques, included agents/commands, approach taken
+- Differentiators: what makes this different from doing it manually or using alternatives
+- No filler, no marketing speak — just the facts
+- After reading this, the user should be able to make an informed install/skip decision
+- 1-3 sentences, typically 30-60 words
+
+**Examples of good description pairs:**
+
+| description | longDescription |
+|---|---|
+| "Apply Gang of Four design patterns effectively" | "Covers all 23 GoF patterns (Creational, Structural, Behavioral) with a problem-to-pattern selection guide, implementation examples in TypeScript, and common pitfalls. Each pattern includes intent, when to use, and quick implementation." |
+| "Create animated GIFs optimized for Slack's size and display constraints." | "Provides a frame composer, easing functions, GIF builder, and validators to produce smooth, compact animations that look great in Slack channels." |
+| "57 React and Next.js performance optimization rules from Vercel Engineering." | "Covers waterfall prevention, bundle size reduction, server/client optimization, re-render elimination, and JS performance patterns to catch issues during code generation and review." |
 
 **Examples of bad descriptions:**
 
-- "X plugin for Claude" (title restatement)
-- "A tool for doing Y" (starts with "A tool")
-- "Use when the user wants to..." (trigger instruction, not description)
+- "X plugin for Claude" (title restatement — says nothing about capability)
+- "A tool for doing Y" (starts with "A tool" — lead with the action)
+- "Use when the user wants to..." (trigger instruction, not user-facing description)
 
-Then present the description to the user:
+Then present both descriptions to the user:
 
 ```
 questions:
-  - question: "Use this description? '<auto-generated description>'"
+  - question: "Use these descriptions?\n\nShort: '<description>'\n\nDetailed: '<longDescription>'"
     header: "Description"
     options:
-      - label: "Yes, use it"
-        description: "Accept the auto-generated description"
-      - label: "Edit it"
-        description: "Provide your own description"
+      - label: "Yes, use them"
+        description: "Accept both descriptions"
+      - label: "Edit them"
+        description: "Provide your own descriptions"
 ```
 
 ### 5. For hooks: Extract triggers from settings
@@ -191,7 +205,8 @@ Write the item metadata as `registry/<type>s/<slug>/item.json`:
   "slug": "<slug>",
   "name": "<name from user>",
   "type": "<detected type>",
-  "description": "<description>",
+  "description": "<short description>",
+  "longDescription": "<detailed description>",
   "compatibility": ["<from user answers>"],
   "sourceType": "toolr",
   "author": { "name": "Toolr Suite", "url": "https://github.com/toolr-suite" },

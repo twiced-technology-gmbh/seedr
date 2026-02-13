@@ -2,7 +2,8 @@
   "slug": "explanatory-output-style",
   "name": "Explanatory Output Style",
   "type": "plugin",
-  "description": "Restores the deprecated Explanatory output style via a session-start hook. Claude automatically includes bordered insight sections explaining implementation trade-offs, codebase-specific patterns, and design decisions relevant to your project.",
+  "description": "Adds educational insights about implementation choices and codebase patterns (mimics the deprecated Explanatory output style)",
+  "longDescription": "Uses a session-start hook to inject system instructions that make Claude explain why it chose specific implementations, what codebase patterns it followed, and what trade-offs exist. Recreates the deprecated Explanatory output style from Claude Code settings.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/explanatory-output-style",
   "contentHash": "33bcf2ec4585a419",
-  "updatedAt": "2025-12-13T00:52:17Z",
   "contents": {
     "files": [
       {

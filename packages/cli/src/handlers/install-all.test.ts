@@ -13,9 +13,14 @@ import type { RegistryItem, RegistryManifest } from "@seedr/shared";
 
 // Read real manifest using sync fs (unaffected by memfs mock of node:fs/promises)
 const __testDir = dirname(fileURLToPath(import.meta.url));
-const manifest: RegistryManifest = JSON.parse(
-  readFileSync(join(__testDir, "../../../../registry/manifest.json"), "utf-8"),
-);
+const registryDir = join(__testDir, "../../../../registry");
+const indexData = JSON.parse(readFileSync(join(registryDir, "manifest.json"), "utf-8"));
+const items: RegistryItem[] = [];
+for (const desc of Object.values(indexData.types) as { file: string }[]) {
+  const typeData = JSON.parse(readFileSync(join(registryDir, desc.file), "utf-8"));
+  items.push(...typeData.items);
+}
+const manifest: RegistryManifest = { version: indexData.version, items };
 
 const LIVE = process.env.SEEDR_LIVE === "true";
 

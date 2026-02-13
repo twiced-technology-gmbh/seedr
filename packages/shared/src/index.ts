@@ -60,3 +60,18 @@ export interface RegistryManifest {
   version: string;
   items: RegistryItem[];
 }
+
+export interface ManifestTypeDescriptor {
+  file: string;
+  count: number;
+}
+
+export interface RegistryManifestIndex {
+  version: string;
+  types: Record<ComponentType, ManifestTypeDescriptor>;
+}
+
+export interface TypeManifest {
+  type: ComponentType;
+  items: RegistryItem[];
+}

@@ -2,7 +2,8 @@
   "slug": "hookify",
   "name": "Hookify",
   "type": "plugin",
-  "description": "Create custom behavioral rules from natural language descriptions or by analyzing recent conversation patterns. Rules use regex pattern matching to warn or block on bash commands, file edits, and prompts, taking effect immediately without restarts.",
+  "description": "Easily create hooks to prevent unwanted behaviors by analyzing conversation patterns",
+  "longDescription": "Hook creation toolkit with a conversation-analyzer agent, rule engine, and 4 commands (/hookify, /configure, /list, /help). Analyzes conversation patterns to generate pre-tool-use, post-tool-use, stop, and user-prompt-submit hooks. Includes 4 example rules covering console.log warnings, dangerous rm prevention, test requirements, and sensitive file protection.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/hookify",
   "contentHash": "e7171ec76f27ce74",
-  "updatedAt": "2026-02-05T17:21:57Z",
   "contents": {
     "files": [
       {

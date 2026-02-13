@@ -2,7 +2,8 @@
   "slug": "code-simplifier",
   "name": "Code Simplifier",
   "type": "plugin",
-  "description": "Autonomous refactoring agent that improves recently modified code by reducing nesting, consolidating logic, improving naming, and enforcing project conventions. Preserves all existing behavior while making code more readable and maintainable.",
+  "description": "Agent that simplifies and refines code for clarity, consistency, and maintainability while preserving functionality",
+  "longDescription": "Provides a code-simplifier agent that analyzes code for unnecessary complexity, inconsistent patterns, and maintainability issues. Suggests concrete simplifications while preserving existing behavior, working across any language.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/code-simplifier",
   "contentHash": "5c5eb50c7d32dffe",
-  "updatedAt": "2026-01-09T00:17:19Z",
   "contents": {
     "files": [
       {

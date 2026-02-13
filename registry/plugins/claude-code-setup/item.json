@@ -2,7 +2,8 @@
   "slug": "claude-code-setup",
   "name": "Claude Code Setup",
   "type": "plugin",
-  "description": "Scans your project structure and recommends the best Claude Code automations to set up, including MCP servers, skills, hooks, subagents, and slash commands tailored to your specific codebase.",
+  "description": "Analyze codebases and recommend tailored Claude Code automations such as hooks, skills, MCP servers, and subagents.",
+  "longDescription": "Scans your codebase and recommends Claude Code automations tailored to your stack. The claude-automation-recommender skill references patterns for hooks, MCP servers, plugins, skills, and subagent templates to suggest specific configurations worth adding.",
   "compatibility": [
     "claude"
   ],
@@ -12,7 +13,6 @@
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-code-setup",
   "contentHash": "d0b3b68824258024",
-  "updatedAt": "2026-01-21T04:15:08Z",
   "contents": {
     "files": [
       {
