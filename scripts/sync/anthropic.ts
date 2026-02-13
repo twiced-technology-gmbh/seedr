@@ -117,13 +117,17 @@ async function fetchItems(options: FetchItemsOptions): Promise<ManifestItem[]> {
           }
         }
 
-        // Preserve manually-set fields from existing item.json
+        // Preserve existing item.json fields, only overwrite remote-sourced ones.
+        // Whitelist: these fields are refreshed from the remote source on every sync.
+        // Everything else (longDescription, featured, targetScope, etc.) is preserved.
         const existing = readExistingItem(type, slug);
         const itemName = existing?.name ?? formatName(metadata.name || slug);
         const itemCompatibility = existing?.compatibility ?? compatibility;
 
         console.log(`  ✓ ${slug}${updatedAt ? ` (${updatedAt.split("T")[0]})` : ""}`);
         return {
+          ...(existing ?? {}),
+          // --- whitelisted remote fields ---
           slug,
           name: itemName,
           type,
