@@ -486,7 +486,7 @@ export function FileTree({ files, externalUrl, className = "", rootName }: FileT
 
   return (
     <div className={className}>
-      <h2 className="text-xs font-medium text-subtext uppercase tracking-wider mb-3">File Structure</h2>
+      <h2 className="text-xs font-medium text-text-dim uppercase tracking-wider mb-3">File Structure</h2>
       <div className="bg-surface rounded-lg py-2 overflow-hidden">
         {rootName ? (
           <TreeNode

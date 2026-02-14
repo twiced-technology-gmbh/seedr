@@ -7,7 +7,7 @@
   "compatibility": [
     "claude"
   ],
-  "docsOnly": true,
+  "integration": true,
   "sourceType": "official",
   "author": {
     "name": "Anthropic"

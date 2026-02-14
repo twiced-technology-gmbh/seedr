@@ -9,7 +9,7 @@ export { FilterButton } from "./FilterButton";
 export { FilterDropdown } from "./FilterDropdown";
 export type { FilterOption } from "./FilterDropdown";
 export { SortDropdown } from "./SortDropdown";
-export type { SortOption } from "./SortDropdown";
+export type { SortField } from "./SortDropdown";
 export { SearchInput } from "./SearchInput";
 export { Tooltip } from "./Tooltip";
 export type { TooltipContent } from "./Tooltip";

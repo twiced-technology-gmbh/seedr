@@ -26,31 +26,31 @@ interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 const colorClasses: Record<BadgeColor, string> = {
-  gray: "bg-gray-500/20 text-gray-300",
-  green: "bg-green-500/20 text-green-300",
-  red: "bg-red-500/20 text-red-300",
-  blue: "bg-blue-500/20 text-blue-300",
-  yellow: "bg-yellow-500/20 text-yellow-300",
-  orange: "bg-orange-500/20 text-orange-300",
-  purple: "bg-purple-500/20 text-purple-300",
-  pink: "bg-pink-500/20 text-pink-300",
-  cyan: "bg-cyan-500/20 text-cyan-300",
-  emerald: "bg-emerald-500/20 text-emerald-300",
-  amber: "bg-amber-500/20 text-amber-300",
-  teal: "bg-teal-500/20 text-teal-300",
-  indigo: "bg-indigo-500/20 text-indigo-300",
-  slate: "bg-slate-500/20 text-slate-300",
-  violet: "bg-violet-500/20 text-violet-300",
-  sky: "bg-sky-500/20 text-sky-300",
+  gray: "border-gray-500/60 text-gray-300",
+  green: "border-green-500/60 text-green-400",
+  red: "border-red-500/60 text-red-300",
+  blue: "border-blue-500/60 text-blue-300",
+  yellow: "border-yellow-500/60 text-yellow-300",
+  orange: "border-orange-500/60 text-orange-300",
+  purple: "border-purple-500/60 text-purple-300",
+  pink: "border-pink-500/60 text-pink-300",
+  cyan: "border-cyan-500/60 text-cyan-300",
+  emerald: "border-emerald-500/60 text-emerald-300",
+  amber: "border-amber-500/60 text-amber-400",
+  teal: "border-teal-500/60 text-teal-300",
+  indigo: "border-indigo-500/60 text-indigo-300",
+  slate: "border-slate-500/60 text-slate-300",
+  violet: "border-violet-500/60 text-violet-300",
+  sky: "border-sky-500/60 text-sky-300",
 };
 
 const sizeClasses = {
-  sm: "h-[18px] px-1.5",
-  md: "h-[20px] px-2",
+  sm: "h-[20px] px-1.5 pb-px text-[11px] gap-0.5",
+  md: "h-[22px] px-2 text-xs gap-1",
 };
 
 const iconSizeClasses = {
-  sm: "w-2.5 h-2.5",
+  sm: "w-3 h-3",
   md: "w-3 h-3",
 };
 
@@ -64,7 +64,7 @@ export function Badge({
 }: BadgeProps) {
   return (
     <span
-      className={`inline-flex items-center gap-1 rounded text-xs font-bold leading-none ${colorClasses[color]} ${sizeClasses[size]} ${className}`}
+      className={`inline-flex items-center rounded font-medium leading-none border ${colorClasses[color]} ${sizeClasses[size]} ${className}`}
       {...props}
     >
       {Icon && <Icon className={iconSizeClasses[size]} />}

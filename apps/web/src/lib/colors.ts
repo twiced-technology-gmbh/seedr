@@ -74,11 +74,11 @@ export const typeTextColors: Record<ComponentType, string> = {
   plugin: "text-indigo-500",
 };
 
-// Source to badge color mapping
+// Source to badge color mapping (matches configr)
 export const sourceToBadgeColor: Record<SourceType, BadgeColor> = {
   official: "amber",
-  toolr: "blue",
-  community: "emerald",
+  toolr: "cyan",
+  community: "violet",
 };
 
 export const sourceLabels: Record<SourceType, string> = {
@@ -104,11 +104,11 @@ export const toolToBadgeColor: Record<AITool, BadgeColor> = {
   opencode: "purple",
 };
 
-// Scope to badge color mapping
+// Scope to badge color mapping (matches configr)
 export const scopeToBadgeColor: Record<ScopeType, BadgeColor> = {
-  user: "violet",
-  project: "cyan",
-  local: "slate",
+  user: "emerald",
+  project: "blue",
+  local: "pink",
 };
 
 export const scopeLabels: Record<ScopeType, string> = {

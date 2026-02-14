@@ -30,7 +30,7 @@ export interface ManifestItem {
   longDescription?: string;
   compatibility: string[];
   featured?: boolean;
-  docsOnly?: boolean;
+  integration?: boolean;
   sourceType: SourceType;
   contentHash?: string;
   author: { name: string; url?: string };

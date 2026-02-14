@@ -47,7 +47,7 @@ export interface RegistryItem {
   longDescription?: string;
   compatibility: AITool[];
   featured?: boolean;
-  docsOnly?: boolean;
+  integration?: boolean;
   sourceType?: SourceType;
   targetScope?: ScopeType;
   contentHash?: string;

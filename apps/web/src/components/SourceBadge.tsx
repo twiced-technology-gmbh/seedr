@@ -1,3 +1,4 @@
+import { Shield } from "lucide-react";
 import { Badge } from "./ui/Badge";
 import { Tooltip } from "./ui/Tooltip";
 import { sourceToBadgeColor, sourceLabels } from "@/lib/colors";
@@ -18,7 +19,7 @@ interface SourceBadgeProps {
 export function SourceBadge({ source, className = "", size = "sm" }: SourceBadgeProps) {
   return (
     <Tooltip content={{ title: sourceLabels[source], description: sourceDescriptions[source] }} position="top">
-      <Badge color={sourceToBadgeColor[source]} size={size} className={className}>
+      <Badge color={sourceToBadgeColor[source]} size={size} icon={Shield} className={className}>
         {sourceLabels[source]}
       </Badge>
     </Tooltip>

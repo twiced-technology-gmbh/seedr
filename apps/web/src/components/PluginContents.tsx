@@ -28,7 +28,7 @@ export function PluginContents({ contents, className = "" }: PluginContentsProps
 
   return (
     <div className={className}>
-      <h2 className="text-sm font-medium text-subtext mb-3">Contains</h2>
+      <h2 className="text-xs font-medium text-text-dim uppercase tracking-wider mb-3">Contains</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         {items.map((item) => {
           if (!item) return null;

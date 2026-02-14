@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Clock, Sparkles, Bot, Webhook, Terminal, Server } from "lucide-react";
+import { Clock, Sparkles, Bot, Webhook, Terminal, Server, BookOpen } from "lucide-react";
+import { Badge } from "./ui/Badge";
 import { Card } from "./ui/Card";
 import { Tooltip } from "./ui/Tooltip";
 import { TypeIcon } from "./TypeIcon";
@@ -59,6 +60,11 @@ export function ItemCard({ item }: ItemCardProps) {
         <div className="flex items-start justify-between gap-2 mb-2">
           <div className="flex items-center gap-1.5">
             {item.sourceType && <SourceBadge source={item.sourceType} />}
+            {item.integration && (
+              <Tooltip content={{ title: "Integration", description: "Integrates an external tool with your AI assistant. Installing adds it to enabledPlugins — the README explains how to set up the tool itself." }} position="top">
+                <Badge color="purple" icon={BookOpen}>integration</Badge>
+              </Tooltip>
+            )}
             {item.sourceType === "toolr" && item.targetScope && <ScopeBadge scope={item.targetScope} />}
           </div>
           <Tooltip content={{ title: typeLabels[item.type] }} position="top">

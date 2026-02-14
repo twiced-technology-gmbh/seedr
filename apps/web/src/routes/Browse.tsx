@@ -6,7 +6,7 @@ import { X } from "lucide-react";
 import { Breadcrumb, SearchInput, FilterDropdown, IconButton } from "@/components/ui";
 import type { FilterOption } from "@/components/ui";
 import { SortDropdown } from "@/components/ui/SortDropdown";
-import type { SortOption } from "@/components/ui/SortDropdown";
+import type { SortField } from "@/components/ui/SortDropdown";
 import { ItemCard } from "@/components/ItemCard";
 import { ToolIcon } from "@/components/ToolIcon";
 import { TypeIcon } from "@/components/TypeIcon";
@@ -35,29 +35,25 @@ const scopeOptions: FilterOption<ScopeType>[] = [
   { value: "local", label: scopeLabels.local },
 ];
 
-type SortValue = "name-asc" | "name-desc" | "updated-desc" | "updated-asc";
-
-const sortOptions: SortOption<SortValue>[] = [
-  { value: "name-asc", label: "Name A-Z" },
-  { value: "name-desc", label: "Name Z-A" },
-  { value: "updated-desc", label: "Updated ↓" },
-  { value: "updated-asc", label: "Updated ↑" },
+const sortFields: SortField[] = [
+  { value: "name", label: "Name" },
+  { value: "updated", label: "Updated" },
 ];
 
-function sortItems(items: RegistryItem[], sort: SortValue): RegistryItem[] {
+function sortItems(items: RegistryItem[], field: string, ascending: boolean): RegistryItem[] {
   return [...items].sort((a, b) => {
-    switch (sort) {
-      case "name-asc":
-        return a.name.localeCompare(b.name);
-      case "name-desc":
-        return b.name.localeCompare(a.name);
-      case "updated-desc":
-        return (b.updatedAt ?? "").localeCompare(a.updatedAt ?? "");
-      case "updated-asc":
-        return (a.updatedAt ?? "").localeCompare(b.updatedAt ?? "");
+    let cmp: number;
+    switch (field) {
+      case "name":
+        cmp = a.name.localeCompare(b.name);
+        break;
+      case "updated":
+        cmp = (a.updatedAt ?? "").localeCompare(b.updatedAt ?? "");
+        break;
       default:
-        return 0;
+        cmp = 0;
     }
+    return ascending ? cmp : -cmp;
   });
 }
 
@@ -72,7 +68,8 @@ export function Browse() {
   const toolFilter = (searchParams.get("tool") as AITool | null);
   const sourceFilter = (searchParams.get("source") as SourceType | null);
   const scopeFilter = (searchParams.get("scope") as ScopeType | null);
-  const sort = (searchParams.get("sort") as SortValue) ?? "name-asc";
+  const sortField = searchParams.get("sortField") ?? "name";
+  const sortAsc = searchParams.get("sortAsc") !== "false";
 
   // Update URL params helper
   const updateParams = (updates: Record<string, string | null>) => {
@@ -98,7 +95,8 @@ export function Browse() {
     }
   };
   const setScopeFilter = (value: ScopeType | null) => updateParams({ scope: value });
-  const setSort = (value: SortValue) => updateParams({ sort: value === "name-asc" ? null : value });
+  const setSortField = (value: string) => updateParams({ sortField: value === "name" ? null : value });
+  const toggleSortDir = () => updateParams({ sortAsc: sortAsc ? "false" : null });
 
   const items = getItemsByType(componentType);
 
@@ -130,8 +128,8 @@ export function Browse() {
       result = result.filter((item) => (item.targetScope ?? "project") === scopeFilter);
     }
 
-    return sortItems(result, sort);
-  }, [items, query, toolFilter, sourceFilter, scopeFilter, sort, fuse]);
+    return sortItems(result, sortField, sortAsc);
+  }, [items, query, toolFilter, sourceFilter, scopeFilter, sortField, sortAsc, fuse]);
 
   // Check if any filters are active
   const hasActiveFilters = query !== "" || toolFilter !== null || sourceFilter !== null || scopeFilter !== null;
@@ -224,9 +222,11 @@ export function Browse() {
         />
 
         <SortDropdown
-          value={sort}
-          options={sortOptions}
-          onChange={setSort}
+          field={sortField}
+          ascending={sortAsc}
+          onFieldChange={setSortField}
+          onToggleDirection={toggleSortDir}
+          fields={sortFields}
           minWidth={110}
         />
 

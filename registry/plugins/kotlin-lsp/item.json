@@ -2,12 +2,12 @@
   "slug": "kotlin-lsp",
   "name": "Kotlin LSP",
   "type": "plugin",
-  "description": "Kotlin language server providing code intelligence, refactoring, and analysis.",
+  "description": "Kotlin language server for Claude Code, providing code intelligence, refactoring, and analysis.",
   "longDescription": "Integrates JetBrains `kotlin-lsp` as a language server for Kotlin files (`.kt`, `.kts`). Provides code intelligence, refactoring, completions, and static analysis. Install via `brew install JetBrains/utils/kotlin-lsp` on macOS. Requires a Kotlin project with Gradle or Maven build configuration.",
   "compatibility": [
     "claude"
   ],
-  "docsOnly": true,
+  "integration": true,
   "sourceType": "official",
   "author": {
     "name": "Anthropic"
