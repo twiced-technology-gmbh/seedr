@@ -39,13 +39,13 @@
       "slug": "ask-questions-if-underspecified",
       "name": "Ask Questions If Underspecified",
       "type": "plugin",
-      "description": "Pause before implementing to ask 1-5 targeted clarifying questions when requirements have multiple plausible interpretations.",
+      "description": "Clarify ambiguous requirements by asking questions before implementing. Only when invoked explicitly.",
       "compatibility": [
         "claude"
       ],
       "sourceType": "community",
       "author": {
-        "name": "Trail of Bits",
+        "name": "Kevin Valerio",
         "url": "https://github.com/trailofbits"
       },
       "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified",
@@ -444,13 +444,13 @@
       "slug": "gh-cli",
       "name": "GH CLI",
       "type": "plugin",
-      "description": "Intercept GitHub URL fetches and curl/wget commands, redirecting to the authenticated `gh` CLI for private repo access and higher rate limits.",
+      "description": "Intercepts GitHub URL fetches and curl/wget commands, redirecting to the authenticated gh CLI. Includes gh CLI usage guidance.",
       "compatibility": [
         "claude"
       ],
       "sourceType": "community",
       "author": {
-        "name": "Trail of Bits",
+        "name": "William Tan",
         "url": "https://github.com/trailofbits"
       },
       "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/gh-cli",
@@ -575,13 +575,13 @@
       "slug": "git-cleanup",
       "name": "Git Cleanup",
       "type": "plugin",
-      "description": "Analyze and safely clean up accumulated local git branches and worktrees by categorizing them as merged, squash-merged, superseded, or active.",
+      "description": "Safely analyzes and cleans up local git branches and worktrees by categorizing them as merged, squash-merged, superseded, or active work.",
       "compatibility": [
         "claude"
       ],
       "sourceType": "community",
       "author": {
-        "name": "Trail of Bits",
+        "name": "Henrik Brodin",
         "url": "https://github.com/trailofbits"
       },
       "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/git-cleanup",
@@ -735,7 +735,7 @@
       "slug": "humanizer",
       "name": "Humanizer",
       "type": "plugin",
-      "description": "Identify and remove AI writing patterns from text, replacing inflated language with concrete, human-sounding prose.",
+      "description": "Identifies and removes AI writing patterns to make text sound natural and human-written",
       "compatibility": [
         "claude"
       ],
@@ -832,14 +832,14 @@
       "slug": "last30days",
       "name": "Last 30 Days",
       "type": "plugin",
-      "description": "Research any topic from the last 30 days across Reddit, X/Twitter, and the web, surfacing real discussions with engagement metrics.",
+      "description": "Researches any topic from the last 30 days across Reddit, X, and the web, surfacing real community discussions with engagement metrics",
       "compatibility": [
         "claude"
       ],
       "sourceType": "community",
       "author": {
-        "name": "Trail of Bits",
-        "url": "https://github.com/trailofbits"
+        "name": "mvanhorn",
+        "url": "https://github.com/mvanhorn/last30days-skill"
       },
       "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/last30days",
       "updatedAt": "2026-02-12T07:49:07Z",
@@ -1037,14 +1037,13 @@
       "slug": "second-opinion",
       "name": "Second Opinion",
       "type": "plugin",
-      "description": "Run code reviews on uncommitted changes, branch diffs, or specific commits using external LLM CLIs like OpenAI Codex and Google Gemini.",
+      "description": "Runs code reviews using external LLM CLIs (OpenAI Codex, Google Gemini) on uncommitted changes, branch diffs, or specific commits",
       "compatibility": [
         "claude"
       ],
       "sourceType": "community",
       "author": {
-        "name": "Trail of Bits",
-        "url": "https://github.com/trailofbits"
+        "name": "Dan Guido"
       },
       "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/second-opinion",
       "updatedAt": "2026-02-13T00:53:29Z",
@@ -1138,7 +1137,7 @@
       "slug": "skill-extractor",
       "name": "Skill Extractor",
       "type": "plugin",
-      "description": "Extract reusable skills from work sessions by analyzing conversations for non-trivial, verified solutions worth capturing.",
+      "description": "Extract reusable skills from work sessions. Manual invocation only - no hooks, no noise.",
       "compatibility": [
         "claude"
       ],
@@ -1916,14 +1915,14 @@
       "slug": "wooyun-legacy",
       "name": "WooYun Legacy",
       "type": "plugin",
-      "description": "Web vulnerability testing methodology distilled from 88,636 real-world cases covering SQL injection, XSS, command execution, file upload, and more.",
+      "description": "Web vulnerability testing methodology distilled from 88,636 real-world cases from the WooYun vulnerability database (2010-2016)",
       "compatibility": [
         "claude"
       ],
       "sourceType": "community",
       "author": {
-        "name": "Trail of Bits",
-        "url": "https://github.com/trailofbits"
+        "name": "tanweai / wooyun-legacy contributors",
+        "url": "https://github.com/tanweai/wooyun-legacy"
       },
       "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/wooyun-legacy",
       "updatedAt": "2026-02-12T00:10:00Z",
@@ -2141,6 +2140,31 @@
         ]
       },
       "updatedAt": "2025-12-13T00:52:17Z"
+    },
+    {
+      "slug": "clangd-lsp",
+      "name": "Clangd LSP",
+      "type": "plugin",
+      "description": "C/C++ language server (clangd) for Claude Code, providing code intelligence, diagnostics, and formatting.",
+      "compatibility": [
+        "claude"
+      ],
+      "docsOnly": true,
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/clangd-lsp",
+      "contents": {
+        "files": [
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      },
+      "updatedAt": "2025-12-19T00:24:41Z",
+      "contentHash": "69fcf589f884f61c"
     },
     {
       "slug": "claude-code-setup",
@@ -2459,6 +2483,31 @@
       "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
+      "slug": "csharp-lsp",
+      "name": "C# LSP",
+      "type": "plugin",
+      "description": "C# language server for Claude Code, providing code intelligence and diagnostics.",
+      "compatibility": [
+        "claude"
+      ],
+      "docsOnly": true,
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/csharp-lsp",
+      "contents": {
+        "files": [
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      },
+      "updatedAt": "2025-12-19T00:24:41Z",
+      "contentHash": "7d072c7cbe3746d9"
+    },
+    {
       "slug": "explanatory-output-style",
       "name": "Explanatory Output Style",
       "type": "plugin",
@@ -2631,6 +2680,31 @@
         ]
       },
       "updatedAt": "2025-12-13T00:52:17Z"
+    },
+    {
+      "slug": "gopls-lsp",
+      "name": "Gopls LSP",
+      "type": "plugin",
+      "description": "Go language server for Claude Code, providing code intelligence, refactoring, and analysis.",
+      "compatibility": [
+        "claude"
+      ],
+      "docsOnly": true,
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/gopls-lsp",
+      "contents": {
+        "files": [
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      },
+      "updatedAt": "2025-12-19T00:24:41Z",
+      "contentHash": "e9701a9dcadb0bca"
     },
     {
       "slug": "hookify",
@@ -2818,6 +2892,56 @@
       "updatedAt": "2026-02-05T17:21:57Z"
     },
     {
+      "slug": "jdtls-lsp",
+      "name": "JDTLS LSP",
+      "type": "plugin",
+      "description": "Java language server (Eclipse JDT.LS) for Claude Code, providing code intelligence and refactoring.",
+      "compatibility": [
+        "claude"
+      ],
+      "docsOnly": true,
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/jdtls-lsp",
+      "contents": {
+        "files": [
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      },
+      "updatedAt": "2025-12-19T00:24:41Z",
+      "contentHash": "6f8652db8c419ba6"
+    },
+    {
+      "slug": "kotlin-lsp",
+      "name": "Kotlin LSP",
+      "type": "plugin",
+      "description": "Kotlin language server providing code intelligence, refactoring, and analysis.",
+      "compatibility": [
+        "claude"
+      ],
+      "docsOnly": true,
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/kotlin-lsp",
+      "contents": {
+        "files": [
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      },
+      "updatedAt": "2026-01-07T20:06:39Z",
+      "contentHash": "79966ce8873dea30"
+    },
+    {
       "slug": "learning-output-style",
       "name": "Learning Output Style",
       "type": "plugin",
@@ -2870,6 +2994,56 @@
         ]
       },
       "updatedAt": "2025-12-13T00:52:17Z"
+    },
+    {
+      "slug": "lua-lsp",
+      "name": "Lua LSP",
+      "type": "plugin",
+      "description": "Lua language server for Claude Code, providing code intelligence and diagnostics.",
+      "compatibility": [
+        "claude"
+      ],
+      "docsOnly": true,
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/lua-lsp",
+      "contents": {
+        "files": [
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      },
+      "updatedAt": "2025-12-19T00:24:41Z",
+      "contentHash": "699789acac989f21"
+    },
+    {
+      "slug": "php-lsp",
+      "name": "PHP LSP",
+      "type": "plugin",
+      "description": "PHP language server (Intelephense) for Claude Code, providing code intelligence and diagnostics.",
+      "compatibility": [
+        "claude"
+      ],
+      "docsOnly": true,
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/php-lsp",
+      "contents": {
+        "files": [
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      },
+      "updatedAt": "2025-12-19T00:24:41Z",
+      "contentHash": "5829d35c9b8c2460"
     },
     {
       "slug": "playground",
@@ -2950,6 +3124,422 @@
         ]
       },
       "updatedAt": "2026-01-29T23:24:01Z"
+    },
+    {
+      "slug": "plugin-dev",
+      "name": "Plugin Dev",
+      "type": "plugin",
+      "description": "A comprehensive toolkit for developing Claude Code plugins with expert guidance on hooks, MCP integration, plugin structure, and marketplace publishing.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/plugin-dev",
+      "contents": {
+        "files": [
+          {
+            "name": "agents",
+            "type": "directory",
+            "children": [
+              {
+                "name": "agent-creator.md",
+                "type": "file"
+              },
+              {
+                "name": "plugin-validator.md",
+                "type": "file"
+              },
+              {
+                "name": "skill-reviewer.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "commands",
+            "type": "directory",
+            "children": [
+              {
+                "name": "create-plugin.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "agent-development",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "examples",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "agent-creation-prompt.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "complete-agent-examples.md",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "references",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "agent-creation-system-prompt.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "system-prompt-design.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "triggering-examples.md",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "scripts",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "validate-agent.sh",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "command-development",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "examples",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "plugin-commands.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "simple-commands.md",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "references",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "advanced-workflows.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "documentation-patterns.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "frontmatter-reference.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "interactive-commands.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "marketplace-considerations.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "plugin-features-reference.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "testing-strategies.md",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "README.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "hook-development",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "examples",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "load-context.sh",
+                        "type": "file"
+                      },
+                      {
+                        "name": "validate-bash.sh",
+                        "type": "file"
+                      },
+                      {
+                        "name": "validate-write.sh",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "references",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "advanced.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "migration.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "patterns.md",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "scripts",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "hook-linter.sh",
+                        "type": "file"
+                      },
+                      {
+                        "name": "README.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "test-hook.sh",
+                        "type": "file"
+                      },
+                      {
+                        "name": "validate-hook-schema.sh",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "mcp-integration",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "examples",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "http-server.json",
+                        "type": "file"
+                      },
+                      {
+                        "name": "sse-server.json",
+                        "type": "file"
+                      },
+                      {
+                        "name": "stdio-server.json",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "references",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "authentication.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "server-types.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "tool-usage.md",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "plugin-settings",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "examples",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "create-settings-command.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "example-settings.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "read-settings-hook.sh",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "references",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "parsing-techniques.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "real-world-examples.md",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "scripts",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "parse-frontmatter.sh",
+                        "type": "file"
+                      },
+                      {
+                        "name": "validate-settings.sh",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "plugin-structure",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "examples",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "advanced-plugin.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "minimal-plugin.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "standard-plugin.md",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "references",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "component-patterns.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "manifest-reference.md",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "README.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "skill-development",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "references",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "skill-creator-original.md",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ],
+        "agents": [
+          "agent-creator",
+          "plugin-validator",
+          "skill-reviewer"
+        ],
+        "commands": [
+          "create-plugin"
+        ]
+      },
+      "updatedAt": "2026-02-05T21:57:52Z",
+      "contentHash": "201c8778b7bbfdad"
     },
     {
       "slug": "pr-review-toolkit",
@@ -3037,6 +3627,31 @@
       "updatedAt": "2026-02-04T23:59:39Z"
     },
     {
+      "slug": "pyright-lsp",
+      "name": "Pyright LSP",
+      "type": "plugin",
+      "description": "Python language server (Pyright) for Claude Code, providing static type checking and code intelligence.",
+      "compatibility": [
+        "claude"
+      ],
+      "docsOnly": true,
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pyright-lsp",
+      "contents": {
+        "files": [
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      },
+      "updatedAt": "2025-12-19T00:24:41Z",
+      "contentHash": "28c541b0fc0ce7c9"
+    },
+    {
       "slug": "ralph-loop",
       "name": "Ralph Loop",
       "type": "plugin",
@@ -3118,6 +3733,31 @@
       "updatedAt": "2026-01-06T23:22:54Z"
     },
     {
+      "slug": "rust-analyzer-lsp",
+      "name": "Rust Analyzer LSP",
+      "type": "plugin",
+      "description": "Rust language server for Claude Code, providing code intelligence and analysis.",
+      "compatibility": [
+        "claude"
+      ],
+      "docsOnly": true,
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/rust-analyzer-lsp",
+      "contents": {
+        "files": [
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      },
+      "updatedAt": "2025-12-19T00:24:41Z",
+      "contentHash": "433677dab975495d"
+    },
+    {
       "slug": "security-guidance",
       "name": "Security Guidance",
       "type": "plugin",
@@ -3160,6 +3800,56 @@
         ]
       },
       "updatedAt": "2025-12-13T00:52:17Z"
+    },
+    {
+      "slug": "swift-lsp",
+      "name": "Swift LSP",
+      "type": "plugin",
+      "description": "Swift language server (SourceKit-LSP) for Claude Code, providing code intelligence for Swift projects.",
+      "compatibility": [
+        "claude"
+      ],
+      "docsOnly": true,
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/swift-lsp",
+      "contents": {
+        "files": [
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      },
+      "updatedAt": "2025-12-19T00:24:41Z",
+      "contentHash": "e349484ba26940bd"
+    },
+    {
+      "slug": "typescript-lsp",
+      "name": "TypeScript LSP",
+      "type": "plugin",
+      "description": "TypeScript/JavaScript language server for Claude Code, providing code intelligence features like go-to-definition, find references, and error checking.",
+      "compatibility": [
+        "claude"
+      ],
+      "docsOnly": true,
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/typescript-lsp",
+      "contents": {
+        "files": [
+          {
+            "name": "README.md",
+            "type": "file"
+          }
+        ]
+      },
+      "updatedAt": "2025-12-19T00:24:41Z",
+      "contentHash": "6bb7f7de1e53f1a4"
     }
   ]
 }

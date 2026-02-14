@@ -1,0 +1,26 @@
+{
+  "slug": "php-lsp",
+  "name": "PHP LSP",
+  "type": "plugin",
+  "description": "PHP language server (Intelephense) for Claude Code, providing code intelligence and diagnostics.",
+  "longDescription": "Integrates Intelephense as a language server for PHP files (`.php`). Provides code intelligence, completions, go-to-definition, find references, and diagnostics. Install via `npm install -g intelephense` or `yarn global add intelephense`. No additional configuration required for standard PHP projects.",
+  "compatibility": [
+    "claude"
+  ],
+  "docsOnly": true,
+  "sourceType": "official",
+  "author": {
+    "name": "Anthropic"
+  },
+  "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/php-lsp",
+  "contents": {
+    "files": [
+      {
+        "name": "README.md",
+        "type": "file"
+      }
+    ]
+  },
+  "updatedAt": "2025-12-19T00:24:41Z",
+  "contentHash": "5829d35c9b8c2460"
+}

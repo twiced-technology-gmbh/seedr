@@ -1,0 +1,26 @@
+{
+  "slug": "clangd-lsp",
+  "name": "Clangd LSP",
+  "type": "plugin",
+  "description": "C/C++ language server (clangd) for Claude Code, providing code intelligence, diagnostics, and formatting.",
+  "longDescription": "Integrates `clangd` as a language server for C and C++ files (`.c`, `.h`, `.cpp`, `.cc`, `.cxx`, `.hpp`, `.hxx`). Provides go-to-definition, find references, diagnostics, and code formatting. Installable via `brew install llvm` (macOS), `apt install clangd` / `dnf install clang-tools-extra` / `pacman -S clang` (Linux), or LLVM releases (Windows).",
+  "compatibility": [
+    "claude"
+  ],
+  "docsOnly": true,
+  "sourceType": "official",
+  "author": {
+    "name": "Anthropic"
+  },
+  "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/clangd-lsp",
+  "contents": {
+    "files": [
+      {
+        "name": "README.md",
+        "type": "file"
+      }
+    ]
+  },
+  "updatedAt": "2025-12-19T00:24:41Z",
+  "contentHash": "69fcf589f884f61c"
+}

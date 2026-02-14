@@ -2,15 +2,15 @@
   "slug": "last30days",
   "name": "Last 30 Days",
   "type": "plugin",
-  "description": "Research any topic from the last 30 days across Reddit, X/Twitter, and the web, surfacing real discussions with engagement metrics.",
+  "description": "Researches any topic from the last 30 days across Reddit, X, and the web, surfacing real community discussions with engagement metrics",
   "longDescription": "Plugin with a single `last30days` skill invoked via `/last30days`. Uses a Python backend (`last30days.py` + 17 library modules) to search Reddit via OpenAI's `web_search` tool and X/Twitter via xAI's `x_search` tool, with web search fallback. Supports `--days=N` (1–30), `--quick` (8–12 results), `--deep` (50–70 Reddit, 40–60 X), and `--include-web` flags. Requires optional `OPENAI_API_KEY` and `XAI_API_KEY` — degrades gracefully to web-only without them. Returns posts with upvotes, likes, and reposts.",
   "compatibility": [
     "claude"
   ],
   "sourceType": "community",
   "author": {
-    "name": "Trail of Bits",
-    "url": "https://github.com/trailofbits"
+    "name": "mvanhorn",
+    "url": "https://github.com/mvanhorn/last30days-skill"
   },
   "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/last30days",
   "updatedAt": "2026-02-12T07:49:07Z",

@@ -1,0 +1,26 @@
+{
+  "slug": "gopls-lsp",
+  "name": "Gopls LSP",
+  "type": "plugin",
+  "description": "Go language server for Claude Code, providing code intelligence, refactoring, and analysis.",
+  "longDescription": "Integrates `gopls` as a language server for Go files (`.go`). Provides code intelligence, refactoring, and static analysis including go-to-definition, find references, and diagnostics. Install via `go install golang.org/x/tools/gopls@latest` and ensure `$GOPATH/bin` is in your `PATH`.",
+  "compatibility": [
+    "claude"
+  ],
+  "docsOnly": true,
+  "sourceType": "official",
+  "author": {
+    "name": "Anthropic"
+  },
+  "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/gopls-lsp",
+  "contents": {
+    "files": [
+      {
+        "name": "README.md",
+        "type": "file"
+      }
+    ]
+  },
+  "updatedAt": "2025-12-19T00:24:41Z",
+  "contentHash": "e9701a9dcadb0bca"
+}

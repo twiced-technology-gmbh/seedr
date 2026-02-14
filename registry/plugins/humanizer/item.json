@@ -2,7 +2,7 @@
   "slug": "humanizer",
   "name": "Humanizer",
   "type": "plugin",
-  "description": "Identify and remove AI writing patterns from text, replacing inflated language with concrete, human-sounding prose.",
+  "description": "Identifies and removes AI writing patterns to make text sound natural and human-written",
   "longDescription": "Plugin with a single `humanizer` skill and a `patterns.md` reference covering 24 AI writing pattern categories: inflated significance, vague attributions, promotional language, AI vocabulary words, copula avoidance, rule of three, em dash overuse, inline-header lists, decorative emojis, chatbot phrases, and sycophantic tone. Goes beyond pattern removal by guiding the addition of authentic voice — opinions, varied rhythm, and specific details. Based on Wikipedia's Signs of AI Writing reference maintained by WikiProject AI Cleanup.",
   "compatibility": [
     "claude"

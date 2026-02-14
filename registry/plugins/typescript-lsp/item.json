@@ -1,0 +1,26 @@
+{
+  "slug": "typescript-lsp",
+  "name": "TypeScript LSP",
+  "type": "plugin",
+  "description": "TypeScript/JavaScript language server for Claude Code, providing code intelligence features like go-to-definition, find references, and error checking.",
+  "longDescription": "Integrates `typescript-language-server` for TypeScript and JavaScript files (`.ts`, `.tsx`, `.js`, `.jsx`, `.mts`, `.cts`, `.mjs`, `.cjs`). Provides go-to-definition, find references, completions, and error checking. Install via `npm install -g typescript-language-server typescript`.",
+  "compatibility": [
+    "claude"
+  ],
+  "docsOnly": true,
+  "sourceType": "official",
+  "author": {
+    "name": "Anthropic"
+  },
+  "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/typescript-lsp",
+  "contents": {
+    "files": [
+      {
+        "name": "README.md",
+        "type": "file"
+      }
+    ]
+  },
+  "updatedAt": "2025-12-19T00:24:41Z",
+  "contentHash": "6bb7f7de1e53f1a4"
+}

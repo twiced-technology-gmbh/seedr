@@ -1,0 +1,26 @@
+{
+  "slug": "lua-lsp",
+  "name": "Lua LSP",
+  "type": "plugin",
+  "description": "Lua language server for Claude Code, providing code intelligence and diagnostics.",
+  "longDescription": "Integrates `lua-language-server` for Lua files (`.lua`). Provides code intelligence, completions, and diagnostics. Install via `brew install lua-language-server` (macOS), `snap install lua-language-server` (Ubuntu), `pacman -S lua-language-server` (Arch), `dnf install lua-language-server` (Fedora), or pre-built binaries from GitHub releases.",
+  "compatibility": [
+    "claude"
+  ],
+  "docsOnly": true,
+  "sourceType": "official",
+  "author": {
+    "name": "Anthropic"
+  },
+  "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/lua-lsp",
+  "contents": {
+    "files": [
+      {
+        "name": "README.md",
+        "type": "file"
+      }
+    ]
+  },
+  "updatedAt": "2025-12-19T00:24:41Z",
+  "contentHash": "699789acac989f21"
+}

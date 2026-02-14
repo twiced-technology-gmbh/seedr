@@ -1,0 +1,26 @@
+{
+  "slug": "csharp-lsp",
+  "name": "C# LSP",
+  "type": "plugin",
+  "description": "C# language server for Claude Code, providing code intelligence and diagnostics.",
+  "longDescription": "Integrates `csharp-ls` as a language server for C# files (`.cs`). Provides code intelligence including go-to-definition, find references, completions, and diagnostics. Requires .NET SDK 6.0 or later. Install via `dotnet tool install --global csharp-ls` or `brew install csharp-ls` on macOS.",
+  "compatibility": [
+    "claude"
+  ],
+  "docsOnly": true,
+  "sourceType": "official",
+  "author": {
+    "name": "Anthropic"
+  },
+  "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/csharp-lsp",
+  "contents": {
+    "files": [
+      {
+        "name": "README.md",
+        "type": "file"
+      }
+    ]
+  },
+  "updatedAt": "2025-12-19T00:24:41Z",
+  "contentHash": "7d072c7cbe3746d9"
+}

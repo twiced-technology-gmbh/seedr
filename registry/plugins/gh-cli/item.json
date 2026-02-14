@@ -2,14 +2,14 @@
   "slug": "gh-cli",
   "name": "GH CLI",
   "type": "plugin",
-  "description": "Intercept GitHub URL fetches and curl/wget commands, redirecting to the authenticated `gh` CLI for private repo access and higher rate limits.",
+  "description": "Intercepts GitHub URL fetches and curl/wget commands, redirecting to the authenticated gh CLI. Includes gh CLI usage guidance.",
   "longDescription": "Plugin with 1 skill (`using-gh-cli`) and 4 hooks that intercept `WebFetch` and Bash `curl`/`wget` calls to GitHub domains, suggesting authenticated `gh` CLI equivalents instead. Covers repos, issues, PRs, releases, raw content, and API endpoints. Includes 6 reference docs for `gh` subcommands and a `SessionEnd` hook that auto-cleans cloned repos from temp directories. Silently passes through when `gh` is not installed.",
   "compatibility": [
     "claude"
   ],
   "sourceType": "community",
   "author": {
-    "name": "Trail of Bits",
+    "name": "William Tan",
     "url": "https://github.com/trailofbits"
   },
   "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/gh-cli",

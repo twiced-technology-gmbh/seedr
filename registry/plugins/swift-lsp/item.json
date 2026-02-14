@@ -1,0 +1,26 @@
+{
+  "slug": "swift-lsp",
+  "name": "Swift LSP",
+  "type": "plugin",
+  "description": "Swift language server (SourceKit-LSP) for Claude Code, providing code intelligence for Swift projects.",
+  "longDescription": "Integrates `sourcekit-lsp` (SourceKit-LSP) as a language server for Swift files (`.swift`). Provides code intelligence, completions, go-to-definition, and diagnostics. Included with the Swift toolchain — install Xcode or `brew install swift` (macOS), or Swift from swift.org (Linux). No separate installation required if Swift is already available.",
+  "compatibility": [
+    "claude"
+  ],
+  "docsOnly": true,
+  "sourceType": "official",
+  "author": {
+    "name": "Anthropic"
+  },
+  "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/swift-lsp",
+  "contents": {
+    "files": [
+      {
+        "name": "README.md",
+        "type": "file"
+      }
+    ]
+  },
+  "updatedAt": "2025-12-19T00:24:41Z",
+  "contentHash": "e349484ba26940bd"
+}

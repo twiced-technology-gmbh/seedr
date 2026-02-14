@@ -1,0 +1,26 @@
+{
+  "slug": "pyright-lsp",
+  "name": "Pyright LSP",
+  "type": "plugin",
+  "description": "Python language server (Pyright) for Claude Code, providing static type checking and code intelligence.",
+  "longDescription": "Integrates Microsoft `pyright` as a language server for Python files (`.py`, `.pyi`). Provides static type checking, code intelligence, go-to-definition, find references, and diagnostics. Install via `npm install -g pyright`, `pip install pyright`, or `pipx install pyright`.",
+  "compatibility": [
+    "claude"
+  ],
+  "docsOnly": true,
+  "sourceType": "official",
+  "author": {
+    "name": "Anthropic"
+  },
+  "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pyright-lsp",
+  "contents": {
+    "files": [
+      {
+        "name": "README.md",
+        "type": "file"
+      }
+    ]
+  },
+  "updatedAt": "2025-12-19T00:24:41Z",
+  "contentHash": "28c541b0fc0ce7c9"
+}

@@ -1,0 +1,26 @@
+{
+  "slug": "jdtls-lsp",
+  "name": "JDTLS LSP",
+  "type": "plugin",
+  "description": "Java language server (Eclipse JDT.LS) for Claude Code, providing code intelligence and refactoring.",
+  "longDescription": "Integrates Eclipse `jdtls` (JDT Language Server) for Java files (`.java`). Provides code intelligence, refactoring, completions, and diagnostics. Requires Java 17 or later. Install via `brew install jdtls` (macOS), AUR `yay -S jdtls` (Arch), or manual download from Eclipse JDT.LS releases.",
+  "compatibility": [
+    "claude"
+  ],
+  "docsOnly": true,
+  "sourceType": "official",
+  "author": {
+    "name": "Anthropic"
+  },
+  "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/jdtls-lsp",
+  "contents": {
+    "files": [
+      {
+        "name": "README.md",
+        "type": "file"
+      }
+    ]
+  },
+  "updatedAt": "2025-12-19T00:24:41Z",
+  "contentHash": "6f8652db8c419ba6"
+}

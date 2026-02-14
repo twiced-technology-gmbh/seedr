@@ -57,6 +57,31 @@ async function fetchPluginJson(repo: string, basePath: string, slug: string): Pr
   return fetchJson<PluginJson>(url);
 }
 
+async function fetchReadmeMd(repo: string, basePath: string, slug: string): Promise<{ name: string; description: string } | null> {
+  const url = `${GITHUB_RAW}/${repo}/main/${basePath}/${slug}/README.md`;
+  const content = await fetchText(url);
+  if (!content) return null;
+
+  // Extract name from first # heading, description from first paragraph
+  const headingMatch = content.match(/^#\s+(.+)$/m);
+  const name = headingMatch ? headingMatch[1].trim() : formatName(slug);
+
+  // First non-empty paragraph after the heading (or from start if no heading)
+  const lines = content.split("\n");
+  let description = "";
+  let pastHeading = !headingMatch; // if no heading, start collecting immediately
+  for (const line of lines) {
+    if (line.startsWith("# ")) { pastHeading = true; continue; }
+    if (!pastHeading) continue;
+    const trimmed = line.trim();
+    if (trimmed === "") { if (description) break; continue; }
+    if (trimmed.startsWith("#") || trimmed.startsWith("```")) break;
+    description += (description ? " " : "") + trimmed;
+  }
+
+  return { name, description };
+}
+
 async function fetchSkillMd(repo: string, basePath: string, slug: string): Promise<{ name: string; description: string } | null> {
   const url = `${GITHUB_RAW}/${repo}/main/${basePath}/${slug}/SKILL.md`;
   const content = await fetchText(url);
@@ -191,12 +216,17 @@ export async function syncAnthropic(): Promise<ManifestItem[]> {
     includeFileTree: true,
     fetchMetadata: async (repo, basePath, slug) => {
       const plugin = await fetchPluginJson(repo, basePath, slug);
-      if (!plugin) return null;
-      return {
-        name: plugin.name,
-        description: plugin.description,
-        author: plugin.author ? { name: plugin.author.name, url: plugin.author.url } : undefined,
-      };
+      if (plugin) {
+        return {
+          name: plugin.name,
+          description: plugin.description,
+          author: plugin.author ? { name: plugin.author.name, url: plugin.author.url } : undefined,
+        };
+      }
+      // Fall back to README.md for plugins without plugin.json (e.g. LSPs)
+      const readme = await fetchReadmeMd(repo, basePath, slug);
+      if (!readme) return null;
+      return { name: readme.name, description: readme.description };
     },
   }) : [];
 
