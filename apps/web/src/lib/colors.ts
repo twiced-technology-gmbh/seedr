@@ -137,5 +137,4 @@ export const extensionLabels: Record<string, string> = {
   agent: "Agent",
   command: "Command",
   mcp: "MCP Server",
-  lsp: "LSP",
 };

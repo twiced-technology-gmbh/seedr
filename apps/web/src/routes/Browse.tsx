@@ -2,8 +2,7 @@ import { useMemo } from "react";
 import { useParams, Link, useSearchParams } from "react-router-dom";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import Fuse from "fuse.js";
-import { X } from "lucide-react";
-import { Breadcrumb, SearchInput, FilterDropdown, IconButton } from "@/components/ui";
+import { Breadcrumb, SearchInput, FilterDropdown } from "@/components/ui";
 import type { FilterOption } from "@/components/ui";
 import { SortDropdown } from "@/components/ui/SortDropdown";
 import type { SortField } from "@/components/ui/SortDropdown";
@@ -41,14 +40,13 @@ const pluginTypeOptions: FilterOption<PluginType>[] = [
   { value: "integration", label: "Integration" },
 ];
 
-type ExtensionType = "skill" | "hook" | "agent" | "command" | "mcp" | "lsp";
+type ExtensionType = "skill" | "hook" | "agent" | "command" | "mcp";
 const extensionOptions: FilterOption<ExtensionType>[] = [
   { value: "skill", label: "Skill" },
   { value: "hook", label: "Hook" },
   { value: "agent", label: "Agent" },
   { value: "command", label: "Command" },
   { value: "mcp", label: "MCP Server" },
-  { value: "lsp", label: "LSP" },
 ];
 
 const sortFields: SortField[] = [
@@ -115,7 +113,14 @@ export function Browse() {
     }
   };
   const setScopeFilter = (value: ScopeType | null) => updateParams({ scope: value });
-  const setPluginTypeFilter = (value: PluginType | null) => updateParams({ pluginType: value });
+  const setPluginTypeFilter = (value: PluginType | null) => {
+    // Extension filter only applies to wrappers — clear it when switching away
+    if (value !== "wrapper") {
+      updateParams({ pluginType: value, ext: null });
+    } else {
+      updateParams({ pluginType: value });
+    }
+  };
   const setExtFilter = (value: ExtensionType | null) => updateParams({ ext: value });
   const setSortField = (value: string) => updateParams({ sortField: value === "name" ? null : value });
   const toggleSortDir = () => updateParams({ sortAsc: sortAsc ? "false" : null });
@@ -168,16 +173,6 @@ export function Browse() {
 
   // Check if any filters are active
   const hasActiveFilters = query !== "" || toolFilter !== null || sourceFilter !== null || scopeFilter !== null || pluginTypeFilter !== null || extFilter !== null;
-
-  // Reset all filters
-  const resetFilters = () => {
-    setQuery("");
-    setToolFilter(null);
-    setSourceFilter(null);
-    setScopeFilter(null);
-    setPluginTypeFilter(null);
-    setExtFilter(null);
-  };
 
   if (!componentType || !typeLabelPlural[componentType]) {
     return (
@@ -239,7 +234,7 @@ export function Browse() {
           />
         )}
 
-        {isPlugins && (
+        {isPlugins && pluginTypeFilter === "wrapper" && (
           <FilterDropdown
             value={extFilter}
             options={extensionOptions}
@@ -285,16 +280,7 @@ export function Browse() {
           minWidth={110}
         />
 
-        {/* Reset filters - only show when filters are active */}
-        {hasActiveFilters && (
-          <IconButton
-            icon={<X className="w-full h-full" />}
-            variant="danger"
-            size="sm"
-            tooltip={{ title: "Clear Filters", description: "Reset all filters" }}
-            onClick={resetFilters}
-          />
-        )}
+
       </div>
 
       {/* Grid */}
