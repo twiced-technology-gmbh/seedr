@@ -3,7 +3,7 @@
   "name": "Security Guidance",
   "type": "plugin",
   "description": "Security reminder hook that warns about potential security issues when editing files, including command injection, XSS, and unsafe code patterns",
-  "longDescription": "Installs a Python-based post-tool-use hook that scans file edits for 9 vulnerability patterns: GitHub Actions workflow injection, `child_process` command injection, dynamic `Function()` creation, `eval`(), React `dangerouslySetInnerHTML` XSS, `document.write` DOM XSS, `innerHTML` XSS, Python pickle deserialization, and `os.system()` injection. Warns on detection without blocking, acting as a passive safety net.",
+  "longDescription": "Installs a Python-based post-tool-use hook that scans file edits for **9 vulnerability patterns**:\n\n- GitHub Actions workflow injection\n- `child_process` command injection\n- Dynamic `Function()` creation and `eval()`\n- React `dangerouslySetInnerHTML` XSS\n- `document.write` DOM XSS and `innerHTML` XSS\n- Python pickle deserialization\n- `os.system()` injection\n\nWarns on detection without blocking, acting as a passive safety net.",
   "compatibility": [
     "claude"
   ],

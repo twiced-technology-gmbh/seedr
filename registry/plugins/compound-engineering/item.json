@@ -3,7 +3,7 @@
   "name": "Compound Engineering",
   "type": "plugin",
   "description": "Plan, review, research, and automate development workflows with 29 specialized agents, 22 commands, 19 skills, and an MCP server.",
-  "longDescription": "29 agents across 5 categories: review (Rails, TypeScript, Python, security, performance, architecture), research (best practices, framework docs, git history), design (Figma sync, iteration), workflow (bug reproduction, PR resolution), and docs. 22 commands including a `/workflows:` suite for planning, reviewing, and compounding. 19 skills covering browser automation, git worktree management, image generation, and swarm orchestration. Ships with a `context7` MCP server for code context.",
+  "longDescription": "Ships **29 agents**, **22 commands**, **19 skills**, and a `context7` MCP server.\n\n- **Code reviewers** (15): Rails, TypeScript, Python, security, performance, architecture, data integrity\n- **Research agents** (5): best practices, framework docs, git history\n- **Design agents** (3): Figma sync, iteration\n- **Workflow agents** (5): bug reproduction, PR resolution, linting\n- **Commands**: `/workflows:` suite (`plan`, `review`, `work`, `compound`, `brainstorm`)\n- **Skills**: browser automation, git worktree, image generation, swarm orchestration",
   "compatibility": [
     "claude"
   ],

@@ -3,7 +3,7 @@
   "name": "React Native Skills",
   "type": "skill",
   "description": "React Native and Expo best practices for building performant mobile apps. Use",
-  "longDescription": "38 individual rules from Vercel for performant React Native and Expo apps. Covers list performance (8 rules for virtualization, memo, image handling, stable references), native UI (10 rules for Expo Image, modals, menus, `Pressable`, safe areas, `StyleSheet`), Reanimated animation (3 rules for derived values, gestures, GPU properties), state management (4 rules), React Compiler compatibility (2 rules), monorepo setup (2 rules), plus navigation, fonts, and rendering patterns. Each rule is a standalone markdown file with problem, solution, and code examples.",
+  "longDescription": "**38 rules** from Vercel for performant React Native and Expo apps:\n\n- **List performance** (8): virtualization, memo, image handling, stable references\n- **Native UI** (10): Expo Image, modals, menus, `Pressable`, safe areas, `StyleSheet`\n- **Reanimated animation** (3): derived values, gestures, GPU properties\n- **State management** (4), **React Compiler** (2), **Monorepo setup** (2)\n\nPlus navigation, fonts, and rendering patterns. Each rule is a standalone markdown file with problem, solution, and code examples.",
   "compatibility": [
     "claude",
     "copilot",

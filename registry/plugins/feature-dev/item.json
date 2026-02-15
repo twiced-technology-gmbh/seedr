@@ -3,7 +3,7 @@
   "name": "Feature Dev",
   "type": "plugin",
   "description": "Comprehensive feature development workflow with specialized agents for codebase exploration, architecture design, and quality review",
-  "longDescription": "Adds a `/feature-dev` command that orchestrates a 7-phase workflow: discovery, codebase exploration, clarifying questions, architecture design, implementation, quality review, and summary. Dispatches 3 agents (code-explorer, code-architect, code-reviewer) in parallel at key phases -- exploration launches 2-3 agents targeting similar features, patterns, and conventions; architecture compares minimal, clean, and pragmatic approaches; review checks simplicity, correctness, and conventions.",
+  "longDescription": "Adds a `/feature-dev` command that orchestrates a **7-phase workflow** with **3 agents** (code-explorer, code-architect, code-reviewer):\n\n- **Discovery** → **Codebase exploration** → **Clarifying questions** → **Architecture design** → **Implementation** → **Quality review** → **Summary**\n\nExploration launches 2-3 agents targeting similar features, patterns, and conventions. Architecture compares minimal, clean, and pragmatic approaches. Review checks simplicity, correctness, and conventions.",
   "compatibility": [
     "claude"
   ],

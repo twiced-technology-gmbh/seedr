@@ -123,7 +123,7 @@ export function Detail() {
       {longDescription && (
         <div className="mb-8">
           <h2 className="text-xs font-medium text-text-dim uppercase tracking-wider mb-2">TL;DR</h2>
-          <div className="text-sm text-subtext [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded [&_code]:bg-overlay/50 [&_code]:text-text-dim [&_code]:font-mono [&_code]:text-xs">
+          <div className="text-sm text-subtext [&_code]:text-text [&_code]:font-medium [&_strong]:text-text [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1 [&_li]:pl-0.5 [&_p+ul]:mt-1.5 [&_ul+p]:mt-1.5 [&_p+p]:mt-1.5">
             <Markdown
               remarkPlugins={[remarkGfm]}
               components={{ p: ({ children }) => <p>{children}</p> }}

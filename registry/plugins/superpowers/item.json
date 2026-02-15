@@ -3,7 +3,7 @@
   "name": "Superpowers",
   "type": "plugin",
   "description": "Core skills library for Claude Code: TDD, debugging, collaboration patterns, and proven techniques",
-  "longDescription": "Comprehensive skills library by Jesse Vincent with 14 skills, 1 agent, and 3 commands. Skills cover TDD (with anti-patterns doc), systematic debugging (root cause tracing, defense in depth, condition-based waiting), subagent-driven development (with implementer, spec-reviewer, and quality-reviewer prompts), code review (requesting and receiving), git worktrees, plan writing, brainstorming, dispatching parallel agents, and verification before completion. Commands: `/brainstorm`, `/write-plan`, `/execute-plan`. Includes a session-start hook and a code-reviewer agent.",
+  "longDescription": "Skills library by Jesse Vincent with **14 skills**, **1 agent**, **3 commands**, and a session-start hook.\n\n- **Skills**: TDD (with anti-patterns doc), systematic debugging (root cause tracing, defense in depth), subagent-driven development, code review (requesting and receiving), git worktrees, plan writing, brainstorming, parallel agent dispatch, verification before completion\n- **Commands**: `/brainstorm`, `/write-plan`, `/execute-plan`\n- **Agent**: code-reviewer",
   "compatibility": [
     "claude"
   ],

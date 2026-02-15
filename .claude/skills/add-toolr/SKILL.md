@@ -106,24 +106,45 @@ A single sentence that tells the user what the extension is capable of.
 
 **`longDescription` rules:**
 
-Implementation-level detail that tells the user exactly what they're getting — specific files, component names, agent roles, and concrete counts.
+Implementation-level detail that tells the user exactly what they're getting — specific files, component names, agent roles, and concrete counts. Uses **structured markdown** — the TL;DR section renders bold, inline code, and bullet lists.
 
-- Name specific files, scripts, modules, agents, and commands included (e.g. "Ships with recalc.py for formula recalculation" not "includes formula support")
+- **Lead sentence**: Summarize what's included at a glance (counts, component types)
+- **Bullet list**: When listing **3+ items** of the same kind (agents, categories, scripts), use a markdown bullet list with **bold category names** (e.g., `- **Code reviewers** (15): Rails, TypeScript, ...`)
+- **No bullets for simple items**: If the item has only 1-2 components, keep it as prose
+- Name specific files, scripts, agents, and commands by name — not vague categories
 - Include exact counts: number of patterns, rules, themes, agents, commands, skills
-- Describe the technical approach or architecture (e.g. "works directly with OOXML rather than openpyxl")
-- List concrete capabilities by name, not by category (e.g. "cell styles, named ranges, charts, conditional formatting" not "various spreadsheet features")
+- **Bold** counts and category names for scannability (e.g., `**29 agents**`, `**Bloaters** (5)`)
+- **Backticks** for file names, paths, commands, code identifiers (e.g., `` `recalc.py` ``, `` `/hookify` ``). Do NOT backtick brand names (React), pattern names (Factory Method), or role names (code reviewer)
 - No filler, no marketing speak — just the implementation facts
-- After reading this, the user should know exactly what files/tools they'll get and how they work
-- 3-5 sentences, typically 50-90 words. The pre-commit hook enforces a minimum of 30 words.
-- **Use backticks** around file names, paths, extensions, field names, command names, and code-like identifiers (e.g. `` `recalc.py` ``, `` `.claude/agents/` ``, `` `/hookify` ``). Do NOT backtick brand names (React, Tailwind CSS), pattern names (Factory Method), or agent role names (code reviewer).
+- Typically 50-90 words. The pre-commit hook enforces a minimum of 30 words.
 
-**Examples of good description pairs:**
+**Examples of good longDescriptions:**
 
-| description | longDescription |
-|---|---|
-| "Create, read, edit, and fix .xlsx, .xlsm, .csv, and .tsv spreadsheet files." | "Create, read, edit, and fix `.xlsx`, `.xlsm`, `.csv`, and `.tsv` files by working directly with spreadsheet OOXML rather than relying on openpyxl. Includes `recalc.py` for formula recalculation, plus shared office scripts for OOXML pack/unpack, schema validation against ECMA and ISO-IEC29500-4 standards, and LibreOffice conversion. Provides full control over cell styles, named ranges, charts, conditional formatting, and complex workbook structures. Handles messy data cleanup: malformed rows, misplaced headers, and format conversion between tabular file types." |
-| "Analyze code for 23 classic code smells across 5 categories with refactoring guidance." | "Detects all 23 classic code smells organized into 5 categories: Bloaters (Long Method, Large Class, Primitive Obsession, Long Parameter List, Data Clumps), OO Abusers (Switch Statements, Temporary Field, Refused Bequest, Alternative Classes), Change Preventers (Divergent Change, Shotgun Surgery, Parallel Inheritance), Dispensables (Dead Code, Duplicate Code, Lazy Class, Speculative Generality, Data Class, Comments), and Couplers (Feature Envy, Inappropriate Intimacy, Message Chains, Middle Man, Incomplete Library Class). Each smell includes detection criteria, severity rating, and specific refactoring techniques to fix it." |
-| "Hook creation toolkit that generates event-driven hooks from natural language rules." | "Hook creation toolkit with 4 commands (`/hookify`, `/configure`, `/list`, `/help`), a conversation-analyzer agent, a writing-rules skill, and a Python rule engine. Generates hooks for 5 event types: bash commands, file edits, prompt submissions, session stops, and a catch-all. Each hook can warn or block. Includes 4 example rules: `console.log` warnings, dangerous `rm` prevention, test requirements, and sensitive file protection." |
+Complex package (bullets):
+```
+Ships **29 agents**, **22 commands**, **19 skills**, and a `context7` MCP server.
+
+- **Code reviewers** (15): Rails, TypeScript, Python, security, performance, architecture, data integrity
+- **Research agents** (5): best practices, framework docs, git history
+- **Workflow agents** (5): bug reproduction, PR resolution, linting
+- **Commands**: `/workflows:` suite (`plan`, `review`, `work`, `compound`, `brainstorm`)
+```
+
+Skill with categories (bullets):
+```
+Detects all **23 classic code smells** from Martin Fowler's catalog across 5 categories:
+
+- **Bloaters** (5): Long Method, Large Class, Primitive Obsession, Long Parameter List, Data Clumps
+- **OO Abusers** (4): Switch Statements, Temporary Field, Refused Bequest, Alternative Classes
+- **Couplers** (5): Feature Envy, Inappropriate Intimacy, Message Chains, Middle Man
+
+Each smell includes detection heuristics, `file:line` locations, and the fix. Language-agnostic.
+```
+
+Simple wrapper (prose):
+```
+Connects via Slack MCP server to search messages, list channels, read threads, and pull conversation history into context. No local server to install — authenticates through Slack's OAuth flow.
+```
 
 **Examples of bad longDescriptions:**
 
