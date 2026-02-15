@@ -360,6 +360,21 @@ export function parsePluginContents(files: FileTreeNode[]): ParsedPluginContents
     }
   }
 
+  // Scan plugins/ subdirectory for marketplace-style repos containing sub-plugins
+  const pluginsDir = files.find(f => f.name === "plugins" && f.type === "directory");
+  if (pluginsDir?.children) {
+    for (const subPlugin of pluginsDir.children.filter(f => f.type === "directory")) {
+      if (!subPlugin.children) continue;
+      const sub = parsePluginContents(subPlugin.children);
+      for (const key of ["skills", "agents", "commands", "hooks", "mcpServers"] as const) {
+        const items = sub[key];
+        if (items && items.length > 0) {
+          contents[key] = contents[key] ? [...contents[key]!, ...items] : items;
+        }
+      }
+    }
+  }
+
   return contents;
 }
 
