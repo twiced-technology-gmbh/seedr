@@ -201,12 +201,21 @@ export function Browse() {
         <h1 className="text-3xl font-bold text-text mb-2">
           {typeLabelPlural[componentType]}
         </h1>
-        <p className="text-subtext">
+        <p className="text-subtext text-sm mb-1">
           {filteredItems.length} {pluralize(componentType, filteredItems.length)} available
           {hasActiveFilters && items.length !== filteredItems.length && (
             <span className="text-text-dim"> (filtered from {items.length})</span>
           )}
         </p>
+        {isPlugins ? (
+          <p className="text-text-dim text-xs leading-relaxed">
+            Plugins come in three types: <strong className="text-subtext">Packages</strong> bundle multiple extensions, <strong className="text-subtext">Wrappers</strong> ship a single extension as a plugin, and <strong className="text-subtext">Integrations</strong> set up external tools like language servers.
+          </p>
+        ) : (
+          <p className="text-text-dim text-xs">
+            Includes native {typeLabelPlural[componentType].toLowerCase()} and those wrapped inside plugins. Use the Source filter to narrow down.
+          </p>
+        )}
       </div>
 
       {/* Filter Bar */}
