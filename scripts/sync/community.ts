@@ -15,7 +15,7 @@ import {
   parsePluginContents,
 } from "./utils.js";
 import type { PluginJson } from "./utils.js";
-import type { ManifestItem, PluginContents } from "./types.js";
+import type { ManifestItem, PluginContents, ParsedPluginContents } from "./types.js";
 
 /**
  * Parse owner/repo and optional subpath from an externalUrl.
@@ -29,23 +29,64 @@ function parseExternalUrl(url: string): { repo: string; basePath: string } | nul
 
 async function refreshPlugin(item: ManifestItem, repo: string, basePath: string): Promise<ManifestItem> {
   const pluginJsonUrl = `${GITHUB_RAW}/${repo}/main/${basePath ? basePath + "/" : ""}.claude-plugin/plugin.json`;
-  const pluginJson = await fetchJson<PluginJson>(pluginJsonUrl);
+  const pluginJson = await fetchJson<PluginJson & { mcpServers?: Record<string, unknown> }>(pluginJsonUrl);
 
   const repoTree = await fetchRepoTree(repo);
   const updatedAt = await fetchLastCommitDate(repo, basePath || ".");
   const contentHash = repoTree.length > 0 ? computeContentHash(repoTree, basePath) : null;
   const files = repoTree.length > 0 ? extractSubtree(repoTree, basePath, 6) : [];
-  const contents: PluginContents = files.length > 0 ? parsePluginContents(files) : item.contents ?? {};
 
-  return {
+  const result: ManifestItem = {
     ...item,
     ...(pluginJson && { description: pluginJson.description }),
     ...(!item.name && pluginJson && { name: formatName(pluginJson.name || item.slug) }),
     ...(pluginJson?.author && { author: { name: pluginJson.author.name, url: pluginJson.author.url } }),
     ...(contentHash && { contentHash }),
     ...(updatedAt && { updatedAt }),
-    contents,
+    contents: files.length > 0 ? { files } : item.contents ?? {},
   };
+
+  // Reclassify plugin type from file tree (preserve integration if manually set)
+  if (files.length > 0 && item.pluginType !== "integration") {
+    const parsed = parsePluginContents(files);
+
+    // Detect MCP servers declared in plugin.json (not visible in file tree)
+    if (pluginJson?.mcpServers) {
+      const names = Object.keys(pluginJson.mcpServers);
+      if (names.length > 0 && !parsed.mcpServers) {
+        parsed.mcpServers = names;
+      }
+    }
+
+    const contentKeyToType: Record<string, string> = {
+      skills: "skill", agents: "agent", hooks: "hook",
+      commands: "command", mcpServers: "mcp",
+    };
+    const typeCounts: Record<string, number> = {};
+    for (const [key, typeName] of Object.entries(contentKeyToType)) {
+      const arr = parsed[key as keyof ParsedPluginContents];
+      if (Array.isArray(arr) && arr.length > 0) {
+        typeCounts[typeName] = arr.length;
+      }
+    }
+    const typeNames = Object.keys(typeCounts);
+
+    if (typeNames.length === 0) {
+      result.pluginType = "package";
+      result.package = {};
+      delete result.wrapper;
+    } else if (typeNames.length === 1) {
+      result.pluginType = "wrapper";
+      result.wrapper = typeNames[0];
+      delete result.package;
+    } else {
+      result.pluginType = "package";
+      result.package = typeCounts;
+      delete result.wrapper;
+    }
+  }
+
+  return result;
 }
 
 async function refreshSkill(item: ManifestItem, repo: string, basePath: string): Promise<ManifestItem> {

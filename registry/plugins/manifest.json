@@ -62,22 +62,47 @@
       "updatedAt": "2026-02-13T04:08:06Z"
     },
     {
-      "slug": "compound-engineering",
-      "name": "Compound Engineering",
+      "slug": "coding-tutor",
+      "name": "Coding Tutor",
       "type": "plugin",
-      "description": "AI-powered development toolkit with specialized agents, commands, and skills for planning, reviewing, researching, and compounding engineering knowledge.",
+      "description": "Generate personalized coding tutorials from your codebase with spaced-repetition quizzes to reinforce learning.",
       "compatibility": [
         "claude"
       ],
-      "pluginType": "wrapper",
-      "wrapper": "command",
+      "pluginType": "package",
+      "package": {
+        "command": 3,
+        "skill": 1
+      },
+      "sourceType": "community",
+      "author": {
+        "name": "Nityesh Agarwal"
+      },
+      "externalUrl": "https://github.com/EveryInc/compound-engineering-plugin/tree/main/plugins/coding-tutor",
+      "updatedAt": "2026-01-20T04:24:00Z"
+    },
+    {
+      "slug": "compound-engineering",
+      "name": "Compound Engineering",
+      "type": "plugin",
+      "description": "Plan, review, research, and automate development workflows with 29 specialized agents, 22 commands, 19 skills, and an MCP server.",
+      "compatibility": [
+        "claude"
+      ],
+      "pluginType": "package",
+      "package": {
+        "agent": 29,
+        "command": 22,
+        "skill": 19,
+        "mcp": 1
+      },
       "sourceType": "community",
       "author": {
         "name": "Kieran Klaassen",
         "url": "https://github.com/kieranklaassen"
       },
-      "externalUrl": "https://github.com/EveryInc/compound-engineering-plugin",
-      "updatedAt": "2026-02-13T17:54:42Z"
+      "externalUrl": "https://github.com/EveryInc/compound-engineering-plugin/tree/main/plugins/compound-engineering",
+      "updatedAt": "2026-02-15T04:50:46Z"
     },
     {
       "slug": "context7",

@@ -27,9 +27,15 @@ Normalize to `owner` and `repo` variables. If a subpath is present, store it as 
 
 Use `gh api` to inspect the repo. Check in this order:
 
+**Marketplace** (repos containing multiple plugins):
+```bash
+gh api repos/{owner}/{repo}/contents/{basePath}/.claude-plugin/marketplace.json --jq '.content' | base64 -d
+```
+If `.claude-plugin/marketplace.json` exists, this is a **marketplace**. Parse the JSON and proceed to **step 2a** below.
+
 **Plugin** (most common for full repos):
 ```bash
-gh api repos/{owner}/{repo}/contents/.claude-plugin/plugin.json --jq '.content' | base64 -d
+gh api repos/{owner}/{repo}/contents/{basePath}/.claude-plugin/plugin.json --jq '.content' | base64 -d
 ```
 If `.claude-plugin/plugin.json` exists, this is a **plugin**. Parse the JSON for metadata.
 
@@ -40,6 +46,58 @@ gh api repos/{owner}/{repo}/contents/{basePath}/SKILL.md --jq '.content' | base6
 If `SKILL.md` exists, this is a **skill**. Parse YAML frontmatter for name/description.
 
 **Ambiguous**: If neither is found, ask the user with AskUserQuestion what type it is.
+
+### 2a. Marketplace handling
+
+When a marketplace is detected, each sub-plugin is added as a **separate registry item**. Do NOT create a single item for the marketplace root — the root-level files (CLAUDE.md, .claude/, etc.) are marketplace development files, not a plugin.
+
+**marketplace.json format:**
+```json
+{
+  "name": "marketplace-name",
+  "plugins": [
+    {
+      "name": "plugin-a",
+      "description": "...",
+      "author": { "name": "..." },
+      "source": "./plugins/plugin-a"
+    },
+    {
+      "name": "plugin-b",
+      "description": "...",
+      "author": { "name": "..." },
+      "source": "./plugins/plugin-b"
+    }
+  ]
+}
+```
+
+**Processing each sub-plugin:**
+
+1. Parse `marketplace.json` — extract the `plugins` array
+2. Tell the user: "This is a marketplace with N plugins:" followed by each plugin's name and description from marketplace.json
+3. Ask: "Add all N plugins?" (Yes/Select specific ones)
+4. For each selected plugin:
+   a. Resolve `source` path relative to basePath (e.g., `./plugins/foo` → `plugins/foo`)
+   b. Set the sub-plugin's `basePath` to this resolved path
+   c. Derive `slug` from the directory name (last segment of source path, e.g., `plugins/foo` → `foo`)
+   d. Fetch metadata from the sub-plugin's own `.claude-plugin/plugin.json`:
+      ```bash
+      gh api repos/{owner}/{repo}/contents/{basePath}/{source}/.claude-plugin/plugin.json --jq '.content' | base64 -d
+      ```
+   e. Set `externalUrl` to `https://github.com/{owner}/{repo}/tree/main/{resolved-source-path}`
+   f. Proceed with steps 3–8 for this sub-plugin (file tree, dates, classification, descriptions, write item.json)
+5. After all sub-plugins are processed, compile manifest once:
+   ```bash
+   npx tsx scripts/compile-manifest.ts
+   ```
+
+**Important marketplace notes:**
+- Each sub-plugin gets its own `item.json` in `registry/plugins/{slug}/`
+- Each has its own `externalUrl` pointing to the sub-plugin subdirectory, NOT the marketplace root
+- Compatibility questions can be asked once and shared across all sub-plugins (plugins are typically `["claude"]`)
+- Description questions (step 6) must be asked per-plugin — each has different content
+- The community sync script (`community.ts`) refreshes each sub-plugin independently via its `externalUrl`
 
 ### 3. Extract metadata
 
@@ -69,7 +127,7 @@ Fetch the repo's directory structure via GitHub API:
 gh api repos/{owner}/{repo}/contents/{basePath} --jq '.[].name'
 ```
 
-Recursively build `FileTreeNode[]` (max depth 3 to avoid API rate limits). For each entry:
+Recursively build `FileTreeNode[]` (max depth 6). For each entry:
 - If `type == "dir"`, recurse into it and add as `{ name, type: "directory", children: [...] }`
 - If `type == "file"`, add as `{ name, type: "file" }`
 
@@ -208,6 +266,9 @@ Item shape:
   "longDescription": "<detailed description>",
   "compatibility": ["<from user>"],
   "sourceType": "community",
+  "pluginType": "<package|wrapper|integration>",
+  "wrapper": "<extension type if wrapper>",
+  "package": { "<type>": <count>, ... },
   "author": {
     "name": "<from plugin.json or repo owner>",
     "url": "<author url or github profile>"
@@ -215,27 +276,29 @@ Item shape:
   "externalUrl": "https://github.com/{owner}/{repo}/tree/main/{basePath}",
   "updatedAt": "<last commit date ISO 8601>",
   "contents": {
-    "skills": ["<skill names>"],
-    "agents": ["<agent names>"],
-    "hooks": ["<hook names>"],
-    "commands": ["<command names>"],
-    "mcpServers": ["<mcp names>"],
     "files": [<file tree>]
   }
 }
 ```
 
-Note: Community items do NOT include `targetScope` — that field is only for Toolr items.
+Notes:
+- Community items do NOT include `targetScope` — that field is only for Toolr items.
+- `contents` only has `files` (the file tree). Extension counts go in `package` instead.
+- Only include `pluginType`-specific fields: `wrapper` for wrappers, `package` for packages. Omit the other.
 
-Only include `contents` sub-fields that have items (omit empty arrays).
+**Plugin classification** — after building the file tree, classify the plugin:
 
-**Extracting content arrays from the file tree** — scan root-level and `.claude/` subdirectories:
+Count extension types by scanning root-level and `.claude/` subdirectories:
+- `skills/` → count `.md` files or skill directories
+- `agents/` → count `.md` files or agent directories
+- `commands/` → count `.md` files or command directories
+- `hooks/` → if `hooks.json` exists, fetch it and count trigger keys. Otherwise count hook scripts
+- `mcp-servers/` or `.mcp.json` → count MCP servers. Also check `plugin.json` for `mcpServers` field
 
-- `skills/` → list `.md` filenames (without extension), or directory names if skills are dirs (e.g. `skills/foo/SKILL.md` → `"foo"`)
-- `agents/` → same as skills (`.md` files or directory names)
-- `commands/` → same as skills (`.md` files or directory names)
-- `hooks/` → list script filenames (ignore `hooks.json`, `__init__.py`, test files like `.bats`/`.test.`/`.spec.`). If only `hooks.json` exists (scripts in separate dir), include `["hooks.json"]` to indicate presence
-- `mcp-servers/` → list all file/directory names (strip extensions)
+Then classify:
+- **0 or 1 extension types** with single item → `pluginType: "wrapper"`, `wrapper: "<type>"` (e.g., `"mcp"`, `"hook"`, `"skill"`)
+- **Multiple extension types** → `pluginType: "package"`, `package: { "skill": N, "agent": N, ... }`
+- **No extensions, only docs** → ask user if this is an `integration` (e.g., LSP setup guide)
 
 Write with `JSON.stringify(item, null, 2) + "\n"`.
 
@@ -256,5 +319,6 @@ Print summary:
 
 - **No local file copy** — community items are metadata-only in the manifest. The CLI/web fetches content from `externalUrl` at install time.
 - `sourceType` is `"community"`, same as Anthropic's synced community plugins. The sync script (`scripts/sync.ts`) preserves manually-added community items by checking slugs — if a community item's slug doesn't match any freshly synced item, it survives the sync.
+- **Marketplace sub-plugins** are regular community items. Each has its own `externalUrl` pointing to the sub-plugin subdirectory. The community sync refreshes each independently. No special `marketplace` field is needed.
 - GitHub API rate limits: unauthenticated = 60 req/hr, authenticated (gh cli) = 5000 req/hr. Using `gh api` ensures authenticated access.
-- For repos with many subdirectories, limit file tree depth to 3 levels to stay within reasonable API usage.
+- Build file trees with max depth 6 to capture nested plugin structures.

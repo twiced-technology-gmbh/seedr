@@ -1,0 +1,65 @@
+{
+  "slug": "coding-tutor",
+  "name": "Coding Tutor",
+  "type": "plugin",
+  "description": "Generate personalized coding tutorials from your codebase with spaced-repetition quizzes to reinforce learning.",
+  "longDescription": "Includes 3 commands (`/teach-me`, `/quiz-me`, `/sync-tutorials`) and a `coding-tutor` skill with 4 Python scripts for tutorial creation, indexing, quiz prioritization, and setup. Creates tutorials using real code from your projects, adapts to your knowledge level, and tracks progress over time. Tutorials are stored in `~/coding-tutor-tutorials/` and can be synced to GitHub for backup.",
+  "compatibility": [
+    "claude"
+  ],
+  "pluginType": "package",
+  "package": {
+    "command": 3,
+    "skill": 1
+  },
+  "sourceType": "community",
+  "author": {
+    "name": "Nityesh Agarwal"
+  },
+  "externalUrl": "https://github.com/EveryInc/compound-engineering-plugin/tree/main/plugins/coding-tutor",
+  "updatedAt": "2026-01-20T04:24:00Z",
+  "contents": {
+    "files": [
+      {
+        "name": ".claude-plugin",
+        "type": "directory",
+        "children": [
+          { "name": "plugin.json", "type": "file" }
+        ]
+      },
+      {
+        "name": "commands",
+        "type": "directory",
+        "children": [
+          { "name": "quiz-me.md", "type": "file" },
+          { "name": "sync-tutorials.md", "type": "file" },
+          { "name": "teach-me.md", "type": "file" }
+        ]
+      },
+      {
+        "name": "skills",
+        "type": "directory",
+        "children": [
+          {
+            "name": "coding-tutor",
+            "type": "directory",
+            "children": [
+              { "name": "SKILL.md", "type": "file" },
+              {
+                "name": "scripts",
+                "type": "directory",
+                "children": [
+                  { "name": "create_tutorial.py", "type": "file" },
+                  { "name": "index_tutorials.py", "type": "file" },
+                  { "name": "quiz_priority.py", "type": "file" },
+                  { "name": "setup_tutorials.py", "type": "file" }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      { "name": "README.md", "type": "file" }
+    ]
+  }
+}

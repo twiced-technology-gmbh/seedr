@@ -2,122 +2,162 @@
   "slug": "compound-engineering",
   "name": "Compound Engineering",
   "type": "plugin",
-  "description": "AI-powered development toolkit with specialized agents, commands, and skills for planning, reviewing, researching, and compounding engineering knowledge.",
-  "longDescription": "Marketplace plugin containing 2 sub-plugins. The main `compound-engineering` plugin ships 29 agents (15 reviewers including Rails, TypeScript, Python, security, performance, and data integrity specialists; 5 research agents; 3 design agents; 5 workflow agents), 22 commands (including `/workflows:plan`, `/workflows:work`, `/workflows:review`, `/workflows:compound`), 19 skills (browser automation, git worktree management, image generation, swarm orchestration, and more), and 1 MCP server (`context7`). Also includes a `coding-tutor` sub-plugin with 3 commands and 1 skill for spaced-repetition coding tutorials. Includes a CLI (`bunx @every-env/compound-plugin`) for syncing to OpenCode, Codex, Cursor, Droid, and Pi.",
+  "description": "Plan, review, research, and automate development workflows with 29 specialized agents, 22 commands, 19 skills, and an MCP server.",
+  "longDescription": "Ships 29 agents: 15 code reviewers (Rails, TypeScript, Python, security, performance, architecture, data integrity), 5 research agents (best practices, framework docs, git history), 3 design agents (Figma sync, iteration), 5 workflow agents (bug reproduction, PR resolution, linting), and a docs agent. Includes 22 commands with a `/workflows:` suite (`plan`, `review`, `work`, `compound`, `brainstorm`), 19 skills (browser automation, git worktree, image generation, swarm orchestration), and a `context7` MCP server.",
   "compatibility": [
     "claude"
   ],
-  "pluginType": "wrapper",
-  "wrapper": "command",
+  "pluginType": "package",
+  "package": {
+    "agent": 29,
+    "command": 22,
+    "skill": 19,
+    "mcp": 1
+  },
   "sourceType": "community",
   "author": {
     "name": "Kieran Klaassen",
     "url": "https://github.com/kieranklaassen"
   },
-  "externalUrl": "https://github.com/EveryInc/compound-engineering-plugin",
+  "externalUrl": "https://github.com/EveryInc/compound-engineering-plugin/tree/main/plugins/compound-engineering",
+  "updatedAt": "2026-02-15T04:50:46Z",
   "contents": {
     "files": [
       {
         "name": ".claude-plugin",
         "type": "directory",
         "children": [
-          {
-            "name": "marketplace.json",
-            "type": "file"
-          }
+          { "name": "plugin.json", "type": "file" }
         ]
       },
       {
-        "name": ".claude",
+        "name": "agents",
         "type": "directory",
         "children": [
           {
-            "name": "commands",
+            "name": "design",
             "type": "directory",
             "children": [
-              {
-                "name": "release-docs.md",
-                "type": "file"
-              },
-              {
-                "name": "triage-prs.md",
-                "type": "file"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "name": "plugins",
-        "type": "directory",
-        "children": [
-          {
-            "name": "compound-engineering",
-            "type": "directory",
-            "children": [
-              {
-                "name": ".claude-plugin",
-                "type": "directory"
-              },
-              {
-                "name": "agents",
-                "type": "directory"
-              },
-              {
-                "name": "commands",
-                "type": "directory"
-              },
-              {
-                "name": "skills",
-                "type": "directory"
-              },
-              {
-                "name": "CLAUDE.md",
-                "type": "file"
-              },
-              {
-                "name": "README.md",
-                "type": "file"
-              }
+              { "name": "design-implementation-reviewer.md", "type": "file" },
+              { "name": "design-iterator.md", "type": "file" },
+              { "name": "figma-design-sync.md", "type": "file" }
             ]
           },
           {
-            "name": "coding-tutor",
+            "name": "docs",
             "type": "directory",
             "children": [
-              {
-                "name": ".claude-plugin",
-                "type": "directory"
-              },
-              {
-                "name": "commands",
-                "type": "directory"
-              },
-              {
-                "name": "skills",
-                "type": "directory"
-              },
-              {
-                "name": "README.md",
-                "type": "file"
-              }
+              { "name": "ankane-readme-writer.md", "type": "file" }
+            ]
+          },
+          {
+            "name": "research",
+            "type": "directory",
+            "children": [
+              { "name": "best-practices-researcher.md", "type": "file" },
+              { "name": "framework-docs-researcher.md", "type": "file" },
+              { "name": "git-history-analyzer.md", "type": "file" },
+              { "name": "learnings-researcher.md", "type": "file" },
+              { "name": "repo-research-analyst.md", "type": "file" }
+            ]
+          },
+          {
+            "name": "review",
+            "type": "directory",
+            "children": [
+              { "name": "agent-native-reviewer.md", "type": "file" },
+              { "name": "architecture-strategist.md", "type": "file" },
+              { "name": "code-simplicity-reviewer.md", "type": "file" },
+              { "name": "data-integrity-guardian.md", "type": "file" },
+              { "name": "data-migration-expert.md", "type": "file" },
+              { "name": "deployment-verification-agent.md", "type": "file" },
+              { "name": "dhh-rails-reviewer.md", "type": "file" },
+              { "name": "julik-frontend-races-reviewer.md", "type": "file" },
+              { "name": "kieran-python-reviewer.md", "type": "file" },
+              { "name": "kieran-rails-reviewer.md", "type": "file" },
+              { "name": "kieran-typescript-reviewer.md", "type": "file" },
+              { "name": "pattern-recognition-specialist.md", "type": "file" },
+              { "name": "performance-oracle.md", "type": "file" },
+              { "name": "schema-drift-detector.md", "type": "file" },
+              { "name": "security-sentinel.md", "type": "file" }
+            ]
+          },
+          {
+            "name": "workflow",
+            "type": "directory",
+            "children": [
+              { "name": "bug-reproduction-validator.md", "type": "file" },
+              { "name": "every-style-editor.md", "type": "file" },
+              { "name": "lint.md", "type": "file" },
+              { "name": "pr-comment-resolver.md", "type": "file" },
+              { "name": "spec-flow-analyzer.md", "type": "file" }
             ]
           }
         ]
       },
       {
-        "name": "AGENTS.md",
-        "type": "file"
+        "name": "commands",
+        "type": "directory",
+        "children": [
+          { "name": "agent-native-audit.md", "type": "file" },
+          { "name": "changelog.md", "type": "file" },
+          { "name": "create-agent-skill.md", "type": "file" },
+          { "name": "deepen-plan.md", "type": "file" },
+          { "name": "deploy-docs.md", "type": "file" },
+          { "name": "feature-video.md", "type": "file" },
+          { "name": "generate_command.md", "type": "file" },
+          { "name": "heal-skill.md", "type": "file" },
+          { "name": "lfg.md", "type": "file" },
+          { "name": "report-bug.md", "type": "file" },
+          { "name": "reproduce-bug.md", "type": "file" },
+          { "name": "resolve_parallel.md", "type": "file" },
+          { "name": "resolve_todo_parallel.md", "type": "file" },
+          { "name": "slfg.md", "type": "file" },
+          { "name": "test-browser.md", "type": "file" },
+          { "name": "test-xcode.md", "type": "file" },
+          { "name": "triage.md", "type": "file" },
+          {
+            "name": "workflows",
+            "type": "directory",
+            "children": [
+              { "name": "brainstorm.md", "type": "file" },
+              { "name": "compound.md", "type": "file" },
+              { "name": "plan.md", "type": "file" },
+              { "name": "review.md", "type": "file" },
+              { "name": "work.md", "type": "file" }
+            ]
+          }
+        ]
       },
       {
-        "name": "CLAUDE.md",
-        "type": "file"
+        "name": "skills",
+        "type": "directory",
+        "children": [
+          { "name": "agent-browser", "type": "directory" },
+          { "name": "agent-native-architecture", "type": "directory" },
+          { "name": "andrew-kane-gem-writer", "type": "directory" },
+          { "name": "brainstorming", "type": "directory" },
+          { "name": "compound-docs", "type": "directory" },
+          { "name": "create-agent-skills", "type": "directory" },
+          { "name": "dhh-rails-style", "type": "directory" },
+          { "name": "document-review", "type": "directory" },
+          { "name": "dspy-ruby", "type": "directory" },
+          { "name": "every-style-editor", "type": "directory" },
+          { "name": "file-todos", "type": "directory" },
+          { "name": "frontend-design", "type": "directory" },
+          { "name": "gemini-imagegen", "type": "directory" },
+          { "name": "git-worktree", "type": "directory" },
+          { "name": "orchestrating-swarms", "type": "directory" },
+          { "name": "rclone", "type": "directory" },
+          { "name": "resolve-pr-parallel", "type": "directory" },
+          { "name": "setup", "type": "directory" },
+          { "name": "skill-creator", "type": "directory" }
+        ]
       },
-      {
-        "name": "README.md",
-        "type": "file"
-      }
+      { "name": "CHANGELOG.md", "type": "file" },
+      { "name": "CLAUDE.md", "type": "file" },
+      { "name": "LICENSE", "type": "file" },
+      { "name": "README.md", "type": "file" }
     ]
-  },
-  "updatedAt": "2026-02-13T17:54:42Z"
+  }
 }
