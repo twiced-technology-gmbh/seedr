@@ -9,7 +9,7 @@ import { ScopeBadge } from "./ScopeBadge";
 import { ToolIcon } from "./ToolIcon";
 import { formatRelativeTime } from "@/lib/text";
 import { typeLabels, typeTextColors, toolLabels } from "@/lib/colors";
-import type { RegistryItem, SourceType, ScopeType, AITool } from "@/lib/types";
+import type { RegistryItem, SourceType, ScopeType, AITool, PluginType } from "@/lib/types";
 
 const extensionIcons = [
   { type: "skill", icon: Sparkles, label: "Skills" },
@@ -64,10 +64,11 @@ interface ItemCardProps {
   onSourceClick?: (source: SourceType) => void;
   onScopeClick?: (scope: ScopeType) => void;
   onToolClick?: (tool: AITool) => void;
+  onPluginTypeClick?: (pluginType: PluginType) => void;
   onDateClick?: () => void;
 }
 
-export function ItemCard({ item, onSourceClick, onScopeClick, onToolClick, onDateClick }: ItemCardProps) {
+export function ItemCard({ item, onSourceClick, onScopeClick, onToolClick, onPluginTypeClick, onDateClick }: ItemCardProps) {
   const interactive = "cursor-pointer hover:brightness-125 transition-all";
 
   return (
@@ -81,19 +82,25 @@ export function ItemCard({ item, onSourceClick, onScopeClick, onToolClick, onDat
               </span>
             )}
             {item.pluginType === "package" && (
-              <Tooltip content={{ title: "Package", description: "Bundles multiple extensions (skills, hooks, agents, etc.) into a single plugin" }} position="top">
-                <Badge color="indigo" icon={Package}>Package</Badge>
-              </Tooltip>
+              <span onClick={clickable(onPluginTypeClick ? () => onPluginTypeClick("package") : undefined)} className={onPluginTypeClick ? interactive : ""}>
+                <Tooltip content={{ title: "Package", description: "Bundles multiple extensions (skills, hooks, agents, etc.) into a single plugin" }} position="top">
+                  <Badge color="indigo" icon={Package}>Package</Badge>
+                </Tooltip>
+              </span>
             )}
             {item.pluginType === "wrapper" && (
-              <Tooltip content={{ title: "Wrapper", description: `Wraps a single ${item.wrapper} extension as a plugin` }} position="top">
-                <Badge color="teal" icon={Box}>Wrapper</Badge>
-              </Tooltip>
+              <span onClick={clickable(onPluginTypeClick ? () => onPluginTypeClick("wrapper") : undefined)} className={onPluginTypeClick ? interactive : ""}>
+                <Tooltip content={{ title: "Wrapper", description: `Wraps a single ${item.wrapper} extension as a plugin` }} position="top">
+                  <Badge color="teal" icon={Box}>Wrapper</Badge>
+                </Tooltip>
+              </span>
             )}
             {item.pluginType === "integration" && (
-              <Tooltip content={{ title: "Integration", description: "Integrates an external tool with your AI assistant. Installing adds it to enabledPlugins — the README explains how to set up the tool itself." }} position="top">
-                <Badge color="purple" icon={BookOpen}>Integration</Badge>
-              </Tooltip>
+              <span onClick={clickable(onPluginTypeClick ? () => onPluginTypeClick("integration") : undefined)} className={onPluginTypeClick ? interactive : ""}>
+                <Tooltip content={{ title: "Integration", description: "Integrates an external tool with your AI assistant. Installing adds it to enabledPlugins — the README explains how to set up the tool itself." }} position="top">
+                  <Badge color="purple" icon={BookOpen}>Integration</Badge>
+                </Tooltip>
+              </span>
             )}
             {item.sourceType === "toolr" && item.targetScope && (
               <span onClick={clickable(onScopeClick ? () => onScopeClick(item.targetScope!) : undefined)} className={onScopeClick ? interactive : ""}>

@@ -307,6 +307,7 @@ export function Browse() {
               onSourceClick={setSourceFilter}
               onScopeClick={setScopeFilter}
               onToolClick={setToolFilter}
+              onPluginTypeClick={isPlugins ? setPluginTypeFilter : undefined}
               onDateClick={() => {
                 if (sortField === "updated") {
                   toggleSortDir();
