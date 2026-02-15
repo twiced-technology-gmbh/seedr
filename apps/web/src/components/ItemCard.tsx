@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Clock, Sparkles, Bot, Webhook, Terminal, Plug, BookOpen } from "lucide-react";
+import { Clock, Sparkles, Bot, Webhook, Terminal, Plug, Package, Box, BookOpen } from "lucide-react";
 import { Badge } from "./ui/Badge";
 import { Card } from "./ui/Card";
 import { Tooltip } from "./ui/Tooltip";
@@ -80,14 +80,19 @@ export function ItemCard({ item, onSourceClick, onScopeClick, onToolClick, onDat
                 <SourceBadge source={item.sourceType} />
               </span>
             )}
+            {item.pluginType === "package" && (
+              <Tooltip content={{ title: "Package", description: "Bundles multiple extensions (skills, hooks, agents, etc.) into a single plugin" }} position="top">
+                <Badge color="indigo" icon={Package}>Package</Badge>
+              </Tooltip>
+            )}
             {item.pluginType === "wrapper" && (
               <Tooltip content={{ title: "Wrapper", description: `Wraps a single ${item.wrapper} extension as a plugin` }} position="top">
-                <Badge color="teal">wrapper</Badge>
+                <Badge color="teal" icon={Box}>Wrapper</Badge>
               </Tooltip>
             )}
             {item.pluginType === "integration" && (
               <Tooltip content={{ title: "Integration", description: "Integrates an external tool with your AI assistant. Installing adds it to enabledPlugins — the README explains how to set up the tool itself." }} position="top">
-                <Badge color="purple" icon={BookOpen}>integration</Badge>
+                <Badge color="purple" icon={BookOpen}>Integration</Badge>
               </Tooltip>
             )}
             {item.sourceType === "toolr" && item.targetScope && (
