@@ -3,7 +3,7 @@
   "name": "Ask Questions If Underspecified",
   "type": "plugin",
   "description": "Clarify ambiguous requirements by asking questions before implementing. Only when invoked explicitly.",
-  "longDescription": "Plugin with a single `ask-questions-if-underspecified` skill that activates when requests are ambiguous — unclear objectives, scope, constraints, or acceptance criteria. Asks 1–5 scannable, multiple-choice questions with recommended defaults before any code changes. Supports a fast-path `defaults` reply to accept all recommendations. Includes question templates for scope, compatibility targets, and done criteria, plus anti-patterns to avoid over-questioning.",
+  "longDescription": "Plugin with a single `ask-questions-if-underspecified` skill that activates when requests are ambiguous \u2014 unclear objectives, scope, constraints, or acceptance criteria. Asks 1\u20135 scannable, multiple-choice questions with recommended defaults before any code changes. Supports a fast-path `defaults` reply to accept all recommendations. Includes question templates for scope, compatibility targets, and done criteria, plus anti-patterns to avoid over-questioning.",
   "compatibility": [
     "claude"
   ],
@@ -15,9 +15,6 @@
   "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified",
   "updatedAt": "2026-02-12T15:28:33Z",
   "contents": {
-    "skills": [
-      "ask-questions-if-underspecified"
-    ],
     "files": [
       {
         "name": ".claude-plugin",
@@ -49,6 +46,10 @@
         "name": "README.md",
         "type": "file"
       }
+    ],
+    "skills": [
+      "ask-questions-if-underspecified"
     ]
-  }
+  },
+  "contentHash": "14da821fba60c3ae"
 }

@@ -76,6 +76,9 @@
     ],
     "commands": [
       "audit-context"
+    ],
+    "skills": [
+      "audit-context-building"
     ]
   },
   "contentHash": "82a4cebe1d0a5668"

@@ -4,7 +4,7 @@ import {
   Bot,
   Terminal,
   Settings,
-  Server,
+  Plug,
   Package,
 } from "lucide-react";
 import type { ComponentType } from "@/lib/types";
@@ -17,7 +17,7 @@ const typeIcons: Record<ComponentType, typeof Sparkles> = {
   plugin: Package,
   command: Terminal,
   settings: Settings,
-  mcp: Server,
+  mcp: Plug,
 };
 
 interface TypeIconProps {

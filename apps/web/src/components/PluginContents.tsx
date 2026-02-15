@@ -1,4 +1,4 @@
-import { Sparkles, Bot, Webhook, Terminal, Server } from "lucide-react";
+import { Sparkles, Bot, Webhook, Terminal, Plug } from "lucide-react";
 import type { PluginContents as PluginContentsType } from "@/lib/types";
 import { typeTextColors } from "@/lib/colors";
 
@@ -12,7 +12,7 @@ const contentTypes = [
   { key: "agents", icon: Bot, label: "Agents", type: "agent" },
   { key: "hooks", icon: Webhook, label: "Hooks", type: "hook" },
   { key: "commands", icon: Terminal, label: "Commands", type: "command" },
-  { key: "mcpServers", icon: Server, label: "MCP Servers", type: "mcp" },
+  { key: "mcpServers", icon: Plug, label: "MCP Servers", type: "mcp" },
 ] as const;
 
 export function PluginContents({ contents, className = "" }: PluginContentsProps) {

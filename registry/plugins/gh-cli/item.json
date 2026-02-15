@@ -15,15 +15,6 @@
   "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/gh-cli",
   "updatedAt": "2026-02-13T02:16:05Z",
   "contents": {
-    "skills": [
-      "using-gh-cli"
-    ],
-    "hooks": [
-      "intercept-github-curl.sh",
-      "intercept-github-fetch.sh",
-      "cleanup-clones.sh",
-      "persist-session-id.sh"
-    ],
     "files": [
       {
         "name": ".claude-plugin",
@@ -86,38 +77,12 @@
             "type": "directory",
             "children": [
               {
-                "name": "SKILL.md",
-                "type": "file"
+                "name": "references",
+                "type": "directory"
               },
               {
-                "name": "references",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "actions.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "api.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "issues.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "pull-requests.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "releases.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "repos-and-files.md",
-                    "type": "file"
-                  }
-                ]
+                "name": "SKILL.md",
+                "type": "file"
               }
             ]
           }
@@ -127,6 +92,15 @@
         "name": "README.md",
         "type": "file"
       }
+    ],
+    "hooks": [
+      "SessionStart",
+      "PreToolUse",
+      "SessionEnd"
+    ],
+    "skills": [
+      "using-gh-cli"
     ]
-  }
+  },
+  "contentHash": "6f9deffa0339b9f9"
 }

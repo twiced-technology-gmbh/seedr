@@ -15,9 +15,6 @@
   "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/skill-extractor",
   "updatedAt": "2026-02-06T16:22:35Z",
   "contents": {
-    "skills": [
-      "skill-extractor"
-    ],
     "files": [
       {
         "name": ".claude-plugin",
@@ -67,6 +64,9 @@
         "name": "README.md",
         "type": "file"
       }
+    ],
+    "skills": [
+      "skill-extractor"
     ]
   }
 }

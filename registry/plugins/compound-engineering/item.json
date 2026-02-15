@@ -15,89 +15,6 @@
   "externalUrl": "https://github.com/EveryInc/compound-engineering-plugin",
   "updatedAt": "2026-02-13T17:54:42Z",
   "contents": {
-    "skills": [
-      "agent-browser",
-      "agent-native-architecture",
-      "andrew-kane-gem-writer",
-      "brainstorming",
-      "compound-docs",
-      "create-agent-skills",
-      "dhh-rails-style",
-      "document-review",
-      "dspy-ruby",
-      "every-style-editor",
-      "file-todos",
-      "frontend-design",
-      "gemini-imagegen",
-      "git-worktree",
-      "orchestrating-swarms",
-      "rclone",
-      "resolve-pr-parallel",
-      "setup",
-      "skill-creator",
-      "coding-tutor"
-    ],
-    "agents": [
-      "design-implementation-reviewer",
-      "design-iterator",
-      "figma-design-sync",
-      "ankane-readme-writer",
-      "best-practices-researcher",
-      "framework-docs-researcher",
-      "git-history-analyzer",
-      "learnings-researcher",
-      "repo-research-analyst",
-      "agent-native-reviewer",
-      "architecture-strategist",
-      "code-simplicity-reviewer",
-      "data-integrity-guardian",
-      "data-migration-expert",
-      "deployment-verification-agent",
-      "dhh-rails-reviewer",
-      "julik-frontend-races-reviewer",
-      "kieran-python-reviewer",
-      "kieran-rails-reviewer",
-      "kieran-typescript-reviewer",
-      "pattern-recognition-specialist",
-      "performance-oracle",
-      "schema-drift-detector",
-      "security-sentinel",
-      "bug-reproduction-validator",
-      "every-style-editor",
-      "lint",
-      "pr-comment-resolver",
-      "spec-flow-analyzer"
-    ],
-    "commands": [
-      "agent-native-audit",
-      "changelog",
-      "create-agent-skill",
-      "deepen-plan",
-      "deploy-docs",
-      "feature-video",
-      "generate_command",
-      "heal-skill",
-      "lfg",
-      "report-bug",
-      "reproduce-bug",
-      "resolve_parallel",
-      "resolve_todo_parallel",
-      "slfg",
-      "test-browser",
-      "test-xcode",
-      "triage",
-      "workflows:brainstorm",
-      "workflows:compound",
-      "workflows:plan",
-      "workflows:review",
-      "workflows:work",
-      "quiz-me",
-      "sync-tutorials",
-      "teach-me"
-    ],
-    "mcpServers": [
-      "context7"
-    ],
     "files": [
       {
         "name": ".claude-plugin",
@@ -199,6 +116,10 @@
         "name": "README.md",
         "type": "file"
       }
+    ],
+    "commands": [
+      "release-docs",
+      "triage-prs"
     ]
   }
 }

@@ -51,9 +51,6 @@
       "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified",
       "updatedAt": "2026-02-12T15:28:33Z",
       "contents": {
-        "skills": [
-          "ask-questions-if-underspecified"
-        ],
         "files": [
           {
             "name": ".claude-plugin",
@@ -85,8 +82,12 @@
             "name": "README.md",
             "type": "file"
           }
+        ],
+        "skills": [
+          "ask-questions-if-underspecified"
         ]
-      }
+      },
+      "contentHash": "14da821fba60c3ae"
     },
     {
       "slug": "audit-context-building",
@@ -165,6 +166,9 @@
         ],
         "commands": [
           "audit-context"
+        ],
+        "skills": [
+          "audit-context-building"
         ]
       },
       "contentHash": "82a4cebe1d0a5668"
@@ -185,89 +189,6 @@
       "externalUrl": "https://github.com/EveryInc/compound-engineering-plugin",
       "updatedAt": "2026-02-13T17:54:42Z",
       "contents": {
-        "skills": [
-          "agent-browser",
-          "agent-native-architecture",
-          "andrew-kane-gem-writer",
-          "brainstorming",
-          "compound-docs",
-          "create-agent-skills",
-          "dhh-rails-style",
-          "document-review",
-          "dspy-ruby",
-          "every-style-editor",
-          "file-todos",
-          "frontend-design",
-          "gemini-imagegen",
-          "git-worktree",
-          "orchestrating-swarms",
-          "rclone",
-          "resolve-pr-parallel",
-          "setup",
-          "skill-creator",
-          "coding-tutor"
-        ],
-        "agents": [
-          "design-implementation-reviewer",
-          "design-iterator",
-          "figma-design-sync",
-          "ankane-readme-writer",
-          "best-practices-researcher",
-          "framework-docs-researcher",
-          "git-history-analyzer",
-          "learnings-researcher",
-          "repo-research-analyst",
-          "agent-native-reviewer",
-          "architecture-strategist",
-          "code-simplicity-reviewer",
-          "data-integrity-guardian",
-          "data-migration-expert",
-          "deployment-verification-agent",
-          "dhh-rails-reviewer",
-          "julik-frontend-races-reviewer",
-          "kieran-python-reviewer",
-          "kieran-rails-reviewer",
-          "kieran-typescript-reviewer",
-          "pattern-recognition-specialist",
-          "performance-oracle",
-          "schema-drift-detector",
-          "security-sentinel",
-          "bug-reproduction-validator",
-          "every-style-editor",
-          "lint",
-          "pr-comment-resolver",
-          "spec-flow-analyzer"
-        ],
-        "commands": [
-          "agent-native-audit",
-          "changelog",
-          "create-agent-skill",
-          "deepen-plan",
-          "deploy-docs",
-          "feature-video",
-          "generate_command",
-          "heal-skill",
-          "lfg",
-          "report-bug",
-          "reproduce-bug",
-          "resolve_parallel",
-          "resolve_todo_parallel",
-          "slfg",
-          "test-browser",
-          "test-xcode",
-          "triage",
-          "workflows:brainstorm",
-          "workflows:compound",
-          "workflows:plan",
-          "workflows:review",
-          "workflows:work",
-          "quiz-me",
-          "sync-tutorials",
-          "teach-me"
-        ],
-        "mcpServers": [
-          "context7"
-        ],
         "files": [
           {
             "name": ".claude-plugin",
@@ -369,6 +290,10 @@
             "name": "README.md",
             "type": "file"
           }
+        ],
+        "commands": [
+          "release-docs",
+          "triage-prs"
         ]
       }
     },
@@ -456,15 +381,6 @@
       "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/gh-cli",
       "updatedAt": "2026-02-13T02:16:05Z",
       "contents": {
-        "skills": [
-          "using-gh-cli"
-        ],
-        "hooks": [
-          "intercept-github-curl.sh",
-          "intercept-github-fetch.sh",
-          "cleanup-clones.sh",
-          "persist-session-id.sh"
-        ],
         "files": [
           {
             "name": ".claude-plugin",
@@ -527,38 +443,12 @@
                 "type": "directory",
                 "children": [
                   {
-                    "name": "SKILL.md",
-                    "type": "file"
+                    "name": "references",
+                    "type": "directory"
                   },
                   {
-                    "name": "references",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "actions.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "api.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "issues.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "pull-requests.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "releases.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "repos-and-files.md",
-                        "type": "file"
-                      }
-                    ]
+                    "name": "SKILL.md",
+                    "type": "file"
                   }
                 ]
               }
@@ -568,8 +458,17 @@
             "name": "README.md",
             "type": "file"
           }
+        ],
+        "hooks": [
+          "SessionStart",
+          "PreToolUse",
+          "SessionEnd"
+        ],
+        "skills": [
+          "using-gh-cli"
         ]
-      }
+      },
+      "contentHash": "6f9deffa0339b9f9"
     },
     {
       "slug": "git-cleanup",
@@ -587,9 +486,6 @@
       "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/git-cleanup",
       "updatedAt": "2026-02-12T00:59:33Z",
       "contents": {
-        "skills": [
-          "git-cleanup"
-        ],
         "files": [
           {
             "name": ".claude-plugin",
@@ -621,8 +517,12 @@
             "name": "README.md",
             "type": "file"
           }
+        ],
+        "skills": [
+          "git-cleanup"
         ]
-      }
+      },
+      "contentHash": "95bb00deb758dee0"
     },
     {
       "slug": "github",
@@ -747,9 +647,6 @@
       "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/humanizer",
       "updatedAt": "2026-02-06T16:22:35Z",
       "contents": {
-        "skills": [
-          "humanizer"
-        ],
         "files": [
           {
             "name": ".claude-plugin",
@@ -791,6 +688,9 @@
             "name": "README.md",
             "type": "file"
           }
+        ],
+        "skills": [
+          "humanizer"
         ]
       }
     },
@@ -844,9 +744,6 @@
       "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/last30days",
       "updatedAt": "2026-02-12T07:49:07Z",
       "contents": {
-        "skills": [
-          "last30days"
-        ],
         "files": [
           {
             "name": ".claude-plugin",
@@ -962,6 +859,9 @@
             "name": "README.md",
             "type": "file"
           }
+        ],
+        "skills": [
+          "last30days"
         ]
       }
     },
@@ -1048,9 +948,6 @@
       "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/second-opinion",
       "updatedAt": "2026-02-13T00:53:29Z",
       "contents": {
-        "skills": [
-          "second-opinion"
-        ],
         "files": [
           {
             "name": ".claude-plugin",
@@ -1071,22 +968,12 @@
                 "type": "directory",
                 "children": [
                   {
-                    "name": "SKILL.md",
-                    "type": "file"
+                    "name": "references",
+                    "type": "directory"
                   },
                   {
-                    "name": "references",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "codex-invocation.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "gemini-invocation.md",
-                        "type": "file"
-                      }
-                    ]
+                    "name": "SKILL.md",
+                    "type": "file"
                   }
                 ]
               }
@@ -1096,8 +983,12 @@
             "name": "README.md",
             "type": "file"
           }
+        ],
+        "skills": [
+          "second-opinion"
         ]
-      }
+      },
+      "contentHash": "88bbe419708f57cb"
     },
     {
       "slug": "serena",
@@ -1149,9 +1040,6 @@
       "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/skill-extractor",
       "updatedAt": "2026-02-06T16:22:35Z",
       "contents": {
-        "skills": [
-          "skill-extractor"
-        ],
         "files": [
           {
             "name": ".claude-plugin",
@@ -1201,6 +1089,9 @@
             "name": "README.md",
             "type": "file"
           }
+        ],
+        "skills": [
+          "skill-extractor"
         ]
       }
     },
@@ -1303,6 +1194,9 @@
         "commands": [
           "explain-error",
           "test-cards"
+        ],
+        "skills": [
+          "stripe-best-practices"
         ]
       },
       "updatedAt": "2025-12-18T16:58:02Z"
@@ -1907,6 +1801,25 @@
           "brainstorm",
           "execute-plan",
           "write-plan"
+        ],
+        "hooks": [
+          "SessionStart"
+        ],
+        "skills": [
+          "brainstorming",
+          "dispatching-parallel-agents",
+          "executing-plans",
+          "finishing-a-development-branch",
+          "receiving-code-review",
+          "requesting-code-review",
+          "subagent-driven-development",
+          "systematic-debugging",
+          "test-driven-development",
+          "using-git-worktrees",
+          "using-superpowers",
+          "verification-before-completion",
+          "writing-plans",
+          "writing-skills"
         ]
       },
       "contentHash": "331d072c4ed12aa0"
@@ -1927,9 +1840,6 @@
       "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/wooyun-legacy",
       "updatedAt": "2026-02-12T00:10:00Z",
       "contents": {
-        "skills": [
-          "wooyun-legacy"
-        ],
         "files": [
           {
             "name": ".claude-plugin",
@@ -2073,6 +1983,9 @@
             "name": "README.md",
             "type": "file"
           }
+        ],
+        "skills": [
+          "wooyun-legacy"
         ]
       }
     },
@@ -2242,6 +2155,9 @@
             "name": "README.md",
             "type": "file"
           }
+        ],
+        "skills": [
+          "claude-automation-recommender"
         ]
       },
       "updatedAt": "2026-01-21T04:15:08Z"
@@ -2331,6 +2247,9 @@
         ],
         "commands": [
           "revise-claude-md"
+        ],
+        "skills": [
+          "claude-md-improver"
         ]
       },
       "updatedAt": "2026-01-20T21:11:06Z"
@@ -2557,6 +2476,9 @@
             "name": "README.md",
             "type": "file"
           }
+        ],
+        "hooks": [
+          "SessionStart"
         ]
       },
       "updatedAt": "2025-12-13T00:52:17Z"
@@ -2677,6 +2599,9 @@
             "name": "README.md",
             "type": "file"
           }
+        ],
+        "skills": [
+          "frontend-design"
         ]
       },
       "updatedAt": "2025-12-13T00:52:17Z"
@@ -2887,6 +2812,15 @@
           "help",
           "hookify",
           "list"
+        ],
+        "hooks": [
+          "PreToolUse",
+          "PostToolUse",
+          "Stop",
+          "UserPromptSubmit"
+        ],
+        "skills": [
+          "writing-rules"
         ]
       },
       "updatedAt": "2026-02-05T17:21:57Z"
@@ -2991,6 +2925,9 @@
             "name": "README.md",
             "type": "file"
           }
+        ],
+        "hooks": [
+          "SessionStart"
         ]
       },
       "updatedAt": "2025-12-13T00:52:17Z"
@@ -3121,6 +3058,9 @@
             "name": "README.md",
             "type": "file"
           }
+        ],
+        "skills": [
+          "playground"
         ]
       },
       "updatedAt": "2026-01-29T23:24:01Z"
@@ -3536,6 +3476,15 @@
         ],
         "commands": [
           "create-plugin"
+        ],
+        "skills": [
+          "agent-development",
+          "command-development",
+          "hook-development",
+          "mcp-integration",
+          "plugin-settings",
+          "plugin-structure",
+          "skill-development"
         ]
       },
       "updatedAt": "2026-02-05T21:57:52Z",
@@ -3728,6 +3677,9 @@
           "cancel-ralph",
           "help",
           "ralph-loop"
+        ],
+        "hooks": [
+          "Stop"
         ]
       },
       "updatedAt": "2026-01-06T23:22:54Z"
@@ -3797,6 +3749,9 @@
               }
             ]
           }
+        ],
+        "hooks": [
+          "PreToolUse"
         ]
       },
       "updatedAt": "2025-12-13T00:52:17Z"

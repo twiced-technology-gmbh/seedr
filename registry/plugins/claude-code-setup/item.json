@@ -75,6 +75,9 @@
         "name": "README.md",
         "type": "file"
       }
+    ],
+    "skills": [
+      "claude-automation-recommender"
     ]
   },
   "updatedAt": "2026-01-21T04:15:08Z"

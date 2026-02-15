@@ -57,6 +57,18 @@ async function fetchPluginJson(repo: string, basePath: string, slug: string): Pr
   return fetchJson<PluginJson>(url);
 }
 
+async function fetchHookTriggers(repo: string, basePath: string, slug: string): Promise<string[] | null> {
+  // Try hooks/hooks.json, then .claude/hooks/hooks.json
+  for (const hooksPath of ["hooks/hooks.json", ".claude/hooks/hooks.json"]) {
+    const url = `${GITHUB_RAW}/${repo}/main/${basePath}/${slug}/${hooksPath}`;
+    const data = await fetchJson<{ hooks?: Record<string, unknown> }>(url);
+    if (data?.hooks) {
+      return Object.keys(data.hooks);
+    }
+  }
+  return null;
+}
+
 async function fetchReadmeMd(repo: string, basePath: string, slug: string): Promise<{ name: string; description: string } | null> {
   const url = `${GITHUB_RAW}/${repo}/main/${basePath}/${slug}/README.md`;
   const content = await fetchText(url);
@@ -139,6 +151,13 @@ async function fetchItems(options: FetchItemsOptions): Promise<ManifestItem[]> {
           const files = extractSubtree(repoTree, `${basePath}/${slug}`, 4);
           if (files.length > 0) {
             contents = parsePluginContents(files);
+            // Replace file-based hooks with trigger names from hooks.json
+            if (contents.hooks) {
+              const triggers = await fetchHookTriggers(repo, basePath, slug);
+              if (triggers && triggers.length > 0) {
+                contents.hooks = triggers;
+              }
+            }
           }
         }
 

@@ -81,7 +81,7 @@ export function FilterDropdown<T extends string>({
     } else if (e.key === "Enter" && highlightIdx >= 0) {
       e.preventDefault();
       const offset = hasAllOption ? 1 : 0;
-      handleSelect(hasAllOption && highlightIdx === 0 ? null : filtered[highlightIdx - offset].value);
+      handleSelect(hasAllOption && highlightIdx === 0 ? null : filtered[highlightIdx - offset]?.value ?? null);
     } else if (e.key === "Escape") {
       e.preventDefault();
       setIsOpen(false);

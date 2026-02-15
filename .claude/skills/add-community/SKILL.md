@@ -228,6 +228,14 @@ Note: Community items do NOT include `targetScope` — that field is only for To
 
 Only include `contents` sub-fields that have items (omit empty arrays).
 
+**Extracting content arrays from the file tree** — scan root-level and `.claude/` subdirectories:
+
+- `skills/` → list `.md` filenames (without extension), or directory names if skills are dirs (e.g. `skills/foo/SKILL.md` → `"foo"`)
+- `agents/` → same as skills (`.md` files or directory names)
+- `commands/` → same as skills (`.md` files or directory names)
+- `hooks/` → list script filenames (ignore `hooks.json`, `__init__.py`, test files like `.bats`/`.test.`/`.spec.`). If only `hooks.json` exists (scripts in separate dir), include `["hooks.json"]` to indicate presence
+- `mcp-servers/` → list all file/directory names (strip extensions)
+
 Write with `JSON.stringify(item, null, 2) + "\n"`.
 
 Then recompile the manifest:

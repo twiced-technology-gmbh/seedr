@@ -49,6 +49,9 @@
         "name": "README.md",
         "type": "file"
       }
+    ],
+    "hooks": [
+      "SessionStart"
     ]
   },
   "updatedAt": "2025-12-13T00:52:17Z"

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Clock, Sparkles, Bot, Webhook, Terminal, Server, BookOpen } from "lucide-react";
+import { Clock, Sparkles, Bot, Webhook, Terminal, Plug, BookOpen } from "lucide-react";
 import { Badge } from "./ui/Badge";
 import { Card } from "./ui/Card";
 import { Tooltip } from "./ui/Tooltip";
@@ -16,7 +16,7 @@ const contentTypes = [
   { key: "agents", icon: Bot, type: "agent", label: "Agents" },
   { key: "hooks", icon: Webhook, type: "hook", label: "Hooks" },
   { key: "commands", icon: Terminal, type: "command", label: "Commands" },
-  { key: "mcpServers", icon: Server, type: "mcp", label: "MCP Servers" },
+  { key: "mcpServers", icon: Plug, type: "mcp", label: "MCP Servers" },
 ] as const;
 
 function ContentsBadges({ contents }: { contents: PluginContents }) {

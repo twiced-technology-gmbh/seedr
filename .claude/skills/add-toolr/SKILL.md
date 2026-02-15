@@ -220,7 +220,28 @@ Write the item metadata as `registry/<type>s/<slug>/item.json`:
 }
 ```
 
-**For hooks**, also include triggers in the `contents` object:
+**For plugins**, extract content arrays from the file tree into `contents`. Scan root-level and `.claude/` subdirectories:
+
+- `skills/` → list `.md` filenames (without extension), or directory names if skills are dirs (e.g. `skills/foo/SKILL.md` → `"foo"`)
+- `agents/` → same as skills (`.md` files or directory names)
+- `commands/` → same as skills (`.md` files or directory names)
+- `hooks/` → list script filenames (ignore `hooks.json`, `__init__.py`, test files). If only `hooks.json` exists (scripts in separate dir), include `["hooks.json"]` to indicate presence
+- `mcp-servers/` → list all file/directory names (strip extensions)
+
+Only include arrays that have items. Example:
+
+```json
+{
+  "contents": {
+    "skills": ["my-skill"],
+    "hooks": ["pre-commit.sh"],
+    "mcpServers": ["my-server"],
+    "files": [<file tree>]
+  }
+}
+```
+
+**For hooks** (standalone hook type, not plugin), also include triggers in the `contents` object:
 
 ```json
 {

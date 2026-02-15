@@ -14,9 +14,6 @@
   "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/second-opinion",
   "updatedAt": "2026-02-13T00:53:29Z",
   "contents": {
-    "skills": [
-      "second-opinion"
-    ],
     "files": [
       {
         "name": ".claude-plugin",
@@ -37,22 +34,12 @@
             "type": "directory",
             "children": [
               {
-                "name": "SKILL.md",
-                "type": "file"
+                "name": "references",
+                "type": "directory"
               },
               {
-                "name": "references",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "codex-invocation.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "gemini-invocation.md",
-                    "type": "file"
-                  }
-                ]
+                "name": "SKILL.md",
+                "type": "file"
               }
             ]
           }
@@ -62,6 +49,10 @@
         "name": "README.md",
         "type": "file"
       }
+    ],
+    "skills": [
+      "second-opinion"
     ]
-  }
+  },
+  "contentHash": "88bbe419708f57cb"
 }

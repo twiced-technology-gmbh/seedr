@@ -180,6 +180,15 @@
       "help",
       "hookify",
       "list"
+    ],
+    "hooks": [
+      "PreToolUse",
+      "PostToolUse",
+      "Stop",
+      "UserPromptSubmit"
+    ],
+    "skills": [
+      "writing-rules"
     ]
   },
   "updatedAt": "2026-02-05T17:21:57Z"

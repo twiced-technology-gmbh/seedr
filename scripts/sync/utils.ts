@@ -289,61 +289,69 @@ export function formatName(slug: string): string {
 export function parsePluginContents(files: FileTreeNode[]): PluginContents {
   const contents: PluginContents = { files };
 
-  const extractItems = (dir: FileTreeNode | undefined): string[] => {
+  const extractMdItems = (dir: FileTreeNode | undefined): string[] => {
     if (!dir?.children) return [];
-    return dir.children
+    // Match .md files (e.g. commands/foo.md) or directories (e.g. skills/foo/SKILL.md)
+    const mdFiles = dir.children
       .filter(f => f.type === "file" && f.name.endsWith(".md"))
       .map(f => f.name.replace(/\.md$/, ""));
+    const dirs = dir.children
+      .filter(f => f.type === "directory")
+      .map(f => f.name);
+    return mdFiles.length > 0 ? mdFiles : dirs;
   };
 
-  const rootDirs = files.filter(f => f.type === "directory");
-  for (const dir of rootDirs) {
-    const items = extractItems(dir);
-    if (items.length === 0) continue;
+  // Hooks are counted by trigger keys in hooks.json, not by file count.
+  // This just detects presence — the sync script replaces with actual trigger names.
+  const detectHooks = (dir: FileTreeNode | undefined): boolean => {
+    if (!dir?.children) return false;
+    return dir.children.some(f => f.type === "file" && f.name === "hooks.json");
+  };
 
+  const extractMcpItems = (dir: FileTreeNode | undefined): string[] => {
+    if (!dir?.children) return [];
+    return dir.children
+      .filter(f => f.type === "file" || f.type === "directory")
+      .map(f => f.name.replace(/\.[^.]+$/, ""));
+  };
+
+  const processDir = (dir: FileTreeNode, merge: boolean) => {
     switch (dir.name) {
-      case "skills":
-        contents.skills = items;
+      case "skills": {
+        const items = extractMdItems(dir);
+        if (items.length > 0) contents.skills = merge ? (contents.skills || items) : items;
         break;
-      case "agents":
-        contents.agents = items;
+      }
+      case "agents": {
+        const items = extractMdItems(dir);
+        if (items.length > 0) contents.agents = merge ? (contents.agents || items) : items;
         break;
-      case "hooks":
-        contents.hooks = items;
+      }
+      case "commands": {
+        const items = extractMdItems(dir);
+        if (items.length > 0) contents.commands = merge ? (contents.commands || items) : items;
         break;
-      case "commands":
-        contents.commands = items;
+      }
+      case "hooks": {
+        if (detectHooks(dir) && !contents.hooks) contents.hooks = ["hooks.json"];
         break;
-      case "mcp-servers":
-        contents.mcpServers = items;
+      }
+      case "mcp-servers": {
+        const items = extractMcpItems(dir);
+        if (items.length > 0) contents.mcpServers = merge ? (contents.mcpServers || items) : items;
         break;
+      }
     }
+  };
+
+  for (const dir of files.filter(f => f.type === "directory")) {
+    processDir(dir, false);
   }
 
   const claudeDir = files.find(f => f.name === ".claude" && f.type === "directory");
   if (claudeDir?.children) {
-    for (const subdir of claudeDir.children) {
-      if (subdir.type !== "directory") continue;
-      const items = extractItems(subdir);
-      if (items.length === 0) continue;
-
-      switch (subdir.name) {
-        case "skills":
-          contents.skills = contents.skills || items;
-          break;
-        case "agents":
-          contents.agents = contents.agents || items;
-          break;
-        case "hooks":
-          contents.hooks = contents.hooks || items;
-          break;
-        case "commands":
-          contents.commands = contents.commands || items;
-          break;
-        case "mcp-servers":
-          contents.mcpServers = contents.mcpServers || items;
-          break;
-      }
+    for (const subdir of claudeDir.children.filter(f => f.type === "directory")) {
+      processDir(subdir, true);
     }
   }
 

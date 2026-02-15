@@ -64,6 +64,9 @@
     "commands": [
       "explain-error",
       "test-cards"
+    ],
+    "skills": [
+      "stripe-best-practices"
     ]
   },
   "updatedAt": "2025-12-18T16:58:02Z"

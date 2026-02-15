@@ -15,9 +15,6 @@
   "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/git-cleanup",
   "updatedAt": "2026-02-12T00:59:33Z",
   "contents": {
-    "skills": [
-      "git-cleanup"
-    ],
     "files": [
       {
         "name": ".claude-plugin",
@@ -49,6 +46,10 @@
         "name": "README.md",
         "type": "file"
       }
+    ],
+    "skills": [
+      "git-cleanup"
     ]
-  }
+  },
+  "contentHash": "95bb00deb758dee0"
 }

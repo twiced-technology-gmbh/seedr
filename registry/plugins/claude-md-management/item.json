@@ -84,6 +84,9 @@
     ],
     "commands": [
       "revise-claude-md"
+    ],
+    "skills": [
+      "claude-md-improver"
     ]
   },
   "updatedAt": "2026-01-20T21:11:06Z"

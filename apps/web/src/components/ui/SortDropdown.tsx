@@ -52,7 +52,7 @@ export function SortDropdown({
       setHighlightIdx((i) => Math.max(i - 1, 0));
     } else if (e.key === "Enter" && highlightIdx >= 0) {
       e.preventDefault();
-      onFieldChange(fields[highlightIdx].value);
+      onFieldChange(fields[highlightIdx]?.value ?? field);
       setIsOpen(false);
     } else if (e.key === "Escape") {
       e.preventDefault();
@@ -60,7 +60,7 @@ export function SortDropdown({
     }
   };
 
-  const current = fields.find((f) => f.value === field) ?? fields[0];
+  const current = fields.find((f) => f.value === field) ?? fields[0]!;
   const DirIcon = ascending ? ArrowUp : ArrowDown;
 
   return (
