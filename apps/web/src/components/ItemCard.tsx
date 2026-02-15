@@ -119,7 +119,9 @@ export function ItemCard({ item, onSourceClick, onScopeClick, onToolClick, onDat
               </Tooltip>
             ))}
           </div>
-          {item.package && <PackageBadges counts={item.package} />}
+          {(item.package || item.wrapper) && (
+            <PackageBadges counts={item.package ?? { [item.wrapper!]: 1 }} />
+          )}
           {item.updatedAt && (
             <span
               onClick={clickable(onDateClick)}
