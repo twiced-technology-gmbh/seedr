@@ -63,7 +63,15 @@ export function getAllItems(): RegistryItem[] {
 }
 
 export function getItemsByType(type: ComponentType): RegistryItem[] {
-  return manifest.items.filter((item) => item.type === type);
+  if (type === "plugin") {
+    return manifest.items.filter((item) => item.type === type);
+  }
+  // Include wrapper plugins that wrap this extension type
+  return manifest.items.filter(
+    (item) =>
+      item.type === type ||
+      (item.type === "plugin" && item.pluginType === "wrapper" && item.wrapper === type)
+  );
 }
 
 export function getItem(slug: string): RegistryItem | undefined {
@@ -115,7 +123,14 @@ export function getFeaturedItems(): RegistryItem[] {
 }
 
 export function getTypeCount(type: ComponentType): number {
-  return manifest.items.filter((item) => item.type === type).length;
+  if (type === "plugin") {
+    return manifest.items.filter((item) => item.type === type).length;
+  }
+  return manifest.items.filter(
+    (item) =>
+      item.type === type ||
+      (item.type === "plugin" && item.pluginType === "wrapper" && item.wrapper === type)
+  ).length;
 }
 
 export function getTypeCounts(): Record<ComponentType, number> {
@@ -131,6 +146,13 @@ export function getTypeCounts(): Record<ComponentType, number> {
 
   for (const item of manifest.items) {
     counts[item.type]++;
+    // Count wrapper plugins under their wrapped extension type too
+    if (item.type === "plugin" && item.pluginType === "wrapper" && item.wrapper) {
+      const wrappedType = item.wrapper as ComponentType;
+      if (wrappedType in counts) {
+        counts[wrappedType]++;
+      }
+    }
   }
 
   return counts;

@@ -162,7 +162,7 @@ async function fetchItems(options: FetchItemsOptions): Promise<ManifestItem[]> {
         let pkg: Record<string, number> | undefined;
 
         if (includeFileTree) {
-          const files = extractSubtree(repoTree, `${basePath}/${slug}`, 4);
+          const files = extractSubtree(repoTree, `${basePath}/${slug}`, 6);
           if (files.length > 0) {
             const parsed = parsePluginContents(files);
             // Replace file-based hooks with trigger names from hooks.json

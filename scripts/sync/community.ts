@@ -34,7 +34,7 @@ async function refreshPlugin(item: ManifestItem, repo: string, basePath: string)
   const repoTree = await fetchRepoTree(repo);
   const updatedAt = await fetchLastCommitDate(repo, basePath || ".");
   const contentHash = repoTree.length > 0 ? computeContentHash(repoTree, basePath) : null;
-  const files = repoTree.length > 0 ? extractSubtree(repoTree, basePath, 3) : [];
+  const files = repoTree.length > 0 ? extractSubtree(repoTree, basePath, 6) : [];
   const contents: PluginContents = files.length > 0 ? parsePluginContents(files) : item.contents ?? {};
 
   return {
@@ -69,7 +69,7 @@ async function refreshSkill(item: ManifestItem, repo: string, basePath: string):
   const repoTree = await fetchRepoTree(repo);
   const updatedAt = await fetchLastCommitDate(repo, basePath || ".");
   const contentHash = repoTree.length > 0 ? computeContentHash(repoTree, basePath) : null;
-  const files = repoTree.length > 0 ? extractSubtree(repoTree, basePath, 3) : [];
+  const files = repoTree.length > 0 ? extractSubtree(repoTree, basePath, 6) : [];
 
   return {
     ...item,

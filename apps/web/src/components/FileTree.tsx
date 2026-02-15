@@ -409,10 +409,15 @@ function getRawUrl(externalUrl: string, filePath: string): string | null {
     return `/${basePath}/${filePath}`;
   }
 
-  // Handle GitHub URLs
-  const match = externalUrl.match(/github\.com\/([^/]+)\/([^/]+)\/tree\/([^/]+)(?:\/(.+))?/);
-  if (!match) return null;
-  const [, owner, repo, branch, basePath] = match;
+  // Handle GitHub URLs — with or without /tree/branch
+  const withTree = externalUrl.match(/github\.com\/([^/]+)\/([^/]+)\/tree\/([^/]+)(?:\/(.+))?/);
+  const withoutTree = !withTree ? externalUrl.match(/github\.com\/([^/]+)\/([^/]+?)(?:\.git)?$/) : null;
+  if (!withTree && !withoutTree) return null;
+
+  const owner = (withTree ?? withoutTree)![1];
+  const repo = (withTree ?? withoutTree)![2];
+  const branch = withTree?.[3] ?? "main";
+  const basePath = withTree?.[4];
 
   // In development, serve Toolr files from local registry
   if (import.meta.env.DEV && owner === "twiced-technology-gmbh" && repo === "seedr") {

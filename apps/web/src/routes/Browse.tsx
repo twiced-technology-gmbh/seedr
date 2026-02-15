@@ -40,6 +40,12 @@ const pluginTypeOptions: FilterOption<PluginType>[] = [
   { value: "integration", label: "Integration" },
 ];
 
+type ItemKind = "native" | "wrapper";
+const kindOptions: FilterOption<ItemKind>[] = [
+  { value: "native", label: "Native" },
+  { value: "wrapper", label: "Wrapper" },
+];
+
 type ExtensionType = "skill" | "hook" | "agent" | "command" | "mcp";
 const extensionOptions: FilterOption<ExtensionType>[] = [
   { value: "skill", label: "Skill" },
@@ -86,6 +92,7 @@ export function Browse() {
   const scopeFilter = (searchParams.get("scope") as ScopeType | null);
   const pluginTypeFilter = (searchParams.get("pluginType") as PluginType | null);
   const extFilter = (searchParams.get("ext") as ExtensionType | null);
+  const kindFilter = (searchParams.get("kind") as ItemKind | null);
   const sortField = searchParams.get("sortField") ?? "name";
   const sortAsc = searchParams.get("sortAsc") !== "false";
 
@@ -122,10 +129,14 @@ export function Browse() {
     }
   };
   const setExtFilter = (value: ExtensionType | null) => updateParams({ ext: value });
+  const setKindFilter = (value: ItemKind | null) => updateParams({ kind: value });
   const setSortField = (value: string) => updateParams({ sortField: value === "name" ? null : value });
   const toggleSortDir = () => updateParams({ sortAsc: sortAsc ? "false" : null });
 
   const items = getItemsByType(componentType);
+  const hasWrappers = !isPlugins && items.some(
+    (item) => item.type === "plugin" && item.pluginType === "wrapper"
+  );
 
   const fuse = useMemo(
     () =>
@@ -168,11 +179,19 @@ export function Browse() {
       });
     }
 
+    if (kindFilter && !isPlugins) {
+      if (kindFilter === "native") {
+        result = result.filter((item) => item.type === componentType);
+      } else if (kindFilter === "wrapper") {
+        result = result.filter((item) => item.type === "plugin" && item.pluginType === "wrapper");
+      }
+    }
+
     return sortItems(result, sortField, sortAsc);
-  }, [items, query, toolFilter, sourceFilter, scopeFilter, pluginTypeFilter, extFilter, sortField, sortAsc, fuse]);
+  }, [items, query, toolFilter, sourceFilter, scopeFilter, pluginTypeFilter, extFilter, kindFilter, sortField, sortAsc, fuse, isPlugins, componentType]);
 
   // Check if any filters are active
-  const hasActiveFilters = query !== "" || toolFilter !== null || sourceFilter !== null || scopeFilter !== null || pluginTypeFilter !== null || extFilter !== null;
+  const hasActiveFilters = query !== "" || toolFilter !== null || sourceFilter !== null || scopeFilter !== null || pluginTypeFilter !== null || extFilter !== null || kindFilter !== null;
 
   if (!componentType || !typeLabelPlural[componentType]) {
     return (
@@ -222,6 +241,17 @@ export function Browse() {
 
         {/* Spacer */}
         <div className="flex-1" />
+
+        {/* Kind filter for extension pages with wrappers */}
+        {hasWrappers && (
+          <FilterDropdown
+            value={kindFilter}
+            options={kindOptions}
+            onChange={setKindFilter}
+            placeholder="Kind"
+            minWidth={120}
+          />
+        )}
 
         {/* Plugin-specific filter dropdowns */}
         {isPlugins && (
@@ -288,8 +318,9 @@ export function Browse() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredItems.map((item) => (
             <ItemCard
-              key={item.slug}
+              key={`${item.slug}-${item.type}-${item.pluginType ?? ""}`}
               item={item}
+              browseType={componentType}
               onSourceClick={setSourceFilter}
               onScopeClick={setScopeFilter}
               onToolClick={setToolFilter}

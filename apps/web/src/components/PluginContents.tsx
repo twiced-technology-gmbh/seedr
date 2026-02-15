@@ -7,19 +7,19 @@ interface PluginContentsProps {
 }
 
 const extensionTypes = [
-  { type: "skill", icon: Sparkles, label: "Skills" },
-  { type: "agent", icon: Bot, label: "Agents" },
-  { type: "hook", icon: Webhook, label: "Hooks" },
-  { type: "command", icon: Terminal, label: "Commands" },
-  { type: "mcp", icon: Plug, label: "MCP Servers" },
+  { type: "skill", icon: Sparkles, label: "Skill", labelPlural: "Skills" },
+  { type: "agent", icon: Bot, label: "Agent", labelPlural: "Agents" },
+  { type: "hook", icon: Webhook, label: "Hook", labelPlural: "Hooks" },
+  { type: "command", icon: Terminal, label: "Command", labelPlural: "Commands" },
+  { type: "mcp", icon: Plug, label: "MCP Server", labelPlural: "MCP Servers" },
 ] as const;
 
 export function PluginContents({ counts, className = "" }: PluginContentsProps) {
   const items = extensionTypes
-    .map(({ type, icon, label }) => {
+    .map(({ type, icon, label, labelPlural }) => {
       const count = counts[type];
       if (!count || count <= 0) return null;
-      return { type, icon, label, count };
+      return { type, icon, label: count === 1 ? label : labelPlural, count };
     })
     .filter(Boolean);
 
@@ -27,7 +27,6 @@ export function PluginContents({ counts, className = "" }: PluginContentsProps) 
 
   return (
     <div className={className}>
-      <h2 className="text-xs font-medium text-text-dim uppercase tracking-wider mb-3">Contains</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         {items.map((item) => {
           if (!item) return null;

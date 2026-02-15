@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
-import { BookOpen, Clock } from "lucide-react";
+import { BookOpen, Box, Clock, Package } from "lucide-react";
 import { Badge, Breadcrumb, CodeBlock } from "@/components/ui";
 import { Tooltip } from "@/components/ui/Tooltip";
-import { typeLabelPlural, typeTextColors } from "@/lib/colors";
+import { typeLabelPlural, typeTextColors, extensionLabels } from "@/lib/colors";
 import { TypeIcon } from "@/components/TypeIcon";
 import { SourceBadge } from "@/components/SourceBadge";
 import { ScopeBadge } from "@/components/ScopeBadge";
@@ -20,6 +20,9 @@ import type { ComponentType, FileTreeNode } from "@/lib/types";
 export function Detail() {
   const { type, slug } = useParams<{ type: string; slug: string }>();
   const componentType = type?.replace(/s$/, "") as ComponentType;
+  const location = useLocation();
+  const fromType = (location.state as { from?: string } | null)?.from as ComponentType | undefined;
+  const breadcrumbType = fromType && fromType !== componentType ? fromType : componentType;
   useScrollRestoration();
 
   const item = slug ? getItem(slug) : undefined;
@@ -47,13 +50,13 @@ export function Detail() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      {/* Breadcrumb */}
+      {/* Breadcrumb — uses referring type if navigated from an extension page */}
       <Breadcrumb
         items={[
           {
-            label: typeLabelPlural[componentType],
-            href: `/${componentType}s`,
-            icon: <TypeIcon type={componentType} size={14} className={typeTextColors[componentType]} />,
+            label: typeLabelPlural[breadcrumbType],
+            href: `/${breadcrumbType}s`,
+            icon: <TypeIcon type={breadcrumbType} size={14} className={typeTextColors[breadcrumbType]} />,
           },
           { label: item.name },
         ]}
@@ -63,16 +66,22 @@ export function Detail() {
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-2">
+          <TypeIcon type={item.type} size={24} className={typeTextColors[item.type]} />
           <h1 className="text-2xl font-bold text-text">{item.name}</h1>
           {item.sourceType && <SourceBadge source={item.sourceType} size="md" />}
+          {item.pluginType === "package" && (
+            <Tooltip content={{ title: "Package", description: "Bundles multiple extensions (skills, hooks, agents, etc.) into a single plugin" }} position="top">
+              <Badge color="indigo" size="md" icon={Package}>Package</Badge>
+            </Tooltip>
+          )}
           {item.pluginType === "wrapper" && (
             <Tooltip content={{ title: "Wrapper", description: `Wraps a single ${item.wrapper} extension as a plugin` }} position="top">
-              <Badge color="teal" size="md">wrapper</Badge>
+              <Badge color="teal" size="md" icon={Box}>Wrapper</Badge>
             </Tooltip>
           )}
           {item.pluginType === "integration" && (
             <Tooltip content={{ title: "Integration", description: "Integrates an external tool with your AI assistant. Installing adds it to enabledPlugins — the README explains how to set up the tool itself." }} position="top">
-              <Badge color="purple" size="md" icon={BookOpen}>integration</Badge>
+              <Badge color="purple" size="md" icon={BookOpen}>Integration</Badge>
             </Tooltip>
           )}
           {item.sourceType === "toolr" && item.targetScope && <ScopeBadge scope={item.targetScope} size="md" />}
@@ -125,10 +134,31 @@ export function Detail() {
         </div>
       )}
 
-      {/* Integration info */}
+      {/* Plugin type explanation */}
+      {item.pluginType === "wrapper" && item.wrapper && (
+        <div className="mb-8">
+          <h2 className="text-xs font-medium text-text-dim uppercase tracking-wider mb-3">Wrapped Extension</h2>
+          <p className="text-sm text-subtext mb-3">
+            This plugin wraps a single extension as an installable plugin.
+            Functionally equivalent to installing the {extensionLabels[item.wrapper]?.toLowerCase() || item.wrapper} directly, but delivered and managed as a plugin package.
+          </p>
+          <PluginContents counts={{ [item.wrapper]: 1 }} />
+        </div>
+      )}
+
+      {item.pluginType === "package" && item.package && Object.keys(item.package).length > 0 && (
+        <div className="mb-8">
+          <h2 className="text-xs font-medium text-text-dim uppercase tracking-wider mb-3">Package Contents</h2>
+          <p className="text-sm text-subtext mb-3">
+            This plugin bundles multiple extensions into a single installable package.
+          </p>
+          <PluginContents counts={item.package} />
+        </div>
+      )}
+
       {item.pluginType === "integration" && (
         <div className="mb-8">
-          <h2 className="text-xs font-medium text-text-dim uppercase tracking-wider mb-2">Info</h2>
+          <h2 className="text-xs font-medium text-text-dim uppercase tracking-wider mb-2">Integration</h2>
           <div className="text-sm text-subtext [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded [&_code]:bg-overlay/50 [&_code]:text-text-dim [&_code]:font-mono [&_code]:text-xs [&_strong]:text-text">
             <Markdown
               remarkPlugins={[remarkGfm]}
@@ -153,11 +183,6 @@ export function Detail() {
         </h2>
         <CompatibilityBadges tools={item.compatibility} size="md" />
       </div>
-
-      {/* Plugin contents (extension counts for packages) */}
-      {item.type === "plugin" && item.package && Object.keys(item.package).length > 0 && (
-        <PluginContents counts={item.package} className="mb-8" />
-      )}
 
       {/* File tree (lazy-loaded from item.json) */}
       {fileTree && (

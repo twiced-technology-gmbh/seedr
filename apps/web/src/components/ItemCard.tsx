@@ -12,19 +12,19 @@ import { typeLabels, typeTextColors, toolLabels } from "@/lib/colors";
 import type { RegistryItem, SourceType, ScopeType, AITool, PluginType } from "@/lib/types";
 
 const extensionIcons = [
-  { type: "skill", icon: Sparkles, label: "Skills" },
-  { type: "agent", icon: Bot, label: "Agents" },
-  { type: "hook", icon: Webhook, label: "Hooks" },
-  { type: "command", icon: Terminal, label: "Commands" },
-  { type: "mcp", icon: Plug, label: "MCP Servers" },
+  { type: "skill", icon: Sparkles, label: "Skill", labelPlural: "Skills" },
+  { type: "agent", icon: Bot, label: "Agent", labelPlural: "Agents" },
+  { type: "hook", icon: Webhook, label: "Hook", labelPlural: "Hooks" },
+  { type: "command", icon: Terminal, label: "Command", labelPlural: "Commands" },
+  { type: "mcp", icon: Plug, label: "MCP Server", labelPlural: "MCP Servers" },
 ] as const;
 
 function PackageBadges({ counts }: { counts: Record<string, number> }) {
   const items = extensionIcons
-    .map(({ type, icon, label }) => {
+    .map(({ type, icon, label, labelPlural }) => {
       const count = counts[type];
       if (!count || count <= 0) return null;
-      return { type, icon, label, count };
+      return { type, icon, label: count === 1 ? label : labelPlural, count };
     })
     .filter(Boolean);
 
@@ -61,6 +61,7 @@ function clickable(handler?: () => void) {
 
 interface ItemCardProps {
   item: RegistryItem;
+  browseType?: string;
   onSourceClick?: (source: SourceType) => void;
   onScopeClick?: (scope: ScopeType) => void;
   onToolClick?: (tool: AITool) => void;
@@ -68,11 +69,11 @@ interface ItemCardProps {
   onDateClick?: () => void;
 }
 
-export function ItemCard({ item, onSourceClick, onScopeClick, onToolClick, onPluginTypeClick, onDateClick }: ItemCardProps) {
+export function ItemCard({ item, browseType, onSourceClick, onScopeClick, onToolClick, onPluginTypeClick, onDateClick }: ItemCardProps) {
   const interactive = "cursor-pointer hover:brightness-125 transition-all";
 
   return (
-    <Link to={`/${item.type}s/${item.slug}`}>
+    <Link to={`/${item.type}s/${item.slug}`} state={browseType && item.type !== browseType ? { from: browseType } : undefined}>
       <Card className="h-full flex flex-col">
         <div className="flex items-start justify-between gap-2 mb-2">
           <div className="flex items-center gap-1.5">
