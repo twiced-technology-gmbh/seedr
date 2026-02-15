@@ -20,7 +20,7 @@ async function resolveItem(
   type: ComponentType | undefined
 ): Promise<RegistryItem | null> {
   if (itemName) {
-    const item = await getItem(itemName);
+    const item = await getItem(itemName, type);
     if (item) return item;
 
     const results = await searchItems(itemName);

@@ -74,7 +74,8 @@ export function getItemsByType(type: ComponentType): RegistryItem[] {
   );
 }
 
-export function getItem(slug: string): RegistryItem | undefined {
+export function getItem(slug: string, type?: ComponentType): RegistryItem | undefined {
+  if (type) return manifest.items.find((item) => item.slug === slug && item.type === type);
   return manifest.items.find((item) => item.slug === slug);
 }
 
@@ -84,37 +85,41 @@ const itemJsonLoaders = import.meta.glob<{ default: RegistryItem }>(
   "@registry/*/*/item.json",
 );
 
-// Build a slug → loader map for O(1) lookup
-const loaderBySlug = new Map<string, () => Promise<{ default: RegistryItem }>>();
+// Build a typeDir/slug → loader map for O(1) lookup (supports duplicate slugs across types)
+const loaderByKey = new Map<string, () => Promise<{ default: RegistryItem }>>();
 for (const [path, loader] of Object.entries(itemJsonLoaders)) {
-  // path: /registry/<type>/<slug>/item.json → extract slug
+  // path: /registry/<typeDir>/<slug>/item.json → extract typeDir and slug
   const parts = path.split("/");
   const slug = parts[parts.length - 2];
-  if (slug) loaderBySlug.set(slug, loader);
+  const typeDir = parts[parts.length - 3];
+  if (slug && typeDir) loaderByKey.set(`${typeDir}/${slug}`, loader);
 }
 
 // Cache for item.json data (lazy-loaded)
 const itemJsonCache = new Map<string, RegistryItem>();
 
-async function loadItemJson(slug: string): Promise<RegistryItem | undefined> {
-  if (itemJsonCache.has(slug)) return itemJsonCache.get(slug);
+async function loadItemJson(slug: string, type?: ComponentType): Promise<RegistryItem | undefined> {
+  const key = type ? `${type}s/${slug}` : slug;
+  if (itemJsonCache.has(key)) return itemJsonCache.get(key);
 
-  const loader = loaderBySlug.get(slug);
+  const loader = type
+    ? loaderByKey.get(`${type}s/${slug}`)
+    : [...loaderByKey.entries()].find(([k]) => k.endsWith(`/${slug}`))?.[1];
   if (!loader) return undefined;
 
   const mod = await loader();
   const item = mod.default;
-  if (item) itemJsonCache.set(slug, item);
+  if (item) itemJsonCache.set(key, item);
   return item;
 }
 
-export async function getLongDescription(slug: string): Promise<string | undefined> {
-  const item = await loadItemJson(slug);
+export async function getLongDescription(slug: string, type?: ComponentType): Promise<string | undefined> {
+  const item = await loadItemJson(slug, type);
   return item?.longDescription;
 }
 
-export async function getFileTree(slug: string): Promise<FileTreeNode[] | undefined> {
-  const item = await loadItemJson(slug);
+export async function getFileTree(slug: string, type?: ComponentType): Promise<FileTreeNode[] | undefined> {
+  const item = await loadItemJson(slug, type);
   return item?.contents?.files;
 }
 

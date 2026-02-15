@@ -77,8 +77,9 @@ export async function loadManifest(): Promise<RegistryManifest> {
   return manifest;
 }
 
-export async function getItem(slug: string): Promise<RegistryItem | undefined> {
+export async function getItem(slug: string, type?: ComponentType): Promise<RegistryItem | undefined> {
   const manifest = await loadManifest();
+  if (type) return manifest.items.find((item) => item.slug === slug && item.type === type);
   return manifest.items.find((item) => item.slug === slug);
 }
 

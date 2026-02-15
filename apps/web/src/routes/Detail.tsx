@@ -25,15 +25,15 @@ export function Detail() {
   const breadcrumbType = fromType && fromType !== componentType ? fromType : componentType;
   useScrollRestoration();
 
-  const item = slug ? getItem(slug) : undefined;
+  const item = slug ? getItem(slug, componentType) : undefined;
 
   const [longDescription, setLongDescription] = useState<string>();
   const [fileTree, setFileTree] = useState<FileTreeNode[]>();
   useEffect(() => {
     if (!slug) return;
-    getLongDescription(slug).then(setLongDescription);
-    getFileTree(slug).then(setFileTree);
-  }, [slug]);
+    getLongDescription(slug, componentType).then(setLongDescription);
+    getFileTree(slug, componentType).then(setFileTree);
+  }, [slug, componentType]);
 
   if (!item) {
     return (
@@ -46,7 +46,7 @@ export function Detail() {
     );
   }
 
-  const installCommand = `npx @toolr/seedr add ${item.slug}`;
+  const installCommand = `npx @toolr/seedr add ${item.slug} --type ${item.type}`;
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
@@ -259,15 +259,15 @@ export function Detail() {
         <div className="space-y-4">
           <CodeBlock
             label="Install for all compatible tools"
-            code={`npx @toolr/seedr add ${item.slug} --agents all --method symlink`}
+            code={`npx @toolr/seedr add ${item.slug} --type ${item.type} --agents all --method symlink`}
           />
           <CodeBlock
             label="Install for specific tool"
-            code={`npx @toolr/seedr add ${item.slug} --agents claude`}
+            code={`npx @toolr/seedr add ${item.slug} --type ${item.type} --agents claude`}
           />
           <CodeBlock
             label="Non-interactive (CI/scripts)"
-            code={`npx @toolr/seedr add ${item.slug} --agents all --scope project --method symlink --yes`}
+            code={`npx @toolr/seedr add ${item.slug} --type ${item.type} --agents all --scope project --method symlink --yes`}
           />
         </div>
       </div>
