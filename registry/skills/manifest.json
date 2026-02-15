@@ -954,9 +954,7 @@
           }
         ]
       },
-      "updatedAt": "2025-12-01T18:05:36Z",
-      "pluginType": "package",
-      "package": {}
+      "updatedAt": "2025-12-01T18:05:36Z"
     },
     {
       "slug": "brand-guidelines",
@@ -984,9 +982,7 @@
           }
         ]
       },
-      "updatedAt": "2025-12-01T18:05:36Z",
-      "pluginType": "package",
-      "package": {}
+      "updatedAt": "2025-12-01T18:05:36Z"
     },
     {
       "slug": "canvas-design",
@@ -1348,9 +1344,7 @@
           }
         ]
       },
-      "updatedAt": "2025-12-01T18:05:36Z",
-      "pluginType": "package",
-      "package": {}
+      "updatedAt": "2025-12-01T18:05:36Z"
     },
     {
       "slug": "doc-coauthoring",
@@ -1378,9 +1372,7 @@
             "type": "file"
           }
         ]
-      },
-      "pluginType": "package",
-      "package": {}
+      }
     },
     {
       "slug": "docx",
@@ -1544,9 +1536,7 @@
           }
         ]
       },
-      "updatedAt": "2026-02-06T21:19:32Z",
-      "pluginType": "package",
-      "package": {}
+      "updatedAt": "2026-02-06T21:19:32Z"
     },
     {
       "slug": "frontend-design",
@@ -1578,9 +1568,7 @@
           }
         ]
       },
-      "updatedAt": "2025-12-04T17:01:46Z",
-      "pluginType": "package",
-      "package": {}
+      "updatedAt": "2025-12-04T17:01:46Z"
     },
     {
       "slug": "internal-comms",
@@ -1634,9 +1622,7 @@
             "type": "file"
           }
         ]
-      },
-      "pluginType": "package",
-      "package": {}
+      }
     },
     {
       "slug": "mcp-builder",
@@ -1708,9 +1694,7 @@
           }
         ]
       },
-      "updatedAt": "2025-12-01T18:05:36Z",
-      "pluginType": "package",
-      "package": {}
+      "updatedAt": "2025-12-01T18:05:36Z"
     },
     {
       "slug": "pdf",
@@ -1788,9 +1772,7 @@
           }
         ]
       },
-      "updatedAt": "2026-02-06T21:19:32Z",
-      "pluginType": "package",
-      "package": {}
+      "updatedAt": "2026-02-06T21:19:32Z"
     },
     {
       "slug": "pptx",
@@ -1940,9 +1922,7 @@
           }
         ]
       },
-      "updatedAt": "2026-02-06T21:19:32Z",
-      "pluginType": "package",
-      "package": {}
+      "updatedAt": "2026-02-06T21:19:32Z"
     },
     {
       "slug": "skill-creator",
@@ -2002,9 +1982,7 @@
             "type": "file"
           }
         ]
-      },
-      "pluginType": "package",
-      "package": {}
+      }
     },
     {
       "slug": "slack-gif-creator",
@@ -2062,9 +2040,7 @@
           }
         ]
       },
-      "updatedAt": "2025-12-04T17:01:46Z",
-      "pluginType": "package",
-      "package": {}
+      "updatedAt": "2025-12-04T17:01:46Z"
     },
     {
       "slug": "theme-factory",
@@ -2146,9 +2122,7 @@
           }
         ]
       },
-      "updatedAt": "2025-12-01T18:05:36Z",
-      "pluginType": "package",
-      "package": {}
+      "updatedAt": "2025-12-01T18:05:36Z"
     },
     {
       "slug": "web-artifacts-builder",
@@ -2198,9 +2172,7 @@
           }
         ]
       },
-      "updatedAt": "2025-12-01T18:05:36Z",
-      "pluginType": "package",
-      "package": {}
+      "updatedAt": "2025-12-01T18:05:36Z"
     },
     {
       "slug": "webapp-testing",
@@ -2260,9 +2232,7 @@
           }
         ]
       },
-      "updatedAt": "2025-12-01T18:05:36Z",
-      "pluginType": "package",
-      "package": {}
+      "updatedAt": "2025-12-01T18:05:36Z"
     },
     {
       "slug": "xlsx",
@@ -2392,9 +2362,7 @@
           }
         ]
       },
-      "updatedAt": "2026-02-06T21:19:32Z",
-      "pluginType": "package",
-      "package": {}
+      "updatedAt": "2026-02-06T21:19:32Z"
     }
   ]
 }

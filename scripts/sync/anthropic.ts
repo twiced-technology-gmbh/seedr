@@ -180,37 +180,39 @@ async function fetchItems(options: FetchItemsOptions): Promise<ManifestItem[]> {
               }
             }
 
-            // Classify plugin type from parsed content arrays
-            const contentKeyToType: Record<string, string> = {
-              skills: "skill", agents: "agent", hooks: "hook",
-              commands: "command", mcpServers: "mcp",
-            };
-            const typeCounts: Record<string, number> = {};
-            for (const [key, typeName] of Object.entries(contentKeyToType)) {
-              const arr = parsed[key as keyof ParsedPluginContents];
-              if (Array.isArray(arr) && arr.length > 0) {
-                typeCounts[typeName] = arr.length;
+            // Classify plugin type — only for plugins, not skills or other types
+            if (type === "plugin") {
+              const contentKeyToType: Record<string, string> = {
+                skills: "skill", agents: "agent", hooks: "hook",
+                commands: "command", mcpServers: "mcp",
+              };
+              const typeCounts: Record<string, number> = {};
+              for (const [key, typeName] of Object.entries(contentKeyToType)) {
+                const arr = parsed[key as keyof ParsedPluginContents];
+                if (Array.isArray(arr) && arr.length > 0) {
+                  typeCounts[typeName] = arr.length;
+                }
+              }
+              const typeNames = Object.keys(typeCounts);
+
+              // Preserve existing pluginType if integration (detected from existing item.json)
+              const existingForClassify = readExistingItem(type, slug);
+              if (existingForClassify?.pluginType === "integration") {
+                pluginType = "integration";
+                integration = existingForClassify.integration ?? "lsp";
+              } else if (typeNames.length === 0) {
+                pluginType = "package";
+                pkg = {};
+              } else if (typeNames.length === 1) {
+                pluginType = "wrapper";
+                wrapper = typeNames[0];
+              } else {
+                pluginType = "package";
+                pkg = typeCounts;
               }
             }
-            const typeNames = Object.keys(typeCounts);
 
-            // Preserve existing pluginType if integration (detected from existing item.json)
-            const existingForClassify = readExistingItem(type, slug);
-            if (existingForClassify?.pluginType === "integration") {
-              pluginType = "integration";
-              integration = existingForClassify.integration ?? "lsp";
-            } else if (typeNames.length === 0) {
-              pluginType = "package";
-              pkg = {};
-            } else if (typeNames.length === 1) {
-              pluginType = "wrapper";
-              wrapper = typeNames[0];
-            } else {
-              pluginType = "package";
-              pkg = typeCounts;
-            }
-
-            // Store only files on contents (arrays are now in pluginType/wrapper/package)
+            // Store only files on contents for plugins; keep full tree for other types
             contents = parsed.files?.length ? { files: parsed.files } : undefined;
           }
         }
