@@ -29,6 +29,9 @@
         "name": ".mcp.json",
         "type": "file"
       }
+    ],
+    "mcpServers": [
+      "context7"
     ]
   },
   "updatedAt": "2025-12-02T00:03:02Z"

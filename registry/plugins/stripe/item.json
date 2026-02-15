@@ -67,6 +67,9 @@
     ],
     "skills": [
       "stripe-best-practices"
+    ],
+    "mcpServers": [
+      "stripe"
     ]
   },
   "updatedAt": "2025-12-18T16:58:02Z"

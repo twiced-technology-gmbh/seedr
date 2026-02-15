@@ -31,6 +31,9 @@
             "name": ".mcp.json",
             "type": "file"
           }
+        ],
+        "mcpServers": [
+          "asana"
         ]
       },
       "updatedAt": "2025-12-02T00:03:02Z"
@@ -327,6 +330,9 @@
             "name": ".mcp.json",
             "type": "file"
           }
+        ],
+        "mcpServers": [
+          "context7"
         ]
       },
       "updatedAt": "2025-12-02T00:03:02Z"
@@ -361,6 +367,9 @@
             "name": ".mcp.json",
             "type": "file"
           }
+        ],
+        "mcpServers": [
+          "firebase"
         ]
       },
       "updatedAt": "2025-12-02T00:03:02Z"
@@ -554,6 +563,9 @@
             "name": ".mcp.json",
             "type": "file"
           }
+        ],
+        "mcpServers": [
+          "github"
         ]
       },
       "updatedAt": "2025-12-02T00:03:02Z"
@@ -588,6 +600,9 @@
             "name": ".mcp.json",
             "type": "file"
           }
+        ],
+        "mcpServers": [
+          "gitlab"
         ]
       },
       "updatedAt": "2025-12-02T00:03:02Z"
@@ -627,6 +642,9 @@
             "name": "README.md",
             "type": "file"
           }
+        ],
+        "mcpServers": [
+          "greptile"
         ]
       },
       "updatedAt": "2026-01-06T05:15:35Z"
@@ -724,6 +742,9 @@
             "name": ".mcp.json",
             "type": "file"
           }
+        ],
+        "mcpServers": [
+          "laravel-boost"
         ]
       },
       "updatedAt": "2025-12-02T00:03:02Z"
@@ -895,6 +916,9 @@
             "name": ".mcp.json",
             "type": "file"
           }
+        ],
+        "mcpServers": [
+          "linear"
         ]
       },
       "updatedAt": "2025-12-16T23:13:40Z"
@@ -929,6 +953,9 @@
             "name": ".mcp.json",
             "type": "file"
           }
+        ],
+        "mcpServers": [
+          "playwright"
         ]
       },
       "updatedAt": "2025-12-02T00:03:02Z"
@@ -1020,6 +1047,9 @@
             "name": ".mcp.json",
             "type": "file"
           }
+        ],
+        "mcpServers": [
+          "serena"
         ]
       },
       "updatedAt": "2025-12-02T00:03:02Z"
@@ -1125,6 +1155,9 @@
             "name": ".mcp.json",
             "type": "file"
           }
+        ],
+        "mcpServers": [
+          "slack"
         ]
       },
       "updatedAt": "2025-12-02T00:03:02Z"
@@ -1197,6 +1230,9 @@
         ],
         "skills": [
           "stripe-best-practices"
+        ],
+        "mcpServers": [
+          "stripe"
         ]
       },
       "updatedAt": "2025-12-18T16:58:02Z"
@@ -1231,6 +1267,9 @@
             "name": ".mcp.json",
             "type": "file"
           }
+        ],
+        "mcpServers": [
+          "supabase"
         ]
       },
       "updatedAt": "2025-12-02T00:03:02Z"

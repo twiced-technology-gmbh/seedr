@@ -69,6 +69,15 @@ async function fetchHookTriggers(repo: string, basePath: string, slug: string): 
   return null;
 }
 
+async function fetchMcpServerNames(repo: string, basePath: string, slug: string): Promise<string[] | null> {
+  const url = `${GITHUB_RAW}/${repo}/main/${basePath}/${slug}/.mcp.json`;
+  const data = await fetchJson<Record<string, unknown>>(url);
+  if (!data) return null;
+  // Two formats: { mcpServers: { name: ... } } or { name: ... } (flat)
+  const servers = (data.mcpServers as Record<string, unknown> | undefined) ?? data;
+  return Object.keys(servers).filter(k => k !== "mcpServers");
+}
+
 async function fetchReadmeMd(repo: string, basePath: string, slug: string): Promise<{ name: string; description: string } | null> {
   const url = `${GITHUB_RAW}/${repo}/main/${basePath}/${slug}/README.md`;
   const content = await fetchText(url);
@@ -156,6 +165,13 @@ async function fetchItems(options: FetchItemsOptions): Promise<ManifestItem[]> {
               const triggers = await fetchHookTriggers(repo, basePath, slug);
               if (triggers && triggers.length > 0) {
                 contents.hooks = triggers;
+              }
+            }
+            // Replace placeholder with actual MCP server names from .mcp.json
+            if (contents.mcpServers) {
+              const servers = await fetchMcpServerNames(repo, basePath, slug);
+              if (servers && servers.length > 0) {
+                contents.mcpServers = servers;
               }
             }
           }

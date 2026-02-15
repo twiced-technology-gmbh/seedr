@@ -76,9 +76,10 @@ Recursively build `FileTreeNode[]` (max depth 3 to avoid API rate limits). For e
 For plugins, also parse the tree to populate `PluginContents`:
 - `skills/` directory → list `.md` files as `contents.skills`
 - `agents/` directory → list `.md` files as `contents.agents`
-- `hooks/` directory → list as `contents.hooks`
+- `hooks/` directory → if `hooks.json` exists, fetch it and use trigger keys (`SessionStart`, `PreToolUse`, etc.) as `contents.hooks`
 - `commands/` directory → list `.md` files as `contents.commands`
 - `mcp-servers/` or `mcp-configs/` → list as `contents.mcpServers`
+- Root-level `.mcp.json` → fetch it and extract top-level keys as MCP server names. Handles flat (`{ "name": {...} }`) and wrapped (`{ "mcpServers": { "name": {...} } }`) formats
 
 ### 5. Fetch last commit date
 

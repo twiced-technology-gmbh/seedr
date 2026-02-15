@@ -225,8 +225,9 @@ Write the item metadata as `registry/<type>s/<slug>/item.json`:
 - `skills/` → list `.md` filenames (without extension), or directory names if skills are dirs (e.g. `skills/foo/SKILL.md` → `"foo"`)
 - `agents/` → same as skills (`.md` files or directory names)
 - `commands/` → same as skills (`.md` files or directory names)
-- `hooks/` → list script filenames (ignore `hooks.json`, `__init__.py`, test files). If only `hooks.json` exists (scripts in separate dir), include `["hooks.json"]` to indicate presence
+- `hooks/` → if `hooks.json` exists, read it and use its trigger keys (`SessionStart`, `PreToolUse`, etc.) as the hooks array. Otherwise list script filenames (ignore `__init__.py`, test files)
 - `mcp-servers/` → list all file/directory names (strip extensions)
+- Root-level `.mcp.json` → read the file, extract top-level keys as MCP server names. Handles both flat format (`{ "name": {...} }`) and wrapped format (`{ "mcpServers": { "name": {...} } }`)
 
 Only include arrays that have items. Example:
 

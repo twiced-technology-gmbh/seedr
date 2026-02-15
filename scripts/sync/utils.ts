@@ -348,6 +348,11 @@ export function parsePluginContents(files: FileTreeNode[]): PluginContents {
     processDir(dir, false);
   }
 
+  // Detect .mcp.json at root level (most MCP plugins use this pattern)
+  if (files.some(f => f.type === "file" && f.name === ".mcp.json")) {
+    contents.mcpServers = [".mcp.json"];
+  }
+
   const claudeDir = files.find(f => f.name === ".claude" && f.type === "directory");
   if (claudeDir?.children) {
     for (const subdir of claudeDir.children.filter(f => f.type === "directory")) {
