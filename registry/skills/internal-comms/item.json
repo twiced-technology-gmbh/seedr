@@ -51,5 +51,7 @@
         "type": "file"
       }
     ]
-  }
+  },
+  "pluginType": "package",
+  "package": {}
 }

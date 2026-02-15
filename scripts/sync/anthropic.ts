@@ -23,7 +23,7 @@ import {
   parsePluginContents,
 } from "./utils.js";
 import type { PluginJson } from "./utils.js";
-import type { ManifestItem, ComponentType, SourceType, GitTreeItem, PluginContents } from "./types.js";
+import type { ManifestItem, ComponentType, SourceType, GitTreeItem, PluginContents, PluginType, ParsedPluginContents } from "./types.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const registryDir = join(__dirname, "..", "..", "registry");
@@ -156,24 +156,62 @@ async function fetchItems(options: FetchItemsOptions): Promise<ManifestItem[]> {
         const contentHash = computeContentHash(repoTree, `${basePath}/${slug}`);
 
         let contents: PluginContents | undefined;
+        let pluginType: PluginType | undefined;
+        let wrapper: string | undefined;
+        let integration: string | undefined;
+        let pkg: Record<string, number> | undefined;
+
         if (includeFileTree) {
           const files = extractSubtree(repoTree, `${basePath}/${slug}`, 4);
           if (files.length > 0) {
-            contents = parsePluginContents(files);
+            const parsed = parsePluginContents(files);
             // Replace file-based hooks with trigger names from hooks.json
-            if (contents.hooks) {
+            if (parsed.hooks) {
               const triggers = await fetchHookTriggers(repo, basePath, slug);
               if (triggers && triggers.length > 0) {
-                contents.hooks = triggers;
+                parsed.hooks = triggers;
               }
             }
             // Replace placeholder with actual MCP server names from .mcp.json
-            if (contents.mcpServers) {
+            if (parsed.mcpServers) {
               const servers = await fetchMcpServerNames(repo, basePath, slug);
               if (servers && servers.length > 0) {
-                contents.mcpServers = servers;
+                parsed.mcpServers = servers;
               }
             }
+
+            // Classify plugin type from parsed content arrays
+            const contentKeyToType: Record<string, string> = {
+              skills: "skill", agents: "agent", hooks: "hook",
+              commands: "command", mcpServers: "mcp",
+            };
+            const typeCounts: Record<string, number> = {};
+            for (const [key, typeName] of Object.entries(contentKeyToType)) {
+              const arr = parsed[key as keyof ParsedPluginContents];
+              if (Array.isArray(arr) && arr.length > 0) {
+                typeCounts[typeName] = arr.length;
+              }
+            }
+            const typeNames = Object.keys(typeCounts);
+
+            // Preserve existing pluginType if integration (detected from existing item.json)
+            const existingForClassify = readExistingItem(type, slug);
+            if (existingForClassify?.pluginType === "integration") {
+              pluginType = "integration";
+              integration = existingForClassify.integration ?? "lsp";
+            } else if (typeNames.length === 0) {
+              pluginType = "package";
+              pkg = {};
+            } else if (typeNames.length === 1) {
+              pluginType = "wrapper";
+              wrapper = typeNames[0];
+            } else {
+              pluginType = "package";
+              pkg = typeCounts;
+            }
+
+            // Store only files on contents (arrays are now in pluginType/wrapper/package)
+            contents = parsed.files?.length ? { files: parsed.files } : undefined;
           }
         }
 
@@ -199,6 +237,10 @@ async function fetchItems(options: FetchItemsOptions): Promise<ManifestItem[]> {
           ...(contentHash && { contentHash }),
           ...(updatedAt && { updatedAt }),
           ...(contents && { contents }),
+          ...(pluginType && { pluginType }),
+          ...(wrapper && { wrapper }),
+          ...(integration && { integration }),
+          ...(pkg && { package: pkg }),
         } satisfies ManifestItem;
       })
   );

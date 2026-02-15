@@ -7,12 +7,14 @@
   "compatibility": [
     "claude"
   ],
-  "integration": true,
+  "pluginType": "integration",
+  "integration": "lsp",
   "sourceType": "official",
   "author": {
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/csharp-lsp",
+  "contentHash": "7d072c7cbe3746d9",
   "contents": {
     "files": [
       {
@@ -21,6 +23,5 @@
       }
     ]
   },
-  "updatedAt": "2025-12-19T00:24:41Z",
-  "contentHash": "7d072c7cbe3746d9"
+  "updatedAt": "2025-12-19T00:24:41Z"
 }

@@ -4,6 +4,7 @@ export type {
   ComponentType,
   SourceType,
   ScopeType,
+  PluginType,
   Author,
   RegistryItem,
   RegistryManifest,

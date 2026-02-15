@@ -7,12 +7,14 @@
   "compatibility": [
     "claude"
   ],
-  "integration": true,
+  "pluginType": "integration",
+  "integration": "lsp",
   "sourceType": "official",
   "author": {
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/swift-lsp",
+  "contentHash": "e349484ba26940bd",
   "contents": {
     "files": [
       {
@@ -21,6 +23,5 @@
       }
     ]
   },
-  "updatedAt": "2025-12-19T00:24:41Z",
-  "contentHash": "e349484ba26940bd"
+  "updatedAt": "2025-12-19T00:24:41Z"
 }

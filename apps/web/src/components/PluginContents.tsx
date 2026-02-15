@@ -1,26 +1,25 @@
 import { Sparkles, Bot, Webhook, Terminal, Plug } from "lucide-react";
-import type { PluginContents as PluginContentsType } from "@/lib/types";
 import { typeTextColors } from "@/lib/colors";
 
 interface PluginContentsProps {
-  contents: PluginContentsType;
+  counts: Record<string, number>;
   className?: string;
 }
 
-const contentTypes = [
-  { key: "skills", icon: Sparkles, label: "Skills", type: "skill" },
-  { key: "agents", icon: Bot, label: "Agents", type: "agent" },
-  { key: "hooks", icon: Webhook, label: "Hooks", type: "hook" },
-  { key: "commands", icon: Terminal, label: "Commands", type: "command" },
-  { key: "mcpServers", icon: Plug, label: "MCP Servers", type: "mcp" },
+const extensionTypes = [
+  { type: "skill", icon: Sparkles, label: "Skills" },
+  { type: "agent", icon: Bot, label: "Agents" },
+  { type: "hook", icon: Webhook, label: "Hooks" },
+  { type: "command", icon: Terminal, label: "Commands" },
+  { type: "mcp", icon: Plug, label: "MCP Servers" },
 ] as const;
 
-export function PluginContents({ contents, className = "" }: PluginContentsProps) {
-  const items = contentTypes
-    .map(({ key, icon, label, type }) => {
-      const list = contents[key];
-      if (!list || list.length === 0) return null;
-      return { key, icon, label, type, count: list.length, items: list };
+export function PluginContents({ counts, className = "" }: PluginContentsProps) {
+  const items = extensionTypes
+    .map(({ type, icon, label }) => {
+      const count = counts[type];
+      if (!count || count <= 0) return null;
+      return { type, icon, label, count };
     })
     .filter(Boolean);
 
@@ -36,7 +35,7 @@ export function PluginContents({ contents, className = "" }: PluginContentsProps
           const colorClass = typeTextColors[item.type as keyof typeof typeTextColors];
           return (
             <div
-              key={item.key}
+              key={item.type}
               className="flex items-center gap-2 bg-surface rounded-lg px-3 py-2"
             >
               <Icon className={`w-4 h-4 ${colorClass}`} />

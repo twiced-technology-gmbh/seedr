@@ -7,13 +7,19 @@
   "compatibility": [
     "claude"
   ],
+  "pluginType": "package",
+  "package": {
+    "skill": 1,
+    "agent": 1,
+    "command": 1
+  },
   "sourceType": "community",
   "author": {
     "name": "Omar Inuwa",
     "url": "https://github.com/trailofbits"
   },
   "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/audit-context-building",
-  "updatedAt": "2026-02-13T04:08:06Z",
+  "contentHash": "82a4cebe1d0a5668",
   "contents": {
     "files": [
       {
@@ -81,5 +87,5 @@
       "audit-context-building"
     ]
   },
-  "contentHash": "82a4cebe1d0a5668"
+  "updatedAt": "2026-02-13T04:08:06Z"
 }

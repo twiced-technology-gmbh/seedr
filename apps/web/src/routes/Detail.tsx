@@ -14,8 +14,8 @@ import { AuthorLink } from "@/components/AuthorLink";
 import { CompatibilityBadges } from "@/components/CompatibilityBadges";
 import { PluginContents } from "@/components/PluginContents";
 import { FileTree } from "@/components/FileTree";
-import { getItem, getLongDescription } from "@/lib/registry";
-import type { ComponentType } from "@/lib/types";
+import { getItem, getLongDescription, getFileTree } from "@/lib/registry";
+import type { ComponentType, FileTreeNode } from "@/lib/types";
 
 export function Detail() {
   const { type, slug } = useParams<{ type: string; slug: string }>();
@@ -25,9 +25,11 @@ export function Detail() {
   const item = slug ? getItem(slug) : undefined;
 
   const [longDescription, setLongDescription] = useState<string>();
+  const [fileTree, setFileTree] = useState<FileTreeNode[]>();
   useEffect(() => {
     if (!slug) return;
     getLongDescription(slug).then(setLongDescription);
+    getFileTree(slug).then(setFileTree);
   }, [slug]);
 
   if (!item) {
@@ -63,7 +65,12 @@ export function Detail() {
         <div className="flex items-center gap-3 mb-2">
           <h1 className="text-2xl font-bold text-text">{item.name}</h1>
           {item.sourceType && <SourceBadge source={item.sourceType} size="md" />}
-          {item.integration && (
+          {item.pluginType === "wrapper" && (
+            <Tooltip content={{ title: "Wrapper", description: `Wraps a single ${item.wrapper} extension as a plugin` }} position="top">
+              <Badge color="teal" size="md">wrapper</Badge>
+            </Tooltip>
+          )}
+          {item.pluginType === "integration" && (
             <Tooltip content={{ title: "Integration", description: "Integrates an external tool with your AI assistant. Installing adds it to enabledPlugins — the README explains how to set up the tool itself." }} position="top">
               <Badge color="purple" size="md" icon={BookOpen}>integration</Badge>
             </Tooltip>
@@ -119,7 +126,7 @@ export function Detail() {
       )}
 
       {/* Integration info */}
-      {item.integration && (
+      {item.pluginType === "integration" && (
         <div className="mb-8">
           <h2 className="text-xs font-medium text-text-dim uppercase tracking-wider mb-2">Info</h2>
           <div className="text-sm text-subtext [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded [&_code]:bg-overlay/50 [&_code]:text-text-dim [&_code]:font-mono [&_code]:text-xs [&_strong]:text-text">
@@ -147,15 +154,15 @@ export function Detail() {
         <CompatibilityBadges tools={item.compatibility} size="md" />
       </div>
 
-      {/* Plugin contents (skills, agents, hooks counts) */}
-      {item.type === "plugin" && item.contents && (
-        <PluginContents contents={item.contents} className="mb-8" />
+      {/* Plugin contents (extension counts for packages) */}
+      {item.type === "plugin" && item.package && Object.keys(item.package).length > 0 && (
+        <PluginContents counts={item.package} className="mb-8" />
       )}
 
-      {/* File tree (for any item with source files) */}
-      {item.contents?.files && (
+      {/* File tree (lazy-loaded from item.json) */}
+      {fileTree && (
         <FileTree
-          files={item.contents.files}
+          files={fileTree}
           externalUrl={item.externalUrl}
           rootName={item.slug}
           className="mb-8"

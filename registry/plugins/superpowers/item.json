@@ -7,12 +7,19 @@
   "compatibility": [
     "claude"
   ],
+  "pluginType": "package",
+  "package": {
+    "skill": 14,
+    "agent": 1,
+    "hook": 1,
+    "command": 3
+  },
   "sourceType": "community",
   "author": {
     "name": "Jesse Vincent"
   },
   "externalUrl": "https://github.com/obra/superpowers/tree/main",
-  "updatedAt": "2026-02-12T19:03:32Z",
+  "contentHash": "331d072c4ed12aa0",
   "contents": {
     "files": [
       {
@@ -557,34 +564,7 @@
         "name": "RELEASE-NOTES.md",
         "type": "file"
       }
-    ],
-    "agents": [
-      "code-reviewer"
-    ],
-    "commands": [
-      "brainstorm",
-      "execute-plan",
-      "write-plan"
-    ],
-    "hooks": [
-      "SessionStart"
-    ],
-    "skills": [
-      "brainstorming",
-      "dispatching-parallel-agents",
-      "executing-plans",
-      "finishing-a-development-branch",
-      "receiving-code-review",
-      "requesting-code-review",
-      "subagent-driven-development",
-      "systematic-debugging",
-      "test-driven-development",
-      "using-git-worktrees",
-      "using-superpowers",
-      "verification-before-completion",
-      "writing-plans",
-      "writing-skills"
     ]
   },
-  "contentHash": "331d072c4ed12aa0"
+  "updatedAt": "2026-02-12T19:03:32Z"
 }

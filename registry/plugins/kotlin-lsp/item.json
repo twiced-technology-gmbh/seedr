@@ -7,12 +7,14 @@
   "compatibility": [
     "claude"
   ],
-  "integration": true,
+  "pluginType": "integration",
+  "integration": "lsp",
   "sourceType": "official",
   "author": {
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/kotlin-lsp",
+  "contentHash": "79966ce8873dea30",
   "contents": {
     "files": [
       {
@@ -21,6 +23,5 @@
       }
     ]
   },
-  "updatedAt": "2026-01-07T20:06:39Z",
-  "contentHash": "79966ce8873dea30"
+  "updatedAt": "2026-01-07T20:06:39Z"
 }

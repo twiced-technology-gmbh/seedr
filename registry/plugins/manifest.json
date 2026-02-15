@@ -9,33 +9,14 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "mcp",
       "sourceType": "community",
       "author": {
         "name": "Asana"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/asana",
       "contentHash": "ffb39e4599a22686",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ],
-        "mcpServers": [
-          "asana"
-        ]
-      },
       "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
@@ -46,51 +27,16 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "skill",
       "sourceType": "community",
       "author": {
         "name": "Kevin Valerio",
         "url": "https://github.com/trailofbits"
       },
       "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified",
-      "updatedAt": "2026-02-12T15:28:33Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "ask-questions-if-underspecified",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "skills": [
-          "ask-questions-if-underspecified"
-        ]
-      },
-      "contentHash": "14da821fba60c3ae"
+      "contentHash": "14da821fba60c3ae",
+      "updatedAt": "2026-02-12T15:28:33Z"
     },
     {
       "slug": "audit-context-building",
@@ -100,81 +46,20 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "package",
+      "package": {
+        "skill": 1,
+        "agent": 1,
+        "command": 1
+      },
       "sourceType": "community",
       "author": {
         "name": "Omar Inuwa",
         "url": "https://github.com/trailofbits"
       },
       "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/audit-context-building",
-      "updatedAt": "2026-02-13T04:08:06Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "agents",
-            "type": "directory",
-            "children": [
-              {
-                "name": "function-analyzer.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "audit-context.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "audit-context-building",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "resources",
-                    "type": "directory"
-                  },
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "agents": [
-          "function-analyzer"
-        ],
-        "commands": [
-          "audit-context"
-        ],
-        "skills": [
-          "audit-context-building"
-        ]
-      },
-      "contentHash": "82a4cebe1d0a5668"
+      "contentHash": "82a4cebe1d0a5668",
+      "updatedAt": "2026-02-13T04:08:06Z"
     },
     {
       "slug": "compound-engineering",
@@ -184,121 +69,15 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "command",
       "sourceType": "community",
       "author": {
         "name": "Kieran Klaassen",
         "url": "https://github.com/kieranklaassen"
       },
       "externalUrl": "https://github.com/EveryInc/compound-engineering-plugin",
-      "updatedAt": "2026-02-13T17:54:42Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "marketplace.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".claude",
-            "type": "directory",
-            "children": [
-              {
-                "name": "commands",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "release-docs.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "triage-prs.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "plugins",
-            "type": "directory",
-            "children": [
-              {
-                "name": "compound-engineering",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": ".claude-plugin",
-                    "type": "directory"
-                  },
-                  {
-                    "name": "agents",
-                    "type": "directory"
-                  },
-                  {
-                    "name": "commands",
-                    "type": "directory"
-                  },
-                  {
-                    "name": "skills",
-                    "type": "directory"
-                  },
-                  {
-                    "name": "CLAUDE.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "README.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "coding-tutor",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": ".claude-plugin",
-                    "type": "directory"
-                  },
-                  {
-                    "name": "commands",
-                    "type": "directory"
-                  },
-                  {
-                    "name": "skills",
-                    "type": "directory"
-                  },
-                  {
-                    "name": "README.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "AGENTS.md",
-            "type": "file"
-          },
-          {
-            "name": "CLAUDE.md",
-            "type": "file"
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "commands": [
-          "release-docs",
-          "triage-prs"
-        ]
-      }
+      "updatedAt": "2026-02-13T17:54:42Z"
     },
     {
       "slug": "context7",
@@ -308,33 +87,14 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "mcp",
       "sourceType": "community",
       "author": {
         "name": "Upstash"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/context7",
       "contentHash": "05193833b43e4cd1",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ],
-        "mcpServers": [
-          "context7"
-        ]
-      },
       "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
@@ -345,33 +105,14 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "mcp",
       "sourceType": "community",
       "author": {
         "name": "Google"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/firebase",
       "contentHash": "00327bba1bbb769f",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ],
-        "mcpServers": [
-          "firebase"
-        ]
-      },
       "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
@@ -382,102 +123,19 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "package",
+      "package": {
+        "skill": 1,
+        "hook": 3
+      },
       "sourceType": "community",
       "author": {
         "name": "William Tan",
         "url": "https://github.com/trailofbits"
       },
       "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/gh-cli",
-      "updatedAt": "2026-02-13T02:16:05Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "hooks",
-            "type": "directory",
-            "children": [
-              {
-                "name": "cleanup-clones.sh",
-                "type": "file"
-              },
-              {
-                "name": "hooks.json",
-                "type": "file"
-              },
-              {
-                "name": "intercept-github-curl.bats",
-                "type": "file"
-              },
-              {
-                "name": "intercept-github-curl.sh",
-                "type": "file"
-              },
-              {
-                "name": "intercept-github-fetch.bats",
-                "type": "file"
-              },
-              {
-                "name": "intercept-github-fetch.sh",
-                "type": "file"
-              },
-              {
-                "name": "persist-session-id.sh",
-                "type": "file"
-              },
-              {
-                "name": "session-hooks.bats",
-                "type": "file"
-              },
-              {
-                "name": "test_helper.bash",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "using-gh-cli",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "references",
-                    "type": "directory"
-                  },
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "hooks": [
-          "SessionStart",
-          "PreToolUse",
-          "SessionEnd"
-        ],
-        "skills": [
-          "using-gh-cli"
-        ]
-      },
-      "contentHash": "6f9deffa0339b9f9"
+      "contentHash": "6f9deffa0339b9f9",
+      "updatedAt": "2026-02-13T02:16:05Z"
     },
     {
       "slug": "git-cleanup",
@@ -487,51 +145,16 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "skill",
       "sourceType": "community",
       "author": {
         "name": "Henrik Brodin",
         "url": "https://github.com/trailofbits"
       },
       "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/git-cleanup",
-      "updatedAt": "2026-02-12T00:59:33Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "git-cleanup",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "skills": [
-          "git-cleanup"
-        ]
-      },
-      "contentHash": "95bb00deb758dee0"
+      "contentHash": "95bb00deb758dee0",
+      "updatedAt": "2026-02-12T00:59:33Z"
     },
     {
       "slug": "github",
@@ -541,33 +164,14 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "mcp",
       "sourceType": "community",
       "author": {
         "name": "GitHub"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/github",
       "contentHash": "80967cdd32c1e94a",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ],
-        "mcpServers": [
-          "github"
-        ]
-      },
       "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
@@ -578,33 +182,14 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "mcp",
       "sourceType": "community",
       "author": {
         "name": "GitLab"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/gitlab",
       "contentHash": "db03dbeecccbb0d3",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ],
-        "mcpServers": [
-          "gitlab"
-        ]
-      },
       "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
@@ -615,6 +200,8 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "mcp",
       "sourceType": "community",
       "author": {
         "name": "Greptile",
@@ -622,31 +209,6 @@
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/greptile",
       "contentHash": "da5815a63e4d2b1a",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "mcpServers": [
-          "greptile"
-        ]
-      },
       "updatedAt": "2026-01-06T05:15:35Z"
     },
     {
@@ -657,60 +219,15 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "skill",
       "sourceType": "community",
       "author": {
         "name": "Trail of Bits",
         "url": "https://github.com/trailofbits"
       },
       "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/humanizer",
-      "updatedAt": "2026-02-06T16:22:35Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "humanizer",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "references",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "patterns.md",
-                        "type": "file"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "skills": [
-          "humanizer"
-        ]
-      }
+      "updatedAt": "2026-02-06T16:22:35Z"
     },
     {
       "slug": "laravel-boost",
@@ -720,33 +237,14 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "mcp",
       "sourceType": "community",
       "author": {
         "name": "Laravel"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/laravel-boost",
       "contentHash": "e5d77d87db7d7d92",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ],
-        "mcpServers": [
-          "laravel-boost"
-        ]
-      },
       "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
@@ -757,134 +255,15 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "skill",
       "sourceType": "community",
       "author": {
         "name": "mvanhorn",
         "url": "https://github.com/mvanhorn/last30days-skill"
       },
       "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/last30days",
-      "updatedAt": "2026-02-12T07:49:07Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "scripts",
-            "type": "directory",
-            "children": [
-              {
-                "name": "last30days.py",
-                "type": "file"
-              },
-              {
-                "name": "lib",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "__init__.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "cache.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "dates.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "dedupe.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "entity_extract.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "env.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "http.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "models.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "normalize.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "openai_reddit.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "reddit_enrich.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "render.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "schema.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "score.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "ui.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "websearch.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "xai_x.py",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "last30days",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "skills": [
-          "last30days"
-        ]
-      }
+      "updatedAt": "2026-02-12T07:49:07Z"
     },
     {
       "slug": "linear",
@@ -894,33 +273,14 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "mcp",
       "sourceType": "community",
       "author": {
         "name": "Linear"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/linear",
       "contentHash": "5e00001b7c5d7106",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ],
-        "mcpServers": [
-          "linear"
-        ]
-      },
       "updatedAt": "2025-12-16T23:13:40Z"
     },
     {
@@ -931,33 +291,14 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "mcp",
       "sourceType": "community",
       "author": {
         "name": "Microsoft"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/playwright",
       "contentHash": "43d217d3320c4029",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ],
-        "mcpServers": [
-          "playwright"
-        ]
-      },
       "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
@@ -968,54 +309,15 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "skill",
       "sourceType": "community",
       "author": {
         "name": "Dan Guido"
       },
       "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/second-opinion",
-      "updatedAt": "2026-02-13T00:53:29Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "second-opinion",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "references",
-                    "type": "directory"
-                  },
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "skills": [
-          "second-opinion"
-        ]
-      },
-      "contentHash": "88bbe419708f57cb"
+      "contentHash": "88bbe419708f57cb",
+      "updatedAt": "2026-02-13T00:53:29Z"
     },
     {
       "slug": "serena",
@@ -1025,33 +327,14 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "mcp",
       "sourceType": "community",
       "author": {
         "name": "Oraios"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/serena",
       "contentHash": "608eb296db4c4821",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ],
-        "mcpServers": [
-          "serena"
-        ]
-      },
       "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
@@ -1062,68 +345,15 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "skill",
       "sourceType": "community",
       "author": {
         "name": "Trail of Bits",
         "url": "https://github.com/trailofbits"
       },
       "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/skill-extractor",
-      "updatedAt": "2026-02-06T16:22:35Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "skill-extractor",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "references",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "quality-guide.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "skill-lifecycle.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "skill-template.md",
-                        "type": "file"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "skills": [
-          "skill-extractor"
-        ]
-      }
+      "updatedAt": "2026-02-06T16:22:35Z"
     },
     {
       "slug": "slack",
@@ -1133,33 +363,14 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "mcp",
       "sourceType": "community",
       "author": {
         "name": "Slack"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/slack",
       "contentHash": "b25546d5030930c2",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ],
-        "mcpServers": [
-          "slack"
-        ]
-      },
       "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
@@ -1170,6 +381,12 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "package",
+      "package": {
+        "skill": 1,
+        "command": 2,
+        "mcp": 1
+      },
       "sourceType": "community",
       "author": {
         "name": "Stripe",
@@ -1177,64 +394,6 @@
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/stripe",
       "contentHash": "eb0721627c9671d7",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "explain-error.md",
-                "type": "file"
-              },
-              {
-                "name": "test-cards.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "stripe-best-practices",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ],
-        "commands": [
-          "explain-error",
-          "test-cards"
-        ],
-        "skills": [
-          "stripe-best-practices"
-        ],
-        "mcpServers": [
-          "stripe"
-        ]
-      },
       "updatedAt": "2025-12-18T16:58:02Z"
     },
     {
@@ -1245,33 +404,14 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "mcp",
       "sourceType": "community",
       "author": {
         "name": "Supabase"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/supabase",
       "contentHash": "8f4caf2119de3077",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".mcp.json",
-            "type": "file"
-          }
-        ],
-        "mcpServers": [
-          "supabase"
-        ]
-      },
       "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
@@ -1282,586 +422,20 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "package",
+      "package": {
+        "skill": 14,
+        "agent": 1,
+        "hook": 1,
+        "command": 3
+      },
       "sourceType": "community",
       "author": {
         "name": "Jesse Vincent"
       },
       "externalUrl": "https://github.com/obra/superpowers/tree/main",
-      "updatedAt": "2026-02-12T19:03:32Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "marketplace.json",
-                "type": "file"
-              },
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".codex",
-            "type": "directory",
-            "children": [
-              {
-                "name": "INSTALL.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".github",
-            "type": "directory",
-            "children": [
-              {
-                "name": "FUNDING.yml",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".opencode",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugins",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "superpowers.js",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "INSTALL.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "agents",
-            "type": "directory",
-            "children": [
-              {
-                "name": "code-reviewer.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "brainstorm.md",
-                "type": "file"
-              },
-              {
-                "name": "execute-plan.md",
-                "type": "file"
-              },
-              {
-                "name": "write-plan.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "docs",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plans",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "2025-11-22-opencode-support-design.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "2025-11-22-opencode-support-implementation.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "2025-11-28-skills-improvements-from-user-feedback.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "windows",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "polyglot-hooks.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "README.codex.md",
-                "type": "file"
-              },
-              {
-                "name": "README.opencode.md",
-                "type": "file"
-              },
-              {
-                "name": "testing.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "hooks",
-            "type": "directory",
-            "children": [
-              {
-                "name": "hooks.json",
-                "type": "file"
-              },
-              {
-                "name": "run-hook.cmd",
-                "type": "file"
-              },
-              {
-                "name": "session-start.sh",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "lib",
-            "type": "directory",
-            "children": [
-              {
-                "name": "skills-core.js",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "brainstorming",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "dispatching-parallel-agents",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "executing-plans",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "finishing-a-development-branch",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "receiving-code-review",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "requesting-code-review",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "code-reviewer.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "subagent-driven-development",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "code-quality-reviewer-prompt.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "implementer-prompt.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "spec-reviewer-prompt.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "systematic-debugging",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "condition-based-waiting-example.ts",
-                    "type": "file"
-                  },
-                  {
-                    "name": "condition-based-waiting.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "CREATION-LOG.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "defense-in-depth.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "find-polluter.sh",
-                    "type": "file"
-                  },
-                  {
-                    "name": "root-cause-tracing.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "test-academic.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "test-pressure-1.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "test-pressure-2.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "test-pressure-3.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "test-driven-development",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "testing-anti-patterns.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "using-git-worktrees",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "using-superpowers",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "verification-before-completion",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "writing-plans",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "writing-skills",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "examples",
-                    "type": "directory"
-                  },
-                  {
-                    "name": "anthropic-best-practices.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "graphviz-conventions.dot",
-                    "type": "file"
-                  },
-                  {
-                    "name": "persuasion-principles.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "render-graphs.js",
-                    "type": "file"
-                  },
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "testing-skills-with-subagents.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "tests",
-            "type": "directory",
-            "children": [
-              {
-                "name": "claude-code",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "analyze-token-usage.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "README.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "run-skill-tests.sh",
-                    "type": "file"
-                  },
-                  {
-                    "name": "test-helpers.sh",
-                    "type": "file"
-                  },
-                  {
-                    "name": "test-subagent-driven-development-integration.sh",
-                    "type": "file"
-                  },
-                  {
-                    "name": "test-subagent-driven-development.sh",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "explicit-skill-requests",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "prompts",
-                    "type": "directory"
-                  },
-                  {
-                    "name": "run-all.sh",
-                    "type": "file"
-                  },
-                  {
-                    "name": "run-claude-describes-sdd.sh",
-                    "type": "file"
-                  },
-                  {
-                    "name": "run-extended-multiturn-test.sh",
-                    "type": "file"
-                  },
-                  {
-                    "name": "run-haiku-test.sh",
-                    "type": "file"
-                  },
-                  {
-                    "name": "run-multiturn-test.sh",
-                    "type": "file"
-                  },
-                  {
-                    "name": "run-test.sh",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "opencode",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "run-tests.sh",
-                    "type": "file"
-                  },
-                  {
-                    "name": "setup.sh",
-                    "type": "file"
-                  },
-                  {
-                    "name": "test-plugin-loading.sh",
-                    "type": "file"
-                  },
-                  {
-                    "name": "test-priority.sh",
-                    "type": "file"
-                  },
-                  {
-                    "name": "test-skills-core.sh",
-                    "type": "file"
-                  },
-                  {
-                    "name": "test-tools.sh",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "skill-triggering",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "prompts",
-                    "type": "directory"
-                  },
-                  {
-                    "name": "run-all.sh",
-                    "type": "file"
-                  },
-                  {
-                    "name": "run-test.sh",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "subagent-driven-dev",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "go-fractals",
-                    "type": "directory"
-                  },
-                  {
-                    "name": "svelte-todo",
-                    "type": "directory"
-                  },
-                  {
-                    "name": "run-test.sh",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": ".gitattributes",
-            "type": "file"
-          },
-          {
-            "name": ".gitignore",
-            "type": "file"
-          },
-          {
-            "name": "LICENSE",
-            "type": "file"
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          },
-          {
-            "name": "RELEASE-NOTES.md",
-            "type": "file"
-          }
-        ],
-        "agents": [
-          "code-reviewer"
-        ],
-        "commands": [
-          "brainstorm",
-          "execute-plan",
-          "write-plan"
-        ],
-        "hooks": [
-          "SessionStart"
-        ],
-        "skills": [
-          "brainstorming",
-          "dispatching-parallel-agents",
-          "executing-plans",
-          "finishing-a-development-branch",
-          "receiving-code-review",
-          "requesting-code-review",
-          "subagent-driven-development",
-          "systematic-debugging",
-          "test-driven-development",
-          "using-git-worktrees",
-          "using-superpowers",
-          "verification-before-completion",
-          "writing-plans",
-          "writing-skills"
-        ]
-      },
-      "contentHash": "331d072c4ed12aa0"
+      "contentHash": "331d072c4ed12aa0",
+      "updatedAt": "2026-02-12T19:03:32Z"
     },
     {
       "slug": "wooyun-legacy",
@@ -1871,162 +445,15 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "skill",
       "sourceType": "community",
       "author": {
         "name": "tanweai / wooyun-legacy contributors",
         "url": "https://github.com/tanweai/wooyun-legacy"
       },
       "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/wooyun-legacy",
-      "updatedAt": "2026-02-12T00:10:00Z",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "wooyun-legacy",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "references",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "bank-penetration.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "checklists",
-                        "type": "directory",
-                        "children": [
-                          {
-                            "name": "command-execution-checklist.md",
-                            "type": "file"
-                          },
-                          {
-                            "name": "csrf-checklist.md",
-                            "type": "file"
-                          },
-                          {
-                            "name": "file-upload-checklist.md",
-                            "type": "file"
-                          },
-                          {
-                            "name": "info-disclosure-checklist.md",
-                            "type": "file"
-                          },
-                          {
-                            "name": "logic-flaws-checklist.md",
-                            "type": "file"
-                          },
-                          {
-                            "name": "misconfig-checklist.md",
-                            "type": "file"
-                          },
-                          {
-                            "name": "path-traversal-checklist.md",
-                            "type": "file"
-                          },
-                          {
-                            "name": "rce-checklist.md",
-                            "type": "file"
-                          },
-                          {
-                            "name": "sql-injection-checklist.md",
-                            "type": "file"
-                          },
-                          {
-                            "name": "ssrf-checklist.md",
-                            "type": "file"
-                          },
-                          {
-                            "name": "unauthorized-access-checklist.md",
-                            "type": "file"
-                          },
-                          {
-                            "name": "weak-password-checklist.md",
-                            "type": "file"
-                          },
-                          {
-                            "name": "xss-checklist.md",
-                            "type": "file"
-                          },
-                          {
-                            "name": "xxe-checklist.md",
-                            "type": "file"
-                          }
-                        ]
-                      },
-                      {
-                        "name": "command-execution.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "file-upload.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "info-disclosure.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "logic-flaws.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "path-traversal.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "sql-injection.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "telecom-penetration.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "unauthorized-access.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "xss.md",
-                        "type": "file"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "LICENSE",
-            "type": "file"
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "skills": [
-          "wooyun-legacy"
-        ]
-      }
+      "updatedAt": "2026-02-12T00:10:00Z"
     },
     {
       "slug": "agent-sdk-dev",
@@ -2036,61 +463,17 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "package",
+      "package": {
+        "agent": 2,
+        "command": 1
+      },
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/agent-sdk-dev",
       "contentHash": "794e61bf58c55e22",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "agents",
-            "type": "directory",
-            "children": [
-              {
-                "name": "agent-sdk-verifier-py.md",
-                "type": "file"
-              },
-              {
-                "name": "agent-sdk-verifier-ts.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "new-sdk-app.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "agents": [
-          "agent-sdk-verifier-py",
-          "agent-sdk-verifier-ts"
-        ],
-        "commands": [
-          "new-sdk-app"
-        ]
-      },
       "updatedAt": "2025-12-13T00:52:17Z"
     },
     {
@@ -2101,22 +484,15 @@
       "compatibility": [
         "claude"
       ],
-      "integration": true,
+      "pluginType": "integration",
+      "integration": "lsp",
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/clangd-lsp",
-      "contents": {
-        "files": [
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ]
-      },
-      "updatedAt": "2025-12-19T00:24:41Z",
-      "contentHash": "69fcf589f884f61c"
+      "contentHash": "69fcf589f884f61c",
+      "updatedAt": "2025-12-19T00:24:41Z"
     },
     {
       "slug": "claude-code-setup",
@@ -2126,79 +502,14 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "skill",
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-code-setup",
       "contentHash": "d0b3b68824258024",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "claude-automation-recommender",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "references",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "hooks-patterns.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "mcp-servers.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "plugins-reference.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "skills-reference.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "subagent-templates.md",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "automation-recommender-example.png",
-            "type": "file"
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "skills": [
-          "claude-automation-recommender"
-        ]
-      },
       "updatedAt": "2026-01-21T04:15:08Z"
     },
     {
@@ -2209,88 +520,17 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "package",
+      "package": {
+        "skill": 1,
+        "command": 1
+      },
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-md-management",
       "contentHash": "56cc8ddbfdc15cbf",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "revise-claude-md.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "claude-md-improver",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "references",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "quality-criteria.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "templates.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "update-guidelines.md",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "claude-md-improver-example.png",
-            "type": "file"
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          },
-          {
-            "name": "revise-claude-md-example.png",
-            "type": "file"
-          }
-        ],
-        "commands": [
-          "revise-claude-md"
-        ],
-        "skills": [
-          "claude-md-improver"
-        ]
-      },
       "updatedAt": "2026-01-20T21:11:06Z"
     },
     {
@@ -2301,43 +541,14 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "command",
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/code-review",
       "contentHash": "14bbe9287db0195c",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "code-review.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "commands": [
-          "code-review"
-        ]
-      },
       "updatedAt": "2025-12-13T00:52:17Z"
     },
     {
@@ -2348,39 +559,14 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "agent",
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/code-simplifier",
       "contentHash": "5c5eb50c7d32dffe",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "agents",
-            "type": "directory",
-            "children": [
-              {
-                "name": "code-simplifier.md",
-                "type": "file"
-              }
-            ]
-          }
-        ],
-        "agents": [
-          "code-simplifier"
-        ]
-      },
       "updatedAt": "2026-01-09T00:17:19Z"
     },
     {
@@ -2391,53 +577,14 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "command",
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/commit-commands",
       "contentHash": "c71eb28d5915f776",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "clean_gone.md",
-                "type": "file"
-              },
-              {
-                "name": "commit-push-pr.md",
-                "type": "file"
-              },
-              {
-                "name": "commit.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "commands": [
-          "clean_gone",
-          "commit-push-pr",
-          "commit"
-        ]
-      },
       "updatedAt": "2025-12-02T00:03:02Z"
     },
     {
@@ -2448,22 +595,15 @@
       "compatibility": [
         "claude"
       ],
-      "integration": true,
+      "pluginType": "integration",
+      "integration": "lsp",
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/csharp-lsp",
-      "contents": {
-        "files": [
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ]
-      },
-      "updatedAt": "2025-12-19T00:24:41Z",
-      "contentHash": "7d072c7cbe3746d9"
+      "contentHash": "7d072c7cbe3746d9",
+      "updatedAt": "2025-12-19T00:24:41Z"
     },
     {
       "slug": "explanatory-output-style",
@@ -2473,53 +613,14 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "hook",
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/explanatory-output-style",
       "contentHash": "33bcf2ec4585a419",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "hooks",
-            "type": "directory",
-            "children": [
-              {
-                "name": "hooks.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "hooks-handlers",
-            "type": "directory",
-            "children": [
-              {
-                "name": "session-start.sh",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "hooks": [
-          "SessionStart"
-        ]
-      },
       "updatedAt": "2025-12-13T00:52:17Z"
     },
     {
@@ -2530,66 +631,17 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "package",
+      "package": {
+        "agent": 3,
+        "command": 1
+      },
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/feature-dev",
       "contentHash": "4299680eae0dfa5e",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "agents",
-            "type": "directory",
-            "children": [
-              {
-                "name": "code-architect.md",
-                "type": "file"
-              },
-              {
-                "name": "code-explorer.md",
-                "type": "file"
-              },
-              {
-                "name": "code-reviewer.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "feature-dev.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "agents": [
-          "code-architect",
-          "code-explorer",
-          "code-reviewer"
-        ],
-        "commands": [
-          "feature-dev"
-        ]
-      },
       "updatedAt": "2025-12-13T00:52:17Z"
     },
     {
@@ -2600,49 +652,14 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "skill",
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design",
       "contentHash": "6f9d7a34a44e46aa",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "frontend-design",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "skills": [
-          "frontend-design"
-        ]
-      },
       "updatedAt": "2025-12-13T00:52:17Z"
     },
     {
@@ -2653,22 +670,15 @@
       "compatibility": [
         "claude"
       ],
-      "integration": true,
+      "pluginType": "integration",
+      "integration": "lsp",
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/gopls-lsp",
-      "contents": {
-        "files": [
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ]
-      },
-      "updatedAt": "2025-12-19T00:24:41Z",
-      "contentHash": "e9701a9dcadb0bca"
+      "contentHash": "e9701a9dcadb0bca",
+      "updatedAt": "2025-12-19T00:24:41Z"
     },
     {
       "slug": "hookify",
@@ -2678,190 +688,19 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "package",
+      "package": {
+        "skill": 1,
+        "agent": 1,
+        "hook": 4,
+        "command": 4
+      },
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/hookify",
       "contentHash": "e7171ec76f27ce74",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "agents",
-            "type": "directory",
-            "children": [
-              {
-                "name": "conversation-analyzer.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "configure.md",
-                "type": "file"
-              },
-              {
-                "name": "help.md",
-                "type": "file"
-              },
-              {
-                "name": "hookify.md",
-                "type": "file"
-              },
-              {
-                "name": "list.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "core",
-            "type": "directory",
-            "children": [
-              {
-                "name": "__init__.py",
-                "type": "file"
-              },
-              {
-                "name": "config_loader.py",
-                "type": "file"
-              },
-              {
-                "name": "rule_engine.py",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "examples",
-            "type": "directory",
-            "children": [
-              {
-                "name": "console-log-warning.local.md",
-                "type": "file"
-              },
-              {
-                "name": "dangerous-rm.local.md",
-                "type": "file"
-              },
-              {
-                "name": "require-tests-stop.local.md",
-                "type": "file"
-              },
-              {
-                "name": "sensitive-files-warning.local.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "hooks",
-            "type": "directory",
-            "children": [
-              {
-                "name": "__init__.py",
-                "type": "file"
-              },
-              {
-                "name": "hooks.json",
-                "type": "file"
-              },
-              {
-                "name": "posttooluse.py",
-                "type": "file"
-              },
-              {
-                "name": "pretooluse.py",
-                "type": "file"
-              },
-              {
-                "name": "stop.py",
-                "type": "file"
-              },
-              {
-                "name": "userpromptsubmit.py",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "matchers",
-            "type": "directory",
-            "children": [
-              {
-                "name": "__init__.py",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "writing-rules",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "utils",
-            "type": "directory",
-            "children": [
-              {
-                "name": "__init__.py",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": ".gitignore",
-            "type": "file"
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "agents": [
-          "conversation-analyzer"
-        ],
-        "commands": [
-          "configure",
-          "help",
-          "hookify",
-          "list"
-        ],
-        "hooks": [
-          "PreToolUse",
-          "PostToolUse",
-          "Stop",
-          "UserPromptSubmit"
-        ],
-        "skills": [
-          "writing-rules"
-        ]
-      },
       "updatedAt": "2026-02-05T17:21:57Z"
     },
     {
@@ -2872,22 +711,15 @@
       "compatibility": [
         "claude"
       ],
-      "integration": true,
+      "pluginType": "integration",
+      "integration": "lsp",
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/jdtls-lsp",
-      "contents": {
-        "files": [
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ]
-      },
-      "updatedAt": "2025-12-19T00:24:41Z",
-      "contentHash": "6f8652db8c419ba6"
+      "contentHash": "6f8652db8c419ba6",
+      "updatedAt": "2025-12-19T00:24:41Z"
     },
     {
       "slug": "kotlin-lsp",
@@ -2897,22 +729,15 @@
       "compatibility": [
         "claude"
       ],
-      "integration": true,
+      "pluginType": "integration",
+      "integration": "lsp",
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/kotlin-lsp",
-      "contents": {
-        "files": [
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ]
-      },
-      "updatedAt": "2026-01-07T20:06:39Z",
-      "contentHash": "79966ce8873dea30"
+      "contentHash": "79966ce8873dea30",
+      "updatedAt": "2026-01-07T20:06:39Z"
     },
     {
       "slug": "learning-output-style",
@@ -2922,53 +747,14 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "hook",
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/learning-output-style",
       "contentHash": "2df9cbf8714731f8",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "hooks",
-            "type": "directory",
-            "children": [
-              {
-                "name": "hooks.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "hooks-handlers",
-            "type": "directory",
-            "children": [
-              {
-                "name": "session-start.sh",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "hooks": [
-          "SessionStart"
-        ]
-      },
       "updatedAt": "2025-12-13T00:52:17Z"
     },
     {
@@ -2979,22 +765,15 @@
       "compatibility": [
         "claude"
       ],
-      "integration": true,
+      "pluginType": "integration",
+      "integration": "lsp",
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/lua-lsp",
-      "contents": {
-        "files": [
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ]
-      },
-      "updatedAt": "2025-12-19T00:24:41Z",
-      "contentHash": "699789acac989f21"
+      "contentHash": "699789acac989f21",
+      "updatedAt": "2025-12-19T00:24:41Z"
     },
     {
       "slug": "php-lsp",
@@ -3004,22 +783,15 @@
       "compatibility": [
         "claude"
       ],
-      "integration": true,
+      "pluginType": "integration",
+      "integration": "lsp",
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/php-lsp",
-      "contents": {
-        "files": [
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ]
-      },
-      "updatedAt": "2025-12-19T00:24:41Z",
-      "contentHash": "5829d35c9b8c2460"
+      "contentHash": "5829d35c9b8c2460",
+      "updatedAt": "2025-12-19T00:24:41Z"
     },
     {
       "slug": "playground",
@@ -3029,79 +801,14 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "skill",
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/playground",
       "contentHash": "a568884802664ae7",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "playground",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "templates",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "code-map.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "concept-map.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "data-explorer.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "design-playground.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "diff-review.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "document-critique.md",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "skills": [
-          "playground"
-        ]
-      },
       "updatedAt": "2026-01-29T23:24:01Z"
     },
     {
@@ -3112,422 +819,19 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "package",
+      "package": {
+        "skill": 7,
+        "agent": 3,
+        "command": 1
+      },
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/plugin-dev",
-      "contents": {
-        "files": [
-          {
-            "name": "agents",
-            "type": "directory",
-            "children": [
-              {
-                "name": "agent-creator.md",
-                "type": "file"
-              },
-              {
-                "name": "plugin-validator.md",
-                "type": "file"
-              },
-              {
-                "name": "skill-reviewer.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "create-plugin.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "skills",
-            "type": "directory",
-            "children": [
-              {
-                "name": "agent-development",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "examples",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "agent-creation-prompt.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "complete-agent-examples.md",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "references",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "agent-creation-system-prompt.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "system-prompt-design.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "triggering-examples.md",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "scripts",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "validate-agent.sh",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "command-development",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "examples",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "plugin-commands.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "simple-commands.md",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "references",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "advanced-workflows.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "documentation-patterns.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "frontmatter-reference.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "interactive-commands.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "marketplace-considerations.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "plugin-features-reference.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "testing-strategies.md",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "README.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "hook-development",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "examples",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "load-context.sh",
-                        "type": "file"
-                      },
-                      {
-                        "name": "validate-bash.sh",
-                        "type": "file"
-                      },
-                      {
-                        "name": "validate-write.sh",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "references",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "advanced.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "migration.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "patterns.md",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "scripts",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "hook-linter.sh",
-                        "type": "file"
-                      },
-                      {
-                        "name": "README.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "test-hook.sh",
-                        "type": "file"
-                      },
-                      {
-                        "name": "validate-hook-schema.sh",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "mcp-integration",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "examples",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "http-server.json",
-                        "type": "file"
-                      },
-                      {
-                        "name": "sse-server.json",
-                        "type": "file"
-                      },
-                      {
-                        "name": "stdio-server.json",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "references",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "authentication.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "server-types.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "tool-usage.md",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "plugin-settings",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "examples",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "create-settings-command.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "example-settings.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "read-settings-hook.sh",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "references",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "parsing-techniques.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "real-world-examples.md",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "scripts",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "parse-frontmatter.sh",
-                        "type": "file"
-                      },
-                      {
-                        "name": "validate-settings.sh",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "plugin-structure",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "examples",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "advanced-plugin.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "minimal-plugin.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "standard-plugin.md",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "references",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "component-patterns.md",
-                        "type": "file"
-                      },
-                      {
-                        "name": "manifest-reference.md",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "README.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              },
-              {
-                "name": "skill-development",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "references",
-                    "type": "directory",
-                    "children": [
-                      {
-                        "name": "skill-creator-original.md",
-                        "type": "file"
-                      }
-                    ]
-                  },
-                  {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "agents": [
-          "agent-creator",
-          "plugin-validator",
-          "skill-reviewer"
-        ],
-        "commands": [
-          "create-plugin"
-        ],
-        "skills": [
-          "agent-development",
-          "command-development",
-          "hook-development",
-          "mcp-integration",
-          "plugin-settings",
-          "plugin-structure",
-          "skill-development"
-        ]
-      },
-      "updatedAt": "2026-02-05T21:57:52Z",
-      "contentHash": "201c8778b7bbfdad"
+      "contentHash": "201c8778b7bbfdad",
+      "updatedAt": "2026-02-05T21:57:52Z"
     },
     {
       "slug": "pr-review-toolkit",
@@ -3537,81 +841,17 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "package",
+      "package": {
+        "agent": 6,
+        "command": 1
+      },
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pr-review-toolkit",
       "contentHash": "99cdff1f6950626e",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "agents",
-            "type": "directory",
-            "children": [
-              {
-                "name": "code-reviewer.md",
-                "type": "file"
-              },
-              {
-                "name": "code-simplifier.md",
-                "type": "file"
-              },
-              {
-                "name": "comment-analyzer.md",
-                "type": "file"
-              },
-              {
-                "name": "pr-test-analyzer.md",
-                "type": "file"
-              },
-              {
-                "name": "silent-failure-hunter.md",
-                "type": "file"
-              },
-              {
-                "name": "type-design-analyzer.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "review-pr.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "agents": [
-          "code-reviewer",
-          "code-simplifier",
-          "comment-analyzer",
-          "pr-test-analyzer",
-          "silent-failure-hunter",
-          "type-design-analyzer"
-        ],
-        "commands": [
-          "review-pr"
-        ]
-      },
       "updatedAt": "2026-02-04T23:59:39Z"
     },
     {
@@ -3622,22 +862,15 @@
       "compatibility": [
         "claude"
       ],
-      "integration": true,
+      "pluginType": "integration",
+      "integration": "lsp",
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pyright-lsp",
-      "contents": {
-        "files": [
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ]
-      },
-      "updatedAt": "2025-12-19T00:24:41Z",
-      "contentHash": "28c541b0fc0ce7c9"
+      "contentHash": "28c541b0fc0ce7c9",
+      "updatedAt": "2025-12-19T00:24:41Z"
     },
     {
       "slug": "ralph-loop",
@@ -3647,80 +880,17 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "package",
+      "package": {
+        "hook": 1,
+        "command": 3
+      },
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/ralph-loop",
       "contentHash": "b4d40bafaf8560e8",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "commands",
-            "type": "directory",
-            "children": [
-              {
-                "name": "cancel-ralph.md",
-                "type": "file"
-              },
-              {
-                "name": "help.md",
-                "type": "file"
-              },
-              {
-                "name": "ralph-loop.md",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "hooks",
-            "type": "directory",
-            "children": [
-              {
-                "name": "hooks.json",
-                "type": "file"
-              },
-              {
-                "name": "stop-hook.sh",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "scripts",
-            "type": "directory",
-            "children": [
-              {
-                "name": "setup-ralph-loop.sh",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ],
-        "commands": [
-          "cancel-ralph",
-          "help",
-          "ralph-loop"
-        ],
-        "hooks": [
-          "Stop"
-        ]
-      },
       "updatedAt": "2026-01-06T23:22:54Z"
     },
     {
@@ -3731,22 +901,15 @@
       "compatibility": [
         "claude"
       ],
-      "integration": true,
+      "pluginType": "integration",
+      "integration": "lsp",
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/rust-analyzer-lsp",
-      "contents": {
-        "files": [
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ]
-      },
-      "updatedAt": "2025-12-19T00:24:41Z",
-      "contentHash": "433677dab975495d"
+      "contentHash": "433677dab975495d",
+      "updatedAt": "2025-12-19T00:24:41Z"
     },
     {
       "slug": "security-guidance",
@@ -3756,43 +919,14 @@
       "compatibility": [
         "claude"
       ],
+      "pluginType": "wrapper",
+      "wrapper": "hook",
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/security-guidance",
       "contentHash": "9e6878c6831413a8",
-      "contents": {
-        "files": [
-          {
-            "name": ".claude-plugin",
-            "type": "directory",
-            "children": [
-              {
-                "name": "plugin.json",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "hooks",
-            "type": "directory",
-            "children": [
-              {
-                "name": "hooks.json",
-                "type": "file"
-              },
-              {
-                "name": "security_reminder_hook.py",
-                "type": "file"
-              }
-            ]
-          }
-        ],
-        "hooks": [
-          "PreToolUse"
-        ]
-      },
       "updatedAt": "2025-12-13T00:52:17Z"
     },
     {
@@ -3803,22 +937,15 @@
       "compatibility": [
         "claude"
       ],
-      "integration": true,
+      "pluginType": "integration",
+      "integration": "lsp",
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/swift-lsp",
-      "contents": {
-        "files": [
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ]
-      },
-      "updatedAt": "2025-12-19T00:24:41Z",
-      "contentHash": "e349484ba26940bd"
+      "contentHash": "e349484ba26940bd",
+      "updatedAt": "2025-12-19T00:24:41Z"
     },
     {
       "slug": "typescript-lsp",
@@ -3828,22 +955,15 @@
       "compatibility": [
         "claude"
       ],
-      "integration": true,
+      "pluginType": "integration",
+      "integration": "lsp",
       "sourceType": "official",
       "author": {
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/typescript-lsp",
-      "contents": {
-        "files": [
-          {
-            "name": "README.md",
-            "type": "file"
-          }
-        ]
-      },
-      "updatedAt": "2025-12-19T00:24:41Z",
-      "contentHash": "6bb7f7de1e53f1a4"
+      "contentHash": "6bb7f7de1e53f1a4",
+      "updatedAt": "2025-12-19T00:24:41Z"
     }
   ]
 }

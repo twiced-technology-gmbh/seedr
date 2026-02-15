@@ -7,6 +7,8 @@
   "compatibility": [
     "claude"
   ],
+  "pluginType": "wrapper",
+  "wrapper": "mcp",
   "sourceType": "community",
   "author": {
     "name": "GitLab"
@@ -29,9 +31,6 @@
         "name": ".mcp.json",
         "type": "file"
       }
-    ],
-    "mcpServers": [
-      "gitlab"
     ]
   },
   "updatedAt": "2025-12-02T00:03:02Z"

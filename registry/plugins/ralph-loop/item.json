@@ -7,6 +7,11 @@
   "compatibility": [
     "claude"
   ],
+  "pluginType": "package",
+  "package": {
+    "hook": 1,
+    "command": 3
+  },
   "sourceType": "official",
   "author": {
     "name": "Anthropic"
@@ -71,14 +76,6 @@
         "name": "README.md",
         "type": "file"
       }
-    ],
-    "commands": [
-      "cancel-ralph",
-      "help",
-      "ralph-loop"
-    ],
-    "hooks": [
-      "Stop"
     ]
   },
   "updatedAt": "2026-01-06T23:22:54Z"

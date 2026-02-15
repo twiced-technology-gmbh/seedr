@@ -126,7 +126,7 @@ export async function fetchText(url: string): Promise<string | null> {
   }
 }
 
-import type { FileTreeNode, GitTreeItem, GitTreeResponse, PluginContents } from "./types.js";
+import type { FileTreeNode, GitTreeItem, GitTreeResponse, ParsedPluginContents } from "./types.js";
 
 const repoTreeCache = new Map<string, GitTreeItem[]>();
 
@@ -286,8 +286,8 @@ export function formatName(slug: string): string {
  * - Root-level directories (skills/, agents/, hooks/, commands/)
  * - Or under .claude/ directory
  */
-export function parsePluginContents(files: FileTreeNode[]): PluginContents {
-  const contents: PluginContents = { files };
+export function parsePluginContents(files: FileTreeNode[]): ParsedPluginContents {
+  const contents: ParsedPluginContents = { files };
 
   const extractMdItems = (dir: FileTreeNode | undefined): string[] => {
     if (!dir?.children) return [];

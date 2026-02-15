@@ -12,7 +12,7 @@ import { ToolIcon } from "@/components/ToolIcon";
 import { TypeIcon } from "@/components/TypeIcon";
 import { getItemsByType } from "@/lib/registry";
 import { pluralize } from "@/lib/text";
-import type { ComponentType, AITool, SourceType, ScopeType, RegistryItem } from "@/lib/types";
+import type { ComponentType, AITool, SourceType, ScopeType, PluginType, RegistryItem } from "@/lib/types";
 import { toolLabels, sourceLabels, scopeLabels, typeLabelPlural, typeTextColors } from "@/lib/colors";
 
 const toolOptions: FilterOption<AITool>[] = [
@@ -33,6 +33,22 @@ const scopeOptions: FilterOption<ScopeType>[] = [
   { value: "user", label: scopeLabels.user },
   { value: "project", label: scopeLabels.project },
   { value: "local", label: scopeLabels.local },
+];
+
+const pluginTypeOptions: FilterOption<PluginType>[] = [
+  { value: "package", label: "Package" },
+  { value: "wrapper", label: "Wrapper" },
+  { value: "integration", label: "Integration" },
+];
+
+type ExtensionType = "skill" | "hook" | "agent" | "command" | "mcp" | "lsp";
+const extensionOptions: FilterOption<ExtensionType>[] = [
+  { value: "skill", label: "Skill" },
+  { value: "hook", label: "Hook" },
+  { value: "agent", label: "Agent" },
+  { value: "command", label: "Command" },
+  { value: "mcp", label: "MCP Server" },
+  { value: "lsp", label: "LSP" },
 ];
 
 const sortFields: SortField[] = [
@@ -63,11 +79,15 @@ export function Browse() {
   const [searchParams, setSearchParams] = useSearchParams();
   useScrollRestoration();
 
+  const isPlugins = componentType === "plugin";
+
   // Read state from URL search params
   const query = searchParams.get("q") ?? "";
   const toolFilter = (searchParams.get("tool") as AITool | null);
   const sourceFilter = (searchParams.get("source") as SourceType | null);
   const scopeFilter = (searchParams.get("scope") as ScopeType | null);
+  const pluginTypeFilter = (searchParams.get("pluginType") as PluginType | null);
+  const extFilter = (searchParams.get("ext") as ExtensionType | null);
   const sortField = searchParams.get("sortField") ?? "name";
   const sortAsc = searchParams.get("sortAsc") !== "false";
 
@@ -95,6 +115,8 @@ export function Browse() {
     }
   };
   const setScopeFilter = (value: ScopeType | null) => updateParams({ scope: value });
+  const setPluginTypeFilter = (value: PluginType | null) => updateParams({ pluginType: value });
+  const setExtFilter = (value: ExtensionType | null) => updateParams({ ext: value });
   const setSortField = (value: string) => updateParams({ sortField: value === "name" ? null : value });
   const toggleSortDir = () => updateParams({ sortAsc: sortAsc ? "false" : null });
 
@@ -128,11 +150,24 @@ export function Browse() {
       result = result.filter((item) => (item.targetScope ?? "project") === scopeFilter);
     }
 
+    if (pluginTypeFilter) {
+      result = result.filter((item) => (item.pluginType ?? "package") === pluginTypeFilter);
+    }
+
+    if (extFilter) {
+      result = result.filter((item) => {
+        if (item.pluginType === "wrapper") return item.wrapper === extFilter;
+        if (item.pluginType === "integration") return item.integration === extFilter;
+        if (item.package) return (item.package[extFilter] ?? 0) > 0;
+        return false;
+      });
+    }
+
     return sortItems(result, sortField, sortAsc);
-  }, [items, query, toolFilter, sourceFilter, scopeFilter, sortField, sortAsc, fuse]);
+  }, [items, query, toolFilter, sourceFilter, scopeFilter, pluginTypeFilter, extFilter, sortField, sortAsc, fuse]);
 
   // Check if any filters are active
-  const hasActiveFilters = query !== "" || toolFilter !== null || sourceFilter !== null || scopeFilter !== null;
+  const hasActiveFilters = query !== "" || toolFilter !== null || sourceFilter !== null || scopeFilter !== null || pluginTypeFilter !== null || extFilter !== null;
 
   // Reset all filters
   const resetFilters = () => {
@@ -140,6 +175,8 @@ export function Browse() {
     setToolFilter(null);
     setSourceFilter(null);
     setScopeFilter(null);
+    setPluginTypeFilter(null);
+    setExtFilter(null);
   };
 
   if (!componentType || !typeLabelPlural[componentType]) {
@@ -191,13 +228,33 @@ export function Browse() {
         {/* Spacer */}
         <div className="flex-1" />
 
+        {/* Plugin-specific filter dropdowns */}
+        {isPlugins && (
+          <FilterDropdown
+            value={pluginTypeFilter}
+            options={pluginTypeOptions}
+            onChange={setPluginTypeFilter}
+            placeholder="Type"
+            minWidth={140}
+          />
+        )}
+
+        {isPlugins && (
+          <FilterDropdown
+            value={extFilter}
+            options={extensionOptions}
+            onChange={setExtFilter}
+            placeholder="Extension"
+            minWidth={140}
+          />
+        )}
+
         {/* Filter dropdowns */}
         <FilterDropdown
           value={sourceFilter}
           options={sourceOptions}
           onChange={setSourceFilter}
           placeholder="Source"
-          allLabel="All Sources"
           minWidth={120}
         />
 
@@ -206,8 +263,7 @@ export function Browse() {
             value={scopeFilter}
             options={scopeOptions}
             onChange={setScopeFilter}
-            placeholder="Scope recommendation"
-            allLabel="All Scopes"
+            placeholder="Scope"
             minWidth={170}
           />
         )}
@@ -217,7 +273,6 @@ export function Browse() {
           options={toolOptions}
           onChange={setToolFilter}
           placeholder="Tool"
-          allLabel="All Tools"
           minWidth={140}
         />
 
@@ -246,7 +301,20 @@ export function Browse() {
       {filteredItems.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredItems.map((item) => (
-            <ItemCard key={item.slug} item={item} />
+            <ItemCard
+              key={item.slug}
+              item={item}
+              onSourceClick={setSourceFilter}
+              onScopeClick={setScopeFilter}
+              onToolClick={setToolFilter}
+              onDateClick={() => {
+                if (sortField === "updated") {
+                  toggleSortDir();
+                } else {
+                  setSortField("updated");
+                }
+              }}
+            />
           ))}
         </div>
       ) : (

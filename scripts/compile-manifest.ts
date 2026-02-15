@@ -112,9 +112,17 @@ export function compileManifest(): Manifest {
   }
 
   // Write per-type manifest files into their type folders
-  // Exclude longDescription — it stays in item.json and is loaded on demand
+  // Exclude longDescription and contents — they stay in item.json and are loaded on demand
   for (const type of ALL_TYPES) {
-    const typeItems = (byType.get(type) ?? []).map(({ longDescription, ...rest }) => rest);
+    const typeItems = (byType.get(type) ?? []).map((item) => {
+      const { longDescription, ...rest } = item;
+      // Strip contents from plugins only — hooks still need contents.files and contents.triggers
+      if (type === "plugin") {
+        const { contents, ...withoutContents } = rest;
+        return withoutContents;
+      }
+      return rest;
+    });
     const typeManifest: TypeManifest = { type, items: typeItems };
     const dirPath = join(registryDir, typeDirName(type));
     if (!existsSync(dirPath)) {

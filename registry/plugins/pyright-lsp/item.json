@@ -7,12 +7,14 @@
   "compatibility": [
     "claude"
   ],
-  "integration": true,
+  "pluginType": "integration",
+  "integration": "lsp",
   "sourceType": "official",
   "author": {
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pyright-lsp",
+  "contentHash": "28c541b0fc0ce7c9",
   "contents": {
     "files": [
       {
@@ -21,6 +23,5 @@
       }
     ]
   },
-  "updatedAt": "2025-12-19T00:24:41Z",
-  "contentHash": "28c541b0fc0ce7c9"
+  "updatedAt": "2025-12-19T00:24:41Z"
 }

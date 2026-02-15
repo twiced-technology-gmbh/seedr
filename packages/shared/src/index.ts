@@ -23,12 +23,9 @@ export interface HookTrigger {
   matcher?: string;
 }
 
+export type PluginType = "package" | "wrapper" | "integration";
+
 export interface PluginContents {
-  skills?: string[];
-  agents?: string[];
-  hooks?: string[];
-  commands?: string[];
-  mcpServers?: string[];
   files?: FileTreeNode[];
   triggers?: HookTrigger[];
 }
@@ -47,7 +44,10 @@ export interface RegistryItem {
   longDescription?: string;
   compatibility: AITool[];
   featured?: boolean;
-  integration?: boolean;
+  pluginType?: PluginType;
+  wrapper?: string;
+  integration?: string;
+  package?: Record<string, number>;
   sourceType?: SourceType;
   targetScope?: ScopeType;
   contentHash?: string;

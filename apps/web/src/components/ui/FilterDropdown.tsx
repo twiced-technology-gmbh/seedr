@@ -104,7 +104,7 @@ export function FilterDropdown<T extends string>({
       >
         <Filter className={`w-3 h-3 ${isFiltered ? "text-blue-400" : ""}`} />
         {isFiltered && selectedOption?.icon}
-        <span className="whitespace-nowrap truncate">{isFiltered ? selectedOption?.label : (allLabel || `All ${placeholder}s`)}</span>
+        <span className="whitespace-nowrap truncate">{isFiltered ? selectedOption?.label : (allLabel || placeholder)}</span>
         <ChevronDown className={`w-3 h-3 ml-auto transition-transform flex-shrink-0 ${isOpen ? "rotate-180" : ""}`} />
       </button>
 
@@ -160,7 +160,7 @@ export function FilterDropdown<T extends string>({
               }`}
             >
               <Check className={`w-3 h-3 shrink-0 ${!isFiltered ? "text-blue-400" : "invisible"}`} />
-              <span>{allLabel || `All ${placeholder}s`}</span>
+              <span>All</span>
             </button>
           )}
           {/* Options */}

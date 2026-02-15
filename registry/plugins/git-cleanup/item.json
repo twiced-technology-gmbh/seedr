@@ -7,13 +7,15 @@
   "compatibility": [
     "claude"
   ],
+  "pluginType": "wrapper",
+  "wrapper": "skill",
   "sourceType": "community",
   "author": {
     "name": "Henrik Brodin",
     "url": "https://github.com/trailofbits"
   },
   "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/git-cleanup",
-  "updatedAt": "2026-02-12T00:59:33Z",
+  "contentHash": "95bb00deb758dee0",
   "contents": {
     "files": [
       {
@@ -51,5 +53,5 @@
       "git-cleanup"
     ]
   },
-  "contentHash": "95bb00deb758dee0"
+  "updatedAt": "2026-02-12T00:59:33Z"
 }

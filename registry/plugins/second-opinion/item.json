@@ -7,12 +7,14 @@
   "compatibility": [
     "claude"
   ],
+  "pluginType": "wrapper",
+  "wrapper": "skill",
   "sourceType": "community",
   "author": {
     "name": "Dan Guido"
   },
   "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/second-opinion",
-  "updatedAt": "2026-02-13T00:53:29Z",
+  "contentHash": "88bbe419708f57cb",
   "contents": {
     "files": [
       {
@@ -54,5 +56,5 @@
       "second-opinion"
     ]
   },
-  "contentHash": "88bbe419708f57cb"
+  "updatedAt": "2026-02-13T00:53:29Z"
 }

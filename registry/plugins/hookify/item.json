@@ -7,6 +7,13 @@
   "compatibility": [
     "claude"
   ],
+  "pluginType": "package",
+  "package": {
+    "skill": 1,
+    "agent": 1,
+    "hook": 4,
+    "command": 4
+  },
   "sourceType": "official",
   "author": {
     "name": "Anthropic"
@@ -171,24 +178,6 @@
         "name": "README.md",
         "type": "file"
       }
-    ],
-    "agents": [
-      "conversation-analyzer"
-    ],
-    "commands": [
-      "configure",
-      "help",
-      "hookify",
-      "list"
-    ],
-    "hooks": [
-      "PreToolUse",
-      "PostToolUse",
-      "Stop",
-      "UserPromptSubmit"
-    ],
-    "skills": [
-      "writing-rules"
     ]
   },
   "updatedAt": "2026-02-05T17:21:57Z"

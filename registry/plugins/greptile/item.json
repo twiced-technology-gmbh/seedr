@@ -7,6 +7,8 @@
   "compatibility": [
     "claude"
   ],
+  "pluginType": "wrapper",
+  "wrapper": "mcp",
   "sourceType": "community",
   "author": {
     "name": "Greptile",
@@ -34,9 +36,6 @@
         "name": "README.md",
         "type": "file"
       }
-    ],
-    "mcpServers": [
-      "greptile"
     ]
   },
   "updatedAt": "2026-01-06T05:15:35Z"

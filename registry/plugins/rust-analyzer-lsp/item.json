@@ -7,12 +7,14 @@
   "compatibility": [
     "claude"
   ],
-  "integration": true,
+  "pluginType": "integration",
+  "integration": "lsp",
   "sourceType": "official",
   "author": {
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/rust-analyzer-lsp",
+  "contentHash": "433677dab975495d",
   "contents": {
     "files": [
       {
@@ -21,6 +23,5 @@
       }
     ]
   },
-  "updatedAt": "2025-12-19T00:24:41Z",
-  "contentHash": "433677dab975495d"
+  "updatedAt": "2025-12-19T00:24:41Z"
 }

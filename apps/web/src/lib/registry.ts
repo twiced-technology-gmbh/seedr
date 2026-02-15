@@ -1,4 +1,4 @@
-import type { RegistryManifest, RegistryItem, ComponentType } from "./types";
+import type { RegistryManifest, RegistryItem, ComponentType, FileTreeNode } from "./types";
 
 // Import split manifest files (bundled at build time)
 import indexData from "@registry/manifest.json";
@@ -85,18 +85,29 @@ for (const [path, loader] of Object.entries(itemJsonLoaders)) {
   if (slug) loaderBySlug.set(slug, loader);
 }
 
-const longDescriptionCache = new Map<string, string>();
+// Cache for item.json data (lazy-loaded)
+const itemJsonCache = new Map<string, RegistryItem>();
 
-export async function getLongDescription(slug: string): Promise<string | undefined> {
-  if (longDescriptionCache.has(slug)) return longDescriptionCache.get(slug);
+async function loadItemJson(slug: string): Promise<RegistryItem | undefined> {
+  if (itemJsonCache.has(slug)) return itemJsonCache.get(slug);
 
   const loader = loaderBySlug.get(slug);
   if (!loader) return undefined;
 
   const mod = await loader();
-  const desc = mod.default?.longDescription;
-  if (desc) longDescriptionCache.set(slug, desc);
-  return desc;
+  const item = mod.default;
+  if (item) itemJsonCache.set(slug, item);
+  return item;
+}
+
+export async function getLongDescription(slug: string): Promise<string | undefined> {
+  const item = await loadItemJson(slug);
+  return item?.longDescription;
+}
+
+export async function getFileTree(slug: string): Promise<FileTreeNode[] | undefined> {
+  const item = await loadItemJson(slug);
+  return item?.contents?.files;
 }
 
 export function getFeaturedItems(): RegistryItem[] {

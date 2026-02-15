@@ -13,13 +13,19 @@ export interface FileTreeNode {
   children?: FileTreeNode[];
 }
 
+export type PluginType = "package" | "wrapper" | "integration";
+
 export interface PluginContents {
+  files?: FileTreeNode[];
+}
+
+/** Intermediate result from parsePluginContents — used for classification, not stored on items */
+export interface ParsedPluginContents extends PluginContents {
   skills?: string[];
   agents?: string[];
   hooks?: string[];
   commands?: string[];
   mcpServers?: string[];
-  files?: FileTreeNode[];
 }
 
 export interface ManifestItem {
@@ -30,7 +36,10 @@ export interface ManifestItem {
   longDescription?: string;
   compatibility: string[];
   featured?: boolean;
-  integration?: boolean;
+  pluginType?: PluginType;
+  wrapper?: string;
+  integration?: string;
+  package?: Record<string, number>;
   sourceType: SourceType;
   contentHash?: string;
   author: { name: string; url?: string };

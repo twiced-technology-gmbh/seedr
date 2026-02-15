@@ -7,11 +7,18 @@
   "compatibility": [
     "claude"
   ],
+  "pluginType": "package",
+  "package": {
+    "skill": 7,
+    "agent": 3,
+    "command": 1
+  },
   "sourceType": "official",
   "author": {
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/plugin-dev",
+  "contentHash": "201c8778b7bbfdad",
   "contents": {
     "files": [
       {
@@ -402,25 +409,7 @@
         "name": "README.md",
         "type": "file"
       }
-    ],
-    "agents": [
-      "agent-creator",
-      "plugin-validator",
-      "skill-reviewer"
-    ],
-    "commands": [
-      "create-plugin"
-    ],
-    "skills": [
-      "agent-development",
-      "command-development",
-      "hook-development",
-      "mcp-integration",
-      "plugin-settings",
-      "plugin-structure",
-      "skill-development"
     ]
   },
-  "updatedAt": "2026-02-05T21:57:52Z",
-  "contentHash": "201c8778b7bbfdad"
+  "updatedAt": "2026-02-05T21:57:52Z"
 }

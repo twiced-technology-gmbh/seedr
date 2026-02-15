@@ -7,13 +7,14 @@
   "compatibility": [
     "claude"
   ],
+  "pluginType": "wrapper",
+  "wrapper": "skill",
   "sourceType": "community",
   "author": {
     "name": "Trail of Bits",
     "url": "https://github.com/trailofbits"
   },
   "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/skill-extractor",
-  "updatedAt": "2026-02-06T16:22:35Z",
   "contents": {
     "files": [
       {
@@ -64,9 +65,7 @@
         "name": "README.md",
         "type": "file"
       }
-    ],
-    "skills": [
-      "skill-extractor"
     ]
-  }
+  },
+  "updatedAt": "2026-02-06T16:22:35Z"
 }

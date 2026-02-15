@@ -7,6 +7,12 @@
   "compatibility": [
     "claude"
   ],
+  "pluginType": "package",
+  "package": {
+    "skill": 1,
+    "command": 2,
+    "mcp": 1
+  },
   "sourceType": "community",
   "author": {
     "name": "Stripe",
@@ -60,16 +66,6 @@
         "name": ".mcp.json",
         "type": "file"
       }
-    ],
-    "commands": [
-      "explain-error",
-      "test-cards"
-    ],
-    "skills": [
-      "stripe-best-practices"
-    ],
-    "mcpServers": [
-      "stripe"
     ]
   },
   "updatedAt": "2025-12-18T16:58:02Z"

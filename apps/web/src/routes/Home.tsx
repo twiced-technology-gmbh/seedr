@@ -178,7 +178,6 @@ export function Home() {
                 options={sourceOptions}
                 onChange={setSourceFilter}
                 placeholder="Source"
-                allLabel="All Sources"
                 minWidth={120}
               />
 
@@ -187,8 +186,7 @@ export function Home() {
                   value={scopeFilter}
                   options={scopeOptions}
                   onChange={setScopeFilter}
-                  placeholder="Scope recommendation"
-                  allLabel="All Scopes"
+                  placeholder="Scope"
                   minWidth={170}
                 />
               )}
@@ -198,7 +196,6 @@ export function Home() {
                 options={toolOptions}
                 onChange={setToolFilter}
                 placeholder="Tool"
-                allLabel="All Tools"
                 minWidth={140}
               />
 

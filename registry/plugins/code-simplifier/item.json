@@ -7,6 +7,8 @@
   "compatibility": [
     "claude"
   ],
+  "pluginType": "wrapper",
+  "wrapper": "agent",
   "sourceType": "official",
   "author": {
     "name": "Anthropic"
@@ -35,9 +37,6 @@
           }
         ]
       }
-    ],
-    "agents": [
-      "code-simplifier"
     ]
   },
   "updatedAt": "2026-01-09T00:17:19Z"

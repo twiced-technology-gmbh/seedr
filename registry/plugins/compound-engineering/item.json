@@ -7,13 +7,14 @@
   "compatibility": [
     "claude"
   ],
+  "pluginType": "wrapper",
+  "wrapper": "command",
   "sourceType": "community",
   "author": {
     "name": "Kieran Klaassen",
     "url": "https://github.com/kieranklaassen"
   },
   "externalUrl": "https://github.com/EveryInc/compound-engineering-plugin",
-  "updatedAt": "2026-02-13T17:54:42Z",
   "contents": {
     "files": [
       {
@@ -116,10 +117,7 @@
         "name": "README.md",
         "type": "file"
       }
-    ],
-    "commands": [
-      "release-docs",
-      "triage-prs"
     ]
-  }
+  },
+  "updatedAt": "2026-02-13T17:54:42Z"
 }

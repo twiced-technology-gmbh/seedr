@@ -7,13 +7,18 @@
   "compatibility": [
     "claude"
   ],
+  "pluginType": "package",
+  "package": {
+    "skill": 1,
+    "hook": 3
+  },
   "sourceType": "community",
   "author": {
     "name": "William Tan",
     "url": "https://github.com/trailofbits"
   },
   "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/gh-cli",
-  "updatedAt": "2026-02-13T02:16:05Z",
+  "contentHash": "6f9deffa0339b9f9",
   "contents": {
     "files": [
       {
@@ -94,13 +99,11 @@
       }
     ],
     "hooks": [
-      "SessionStart",
-      "PreToolUse",
-      "SessionEnd"
+      "hooks.json"
     ],
     "skills": [
       "using-gh-cli"
     ]
   },
-  "contentHash": "6f9deffa0339b9f9"
+  "updatedAt": "2026-02-13T02:16:05Z"
 }
