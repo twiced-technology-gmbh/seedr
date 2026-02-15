@@ -3,7 +3,7 @@
   "name": "Plugin Dev",
   "type": "plugin",
   "description": "A comprehensive toolkit for developing Claude Code plugins with expert guidance on hooks, MCP integration, plugin structure, and marketplace publishing.",
-  "longDescription": "Plugin development toolkit with 7 specialized skills (`hook-development`, `mcp-integration`, `plugin-structure`, `plugin-settings`, `command-development`, `agent-development`, `skill-development`), 3 agents (`agent-creator`, `plugin-validator`, `skill-reviewer`), and a `/create-plugin` command. Covers the full plugin development lifecycle from scaffolding to validation.",
+  "longDescription": "Plugin development toolkit with **7 skills**, **3 agents**, and a `/create-plugin` command.\n\n- **Skills**: `hook-development`, `mcp-integration`, `plugin-structure`, `plugin-settings`, `command-development`, `agent-development`, `skill-development`\n- **Agents**: `agent-creator`, `plugin-validator`, `skill-reviewer`\n\nCovers the full plugin development lifecycle from scaffolding to validation.",
   "compatibility": [
     "claude"
   ],

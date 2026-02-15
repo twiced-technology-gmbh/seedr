@@ -204,23 +204,34 @@ A single sentence that tells the user what the extension is capable of.
 
 **`longDescription` rules:**
 
-Implementation-level detail that tells the user exactly what they're getting — specific files, component names, agent roles, and concrete counts.
+Implementation-level detail that tells the user exactly what they're getting — specific files, component names, agent roles, and concrete counts. Uses **structured markdown** — the TL;DR section renders bold, inline code, and bullet lists.
 
-- Name specific skills, agents, commands, MCP servers, and hooks included (e.g. "Ships with a function-analyzer agent and completeness checklists" not "includes analysis tools")
+- **Lead sentence**: Summarize what's included at a glance (counts, component types)
+- **Bullet list**: When listing **3+ items** of the same kind (agents, categories, scripts), use a markdown bullet list with **bold category names** (e.g., `- **Code reviewers** (15): Rails, TypeScript, ...`)
+- **No bullets for simple items**: If the item has only 1-2 components, keep it as prose
+- Name specific skills, agents, commands, MCP servers, and hooks by name — not vague categories
 - Include exact counts: number of skills, agents, commands, rules, techniques
-- Describe what the plugin enables concretely (e.g. "manage issues, create branches, review PRs, trigger CI pipelines" not "interact with GitHub")
-- For well-known integrations, focus on *what operations are available*, not what the service itself does
+- **Bold** counts and category names for scannability (e.g., `**29 agents**`, `**Bloaters** (5)`)
+- **Backticks** for file names, paths, commands, code identifiers (e.g., `` `/hookify` ``, `` `context7` ``). Do NOT backtick brand names (React), pattern names (Factory Method), or role names (code reviewer)
 - No filler, no marketing speak — just the implementation facts
-- After reading this, the user should know exactly what agents/skills/commands they'll get
-- 3-5 sentences, typically 40-70 words. The pre-commit hook enforces a minimum of 30 words.
+- Typically 40-90 words. The pre-commit hook enforces a minimum of 30 words.
 
-**Examples of good description pairs:**
+**Examples of good longDescriptions:**
 
-| description | longDescription |
-|---|---|
-| "Search Slack messages, read channels, and pull team discussions into context." | "Connects via Slack MCP server to search messages, list channels, read threads, and pull conversation history into context. Find prior decisions, debugging discussions, or relevant context without leaving Claude Code. Supports channel filtering, thread navigation, and full-text message search across your workspace." |
-| "Hook creation toolkit that generates event-driven hooks from natural language rules." | "Hook creation toolkit with 4 commands (/hookify, /configure, /list, /help), a conversation-analyzer agent, a writing-rules skill, and a Python rule engine. Generates hooks for 5 event types: bash commands, file edits, prompt submissions, session stops, and a catch-all. Each hook can warn or block. Includes 4 example rules: console.log warnings, dangerous rm prevention, test requirements, and sensitive file protection." |
-| "Build deep architectural context through ultra-granular code analysis before vulnerability hunting." | "Includes a function-analyzer agent and completeness checklists to ensure thorough coverage of every function before hunting bugs. Designed for security audits where understanding call chains, data flows, and trust boundaries is critical. The agent builds a complete architectural map before any vulnerability analysis begins." |
+Complex package (bullets):
+```
+Ships **29 agents**, **22 commands**, **19 skills**, and a `context7` MCP server.
+
+- **Code reviewers** (15): Rails, TypeScript, Python, security, performance, architecture, data integrity
+- **Research agents** (5): best practices, framework docs, git history
+- **Workflow agents** (5): bug reproduction, PR resolution, linting
+- **Commands**: `/workflows:` suite (`plan`, `review`, `work`, `compound`, `brainstorm`)
+```
+
+Simple wrapper (prose):
+```
+Connects via Slack MCP server to search messages, list channels, read threads, and pull conversation history into context. No local server to install — authenticates through Slack's OAuth flow.
+```
 
 **Examples of bad longDescriptions:**
 

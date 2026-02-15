@@ -3,7 +3,7 @@
   "name": "Hookify",
   "type": "plugin",
   "description": "Easily create hooks to prevent unwanted behaviors by analyzing conversation patterns",
-  "longDescription": "Hook creation toolkit with 4 commands (`/hookify`, `/configure`, `/list`, `/help`), a conversation-analyzer agent, a writing-rules skill, and a Python rule engine. Generates hooks for 5 event types: bash commands, file edits, prompt submissions, session stops, and a catch-all. Each hook can warn or block. Includes 4 example rules: `console.log` warnings, dangerous `rm` prevention, test requirements, and sensitive file protection.",
+  "longDescription": "Hook creation toolkit with **4 commands**, **1 agent**, **1 skill**, and a Python rule engine.\n\n- **Commands**: `/hookify`, `/configure`, `/list`, `/help`\n- **Event types** (5): bash commands, file edits, prompt submissions, session stops, catch-all\n- **Example rules** (4): `console.log` warnings, dangerous `rm` prevention, test requirements, sensitive file protection\n\nEach hook can warn or block. Includes a conversation-analyzer agent and a writing-rules skill.",
   "compatibility": [
     "claude"
   ],

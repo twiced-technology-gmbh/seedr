@@ -3,7 +3,7 @@
   "name": "Code Review",
   "type": "plugin",
   "description": "Automated code review for pull requests using multiple specialized agents with confidence-based scoring",
-  "longDescription": "Adds a `/code-review` command that dispatches 5 parallel agents: `CLAUDE.md` compliance, bug detection, git-blame historical context, prior PR pattern matching, and code comment compliance. Each agent scores findings on a 0-100 confidence scale, and only issues scoring 80+ are included in the final PR comment to reduce noise.",
+  "longDescription": "Adds a `/code-review` command that dispatches **5 parallel agents**:\n\n- `CLAUDE.md` compliance\n- Bug detection\n- Git-blame historical context\n- Prior PR pattern matching\n- Code comment compliance\n\nEach agent scores findings on a 0-100 confidence scale, and only issues scoring 80+ are included in the final PR comment to reduce noise.",
   "compatibility": [
     "claude"
   ],
