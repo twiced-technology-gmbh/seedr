@@ -89,6 +89,24 @@ cd packages/cli && npx tsx src/cli.ts add code-smell-doctor -a all --scope proje
 
 See [docs/manual-tests/dry-run-commands.md](docs/manual-tests/dry-run-commands.md) for comprehensive manual testing commands.
 
+## Playgrounds
+
+Interactive HTML playgrounds that visualize seedr's architecture and behavior.
+
+**Live:** [seedr.toolr.dev/playgrounds/](https://seedr.toolr.dev/playgrounds/)
+
+| Playground | What it shows |
+|------------|---------------|
+| [CLI Explorer](https://seedr.toolr.dev/playgrounds/cli-explorer.html) | Build `npx seedr` commands interactively, see terminal output and file effects |
+| [Installation Paths](https://seedr.toolr.dev/playgrounds/install-paths.html) | Where files land for every tool/type/scope/method combination |
+| [Registry Architecture](https://seedr.toolr.dev/playgrounds/registry-architecture.html) | The 3-level split manifest system and data flow |
+| [Compatibility Matrix](https://seedr.toolr.dev/playgrounds/compatibility-matrix.html) | Which content types work with which AI tools |
+
+```bash
+# Local development
+open apps/web/public/playgrounds/index.html
+```
+
 ## License
 
 MIT - see [LICENSE](LICENSE)
