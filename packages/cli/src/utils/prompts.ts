@@ -73,14 +73,14 @@ export async function promptScope(): Promise<InstallScope> {
       name: "scope",
       message: "Installation scope:",
       choices: [
-        { name: "User (home directory)", value: "user", short: "User" },
         {
           name: "Project (current directory)",
           value: "project",
           short: "Project",
         },
+        { name: "User (home directory)", value: "user", short: "User" },
       ],
-      default: "user",
+      default: "project",
     },
   ]);
   return scope;

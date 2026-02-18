@@ -67,8 +67,8 @@ export async function selectTools(compatible: AITool[]): Promise<AITool[] | symb
 
 export async function selectScope(includeLocal = false): Promise<InstallScope | symbol> {
   const options: { label: string; value: InstallScope; hint: string }[] = [
-    { label: "User", value: "user", hint: "home directory" },
     { label: "Project", value: "project", hint: includeLocal ? "current directory, settings.json" : "current directory" },
+    { label: "User", value: "user", hint: "home directory" },
     ...(includeLocal
       ? [{ label: "Local", value: "local" as InstallScope, hint: "current directory, settings.local.json" }]
       : []),
