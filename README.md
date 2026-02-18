@@ -107,10 +107,3 @@ Interactive HTML playgrounds that visualize seedr's architecture and behavior.
 open apps/web/public/playgrounds/index.html
 ```
 
-## License
-
-MIT - see [LICENSE](LICENSE)
-
----
-
-Made by [twiceD Technology GmbH](https://twiced.de)

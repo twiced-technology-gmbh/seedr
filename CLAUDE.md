@@ -50,7 +50,7 @@ pnpm --filter @toolr/seedr test:coverage
 
 Reads the real `manifest.json` and verifies every item can be installed through its handler.
 
-- **Mocked** (always run, ~50ms): Calls the appropriate handler (`installSkill`, `installPlugin`, etc.) with memfs + mocked registry. Verifies every install returns `success: true`. Empty type categories (agents, hooks, mcp, settings) are auto-skipped.
+- **Mocked** (always run, ~50ms): Calls the appropriate handler (`installSkill`, `installPlugin`, etc.) with memfs + mocked registry. Verifies every install returns `success: true`. Empty type categories (agents, mcp, settings) are auto-skipped.
 - **Live URL validation** (`SEEDR_LIVE=true`, ~20s): For every item with an `externalUrl`, fetches the main content file from GitHub raw. Skills must return 200 with YAML frontmatter, plugins must return valid `plugin.json` with a `name` field.
 
 ```bash
@@ -82,6 +82,7 @@ See [docs/manual-tests/dry-run-commands.md](docs/manual-tests/dry-run-commands.m
 ```
 seedr/
 ├── apps/web/             # React web app (seedr.toolr.dev)
+│   └── public/playgrounds/  # Interactive architecture playgrounds
 ├── packages/cli/         # CLI package (npx seedr)
 ├── registry/
 │   ├── manifest.json           # Index: version + type descriptors
@@ -132,8 +133,8 @@ Each item has a source-of-truth `item.json` in `registry/<type>s/<slug>/`. Runni
   "version": "2.0.0",
   "types": {
     "skill": { "file": "skills/manifest.json", "count": 26 },
-    "plugin": { "file": "plugins/manifest.json", "count": 30 },
-    "hook": { "file": "hooks/manifest.json", "count": 2 },
+    "plugin": { "file": "plugins/manifest.json", "count": 52 },
+    "hook": { "file": "hooks/manifest.json", "count": 3 },
     "agent": { "file": "agents/manifest.json", "count": 0 }
   }
 }
@@ -234,32 +235,6 @@ pnpm --filter @seedr/web typecheck
 # Or from package directory
 npx tsc --noEmit
 ```
-
-## Forking This Repo
-
-To create your own registry from this repo, update these references:
-
-**1. GitHub org/repo** — replace `twiced-technology-gmbh/seedr` in:
-- `packages/cli/src/config/registry.ts` — `GITHUB_RAW_URL` (runtime content fetching)
-- `packages/cli/package.json` — repository/bugs URLs
-- `apps/web/src/components/Header.tsx` — GitHub link
-- `apps/web/src/components/FileTree.tsx` — hardcoded org/repo check
-- `registry/*/item.json` — `externalUrl` fields for toolr-sourced items
-- `.github/workflows/sync.yml` — notification links
-
-**2. Domain** — replace `seedr.toolr.dev` in:
-- `packages/cli/package.json` — homepage
-- `packages/cli/src/utils/ui.ts` and `src/commands/init.ts` — user-facing links
-- `CLAUDE.md` — docs
-
-**3. Package names** — rename `@toolr/seedr`, `@seedr/shared`, `@seedr/web` in all `package.json` files and update corresponding imports
-
-**4. Workflows** (`.github/workflows/`):
-- `deploy.yml` — Cloudflare Pages project name + npm publish. Secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `APP_ID`, `APP_PRIVATE_KEY`
-- `sync.yml` — daily registry sync from Anthropic. Secrets: `GITHUB_TOKEN`, SMTP vars. Update email recipient (`daniel.deusing@twiced.de`)
-- `test-email.yml` — update email recipient
-
-**5. Registry content** — clear `registry/*/` directories and add your own items, then run `pnpm compile`
 
 ## Gotchas
 
