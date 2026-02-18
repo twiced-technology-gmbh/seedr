@@ -19,7 +19,7 @@
       "contents": {
         "files": [
           {
-            "name": "kanban-status.sh",
+            "name": "agentwatch.sh",
             "type": "file"
           }
         ],
@@ -47,7 +47,7 @@
           }
         ]
       },
-      "contentHash": "b9489b1f996e9ae8"
+      "contentHash": "77f336c82c68a0cd"
     },
     {
       "slug": "project-security-guard",
