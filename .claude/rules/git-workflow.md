@@ -13,3 +13,9 @@ Instead, when pushing a commit to multiple branches:
 1. Commit and push to `main` first
 2. Merge `main` into the other branches: `git checkout prod && git merge main && git push origin prod`
 3. This preserves identical commit SHAs across branches
+
+## Never Amend Already-Pushed Commits
+
+Do NOT use `git commit --amend` on commits that have already been pushed. Amending requires a force-push, and force-pushing to `prod` re-triggers the deploy workflow which will fail on npm publish if the version was already published by the original push.
+
+Instead, create a **new commit** with the fix. A clean fixup commit is always safer than rewriting pushed history.
