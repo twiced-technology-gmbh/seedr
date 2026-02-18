@@ -59,12 +59,14 @@ questions:
   - question: "What scope should this install to?"
     header: "Scope"
     options:
-      - label: "project (Recommended)"
-        description: "Install into the current project directory"
+      - label: "No scope (Recommended)"
+        description: "No default scope — the user chooses at install time"
+      - label: "project"
+        description: "Default to project directory"
       - label: "user"
-        description: "Install into the user's home config"
+        description: "Default to user's home config"
       - label: "local"
-        description: "Install into .local config (Claude only)"
+        description: "Default to .local config (Claude only)"
 
   - question: "Which AI tools is this compatible with?"
     header: "Compat"
@@ -236,9 +238,11 @@ Write the item metadata as `registry/<type>s/<slug>/item.json`:
   "author": { "name": "Toolr Suite", "url": "https://github.com/toolr-suite" },
   "externalUrl": "https://github.com/twiced-technology-gmbh/seedr/tree/main/registry/<type>s/<slug>",
   "updatedAt": "<current ISO 8601 date>",
-  "contents": { "files": [<file tree>] },
-  "targetScope": "<scope from user>"
+  "contents": { "files": [<file tree>] }
 }
+```
+
+If the user chose a specific scope (not "No scope"), also include `"targetScope": "<scope>"` in the item.
 ```
 
 **For plugins**, extract content arrays from the file tree into `contents`. Scan root-level and `.claude/` subdirectories:

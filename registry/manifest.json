@@ -11,7 +11,7 @@
     },
     "hook": {
       "file": "hooks/manifest.json",
-      "count": 2
+      "count": 3
     },
     "agent": {
       "file": "agents/manifest.json",

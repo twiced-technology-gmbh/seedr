@@ -161,6 +161,18 @@ questions:
       - label: "Custom name"
         description: "Enter your own name"
 
+  - question: "What scope should this install to?"
+    header: "Scope"
+    options:
+      - label: "No scope (Recommended)"
+        description: "No default scope — the user chooses at install time"
+      - label: "project"
+        description: "Default to project directory"
+      - label: "user"
+        description: "Default to user's home config"
+      - label: "local"
+        description: "Default to .local config (Claude only)"
+
   - question: "Which AI tools is this compatible with?"
     header: "Compat"
     multiSelect: true
@@ -183,7 +195,7 @@ Notes:
 - If the user selects "All", expand to `["claude", "copilot", "gemini", "opencode", "codex"]` in the compatibility array.
 - Plugins are generally Claude-only (`["claude"]`), since `.claude-plugin` is a Claude concept.
 - Skills may be multi-tool compatible.
-- Community items do NOT have targetScope (scope is only for Toolr items).
+- Only include `targetScope` in the item if the user chose a specific scope (not "No scope").
 
 **Batch 2 — Descriptions:**
 
@@ -293,7 +305,7 @@ Item shape:
 ```
 
 Notes:
-- Community items do NOT include `targetScope` — that field is only for Toolr items.
+- Only include `targetScope` if the user chose a specific scope (not "No scope").
 - `contents` only has `files` (the file tree). Extension counts go in `package` instead.
 - Only include `pluginType`-specific fields: `wrapper` for wrappers, `package` for packages. Omit the other.
 
