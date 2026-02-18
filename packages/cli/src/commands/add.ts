@@ -8,6 +8,7 @@ import * as ui from "../utils/ui.js";
 import { getHandler } from "../handlers/registry.js";
 import type { InstallResult } from "../handlers/types.js";
 import { handleCommandError } from "../utils/errors.js";
+import { trackInstalls } from "../utils/analytics.js";
 import { AI_TOOLS, getContentPath } from "../config/tools.js";
 import { filterCompatibleTools } from "../config/compatibility.js";
 import { getAgentsPath } from "../utils/fs.js";
@@ -252,6 +253,7 @@ export const addCommand = new Command("add")
       // Step 6: Install using the handler and print summary
       console.log();
       const results = await handler.install(item, tools, scope, method, process.cwd());
+      trackInstalls(item.slug, item.type, results, scope);
       printInstallSummary(results);
 
       ui.outro("Installation complete");

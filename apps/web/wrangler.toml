@@ -1,0 +1,7 @@
+name = "seedr"
+compatibility_date = "2024-12-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "seedr-analytics"
+database_id = "3e9d47c3-1844-4472-9f65-0ce15bfca9ff"
