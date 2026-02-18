@@ -96,7 +96,7 @@ case "$event" in
     if [[ -n "$task_id" ]]; then
       aw move "$task_id" "In Progress"
     else
-      output=$(aw create "$title" --status Idle --tags "$label" --priority "$priority" --json)
+      output=$(aw create "$title" --status Idle --tags "$project" --priority "$priority" --json)
       task_id=$(echo "$output" | jq -r '.id // empty' 2>/dev/null)
       if [[ -n "$task_id" ]]; then save_task_id "$GLOBAL_SESSIONS" "$task_id"; fi
     fi
