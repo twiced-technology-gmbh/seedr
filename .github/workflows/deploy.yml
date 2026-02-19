@@ -40,7 +40,7 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           npx wrangler pages project create seedr --production-branch=prod 2>/dev/null || true
-          cd apps/web && npx wrangler pages deploy dist --project-name=seedr --commit-dirty=true
+          cd apps/web && npx wrangler pages deploy --commit-dirty=true
 
   publish-cli:
     name: Publish CLI to npm
