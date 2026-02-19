@@ -4,10 +4,7 @@ import type { InstallResult } from "../handlers/types.js";
 const fetchMock = vi.fn().mockResolvedValue(new Response("ok"));
 
 vi.stubGlobal("fetch", fetchMock);
-
-vi.mock("node:module", () => ({
-  createRequire: () => () => ({ version: "0.1.44" }),
-}));
+vi.stubGlobal("CLI_VERSION", "0.1.44");
 
 let trackInstalls: typeof import("./analytics.js")["trackInstalls"];
 

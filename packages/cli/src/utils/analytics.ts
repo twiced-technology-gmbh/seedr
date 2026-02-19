@@ -1,9 +1,7 @@
-import { createRequire } from "node:module";
 import type { InstallResult } from "../handlers/types.js";
 import type { InstallScope, ComponentType } from "../types.js";
 
-const require = createRequire(import.meta.url);
-const { version: CLI_VERSION } = require("../../package.json");
+declare const CLI_VERSION: string;
 
 const ANALYTICS_URL = "https://seedr.toolr.dev/api/installs";
 
