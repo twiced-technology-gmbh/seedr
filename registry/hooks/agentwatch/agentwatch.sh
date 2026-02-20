@@ -12,15 +12,48 @@ event=$(echo "$input" | jq -r '.hook_event_name')
 session_id=$(echo "$input" | jq -r '.session_id')
 cwd=$(echo "$input" | jq -r '.cwd')
 
-# Detect project root (supports bare repos + worktrees)
+# Detect project root (supports bare repos, sibling worktrees, standard repos)
 project_root() {
   local git_common
   git_common=$(cd "$cwd" && git rev-parse --path-format=absolute --git-common-dir 2>/dev/null) || return 1
-  if [[ "$git_common" == */.git ]]; then
-    echo "${git_common%/.git}"
-  else
+
+  if [[ "$git_common" != */.git ]]; then
+    # Bare repo or similar: parent of git dir is the project root
     echo "${git_common%/*}"
+    return
   fi
+
+  # Standard .git dir: parent of .git is the main checkout
+  local repo_root repo_parent wt_root
+  repo_root="${git_common%/.git}"
+  repo_parent=$(dirname "$repo_root")
+  wt_root=$(cd "$cwd" && git rev-parse --show-toplevel 2>/dev/null) || { echo "$repo_root"; return; }
+
+  # Detect sibling-worktree layout: main checkout and linked worktrees
+  # live side-by-side under a shared project directory.
+  # e.g. project/master/.git + project/playground/.git(file)
+
+  # Case: cwd is inside a linked worktree that's a sibling of the main checkout
+  if [[ "$(dirname "$wt_root")" == "$repo_parent" && "$wt_root" != "$repo_root" ]]; then
+    echo "$repo_parent"
+    return
+  fi
+
+  # Case: cwd is inside the main checkout — check if any linked worktree is a sibling
+  if [[ "$wt_root" == "$repo_root" && -d "$repo_root/.git/worktrees" ]]; then
+    local wt_meta
+    for wt_meta in "$repo_root/.git/worktrees"/*/; do
+      [[ -f "${wt_meta}gitdir" ]] || continue
+      local wt_gitfile
+      wt_gitfile=$(cat "${wt_meta}gitdir" 2>/dev/null) || continue
+      if [[ "$(dirname "$(dirname "$wt_gitfile")")" == "$repo_parent" ]]; then
+        echo "$repo_parent"
+        return
+      fi
+    done
+  fi
+
+  echo "$repo_root"
 }
 
 PROJECT_ROOT=$(project_root) || PROJECT_ROOT=""
