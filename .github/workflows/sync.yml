@@ -42,23 +42,13 @@ jobs:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
         run: pnpm sync
 
-      - name: Check for changes
+      - name: Stage and check for changes
         id: changes
         run: |
-          if git diff --quiet registry/manifest.json; then
-            echo "changed=false" >> $GITHUB_OUTPUT
-          else
-            echo "changed=true" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Detect new items
-        id: new-items
-        if: steps.changes.outputs.changed == 'true'
-        run: |
+          # Detect new item.json files before staging
           NEW_FILES=$(git ls-files --others --exclude-standard registry/*/*/item.json)
           if [ -n "$NEW_FILES" ]; then
-            echo "found=true" >> $GITHUB_OUTPUT
-            # Build a human-readable list of new items
+            echo "new_items=true" >> $GITHUB_OUTPUT
             ITEMS=""
             for f in $NEW_FILES; do
               SLUG=$(echo "$f" | sed 's|registry/[^/]*/\([^/]*\)/item.json|\1|')
@@ -66,12 +56,19 @@ jobs:
               NAME=$(grep -o '"name": *"[^"]*"' "$f" | head -1 | sed 's/"name": *"\([^"]*\)"/\1/')
               ITEMS="${ITEMS}- **${NAME}** (${TYPE}: \`${SLUG}\`)\n"
             done
-            # Use a delimiter for multiline output
             echo "list<<EOF" >> $GITHUB_OUTPUT
             echo -e "$ITEMS" >> $GITHUB_OUTPUT
             echo "EOF" >> $GITHUB_OUTPUT
           else
-            echo "found=false" >> $GITHUB_OUTPUT
+            echo "new_items=false" >> $GITHUB_OUTPUT
+          fi
+
+          # Stage all registry changes (modified + new files)
+          git add registry/
+          if git diff --cached --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
           fi
 
       - name: Commit and push to main and prod
@@ -79,14 +76,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add registry/
-          git add registry/manifest.json
           git commit -m "chore: sync registry from Anthropic"
           git push origin main
           git push origin main:prod
 
       - name: Send new items email
-        if: steps.new-items.outputs.found == 'true'
+        if: steps.changes.outputs.new_items == 'true'
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: ${{ secrets.SMTP_HOST }}
@@ -100,7 +95,7 @@ jobs:
           body: |
             New items were added to the seedr registry during today's sync:
 
-            ${{ steps.new-items.outputs.list }}
+            ${{ steps.changes.outputs.list }}
 
             View the registry: https://seedr.toolr.dev
             GitHub: https://github.com/twiced-technology-gmbh/seedr
