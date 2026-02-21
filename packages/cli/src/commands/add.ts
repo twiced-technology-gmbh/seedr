@@ -28,7 +28,17 @@ async function resolveItem(
     const filtered = type ? results.filter((r) => r.type === type) : results;
 
     if (filtered.length === 0) {
-      ui.error(`"${itemName}" not found`);
+      // Check if the item exists under a different type
+      if (type && results.length > 0) {
+        const match = results.find((r) => r.slug === itemName);
+        if (match) {
+          ui.error(`"${itemName}" is a ${match.type}, not a ${type}. Run: seedr add ${itemName} --type ${match.type}`);
+        } else {
+          ui.error(`No ${type} matching "${itemName}". Found: ${results.map((r) => `${r.slug} (${r.type})`).join(", ")}`);
+        }
+      } else {
+        ui.error(`"${itemName}" not found`);
+      }
       return null;
     }
     if (filtered.length === 1) {
