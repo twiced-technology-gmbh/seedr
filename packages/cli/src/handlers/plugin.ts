@@ -36,10 +36,6 @@ interface PluginJson {
   version?: string;
 }
 
-interface MarketplaceJson {
-  name?: string;
-}
-
 interface KnownMarketplaceEntry {
   source: { source: string; repo?: string; url?: string };
   installLocation: string;
@@ -151,11 +147,8 @@ async function installPluginForTool(
     const pluginJson = await readJson<PluginJson>(
       join(tmpPath, ".claude-plugin", "plugin.json")
     );
-    const marketplaceJson = await readJson<MarketplaceJson>(
-      join(tmpPath, ".claude-plugin", "marketplace.json")
-    );
 
-    const marketplace = marketplaceJson.name || item.author?.name || "seedr";
+    const marketplace = item.marketplace || item.author?.name || "seedr";
     const pluginName = pluginJson.name || item.slug;
     const version = pluginJson.version || "1.0.0";
     const pluginId = getPluginId(pluginName, marketplace);

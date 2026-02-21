@@ -134,10 +134,11 @@ interface FetchItemsOptions {
   repoTree: GitTreeItem[];
   fetchMetadata: (repo: string, basePath: string, slug: string) => Promise<{ name: string; description: string; author?: { name: string; url?: string } } | null>;
   includeFileTree?: boolean;
+  marketplace?: string;
 }
 
 async function fetchItems(options: FetchItemsOptions): Promise<ManifestItem[]> {
-  const { repo, basePath, type, sourceType, compatibility, defaultAuthor, repoTree, fetchMetadata, includeFileTree } = options;
+  const { repo, basePath, type, sourceType, compatibility, defaultAuthor, repoTree, fetchMetadata, includeFileTree, marketplace } = options;
   const slugs = listDirectoryFromTree(repoTree, basePath);
 
   console.log(`Fetching ${slugs.length} ${type}s from ${repo}/${basePath}...`);
@@ -236,6 +237,7 @@ async function fetchItems(options: FetchItemsOptions): Promise<ManifestItem[]> {
           sourceType,
           author: metadata.author ?? { name: defaultAuthor },
           externalUrl: `https://github.com/${repo}/tree/main/${basePath}/${slug}`,
+          ...(marketplace && { marketplace }),
           ...(contentHash && { contentHash }),
           ...(updatedAt && { updatedAt }),
           ...(contents && { contents }),
@@ -254,10 +256,13 @@ export async function syncAnthropic(): Promise<ManifestItem[]> {
   console.log("\n=== Syncing from Anthropic ===\n");
 
   // Pre-fetch entire repo trees (1 API call each, cached for reuse)
-  const [skillsTree, pluginsTree] = await Promise.all([
+  // Also fetch marketplace.json from the plugins repo root
+  const [skillsTree, pluginsTree, pluginsMarketplace] = await Promise.all([
     fetchRepoTree(SKILLS_REPO),
     fetchRepoTree(PLUGINS_REPO),
+    fetchJson<{ name: string }>(`${GITHUB_RAW}/${PLUGINS_REPO}/main/.claude-plugin/marketplace.json`),
   ]);
+  const pluginsMarketplaceName = pluginsMarketplace?.name;
 
   if (skillsTree.length === 0) {
     console.warn("⚠ Failed to fetch skills repo tree — skipping skills");
@@ -293,6 +298,7 @@ export async function syncAnthropic(): Promise<ManifestItem[]> {
     defaultAuthor: "Anthropic",
     repoTree: pluginsTree,
     includeFileTree: true,
+    marketplace: pluginsMarketplaceName,
     fetchMetadata: async (repo, basePath, slug) => {
       const plugin = await fetchPluginJson(repo, basePath, slug);
       if (plugin) {
@@ -310,6 +316,7 @@ export async function syncAnthropic(): Promise<ManifestItem[]> {
   }) : [];
 
   // Fetch community plugins (Claude-only)
+  // External plugins share the same repo-level marketplace as official plugins
   const communityPlugins = pluginsTree.length > 0 ? await fetchItems({
     repo: PLUGINS_REPO,
     basePath: "external_plugins",
@@ -319,6 +326,7 @@ export async function syncAnthropic(): Promise<ManifestItem[]> {
     defaultAuthor: "Community",
     repoTree: pluginsTree,
     includeFileTree: true,
+    marketplace: pluginsMarketplaceName,
     fetchMetadata: async (repo, basePath, slug) => {
       const plugin = await fetchPluginJson(repo, basePath, slug);
       if (!plugin) return null;

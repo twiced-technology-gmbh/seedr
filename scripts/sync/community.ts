@@ -17,6 +17,10 @@ import {
 import type { PluginJson } from "./utils.js";
 import type { ManifestItem, PluginContents, ParsedPluginContents } from "./types.js";
 
+interface MarketplaceJson {
+  name: string;
+}
+
 /**
  * Parse owner/repo and optional subpath from an externalUrl.
  * Handles: https://github.com/owner/repo/tree/main/subpath
@@ -29,7 +33,11 @@ function parseExternalUrl(url: string): { repo: string; basePath: string } | nul
 
 async function refreshPlugin(item: ManifestItem, repo: string, basePath: string): Promise<ManifestItem> {
   const pluginJsonUrl = `${GITHUB_RAW}/${repo}/main/${basePath ? basePath + "/" : ""}.claude-plugin/plugin.json`;
-  const pluginJson = await fetchJson<PluginJson & { mcpServers?: Record<string, unknown> }>(pluginJsonUrl);
+  const marketplaceJsonUrl = `${GITHUB_RAW}/${repo}/main/.claude-plugin/marketplace.json`;
+  const [pluginJson, marketplaceJson] = await Promise.all([
+    fetchJson<PluginJson & { mcpServers?: Record<string, unknown> }>(pluginJsonUrl),
+    fetchJson<MarketplaceJson>(marketplaceJsonUrl),
+  ]);
 
   const repoTree = await fetchRepoTree(repo);
   const updatedAt = await fetchLastCommitDate(repo, basePath || ".");
@@ -41,6 +49,7 @@ async function refreshPlugin(item: ManifestItem, repo: string, basePath: string)
     ...(pluginJson && { description: pluginJson.description }),
     ...(!item.name && pluginJson && { name: formatName(pluginJson.name || item.slug) }),
     ...(pluginJson?.author && { author: { name: pluginJson.author.name, url: pluginJson.author.url } }),
+    ...(marketplaceJson?.name && { marketplace: marketplaceJson.name }),
     ...(contentHash && { contentHash }),
     ...(updatedAt && { updatedAt }),
     contents: files.length > 0 ? { files } : item.contents ?? {},

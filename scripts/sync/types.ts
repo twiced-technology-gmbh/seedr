@@ -42,6 +42,7 @@ export interface ManifestItem {
   package?: Record<string, number>;
   sourceType: SourceType;
   contentHash?: string;
+  marketplace?: string;
   author: { name: string; url?: string };
   externalUrl?: string;
   updatedAt?: string;

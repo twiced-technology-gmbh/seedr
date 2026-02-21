@@ -92,5 +92,6 @@
       }
     ]
   },
-  "updatedAt": "2026-02-20T01:06:49Z"
+  "updatedAt": "2026-02-20T01:06:49Z",
+  "marketplace": "claude-plugins-official"
 }

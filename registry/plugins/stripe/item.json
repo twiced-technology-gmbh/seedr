@@ -68,5 +68,6 @@
       }
     ]
   },
-  "updatedAt": "2025-12-18T16:58:02Z"
+  "updatedAt": "2025-12-18T16:58:02Z",
+  "marketplace": "claude-plugins-official"
 }

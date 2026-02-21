@@ -51,6 +51,7 @@ export interface RegistryItem {
   sourceType?: SourceType;
   targetScope?: ScopeType;
   contentHash?: string;
+  marketplace?: string;
   author?: Author;
   externalUrl?: string;
   updatedAt?: string;
