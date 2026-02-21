@@ -2,7 +2,7 @@ import chalk from "chalk";
 import ora from "ora";
 import type { AITool, InstallScope, InstallMethod } from "../types.js";
 import type { RegistryItem } from "@seedr/shared";
-import { getItemContent } from "../config/registry.js";
+import { getItem, getItemContent } from "../config/registry.js";
 import { getSettingsPath, AI_TOOLS } from "../config/tools.js";
 import { exists } from "../utils/fs.js";
 import { readJson, writeJson, deepMerge } from "../utils/json.js";
@@ -79,14 +79,87 @@ export async function installSettings(
   return results;
 }
 
+/**
+ * Remove keys from target that were added by source.
+ * For nested objects, recursively removes leaf keys. If a nested object
+ * becomes empty after removal, the parent key is removed too.
+ */
+function deepUnmerge(
+  target: SettingsJson,
+  source: SettingsJson
+): { result: SettingsJson; changed: boolean } {
+  let changed = false;
+  const result = { ...target };
+
+  for (const key of Object.keys(source)) {
+    if (!(key in result)) continue;
+
+    const sourceValue = source[key];
+    const targetValue = result[key];
+
+    if (
+      sourceValue !== null &&
+      typeof sourceValue === "object" &&
+      !Array.isArray(sourceValue) &&
+      targetValue !== null &&
+      typeof targetValue === "object" &&
+      !Array.isArray(targetValue)
+    ) {
+      // Recurse into nested objects
+      const nested = deepUnmerge(
+        targetValue as SettingsJson,
+        sourceValue as SettingsJson
+      );
+      if (nested.changed) {
+        changed = true;
+        if (Object.keys(nested.result).length === 0) {
+          delete result[key];
+        } else {
+          result[key] = nested.result;
+        }
+      }
+    } else {
+      // Leaf value — remove it
+      delete result[key];
+      changed = true;
+    }
+  }
+
+  return { result, changed };
+}
+
 export async function uninstallSettings(
-  _slug: string,
-  _tool: AITool,
-  _scope: InstallScope,
-  _cwd: string = process.cwd()
+  slug: string,
+  tool: AITool,
+  scope: InstallScope,
+  cwd: string = process.cwd()
 ): Promise<boolean> {
-  // Settings are merged and can't be easily uninstalled
-  return false;
+  if (tool !== "claude") return false;
+
+  // Look up the registry item to get the settings content
+  const item = await getItem(slug, "settings");
+  if (!item) return false;
+
+  let content: string;
+  try {
+    content = await getItemContent(item);
+  } catch {
+    return false;
+  }
+
+  const itemSettings = parseSettings(content);
+
+  const settingsPath = getSettingsPath(scope, cwd);
+  if (!(await exists(settingsPath))) return false;
+
+  const currentSettings = await readJson<SettingsJson>(settingsPath);
+  const { result, changed } = deepUnmerge(currentSettings, itemSettings);
+
+  if (changed) {
+    await writeJson(settingsPath, result);
+  }
+
+  return changed;
 }
 
 export async function getInstalledSettings(
@@ -99,8 +172,7 @@ export async function getInstalledSettings(
   const settingsPath = getSettingsPath(scope, cwd);
   if (!(await exists(settingsPath))) return [];
 
-  // Settings don't have discrete "installed" items
-  // Return an empty array or could return the settings keys
+  // Settings don't have discrete "installed" items — can't detect by slug
   return [];
 }
 

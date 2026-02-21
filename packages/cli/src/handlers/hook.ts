@@ -1,10 +1,10 @@
-import { join } from "node:path";
-import { mkdir, copyFile, chmod } from "node:fs/promises";
+import { join, basename } from "node:path";
+import { mkdir, copyFile, chmod, rm } from "node:fs/promises";
 import chalk from "chalk";
 import ora from "ora";
 import type { AITool, InstallScope, InstallMethod } from "../types.js";
 import type { RegistryItem } from "@seedr/shared";
-import { getItemSourcePath, fetchItemToDestination } from "../config/registry.js";
+import { getItem, getItemSourcePath, fetchItemToDestination } from "../config/registry.js";
 import { getSettingsPath, AI_TOOLS } from "../config/tools.js";
 import { exists } from "../utils/fs.js";
 import { readJson, writeJson } from "../utils/json.js";
@@ -194,7 +194,7 @@ export async function installHook(
 }
 
 export async function uninstallHook(
-  _slug: string,
+  slug: string,
   tool: AITool,
   scope: InstallScope,
   cwd: string = process.cwd()
@@ -204,10 +204,70 @@ export async function uninstallHook(
   const settingsPath = getSettingsPath(scope, cwd);
   if (!(await exists(settingsPath))) return false;
 
-  // Note: We can't easily uninstall a hook by slug since hooks are merged
-  // into the settings.json. Would need to track which hooks came from which
-  // registry item. For now, return false.
-  return false;
+  // Look up the registry item to find the script file name
+  const item = await getItem(slug, "hook");
+  const scriptFile = item ? findScriptFile(item) : null;
+
+  // Build the script path we'd expect in settings
+  const expectedPath = scriptFile ? getScriptPath(scope, scriptFile) : null;
+
+  const settings = await readJson<SettingsJson>(settingsPath);
+  if (!settings.hooks) return false;
+
+  let removed = false;
+
+  // Remove hook commands matching the script path from all events
+  for (const event of Object.keys(settings.hooks)) {
+    const entries = settings.hooks[event];
+    if (!entries) continue;
+
+    for (let i = entries.length - 1; i >= 0; i--) {
+      const entry = entries[i]!;
+
+      // Filter out hooks whose command matches the script path or slug
+      const originalLength = entry.hooks.length;
+      entry.hooks = entry.hooks.filter((h) => {
+        if (expectedPath && h.command === expectedPath) return false;
+        // Fallback: match by slug in the path (e.g. ".claude/hooks/my-hook.sh" contains "my-hook")
+        const cmdBasename = basename(h.command, ".sh");
+        return cmdBasename !== slug;
+      });
+
+      if (entry.hooks.length < originalLength) {
+        removed = true;
+      }
+
+      // Remove the entry entirely if no hooks remain
+      if (entry.hooks.length === 0) {
+        entries.splice(i, 1);
+      }
+    }
+
+    // Remove the event key if no entries remain
+    if (entries.length === 0) {
+      delete settings.hooks[event];
+    }
+  }
+
+  // Remove the hooks key entirely if empty
+  if (Object.keys(settings.hooks).length === 0) {
+    delete settings.hooks;
+  }
+
+  if (removed) {
+    await writeJson(settingsPath, settings);
+  }
+
+  // Delete the script file
+  const hooksDir = getHooksDir(scope, cwd);
+  const scriptFileName = scriptFile || `${slug}.sh`;
+  const scriptFilePath = join(hooksDir, scriptFileName);
+  if (await exists(scriptFilePath)) {
+    await rm(scriptFilePath);
+    removed = true;
+  }
+
+  return removed;
 }
 
 export async function getInstalledHooks(
@@ -221,7 +281,20 @@ export async function getInstalledHooks(
   if (!(await exists(settingsPath))) return [];
 
   const settings = await readJson<SettingsJson>(settingsPath);
-  return Object.keys(settings.hooks || {});
+  if (!settings.hooks) return [];
+
+  // Extract slugs from hook command paths (e.g. ".claude/hooks/my-hook.sh" → "my-hook")
+  const slugs = new Set<string>();
+  for (const entries of Object.values(settings.hooks)) {
+    for (const entry of entries) {
+      for (const hook of entry.hooks) {
+        const slug = basename(hook.command, ".sh");
+        slugs.add(slug);
+      }
+    }
+  }
+
+  return Array.from(slugs);
 }
 
 /**
