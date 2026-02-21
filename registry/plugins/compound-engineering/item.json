@@ -2,16 +2,16 @@
   "slug": "compound-engineering",
   "name": "Compound Engineering",
   "type": "plugin",
-  "description": "Plan, review, research, and automate development workflows with 29 specialized agents, 22 commands, 19 skills, and an MCP server.",
+  "description": "AI-powered development tools. 29 agents, 22 commands, 19 skills, 1 MCP server for code review, research, design, and workflow automation.",
   "longDescription": "Ships **29 agents**, **22 commands**, **19 skills**, and a `context7` MCP server.\n\n- **Code reviewers** (15): Rails, TypeScript, Python, security, performance, architecture, data integrity\n- **Research agents** (5): best practices, framework docs, git history\n- **Design agents** (3): Figma sync, iteration\n- **Workflow agents** (5): bug reproduction, PR resolution, linting\n- **Commands**: `/workflows:` suite (`plan`, `review`, `work`, `compound`, `brainstorm`)\n- **Skills**: browser automation, git worktree, image generation, swarm orchestration",
   "compatibility": [
     "claude"
   ],
   "pluginType": "package",
   "package": {
-    "agent": 29,
-    "command": 22,
     "skill": 19,
+    "agent": 5,
+    "command": 17,
     "mcp": 1
   },
   "sourceType": "community",
@@ -20,14 +20,27 @@
     "url": "https://github.com/kieranklaassen"
   },
   "externalUrl": "https://github.com/EveryInc/compound-engineering-plugin/tree/main/plugins/compound-engineering",
-  "updatedAt": "2026-02-15T04:50:46Z",
+  "updatedAt": "2026-02-20T18:46:33Z",
   "contents": {
     "files": [
       {
         "name": ".claude-plugin",
         "type": "directory",
         "children": [
-          { "name": "plugin.json", "type": "file" }
+          {
+            "name": "plugin.json",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": ".cursor-plugin",
+        "type": "directory",
+        "children": [
+          {
+            "name": "plugin.json",
+            "type": "file"
+          }
         ]
       },
       {
@@ -38,59 +51,146 @@
             "name": "design",
             "type": "directory",
             "children": [
-              { "name": "design-implementation-reviewer.md", "type": "file" },
-              { "name": "design-iterator.md", "type": "file" },
-              { "name": "figma-design-sync.md", "type": "file" }
+              {
+                "name": "design-implementation-reviewer.md",
+                "type": "file"
+              },
+              {
+                "name": "design-iterator.md",
+                "type": "file"
+              },
+              {
+                "name": "figma-design-sync.md",
+                "type": "file"
+              }
             ]
           },
           {
             "name": "docs",
             "type": "directory",
             "children": [
-              { "name": "ankane-readme-writer.md", "type": "file" }
+              {
+                "name": "ankane-readme-writer.md",
+                "type": "file"
+              }
             ]
           },
           {
             "name": "research",
             "type": "directory",
             "children": [
-              { "name": "best-practices-researcher.md", "type": "file" },
-              { "name": "framework-docs-researcher.md", "type": "file" },
-              { "name": "git-history-analyzer.md", "type": "file" },
-              { "name": "learnings-researcher.md", "type": "file" },
-              { "name": "repo-research-analyst.md", "type": "file" }
+              {
+                "name": "best-practices-researcher.md",
+                "type": "file"
+              },
+              {
+                "name": "framework-docs-researcher.md",
+                "type": "file"
+              },
+              {
+                "name": "git-history-analyzer.md",
+                "type": "file"
+              },
+              {
+                "name": "learnings-researcher.md",
+                "type": "file"
+              },
+              {
+                "name": "repo-research-analyst.md",
+                "type": "file"
+              }
             ]
           },
           {
             "name": "review",
             "type": "directory",
             "children": [
-              { "name": "agent-native-reviewer.md", "type": "file" },
-              { "name": "architecture-strategist.md", "type": "file" },
-              { "name": "code-simplicity-reviewer.md", "type": "file" },
-              { "name": "data-integrity-guardian.md", "type": "file" },
-              { "name": "data-migration-expert.md", "type": "file" },
-              { "name": "deployment-verification-agent.md", "type": "file" },
-              { "name": "dhh-rails-reviewer.md", "type": "file" },
-              { "name": "julik-frontend-races-reviewer.md", "type": "file" },
-              { "name": "kieran-python-reviewer.md", "type": "file" },
-              { "name": "kieran-rails-reviewer.md", "type": "file" },
-              { "name": "kieran-typescript-reviewer.md", "type": "file" },
-              { "name": "pattern-recognition-specialist.md", "type": "file" },
-              { "name": "performance-oracle.md", "type": "file" },
-              { "name": "schema-drift-detector.md", "type": "file" },
-              { "name": "security-sentinel.md", "type": "file" }
+              {
+                "name": "agent-native-reviewer.md",
+                "type": "file"
+              },
+              {
+                "name": "architecture-strategist.md",
+                "type": "file"
+              },
+              {
+                "name": "code-simplicity-reviewer.md",
+                "type": "file"
+              },
+              {
+                "name": "data-integrity-guardian.md",
+                "type": "file"
+              },
+              {
+                "name": "data-migration-expert.md",
+                "type": "file"
+              },
+              {
+                "name": "deployment-verification-agent.md",
+                "type": "file"
+              },
+              {
+                "name": "dhh-rails-reviewer.md",
+                "type": "file"
+              },
+              {
+                "name": "julik-frontend-races-reviewer.md",
+                "type": "file"
+              },
+              {
+                "name": "kieran-python-reviewer.md",
+                "type": "file"
+              },
+              {
+                "name": "kieran-rails-reviewer.md",
+                "type": "file"
+              },
+              {
+                "name": "kieran-typescript-reviewer.md",
+                "type": "file"
+              },
+              {
+                "name": "pattern-recognition-specialist.md",
+                "type": "file"
+              },
+              {
+                "name": "performance-oracle.md",
+                "type": "file"
+              },
+              {
+                "name": "schema-drift-detector.md",
+                "type": "file"
+              },
+              {
+                "name": "security-sentinel.md",
+                "type": "file"
+              }
             ]
           },
           {
             "name": "workflow",
             "type": "directory",
             "children": [
-              { "name": "bug-reproduction-validator.md", "type": "file" },
-              { "name": "every-style-editor.md", "type": "file" },
-              { "name": "lint.md", "type": "file" },
-              { "name": "pr-comment-resolver.md", "type": "file" },
-              { "name": "spec-flow-analyzer.md", "type": "file" }
+              {
+                "name": "bug-reproduction-validator.md",
+                "type": "file"
+              },
+              {
+                "name": "every-style-editor.md",
+                "type": "file"
+              },
+              {
+                "name": "lint.md",
+                "type": "file"
+              },
+              {
+                "name": "pr-comment-resolver.md",
+                "type": "file"
+              },
+              {
+                "name": "spec-flow-analyzer.md",
+                "type": "file"
+              }
             ]
           }
         ]
@@ -99,33 +199,99 @@
         "name": "commands",
         "type": "directory",
         "children": [
-          { "name": "agent-native-audit.md", "type": "file" },
-          { "name": "changelog.md", "type": "file" },
-          { "name": "create-agent-skill.md", "type": "file" },
-          { "name": "deepen-plan.md", "type": "file" },
-          { "name": "deploy-docs.md", "type": "file" },
-          { "name": "feature-video.md", "type": "file" },
-          { "name": "generate_command.md", "type": "file" },
-          { "name": "heal-skill.md", "type": "file" },
-          { "name": "lfg.md", "type": "file" },
-          { "name": "report-bug.md", "type": "file" },
-          { "name": "reproduce-bug.md", "type": "file" },
-          { "name": "resolve_parallel.md", "type": "file" },
-          { "name": "resolve_todo_parallel.md", "type": "file" },
-          { "name": "slfg.md", "type": "file" },
-          { "name": "test-browser.md", "type": "file" },
-          { "name": "test-xcode.md", "type": "file" },
-          { "name": "triage.md", "type": "file" },
           {
             "name": "workflows",
             "type": "directory",
             "children": [
-              { "name": "brainstorm.md", "type": "file" },
-              { "name": "compound.md", "type": "file" },
-              { "name": "plan.md", "type": "file" },
-              { "name": "review.md", "type": "file" },
-              { "name": "work.md", "type": "file" }
+              {
+                "name": "brainstorm.md",
+                "type": "file"
+              },
+              {
+                "name": "compound.md",
+                "type": "file"
+              },
+              {
+                "name": "plan.md",
+                "type": "file"
+              },
+              {
+                "name": "review.md",
+                "type": "file"
+              },
+              {
+                "name": "work.md",
+                "type": "file"
+              }
             ]
+          },
+          {
+            "name": "agent-native-audit.md",
+            "type": "file"
+          },
+          {
+            "name": "changelog.md",
+            "type": "file"
+          },
+          {
+            "name": "create-agent-skill.md",
+            "type": "file"
+          },
+          {
+            "name": "deepen-plan.md",
+            "type": "file"
+          },
+          {
+            "name": "deploy-docs.md",
+            "type": "file"
+          },
+          {
+            "name": "feature-video.md",
+            "type": "file"
+          },
+          {
+            "name": "generate_command.md",
+            "type": "file"
+          },
+          {
+            "name": "heal-skill.md",
+            "type": "file"
+          },
+          {
+            "name": "lfg.md",
+            "type": "file"
+          },
+          {
+            "name": "report-bug.md",
+            "type": "file"
+          },
+          {
+            "name": "reproduce-bug.md",
+            "type": "file"
+          },
+          {
+            "name": "resolve_parallel.md",
+            "type": "file"
+          },
+          {
+            "name": "resolve_todo_parallel.md",
+            "type": "file"
+          },
+          {
+            "name": "slfg.md",
+            "type": "file"
+          },
+          {
+            "name": "test-browser.md",
+            "type": "file"
+          },
+          {
+            "name": "test-xcode.md",
+            "type": "file"
+          },
+          {
+            "name": "triage.md",
+            "type": "file"
           }
         ]
       },
@@ -133,31 +299,629 @@
         "name": "skills",
         "type": "directory",
         "children": [
-          { "name": "agent-browser", "type": "directory" },
-          { "name": "agent-native-architecture", "type": "directory" },
-          { "name": "andrew-kane-gem-writer", "type": "directory" },
-          { "name": "brainstorming", "type": "directory" },
-          { "name": "compound-docs", "type": "directory" },
-          { "name": "create-agent-skills", "type": "directory" },
-          { "name": "dhh-rails-style", "type": "directory" },
-          { "name": "document-review", "type": "directory" },
-          { "name": "dspy-ruby", "type": "directory" },
-          { "name": "every-style-editor", "type": "directory" },
-          { "name": "file-todos", "type": "directory" },
-          { "name": "frontend-design", "type": "directory" },
-          { "name": "gemini-imagegen", "type": "directory" },
-          { "name": "git-worktree", "type": "directory" },
-          { "name": "orchestrating-swarms", "type": "directory" },
-          { "name": "rclone", "type": "directory" },
-          { "name": "resolve-pr-parallel", "type": "directory" },
-          { "name": "setup", "type": "directory" },
-          { "name": "skill-creator", "type": "directory" }
+          {
+            "name": "agent-browser",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "agent-native-architecture",
+            "type": "directory",
+            "children": [
+              {
+                "name": "references",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "action-parity-discipline.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "agent-execution-patterns.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "agent-native-testing.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "architecture-patterns.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "dynamic-context-injection.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "files-universal-interface.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "from-primitives-to-domain-tools.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "mcp-tool-design.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "mobile-patterns.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "product-implications.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "refactoring-to-prompt-native.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "self-modification.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "shared-workspace-architecture.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "system-prompt-design.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "andrew-kane-gem-writer",
+            "type": "directory",
+            "children": [
+              {
+                "name": "references",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "database-adapters.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "module-organization.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "rails-integration.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "resources.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "testing-patterns.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "brainstorming",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "compound-docs",
+            "type": "directory",
+            "children": [
+              {
+                "name": "assets",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "critical-pattern-template.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "resolution-template.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "references",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "yaml-schema.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "schema.yaml",
+                "type": "file"
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "create-agent-skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "references",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "api-security.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "be-clear-and-direct.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "best-practices.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "common-patterns.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "core-principles.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "executable-code.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "iteration-and-testing.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "official-spec.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "recommended-structure.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "skill-structure.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "using-scripts.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "using-templates.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "workflows-and-validation.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "templates",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "router-skill.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "simple-skill.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "workflows",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "add-reference.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "add-script.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "add-template.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "add-workflow.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "audit-skill.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "create-domain-expertise-skill.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "create-new-skill.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "get-guidance.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "upgrade-to-router.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "verify-skill.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "dhh-rails-style",
+            "type": "directory",
+            "children": [
+              {
+                "name": "references",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "architecture.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "controllers.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "frontend.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "gems.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "models.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "testing.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "document-review",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "dspy-ruby",
+            "type": "directory",
+            "children": [
+              {
+                "name": "assets",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "config-template.rb",
+                    "type": "file"
+                  },
+                  {
+                    "name": "module-template.rb",
+                    "type": "file"
+                  },
+                  {
+                    "name": "signature-template.rb",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "references",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "core-concepts.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "observability.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "optimization.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "providers.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "toolsets.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "every-style-editor",
+            "type": "directory",
+            "children": [
+              {
+                "name": "references",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "EVERY_WRITE_STYLE.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "file-todos",
+            "type": "directory",
+            "children": [
+              {
+                "name": "assets",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "todo-template.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "frontend-design",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "gemini-imagegen",
+            "type": "directory",
+            "children": [
+              {
+                "name": "scripts",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "compose_images.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "edit_image.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "gemini_images.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "generate_image.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "multi_turn_chat.py",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "requirements.txt",
+                "type": "file"
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "git-worktree",
+            "type": "directory",
+            "children": [
+              {
+                "name": "scripts",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "worktree-manager.sh",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "orchestrating-swarms",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "rclone",
+            "type": "directory",
+            "children": [
+              {
+                "name": "scripts",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "check_setup.sh",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "resolve-pr-parallel",
+            "type": "directory",
+            "children": [
+              {
+                "name": "scripts",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "get-pr-comments",
+                    "type": "file"
+                  },
+                  {
+                    "name": "resolve-pr-thread",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "setup",
+            "type": "directory",
+            "children": [
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "skill-creator",
+            "type": "directory",
+            "children": [
+              {
+                "name": "scripts",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "init_skill.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "package_skill.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "quick_validate.py",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
+            ]
+          }
         ]
       },
-      { "name": "CHANGELOG.md", "type": "file" },
-      { "name": "CLAUDE.md", "type": "file" },
-      { "name": "LICENSE", "type": "file" },
-      { "name": "README.md", "type": "file" }
+      {
+        "name": ".mcp.json",
+        "type": "file"
+      },
+      {
+        "name": "CHANGELOG.md",
+        "type": "file"
+      },
+      {
+        "name": "CLAUDE.md",
+        "type": "file"
+      },
+      {
+        "name": "LICENSE",
+        "type": "file"
+      },
+      {
+        "name": "README.md",
+        "type": "file"
+      }
     ]
-  }
+  },
+  "contentHash": "8666cc51e18a9227"
 }

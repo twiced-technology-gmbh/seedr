@@ -14,7 +14,7 @@
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/security-guidance",
-  "contentHash": "9e6878c6831413a8",
+  "contentHash": "9311f340b4a131c8",
   "contents": {
     "files": [
       {
@@ -40,8 +40,12 @@
             "type": "file"
           }
         ]
+      },
+      {
+        "name": "LICENSE",
+        "type": "file"
       }
     ]
   },
-  "updatedAt": "2025-12-13T00:52:17Z"
+  "updatedAt": "2026-02-20T01:06:49Z"
 }

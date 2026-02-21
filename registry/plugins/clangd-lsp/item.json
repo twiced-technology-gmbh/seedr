@@ -14,14 +14,18 @@
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/clangd-lsp",
-  "contentHash": "69fcf589f884f61c",
+  "contentHash": "d9cc43e2c2e2fcee",
   "contents": {
     "files": [
+      {
+        "name": "LICENSE",
+        "type": "file"
+      },
       {
         "name": "README.md",
         "type": "file"
       }
     ]
   },
-  "updatedAt": "2025-12-19T00:24:41Z"
+  "updatedAt": "2026-02-20T01:06:49Z"
 }

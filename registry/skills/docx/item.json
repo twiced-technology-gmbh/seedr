@@ -51,19 +51,189 @@
                 "children": [
                   {
                     "name": "ecma",
-                    "type": "directory"
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "fouth-edition",
+                        "type": "directory",
+                        "children": [
+                          {
+                            "name": "opc-contentTypes.xsd",
+                            "type": "file"
+                          },
+                          {
+                            "name": "opc-coreProperties.xsd",
+                            "type": "file"
+                          },
+                          {
+                            "name": "opc-digSig.xsd",
+                            "type": "file"
+                          },
+                          {
+                            "name": "opc-relationships.xsd",
+                            "type": "file"
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
                     "name": "ISO-IEC29500-4_2016",
-                    "type": "directory"
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "dml-chart.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-chartDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-diagram.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-lockedCanvas.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-main.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-picture.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-spreadsheetDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "dml-wordprocessingDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "pml.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-additionalCharacteristics.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-bibliography.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-commonSimpleTypes.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-customXmlDataProperties.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-customXmlSchemaProperties.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-documentPropertiesCustom.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-documentPropertiesExtended.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-documentPropertiesVariantTypes.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-math.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "shared-relationshipReference.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "sml.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "vml-main.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "vml-officeDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "vml-presentationDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "vml-spreadsheetDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "vml-wordprocessingDrawing.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "xml.xsd",
+                        "type": "file"
+                      }
+                    ]
                   },
                   {
                     "name": "mce",
-                    "type": "directory"
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "mc.xsd",
+                        "type": "file"
+                      }
+                    ]
                   },
                   {
                     "name": "microsoft",
-                    "type": "directory"
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "wml-2010.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml-2012.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml-2018.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml-cex-2018.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml-cid-2016.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml-sdtdatahash-2020.xsd",
+                        "type": "file"
+                      },
+                      {
+                        "name": "wml-symex-2015.xsd",
+                        "type": "file"
+                      }
+                    ]
                   }
                 ]
               },

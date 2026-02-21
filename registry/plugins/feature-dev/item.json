@@ -17,7 +17,7 @@
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/feature-dev",
-  "contentHash": "4299680eae0dfa5e",
+  "contentHash": "389be57a647ddc71",
   "contents": {
     "files": [
       {
@@ -59,10 +59,14 @@
         ]
       },
       {
+        "name": "LICENSE",
+        "type": "file"
+      },
+      {
         "name": "README.md",
         "type": "file"
       }
     ]
   },
-  "updatedAt": "2025-12-13T00:52:17Z"
+  "updatedAt": "2026-02-20T01:06:49Z"
 }

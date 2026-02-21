@@ -19,7 +19,7 @@
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/hookify",
-  "contentHash": "e7171ec76f27ce74",
+  "contentHash": "7bba1d8c000d63fd",
   "contents": {
     "files": [
       {
@@ -175,10 +175,14 @@
         "type": "file"
       },
       {
+        "name": "LICENSE",
+        "type": "file"
+      },
+      {
         "name": "README.md",
         "type": "file"
       }
     ]
   },
-  "updatedAt": "2026-02-05T17:21:57Z"
+  "updatedAt": "2026-02-20T01:06:49Z"
 }

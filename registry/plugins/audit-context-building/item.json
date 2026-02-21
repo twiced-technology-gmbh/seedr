@@ -62,7 +62,21 @@
             "children": [
               {
                 "name": "resources",
-                "type": "directory"
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "COMPLETENESS_CHECKLIST.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "FUNCTION_MICRO_ANALYSIS_EXAMPLE.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "OUTPUT_REQUIREMENTS.md",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "SKILL.md",
@@ -76,15 +90,6 @@
         "name": "README.md",
         "type": "file"
       }
-    ],
-    "agents": [
-      "function-analyzer"
-    ],
-    "commands": [
-      "audit-context"
-    ],
-    "skills": [
-      "audit-context-building"
     ]
   },
   "updatedAt": "2026-02-13T04:08:06Z"

@@ -17,7 +17,7 @@
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pr-review-toolkit",
-  "contentHash": "99cdff1f6950626e",
+  "contentHash": "202d76d857681561",
   "contents": {
     "files": [
       {
@@ -71,10 +71,14 @@
         ]
       },
       {
+        "name": "LICENSE",
+        "type": "file"
+      },
+      {
         "name": "README.md",
         "type": "file"
       }
     ]
   },
-  "updatedAt": "2026-02-04T23:59:39Z"
+  "updatedAt": "2026-02-20T01:06:49Z"
 }

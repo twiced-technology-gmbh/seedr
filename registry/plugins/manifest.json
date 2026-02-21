@@ -35,8 +35,8 @@
         "url": "https://github.com/trailofbits"
       },
       "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified",
-      "contentHash": "14da821fba60c3ae",
-      "updatedAt": "2026-02-12T15:28:33Z"
+      "contentHash": "53911e31078f7f15",
+      "updatedAt": "2026-02-18T17:09:58Z"
     },
     {
       "slug": "audit-context-building",
@@ -65,35 +65,36 @@
       "slug": "coding-tutor",
       "name": "Coding Tutor",
       "type": "plugin",
-      "description": "Generate personalized coding tutorials from your codebase with spaced-repetition quizzes to reinforce learning.",
+      "description": "Personalized coding tutorials that use your actual codebase for examples with spaced repetition quizzes",
       "compatibility": [
         "claude"
       ],
       "pluginType": "package",
       "package": {
-        "command": 3,
-        "skill": 1
+        "skill": 1,
+        "command": 3
       },
       "sourceType": "community",
       "author": {
         "name": "Nityesh Agarwal"
       },
       "externalUrl": "https://github.com/EveryInc/compound-engineering-plugin/tree/main/plugins/coding-tutor",
-      "updatedAt": "2026-01-20T04:24:00Z"
+      "updatedAt": "2026-02-13T17:14:48Z",
+      "contentHash": "6914188d69edd611"
     },
     {
       "slug": "compound-engineering",
       "name": "Compound Engineering",
       "type": "plugin",
-      "description": "Plan, review, research, and automate development workflows with 29 specialized agents, 22 commands, 19 skills, and an MCP server.",
+      "description": "AI-powered development tools. 29 agents, 22 commands, 19 skills, 1 MCP server for code review, research, design, and workflow automation.",
       "compatibility": [
         "claude"
       ],
       "pluginType": "package",
       "package": {
-        "agent": 29,
-        "command": 22,
         "skill": 19,
+        "agent": 5,
+        "command": 17,
         "mcp": 1
       },
       "sourceType": "community",
@@ -102,7 +103,8 @@
         "url": "https://github.com/kieranklaassen"
       },
       "externalUrl": "https://github.com/EveryInc/compound-engineering-plugin/tree/main/plugins/compound-engineering",
-      "updatedAt": "2026-02-15T04:50:46Z"
+      "updatedAt": "2026-02-20T18:46:33Z",
+      "contentHash": "8666cc51e18a9227"
     },
     {
       "slug": "context7",
@@ -151,7 +153,7 @@
       "pluginType": "package",
       "package": {
         "skill": 1,
-        "hook": 3
+        "hook": 1
       },
       "sourceType": "community",
       "author": {
@@ -252,7 +254,8 @@
         "url": "https://github.com/trailofbits"
       },
       "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/humanizer",
-      "updatedAt": "2026-02-06T16:22:35Z"
+      "updatedAt": "2026-02-06T16:22:35Z",
+      "contentHash": "e0def7aa9001b18a"
     },
     {
       "slug": "laravel-boost",
@@ -288,7 +291,8 @@
         "url": "https://github.com/mvanhorn/last30days-skill"
       },
       "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/last30days",
-      "updatedAt": "2026-02-12T07:49:07Z"
+      "updatedAt": "2026-02-12T07:49:07Z",
+      "contentHash": "bdd3ab68f051f5ec"
     },
     {
       "slug": "linear",
@@ -330,19 +334,22 @@
       "slug": "second-opinion",
       "name": "Second Opinion",
       "type": "plugin",
-      "description": "Runs code reviews using external LLM CLIs (OpenAI Codex, Google Gemini) on uncommitted changes, branch diffs, or specific commits",
+      "description": "Runs code reviews using external LLM CLIs (OpenAI Codex, Google Gemini) on uncommitted changes, branch diffs, or specific commits. Bundles codex-mcp-server for direct MCP tool access to Codex.",
       "compatibility": [
         "claude"
       ],
-      "pluginType": "wrapper",
-      "wrapper": "skill",
+      "pluginType": "package",
       "sourceType": "community",
       "author": {
         "name": "Dan Guido"
       },
       "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/second-opinion",
-      "contentHash": "88bbe419708f57cb",
-      "updatedAt": "2026-02-13T00:53:29Z"
+      "contentHash": "a9e9ef08d9e2325a",
+      "updatedAt": "2026-02-20T20:56:28Z",
+      "package": {
+        "skill": 1,
+        "mcp": 1
+      }
     },
     {
       "slug": "serena",
@@ -378,7 +385,8 @@
         "url": "https://github.com/trailofbits"
       },
       "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/skill-extractor",
-      "updatedAt": "2026-02-06T16:22:35Z"
+      "updatedAt": "2026-02-06T16:22:35Z",
+      "contentHash": "1448fbbe3e1bff86"
     },
     {
       "slug": "slack",
@@ -395,8 +403,8 @@
         "name": "Slack"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/slack",
-      "contentHash": "b25546d5030930c2",
-      "updatedAt": "2025-12-02T00:03:02Z"
+      "contentHash": "022decda9a7184a9",
+      "updatedAt": "2026-02-17T20:07:52Z"
     },
     {
       "slug": "stripe",
@@ -459,8 +467,8 @@
         "name": "Jesse Vincent"
       },
       "externalUrl": "https://github.com/obra/superpowers/tree/main",
-      "contentHash": "331d072c4ed12aa0",
-      "updatedAt": "2026-02-12T19:03:32Z"
+      "contentHash": "30190bec24cc1f8d",
+      "updatedAt": "2026-02-17T19:46:28Z"
     },
     {
       "slug": "wooyun-legacy",
@@ -478,7 +486,8 @@
         "url": "https://github.com/tanweai/wooyun-legacy"
       },
       "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/wooyun-legacy",
-      "updatedAt": "2026-02-12T00:10:00Z"
+      "updatedAt": "2026-02-12T00:10:00Z",
+      "contentHash": "bef8c01beb2ca061"
     },
     {
       "slug": "agent-sdk-dev",
@@ -498,8 +507,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/agent-sdk-dev",
-      "contentHash": "794e61bf58c55e22",
-      "updatedAt": "2025-12-13T00:52:17Z"
+      "contentHash": "ae077c8ee285d35f",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "clangd-lsp",
@@ -516,8 +525,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/clangd-lsp",
-      "contentHash": "69fcf589f884f61c",
-      "updatedAt": "2025-12-19T00:24:41Z"
+      "contentHash": "d9cc43e2c2e2fcee",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "claude-code-setup",
@@ -534,8 +543,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-code-setup",
-      "contentHash": "d0b3b68824258024",
-      "updatedAt": "2026-01-21T04:15:08Z"
+      "contentHash": "11d46446bd0bf939",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "claude-md-management",
@@ -555,8 +564,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-md-management",
-      "contentHash": "56cc8ddbfdc15cbf",
-      "updatedAt": "2026-01-20T21:11:06Z"
+      "contentHash": "234f41ddbfbbe3ec",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "code-review",
@@ -573,8 +582,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/code-review",
-      "contentHash": "14bbe9287db0195c",
-      "updatedAt": "2025-12-13T00:52:17Z"
+      "contentHash": "856c1e5d38b9cccc",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "code-simplifier",
@@ -591,8 +600,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/code-simplifier",
-      "contentHash": "5c5eb50c7d32dffe",
-      "updatedAt": "2026-01-09T00:17:19Z"
+      "contentHash": "7535a9ef957099fd",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "commit-commands",
@@ -609,8 +618,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/commit-commands",
-      "contentHash": "c71eb28d5915f776",
-      "updatedAt": "2025-12-02T00:03:02Z"
+      "contentHash": "b25bc847e5a578d3",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "csharp-lsp",
@@ -627,8 +636,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/csharp-lsp",
-      "contentHash": "7d072c7cbe3746d9",
-      "updatedAt": "2025-12-19T00:24:41Z"
+      "contentHash": "5383cc245f33c70c",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "explanatory-output-style",
@@ -645,8 +654,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/explanatory-output-style",
-      "contentHash": "33bcf2ec4585a419",
-      "updatedAt": "2025-12-13T00:52:17Z"
+      "contentHash": "057d3fac9e7f4f96",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "feature-dev",
@@ -666,8 +675,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/feature-dev",
-      "contentHash": "4299680eae0dfa5e",
-      "updatedAt": "2025-12-13T00:52:17Z"
+      "contentHash": "389be57a647ddc71",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "frontend-design",
@@ -684,8 +693,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design",
-      "contentHash": "6f9d7a34a44e46aa",
-      "updatedAt": "2025-12-13T00:52:17Z"
+      "contentHash": "c89f8c7591939dab",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "gopls-lsp",
@@ -702,8 +711,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/gopls-lsp",
-      "contentHash": "e9701a9dcadb0bca",
-      "updatedAt": "2025-12-19T00:24:41Z"
+      "contentHash": "0b15022894a7b02b",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "hookify",
@@ -725,8 +734,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/hookify",
-      "contentHash": "e7171ec76f27ce74",
-      "updatedAt": "2026-02-05T17:21:57Z"
+      "contentHash": "7bba1d8c000d63fd",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "jdtls-lsp",
@@ -743,8 +752,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/jdtls-lsp",
-      "contentHash": "6f8652db8c419ba6",
-      "updatedAt": "2025-12-19T00:24:41Z"
+      "contentHash": "28c85f91cd6fc1e2",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "kotlin-lsp",
@@ -761,8 +770,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/kotlin-lsp",
-      "contentHash": "79966ce8873dea30",
-      "updatedAt": "2026-01-07T20:06:39Z"
+      "contentHash": "92e6f90793fbae90",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "learning-output-style",
@@ -779,8 +788,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/learning-output-style",
-      "contentHash": "2df9cbf8714731f8",
-      "updatedAt": "2025-12-13T00:52:17Z"
+      "contentHash": "5add5d7e8079ee97",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "lua-lsp",
@@ -797,8 +806,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/lua-lsp",
-      "contentHash": "699789acac989f21",
-      "updatedAt": "2025-12-19T00:24:41Z"
+      "contentHash": "7c0683f17fbdde21",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "php-lsp",
@@ -815,8 +824,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/php-lsp",
-      "contentHash": "5829d35c9b8c2460",
-      "updatedAt": "2025-12-19T00:24:41Z"
+      "contentHash": "94e45835509805f1",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "playground",
@@ -833,8 +842,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/playground",
-      "contentHash": "a568884802664ae7",
-      "updatedAt": "2026-01-29T23:24:01Z"
+      "contentHash": "d4520cf137533fc6",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "plugin-dev",
@@ -855,8 +864,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/plugin-dev",
-      "contentHash": "201c8778b7bbfdad",
-      "updatedAt": "2026-02-05T21:57:52Z"
+      "contentHash": "a157b4b05f64ea3b",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "pr-review-toolkit",
@@ -876,8 +885,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pr-review-toolkit",
-      "contentHash": "99cdff1f6950626e",
-      "updatedAt": "2026-02-04T23:59:39Z"
+      "contentHash": "202d76d857681561",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "pyright-lsp",
@@ -894,8 +903,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pyright-lsp",
-      "contentHash": "28c541b0fc0ce7c9",
-      "updatedAt": "2025-12-19T00:24:41Z"
+      "contentHash": "0217913bc8986b05",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "ralph-loop",
@@ -915,8 +924,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/ralph-loop",
-      "contentHash": "b4d40bafaf8560e8",
-      "updatedAt": "2026-01-06T23:22:54Z"
+      "contentHash": "2750c36c3d0306e5",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "rust-analyzer-lsp",
@@ -933,8 +942,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/rust-analyzer-lsp",
-      "contentHash": "433677dab975495d",
-      "updatedAt": "2025-12-19T00:24:41Z"
+      "contentHash": "f1ebe12462afe421",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "security-guidance",
@@ -951,8 +960,26 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/security-guidance",
-      "contentHash": "9e6878c6831413a8",
-      "updatedAt": "2025-12-13T00:52:17Z"
+      "contentHash": "9311f340b4a131c8",
+      "updatedAt": "2026-02-20T01:06:49Z"
+    },
+    {
+      "slug": "skill-creator",
+      "name": "Skill Creator",
+      "type": "plugin",
+      "description": "Create new skills, improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, update or optimize an existing skill, run evals to test a skill, or benchmark skill performance with variance analysis.",
+      "compatibility": [
+        "claude"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/skill-creator",
+      "contentHash": "2f3fa768e3c14faf",
+      "updatedAt": "2026-02-20T01:06:49Z",
+      "pluginType": "wrapper",
+      "wrapper": "skill"
     },
     {
       "slug": "swift-lsp",
@@ -969,8 +996,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/swift-lsp",
-      "contentHash": "e349484ba26940bd",
-      "updatedAt": "2025-12-19T00:24:41Z"
+      "contentHash": "308d473d540e6c66",
+      "updatedAt": "2026-02-20T01:06:49Z"
     },
     {
       "slug": "typescript-lsp",
@@ -987,8 +1014,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/typescript-lsp",
-      "contentHash": "6bb7f7de1e53f1a4",
-      "updatedAt": "2025-12-19T00:24:41Z"
+      "contentHash": "8e516eb79b6c1490",
+      "updatedAt": "2026-02-20T01:06:49Z"
     }
   ]
 }

@@ -14,14 +14,18 @@
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/typescript-lsp",
-  "contentHash": "6bb7f7de1e53f1a4",
+  "contentHash": "8e516eb79b6c1490",
   "contents": {
     "files": [
+      {
+        "name": "LICENSE",
+        "type": "file"
+      },
       {
         "name": "README.md",
         "type": "file"
       }
     ]
   },
-  "updatedAt": "2025-12-19T00:24:41Z"
+  "updatedAt": "2026-02-20T01:06:49Z"
 }

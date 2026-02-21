@@ -14,14 +14,18 @@
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/rust-analyzer-lsp",
-  "contentHash": "433677dab975495d",
+  "contentHash": "f1ebe12462afe421",
   "contents": {
     "files": [
+      {
+        "name": "LICENSE",
+        "type": "file"
+      },
       {
         "name": "README.md",
         "type": "file"
       }
     ]
   },
-  "updatedAt": "2025-12-19T00:24:41Z"
+  "updatedAt": "2026-02-20T01:06:49Z"
 }

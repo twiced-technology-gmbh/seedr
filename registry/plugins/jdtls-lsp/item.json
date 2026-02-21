@@ -14,14 +14,18 @@
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/jdtls-lsp",
-  "contentHash": "6f8652db8c419ba6",
+  "contentHash": "28c85f91cd6fc1e2",
   "contents": {
     "files": [
+      {
+        "name": "LICENSE",
+        "type": "file"
+      },
       {
         "name": "README.md",
         "type": "file"
       }
     ]
   },
-  "updatedAt": "2025-12-19T00:24:41Z"
+  "updatedAt": "2026-02-20T01:06:49Z"
 }

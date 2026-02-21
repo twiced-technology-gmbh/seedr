@@ -15,7 +15,7 @@
     "url": "https://github.com/trailofbits"
   },
   "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified",
-  "contentHash": "14da821fba60c3ae",
+  "contentHash": "53911e31078f7f15",
   "contents": {
     "files": [
       {
@@ -48,10 +48,7 @@
         "name": "README.md",
         "type": "file"
       }
-    ],
-    "skills": [
-      "ask-questions-if-underspecified"
     ]
   },
-  "updatedAt": "2026-02-12T15:28:33Z"
+  "updatedAt": "2026-02-18T17:09:58Z"
 }

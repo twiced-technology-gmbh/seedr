@@ -10,7 +10,7 @@
   "pluginType": "package",
   "package": {
     "skill": 1,
-    "hook": 3
+    "hook": 1
   },
   "sourceType": "community",
   "author": {
@@ -83,7 +83,33 @@
             "children": [
               {
                 "name": "references",
-                "type": "directory"
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "actions.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "api.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "issues.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "pull-requests.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "releases.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "repos-and-files.md",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "SKILL.md",
@@ -97,12 +123,6 @@
         "name": "README.md",
         "type": "file"
       }
-    ],
-    "hooks": [
-      "hooks.json"
-    ],
-    "skills": [
-      "using-gh-cli"
     ]
   },
   "updatedAt": "2026-02-13T02:16:05Z"

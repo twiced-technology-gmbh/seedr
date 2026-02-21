@@ -19,7 +19,7 @@
     "name": "Jesse Vincent"
   },
   "externalUrl": "https://github.com/obra/superpowers/tree/main",
-  "contentHash": "331d072c4ed12aa0",
+  "contentHash": "30190bec24cc1f8d",
   "contents": {
     "files": [
       {
@@ -42,6 +42,16 @@
         "children": [
           {
             "name": "INSTALL.md",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": ".cursor-plugin",
+        "type": "directory",
+        "children": [
+          {
+            "name": "plugin.json",
             "type": "file"
           }
         ]
@@ -378,7 +388,13 @@
             "children": [
               {
                 "name": "examples",
-                "type": "directory"
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "CLAUDE_MD_TESTING.md",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "anthropic-best-practices.md",
@@ -448,7 +464,45 @@
             "children": [
               {
                 "name": "prompts",
-                "type": "directory"
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "action-oriented.txt",
+                    "type": "file"
+                  },
+                  {
+                    "name": "after-planning-flow.txt",
+                    "type": "file"
+                  },
+                  {
+                    "name": "claude-suggested-it.txt",
+                    "type": "file"
+                  },
+                  {
+                    "name": "i-know-what-sdd-means.txt",
+                    "type": "file"
+                  },
+                  {
+                    "name": "mid-conversation-execute-plan.txt",
+                    "type": "file"
+                  },
+                  {
+                    "name": "please-use-brainstorming.txt",
+                    "type": "file"
+                  },
+                  {
+                    "name": "skip-formalities.txt",
+                    "type": "file"
+                  },
+                  {
+                    "name": "subagent-driven-development-please.txt",
+                    "type": "file"
+                  },
+                  {
+                    "name": "use-systematic-debugging.txt",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "run-all.sh",
@@ -512,7 +566,33 @@
             "children": [
               {
                 "name": "prompts",
-                "type": "directory"
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "dispatching-parallel-agents.txt",
+                    "type": "file"
+                  },
+                  {
+                    "name": "executing-plans.txt",
+                    "type": "file"
+                  },
+                  {
+                    "name": "requesting-code-review.txt",
+                    "type": "file"
+                  },
+                  {
+                    "name": "systematic-debugging.txt",
+                    "type": "file"
+                  },
+                  {
+                    "name": "test-driven-development.txt",
+                    "type": "file"
+                  },
+                  {
+                    "name": "writing-plans.txt",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "run-all.sh",
@@ -530,11 +610,39 @@
             "children": [
               {
                 "name": "go-fractals",
-                "type": "directory"
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "design.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "plan.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "scaffold.sh",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "svelte-todo",
-                "type": "directory"
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "design.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "plan.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "scaffold.sh",
+                    "type": "file"
+                  }
+                ]
               },
               {
                 "name": "run-test.sh",
@@ -566,5 +674,5 @@
       }
     ]
   },
-  "updatedAt": "2026-02-12T19:03:32Z"
+  "updatedAt": "2026-02-17T19:46:28Z"
 }

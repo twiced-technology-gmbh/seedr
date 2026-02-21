@@ -17,7 +17,7 @@
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/agent-sdk-dev",
-  "contentHash": "794e61bf58c55e22",
+  "contentHash": "ae077c8ee285d35f",
   "contents": {
     "files": [
       {
@@ -55,10 +55,14 @@
         ]
       },
       {
+        "name": "LICENSE",
+        "type": "file"
+      },
+      {
         "name": "README.md",
         "type": "file"
       }
     ]
   },
-  "updatedAt": "2025-12-13T00:52:17Z"
+  "updatedAt": "2026-02-20T01:06:49Z"
 }

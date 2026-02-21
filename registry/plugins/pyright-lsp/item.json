@@ -14,14 +14,18 @@
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pyright-lsp",
-  "contentHash": "28c541b0fc0ce7c9",
+  "contentHash": "0217913bc8986b05",
   "contents": {
     "files": [
+      {
+        "name": "LICENSE",
+        "type": "file"
+      },
       {
         "name": "README.md",
         "type": "file"
       }
     ]
   },
-  "updatedAt": "2025-12-19T00:24:41Z"
+  "updatedAt": "2026-02-20T01:06:49Z"
 }

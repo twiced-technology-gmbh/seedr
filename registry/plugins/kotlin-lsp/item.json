@@ -14,14 +14,18 @@
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/kotlin-lsp",
-  "contentHash": "79966ce8873dea30",
+  "contentHash": "92e6f90793fbae90",
   "contents": {
     "files": [
+      {
+        "name": "LICENSE",
+        "type": "file"
+      },
       {
         "name": "README.md",
         "type": "file"
       }
     ]
   },
-  "updatedAt": "2026-01-07T20:06:39Z"
+  "updatedAt": "2026-02-20T01:06:49Z"
 }

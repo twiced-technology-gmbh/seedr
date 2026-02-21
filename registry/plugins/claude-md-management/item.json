@@ -17,7 +17,7 @@
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-md-management",
-  "contentHash": "56cc8ddbfdc15cbf",
+  "contentHash": "234f41ddbfbbe3ec",
   "contents": {
     "files": [
       {
@@ -79,6 +79,10 @@
         "type": "file"
       },
       {
+        "name": "LICENSE",
+        "type": "file"
+      },
+      {
         "name": "README.md",
         "type": "file"
       },
@@ -88,5 +92,5 @@
       }
     ]
   },
-  "updatedAt": "2026-01-20T21:11:06Z"
+  "updatedAt": "2026-02-20T01:06:49Z"
 }

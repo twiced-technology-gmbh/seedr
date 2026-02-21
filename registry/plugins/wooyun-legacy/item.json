@@ -36,17 +36,9 @@
             "type": "directory",
             "children": [
               {
-                "name": "SKILL.md",
-                "type": "file"
-              },
-              {
                 "name": "references",
                 "type": "directory",
                 "children": [
-                  {
-                    "name": "bank-penetration.md",
-                    "type": "file"
-                  },
                   {
                     "name": "checklists",
                     "type": "directory",
@@ -110,6 +102,10 @@
                     ]
                   },
                   {
+                    "name": "bank-penetration.md",
+                    "type": "file"
+                  },
+                  {
                     "name": "command-execution.md",
                     "type": "file"
                   },
@@ -146,6 +142,10 @@
                     "type": "file"
                   }
                 ]
+              },
+              {
+                "name": "SKILL.md",
+                "type": "file"
               }
             ]
           }
@@ -161,5 +161,6 @@
       }
     ]
   },
-  "updatedAt": "2026-02-12T00:10:00Z"
+  "updatedAt": "2026-02-12T00:10:00Z",
+  "contentHash": "bef8c01beb2ca061"
 }
