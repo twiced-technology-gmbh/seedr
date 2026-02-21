@@ -225,7 +225,7 @@ export async function fetchItemToDestination(
     item.type === "skill"
       ? ["SKILL.md"]
       : item.type === "plugin"
-        ? [".claude-plugin/plugin.json", ".claude-plugin/marketplace.json"]
+        ? [".claude-plugin/plugin.json"]
         : [`${item.type}.md`];
 
   await mkdir(destPath, { recursive: true });

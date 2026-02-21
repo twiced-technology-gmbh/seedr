@@ -65,11 +65,20 @@ vi.mock("../config/registry.js", () => ({
   fetchItemToDestination: vi.fn(async (item: RegistryItem, destPath: string) => {
     vol.mkdirSync(destPath, { recursive: true });
     if (item.contents?.files) {
-      for (const file of item.contents.files) {
-        if (file.type === "file") {
-          vol.writeFileSync(join(destPath, file.name), `stub: ${file.name}`);
+      const writeTree = (nodes: { name: string; type: string; children?: any[] }[], dir: string) => {
+        for (const node of nodes) {
+          const nodePath = join(dir, node.name);
+          if (node.type === "directory") {
+            vol.mkdirSync(nodePath, { recursive: true });
+            if (node.children) writeTree(node.children, nodePath);
+          } else if (node.name.endsWith(".json")) {
+            vol.writeFileSync(nodePath, JSON.stringify({ name: "stub" }));
+          } else {
+            vol.writeFileSync(nodePath, `stub: ${node.name}`);
+          }
         }
-      }
+      };
+      writeTree(item.contents.files, destPath);
     } else {
       vol.writeFileSync(join(destPath, "STUB"), "stub");
     }
@@ -88,17 +97,26 @@ describe("install all manifest items (mocked)", () => {
   beforeEach(() => {
     vol.reset();
     // Set up local source dirs for toolr items with correct content files
+    const writeTree = (nodes: { name: string; type: string; children?: any[] }[], dir: string) => {
+      for (const node of nodes) {
+        const nodePath = join(dir, node.name);
+        if (node.type === "directory") {
+          vol.mkdirSync(nodePath, { recursive: true });
+          if (node.children) writeTree(node.children, nodePath);
+        } else if (node.name.endsWith(".json")) {
+          vol.writeFileSync(nodePath, JSON.stringify({ name: "stub" }));
+        } else {
+          vol.writeFileSync(nodePath, `stub: ${node.name}`);
+        }
+      }
+    };
     for (const item of manifest.items) {
       if (item.sourceType === "toolr") {
         const srcPath = `/registry/${item.type}s/${item.slug}`;
         vol.mkdirSync(srcPath, { recursive: true });
 
-        if (item.type === "hook" && item.contents?.files) {
-          for (const file of item.contents.files) {
-            if (file.type === "file") {
-              vol.writeFileSync(join(srcPath, file.name), `#!/bin/bash\necho "${item.slug}"\n`);
-            }
-          }
+        if (item.contents?.files) {
+          writeTree(item.contents.files, srcPath);
         } else {
           vol.writeFileSync(join(srcPath, "SKILL.md"), `# ${item.name}\n`);
         }
