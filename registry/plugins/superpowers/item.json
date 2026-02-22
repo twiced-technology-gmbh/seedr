@@ -19,7 +19,7 @@
     "name": "Jesse Vincent"
   },
   "externalUrl": "https://github.com/obra/superpowers/tree/main",
-  "contentHash": "30190bec24cc1f8d",
+  "contentHash": "27088f9c31caa479",
   "contents": {
     "files": [
       {
@@ -173,7 +173,7 @@
             "type": "file"
           },
           {
-            "name": "session-start.sh",
+            "name": "session-start",
             "type": "file"
           }
         ]
@@ -674,6 +674,6 @@
       }
     ]
   },
-  "updatedAt": "2026-02-17T19:46:28Z",
+  "updatedAt": "2026-02-21T19:43:05Z",
   "marketplace": "superpowers-dev"
 }
