@@ -148,27 +148,52 @@ If you want your team to install via `npx @yourorg/seedr add`, change the packag
 }
 ```
 
-### Brand your registry items
+### Rebrand the instance
 
-The web UI displays an author name on every item card and detail page. By default, items with `sourceType: "toolr"` show "TwiceD Technology". To show your company name instead, update two places:
+The codebase has several places that reference the upstream identity (author names, URLs, labels). Here's the full list of changes to make it yours.
 
-**1. The web app fallback** in `apps/web/src/components/ItemCard.tsx` and `apps/web/src/routes/Detail.tsx`:
+**Author & display names** — The web UI shows an author on every item card and detail page. Update:
+
+- `apps/web/src/components/ItemCard.tsx` — change the `sourceType === "toolr"` fallback to your company name
+- `apps/web/src/routes/Detail.tsx` — same fallback for the detail page author
+- `apps/web/src/routes/Home.tsx` — header subtitle and copy
+- `apps/web/src/components/Header.tsx` — remove or replace icon links (Toolr, GitHub, etc.)
+- `.claude/skills/add-toolr/SKILL.md` — update the `author` field in the item.json template so new items get your metadata
+
+**sourceType** (optional) — If you want to rename `"toolr"` to your own identifier (e.g., `"acme"`), search-and-replace across:
+
+- `packages/shared/` — the `SourceType` type definition
+- `packages/cli/src/config/registry.ts` — routing logic for item content
+- `apps/web/` — filters, badges, components that check `sourceType`
+- `scripts/compile-manifest.ts` — manifest compilation
+- `.claude/skills/` — add-toolr and remove-toolr skill templates
+- `registry/*/*/item.json` — all existing items with `"sourceType": "toolr"`
+
+**Install commands in the web UI** — The detail page shows `npx @toolr/seedr add ...` commands. Update `apps/web/src/routes/Detail.tsx` to reference your package name and registry:
 
 ```typescript
-// ItemCard.tsx — change the fallback author name
-by {item.sourceType === "toolr" ? "Your Company" : item.author?.name}
+// Before
+npx @toolr/seedr add ${item.slug}
 
-// Detail.tsx — change the fallback author object
-author={item.sourceType === "toolr" ? { name: "Your Company" } : item.author!}
+// After (with private Verdaccio registry)
+npx --registry https://your-registry-url @yourorg/seedr add ${item.slug}
 ```
 
-**2. The add-toolr skill** that generates `item.json` files. In `.claude/skills/add-toolr/SKILL.md`, update the author field in the item.json template (Step 8):
+**Hardcoded URLs** — Search for `seedr.toolr.dev` and replace with your instance URL in:
+- `packages/cli/src/utils/ui.ts` — CLI banner
+- `packages/cli/src/utils/analytics.ts` — analytics endpoint
+- `packages/cli/src/commands/init.ts` — init command output
+- `packages/cli/package.json` — `homepage` field
+
+**Publish script** (optional) — Add a convenience script to the root `package.json` for rebuilding and publishing in one step:
 
 ```json
-"author": { "name": "Your Company", "url": "https://yourcompany.com" }
+{
+  "scripts": {
+    "publish-local": "pnpm compile && npx turbo run build --force && cd packages/cli && npm publish --registry http://localhost:4873"
+  }
+}
 ```
-
-This ensures all future items added via `/add-toolr` get your company's author metadata, and the web UI displays your company name on every card.
 
 ## Step 5: Distribute the CLI
 
@@ -212,26 +237,84 @@ Publish to GitHub's built-in package registry. Good for teams already on GitHub.
 
 Run your own npm registry. Good for air-gapped or fully private environments.
 
-1. Install and start Verdaccio on your server:
+1. Install and start Verdaccio:
 
    ```bash
    npm install -g verdaccio
    verdaccio  # Starts on http://localhost:4873 by default
    ```
 
-2. Publish from your build machine:
+2. Create a user and authenticate:
+
+   ```bash
+   npm adduser --registry http://localhost:4873
+   ```
+
+   This stores an auth token in `~/.npmrc`.
+
+3. Add `publishConfig` to `packages/cli/package.json`:
+
+   ```json
+   {
+     "publishConfig": {
+       "registry": "http://localhost:4873"
+     }
+   }
+   ```
+
+4. Publish:
 
    ```bash
    cd packages/cli
    pnpm build
-   npm publish --registry http://your-server:4873
+   npm publish --registry http://localhost:4873
    ```
 
-3. Team members install from Verdaccio:
+5. Team members install from Verdaccio:
 
    ```bash
    npx --registry http://your-server:4873 @yourorg/seedr add
    ```
+
+**Autostart on macOS** — To keep Verdaccio running after reboots, create a launchd plist at `~/Library/LaunchAgents/dev.verdaccio.plist`:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>dev.verdaccio</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/bin/verdaccio</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+    </dict>
+    <key>KeepAlive</key>
+    <true/>
+    <key>RunAtLoad</key>
+    <true/>
+</dict>
+</plist>
+```
+
+Load it: `launchctl load ~/Library/LaunchAgents/dev.verdaccio.plist`
+
+> **Note:** The `EnvironmentVariables > PATH` is required — launchd doesn't inherit your shell PATH, so Verdaccio won't find `node` without it.
+
+**HTTPS via Caddy proxy** — Verdaccio runs on HTTP. To expose it over HTTPS (e.g., on a Tailscale network), add a reverse proxy block to your Caddyfile:
+
+```
+your-host:4874 {
+    reverse_proxy localhost:4873
+}
+```
+
+Team members then use `https://your-host:4874` as their registry URL. Caddy handles TLS automatically.
 
 ### Option C: Install directly from Git
 
@@ -380,17 +463,22 @@ seedr.yourcompany.com {
     root * /var/www/seedr/apps/web/dist
     file_server
 
-    # SPA fallback
-    try_files {path} /index.html
-
-    # Registry files
+    # Registry files — MUST come before the SPA fallback
     handle_path /registry/* {
         root * /var/www/seedr/registry
         file_server
         header Access-Control-Allow-Origin *
     }
+
+    # SPA fallback — wrap in handle {} so it doesn't catch /registry/*
+    handle {
+        try_files {path} /index.html
+        file_server
+    }
 }
 ```
+
+> **Gotcha:** If `try_files` is at the top level (not inside `handle {}`), it catches `/registry/*` requests and returns `index.html` instead of JSON files. Always put the `/registry/` handler first and wrap the SPA fallback in its own `handle {}` block.
 
 ```bash
 sudo systemctl reload caddy
@@ -480,6 +568,8 @@ The web app is fully static — any standard web auth approach works.
 | Web app shows empty list | Run `pnpm compile` to regenerate manifests, then `pnpm build` |
 | Nginx returns 404 for routes | Add `try_files $uri $uri/ /index.html;` for SPA fallback |
 | CORS errors loading registry | Add `Access-Control-Allow-Origin *` header to the `/registry/` location |
+| Caddy serves `index.html` for `/registry/` URLs | Wrap SPA `try_files` in a `handle {}` block and put `/registry/` handler before it (see [Caddy section](#caddy)) |
+| Verdaccio won't start via launchd | Add `PATH` to `EnvironmentVariables` in the plist — launchd doesn't inherit your shell PATH |
 
 ### File structure cheat sheet
 
