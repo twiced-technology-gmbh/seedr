@@ -254,7 +254,7 @@
       "slug": "humanizer",
       "name": "Humanizer",
       "type": "plugin",
-      "description": "Identifies and removes AI writing patterns to make text sound natural and human-written",
+      "description": "Remove signs of AI-generated writing from text to make it sound natural and human-written",
       "compatibility": [
         "claude"
       ],
@@ -262,12 +262,12 @@
       "wrapper": "skill",
       "sourceType": "community",
       "author": {
-        "name": "Trail of Bits",
-        "url": "https://github.com/trailofbits"
+        "name": "blader",
+        "url": "https://github.com/blader/humanizer"
       },
       "externalUrl": "https://github.com/trailofbits/skills-curated/tree/main/plugins/humanizer",
-      "updatedAt": "2026-02-23T06:09:49Z",
-      "contentHash": "087183c065650847",
+      "updatedAt": "2026-02-23T22:44:03Z",
+      "contentHash": "dc8d8524cf0cc9d8",
       "marketplace": "skills-curated"
     },
     {
