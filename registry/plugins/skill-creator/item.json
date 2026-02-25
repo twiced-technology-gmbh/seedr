@@ -12,8 +12,8 @@
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/skill-creator",
-  "contentHash": "2f3fa768e3c14faf",
-  "updatedAt": "2026-02-20T01:06:49Z",
+  "contentHash": "7706aba263d8f7c8",
+  "updatedAt": "2026-02-25T01:14:53Z",
   "contents": {
     "files": [
       {
@@ -47,11 +47,31 @@
                     "type": "file"
                   },
                   {
-                    "name": "executor.md",
+                    "name": "grader.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "assets",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "eval_review.html",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "eval-viewer",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "generate_review.py",
                     "type": "file"
                   },
                   {
-                    "name": "grader.md",
+                    "name": "viewer.html",
                     "type": "file"
                   }
                 ]
@@ -60,18 +80,6 @@
                 "name": "references",
                 "type": "directory",
                 "children": [
-                  {
-                    "name": "benchmark-mode.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "eval-mode.md",
-                    "type": "file"
-                  },
-                  {
-                    "name": "mode-diagrams.md",
-                    "type": "file"
-                  },
                   {
                     "name": "schemas.md",
                     "type": "file"
@@ -83,19 +91,19 @@
                 "type": "directory",
                 "children": [
                   {
+                    "name": "__init__.py",
+                    "type": "file"
+                  },
+                  {
                     "name": "aggregate_benchmark.py",
                     "type": "file"
                   },
                   {
-                    "name": "copy_skill.py",
+                    "name": "generate_report.py",
                     "type": "file"
                   },
                   {
-                    "name": "init_json.py",
-                    "type": "file"
-                  },
-                  {
-                    "name": "init_skill.py",
+                    "name": "improve_description.py",
                     "type": "file"
                   },
                   {
@@ -103,15 +111,19 @@
                     "type": "file"
                   },
                   {
-                    "name": "prepare_eval.py",
-                    "type": "file"
-                  },
-                  {
                     "name": "quick_validate.py",
                     "type": "file"
                   },
                   {
-                    "name": "validate_json.py",
+                    "name": "run_eval.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "run_loop.py",
+                    "type": "file"
+                  },
+                  {
+                    "name": "utils.py",
                     "type": "file"
                   }
                 ]

@@ -1026,8 +1026,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/skill-creator",
-      "contentHash": "2f3fa768e3c14faf",
-      "updatedAt": "2026-02-20T01:06:49Z",
+      "contentHash": "7706aba263d8f7c8",
+      "updatedAt": "2026-02-25T01:14:53Z",
       "pluginType": "wrapper",
       "wrapper": "skill",
       "marketplace": "claude-plugins-official"

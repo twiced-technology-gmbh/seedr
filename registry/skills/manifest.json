@@ -1378,7 +1378,7 @@
       "slug": "docx",
       "name": "Docx",
       "type": "skill",
-      "description": "\"Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files). Triggers include: any mention of \\\"Word doc\\\", \\\"word document\\\", \\\".docx\\\", or requests to produce professional documents with formatting like tables of contents, headings, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx files, inserting or replacing images in documents, performing find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a \\\"report\\\", \\\"memo\\\", \\\"letter\\\", \\\"template\\\", or similar deliverable as a Word or .docx file, use this skill. Do NOT use for PDFs, spreadsheets, Google Docs, or general coding tasks unrelated to document generation.\"",
+      "description": "\"Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files). Triggers include: any mention of 'Word doc', 'word document', '.docx', or requests to produce professional documents with formatting like tables of contents, headings, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx files, inserting or replacing images in documents, performing find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a 'report', 'memo', 'letter', 'template', or similar deliverable as a Word or .docx file, use this skill. Do NOT use for PDFs, spreadsheets, Google Docs, or general coding tasks unrelated to document generation.\"",
       "compatibility": [
         "claude",
         "copilot",
@@ -1391,7 +1391,7 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/docx",
-      "contentHash": "c7ad768b3ef4a9b6",
+      "contentHash": "1a8437c1b6a41bfd",
       "contents": {
         "files": [
           {
@@ -1706,7 +1706,7 @@
           }
         ]
       },
-      "updatedAt": "2026-02-06T21:19:32Z"
+      "updatedAt": "2026-02-25T04:28:38Z"
     },
     {
       "slug": "frontend-design",
@@ -2268,7 +2268,7 @@
       "slug": "skill-creator",
       "name": "Skill Creator",
       "type": "skill",
-      "description": "Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.",
+      "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, update or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
       "compatibility": [
         "claude"
       ],
@@ -2277,20 +2277,58 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
-      "contentHash": "d80e2fc11907a33f",
-      "updatedAt": "2026-02-06T21:19:32Z",
+      "contentHash": "118331a19b62c7b6",
+      "updatedAt": "2026-02-25T04:28:38Z",
       "contents": {
         "files": [
+          {
+            "name": "agents",
+            "type": "directory",
+            "children": [
+              {
+                "name": "analyzer.md",
+                "type": "file"
+              },
+              {
+                "name": "comparator.md",
+                "type": "file"
+              },
+              {
+                "name": "grader.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "assets",
+            "type": "directory",
+            "children": [
+              {
+                "name": "eval_review.html",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "eval-viewer",
+            "type": "directory",
+            "children": [
+              {
+                "name": "generate_review.py",
+                "type": "file"
+              },
+              {
+                "name": "viewer.html",
+                "type": "file"
+              }
+            ]
+          },
           {
             "name": "references",
             "type": "directory",
             "children": [
               {
-                "name": "output-patterns.md",
-                "type": "file"
-              },
-              {
-                "name": "workflows.md",
+                "name": "schemas.md",
                 "type": "file"
               }
             ]
@@ -2300,7 +2338,19 @@
             "type": "directory",
             "children": [
               {
-                "name": "init_skill.py",
+                "name": "__init__.py",
+                "type": "file"
+              },
+              {
+                "name": "aggregate_benchmark.py",
+                "type": "file"
+              },
+              {
+                "name": "generate_report.py",
+                "type": "file"
+              },
+              {
+                "name": "improve_description.py",
                 "type": "file"
               },
               {
@@ -2309,6 +2359,18 @@
               },
               {
                 "name": "quick_validate.py",
+                "type": "file"
+              },
+              {
+                "name": "run_eval.py",
+                "type": "file"
+              },
+              {
+                "name": "run_loop.py",
+                "type": "file"
+              },
+              {
+                "name": "utils.py",
                 "type": "file"
               }
             ]
