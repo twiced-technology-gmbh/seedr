@@ -2,7 +2,7 @@
   "slug": "second-opinion",
   "name": "Second Opinion",
   "type": "plugin",
-  "description": "Runs code reviews using external LLM CLIs (OpenAI Codex, Google Gemini) on uncommitted changes, branch diffs, or specific commits. Bundles codex-mcp-server for direct MCP tool access to Codex.",
+  "description": "Runs code reviews using external LLM CLIs (OpenAI Codex, Google Gemini) on uncommitted changes, branch diffs, or specific commits. Bundles Codex's built-in MCP server for direct tool access.",
   "longDescription": "Plugin with a single `second-opinion` skill invoked via `/second-opinion`. Shells out to `codex review` and/or `gemini` CLI to review uncommitted changes, branch diffs, or specific commits. Supports 4 review focus areas: general, security, performance, and error handling. Runs both tools by default and presents results side by side. Includes 2 reference docs (`codex-invocation.md`, `gemini-invocation.md`) with model configurations. Optionally passes `CLAUDE.md`/`AGENTS.md` as project context for project-aware reviews.",
   "compatibility": [
     "claude"
@@ -13,7 +13,7 @@
     "name": "Dan Guido"
   },
   "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/second-opinion",
-  "contentHash": "a9e9ef08d9e2325a",
+  "contentHash": "9bfc021fbc538505",
   "contents": {
     "files": [
       {
@@ -70,7 +70,7 @@
       }
     ]
   },
-  "updatedAt": "2026-02-20T20:56:28Z",
+  "updatedAt": "2026-02-27T06:03:31Z",
   "package": {
     "skill": 1,
     "mcp": 1

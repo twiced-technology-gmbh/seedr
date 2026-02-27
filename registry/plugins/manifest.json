@@ -351,7 +351,7 @@
       "slug": "second-opinion",
       "name": "Second Opinion",
       "type": "plugin",
-      "description": "Runs code reviews using external LLM CLIs (OpenAI Codex, Google Gemini) on uncommitted changes, branch diffs, or specific commits. Bundles codex-mcp-server for direct MCP tool access to Codex.",
+      "description": "Runs code reviews using external LLM CLIs (OpenAI Codex, Google Gemini) on uncommitted changes, branch diffs, or specific commits. Bundles Codex's built-in MCP server for direct tool access.",
       "compatibility": [
         "claude"
       ],
@@ -361,8 +361,8 @@
         "name": "Dan Guido"
       },
       "externalUrl": "https://github.com/trailofbits/skills/tree/main/plugins/second-opinion",
-      "contentHash": "a9e9ef08d9e2325a",
-      "updatedAt": "2026-02-20T20:56:28Z",
+      "contentHash": "9bfc021fbc538505",
+      "updatedAt": "2026-02-27T06:03:31Z",
       "package": {
         "skill": 1,
         "mcp": 1
