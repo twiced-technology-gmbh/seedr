@@ -3,7 +3,7 @@ import tseslint from "typescript-eslint";
 import sonarjs from "eslint-plugin-sonarjs";
 import unicorn from "eslint-plugin-unicorn";
 import reactHooks from "eslint-plugin-react-hooks";
-import reactRefresh from "eslint-plugin-react-refresh";
+import { reactRefresh } from "eslint-plugin-react-refresh";
 
 export default tseslint.config(
   // Global ignores
@@ -37,7 +37,7 @@ export default tseslint.config(
 
       // Modern JS
       "unicorn/prefer-array-find": "warn",
-      "unicorn/no-array-push-push": "warn",
+      "unicorn/prefer-single-call": "warn",
 
       // TypeScript
       "@typescript-eslint/no-unused-vars": [
@@ -51,17 +51,15 @@ export default tseslint.config(
   // React-specific config for web app
   {
     files: ["apps/web/**/*.{jsx,tsx}"],
+    ...reactRefresh.configs.vite,
     plugins: {
       "react-hooks": reactHooks,
-      "react-refresh": reactRefresh,
+      ...reactRefresh.configs.vite.plugins,
     },
     rules: {
+      ...reactRefresh.configs.vite.rules,
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
     },
   }
 );

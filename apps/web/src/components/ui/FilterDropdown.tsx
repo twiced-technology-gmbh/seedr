@@ -142,7 +142,7 @@ export function FilterDropdown<T extends string>({
                   onChange={(e) => setSearch(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Search..."
-                  className="w-full pl-6 pr-2 py-1 text-xs bg-gray-900 border border-gray-700 rounded text-gray-300 placeholder-gray-500 outline-none focus:border-gray-600"
+                  className="w-full pl-6 pr-2 py-1 text-xs bg-gray-900 border border-gray-700 rounded text-gray-300 placeholder-gray-500 outline-hidden focus:border-gray-600"
                 />
               </div>
             </div>

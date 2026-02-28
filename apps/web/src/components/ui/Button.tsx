@@ -1,9 +1,10 @@
-import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from "react";
+import { type ButtonHTMLAttributes, type ReactNode, type Ref } from "react";
 import { Tooltip, type TooltipContent, type TooltipPosition, type TooltipAlign } from "./Tooltip";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "ghost" | "danger" | "success";
   size?: "sm" | "md" | "lg";
+  ref?: Ref<HTMLButtonElement>;
 }
 
 export interface IconButtonProps {
@@ -37,19 +38,15 @@ const buttonSizes = {
   lg: "px-6 py-3 text-base h-[40px]",
 };
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className = "", variant = "primary", size = "md", ...props }, ref) => {
-    return (
-      <button
-        ref={ref}
-        className={`${baseStyles} ${buttonVariants[variant]} ${buttonSizes[size]} ${className}`}
-        {...props}
-      />
-    );
-  }
-);
-
-Button.displayName = "Button";
+export function Button({ className = "", variant = "primary", size = "md", ref, ...props }: ButtonProps) {
+  return (
+    <button
+      ref={ref}
+      className={`${baseStyles} ${buttonVariants[variant]} ${buttonSizes[size]} ${className}`}
+      {...props}
+    />
+  );
+}
 
 const iconButtonSizes = {
   xss: { button: "w-[18px] h-[18px]", icon: "w-2.5 h-2.5" },

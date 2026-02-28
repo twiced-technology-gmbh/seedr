@@ -36,7 +36,7 @@ export function SearchInput({
       />
       <input
         type="search"
-        className={`w-full rounded-lg bg-gray-900 border border-gray-700 text-text placeholder:text-text-dim focus:outline-none focus:border-blue-500 transition-colors ${sizeClasses[size]}`}
+        className={`w-full rounded-lg bg-gray-900 border border-gray-700 text-text placeholder:text-text-dim focus:outline-hidden focus:border-blue-500 transition-colors ${sizeClasses[size]}`}
         onChange={handleChange}
         {...props}
       />

@@ -7,7 +7,7 @@ export async function promptSkillSelection(
 ): Promise<RegistryItem> {
   const { skill } = await inquirer.prompt<{ skill: RegistryItem }>([
     {
-      type: "list",
+      type: "select",
       name: "skill",
       message: "Select a skill to install:",
       choices: items.map((item) => ({
@@ -25,7 +25,7 @@ export async function promptToolSelection(
 ): Promise<AITool[]> {
   const { selection } = await inquirer.prompt<{ selection: "all" | "select" }>([
     {
-      type: "list",
+      type: "select",
       name: "selection",
       message: "Which AI tools do you want to install for?",
       choices: [
@@ -69,7 +69,7 @@ export async function promptToolSelection(
 export async function promptScope(): Promise<InstallScope> {
   const { scope } = await inquirer.prompt<{ scope: InstallScope }>([
     {
-      type: "list",
+      type: "select",
       name: "scope",
       message: "Installation scope:",
       choices: [
@@ -89,7 +89,7 @@ export async function promptScope(): Promise<InstallScope> {
 export async function promptMethod(): Promise<InstallMethod> {
   const { method } = await inquirer.prompt<{ method: InstallMethod }>([
     {
-      type: "list",
+      type: "select",
       name: "method",
       message: "Installation method:",
       choices: [

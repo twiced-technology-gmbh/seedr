@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
 import { resolve } from "path";
 import { readFileSync, existsSync } from "fs";
 
@@ -32,7 +33,7 @@ function serveRegistryPlugin() {
 }
 
 export default defineConfig({
-  plugins: [react(), serveRegistryPlugin()],
+  plugins: [react(), tailwindcss(), serveRegistryPlugin()],
   server: {
     port: 5176,
   },
