@@ -8,11 +8,13 @@ import { Detail } from "./routes/Detail";
 import { Privacy } from "./routes/Privacy";
 import { Impressum } from "./routes/Impressum";
 
+const isEmbed = new URLSearchParams(window.location.search).has("embed");
+
 export function App() {
   return (
     <BrowserRouter>
       <div className="min-h-screen flex flex-col">
-        <Header />
+        {!isEmbed && <Header />}
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -22,8 +24,8 @@ export function App() {
             <Route path="/:type/:slug" element={<Detail />} />
           </Routes>
         </main>
-        <Footer />
-        <CookieConsent />
+        {!isEmbed && <Footer />}
+        {!isEmbed && <CookieConsent />}
       </div>
     </BrowserRouter>
   );
