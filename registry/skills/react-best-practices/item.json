@@ -17,7 +17,7 @@
     "url": "https://github.com/vercel-labs"
   },
   "externalUrl": "https://github.com/vercel-labs/agent-skills/tree/main/skills/react-best-practices",
-  "updatedAt": "2026-01-26T02:01:51Z",
+  "updatedAt": "2026-03-02T17:27:20Z",
   "contents": {
     "files": [
       {
@@ -253,6 +253,10 @@
             "type": "file"
           },
           {
+            "name": "server-hoist-static-io.md",
+            "type": "file"
+          },
+          {
             "name": "server-parallel-fetching.md",
             "type": "file"
           },
@@ -280,5 +284,5 @@
       }
     ]
   },
-  "contentHash": "33746f397c2c1e23"
+  "contentHash": "9c79336a231d22df"
 }
