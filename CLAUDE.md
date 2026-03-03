@@ -236,6 +236,22 @@ pnpm --filter @seedr/web typecheck
 npx tsc --noEmit
 ```
 
+## npm Publishing
+
+The CLI is published to npm as `@toolr/seedr`. Push to `prod` branch triggers `.github/workflows/deploy.yml` (publish-cli job).
+
+### How CI auth works
+
+Publishing uses **npm Trusted Publishers (OIDC)** — no npm tokens needed. Requirements:
+
+1. `packages/cli/package.json` must have a `repository` field matching the GitHub repo
+2. The workflow must have `id-token: write` permission
+3. **On npmjs.com**: the package must have a Trusted Publisher configured (package Settings → Trusted Publisher → add repo + workflow filename)
+
+### GitHub secrets needed
+
+- `APP_ID` / `APP_PRIVATE_KEY` — GitHub App token for version bump commits (shared across toolr repos)
+
 ## Gotchas
 
 - **pnpm only** - Use `pnpm` not `npm` for all operations
