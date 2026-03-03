@@ -1,5 +1,6 @@
 # Dependencies
 node_modules/
+.pnpm-store/
 
 # Build outputs
 dist/
@@ -34,10 +35,3 @@ coverage/
 
 # Python
 __pycache__/
-
-# Claude Code local settings
-.claude/settings.local.json
-
-# Override global gitignore to include project config
-!.claude/
-!CLAUDE.md
