@@ -45,10 +45,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       });
     }
 
+    const ip = context.request.headers.get("CF-Connecting-IP") ?? "unknown";
+    const country = (context.request.cf?.country as string) ?? "unknown";
+
     await context.env.DB.prepare(
-      "INSERT INTO installs (slug, item_type, tool, scope, cli_version) VALUES (?, ?, ?, ?, ?)"
+      "INSERT INTO installs (slug, item_type, tool, scope, cli_version, ip, country) VALUES (?, ?, ?, ?, ?, ?, ?)"
     )
-      .bind(result.slug, result.type, result.tool, result.scope, result.version)
+      .bind(result.slug, result.type, result.tool, result.scope, result.version, ip, country)
       .run();
 
     return new Response(JSON.stringify({ ok: true }), {
