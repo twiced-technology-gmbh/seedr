@@ -86,8 +86,18 @@ jobs:
       - name: Upgrade npm for OIDC support
         run: npm install -g npm@latest && npm --version
 
+      - name: Use npm version of @toolr/ui-design
+        run: |
+          cd apps/web
+          VERSION=$(npm view @toolr/ui-design version)
+          node -e "
+            const pkg = require('./package.json');
+            pkg.dependencies['@toolr/ui-design'] = '^' + '$VERSION';
+            require('fs').writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+          "
+
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
 
       - name: Check for CLI/registry changes since last npm release
         id: changes
