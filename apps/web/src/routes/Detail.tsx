@@ -25,8 +25,8 @@ function handleEditorWillMount(monaco: Monaco) {
     inherit: true,
     rules: [],
     colors: {
-      "editor.background": "#030712",
-      "editorGutter.background": "#030712",
+      "editor.background": "#000000",
+      "editorGutter.background": "#000000",
       "scrollbar.shadow": "#00000000",
       "scrollbarSlider.background": "#31324480",
       "scrollbarSlider.hoverBackground": "#6c708640",
