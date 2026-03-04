@@ -15,8 +15,8 @@ export function CodeBlock({ code, label }: CodeBlockProps) {
       {label && (
         <h3 className="text-sm font-medium text-subtext mb-2">{label}</h3>
       )}
-      <div className="bg-surface/50 border border-overlay/50 rounded-xl p-4">
-        <div className="flex items-center justify-between gap-4">
+      <div className="bg-surface/50 border border-overlay/50 rounded-lg p-3">
+        <div className="flex items-center justify-between gap-2">
           <code className="text-sm font-mono text-text">{code}</code>
           <CopyButton text={code} />
         </div>

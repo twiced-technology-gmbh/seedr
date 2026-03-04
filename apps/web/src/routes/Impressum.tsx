@@ -12,11 +12,11 @@ export function Impressum() {
         Back
       </Link>
 
-      <h1 className="text-3xl font-bold text-text mb-8">Imprint</h1>
+      <h1 className="text-lg font-bold text-text mb-6">Imprint</h1>
 
-      <div className="prose prose-invert max-w-none space-y-6">
+      <div className="prose prose-invert max-w-none space-y-4">
         <section>
-          <h2 className="text-xl font-semibold text-text mb-3">
+          <h2 className="text-lg font-semibold text-text mb-3">
             Company Information
           </h2>
           <p className="text-subtext">
@@ -32,7 +32,7 @@ export function Impressum() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-text mb-3">Contact</h2>
+          <h2 className="text-lg font-semibold text-text mb-3">Contact</h2>
           <p className="text-subtext">
             Phone: +49 151 16545891<br />
             Email:{" "}
@@ -46,7 +46,7 @@ export function Impressum() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-text mb-3">
+          <h2 className="text-lg font-semibold text-text mb-3">
             Responsible for Content (§ 18 Abs. 2 MStV)
           </h2>
           <p className="text-subtext">
@@ -57,7 +57,7 @@ export function Impressum() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-text mb-3">
+          <h2 className="text-lg font-semibold text-text mb-3">
             EU Dispute Resolution
           </h2>
           <p className="text-subtext">
@@ -78,7 +78,7 @@ export function Impressum() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-text mb-3">
+          <h2 className="text-lg font-semibold text-text mb-3">
             Liability for Content
           </h2>
           <p className="text-subtext">
@@ -93,7 +93,7 @@ export function Impressum() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-text mb-3">
+          <h2 className="text-lg font-semibold text-text mb-3">
             Liability for Links
           </h2>
           <p className="text-subtext">
@@ -105,7 +105,7 @@ export function Impressum() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-text mb-3">Copyright</h2>
+          <h2 className="text-lg font-semibold text-text mb-3">Copyright</h2>
           <p className="text-subtext">
             The content and works on these pages created by the site operators are
             subject to German copyright law. Duplication, processing, distribution

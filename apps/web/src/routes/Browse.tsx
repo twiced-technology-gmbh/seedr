@@ -228,7 +228,7 @@ export function Browse() {
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-text mb-2">
+        <h1 className="text-lg font-bold text-text mb-2">
           {typeLabelPlural[componentType]}
         </h1>
         <p className="text-subtext">

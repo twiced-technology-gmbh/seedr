@@ -144,10 +144,10 @@ export function Home() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12">
+    <div className="max-w-6xl mx-auto px-4 py-8">
       {/* Hero */}
-      <div className="text-center mb-12">
-        <p className="text-lg text-subtext mb-8">
+      <div className="text-center mb-8">
+        <p className="text-sm text-subtext mb-8">
           Seed your projects with AI configurations
         </p>
 
@@ -165,7 +165,7 @@ export function Home() {
 
       {/* Search Results */}
       {searchResults && (
-        <div className="mb-12">
+        <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-text">
               {searchResults.length} {pluralize("result", searchResults.length)}{" "}
@@ -233,10 +233,10 @@ export function Home() {
                 <Link
                   key={type}
                   to={`/${type}s`}
-                  className="bg-surface border border-overlay rounded-xl p-6 text-center hover:border-overlay-hover hover:bg-active transition-all group"
+                  className="bg-surface border border-overlay rounded-lg p-3 text-center hover:border-overlay-hover hover:bg-active transition-all group"
                 >
                   <Icon className={`w-8 h-8 mx-auto mb-3 ${typeTextColors[type]} opacity-60 group-hover:opacity-100 transition-opacity`} />
-                  <div className="text-2xl font-bold text-text mb-1">
+                  <div className="text-lg font-bold text-text mb-1">
                     {counts[type]}
                   </div>
                   <div className="text-sm text-text mb-2">{typePluralLabels[type]}</div>
@@ -247,7 +247,7 @@ export function Home() {
           </div>
 
           {/* Curation notice */}
-          <div className="mt-12 text-center text-sm text-text-dim max-w-2xl mx-auto">
+          <div className="mt-8 text-center text-sm text-text-dim max-w-2xl mx-auto">
             <p>
               Quality over quantity. One well-crafted configuration beats a thousand mediocre ones.
               We only include official configurations, Toolr Suite creations, and carefully

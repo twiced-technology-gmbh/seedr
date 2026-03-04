@@ -153,7 +153,7 @@
       "slug": "gh-cli",
       "name": "GH CLI",
       "type": "plugin",
-      "description": "Intercepts GitHub URL fetches and curl/wget commands, redirecting to the authenticated gh CLI. Includes gh CLI usage guidance.",
+      "description": "Intercepts GitHub URL fetches and curl/wget commands, redirecting to the authenticated gh CLI.",
       "compatibility": [
         "claude"
       ],
@@ -971,8 +971,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/ralph-loop",
-      "contentHash": "2750c36c3d0306e5",
-      "updatedAt": "2026-02-20T01:06:49Z",
+      "contentHash": "5d95d04838529010",
+      "updatedAt": "2026-03-04T00:25:42Z",
       "marketplace": "claude-plugins-official"
     },
     {

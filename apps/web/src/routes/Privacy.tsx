@@ -12,11 +12,11 @@ export function Privacy() {
         Back
       </Link>
 
-      <h1 className="text-3xl font-bold text-text mb-8">Privacy Policy</h1>
+      <h1 className="text-lg font-bold text-text mb-6">Privacy Policy</h1>
 
-      <div className="prose prose-invert max-w-none space-y-6">
+      <div className="prose prose-invert max-w-none space-y-4">
         <section>
-          <h2 className="text-xl font-semibold text-text mb-3">Overview</h2>
+          <h2 className="text-lg font-semibold text-text mb-3">Overview</h2>
           <p className="text-subtext">
             We take the protection of your personal data very seriously. We treat
             your personal data confidentially and in accordance with the statutory
@@ -26,7 +26,7 @@ export function Privacy() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-text mb-3">Data Controller</h2>
+          <h2 className="text-lg font-semibold text-text mb-3">Data Controller</h2>
           <p className="text-subtext">
             twiceD Technology GmbH<br />
             Rosenbergstr. 32<br />
@@ -45,7 +45,7 @@ export function Privacy() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-text mb-3">
+          <h2 className="text-lg font-semibold text-text mb-3">
             Data Collection and Use
           </h2>
           <h3 className="text-lg font-medium text-text mb-2">Server Log Files</h3>
@@ -69,7 +69,7 @@ export function Privacy() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-text mb-3">Cookies</h2>
+          <h2 className="text-lg font-semibold text-text mb-3">Cookies</h2>
           <p className="text-subtext">
             Our website uses cookies. Cookies are small text files that are stored
             on your device and saved by your browser.
@@ -82,7 +82,7 @@ export function Privacy() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-text mb-3">Your Rights</h2>
+          <h2 className="text-lg font-semibold text-text mb-3">Your Rights</h2>
           <p className="text-subtext">
             Under GDPR, you have the following rights regarding your personal data:
           </p>
@@ -116,7 +116,7 @@ export function Privacy() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-text mb-3">
+          <h2 className="text-lg font-semibold text-text mb-3">
             Third-Party Services
           </h2>
           <p className="text-subtext">
@@ -126,7 +126,7 @@ export function Privacy() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-text mb-3">Data Security</h2>
+          <h2 className="text-lg font-semibold text-text mb-3">Data Security</h2>
           <p className="text-subtext">
             We use SSL/TLS encryption for all data transmission. Our website is
             hosted on secure servers with appropriate technical and organizational
@@ -135,7 +135,7 @@ export function Privacy() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-text mb-3">CLI Usage</h2>
+          <h2 className="text-lg font-semibold text-text mb-3">CLI Usage</h2>
           <p className="text-subtext">
             The Seedr CLI fetches registry data from GitHub. No usage data or
             personal information is collected or transmitted during this process.
@@ -143,7 +143,7 @@ export function Privacy() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-text mb-3">
+          <h2 className="text-lg font-semibold text-text mb-3">
             Supervisory Authority
           </h2>
           <p className="text-subtext">
@@ -168,7 +168,7 @@ export function Privacy() {
         </section>
 
         <section>
-          <h2 className="text-xl font-semibold text-text mb-3">
+          <h2 className="text-lg font-semibold text-text mb-3">
             Changes to This Policy
           </h2>
           <p className="text-subtext">

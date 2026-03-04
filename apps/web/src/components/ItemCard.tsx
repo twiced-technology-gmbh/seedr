@@ -38,7 +38,7 @@ function PackageBadges({ counts }: { counts: Record<string, number> }) {
           <Tooltip key={item.type} content={{ description: `${item.count} ${item.label}` }} position="top">
             <span className="flex items-center gap-0.5">
               <Icon className={`w-3 h-3 ${colorClass}`} />
-              <span className="text-[10px] text-subtext">{item.count}</span>
+              <span className="text-xss text-subtext">{item.count}</span>
             </span>
           </Tooltip>
         );
@@ -130,7 +130,7 @@ export function ItemCard({ item, browseType, onSourceClick, onScopeClick, onTool
           {item.updatedAt && (
             <span
               onClick={clickable(onDateClick)}
-              className={`flex items-center gap-1 text-[10px] text-text-dim ${onDateClick ? interactive : ""}`}
+              className={`flex items-center gap-1 text-xss text-text-dim ${onDateClick ? interactive : ""}`}
             >
               <Clock className="w-3 h-3" />
               {formatRelativeTime(item.updatedAt)}

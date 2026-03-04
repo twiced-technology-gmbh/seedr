@@ -17,7 +17,7 @@
     "name": "Anthropic"
   },
   "externalUrl": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/ralph-loop",
-  "contentHash": "2750c36c3d0306e5",
+  "contentHash": "5d95d04838529010",
   "contents": {
     "files": [
       {
@@ -82,6 +82,6 @@
       }
     ]
   },
-  "updatedAt": "2026-02-20T01:06:49Z",
+  "updatedAt": "2026-03-04T00:25:42Z",
   "marketplace": "claude-plugins-official"
 }

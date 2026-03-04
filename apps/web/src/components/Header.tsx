@@ -5,7 +5,7 @@ import { TwiceDLogo } from "./TwiceDLogo";
 
 export function Header() {
   return (
-    <header className="h-[45px] border-b border-overlay bg-surface">
+    <header className="h-[44px] border-b border-overlay bg-surface">
       <div className="px-4 h-full flex items-center justify-between">
         <Link
           to="/"

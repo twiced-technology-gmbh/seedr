@@ -80,7 +80,7 @@ function MonacoPreview({ content, language }: { content: string; language: strin
         hideCursorInOverviewRuler: true,
         scrollbar: { vertical: "auto", horizontal: "auto", verticalScrollbarSize: 6, horizontalScrollbarSize: 6 },
         padding: { top: 12, bottom: 12 },
-        fontSize: 13,
+        fontSize: 12,
         wordWrap: "on",
         domReadOnly: true,
         contextmenu: false,
@@ -176,7 +176,7 @@ export function Detail() {
           {item.sourceType === "toolr" && item.targetScope && <ScopeBadge scope={item.targetScope} size="md" />}
         </div>
         {(item.author || item.sourceType === "toolr") && (
-          <div className="flex items-center gap-2 text-sm text-subtext mb-8">
+          <div className="flex items-center gap-2 text-sm text-subtext mb-4">
             <AuthorLink
               author={item.sourceType === "toolr" ? { name: "TwiceD Technology" } : item.author!}
             />
@@ -297,7 +297,7 @@ export function Detail() {
             <colgroup>
               <col className="w-[200px]" />
               <col />
-              <col className="w-[150px]" />
+              <col className="w-[148px]" />
             </colgroup>
             <thead>
               <tr className="border-b border-overlay bg-active">
