@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import { Github } from "lucide-react";
-import { Logo } from "./Logo";
+import { ToolrAppLogo, IconButton } from "@toolr/ui-design";
 import { TwiceDLogo } from "./TwiceDLogo";
-import { IconButton } from "./ui/Button";
 
 export function Header() {
   return (
@@ -12,9 +11,10 @@ export function Header() {
           to="/"
           className="group flex items-center gap-2.5 transition-all"
         >
-          <Logo
+          <ToolrAppLogo
+            app="seedr"
             size={28}
-            className="text-teal-400 group-hover:text-teal-300 transition-colors"
+            className="group-hover:opacity-80 transition-opacity"
           />
           <div className="flex flex-col">
             <span className="text-sm font-medium text-text tracking-tight group-hover:text-teal-300 transition-colors leading-none">
@@ -27,45 +27,30 @@ export function Header() {
         </Link>
 
         <nav className="flex items-center gap-2">
-          <a href="https://toolr.dev" target="_blank" rel="noopener noreferrer">
-            <IconButton
-              icon={<Logo size={14} />}
-              size="sm"
-              variant="toolr"
-              tooltip={{
-                title: "Toolr Suite",
-                description: "Visit toolr.dev",
-              }}
-              tooltipPosition="bottom"
-              tooltipAlign="end"
-            />
-          </a>
-          <a href="https://twiced.de" target="_blank" rel="noopener noreferrer">
-            <IconButton
-              icon={<TwiceDLogo size={14} />}
-              size="sm"
-              variant="twiced"
-              tooltip={{
-                title: "TwiceD Technology",
-                description: "Visit twiced.de",
-              }}
-              tooltipPosition="bottom"
-              tooltipAlign="end"
-            />
-          </a>
-          <a href="https://github.com/twiced-technology-gmbh/seedr" target="_blank" rel="noopener noreferrer">
-            <IconButton
-              icon={<Github className="w-3.5 h-3.5" />}
-              size="sm"
-              variant="white"
-              tooltip={{
-                title: "GitHub",
-                description: "View source code",
-              }}
-              tooltipPosition="bottom"
-              tooltipAlign="end"
-            />
-          </a>
+          <IconButton
+            icon={<ToolrAppLogo app="toolr" size={14} />}
+            href="https://toolr.dev"
+            size="sm"
+            color="blue"
+            tooltip={{ description: "Visit toolr.dev" }}
+            tooltipPosition="bottom"
+          />
+          <IconButton
+            icon={<TwiceDLogo size={14} />}
+            href="https://twiced.de"
+            size="sm"
+            color="cyan"
+            tooltip={{ description: "Visit twiced.de" }}
+            tooltipPosition="bottom"
+          />
+          <IconButton
+            icon={<Github className="w-3.5 h-3.5" />}
+            href="https://github.com/twiced-technology-gmbh/seedr"
+            size="sm"
+            color="neutral"
+            tooltip={{ description: "View source code" }}
+            tooltipPosition="bottom"
+          />
         </nav>
       </div>
     </header>

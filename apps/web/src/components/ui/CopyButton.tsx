@@ -1,15 +1,14 @@
 import { useState } from "react";
-import { Copy, Check } from "lucide-react";
+import { IconButton } from "@toolr/ui-design";
 
 /** Duration to show "Copied!" feedback before resetting */
 const COPY_FEEDBACK_DURATION_MS = 2000;
 
 interface CopyButtonProps {
   text: string;
-  className?: string;
 }
 
-export function CopyButton({ text, className = "" }: CopyButtonProps) {
+export function CopyButton({ text }: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -19,12 +18,12 @@ export function CopyButton({ text, className = "" }: CopyButtonProps) {
   };
 
   return (
-    <button
+    <IconButton
+      icon={copied ? "check" : "copy"}
+      color={copied ? "green" : "cyan"}
+      size="xs"
+      tooltip={{ description: copied ? "Copied!" : "Copy" }}
       onClick={handleCopy}
-      className={`flex items-center justify-center w-[26px] h-[26px] rounded-lg text-subtext border border-overlay hover:bg-surface hover:border-overlay-hover hover:text-text transition-all ${className}`}
-      title={copied ? "Copied!" : "Copy to clipboard"}
-    >
-      {copied ? <Check className="w-4 h-4 text-success" /> : <Copy className="w-4 h-4" />}
-    </button>
+    />
   );
 }

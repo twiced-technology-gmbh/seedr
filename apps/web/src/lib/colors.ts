@@ -1,23 +1,7 @@
+import type { LabelColor, IconName } from "@toolr/ui-design";
 import type { ComponentType, AITool, SourceType, ScopeType } from "./types";
 
-// Badge color type matching the Badge component
-export type BadgeColor =
-  | "gray"
-  | "green"
-  | "red"
-  | "blue"
-  | "yellow"
-  | "orange"
-  | "purple"
-  | "pink"
-  | "cyan"
-  | "emerald"
-  | "amber"
-  | "teal"
-  | "indigo"
-  | "slate"
-  | "violet"
-  | "sky";
+export type BadgeColor = LabelColor;
 
 // Type labels for display (singular)
 export const typeLabels: Record<ComponentType, string> = {
@@ -72,6 +56,27 @@ export const typeTextColors: Record<ComponentType, string> = {
   mcp: "text-teal-500",
   settings: "text-orange-500",
   plugin: "text-indigo-500",
+};
+
+// Type to breadcrumb icon/color mapping
+export const typeBreadcrumbIcon: Record<ComponentType, IconName> = {
+  skill: "sparkles",
+  hook: "webhook",
+  agent: "bot",
+  plugin: "package",
+  command: "terminal",
+  settings: "settings",
+  mcp: "plug",
+};
+
+export const typeBreadcrumbColor: Record<ComponentType, string> = {
+  skill: "pink",
+  hook: "purple",
+  agent: "blue",
+  plugin: "indigo",
+  command: "amber",
+  settings: "orange",
+  mcp: "teal",
 };
 
 // Source to badge color mapping (matches configr)

@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
-import { Clock, Sparkles, Bot, Webhook, Terminal, Plug, Package, Box, BookOpen } from "lucide-react";
-import { Badge } from "./ui/Badge";
+import { Clock, Sparkles, Bot, Webhook, Terminal, Plug } from "lucide-react";
+import { Label, Tooltip, AiToolIcon } from "@toolr/ui-design";
 import { Card } from "./ui/Card";
-import { Tooltip } from "./ui/Tooltip";
 import { TypeIcon } from "./TypeIcon";
 import { SourceBadge } from "./SourceBadge";
 import { ScopeBadge } from "./ScopeBadge";
-import { ToolIcon } from "./ToolIcon";
 import { formatRelativeTime } from "@/lib/text";
 import { typeLabels, typeTextColors, toolLabels } from "@/lib/colors";
 import type { RegistryItem, SourceType, ScopeType, AITool, PluginType } from "@/lib/types";
@@ -37,7 +35,7 @@ function PackageBadges({ counts }: { counts: Record<string, number> }) {
         const Icon = item.icon;
         const colorClass = typeTextColors[item.type as keyof typeof typeTextColors];
         return (
-          <Tooltip key={item.type} content={{ title: `${item.count} ${item.label}` }} position="top">
+          <Tooltip key={item.type} content={{ description: `${item.count} ${item.label}` }} position="top">
             <span className="flex items-center gap-0.5">
               <Icon className={`w-3 h-3 ${colorClass}`} />
               <span className="text-[10px] text-subtext">{item.count}</span>
@@ -84,23 +82,17 @@ export function ItemCard({ item, browseType, onSourceClick, onScopeClick, onTool
             )}
             {item.pluginType === "package" && (
               <span onClick={clickable(onPluginTypeClick ? () => onPluginTypeClick("package") : undefined)} className={onPluginTypeClick ? interactive : ""}>
-                <Tooltip content={{ title: "Package", description: "Bundles multiple extensions (skills, hooks, agents, etc.) into a single plugin" }} position="top">
-                  <Badge color="indigo" icon={Package}>Package</Badge>
-                </Tooltip>
+                <Label text="Package" color="indigo" icon="package" tooltip={{ description: "Bundles multiple extensions (skills, hooks, agents, etc.) into a single plugin" }} />
               </span>
             )}
             {item.pluginType === "wrapper" && (
               <span onClick={clickable(onPluginTypeClick ? () => onPluginTypeClick("wrapper") : undefined)} className={onPluginTypeClick ? interactive : ""}>
-                <Tooltip content={{ title: "Wrapper", description: `Wraps a single ${item.wrapper} extension as a plugin` }} position="top">
-                  <Badge color="teal" icon={Box}>Wrapper</Badge>
-                </Tooltip>
+                <Label text="Wrapper" color="teal" icon="puzzle" tooltip={{ description: `Wraps a single ${item.wrapper} extension as a plugin` }} />
               </span>
             )}
             {item.pluginType === "integration" && (
               <span onClick={clickable(onPluginTypeClick ? () => onPluginTypeClick("integration") : undefined)} className={onPluginTypeClick ? interactive : ""}>
-                <Tooltip content={{ title: "Integration", description: "Integrates an external tool with your AI assistant. Installing adds it to enabledPlugins — the README explains how to set up the tool itself." }} position="top">
-                  <Badge color="purple" icon={BookOpen}>Integration</Badge>
-                </Tooltip>
+                <Label text="Integration" color="purple" icon="plug" tooltip={{ description: "Integrates an external tool with your AI assistant. Installing adds it to enabledPlugins — the README explains how to set up the tool itself." }} />
               </span>
             )}
             {item.sourceType === "toolr" && item.targetScope && (
@@ -109,7 +101,7 @@ export function ItemCard({ item, browseType, onSourceClick, onScopeClick, onTool
               </span>
             )}
           </div>
-          <Tooltip content={{ title: typeLabels[item.type] }} position="top">
+          <Tooltip content={{ description: typeLabels[item.type] }} position="top">
             <TypeIcon type={item.type} size={16} className="opacity-60" />
           </Tooltip>
         </div>
@@ -125,9 +117,9 @@ export function ItemCard({ item, browseType, onSourceClick, onScopeClick, onTool
         <div className="flex items-center justify-between">
           <div className="flex flex-wrap gap-1.5">
             {item.compatibility.map((tool) => (
-              <Tooltip key={tool} content={{ title: toolLabels[tool] }} position="top">
+              <Tooltip key={tool} content={{ description: toolLabels[tool] }} position="top">
                 <span onClick={clickable(onToolClick ? () => onToolClick(tool) : undefined)} className={onToolClick ? interactive : ""}>
-                  <ToolIcon tool={tool} size={16} />
+                  <AiToolIcon tool={tool} size={16} />
                 </span>
               </Tooltip>
             ))}

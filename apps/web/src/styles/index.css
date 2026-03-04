@@ -1,21 +1,23 @@
 @import "tailwindcss";
+@import "@toolr/ui-design/tokens";
+@source "../../node_modules/@toolr/ui-design";
 
 @source inline("text-pink-500 text-amber-500 text-purple-500 text-blue-500 text-teal-500 text-orange-500 text-indigo-500 text-slate-400 text-cyan-500 text-gray-500 text-emerald-500 border-l-pink-500 border-l-amber-500 border-l-purple-500 border-l-blue-500 border-l-teal-500 border-l-orange-500 border-l-indigo-500 border-l-slate-400 border-l-cyan-500 border-l-gray-500 border-l-emerald-500");
 
 @theme {
-  /* Catppuccin Mocha palette (matching configr) */
-  --color-base: #030712;
-  --color-surface: #181825;
-  --color-surface-alt: #313244;
-  --color-overlay: #45475a;
-  --color-overlay-hover: #6c7086;
-  --color-overlay-light: #585b70;
-  --color-subtext: #a6adc8;
-  --color-text: #cdd6f4;
-  --color-text-dim: #6c7086;
-  --color-active: #1e1e2e;
+  /* Aliases: map old Catppuccin names to ui-design semantic tokens */
+  --color-base: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-overlay);
+  --color-overlay: var(--border);
+  --color-overlay-hover: var(--border);
+  --color-overlay-light: var(--border);
+  --color-subtext: var(--text-secondary);
+  --color-text: var(--text-primary);
+  --color-text-dim: var(--muted-foreground);
+  --color-active: var(--surface-hover);
 
-  /* Type-specific accent colors (matching configr) */
+  /* Type-specific accent colors */
   --color-skill: #f472b6;
   --color-skill-light: #f9a8d4;
   --color-skill-dark: #ec4899;
@@ -53,7 +55,7 @@
   --color-extension-dark: #10b981;
 
   /* Semantic colors */
-  --color-accent: #60a5fa;
+  --color-accent: #2dd4bf;
   --color-success: #4ade80;
   --color-warning: #fbbf24;
   --color-error: #f87171;
@@ -165,3 +167,4 @@
 @utility text-balance {
   text-wrap: balance;
 }
+

@@ -1,6 +1,4 @@
-import { Shield } from "lucide-react";
-import { Badge } from "./ui/Badge";
-import { Tooltip } from "./ui/Tooltip";
+import { Label } from "@toolr/ui-design";
 import { sourceToBadgeColor, sourceLabels } from "@/lib/colors";
 import type { SourceType } from "@/lib/types";
 
@@ -18,10 +16,13 @@ interface SourceBadgeProps {
 
 export function SourceBadge({ source, className = "", size = "sm" }: SourceBadgeProps) {
   return (
-    <Tooltip content={{ title: sourceLabels[source], description: sourceDescriptions[source] }} position="top">
-      <Badge color={sourceToBadgeColor[source]} size={size} icon={Shield} className={className}>
-        {sourceLabels[source]}
-      </Badge>
-    </Tooltip>
+    <Label
+      text={sourceLabels[source]}
+      color={sourceToBadgeColor[source]}
+      icon="shield"
+      size={size}
+      tooltip={{ title: sourceLabels[source], description: sourceDescriptions[source] }}
+      className={className}
+    />
   );
 }

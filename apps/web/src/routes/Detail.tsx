@@ -1,26 +1,99 @@
-import { useState, useEffect } from "react";
-import { useParams, Link, useLocation } from "react-router-dom";
+import { useState, useEffect, useCallback } from "react";
+import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import Editor, { type Monaco } from "@monaco-editor/react";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
-import { BookOpen, Box, Clock, Package } from "lucide-react";
-import { Badge, Breadcrumb, CodeBlock } from "@/components/ui";
-import { Tooltip } from "@/components/ui/Tooltip";
-import { typeLabelPlural, typeTextColors, extensionLabels } from "@/lib/colors";
+import { Clock } from "lucide-react";
+import { Breadcrumb, Label, FileStructureSection } from "@toolr/ui-design";
+import { CodeBlock } from "@/components/ui";
+import { typeLabelPlural, typeTextColors, extensionLabels, typeBreadcrumbIcon, typeBreadcrumbColor } from "@/lib/colors";
 import { TypeIcon } from "@/components/TypeIcon";
 import { SourceBadge } from "@/components/SourceBadge";
 import { ScopeBadge } from "@/components/ScopeBadge";
 import { AuthorLink } from "@/components/AuthorLink";
 import { CompatibilityBadges } from "@/components/CompatibilityBadges";
 import { PluginContents } from "@/components/PluginContents";
-import { FileTree } from "@/components/FileTree";
 import { getItem, getLongDescription, getFileTree } from "@/lib/registry";
 import type { ComponentType, FileTreeNode } from "@/lib/types";
+
+const PREVIEW_THEME = "seedr-preview";
+
+function handleEditorWillMount(monaco: Monaco) {
+  monaco.editor.defineTheme(PREVIEW_THEME, {
+    base: "vs-dark",
+    inherit: true,
+    rules: [],
+    colors: {
+      "editor.background": "#030712",
+      "editorGutter.background": "#030712",
+      "scrollbar.shadow": "#00000000",
+      "scrollbarSlider.background": "#31324480",
+      "scrollbarSlider.hoverBackground": "#6c708640",
+    },
+  });
+}
+
+function getRawUrl(externalUrl: string, filePath: string): string | null {
+  if (externalUrl.startsWith("local://")) {
+    const basePath = externalUrl.replace("local://", "");
+    return `/${basePath}/${filePath}`;
+  }
+
+  const withTree = externalUrl.match(/github\.com\/([^/]+)\/([^/]+)\/tree\/([^/]+)(?:\/(.+))?/);
+  const withoutTree = !withTree ? externalUrl.match(/github\.com\/([^/]+)\/([^/]+?)(?:\.git)?$/) : null;
+  if (!withTree && !withoutTree) return null;
+
+  const owner = (withTree ?? withoutTree)![1];
+  const repo = (withTree ?? withoutTree)![2];
+  const branch = withTree?.[3] ?? "main";
+  const basePath = withTree?.[4];
+
+  if (import.meta.env.DEV && owner === "twiced-technology-gmbh" && repo === "seedr") {
+    return `/${basePath}/${filePath}`;
+  }
+
+  const fullPath = basePath ? `${basePath}/${filePath}` : filePath;
+  return `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${fullPath}`;
+}
+
+function MonacoPreview({ content, language }: { content: string; language: string }) {
+  return (
+    <Editor
+      height="100%"
+      language={language}
+      value={content}
+      theme={PREVIEW_THEME}
+      beforeMount={handleEditorWillMount}
+      options={{
+        readOnly: true,
+        minimap: { enabled: false },
+        lineNumbers: "off",
+        glyphMargin: false,
+        folding: false,
+        lineDecorationsWidth: 12,
+        lineNumbersMinChars: 0,
+        renderLineHighlight: "none",
+        scrollBeyondLastLine: false,
+        overviewRulerLanes: 0,
+        overviewRulerBorder: false,
+        hideCursorInOverviewRuler: true,
+        scrollbar: { vertical: "auto", horizontal: "auto", verticalScrollbarSize: 6, horizontalScrollbarSize: 6 },
+        padding: { top: 12, bottom: 12 },
+        fontSize: 13,
+        wordWrap: "on",
+        domReadOnly: true,
+        contextmenu: false,
+      }}
+    />
+  );
+}
 
 export function Detail() {
   const { type, slug } = useParams<{ type: string; slug: string }>();
   const componentType = type?.replace(/s$/, "") as ComponentType;
   const location = useLocation();
+  const navigate = useNavigate();
   const fromType = (location.state as { from?: string } | null)?.from as ComponentType | undefined;
   const breadcrumbType = fromType && fromType !== componentType ? fromType : componentType;
   useScrollRestoration();
@@ -34,6 +107,15 @@ export function Detail() {
     getLongDescription(slug, componentType).then(setLongDescription);
     getFileTree(slug, componentType).then(setFileTree);
   }, [slug, componentType]);
+
+  const fetchFileContent = useCallback(async (relativePath: string) => {
+    if (!item?.externalUrl) throw new Error("No external URL");
+    const rawUrl = getRawUrl(item.externalUrl, relativePath);
+    if (!rawUrl) throw new Error("Could not determine file URL");
+    const response = await fetch(rawUrl);
+    if (!response.ok) throw new Error(`Failed to fetch file (${response.status})`);
+    return response.text();
+  }, [item?.externalUrl]);
 
   if (!item) {
     return (
@@ -52,13 +134,26 @@ export function Detail() {
     <div className="max-w-6xl mx-auto px-4 py-8">
       {/* Breadcrumb — uses referring type if navigated from an extension page */}
       <Breadcrumb
-        items={[
+        variant="plain"
+        segments={[
           {
-            label: typeLabelPlural[breadcrumbType],
-            href: `/${breadcrumbType}s`,
-            icon: <TypeIcon type={breadcrumbType} size={14} className={typeTextColors[breadcrumbType]} />,
+            id: "home",
+            label: "Home",
+            icon: "home",
+            color: "emerald",
+            onClick: () => navigate("/"),
           },
-          { label: item.name },
+          {
+            id: breadcrumbType,
+            label: typeLabelPlural[breadcrumbType],
+            icon: typeBreadcrumbIcon[breadcrumbType],
+            color: typeBreadcrumbColor[breadcrumbType],
+            onClick: () => navigate(`/${breadcrumbType}s`),
+          },
+          {
+            id: item.slug,
+            label: item.name,
+          },
         ]}
         className="mb-6"
       />
@@ -70,19 +165,13 @@ export function Detail() {
           <h1 className="text-2xl font-bold text-text">{item.name}</h1>
           {item.sourceType && <SourceBadge source={item.sourceType} size="md" />}
           {item.pluginType === "package" && (
-            <Tooltip content={{ title: "Package", description: "Bundles multiple extensions (skills, hooks, agents, etc.) into a single plugin" }} position="top">
-              <Badge color="indigo" size="md" icon={Package}>Package</Badge>
-            </Tooltip>
+            <Label text="Package" color="indigo" icon="package" size="md" tooltip={{ description: "Bundles multiple extensions (skills, hooks, agents, etc.) into a single plugin" }} />
           )}
           {item.pluginType === "wrapper" && (
-            <Tooltip content={{ title: "Wrapper", description: `Wraps a single ${item.wrapper} extension as a plugin` }} position="top">
-              <Badge color="teal" size="md" icon={Box}>Wrapper</Badge>
-            </Tooltip>
+            <Label text="Wrapper" color="teal" icon="puzzle" size="md" tooltip={{ description: `Wraps a single ${item.wrapper} extension as a plugin` }} />
           )}
           {item.pluginType === "integration" && (
-            <Tooltip content={{ title: "Integration", description: "Integrates an external tool with your AI assistant. Installing adds it to enabledPlugins — the README explains how to set up the tool itself." }} position="top">
-              <Badge color="purple" size="md" icon={BookOpen}>Integration</Badge>
-            </Tooltip>
+            <Label text="Integration" color="purple" icon="plug" size="md" tooltip={{ description: "Integrates an external tool with your AI assistant. Installing adds it to enabledPlugins — the README explains how to set up the tool itself." }} />
           )}
           {item.sourceType === "toolr" && item.targetScope && <ScopeBadge scope={item.targetScope} size="md" />}
         </div>
@@ -186,12 +275,18 @@ export function Detail() {
 
       {/* File tree (lazy-loaded from item.json) */}
       {fileTree && (
-        <FileTree
-          files={fileTree}
-          externalUrl={item.externalUrl}
-          rootName={item.slug}
-          className="mb-8"
-        />
+        <div className="mb-8">
+          <FileStructureSection
+            variant="split"
+            files={fileTree}
+            rootName={item.slug}
+            accentColor="teal"
+            initialHeight={500}
+            language
+            renderPreview={(content, _filePath, lang) => <MonacoPreview content={content} language={lang} />}
+            onFetchContent={fetchFileContent}
+          />
+        </div>
       )}
 
       {/* CLI Reference */}
@@ -213,37 +308,37 @@ export function Detail() {
             </thead>
             <tbody className="divide-y divide-overlay">
               <tr>
-                <td className="px-4 py-2 font-mono text-xs text-accent whitespace-nowrap">-t, --type &lt;type&gt;</td>
-                <td className="px-4 py-2 text-subtext">Content type: <code className="text-text-dim">skill</code>, <code className="text-text-dim">agent</code>, <code className="text-text-dim">hook</code>, <code className="text-text-dim">mcp</code>, <code className="text-text-dim">plugin</code>, <code className="text-text-dim">settings</code><br /><span className="text-text-dim text-xs">We recommend always setting this, but it's only needed when the same slug exists in multiple types</span></td>
+                <td className="px-4 py-2 font-mono text-xs text-text whitespace-nowrap">-t, --type &lt;type&gt;</td>
+                <td className="px-4 py-2 text-subtext">Content type: <code className="text-cyan-500">skill</code>, <code className="text-cyan-500">agent</code>, <code className="text-cyan-500">hook</code>, <code className="text-cyan-500">mcp</code>, <code className="text-cyan-500">plugin</code>, <code className="text-cyan-500">settings</code><br /><span className="text-text-dim text-xs">We recommend always setting this, but it's only needed when the same slug exists in multiple types</span></td>
                 <td className="px-4 py-2 text-text-dim text-xs">First match</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 font-mono text-xs text-accent whitespace-nowrap">-a, --agents &lt;tools&gt;</td>
-                <td className="px-4 py-2 text-subtext">AI tools to install for: <code className="text-text-dim">claude</code>, <code className="text-text-dim">copilot</code>, <code className="text-text-dim">gemini</code>, <code className="text-text-dim">codex</code>, <code className="text-text-dim">opencode</code>, or <code className="text-text-dim">all</code></td>
+                <td className="px-4 py-2 font-mono text-xs text-text whitespace-nowrap">-a, --agents &lt;tools&gt;</td>
+                <td className="px-4 py-2 text-subtext">AI tools to install for: <code className="text-cyan-500">claude</code>, <code className="text-cyan-500">copilot</code>, <code className="text-cyan-500">gemini</code>, <code className="text-cyan-500">codex</code>, <code className="text-cyan-500">opencode</code>, or <code className="text-cyan-500">all</code></td>
                 <td className="px-4 py-2 text-text-dim text-xs">Prompted</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 font-mono text-xs text-accent whitespace-nowrap">-s, --scope &lt;scope&gt;</td>
-                <td className="px-4 py-2 text-subtext">Installation scope: <code className="text-text-dim">project</code>, <code className="text-text-dim">user</code>, or <code className="text-text-dim">local</code> (gitignored)</td>
+                <td className="px-4 py-2 font-mono text-xs text-text whitespace-nowrap">-s, --scope &lt;scope&gt;</td>
+                <td className="px-4 py-2 text-subtext">Installation scope: <code className="text-cyan-500">project</code>, <code className="text-cyan-500">user</code>, or <code className="text-cyan-500">local</code> (gitignored)</td>
                 <td className="px-4 py-2 text-text-dim text-xs">Prompted</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 font-mono text-xs text-accent whitespace-nowrap">-m, --method &lt;method&gt;</td>
-                <td className="px-4 py-2 text-subtext">Installation method: <code className="text-text-dim">symlink</code> or <code className="text-text-dim">copy</code></td>
-                <td className="px-4 py-2 text-text-dim text-xs"><code className="text-text-dim">copy</code> (single tool)<br />prompted (multiple)</td>
+                <td className="px-4 py-2 font-mono text-xs text-text whitespace-nowrap">-m, --method &lt;method&gt;</td>
+                <td className="px-4 py-2 text-subtext">Installation method: <code className="text-cyan-500">symlink</code> or <code className="text-cyan-500">copy</code></td>
+                <td className="px-4 py-2 text-text-dim text-xs"><code className="text-cyan-500">copy</code> (single tool)<br />prompted (multiple)</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 font-mono text-xs text-accent whitespace-nowrap">-y, --yes</td>
+                <td className="px-4 py-2 font-mono text-xs text-text whitespace-nowrap">-y, --yes</td>
                 <td className="px-4 py-2 text-subtext">Skip confirmation prompts (non-interactive)</td>
                 <td className="px-4 py-2 text-text-dim text-xs">Off</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 font-mono text-xs text-accent whitespace-nowrap">-f, --force</td>
+                <td className="px-4 py-2 font-mono text-xs text-text whitespace-nowrap">-f, --force</td>
                 <td className="px-4 py-2 text-subtext">Overwrite existing files</td>
                 <td className="px-4 py-2 text-text-dim text-xs">Off</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 font-mono text-xs text-accent whitespace-nowrap">-n, --dry-run</td>
+                <td className="px-4 py-2 font-mono text-xs text-text whitespace-nowrap">-n, --dry-run</td>
                 <td className="px-4 py-2 text-subtext">Show what would be installed without making changes</td>
                 <td className="px-4 py-2 text-text-dim text-xs">Off</td>
               </tr>

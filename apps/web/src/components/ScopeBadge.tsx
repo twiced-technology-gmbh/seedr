@@ -1,14 +1,12 @@
-import { Home, Folder, Lock } from "lucide-react";
-import type { ComponentType } from "react";
-import { Badge } from "./ui/Badge";
-import { Tooltip } from "./ui/Tooltip";
+import { Label } from "@toolr/ui-design";
+import type { IconName } from "@toolr/ui-design";
 import { scopeToBadgeColor, scopeLabels } from "@/lib/colors";
 import type { ScopeType } from "@/lib/types";
 
-const scopeIcons: Record<ScopeType, ComponentType<{ className?: string }>> = {
-  user: Home,
-  project: Folder,
-  local: Lock,
+const scopeIcons: Record<ScopeType, IconName> = {
+  user: "user",
+  project: "folder",
+  local: "lock",
 };
 
 const scopeDescriptions: Record<ScopeType, string> = {
@@ -25,16 +23,16 @@ interface ScopeBadgeProps {
 
 export function ScopeBadge({ scope, className = "", size = "sm" }: ScopeBadgeProps) {
   return (
-    <Tooltip
-      content={{
+    <Label
+      text={scopeLabels[scope]}
+      color={scopeToBadgeColor[scope]}
+      icon={scopeIcons[scope]}
+      size={size}
+      tooltip={{
         title: `${scopeLabels[scope]} Scope`,
         description: scopeDescriptions[scope],
       }}
-      position="top"
-    >
-      <Badge color={scopeToBadgeColor[scope]} size={size} icon={scopeIcons[scope]} className={className}>
-        {scopeLabels[scope]}
-      </Badge>
-    </Tooltip>
+      className={className}
+    />
   );
 }

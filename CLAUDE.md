@@ -252,6 +252,55 @@ Publishing uses **npm Trusted Publishers (OIDC)** — no npm tokens needed. Requ
 
 - `APP_ID` / `APP_PRIVATE_KEY` — GitHub App token for version bump commits (shared across toolr repos)
 
+## @toolr/ui-design
+
+The web app uses shared components from the `@toolr/ui-design` npm package. Source lives at `/Users/daniel/Work/twiced/toolr/shared/ui-design/`.
+
+### Updating shared components
+
+1. Make changes in `shared/ui-design/`
+2. Commit and push to both `main` and `prod` branches (push to `prod` triggers the npm publish GitHub Action)
+3. Wait for the npm deploy to finish
+4. Update the version in `apps/web/package.json` and run `pnpm install`
+
+### Local development
+
+To iterate without waiting for npm publishes, use a file reference in `apps/web/package.json`:
+
+```json
+"@toolr/ui-design": "file:../../../shared/ui-design"
+```
+
+Remember to switch back to the versioned dependency before committing.
+
+**After editing ui-design source**, you must rebuild, reinstall, kill all dev servers, and restart:
+
+```bash
+# 1. Rebuild dist (CSS imports resolve to dist/, not source)
+cd /Users/daniel/Work/twiced/toolr/shared/ui-design && npm run build
+
+# 2. Reinstall to refresh pnpm hardlinks
+cd /Users/daniel/Work/twiced/toolr/seedr && pnpm install
+
+# 3. Kill ALL running dev servers (Vite caches modules in memory)
+tmux kill-session -t seedr 2>/dev/null
+# Also kill any orphaned node processes on the dev port
+lsof -ti :6200 | xargs kill -9 2>/dev/null
+
+# 4. Clear Vite caches
+rm -rf apps/web/node_modules/.vite apps/web/node_modules/.cache
+
+# 5. Restart dev server
+tmux new-session -d -s seedr -c /Users/daniel/Work/twiced/toolr/seedr
+tmux send-keys -t seedr 'pnpm dev' Enter
+```
+
+**Why all these steps are needed:**
+- CSS `@import` resolves to `dist/` tokens (the `source` export condition only applies to JS). So `npm run build` is required to copy updated CSS tokens to `dist/`.
+- pnpm `file:` references use hardlinks into the content-addressable store. `pnpm install` refreshes these hardlinks.
+- Vite caches compiled CSS and JS modules in memory. Simply clearing `.vite/` is not enough — the running server process must be killed and restarted.
+- Orphaned node processes on the same port can persist after `tmux kill-session`, serving stale content.
+
 ## Gotchas
 
 - **pnpm only** - Use `pnpm` not `npm` for all operations

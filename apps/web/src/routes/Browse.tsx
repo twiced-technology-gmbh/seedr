@@ -1,53 +1,49 @@
 import { useMemo } from "react";
-import { useParams, Link, useSearchParams } from "react-router-dom";
+import { useParams, Link, useSearchParams, useNavigate } from "react-router-dom";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import Fuse from "fuse.js";
-import { Breadcrumb, SearchInput, FilterDropdown } from "@/components/ui";
-import type { FilterOption } from "@/components/ui";
-import { SortDropdown } from "@/components/ui/SortDropdown";
-import type { SortField } from "@/components/ui/SortDropdown";
+import { Breadcrumb, Input, FilterDropdown, SortDropdown } from "@toolr/ui-design";
+import type { SortField } from "@toolr/ui-design";
 import { ItemCard } from "@/components/ItemCard";
-import { ToolIcon } from "@/components/ToolIcon";
-import { TypeIcon } from "@/components/TypeIcon";
 import { getItemsByType } from "@/lib/registry";
 import { pluralize } from "@/lib/text";
 import type { ComponentType, AITool, SourceType, ScopeType, PluginType, RegistryItem } from "@/lib/types";
-import { toolLabels, sourceLabels, scopeLabels, typeLabelPlural, typeTextColors } from "@/lib/colors";
+import { toolLabels, sourceLabels, scopeLabels, typeLabelPlural, typeBreadcrumbIcon, typeBreadcrumbColor } from "@/lib/colors";
 
-const toolOptions: FilterOption<AITool>[] = [
-  { value: "claude", label: toolLabels.claude, icon: <ToolIcon tool="claude" size={14} /> },
-  { value: "copilot", label: toolLabels.copilot, icon: <ToolIcon tool="copilot" size={14} /> },
-  { value: "gemini", label: toolLabels.gemini, icon: <ToolIcon tool="gemini" size={14} /> },
-  { value: "codex", label: toolLabels.codex, icon: <ToolIcon tool="codex" size={14} /> },
-  { value: "opencode", label: toolLabels.opencode, icon: <ToolIcon tool="opencode" size={14} /> },
+const toolOptions = [
+  { value: "claude", label: toolLabels.claude },
+  { value: "copilot", label: toolLabels.copilot },
+  { value: "gemini", label: toolLabels.gemini },
+  { value: "codex", label: toolLabels.codex },
+  { value: "opencode", label: toolLabels.opencode },
 ];
 
-const sourceOptions: FilterOption<SourceType>[] = [
+const sourceOptions = [
   { value: "official", label: sourceLabels.official },
   { value: "toolr", label: sourceLabels.toolr },
   { value: "community", label: sourceLabels.community },
 ];
 
-const scopeOptions: FilterOption<ScopeType>[] = [
+const scopeOptions = [
   { value: "user", label: scopeLabels.user },
   { value: "project", label: scopeLabels.project },
   { value: "local", label: scopeLabels.local },
 ];
 
-const pluginTypeOptions: FilterOption<PluginType>[] = [
+const pluginTypeOptions = [
   { value: "package", label: "Package" },
   { value: "wrapper", label: "Wrapper" },
   { value: "integration", label: "Integration" },
 ];
 
 type ItemKind = "native" | "wrapper";
-const kindOptions: FilterOption<ItemKind>[] = [
+const kindOptions = [
   { value: "native", label: "Native" },
   { value: "wrapper", label: "Wrapper" },
 ];
 
 type ExtensionType = "skill" | "hook" | "agent" | "command" | "mcp";
-const extensionOptions: FilterOption<ExtensionType>[] = [
+const extensionOptions = [
   { value: "skill", label: "Skill" },
   { value: "hook", label: "Hook" },
   { value: "agent", label: "Agent" },
@@ -81,6 +77,7 @@ export function Browse() {
   const { type } = useParams<{ type: string }>();
   const componentType = type?.replace(/s$/, "") as ComponentType;
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
   useScrollRestoration();
 
   const isPlugins = componentType === "plugin";
@@ -109,27 +106,28 @@ export function Browse() {
     setSearchParams(newParams, { replace: true });
   };
 
+  const toParam = (value: string) => (value && value !== "all") ? value : null;
   const setQuery = (value: string) => updateParams({ q: value || null });
-  const setToolFilter = (value: AITool | null) => updateParams({ tool: value });
-  const setSourceFilter = (value: SourceType | null) => {
+  const setToolFilter = (value: string) => updateParams({ tool: toParam(value) });
+  const setSourceFilter = (value: string) => {
     // Clear scope filter when switching away from toolr
     if (value !== "toolr") {
-      updateParams({ source: value, scope: null });
+      updateParams({ source: toParam(value), scope: null });
     } else {
       updateParams({ source: value });
     }
   };
-  const setScopeFilter = (value: ScopeType | null) => updateParams({ scope: value });
-  const setPluginTypeFilter = (value: PluginType | null) => {
+  const setScopeFilter = (value: string) => updateParams({ scope: toParam(value) });
+  const setPluginTypeFilter = (value: string) => {
     // Extension filter only applies to wrappers — clear it when switching away
     if (value !== "wrapper") {
-      updateParams({ pluginType: value, ext: null });
+      updateParams({ pluginType: toParam(value), ext: null });
     } else {
       updateParams({ pluginType: value });
     }
   };
-  const setExtFilter = (value: ExtensionType | null) => updateParams({ ext: value });
-  const setKindFilter = (value: ItemKind | null) => updateParams({ kind: value });
+  const setExtFilter = (value: string) => updateParams({ ext: toParam(value) });
+  const setKindFilter = (value: string) => updateParams({ kind: toParam(value) });
   const setSortField = (value: string) => updateParams({ sortField: value === "name" ? null : value });
   const toggleSortDir = () => updateParams({ sortAsc: sortAsc ? "false" : null });
 
@@ -142,7 +140,8 @@ export function Browse() {
     () =>
       new Fuse(items, {
         keys: ["name", "slug", "description"],
-        threshold: 0.3,
+        threshold: 0.2,
+        minMatchCharLength: 2,
       }),
     [items]
   );
@@ -208,10 +207,22 @@ export function Browse() {
     <div className="max-w-6xl mx-auto px-4 py-8">
       {/* Breadcrumb */}
       <Breadcrumb
-        items={[{
-          label: typeLabelPlural[componentType],
-          icon: <TypeIcon type={componentType} size={14} className={typeTextColors[componentType]} />,
-        }]}
+        variant="plain"
+        segments={[
+          {
+            id: "home",
+            label: "Home",
+            icon: "home",
+            color: "emerald",
+            onClick: () => navigate("/"),
+          },
+          {
+            id: componentType,
+            label: typeLabelPlural[componentType],
+            icon: typeBreadcrumbIcon[componentType],
+            color: typeBreadcrumbColor[componentType],
+          },
+        ]}
         className="mb-6"
       />
 
@@ -229,15 +240,18 @@ export function Browse() {
       </div>
 
       {/* Filter Bar */}
-      <div className="flex flex-wrap items-center gap-2 mb-8">
+      <div className="flex items-center gap-2 mb-8">
         {/* Search input */}
-        <SearchInput
-          placeholder={`Search ${typeLabelPlural[componentType].toLowerCase()}...`}
-          className="w-80"
-          size="sm"
-          value={query}
-          onSearch={setQuery}
-        />
+        <div className="w-80">
+          <Input
+            type="search"
+            placeholder={`Search ${typeLabelPlural[componentType].toLowerCase()}...`}
+            size="sm"
+            value={query}
+            onChange={setQuery}
+            color="cyan"
+          />
+        </div>
 
         {/* Spacer */}
         <div className="flex-1" />
@@ -245,60 +259,60 @@ export function Browse() {
         {/* Kind filter for extension pages with wrappers */}
         {hasWrappers && (
           <FilterDropdown
-            value={kindFilter}
+            value={kindFilter ?? "all"}
             options={kindOptions}
             onChange={setKindFilter}
-            placeholder="Kind"
-            minWidth={120}
+            allLabel="Kind"
+            color="cyan"
           />
         )}
 
         {/* Plugin-specific filter dropdowns */}
         {isPlugins && (
           <FilterDropdown
-            value={pluginTypeFilter}
+            value={pluginTypeFilter ?? "all"}
             options={pluginTypeOptions}
             onChange={setPluginTypeFilter}
-            placeholder="Type"
-            minWidth={140}
+            allLabel="Type"
+            color="cyan"
           />
         )}
 
         {isPlugins && pluginTypeFilter === "wrapper" && (
           <FilterDropdown
-            value={extFilter}
+            value={extFilter ?? "all"}
             options={extensionOptions}
             onChange={setExtFilter}
-            placeholder="Extension"
-            minWidth={140}
+            allLabel="Extension"
+            color="cyan"
           />
         )}
 
         {/* Filter dropdowns */}
         <FilterDropdown
-          value={sourceFilter}
+          value={sourceFilter ?? "all"}
           options={sourceOptions}
           onChange={setSourceFilter}
-          placeholder="Source"
-          minWidth={120}
+          allLabel="Source"
+          color="cyan"
         />
 
         {sourceFilter === "toolr" && (
           <FilterDropdown
-            value={scopeFilter}
+            value={scopeFilter ?? "all"}
             options={scopeOptions}
             onChange={setScopeFilter}
-            placeholder="Scope"
-            minWidth={170}
+            allLabel="Scope"
+            color="cyan"
           />
         )}
 
         <FilterDropdown
-          value={toolFilter}
+          value={toolFilter ?? "all"}
           options={toolOptions}
           onChange={setToolFilter}
-          placeholder="Tool"
-          minWidth={140}
+          allLabel="Tool"
+          color="cyan"
         />
 
         <SortDropdown
@@ -307,10 +321,8 @@ export function Browse() {
           onFieldChange={setSortField}
           onToggleDirection={toggleSortDir}
           fields={sortFields}
-          minWidth={110}
+          color="cyan"
         />
-
-
       </div>
 
       {/* Grid */}
@@ -321,10 +333,10 @@ export function Browse() {
               key={`${item.slug}-${item.type}-${item.pluginType ?? ""}`}
               item={item}
               browseType={componentType}
-              onSourceClick={setSourceFilter}
-              onScopeClick={setScopeFilter}
-              onToolClick={setToolFilter}
-              onPluginTypeClick={isPlugins ? setPluginTypeFilter : undefined}
+              onSourceClick={(source) => setSourceFilter(source)}
+              onScopeClick={(scope) => setScopeFilter(scope)}
+              onToolClick={(tool) => setToolFilter(tool)}
+              onPluginTypeClick={isPlugins ? (pt) => setPluginTypeFilter(pt) : undefined}
               onDateClick={() => {
                 if (sortField === "updated") {
                   toggleSortDir();

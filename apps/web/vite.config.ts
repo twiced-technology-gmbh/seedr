@@ -35,13 +35,17 @@ function serveRegistryPlugin() {
 export default defineConfig({
   plugins: [react(), tailwindcss(), serveRegistryPlugin()],
   server: {
-    port: 5176,
+    port: 6200,
+  },
+  optimizeDeps: {
+    exclude: ["@toolr/ui-design"],
   },
   resolve: {
     alias: {
       "@": resolve(__dirname, "./src"),
       "@registry": resolve(__dirname, "../../registry"),
     },
+    conditions: ["source"],
   },
   build: {
     outDir: "dist",

@@ -2,11 +2,8 @@ import { useMemo } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import Fuse from "fuse.js";
-import { X } from "lucide-react";
-import { SearchInput, FilterDropdown, IconButton } from "@/components/ui";
-import type { FilterOption } from "@/components/ui";
+import { Input, FilterDropdown, IconButton } from "@toolr/ui-design";
 import { ItemCard } from "@/components/ItemCard";
-import { ToolIcon } from "@/components/ToolIcon";
 import { typeIcons } from "@/components/TypeIcon";
 import { getAllItems, getTypeCounts } from "@/lib/registry";
 import { pluralize } from "@/lib/text";
@@ -45,21 +42,21 @@ const displayTypes: ComponentType[] = [
   "mcp",
 ];
 
-const toolOptions: FilterOption<AITool>[] = [
-  { value: "claude", label: toolLabels.claude, icon: <ToolIcon tool="claude" size={14} /> },
-  { value: "copilot", label: toolLabels.copilot, icon: <ToolIcon tool="copilot" size={14} /> },
-  { value: "gemini", label: toolLabels.gemini, icon: <ToolIcon tool="gemini" size={14} /> },
-  { value: "codex", label: toolLabels.codex, icon: <ToolIcon tool="codex" size={14} /> },
-  { value: "opencode", label: toolLabels.opencode, icon: <ToolIcon tool="opencode" size={14} /> },
+const toolOptions = [
+  { value: "claude", label: toolLabels.claude },
+  { value: "copilot", label: toolLabels.copilot },
+  { value: "gemini", label: toolLabels.gemini },
+  { value: "codex", label: toolLabels.codex },
+  { value: "opencode", label: toolLabels.opencode },
 ];
 
-const sourceOptions: FilterOption<SourceType>[] = [
+const sourceOptions = [
   { value: "official", label: sourceLabels.official },
   { value: "toolr", label: sourceLabels.toolr },
   { value: "community", label: sourceLabels.community },
 ];
 
-const scopeOptions: FilterOption<ScopeType>[] = [
+const scopeOptions = [
   { value: "user", label: scopeLabels.user },
   { value: "project", label: scopeLabels.project },
   { value: "local", label: scopeLabels.local },
@@ -96,16 +93,16 @@ export function Home() {
       updateParams({ q: value });
     }
   };
-  const setToolFilter = (value: AITool | null) => updateParams({ tool: value });
-  const setSourceFilter = (value: SourceType | null) => {
+  const setToolFilter = (value: string) => updateParams({ tool: value || null });
+  const setSourceFilter = (value: string) => {
     // Clear scope filter when switching away from toolr
     if (value !== "toolr") {
-      updateParams({ source: value, scope: null });
+      updateParams({ source: value || null, scope: null });
     } else {
       updateParams({ source: value });
     }
   };
-  const setScopeFilter = (value: ScopeType | null) => updateParams({ scope: value });
+  const setScopeFilter = (value: string) => updateParams({ scope: value || null });
 
   const allItems = getAllItems();
   const counts = getTypeCounts();
@@ -114,7 +111,8 @@ export function Home() {
     () =>
       new Fuse(allItems, {
         keys: ["name", "slug", "description"],
-        threshold: 0.3,
+        threshold: 0.2,
+        minMatchCharLength: 2,
       }),
     [allItems]
   );
@@ -142,9 +140,7 @@ export function Home() {
   const hasActiveFilters = toolFilter !== null || sourceFilter !== null || scopeFilter !== null;
 
   const resetFilters = () => {
-    setToolFilter(null);
-    setSourceFilter(null);
-    setScopeFilter(null);
+    updateParams({ tool: null, source: null, scope: null });
   };
 
   return (
@@ -155,12 +151,16 @@ export function Home() {
           Seed your projects with AI configurations
         </p>
 
-        <SearchInput
-          placeholder="Search skills, hooks, agents, MCP servers..."
-          className="max-w-md mx-auto"
-          value={query}
-          onSearch={setQuery}
-        />
+        <div className="max-w-md mx-auto">
+          <Input
+            type="search"
+            placeholder="Search skills, hooks, agents, MCP servers..."
+            size="sm"
+            value={query}
+            onChange={setQuery}
+            color="cyan"
+          />
+        </div>
       </div>
 
       {/* Search Results */}
@@ -174,37 +174,37 @@ export function Home() {
 
             <div className="flex items-center gap-2">
               <FilterDropdown
-                value={sourceFilter}
+                value={sourceFilter ?? ""}
                 options={sourceOptions}
                 onChange={setSourceFilter}
-                placeholder="Source"
-                minWidth={120}
+                allLabel="Source"
+                color="cyan"
               />
 
               {sourceFilter === "toolr" && (
                 <FilterDropdown
-                  value={scopeFilter}
+                  value={scopeFilter ?? ""}
                   options={scopeOptions}
                   onChange={setScopeFilter}
-                  placeholder="Scope"
-                  minWidth={170}
+                  allLabel="Scope"
+                  color="cyan"
                 />
               )}
 
               <FilterDropdown
-                value={toolFilter}
+                value={toolFilter ?? ""}
                 options={toolOptions}
                 onChange={setToolFilter}
-                placeholder="Tool"
-                minWidth={140}
+                allLabel="Tool"
+                color="cyan"
               />
 
               {hasActiveFilters && (
                 <IconButton
-                  icon={<X className="w-full h-full" />}
-                  variant="danger"
+                  icon="x"
+                  color="red"
                   size="sm"
-                  tooltip={{ title: "Clear Filters", description: "Reset all filters" }}
+                  tooltip={{ description: "Reset all filters" }}
                   onClick={resetFilters}
                 />
               )}
