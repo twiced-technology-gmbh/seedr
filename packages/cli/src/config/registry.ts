@@ -1,4 +1,4 @@
-import { readFile, readdir } from "node:fs/promises";
+import { readFile, readdir, writeFile, mkdir } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import type {
@@ -208,9 +208,6 @@ export async function fetchItemToDestination(
   item: RegistryItem,
   destPath: string
 ): Promise<void> {
-  const { writeFile, mkdir } = await import("node:fs/promises");
-  const { dirname, join } = await import("node:path");
-
   const { remote } = getItemBaseUrl(item);
 
   // For items with a file tree (plugins, hooks, etc.), fetch the entire structure
@@ -246,9 +243,6 @@ async function fetchFileTree(
   baseUrl: string,
   destPath: string
 ): Promise<void> {
-  const { writeFile, mkdir } = await import("node:fs/promises");
-  const { join } = await import("node:path");
-
   for (const node of nodes) {
     const nodePath = join(destPath, node.name);
 

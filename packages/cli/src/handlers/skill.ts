@@ -1,5 +1,5 @@
 import { join, relative, dirname } from "node:path";
-import { readdir, symlink } from "node:fs/promises";
+import { readdir, symlink, rm } from "node:fs/promises";
 import chalk from "chalk";
 import ora from "ora";
 import type { AITool, InstallScope, InstallMethod } from "../types.js";
@@ -31,7 +31,6 @@ async function installToCentralLocation(
 
   // Remove existing if present
   if (await exists(centralPath)) {
-    const { rm } = await import("node:fs/promises");
     await rm(centralPath, { recursive: true });
   }
 
@@ -56,7 +55,6 @@ async function createToolSymlink(
 
   // Remove existing if present
   if (await exists(destPath)) {
-    const { rm } = await import("node:fs/promises");
     await rm(destPath, { recursive: true });
   }
 

@@ -8,27 +8,9 @@ import { ItemCard } from "@/components/ItemCard";
 import { getItemsByType } from "@/lib/registry";
 import { pluralize } from "@/lib/text";
 import type { ComponentType, AITool, SourceType, ScopeType, PluginType, RegistryItem } from "@/lib/types";
-import { toolLabels, sourceLabels, scopeLabels, typeLabelPlural, typeBreadcrumbIcon, typeBreadcrumbColor } from "@/lib/colors";
+import { typeLabelPlural, typeBreadcrumbIcon, typeBreadcrumbColor } from "@/lib/colors";
 
-const toolOptions = [
-  { value: "claude", label: toolLabels.claude },
-  { value: "copilot", label: toolLabels.copilot },
-  { value: "gemini", label: toolLabels.gemini },
-  { value: "codex", label: toolLabels.codex },
-  { value: "opencode", label: toolLabels.opencode },
-];
-
-const sourceOptions = [
-  { value: "official", label: sourceLabels.official },
-  { value: "toolr", label: sourceLabels.toolr },
-  { value: "community", label: sourceLabels.community },
-];
-
-const scopeOptions = [
-  { value: "user", label: scopeLabels.user },
-  { value: "project", label: scopeLabels.project },
-  { value: "local", label: scopeLabels.local },
-];
+import { toolOptions, sourceOptions, scopeOptions } from "@/lib/filterOptions";
 
 const pluginTypeOptions = [
   { value: "package", label: "Package" },
@@ -131,7 +113,7 @@ export function Browse() {
   const setSortField = (value: string) => updateParams({ sortField: value === "name" ? null : value });
   const toggleSortDir = () => updateParams({ sortAsc: sortAsc ? "false" : null });
 
-  const items = getItemsByType(componentType);
+  const items = useMemo(() => getItemsByType(componentType), [componentType]);
   const hasWrappers = !isPlugins && items.some(
     (item) => item.type === "plugin" && item.pluginType === "wrapper"
   );

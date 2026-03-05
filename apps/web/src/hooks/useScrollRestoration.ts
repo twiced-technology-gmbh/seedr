@@ -58,15 +58,21 @@ export function useScrollRestoration() {
 
         // Multiple attempts to restore scroll (content may load async)
         const attempts = [0, 50, 100, 200];
-        attempts.forEach((delay) => {
+        const timeoutIds = attempts.map((delay) =>
           setTimeout(() => {
             window.scrollTo(0, scrollY);
-          }, delay);
-        });
+          }, delay)
+        );
 
-        setTimeout(() => {
+        const resetId = setTimeout(() => {
           isRestoring.current = false;
         }, 300);
+
+        return () => {
+          timeoutIds.forEach(clearTimeout);
+          clearTimeout(resetId);
+          isRestoring.current = false;
+        };
       }
     } else {
       // Forward navigation: scroll to top

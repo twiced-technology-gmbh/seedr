@@ -21,5 +21,5 @@ export {
 } from "./config/registry.js";
 
 export { installSkill, uninstallSkill, getInstalledSkills } from "./handlers/skill.js";
-export { convertSkillToTool, parseSkillMarkdown } from "./utils/convert.js";
+export { convertSkillToTool, parseSkillMarkdown } from "./converters/index.js";
 export { detectInstalledTools, detectProjectTools, isToolInstalled } from "./utils/detection.js";

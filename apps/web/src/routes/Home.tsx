@@ -8,18 +8,7 @@ import { typeIcons } from "@/components/TypeIcon";
 import { getAllItems, getTypeCounts } from "@/lib/registry";
 import { pluralize } from "@/lib/text";
 import type { ComponentType, AITool, SourceType, ScopeType } from "@/lib/types";
-import { typeTextColors, toolLabels, sourceLabels, scopeLabels } from "@/lib/colors";
-
-// Type labels for display (plural form)
-const typePluralLabels: Record<ComponentType, string> = {
-  skill: "Skills",
-  hook: "Hooks",
-  agent: "Agents",
-  plugin: "Plugins",
-  command: "Commands",
-  settings: "Settings",
-  mcp: "MCP Servers",
-};
+import { typeTextColors, typeLabelPlural } from "@/lib/colors";
 
 // Only descriptions for types shown on home page
 const typeDescriptions: Record<ComponentType, string> = {
@@ -42,25 +31,7 @@ const displayTypes: ComponentType[] = [
   "mcp",
 ];
 
-const toolOptions = [
-  { value: "claude", label: toolLabels.claude },
-  { value: "copilot", label: toolLabels.copilot },
-  { value: "gemini", label: toolLabels.gemini },
-  { value: "codex", label: toolLabels.codex },
-  { value: "opencode", label: toolLabels.opencode },
-];
-
-const sourceOptions = [
-  { value: "official", label: sourceLabels.official },
-  { value: "toolr", label: sourceLabels.toolr },
-  { value: "community", label: sourceLabels.community },
-];
-
-const scopeOptions = [
-  { value: "user", label: scopeLabels.user },
-  { value: "project", label: scopeLabels.project },
-  { value: "local", label: scopeLabels.local },
-];
+import { toolOptions, sourceOptions, scopeOptions } from "@/lib/filterOptions";
 
 export function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -239,7 +210,7 @@ export function Home() {
                   <div className="text-lg font-bold text-text mb-1">
                     {counts[type]}
                   </div>
-                  <div className="text-sm text-text mb-2">{typePluralLabels[type]}</div>
+                  <div className="text-sm text-text mb-2">{typeLabelPlural[type]}</div>
                   <div className="text-xs text-subtext">{typeDescriptions[type]}</div>
                 </Link>
               );

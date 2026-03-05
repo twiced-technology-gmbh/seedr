@@ -8,6 +8,8 @@ import {
   unlink,
   readlink,
   lstat,
+  cp,
+  rm,
 } from "node:fs/promises";
 import { dirname, join, relative, isAbsolute } from "node:path";
 import type { InstallMethod } from "../types.js";
@@ -110,9 +112,6 @@ export async function copyDirectory(
   source: string,
   destination: string
 ): Promise<void> {
-  const { cp } = await import("node:fs/promises");
-
-  // Use Node's built-in recursive copy
   await cp(source, destination, { recursive: true });
 }
 
@@ -128,7 +127,6 @@ export async function installDirectory(
 
   // Remove existing if present
   if (await exists(destination)) {
-    const { rm } = await import("node:fs/promises");
     await rm(destination, { recursive: true });
   }
 

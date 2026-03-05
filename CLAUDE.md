@@ -301,6 +301,10 @@ tmux send-keys -t seedr 'pnpm dev' Enter
 - Vite caches compiled CSS and JS modules in memory. Simply clearing `.vite/` is not enough — the running server process must be killed and restarted.
 - Orphaned node processes on the same port can persist after `tmux kill-session`, serving stale content.
 
+## ESLint Disable Comments
+
+**Never add `eslint-disable`, `eslint-disable-next-line`, or `eslint-disable-line` comments without asking the user first** (use the AskUserQuestion tool). If the user approves, the disable comment MUST include a brief reason explaining why the bypass is acceptable. Format: `// eslint-disable-next-line rule-name -- reason`.
+
 ## Gotchas
 
 - **pnpm only** - Use `pnpm` not `npm` for all operations

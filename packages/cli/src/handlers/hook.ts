@@ -1,4 +1,5 @@
 import { join, basename } from "node:path";
+import { homedir } from "node:os";
 import { mkdir, copyFile, chmod, rm } from "node:fs/promises";
 import chalk from "chalk";
 import ora from "ora";
@@ -29,7 +30,7 @@ interface SettingsJson {
 function getHooksDir(scope: InstallScope, cwd: string): string {
   switch (scope) {
     case "user":
-      return join(process.env.HOME || "~", ".claude", "hooks");
+      return join(homedir(), ".claude", "hooks");
     case "project":
     case "local":
       return join(cwd, ".claude", "hooks");
@@ -111,7 +112,6 @@ async function installHookForTool(
       await fetchItemToDestination(item, tempDir);
       await copyFile(join(tempDir, scriptFile), destScriptPath);
       // Clean up temp dir
-      const { rm } = await import("node:fs/promises");
       await rm(tempDir, { recursive: true, force: true });
     }
 
