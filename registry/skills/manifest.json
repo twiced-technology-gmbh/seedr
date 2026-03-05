@@ -1381,6 +1381,213 @@
       "updatedAt": "2025-12-01T18:05:36Z"
     },
     {
+      "slug": "claude-api",
+      "name": "Claude Api",
+      "type": "skill",
+      "description": "Build applications using the Claude API, Anthropic SDK, or Agent SDK with language-specific patterns and best practices.",
+      "longDescription": "Covers **7 languages** (TypeScript, Python, C#, Go, Java, PHP, Ruby) plus `curl` examples. Includes dedicated guides for the **Agent SDK** (Python and TypeScript) with architectural patterns, and deep dives into **streaming**, **tool use**, **batches**, and the **Files API**. Shared references cover model selection, error codes, and live documentation sources. Each language guide provides idiomatic examples using the official Anthropic SDK for that platform.",
+      "compatibility": [
+        "claude",
+        "copilot",
+        "gemini",
+        "codex",
+        "opencode"
+      ],
+      "sourceType": "official",
+      "author": {
+        "name": "Anthropic"
+      },
+      "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/claude-api",
+      "contentHash": "a541f497435fdb3c",
+      "updatedAt": "2026-03-04T20:05:44Z",
+      "contents": {
+        "files": [
+          {
+            "name": "csharp",
+            "type": "directory",
+            "children": [
+              {
+                "name": "claude-api.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "curl",
+            "type": "directory",
+            "children": [
+              {
+                "name": "examples.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "go",
+            "type": "directory",
+            "children": [
+              {
+                "name": "claude-api.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "java",
+            "type": "directory",
+            "children": [
+              {
+                "name": "claude-api.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "php",
+            "type": "directory",
+            "children": [
+              {
+                "name": "claude-api.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "python",
+            "type": "directory",
+            "children": [
+              {
+                "name": "agent-sdk",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "patterns.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "README.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "claude-api",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "batches.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "files-api.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "README.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "streaming.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "tool-use.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "ruby",
+            "type": "directory",
+            "children": [
+              {
+                "name": "claude-api.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "shared",
+            "type": "directory",
+            "children": [
+              {
+                "name": "error-codes.md",
+                "type": "file"
+              },
+              {
+                "name": "live-sources.md",
+                "type": "file"
+              },
+              {
+                "name": "models.md",
+                "type": "file"
+              },
+              {
+                "name": "tool-use-concepts.md",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "typescript",
+            "type": "directory",
+            "children": [
+              {
+                "name": "agent-sdk",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "patterns.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "README.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "claude-api",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "batches.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "files-api.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "README.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "streaming.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "tool-use.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "LICENSE.txt",
+            "type": "file"
+          },
+          {
+            "name": "SKILL.md",
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
       "slug": "doc-coauthoring",
       "name": "Doc Coauthoring",
       "type": "skill",
