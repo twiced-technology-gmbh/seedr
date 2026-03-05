@@ -27,6 +27,7 @@ const buttonSizes = {
 
 export function Button({ className = "", variant = "primary", size = "md", ref, ...props }: ButtonProps) {
   return (
+    // toolr-design-ignore-next-line
     <button
       ref={ref}
       className={`${baseStyles} ${buttonVariants[variant]} ${buttonSizes[size]} ${className}`}

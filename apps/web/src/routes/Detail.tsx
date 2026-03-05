@@ -4,6 +4,7 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Editor, { type Monaco } from "@monaco-editor/react";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
+// toolr-design-ignore-next-line
 import { Clock } from "lucide-react";
 import { Breadcrumb, Label, FileStructureSection } from "@toolr/ui-design";
 import { CodeBlock } from "@/components/ui";

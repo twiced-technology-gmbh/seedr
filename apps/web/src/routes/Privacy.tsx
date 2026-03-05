@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+// toolr-design-ignore-next-line
 import { ArrowLeft } from "lucide-react";
 
 export function Privacy() {

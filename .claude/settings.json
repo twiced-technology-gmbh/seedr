@@ -26,6 +26,16 @@
         ]
       }
     ],
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [{ "type": "command", "command": "bash .claude/scripts/check-ui-patterns.sh \"$TOOL_INPUT_FILE_PATH\"" }]
+      },
+      {
+        "matcher": "Edit",
+        "hooks": [{ "type": "command", "command": "bash .claude/scripts/check-ui-patterns.sh \"$TOOL_INPUT_FILE_PATH\"" }]
+      }
+    ],
     "PreToolUse": [
       {
         "hooks": [

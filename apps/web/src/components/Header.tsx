@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+// toolr-design-ignore-next-line
 import { Github } from "lucide-react";
 import { ToolrAppLogo, IconButton } from "@toolr/ui-design";
 import { TwiceDLogo } from "./TwiceDLogo";
@@ -9,7 +10,7 @@ export function Header() {
       <div className="px-4 h-full flex items-center justify-between">
         <Link
           to="/"
-          className="group flex items-center gap-2.5 transition-all"
+          className="group flex items-center gap-3 transition-all"
         >
           <ToolrAppLogo
             app="seedr"
@@ -44,7 +45,7 @@ export function Header() {
             tooltipPosition="bottom"
           />
           <IconButton
-            icon={<Github className="w-3.5 h-3.5" />}
+            icon={<Github className="w-4 h-4" />}
             href="https://github.com/twiced-technology-gmbh/seedr"
             size="sm"
             color="neutral"

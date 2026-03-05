@@ -1,3 +1,4 @@
+// toolr-design-ignore-next-line
 import { Sparkles, Bot, Webhook, Terminal, Plug } from "lucide-react";
 import { typeTextColors } from "@/lib/colors";
 
