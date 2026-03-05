@@ -3,22 +3,40 @@ name: ui-consumer
 description: |
   How to correctly use @toolr/ui-design components, tokens, and patterns in consuming applications.
   Use this skill whenever working on files that import from `@toolr/ui-design`, building UI features
-  in apps like configr/reviewr/seedr/toolr, or when the user mentions using design system components,
+  in apps like configr/reviewr/seedr/toolr-app, or when the user mentions using design system components,
   form controls, icons, modals, tooltips, or any @toolr/ui-design exports. Also trigger when setting
   up a new app to use the design system, or when debugging styling issues that might relate to missing
   tokens or incorrect imports.
+  ALWAYS trigger when: creating/editing .tsx files that involve UI (features/, core/, components/),
+  adding UI elements, building forms, adding buttons, creating layouts, or any task involving visual
+  components in a toolr consumer app.
+  NEVER use native HTML form elements (<button>, <input>, <select>, <textarea>) — always check
+  the manifest for a design system replacement first.
 ---
 
 # Using @toolr/ui-design in Applications
 
-This skill covers how to correctly import and use the `@toolr/ui-design` package in consuming apps. It is not about building the design system itself — that's the `ui-playground` skill.
+This skill covers how to correctly use `@toolr/ui-design` in consuming apps. It is not about building the design system itself — that's the `ui-playground` skill.
+
+## Dynamic Data Sources
+
+The design system publishes two machine-readable files that are the single source of truth. Read them when you need component details, enforcement rules, or agent guidelines:
+
+| File | Import Path | Contains |
+|------|-------------|----------|
+| `ai-manifest.json` | `@toolr/ui-design/manifest` | All components (grouped by category), conventions, types, hooks, utilities, enforcement rules |
+| `agent-rules.json` | `@toolr/ui-design/agent-rules` | Do/don't rules organized by category (Setup, Typography, Components, Styling, Portals, State & Data, Code Hygiene) |
+
+To find these files locally, look for `node_modules/@toolr/ui-design/ai-manifest.json` or follow the `file:` dependency path in `package.json`.
+
+When you need to pick the right component for a task, read `ai-manifest.json` — the `components` section is organized by category (`form`, `action`, `display`, `layout`, `navigation`, `modal`, `section`, `settings`, `brand`) with descriptions, key props, and which HTML elements each component replaces.
 
 ## Setup
 
-A consuming app needs three things:
+A consuming app needs these things configured:
 
 ```jsonc
-// package.json — path is relative to the app
+// package.json — path varies by app location
 { "@toolr/ui-design": "file:../../shared/ui-design" }
 ```
 
@@ -27,8 +45,26 @@ A consuming app needs three things:
 @import "@toolr/ui-design/tokens";
 ```
 
+```css
+/* Critical: portals render at document.body with semi-transparent backgrounds */
+body { background-color: var(--background); }
+```
+
+**Tailwind v4 type scale fix** — `@import "tailwindcss"` shadows ui-design's type scale tokens with Tailwind defaults, and `text-xss` doesn't exist in Tailwind at all (falls back to browser default 16px). Re-register them in the app's `@theme` block:
+
+```css
+@theme {
+  --text-xss: 10px;
+  --text-xss--line-height: 1;
+  --text-xs: 11px;
+  --text-xs--line-height: 1.2;
+  --text-sm: 12px;
+  --text-sm--line-height: 1.33;
+}
+```
+
 ```ts
-// tailwind.config.ts — adds Inter font and extended breakpoints
+// tailwind.config.ts (if using Tailwind config file)
 import { toolrPreset } from '@toolr/ui-design/preset'
 export default { presets: [toolrPreset] }
 ```
@@ -37,175 +73,119 @@ Peer dependencies: `react` ^18 || ^19, `react-dom` ^18 || ^19.
 
 ## Imports
 
-Always import from the barrel export — the package ships raw TypeScript and all public API goes through `index.ts`:
+Always import from the barrel — never deep paths:
 
 ```tsx
 import { IconButton, Input, Select, cn, type FormColor } from '@toolr/ui-design'
 ```
 
-Never use deep paths like `@toolr/ui-design/components/ui/input`. The only sub-path exports are:
+Valid sub-path exports:
 
 | Path | Use |
 |------|-----|
+| `@toolr/ui-design` | All components, hooks, utilities, types |
 | `@toolr/ui-design/tokens` | CSS import for design tokens |
-| `@toolr/ui-design/preset` | Tailwind preset (`toolrPreset`) |
+| `@toolr/ui-design/preset` | Tailwind preset (breakpoints, Inter font) |
 | `@toolr/ui-design/content` | Info panel primitives |
 | `@toolr/ui-design/diagrams` | Diagram utilities |
+| `@toolr/ui-design/manifest` | AI manifest JSON (for tooling, not app code) |
+| `@toolr/ui-design/agent-rules` | Agent rules JSON (for tooling, not app code) |
 
-## FormColor — Unified Accent System
+Deep imports like `@toolr/ui-design/components/ui/input` are banned and enforced by the ESLint plugin.
 
-Most form controls accept a `color` prop typed as `FormColor`:
+## Core Conventions
 
-```ts
-type FormColor = 'blue' | 'green' | 'red' | 'orange' | 'cyan' | 'yellow'
-  | 'purple' | 'indigo' | 'emerald' | 'amber' | 'violet' | 'gray' | 'sky'
-```
+These are the patterns agents get wrong most often. For the full list, read the `conventions` section in `ai-manifest.json`.
 
-Each color provides a consistent set of border/hover/focus/selected/accent classes through `FORM_COLORS`:
-
-```ts
-import { FORM_COLORS, type FormColor } from '@toolr/ui-design'
-
-const config = FORM_COLORS['blue']
-// config.border    → 'border-blue-500/30'
-// config.hover     → 'hover:bg-blue-500/20 hover:border-blue-500/40'
-// config.focus     → 'focus:border-blue-500'
-// config.selectedBg → 'bg-blue-600/20'
-// config.accent    → 'text-blue-400'
-```
-
-Use `FORM_COLORS` when building custom UI that needs to match the design system's accent treatment. For standard components, just pass the `color` prop.
-
-## cn() — Class Composition
-
-Always use `cn()` for combining Tailwind classes. It uses `clsx` + `tailwind-merge` so conflicting classes resolve correctly:
-
-```tsx
-import { cn } from '@toolr/ui-design'
-
-<div className={cn('p-4 bg-surface', isActive && 'bg-blue-500/20', className)} />
-```
-
-Never string-concatenate classes — `tailwind-merge` handles conflicts like `'bg-red-500 bg-blue-500'` correctly.
-
-## Component Prop Conventions
-
-Components follow consistent patterns:
-
-| Prop | Type | Purpose |
-|------|------|---------|
-| `size` | `'xss' \| 'xs' \| 'sm' \| 'md' \| 'lg'` | Sizing (not all sizes on every component) |
-| `color` | `FormColor` | Accent color for form controls |
-| `variant` | `'filled' \| 'outline'` | Visual style |
-| `disabled` | `boolean` | Disables interaction |
-| `className` | `string` | Extend styling via `cn()` |
-| `testId` | `string` | E2E test selector (kebab-case) |
-
-`onChange` handlers receive the **new value directly**, never a React event:
+### onChange receives values, not events
 
 ```tsx
 <Input value={name} onChange={(val) => setName(val)} />
-<Select value={color} onChange={(val) => setColor(val)} options={options} />
+<Select value={color} onChange={(val) => setColor(val)} options={opts} />
 <Checkbox checked={agreed} onChange={(val) => setAgreed(val)} />
 ```
 
-## Icons
+Every form component follows this pattern. Never destructure `e.target.value`.
 
-Icons are accessed by string name via `IconName`, not by importing lucide-react directly:
+### cn() for all class composition
 
 ```tsx
-<IconButton icon="search" tooltip={{ description: 'Search items' }} onClick={handleSearch} />
+import { cn } from '@toolr/ui-design'
+<div className={cn('p-4 bg-surface', isActive && 'bg-blue-500/20', className)} />
+```
+
+Never string-concatenate or use template literals for Tailwind classes. `cn()` uses `clsx` + `tailwind-merge` so conflicting classes resolve correctly.
+
+### Icons are string names
+
+```tsx
+<IconButton icon="search" tooltip={{ description: 'Search' }} onClick={handleSearch} />
 <IconButton icon="trash" color="red" tooltip={{ description: 'Delete' }} onClick={handleDelete} />
 ```
 
-`IconButton` has these additional features:
-- **status**: `'loading' | 'success' | 'warning' | 'error'` — overrides the icon with an animated indicator
-- **badge**: `number` — shows a count badge (displays "99+" for values > 99)
-- **href**: `string` — renders as an external link (opens new tab)
-- **strikethrough**: `boolean` — visual disabled/off state
-- **tooltip**: `TooltipContent` — portal-based tooltip (see below)
+Do NOT import from `lucide-react`. Use the `iconMap` export to check available names. For custom icons not in the map, pass a `ReactNode`.
 
-For custom icons (not in iconMap), pass a `ReactNode` as the `icon` prop.
-
-## Tooltips
-
-Tooltip content is always an object, never a plain string:
+### Tooltips are always objects
 
 ```tsx
-interface TooltipContent {
-  title?: string                    // bold heading line
-  description: string | ReactNode  // main content (required)
-  extra?: string                   // additional info line
-}
-```
-
-```tsx
-// Standalone tooltip wrapper
-<Tooltip content={{ description: 'Saves the current document' }}>
+// Standalone
+<Tooltip content={{ description: 'Saves the document' }}>
   <button>Save</button>
 </Tooltip>
 
-// On IconButton (most common usage)
+// On IconButton (most common)
 <IconButton icon="save" tooltip={{ title: 'Save', description: 'Save current changes' }} />
 ```
 
-Tooltips render in a portal — they escape overflow:hidden containers automatically. Never use inline `group-hover` patterns as a substitute.
+`TooltipContent`: `{ title?: string, description: string | ReactNode, extra?: string }`
 
-## Modals
+Never pass a plain string as a tooltip.
 
-Three modal variants for different needs:
+### Portal components
+
+`Modal`, `Tooltip`, `Select`, `FilterDropdown` render to `document.body`. Don't rely on parent `overflow`, `z-index`, or `position` to affect them. Never use CSS `group-hover` patterns as a tooltip substitute.
+
+### Modals replace browser dialogs
 
 ```tsx
-// Action confirmation with confirm/cancel
 <ConfirmModal
-  isOpen={showConfirm}
-  onClose={() => setShowConfirm(false)}
-  onConfirm={handleDelete}
-  title="Delete item"
-  kind="warning"           // 'info' | 'warning' | 'error' | 'success'
-  size="md"                // 'sm' | 'md' | 'lg' | 'xl'
-  confirmLabel="Delete"
-  loading={isDeleting}
+  isOpen={show} onClose={close} onConfirm={handleDelete}
+  title="Delete item" kind="warning" confirmLabel="Delete" loading={isDeleting}
 >
   This action cannot be undone.
 </ConfirmModal>
 
-// Dismiss-only alert
-<AlertModal isOpen={showAlert} onClose={() => setShowAlert(false)} title="Done" kind="success">
+<AlertModal isOpen={show} onClose={close} title="Done" kind="success">
   Operation completed.
 </AlertModal>
 ```
 
-Modals render via `createPortal` to `document.body` — don't expect parent `overflow:hidden` or `z-index` to affect them.
+Never use `window.alert()`, `window.confirm()`, or `window.prompt()`. The ESLint plugin enforces this.
 
-## Select (Portal Dropdown)
+## FormColor — Unified Accent System
 
-Select renders its dropdown in a portal, so it works inside panels and modals without clipping:
+Most form controls accept a `color` prop typed as `FormColor` — 13 colors shared across components. `Label`, `Checkbox`, and `Toggle` add `pink` and `teal` (15 colors total).
+
+For custom styling matching design system accents, use `FORM_COLORS`:
 
 ```tsx
-<Select
-  value={selectedTool}
-  onChange={setSelectedTool}
-  options={[
-    { value: 'claude', label: 'Claude' },
-    { value: 'gemini', label: 'Gemini', icon: <GeminiIcon /> },
-  ]}
-  color="blue"
-  size="sm"
-  align="left"  // 'left' | 'right' — dropdown alignment
-/>
+import { FORM_COLORS } from '@toolr/ui-design'
+const { border, hover, focus, selectedBg, accent } = FORM_COLORS['blue']
 ```
 
-Options use `SelectOption<T>` with `value`, `label`, and optional `icon`.
+## Picking Components
 
-## Section Components
+Before reaching for HTML elements, check if a design system component exists. The `enforcement.htmlReplacements` section of the manifest maps HTML elements to their design system replacements — the ESLint plugin enforces these.
 
-Sections are feature-complete panels that handle their own complex state. They pair with companion hooks:
+For choosing between similar components (e.g., `Select` vs `FilterDropdown` vs `SortDropdown`), read the component descriptions in `ai-manifest.json`. Each entry includes `description`, `keyProps`, and `replaces` to help you pick the right one.
+
+### Section components
+
+Sections are feature-complete panels that manage complex state via companion hooks:
 
 ```tsx
 import { TabbedPromptEditor, usePromptEditor } from '@toolr/ui-design'
 
-// Hook manages state: active tab, dirty detection, save, variable search
 const editor = usePromptEditor({
   prompts: savedPrompts,
   onPromptChange: handleSave,
@@ -213,53 +193,72 @@ const editor = usePromptEditor({
   variables: templateVars,
 })
 
-// Component renders the full editor UI
 <TabbedPromptEditor {...editor} standalone className="h-[600px]" />
 ```
 
-Hook pattern:
-- `UseXxxOptions` — configuration input
-- `UseXxxReturn` — state + methods (spread directly onto the component)
-- `standalone` prop — adds border and rounding for independent use
-- `className` — for layout sizing
-
-Available sections: `TabbedPromptEditor`, `RegistryBrowser`, `RegistryDetail`, `GoldenSyncPanel`, `SnapshotBrowserPanel`, `SnippetsEditor`, `ReportBugForm`, `ToolsPathsPanel`, `CapturedIssuesPanel`.
-
-## AccentColor (Sections)
-
-Some section components use `AccentColor` instead of `FormColor` — it's a separate type with different values for visual variety in complex panels:
-
-```ts
-type AccentColor = 'blue' | 'purple' | 'orange' | 'green' | 'pink' | 'amber' | 'emerald' | 'teal' | 'sky'
-```
-
-Used by `FileStructureSection` and other section-level components for icons, selected states, and decorative accents.
+Pattern: `UseXxxOptions` (config input) → `useXxx()` hook → spread return onto component. Add `standalone` for independent use with border/rounding.
 
 ## Design Tokens
 
-The token system uses CSS custom properties with semantic naming. These are available after importing `@toolr/ui-design/tokens`:
+After importing `@toolr/ui-design/tokens`, semantic CSS custom properties are available:
 
-| Token | Purpose |
-|-------|---------|
-| `--background`, `--foreground` | Page-level |
-| `--surface`, `--surface-secondary`, `--surface-overlay` | Cards, panels, popups |
-| `--text-primary`, `--text-secondary`, `--text-tertiary`, `--text-emphasis` | Text hierarchy |
-| `--border`, `--border-subtle` | Borders |
-| `--primary`, `--destructive` | Interactive colors |
-| `--muted`, `--muted-foreground` | Disabled/subdued |
-| `--ring` | Focus indicator |
+| Category | Tokens |
+|----------|--------|
+| Page | `--background`, `--foreground` |
+| Surfaces | `--surface`, `--surface-secondary`, `--surface-overlay` |
+| Text | `--text-primary`, `--text-secondary`, `--text-tertiary`, `--text-emphasis` |
+| Borders | `--border`, `--border-subtle` |
+| Interactive | `--primary`, `--destructive`, `--ring` |
 
-Use semantic tokens for layout and chrome. Accent colors (blue-500, red-400, etc.) stay as Tailwind classes — the token system handles the neutral palette, not accents.
+Use semantic tokens for layout chrome. Accent colors stay as Tailwind classes (e.g., `text-blue-400`, `bg-green-500/20`). Never hardcode hex values.
+
+## Typography & Spacing
+
+| Scale | Size | Tailwind | Usage |
+|-------|------|----------|-------|
+| Tiny | 10px | `text-xss` | Fine print (needs `@theme` override, see Setup) |
+| Small | 11px | `text-xs` | **Dominant** — labels, badges, most text (needs `@theme` override) |
+| Body | 12px | `text-sm` | Body text, descriptions (needs `@theme` override) |
+| Heading | 18px | `text-lg` | Section headers (rare) |
+
+| Weight | Value | Tailwind | Usage |
+|--------|-------|----------|-------|
+| Default | 500 | `font-medium` | **Dominant** — most text |
+| Emphasis | 600 | `font-semibold` | Important text |
+
+| Spacing | Size | Tailwind | Usage |
+|---------|------|----------|-------|
+| Tight | 4px | `gap-1` / `p-1` | Compact elements |
+| Normal | 8px | `gap-2` / `p-2` | **Dominant** — standard spacing |
+| Moderate | 12px | `gap-3` / `p-3` | Between groups |
+| Section | 16px | `gap-4` / `p-4` | Between sections |
+
+## Enforcement
+
+The design system ships an ESLint plugin (`eslint-plugin-toolr-design`) that reads enforcement rules from `ai-manifest.json` at runtime:
+
+- **prefer-design-components** — flags HTML elements that have design system replacements
+- **no-deep-imports** — flags imports from paths other than the allowed sub-path exports
+- **no-direct-icon-imports** — flags `lucide-react` imports (use `IconButton` with string names)
+- **no-browser-dialogs** — flags `window.alert`, `window.confirm`, `window.prompt`
+
+Some apps also run a PostToolUse hook that lints after every file edit, giving immediate feedback.
 
 ## Common Mistakes
 
 | Mistake | Fix |
 |---------|-----|
-| Deep imports (`@toolr/ui-design/components/ui/input`) | Import from `@toolr/ui-design` |
-| Missing token import (components look unstyled) | Add `@import "@toolr/ui-design/tokens"` to app CSS |
-| Plain string tooltip (`tooltip="Save"`) | Use object: `tooltip={{ description: 'Save' }}` |
-| Raw lucide-react imports for IconButton | Use string name: `icon="save"` |
-| String-concatenating classes | Use `cn()` from `@toolr/ui-design` |
-| Wrapping Select/Modal in overflow:hidden | They use portals — clipping doesn't apply |
-| Missing tailwind preset | Breakpoints (3xl, 4xl) and Inter font won't work |
-| Passing event to onChange | onChange receives the value directly, not an event |
+| `<button>`, `<input>`, `<select>`, `<textarea>` | Use design system component (see manifest `replaces` field) |
+| Deep import (`@toolr/ui-design/components/ui/input`) | Import from `@toolr/ui-design` |
+| `import { X } from 'lucide-react'` | Use string name: `icon="x"` |
+| Plain string tooltip (`tooltip="Save"`) | Object: `tooltip={{ description: 'Save' }}` |
+| String-concat classes | Use `cn()` |
+| `group-hover` tooltip pattern | Use `Tooltip` component (portal-based) |
+| onChange expecting event | onChange receives value directly |
+| Missing `@import "@toolr/ui-design/tokens"` | Components look unstyled without it |
+| Missing `body { background-color }` | Portal backgrounds bleed through as gray |
+| `window.alert()` or `window.confirm()` | Use `AlertModal` or `ConfirmModal` |
+| Returning `[]` from Zustand selectors | Use module-level `EMPTY_*_ARRAY` constants |
+| `transition-all` | Specify the property: `transition-colors`, `transition-transform` |
+| `shadow-sm` / `shadow-md` | Only `shadow-xl` (dropdowns) or `shadow-2xl` (modals) |
+| `text-xss` renders as 16px | Missing `@theme` type scale overrides — Tailwind shadows ui-design tokens |
