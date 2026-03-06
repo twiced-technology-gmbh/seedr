@@ -15,6 +15,7 @@
     "url": "https://github.com/pbakaus"
   },
   "externalUrl": "https://github.com/pbakaus/agent-reviews",
+  "marketplace": "agent-reviews",
   "updatedAt": "2026-03-06T09:04:30Z",
   "contents": {
     "skills": ["resolve-reviews", "resolve-agent-reviews", "resolve-human-reviews"],

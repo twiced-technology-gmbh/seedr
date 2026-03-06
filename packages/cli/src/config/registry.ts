@@ -105,6 +105,17 @@ export async function searchItems(query: string): Promise<RegistryItem[]> {
 }
 
 /**
+ * Load the full item.json for an item (includes fields stripped from compiled manifests,
+ * such as contents and longDescription).
+ */
+export async function getItemFull(item: RegistryItem): Promise<RegistryItem> {
+  const typeDir = item.type + "s";
+  const itemJsonPath = `${typeDir}/${item.slug}/item.json`;
+  const content = await loadFile(itemJsonPath);
+  return JSON.parse(content) as RegistryItem;
+}
+
+/**
  * Get the base URL for fetching item content.
  * Items have an externalUrl pointing to their GitHub directory.
  */
@@ -210,10 +221,17 @@ export async function fetchItemToDestination(
 ): Promise<void> {
   const { remote } = getItemBaseUrl(item);
 
-  // For items with a file tree (plugins, hooks, etc.), fetch the entire structure
-  if (item.contents?.files) {
+  // For items with a file tree (plugins, hooks, etc.), fetch the entire structure.
+  // The compiled manifest strips contents from plugins to save space,
+  // so load the full item.json on demand when contents is missing.
+  let files = item.contents?.files;
+  if (!files && item.type === "plugin") {
+    const full = await getItemFull(item);
+    files = full.contents?.files;
+  }
+  if (files) {
     await mkdir(destPath, { recursive: true });
-    await fetchFileTree(item.contents.files, remote, destPath);
+    await fetchFileTree(files, remote, destPath);
     return;
   }
 
