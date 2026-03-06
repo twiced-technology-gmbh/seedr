@@ -1,0 +1,282 @@
+{
+  "slug": "impeccable",
+  "name": "Impeccable",
+  "type": "plugin",
+  "description": "Sharpen frontend design with an expanded design skill, 17 steering commands, and curated anti-patterns that counter common LLM design biases.",
+  "longDescription": "Ships **1 skill** and **17 commands** for frontend design quality.\n\nThe `frontend-design` skill expands Anthropic's original with **7 reference files** covering typography, color and contrast, spatial design, motion, interaction, responsive design, and UX writing. Each reference includes curated anti-patterns — overused fonts, gray-on-color text, nested cards, bounce easing — that explicitly steer the AI away from generic output.\n\n**17 slash commands**: `/audit`, `/critique`, `/normalize`, `/polish`, `/distill`, `/clarify`, `/optimize`, `/harden`, `/animate`, `/colorize`, `/bolder`, `/quieter`, `/delight`, `/extract`, `/adapt`, `/onboard`, `/teach-impeccable`",
+  "compatibility": [
+    "claude"
+  ],
+  "sourceType": "community",
+  "pluginType": "package",
+  "package": {
+    "skill": 1,
+    "command": 17
+  },
+  "author": {
+    "name": "Paul Bakaus"
+  },
+  "externalUrl": "https://github.com/pbakaus/impeccable/tree/main",
+  "updatedAt": "2026-03-05T19:03:03Z",
+  "contents": {
+    "files": [
+      {
+        "name": ".claude-plugin",
+        "type": "directory",
+        "children": [
+          {
+            "name": "marketplace.json",
+            "type": "file"
+          },
+          {
+            "name": "plugin.json",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": ".claude",
+        "type": "directory",
+        "children": [
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "adapt",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "animate",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "audit",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "bolder",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "clarify",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "colorize",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "critique",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "delight",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "distill",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "extract",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "frontend-design",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  },
+                  {
+                    "name": "reference",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "color-and-contrast.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "interaction-design.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "motion-design.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "responsive-design.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "spatial-design.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "typography.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "ux-writing.md",
+                        "type": "file"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "harden",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "normalize",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "onboard",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "optimize",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "polish",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "quieter",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "teach-impeccable",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "CLAUDE.md",
+        "type": "file"
+      },
+      {
+        "name": "README.md",
+        "type": "file"
+      },
+      {
+        "name": "LICENSE",
+        "type": "file"
+      },
+      {
+        "name": "NOTICE.md",
+        "type": "file"
+      }
+    ]
+  },
+  "marketplace": "impeccable"
+}
