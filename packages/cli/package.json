@@ -1,6 +1,6 @@
 {
   "name": "@toolr/seedr",
-  "version": "0.1.67",
+  "version": "0.1.68",
   "description": "Seed your projects with AI configurations",
   "type": "module",
   "bin": {
