@@ -284,7 +284,9 @@ export async function getInstalledPlugins(
         entry.scope === scope &&
         (scope === "user" || entry.projectPath === cwd)
       ) {
-        installed.push(pluginId);
+        // Return the slug (name part before @) so callers can match by slug
+        const slug = pluginId.split("@")[0] || pluginId;
+        installed.push(slug);
         break;
       }
     }

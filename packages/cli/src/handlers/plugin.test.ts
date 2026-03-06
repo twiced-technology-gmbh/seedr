@@ -269,7 +269,7 @@ describe("plugin handler", () => {
       );
 
       const installed = await getInstalledPlugins("claude", "project", "/my/project");
-      expect(installed).toEqual(["plugin-a@marketplace", "plugin-b@marketplace"]);
+      expect(installed).toEqual(["plugin-a", "plugin-b"]);
     });
 
     it("should return empty for no plugins", async () => {
@@ -320,10 +320,10 @@ describe("plugin handler", () => {
       );
 
       const projectPlugins = await getInstalledPlugins("claude", "project", "/my/project");
-      expect(projectPlugins).toEqual(["project-plugin@marketplace"]);
+      expect(projectPlugins).toEqual(["project-plugin"]);
 
       const userPlugins = await getInstalledPlugins("claude", "user");
-      expect(userPlugins).toEqual(["user-plugin@marketplace"]);
+      expect(userPlugins).toEqual(["user-plugin"]);
     });
   });
 
