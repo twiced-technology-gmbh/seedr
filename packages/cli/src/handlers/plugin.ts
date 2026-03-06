@@ -1,5 +1,8 @@
 import { homedir } from "node:os";
 import { join } from "node:path";
+import { mkdir, rm } from "node:fs/promises";
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
 import chalk from "chalk";
 import ora from "ora";
 import type { AITool, InstallScope, InstallMethod } from "../types.js";
@@ -94,9 +97,6 @@ async function ensureMarketplaceRegistered(
   if (!repo) return;
 
   const installLocation = join(MARKETPLACES_DIR, marketplace);
-  const { execFile } = await import("node:child_process");
-  const { mkdir } = await import("node:fs/promises");
-  const { promisify } = await import("node:util");
   const execFileAsync = promisify(execFile);
 
   await mkdir(MARKETPLACES_DIR, { recursive: true });
@@ -158,7 +158,6 @@ async function installPluginForTool(
 
     // Step 3: Move to final cache path
     const cachePath = getPluginCachePath(marketplace, pluginName, version);
-    const { rm } = await import("node:fs/promises");
     await installDirectory(tmpPath, cachePath, "copy");
     await rm(tmpPath, { recursive: true, force: true });
 

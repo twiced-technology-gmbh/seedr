@@ -1,6 +1,6 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { dirname } from "node:path";
-import { exists, ensureDir } from "./fs.js";
+import { ensureDir } from "./fs.js";
 
 /**
  * Read and parse a JSON file. Returns empty object if file doesn't exist.
@@ -8,11 +8,15 @@ import { exists, ensureDir } from "./fs.js";
 export async function readJson<T = Record<string, unknown>>(
   path: string
 ): Promise<T> {
-  if (!(await exists(path))) {
-    return {} as T;
+  try {
+    const content = await readFile(path, "utf-8");
+    return JSON.parse(content) as T;
+  } catch (error: unknown) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+      return {} as T;
+    }
+    throw error;
   }
-  const content = await readFile(path, "utf-8");
-  return JSON.parse(content) as T;
 }
 
 /**
@@ -100,10 +104,6 @@ export async function removeJsonFieldKey(
   field: string,
   key: string
 ): Promise<boolean> {
-  if (!(await exists(path))) {
-    return false;
-  }
-
   const data = await readJson(path);
   const fieldData = field ? data[field] : data;
 

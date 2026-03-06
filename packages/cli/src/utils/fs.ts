@@ -51,9 +51,8 @@ export async function installFile(
 ): Promise<void> {
   await ensureDir(dirname(destination));
 
-  // Remove existing file if present
-  if (await exists(destination)) {
-    await unlink(destination);
+  try { await unlink(destination); } catch (e: unknown) {
+    if ((e as NodeJS.ErrnoException).code !== "ENOENT") throw e;
   }
 
   if (method === "symlink") {
@@ -125,10 +124,7 @@ export async function installDirectory(
 ): Promise<void> {
   await ensureDir(dirname(destination));
 
-  // Remove existing if present
-  if (await exists(destination)) {
-    await rm(destination, { recursive: true });
-  }
+  await rm(destination, { recursive: true, force: true });
 
   if (method === "symlink") {
     // Create relative symlink for portability

@@ -183,8 +183,8 @@ export const addCommand = new Command("add")
       }
 
       // Step 2: Get or prompt for tools
-      const typeCompatible = filterCompatibleTools(item.type, item.compatibility);
       let tools = resolveTools(options.agents, item);
+      const typeCompatible = filterCompatibleTools(item.type, item.compatibility);
 
       if (tools.length === 0) {
         if (typeCompatible.length === 1) {

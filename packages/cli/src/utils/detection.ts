@@ -11,38 +11,27 @@ export interface DetectedTool {
 export async function detectInstalledTools(
   cwd: string = process.cwd()
 ): Promise<DetectedTool[]> {
-  const detected: DetectedTool[] = [];
-
-  for (const tool of ALL_TOOLS) {
-    // Check project scope
+  const checks = ALL_TOOLS.flatMap((tool) => {
     const projectPath = getToolPath(tool, "project", cwd);
-    if (await exists(projectPath)) {
-      detected.push({ tool, scope: "project", path: projectPath });
-    }
-
-    // Check user scope
     const userPath = getToolPath(tool, "user", cwd);
-    if (await exists(userPath)) {
-      detected.push({ tool, scope: "user", path: userPath });
-    }
-  }
-
-  return detected;
+    return [
+      exists(projectPath).then((found): DetectedTool | null => found ? { tool, scope: "project", path: projectPath } : null),
+      exists(userPath).then((found): DetectedTool | null => found ? { tool, scope: "user", path: userPath } : null),
+    ];
+  });
+  const results = await Promise.all(checks);
+  return results.filter((r): r is DetectedTool => r !== null);
 }
 
 export async function detectProjectTools(
   cwd: string = process.cwd()
 ): Promise<AITool[]> {
-  const detected: AITool[] = [];
-
-  for (const tool of ALL_TOOLS) {
+  const checks = ALL_TOOLS.map(async (tool) => {
     const projectPath = getToolPath(tool, "project", cwd);
-    if (await exists(projectPath)) {
-      detected.push(tool);
-    }
-  }
-
-  return detected;
+    return (await exists(projectPath)) ? tool : null;
+  });
+  const results = await Promise.all(checks);
+  return results.filter((t): t is AITool => t !== null);
 }
 
 export async function isToolInstalled(

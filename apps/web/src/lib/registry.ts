@@ -1,3 +1,4 @@
+import type { IFuseOptions } from "fuse.js";
 import type { RegistryManifest, RegistryItem, ComponentType, FileTreeNode } from "./types";
 
 // Import split manifest files (bundled at build time)
@@ -61,6 +62,12 @@ export function getManifest(): RegistryManifest {
 export function getAllItems(): RegistryItem[] {
   return manifest.items;
 }
+
+export const fuseOptions: IFuseOptions<RegistryItem> = {
+  keys: ["name", "slug", "description"],
+  threshold: 0.2,
+  minMatchCharLength: 2,
+};
 
 export function getItemsByType(type: ComponentType): RegistryItem[] {
   if (type === "plugin") {
@@ -128,30 +135,16 @@ export function getFeaturedItems(): RegistryItem[] {
 }
 
 export function getTypeCount(type: ComponentType): number {
-  if (type === "plugin") {
-    return manifest.items.filter((item) => item.type === type).length;
-  }
-  return manifest.items.filter(
-    (item) =>
-      item.type === type ||
-      (item.type === "plugin" && item.pluginType === "wrapper" && item.wrapper === type)
-  ).length;
+  return getItemsByType(type).length;
 }
 
-export function getTypeCounts(): Record<ComponentType, number> {
+// Computed once at module level since manifest data is static (bundled at build time)
+const typeCounts: Record<ComponentType, number> = (() => {
   const counts: Record<ComponentType, number> = {
-    skill: 0,
-    hook: 0,
-    agent: 0,
-    plugin: 0,
-    command: 0,
-    settings: 0,
-    mcp: 0,
+    skill: 0, hook: 0, agent: 0, plugin: 0, command: 0, settings: 0, mcp: 0,
   };
-
   for (const item of manifest.items) {
     counts[item.type]++;
-    // Count wrapper plugins under their wrapped extension type too
     if (item.type === "plugin" && item.pluginType === "wrapper" && item.wrapper) {
       const wrappedType = item.wrapper as ComponentType;
       if (wrappedType in counts) {
@@ -159,6 +152,9 @@ export function getTypeCounts(): Record<ComponentType, number> {
       }
     }
   }
-
   return counts;
+})();
+
+export function getTypeCounts(): Record<ComponentType, number> {
+  return typeCounts;
 }

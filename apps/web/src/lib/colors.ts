@@ -134,12 +134,3 @@ export const pluginTypeToBadgeColor: Record<string, BadgeColor> = {
   wrapper: "teal",
   integration: "purple",
 };
-
-// Extension type labels (for plugin content filtering)
-export const extensionLabels: Record<string, string> = {
-  skill: "Skill",
-  hook: "Hook",
-  agent: "Agent",
-  command: "Command",
-  mcp: "MCP Server",
-};

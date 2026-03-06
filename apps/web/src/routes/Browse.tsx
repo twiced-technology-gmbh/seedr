@@ -1,11 +1,12 @@
 import { useMemo } from "react";
-import { useParams, Link, useSearchParams, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
+import { useUpdateParams } from "@/hooks/useUpdateParams";
 import Fuse from "fuse.js";
 import { Breadcrumb, Input, FilterDropdown, SortDropdown } from "@toolr/ui-design";
 import type { SortField } from "@toolr/ui-design";
 import { ItemCard } from "@/components/ItemCard";
-import { getItemsByType } from "@/lib/registry";
+import { getItemsByType, fuseOptions } from "@/lib/registry";
 import { pluralize } from "@/lib/text";
 import type { ComponentType, AITool, SourceType, ScopeType, PluginType, RegistryItem } from "@/lib/types";
 import { typeLabelPlural, typeBreadcrumbIcon, typeBreadcrumbColor } from "@/lib/colors";
@@ -58,7 +59,7 @@ function sortItems(items: RegistryItem[], field: string, ascending: boolean): Re
 export function Browse() {
   const { type } = useParams<{ type: string }>();
   const componentType = type?.replace(/s$/, "") as ComponentType;
-  const [searchParams, setSearchParams] = useSearchParams();
+  const { searchParams, updateParams } = useUpdateParams();
   const navigate = useNavigate();
   useScrollRestoration();
 
@@ -74,19 +75,6 @@ export function Browse() {
   const kindFilter = (searchParams.get("kind") as ItemKind | null);
   const sortField = searchParams.get("sortField") ?? "name";
   const sortAsc = searchParams.get("sortAsc") !== "false";
-
-  // Update URL params helper
-  const updateParams = (updates: Record<string, string | null>) => {
-    const newParams = new URLSearchParams(searchParams);
-    for (const [key, value] of Object.entries(updates)) {
-      if (value === null || value === "") {
-        newParams.delete(key);
-      } else {
-        newParams.set(key, value);
-      }
-    }
-    setSearchParams(newParams, { replace: true });
-  };
 
   const toParam = (value: string) => (value && value !== "all") ? value : null;
   const setQuery = (value: string) => updateParams({ q: value || null });
@@ -118,15 +106,7 @@ export function Browse() {
     (item) => item.type === "plugin" && item.pluginType === "wrapper"
   );
 
-  const fuse = useMemo(
-    () =>
-      new Fuse(items, {
-        keys: ["name", "slug", "description"],
-        threshold: 0.2,
-        minMatchCharLength: 2,
-      }),
-    [items]
-  );
+  const fuse = useMemo(() => new Fuse(items, fuseOptions), [items]);
 
   const filteredItems = useMemo(() => {
     let result = items;

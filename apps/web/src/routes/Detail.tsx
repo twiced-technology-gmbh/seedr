@@ -8,7 +8,7 @@ import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import { Clock } from "lucide-react";
 import { Breadcrumb, Label, FileStructureSection } from "@toolr/ui-design";
 import { CodeBlock } from "@/components/ui";
-import { typeLabelPlural, typeTextColors, extensionLabels, typeBreadcrumbIcon, typeBreadcrumbColor } from "@/lib/colors";
+import { typeLabelPlural, typeLabels, typeTextColors, typeBreadcrumbIcon, typeBreadcrumbColor } from "@/lib/colors";
 import { TypeIcon } from "@/components/TypeIcon";
 import { SourceBadge } from "@/components/SourceBadge";
 import { ScopeBadge } from "@/components/ScopeBadge";
@@ -230,7 +230,7 @@ export function Detail() {
           <h2 className="text-xs font-medium text-text-dim uppercase tracking-wider mb-3">Wrapped Extension</h2>
           <p className="text-sm text-subtext mb-3">
             This plugin wraps a single extension as an installable plugin.
-            Functionally equivalent to installing the {extensionLabels[item.wrapper]?.toLowerCase() || item.wrapper} directly, but delivered and managed as a plugin package.
+            Functionally equivalent to installing the {typeLabels[item.wrapper as keyof typeof typeLabels]?.toLowerCase() || item.wrapper} directly, but delivered and managed as a plugin package.
           </p>
           <PluginContents counts={{ [item.wrapper]: 1 }} />
         </div>

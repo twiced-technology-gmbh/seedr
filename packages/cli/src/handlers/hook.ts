@@ -262,9 +262,11 @@ export async function uninstallHook(
   const hooksDir = getHooksDir(scope, cwd);
   const scriptFileName = scriptFile || `${slug}.sh`;
   const scriptFilePath = join(hooksDir, scriptFileName);
-  if (await exists(scriptFilePath)) {
+  try {
     await rm(scriptFilePath);
     removed = true;
+  } catch (e: unknown) {
+    if ((e as NodeJS.ErrnoException).code !== "ENOENT") throw e;
   }
 
   return removed;

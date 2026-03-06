@@ -1,19 +1,10 @@
-// toolr-design-ignore-next-line
-import { Sparkles, Bot, Webhook, Terminal, Plug } from "lucide-react";
 import { typeTextColors } from "@/lib/colors";
+import { extensionTypes } from "@/lib/extensionTypes";
 
 interface PluginContentsProps {
   counts: Record<string, number>;
   className?: string;
 }
-
-const extensionTypes = [
-  { type: "skill", icon: Sparkles, label: "Skill", labelPlural: "Skills" },
-  { type: "agent", icon: Bot, label: "Agent", labelPlural: "Agents" },
-  { type: "hook", icon: Webhook, label: "Hook", labelPlural: "Hooks" },
-  { type: "command", icon: Terminal, label: "Command", labelPlural: "Commands" },
-  { type: "mcp", icon: Plug, label: "MCP Server", labelPlural: "MCP Servers" },
-] as const;
 
 export function PluginContents({ counts, className = "" }: PluginContentsProps) {
   const items = extensionTypes

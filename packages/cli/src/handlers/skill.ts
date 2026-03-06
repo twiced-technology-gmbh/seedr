@@ -29,10 +29,7 @@ async function installToCentralLocation(
 ): Promise<string> {
   const centralPath = getAgentsPath("skill", item.slug, cwd);
 
-  // Remove existing if present
-  if (await exists(centralPath)) {
-    await rm(centralPath, { recursive: true });
-  }
+  await rm(centralPath, { recursive: true, force: true });
 
   // Copy from local or fetch from remote
   if (sourcePath && (await exists(sourcePath))) {
@@ -53,10 +50,7 @@ async function createToolSymlink(
 ): Promise<void> {
   await ensureDir(dirname(destPath));
 
-  // Remove existing if present
-  if (await exists(destPath)) {
-    await rm(destPath, { recursive: true });
-  }
+  await rm(destPath, { recursive: true, force: true });
 
   // Create relative symlink for portability
   const relPath = relative(dirname(destPath), centralPath);
@@ -163,8 +157,6 @@ export async function uninstallSkill(
     return false;
   }
 
-  // Remove directory
-  const { rm } = await import("node:fs/promises");
   await rm(destPath, { recursive: true });
   return true;
 }

@@ -1,11 +1,12 @@
 import { useMemo } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
+import { useUpdateParams } from "@/hooks/useUpdateParams";
 import Fuse from "fuse.js";
 import { Input, FilterDropdown, IconButton } from "@toolr/ui-design";
 import { ItemCard } from "@/components/ItemCard";
 import { typeIcons } from "@/components/TypeIcon";
-import { getAllItems, getTypeCounts } from "@/lib/registry";
+import { getAllItems, getTypeCounts, fuseOptions } from "@/lib/registry";
 import { pluralize } from "@/lib/text";
 import type { ComponentType, AITool, SourceType, ScopeType } from "@/lib/types";
 import { typeTextColors, typeLabelPlural } from "@/lib/colors";
@@ -34,7 +35,7 @@ const displayTypes: ComponentType[] = [
 import { toolOptions, sourceOptions, scopeOptions } from "@/lib/filterOptions";
 
 export function Home() {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const { searchParams, setSearchParams, updateParams } = useUpdateParams();
   useScrollRestoration();
 
   // Read state from URL search params
@@ -42,19 +43,6 @@ export function Home() {
   const toolFilter = (searchParams.get("tool") as AITool | null);
   const sourceFilter = (searchParams.get("source") as SourceType | null);
   const scopeFilter = (searchParams.get("scope") as ScopeType | null);
-
-  // Update URL params helper
-  const updateParams = (updates: Record<string, string | null>) => {
-    const newParams = new URLSearchParams(searchParams);
-    for (const [key, value] of Object.entries(updates)) {
-      if (value === null || value === "") {
-        newParams.delete(key);
-      } else {
-        newParams.set(key, value);
-      }
-    }
-    setSearchParams(newParams, { replace: true });
-  };
 
   const setQuery = (value: string) => {
     // When clearing query, also clear filters
@@ -78,15 +66,7 @@ export function Home() {
   const allItems = getAllItems();
   const counts = getTypeCounts();
 
-  const fuse = useMemo(
-    () =>
-      new Fuse(allItems, {
-        keys: ["name", "slug", "description"],
-        threshold: 0.2,
-        minMatchCharLength: 2,
-      }),
-    [allItems]
-  );
+  const fuse = useMemo(() => new Fuse(allItems, fuseOptions), [allItems]);
 
   const searchResults = useMemo(() => {
     if (!query) return null;

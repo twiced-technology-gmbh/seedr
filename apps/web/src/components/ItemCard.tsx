@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 // toolr-design-ignore-next-line
-import { Clock, Sparkles, Bot, Webhook, Terminal, Plug } from "lucide-react";
+import { Clock } from "lucide-react";
 import { Label, Tooltip, AiToolIcon } from "@toolr/ui-design";
 import { Card } from "./ui/Card";
 import { TypeIcon } from "./TypeIcon";
@@ -8,18 +8,11 @@ import { SourceBadge } from "./SourceBadge";
 import { ScopeBadge } from "./ScopeBadge";
 import { formatRelativeTime } from "@/lib/text";
 import { typeLabels, typeTextColors, toolLabels } from "@/lib/colors";
+import { extensionTypes } from "@/lib/extensionTypes";
 import type { RegistryItem, SourceType, ScopeType, AITool, PluginType } from "@/lib/types";
 
-const extensionIcons = [
-  { type: "skill", icon: Sparkles, label: "Skill", labelPlural: "Skills" },
-  { type: "agent", icon: Bot, label: "Agent", labelPlural: "Agents" },
-  { type: "hook", icon: Webhook, label: "Hook", labelPlural: "Hooks" },
-  { type: "command", icon: Terminal, label: "Command", labelPlural: "Commands" },
-  { type: "mcp", icon: Plug, label: "MCP Server", labelPlural: "MCP Servers" },
-] as const;
-
 function PackageBadges({ counts }: { counts: Record<string, number> }) {
-  const items = extensionIcons
+  const items = extensionTypes
     .map(({ type, icon, label, labelPlural }) => {
       const count = counts[type];
       if (!count || count <= 0) return null;

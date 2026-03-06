@@ -227,12 +227,12 @@ export async function fetchItemToDestination(
 
   await mkdir(destPath, { recursive: true });
 
-  for (const file of filesToFetch) {
+  await Promise.all(filesToFetch.map(async (file) => {
     const content = await fetchRemote(`${remote}/${file}`);
     const filePath = join(destPath, file);
     await mkdir(dirname(filePath), { recursive: true });
     await writeFile(filePath, content, "utf-8");
-  }
+  }));
 }
 
 /**
@@ -243,7 +243,7 @@ async function fetchFileTree(
   baseUrl: string,
   destPath: string
 ): Promise<void> {
-  for (const node of nodes) {
+  await Promise.all(nodes.map(async (node) => {
     const nodePath = join(destPath, node.name);
 
     if (node.type === "directory") {
@@ -255,5 +255,5 @@ async function fetchFileTree(
       const content = await fetchRemote(`${baseUrl}/${node.name}`);
       await writeFile(nodePath, content, "utf-8");
     }
-  }
+  }));
 }
