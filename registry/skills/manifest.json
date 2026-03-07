@@ -2508,7 +2508,7 @@
       "slug": "skill-creator",
       "name": "Skill Creator",
       "type": "skill",
-      "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, update or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
+      "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
       "compatibility": [
         "claude"
       ],
@@ -2517,8 +2517,8 @@
         "name": "Anthropic"
       },
       "externalUrl": "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
-      "contentHash": "118331a19b62c7b6",
-      "updatedAt": "2026-02-25T04:28:38Z",
+      "contentHash": "1ecb26d39c566803",
+      "updatedAt": "2026-03-06T20:06:23Z",
       "contents": {
         "files": [
           {

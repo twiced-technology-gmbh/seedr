@@ -2,59 +2,72 @@
   "slug": "agent-reviews",
   "name": "Agent Reviews",
   "type": "plugin",
-  "description": "Triage, fix, and reply to GitHub PR review comments from bots and humans automatically.",
+  "description": "Manage GitHub PR review comments. Automatically triage, fix, and respond to review findings.",
   "longDescription": "Ships **3 skills** and a CLI (`agent-reviews`) for resolving PR review comments in a two-phase workflow: fix all existing issues, then poll for new ones until quiet.\n\n- **`resolve-reviews`**: All comments (human + bot)\n- **`resolve-agent-reviews`**: Bot comments only (Copilot, Cursor Bugbot, CodeRabbit, Sourcery, Codacy, SonarCloud)\n- **`resolve-human-reviews`**: Human comments only\n\nEach skill evaluates findings as true/false positives, fixes real bugs, dismisses false positives with explanations, and replies to every comment. Includes watch mode that polls until reviewers go quiet.",
-  "compatibility": ["claude"],
+  "compatibility": [
+    "claude"
+  ],
   "sourceType": "community",
-  "pluginType": "package",
-  "package": {
-    "skill": 3
-  },
+  "pluginType": "wrapper",
   "author": {
     "name": "Paul Bakaus",
     "url": "https://github.com/pbakaus"
   },
   "externalUrl": "https://github.com/pbakaus/agent-reviews",
   "marketplace": "agent-reviews",
-  "updatedAt": "2026-03-06T09:04:30Z",
+  "updatedAt": "2026-03-07T00:12:02Z",
   "contents": {
-    "skills": ["resolve-reviews", "resolve-agent-reviews", "resolve-human-reviews"],
     "files": [
       {
         "name": ".claude-plugin",
         "type": "directory",
         "children": [
-          { "name": "marketplace.json", "type": "file" },
-          { "name": "plugin.json", "type": "file" }
+          {
+            "name": "marketplace.json",
+            "type": "file"
+          },
+          {
+            "name": "plugin.json",
+            "type": "file"
+          }
         ]
       },
-      { "name": ".gitignore", "type": "file" },
-      { "name": "CLAUDE.md", "type": "file" },
-      { "name": "LICENSE", "type": "file" },
-      { "name": "README.md", "type": "file" },
       {
         "name": "bin",
         "type": "directory",
         "children": [
-          { "name": "agent-reviews.js", "type": "file" }
+          {
+            "name": "agent-reviews.js",
+            "type": "file"
+          }
         ]
       },
       {
         "name": "lib",
         "type": "directory",
         "children": [
-          { "name": "comments.js", "type": "file" },
-          { "name": "format.js", "type": "file" },
-          { "name": "github.js", "type": "file" }
+          {
+            "name": "comments.js",
+            "type": "file"
+          },
+          {
+            "name": "format.js",
+            "type": "file"
+          },
+          {
+            "name": "github.js",
+            "type": "file"
+          }
         ]
       },
-      { "name": "package-lock.json", "type": "file" },
-      { "name": "package.json", "type": "file" },
       {
         "name": "scripts",
         "type": "directory",
         "children": [
-          { "name": "install-skills.js", "type": "file" }
+          {
+            "name": "install-skills.js",
+            "type": "file"
+          }
         ]
       },
       {
@@ -65,21 +78,30 @@
             "name": "resolve-agent-reviews",
             "type": "directory",
             "children": [
-              { "name": "SKILL.md", "type": "file" }
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
             ]
           },
           {
             "name": "resolve-human-reviews",
             "type": "directory",
             "children": [
-              { "name": "SKILL.md", "type": "file" }
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
             ]
           },
           {
             "name": "resolve-reviews",
             "type": "directory",
             "children": [
-              { "name": "SKILL.md", "type": "file" }
+              {
+                "name": "SKILL.md",
+                "type": "file"
+              }
             ]
           }
         ]
@@ -88,10 +110,146 @@
         "name": "test",
         "type": "directory",
         "children": [
-          { "name": "comments.test.js", "type": "file" },
-          { "name": "github.test.js", "type": "file" }
+          {
+            "name": "comments.test.js",
+            "type": "file"
+          },
+          {
+            "name": "github.test.js",
+            "type": "file"
+          }
         ]
+      },
+      {
+        "name": "website",
+        "type": "directory",
+        "children": [
+          {
+            "name": "src",
+            "type": "directory",
+            "children": [
+              {
+                "name": "lib",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "components",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "Changelog.svelte",
+                        "type": "file"
+                      },
+                      {
+                        "name": "Footer.svelte",
+                        "type": "file"
+                      },
+                      {
+                        "name": "Hero.svelte",
+                        "type": "file"
+                      },
+                      {
+                        "name": "Install.svelte",
+                        "type": "file"
+                      },
+                      {
+                        "name": "Nav.svelte",
+                        "type": "file"
+                      },
+                      {
+                        "name": "Pitch.svelte",
+                        "type": "file"
+                      },
+                      {
+                        "name": "Terminal.svelte",
+                        "type": "file"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "routes",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "+layout.js",
+                    "type": "file"
+                  },
+                  {
+                    "name": "+layout.svelte",
+                    "type": "file"
+                  },
+                  {
+                    "name": "+page.svelte",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "app.css",
+                "type": "file"
+              },
+              {
+                "name": "app.html",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "static",
+            "type": "directory",
+            "children": [
+              {
+                "name": "favicon.svg",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "package-lock.json",
+            "type": "file"
+          },
+          {
+            "name": "package.json",
+            "type": "file"
+          },
+          {
+            "name": "svelte.config.js",
+            "type": "file"
+          },
+          {
+            "name": "vite.config.js",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": ".gitignore",
+        "type": "file"
+      },
+      {
+        "name": "CLAUDE.md",
+        "type": "file"
+      },
+      {
+        "name": "LICENSE",
+        "type": "file"
+      },
+      {
+        "name": "package-lock.json",
+        "type": "file"
+      },
+      {
+        "name": "package.json",
+        "type": "file"
+      },
+      {
+        "name": "README.md",
+        "type": "file"
       }
     ]
-  }
+  },
+  "contentHash": "0082e9fd3378bec9",
+  "wrapper": "skill"
 }

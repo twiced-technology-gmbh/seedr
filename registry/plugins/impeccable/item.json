@@ -2,17 +2,13 @@
   "slug": "impeccable",
   "name": "Impeccable",
   "type": "plugin",
-  "description": "Sharpen frontend design with an expanded design skill, 17 steering commands, and curated anti-patterns that counter common LLM design biases.",
+  "description": "Design vocabulary and skills for frontend development. Includes 18 skills (17 user-invokable: /polish, /distill, /audit, /bolder, /quieter, etc.) and an enhanced frontend-design skill with curated anti-patterns.",
   "longDescription": "Ships **1 skill** and **17 commands** for frontend design quality.\n\nThe `frontend-design` skill expands Anthropic's original with **7 reference files** covering typography, color and contrast, spatial design, motion, interaction, responsive design, and UX writing. Each reference includes curated anti-patterns — overused fonts, gray-on-color text, nested cards, bounce easing — that explicitly steer the AI away from generic output.\n\n**17 slash commands**: `/audit`, `/critique`, `/normalize`, `/polish`, `/distill`, `/clarify`, `/optimize`, `/harden`, `/animate`, `/colorize`, `/bolder`, `/quieter`, `/delight`, `/extract`, `/adapt`, `/onboard`, `/teach-impeccable`",
   "compatibility": [
     "claude"
   ],
   "sourceType": "community",
-  "pluginType": "package",
-  "package": {
-    "skill": 1,
-    "command": 17
-  },
+  "pluginType": "wrapper",
   "author": {
     "name": "Paul Bakaus"
   },
@@ -20,20 +16,6 @@
   "updatedAt": "2026-03-05T19:03:03Z",
   "contents": {
     "files": [
-      {
-        "name": ".claude-plugin",
-        "type": "directory",
-        "children": [
-          {
-            "name": "marketplace.json",
-            "type": "file"
-          },
-          {
-            "name": "plugin.json",
-            "type": "file"
-          }
-        ]
-      },
       {
         "name": ".claude",
         "type": "directory",
@@ -147,10 +129,6 @@
                 "type": "directory",
                 "children": [
                   {
-                    "name": "SKILL.md",
-                    "type": "file"
-                  },
-                  {
                     "name": "reference",
                     "type": "directory",
                     "children": [
@@ -183,6 +161,10 @@
                         "type": "file"
                       }
                     ]
+                  },
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
                   }
                 ]
               },
@@ -261,11 +243,863 @@
         ]
       },
       {
+        "name": ".claude-plugin",
+        "type": "directory",
+        "children": [
+          {
+            "name": "marketplace.json",
+            "type": "file"
+          },
+          {
+            "name": "plugin.json",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "api",
+        "type": "directory",
+        "children": [
+          {
+            "name": "command-source",
+            "type": "directory",
+            "children": [
+              {
+                "name": "[id].js",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "download",
+            "type": "directory",
+            "children": [
+              {
+                "name": "[type]",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "[provider]",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "[id].js",
+                        "type": "file"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "bundle",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "[provider].js",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "commands.js",
+            "type": "file"
+          },
+          {
+            "name": "patterns.js",
+            "type": "file"
+          },
+          {
+            "name": "skills.js",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "public",
+        "type": "directory",
+        "children": [
+          {
+            "name": "antipattern-examples",
+            "type": "directory",
+            "children": [
+              {
+                "name": "bad-contrast.html",
+                "type": "file"
+              },
+              {
+                "name": "cardocalypse.html",
+                "type": "file"
+              },
+              {
+                "name": "inter-everywhere.html",
+                "type": "file"
+              },
+              {
+                "name": "layout-templates.html",
+                "type": "file"
+              },
+              {
+                "name": "lazy-cool.html",
+                "type": "file"
+              },
+              {
+                "name": "lazy-impact.html",
+                "type": "file"
+              },
+              {
+                "name": "massive-icons.html",
+                "type": "file"
+              },
+              {
+                "name": "modal-abuse.html",
+                "type": "file"
+              },
+              {
+                "name": "purple-gradients.html",
+                "type": "file"
+              },
+              {
+                "name": "redundant-ux-writing.html",
+                "type": "file"
+              },
+              {
+                "name": "thick-border-cards.html",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "antipattern-images",
+            "type": "directory",
+            "children": [
+              {
+                "name": "bad-contrast.png",
+                "type": "file"
+              },
+              {
+                "name": "cardocalypse.png",
+                "type": "file"
+              },
+              {
+                "name": "inter-everywhere.png",
+                "type": "file"
+              },
+              {
+                "name": "layout-templates.png",
+                "type": "file"
+              },
+              {
+                "name": "lazy-cool.png",
+                "type": "file"
+              },
+              {
+                "name": "lazy-impact.png",
+                "type": "file"
+              },
+              {
+                "name": "massive-icons.png",
+                "type": "file"
+              },
+              {
+                "name": "modal-abuse.png",
+                "type": "file"
+              },
+              {
+                "name": "purple-gradients.png",
+                "type": "file"
+              },
+              {
+                "name": "redundant-ux-writing.png",
+                "type": "file"
+              },
+              {
+                "name": "thick-border-cards.png",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "assets",
+            "type": "directory",
+            "children": [
+              {
+                "name": "dashboard.after.webp",
+                "type": "file"
+              },
+              {
+                "name": "dashboard.before.webp",
+                "type": "file"
+              },
+              {
+                "name": "diamond.svg",
+                "type": "file"
+              },
+              {
+                "name": "form.after.webp",
+                "type": "file"
+              },
+              {
+                "name": "form.before.webp",
+                "type": "file"
+              },
+              {
+                "name": "landing.after.webp",
+                "type": "file"
+              },
+              {
+                "name": "landing.before.webp",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "css",
+            "type": "directory",
+            "children": [
+              {
+                "name": "gallery.css",
+                "type": "file"
+              },
+              {
+                "name": "main.css",
+                "type": "file"
+              },
+              {
+                "name": "problem-section.css",
+                "type": "file"
+              },
+              {
+                "name": "skill-demos.css",
+                "type": "file"
+              },
+              {
+                "name": "styles.css",
+                "type": "file"
+              },
+              {
+                "name": "workflow.css",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "js",
+            "type": "directory",
+            "children": [
+              {
+                "name": "components",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "art-gallery.js",
+                    "type": "file"
+                  },
+                  {
+                    "name": "framework-viz.js",
+                    "type": "file"
+                  },
+                  {
+                    "name": "glass-terminal.js",
+                    "type": "file"
+                  },
+                  {
+                    "name": "lens.js",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "demos",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "commands",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "adapt.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "animate.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "audit.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "bolder.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "clarify.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "colorize.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "critique.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "delight.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "distill.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "extract.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "harden.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "index.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "normalize.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "onboard.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "optimize.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "polish.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "quieter.js",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "skills",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "color-and-contrast.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "index.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "interaction-design.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "motion-design.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "responsive-design.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "spatial-design.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "typography.js",
+                        "type": "file"
+                      },
+                      {
+                        "name": "ux-writing.js",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "index.js",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "effects",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "hero-shader.js",
+                    "type": "file"
+                  },
+                  {
+                    "name": "liquid-canvas.js",
+                    "type": "file"
+                  },
+                  {
+                    "name": "split-compare.js",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "utils",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "reveal.js",
+                    "type": "file"
+                  },
+                  {
+                    "name": "scroll.js",
+                    "type": "file"
+                  },
+                  {
+                    "name": "theme.js",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "data.js",
+                "type": "file"
+              },
+              {
+                "name": "demo-renderer.js",
+                "type": "file"
+              },
+              {
+                "name": "demo-toggles.js",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "app.js",
+            "type": "file"
+          },
+          {
+            "name": "apple-touch-icon.png",
+            "type": "file"
+          },
+          {
+            "name": "cheatsheet.html",
+            "type": "file"
+          },
+          {
+            "name": "favicon.svg",
+            "type": "file"
+          },
+          {
+            "name": "index.html",
+            "type": "file"
+          },
+          {
+            "name": "og-image.jpg",
+            "type": "file"
+          },
+          {
+            "name": "robots.txt",
+            "type": "file"
+          },
+          {
+            "name": "sitemap.xml",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "scripts",
+        "type": "directory",
+        "children": [
+          {
+            "name": "lib",
+            "type": "directory",
+            "children": [
+              {
+                "name": "transformers",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "agents.js",
+                    "type": "file"
+                  },
+                  {
+                    "name": "claude-code.js",
+                    "type": "file"
+                  },
+                  {
+                    "name": "codex.js",
+                    "type": "file"
+                  },
+                  {
+                    "name": "cursor.js",
+                    "type": "file"
+                  },
+                  {
+                    "name": "gemini.js",
+                    "type": "file"
+                  },
+                  {
+                    "name": "index.js",
+                    "type": "file"
+                  },
+                  {
+                    "name": "kiro.js",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "utils.js",
+                "type": "file"
+              },
+              {
+                "name": "zip.js",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "build.js",
+            "type": "file"
+          },
+          {
+            "name": "generate-og-image.js",
+            "type": "file"
+          },
+          {
+            "name": "screenshot-antipatterns.js",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "server",
+        "type": "directory",
+        "children": [
+          {
+            "name": "lib",
+            "type": "directory",
+            "children": [
+              {
+                "name": "api-handlers.js",
+                "type": "file"
+              },
+              {
+                "name": "validation.js",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "index.js",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": "source",
+        "type": "directory",
+        "children": [
+          {
+            "name": "skills",
+            "type": "directory",
+            "children": [
+              {
+                "name": "adapt",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "animate",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "audit",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "bolder",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "clarify",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "colorize",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "critique",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "delight",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "distill",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "extract",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "frontend-design",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "reference",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "color-and-contrast.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "interaction-design.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "motion-design.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "responsive-design.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "spatial-design.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "typography.md",
+                        "type": "file"
+                      },
+                      {
+                        "name": "ux-writing.md",
+                        "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "harden",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "normalize",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "onboard",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "optimize",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "polish",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "quieter",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "teach-impeccable",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "SKILL.md",
+                    "type": "file"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "tests",
+        "type": "directory",
+        "children": [
+          {
+            "name": "lib",
+            "type": "directory",
+            "children": [
+              {
+                "name": "transformers",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "claude-code.test.js",
+                    "type": "file"
+                  },
+                  {
+                    "name": "codex.test.js",
+                    "type": "file"
+                  },
+                  {
+                    "name": "cursor.test.js",
+                    "type": "file"
+                  },
+                  {
+                    "name": "gemini.test.js",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
+                "name": "utils.test.js",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "name": "build.test.js",
+            "type": "file"
+          }
+        ]
+      },
+      {
+        "name": ".gitignore",
+        "type": "file"
+      },
+      {
+        "name": ".vercelignore",
+        "type": "file"
+      },
+      {
+        "name": "AGENTS.md",
+        "type": "file"
+      },
+      {
+        "name": "biome.json",
+        "type": "file"
+      },
+      {
+        "name": "bun.lock",
+        "type": "file"
+      },
+      {
         "name": "CLAUDE.md",
         "type": "file"
       },
       {
-        "name": "README.md",
+        "name": "DEVELOP.md",
         "type": "file"
       },
       {
@@ -275,8 +1109,22 @@
       {
         "name": "NOTICE.md",
         "type": "file"
+      },
+      {
+        "name": "package.json",
+        "type": "file"
+      },
+      {
+        "name": "README.md",
+        "type": "file"
+      },
+      {
+        "name": "vercel.json",
+        "type": "file"
       }
     ]
   },
-  "marketplace": "impeccable"
+  "marketplace": "impeccable",
+  "contentHash": "dd8c6d6ca2b603a4",
+  "wrapper": "skill"
 }
