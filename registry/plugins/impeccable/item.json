@@ -13,7 +13,7 @@
     "name": "Paul Bakaus"
   },
   "externalUrl": "https://github.com/pbakaus/impeccable/tree/main",
-  "updatedAt": "2026-03-05T19:03:03Z",
+  "updatedAt": "2026-03-09T01:34:14Z",
   "contents": {
     "files": [
       {
@@ -257,62 +257,46 @@
         ]
       },
       {
-        "name": "api",
+        "name": "functions",
         "type": "directory",
         "children": [
           {
-            "name": "command-source",
+            "name": "api",
             "type": "directory",
             "children": [
               {
-                "name": "[id].js",
-                "type": "file"
-              }
-            ]
-          },
-          {
-            "name": "download",
-            "type": "directory",
-            "children": [
-              {
-                "name": "[type]",
+                "name": "download",
                 "type": "directory",
                 "children": [
                   {
-                    "name": "[provider]",
+                    "name": "[type]",
                     "type": "directory",
                     "children": [
                       {
-                        "name": "[id].js",
+                        "name": "[provider]",
+                        "type": "directory",
+                        "children": [
+                          {
+                            "name": "[id].js",
+                            "type": "file"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "bundle",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "[provider].js",
                         "type": "file"
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "bundle",
-                "type": "directory",
-                "children": [
-                  {
-                    "name": "[provider].js",
-                    "type": "file"
-                  }
-                ]
               }
             ]
-          },
-          {
-            "name": "commands.js",
-            "type": "file"
-          },
-          {
-            "name": "patterns.js",
-            "type": "file"
-          },
-          {
-            "name": "skills.js",
-            "type": "file"
           }
         ]
       },
@@ -1079,10 +1063,6 @@
         "type": "file"
       },
       {
-        "name": ".vercelignore",
-        "type": "file"
-      },
-      {
         "name": "AGENTS.md",
         "type": "file"
       },
@@ -1119,12 +1099,12 @@
         "type": "file"
       },
       {
-        "name": "vercel.json",
+        "name": "wrangler.toml",
         "type": "file"
       }
     ]
   },
   "marketplace": "impeccable",
-  "contentHash": "dd8c6d6ca2b603a4",
+  "contentHash": "e73fe074c6e53177",
   "wrapper": "skill"
 }
