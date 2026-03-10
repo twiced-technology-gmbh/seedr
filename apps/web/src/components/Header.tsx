@@ -32,7 +32,7 @@ export function Header() {
             icon={<ToolrAppLogo app="toolr" size={14} />}
             href="https://toolr.dev"
             size="sm"
-            color="blue"
+            accentColor="blue"
             tooltip={{ description: "Visit toolr.dev" }}
             tooltipPosition="bottom"
           />
@@ -40,7 +40,6 @@ export function Header() {
             icon={<TwiceDLogo size={14} />}
             href="https://twiced.de"
             size="sm"
-            color="cyan"
             tooltip={{ description: "Visit twiced.de" }}
             tooltipPosition="bottom"
           />
@@ -48,7 +47,7 @@ export function Header() {
             icon={<Github className="w-4 h-4" />}
             href="https://github.com/twiced-technology-gmbh/seedr"
             size="sm"
-            color="neutral"
+            accentColor="neutral"
             tooltip={{ description: "View source code" }}
             tooltipPosition="bottom"
           />

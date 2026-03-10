@@ -25,7 +25,7 @@ export function ScopeBadge({ scope, className = "", size = "sm" }: ScopeBadgePro
   return (
     <Label
       text={scopeLabels[scope]}
-      color={scopeToBadgeColor[scope]}
+      accentColor={scopeToBadgeColor[scope]}
       icon={scopeIcons[scope]}
       size={size}
       tooltip={{

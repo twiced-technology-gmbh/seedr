@@ -8,7 +8,7 @@ import { ItemCard } from "@/components/ItemCard";
 import { typeIcons } from "@/components/TypeIcon";
 import { getAllItems, getTypeCounts, fuseOptions } from "@/lib/registry";
 import { pluralize } from "@/lib/text";
-import type { ComponentType, AITool, SourceType, ScopeType } from "@/lib/types";
+import type { ComponentType, CodingAgent, SourceType, ScopeType } from "@/lib/types";
 import { typeTextColors, typeLabelPlural } from "@/lib/colors";
 
 // Only descriptions for types shown on home page
@@ -32,7 +32,7 @@ const displayTypes: ComponentType[] = [
   "mcp",
 ];
 
-import { toolOptions, sourceOptions, scopeOptions } from "@/lib/filterOptions";
+import { agentOptions, sourceOptions, scopeOptions } from "@/lib/filterOptions";
 
 export function Home() {
   const { searchParams, setSearchParams, updateParams } = useUpdateParams();
@@ -40,7 +40,7 @@ export function Home() {
 
   // Read state from URL search params
   const query = searchParams.get("q") ?? "";
-  const toolFilter = (searchParams.get("tool") as AITool | null);
+  const toolFilter = (searchParams.get("tool") as CodingAgent | null);
   const sourceFilter = (searchParams.get("source") as SourceType | null);
   const scopeFilter = (searchParams.get("scope") as ScopeType | null);
 
@@ -109,7 +109,7 @@ export function Home() {
             size="sm"
             value={query}
             onChange={setQuery}
-            color="cyan"
+            accentColor="cyan"
           />
         </div>
       </div>
@@ -129,7 +129,7 @@ export function Home() {
                 options={sourceOptions}
                 onChange={setSourceFilter}
                 allLabel="Source"
-                color="cyan"
+                accentColor="cyan"
               />
 
               {sourceFilter === "toolr" && (
@@ -138,22 +138,22 @@ export function Home() {
                   options={scopeOptions}
                   onChange={setScopeFilter}
                   allLabel="Scope"
-                  color="cyan"
+                  accentColor="cyan"
                 />
               )}
 
               <FilterDropdown
                 value={toolFilter ?? ""}
-                options={toolOptions}
+                options={agentOptions}
                 onChange={setToolFilter}
-                allLabel="Tool"
-                color="cyan"
+                allLabel="Agent"
+                accentColor="cyan"
               />
 
               {hasActiveFilters && (
                 <IconButton
                   icon="x"
-                  color="red"
+                  accentColor="red"
                   size="sm"
                   tooltip={{ description: "Reset all filters" }}
                   onClick={resetFilters}

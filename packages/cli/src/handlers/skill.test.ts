@@ -57,7 +57,7 @@ describe("skill handler", () => {
 
       expect(results).toHaveLength(1);
       expect(results[0]?.success).toBe(true);
-      expect(results[0]?.tool).toBe("claude");
+      expect(results[0]?.agent).toBe("claude");
       expect(results[0]?.path).toBe("/my/project/.claude/skills/test-skill");
     });
 
@@ -178,7 +178,7 @@ describe("skill handler", () => {
 
       // Their results should point to the central path
       for (const tool of ["gemini", "codex", "opencode"] as const) {
-        const result = results.find((r) => r.tool === tool);
+        const result = results.find((r) => r.agent === tool);
         expect(result?.path).toBe("/my/project/.agents/skills/test-skill");
       }
     });

@@ -1,11 +1,11 @@
-import { toolLabels, sourceLabels, scopeLabels } from "./colors";
+import { agentLabels, sourceLabels, scopeLabels } from "./colors";
 
-export const toolOptions = [
-  { value: "claude", label: toolLabels.claude },
-  { value: "copilot", label: toolLabels.copilot },
-  { value: "gemini", label: toolLabels.gemini },
-  { value: "codex", label: toolLabels.codex },
-  { value: "opencode", label: toolLabels.opencode },
+export const agentOptions = [
+  { value: "claude", label: agentLabels.claude },
+  { value: "copilot", label: agentLabels.copilot },
+  { value: "gemini", label: agentLabels.gemini },
+  { value: "codex", label: agentLabels.codex },
+  { value: "opencode", label: agentLabels.opencode },
 ];
 
 export const sourceOptions = [

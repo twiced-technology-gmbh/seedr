@@ -1,7 +1,7 @@
 import * as p from "@clack/prompts";
 import chalk from "chalk";
-import type { AITool, InstallScope, InstallMethod, RegistryItem } from "../types.js";
-import { AI_TOOLS } from "../config/tools.js";
+import type { CodingAgent, InstallScope, InstallMethod, RegistryItem } from "../types.js";
+import { CODING_AGENTS } from "../config/agents.js";
 
 const LOGO = `
 ███████╗███████╗███████╗██████╗ ██████╗
@@ -39,12 +39,12 @@ export async function selectSkill(items: RegistryItem[]): Promise<RegistryItem |
   return result as RegistryItem | symbol;
 }
 
-export async function selectTools(compatible: AITool[]): Promise<AITool[] | symbol> {
+export async function selectAgents(compatible: CodingAgent[]): Promise<CodingAgent[] | symbol> {
   const allOption = await p.select({
-    message: "Which AI tools do you want to install for?",
+    message: "Which coding agents do you want to install for?",
     options: [
       { label: `All (${compatible.length} agents)`, value: "all" as const },
-      { label: "Select specific tools...", value: "select" as const },
+      { label: "Select specific agents...", value: "select" as const },
     ],
   });
 
@@ -52,17 +52,17 @@ export async function selectTools(compatible: AITool[]): Promise<AITool[] | symb
   if (allOption === "all") return compatible;
 
   const result = await p.multiselect({
-    message: "Select tools",
-    options: compatible.map((tool) => ({
-      label: AI_TOOLS[tool].name,
-      value: tool,
-      hint: AI_TOOLS[tool].projectRoot,
+    message: "Select agents",
+    options: compatible.map((agent) => ({
+      label: CODING_AGENTS[agent].name,
+      value: agent,
+      hint: CODING_AGENTS[agent].projectRoot,
     })),
-    initialValues: ["claude" as AITool],
+    initialValues: ["claude" as CodingAgent],
     required: true,
   });
 
-  return result as AITool[] | symbol;
+  return result as CodingAgent[] | symbol;
 }
 
 export async function selectScope(includeLocal = false): Promise<InstallScope | symbol> {
@@ -82,7 +82,7 @@ export async function selectMethod(symlinkPath: string): Promise<InstallMethod |
     message: "Installation method",
     options: [
       { label: "Symlink", value: "symlink" as const, hint: `shared at ${symlinkPath}` },
-      { label: "Copy", value: "copy" as const, hint: "standalone copy per tool" },
+      { label: "Copy", value: "copy" as const, hint: "standalone copy per agent" },
     ],
   });
   return result as InstallMethod | symbol;

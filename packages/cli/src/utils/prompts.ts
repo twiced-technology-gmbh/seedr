@@ -1,6 +1,6 @@
 import inquirer from "inquirer";
-import type { AITool, InstallScope, InstallMethod, RegistryItem } from "../types.js";
-import { AI_TOOLS } from "../config/tools.js";
+import type { CodingAgent, InstallScope, InstallMethod, RegistryItem } from "../types.js";
+import { CODING_AGENTS } from "../config/agents.js";
 
 export async function promptSkillSelection(
   items: RegistryItem[]
@@ -20,14 +20,14 @@ export async function promptSkillSelection(
   return skill;
 }
 
-export async function promptToolSelection(
-  compatible: AITool[]
-): Promise<AITool[]> {
+export async function promptAgentSelection(
+  compatible: CodingAgent[]
+): Promise<CodingAgent[]> {
   const { selection } = await inquirer.prompt<{ selection: "all" | "select" }>([
     {
       type: "select",
       name: "selection",
-      message: "Which AI tools do you want to install for?",
+      message: "Which coding agents do you want to install for?",
       choices: [
         {
           name: `All (${compatible.length} agents)`,
@@ -35,7 +35,7 @@ export async function promptToolSelection(
           short: "All",
         },
         {
-          name: "Select specific tools...",
+          name: "Select specific agents...",
           value: "select",
           short: "Select",
         },
@@ -47,23 +47,23 @@ export async function promptToolSelection(
     return compatible;
   }
 
-  const choices = compatible.map((tool) => ({
-    name: AI_TOOLS[tool].name,
-    value: tool,
-    checked: tool === "claude",
+  const choices = compatible.map((agent) => ({
+    name: CODING_AGENTS[agent].name,
+    value: agent,
+    checked: agent === "claude",
   }));
 
-  const { tools } = await inquirer.prompt<{ tools: AITool[] }>([
+  const { agents } = await inquirer.prompt<{ agents: CodingAgent[] }>([
     {
       type: "checkbox",
-      name: "tools",
-      message: "Select tools:",
+      name: "agents",
+      message: "Select agents:",
       choices,
       validate: (answer) =>
-        answer.length > 0 ? true : "Please select at least one tool",
+        answer.length > 0 ? true : "Please select at least one agent",
     },
   ]);
-  return tools;
+  return agents;
 }
 
 export async function promptScope(): Promise<InstallScope> {

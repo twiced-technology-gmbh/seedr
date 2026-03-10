@@ -1,6 +1,6 @@
 // Re-export shared types
 export type {
-  AITool,
+  CodingAgent,
   ComponentType,
   RegistryItem,
   RegistryManifest,
@@ -18,7 +18,7 @@ export type InstallMethod = "symlink" | "copy";
 export type ContentStructure = "directory" | "file" | "json-merge" | "plugin";
 
 export interface ContentTypeConfig {
-  /** Relative path from tool root (e.g., "skills", "agents") */
+  /** Relative path from agent root (e.g., "skills", "agents") */
   path: string;
   /** File extension (e.g., ".md") */
   extension: string;
@@ -32,7 +32,7 @@ export interface ContentTypeConfig {
   mergeField?: string;
 }
 
-export interface AIToolConfig {
+export interface CodingAgentConfig {
   /** Display name (e.g., "Claude Code") */
   name: string;
   /** Short identifier (e.g., "claude") */
@@ -57,7 +57,7 @@ export interface InstallOptions {
 export interface InstalledItem {
   slug: string;
   type: string;
-  tool: string;
+  agent: string;
   scope: InstallScope;
   method: InstallMethod;
   path: string;

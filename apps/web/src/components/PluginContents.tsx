@@ -1,5 +1,5 @@
 import { typeTextColors } from "@/lib/colors";
-import { extensionTypes } from "@/lib/extensionTypes";
+import { capabilityTypes } from "@/lib/capabilityTypes";
 
 interface PluginContentsProps {
   counts: Record<string, number>;
@@ -7,7 +7,7 @@ interface PluginContentsProps {
 }
 
 export function PluginContents({ counts, className = "" }: PluginContentsProps) {
-  const items = extensionTypes
+  const items = capabilityTypes
     .map(({ type, icon, label, labelPlural }) => {
       const count = counts[type];
       if (!count || count <= 0) return null;

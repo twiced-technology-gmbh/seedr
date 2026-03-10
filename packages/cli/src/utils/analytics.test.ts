@@ -23,8 +23,8 @@ afterEach(() => {
 describe("trackInstalls", () => {
   it("sends a POST for each successful result", () => {
     const results: InstallResult[] = [
-      { tool: "claude", success: true, path: "/some/path" },
-      { tool: "copilot", success: true, path: "/other/path" },
+      { agent: "claude", success: true, path: "/some/path" },
+      { agent: "copilot", success: true, path: "/other/path" },
     ];
 
     trackInstalls("pdf", "skill", results, "project");
@@ -39,7 +39,7 @@ describe("trackInstalls", () => {
     expect(body).toEqual({
       slug: "pdf",
       type: "skill",
-      tool: "claude",
+      agent: "claude",
       scope: "project",
       version: "0.1.44",
     });
@@ -47,22 +47,22 @@ describe("trackInstalls", () => {
 
   it("skips failed results", () => {
     const results: InstallResult[] = [
-      { tool: "claude", success: true, path: "/some/path" },
-      { tool: "copilot", success: false, path: "", error: "failed" },
+      { agent: "claude", success: true, path: "/some/path" },
+      { agent: "copilot", success: false, path: "", error: "failed" },
     ];
 
     trackInstalls("pdf", "skill", results, "project");
 
     expect(fetchMock).toHaveBeenCalledTimes(1);
     const body = JSON.parse(fetchMock.mock.calls[0]![1].body);
-    expect(body.tool).toBe("claude");
+    expect(body.agent).toBe("claude");
   });
 
   it("does nothing when SEEDR_NO_TELEMETRY is set", () => {
     process.env.SEEDR_NO_TELEMETRY = "1";
 
     const results: InstallResult[] = [
-      { tool: "claude", success: true, path: "/some/path" },
+      { agent: "claude", success: true, path: "/some/path" },
     ];
 
     trackInstalls("pdf", "skill", results, "project");

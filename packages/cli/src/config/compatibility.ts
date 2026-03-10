@@ -1,10 +1,10 @@
-import type { AITool, ComponentType } from "../types.js";
+import type { CodingAgent, ComponentType } from "@seedr/shared";
 
 /**
- * Maps content types to the AI tools that support them.
+ * Maps content types to the coding agents that support them.
  * Skills and MCP are cross-platform, everything else is Claude-only.
  */
-export const TOOL_COMPATIBILITY: Record<ComponentType, AITool[]> = {
+export const AGENT_COMPATIBILITY: Record<ComponentType, CodingAgent[]> = {
   skill: ["claude", "copilot", "gemini", "codex", "opencode"],
   command: ["claude"],
   agent: ["claude"],
@@ -15,26 +15,26 @@ export const TOOL_COMPATIBILITY: Record<ComponentType, AITool[]> = {
 };
 
 /**
- * Check if a content type is supported by a specific tool.
+ * Check if a content type is supported by a specific agent.
  */
-export function isTypeSupported(type: ComponentType, tool: AITool): boolean {
-  return TOOL_COMPATIBILITY[type].includes(tool);
+export function isTypeSupported(type: ComponentType, agent: CodingAgent): boolean {
+  return AGENT_COMPATIBILITY[type].includes(agent);
 }
 
 /**
- * Get all tools that support a given content type.
+ * Get all agents that support a given content type.
  */
-export function getCompatibleTools(type: ComponentType): AITool[] {
-  return TOOL_COMPATIBILITY[type];
+export function getCompatibleAgents(type: ComponentType): CodingAgent[] {
+  return AGENT_COMPATIBILITY[type];
 }
 
 /**
- * Filter tools to only those that support the given content type.
+ * Filter agents to only those that support the given content type.
  */
-export function filterCompatibleTools(
+export function filterCompatibleAgents(
   type: ComponentType,
-  tools: AITool[]
-): AITool[] {
-  const compatible = TOOL_COMPATIBILITY[type];
-  return tools.filter((t) => compatible.includes(t));
+  agents: CodingAgent[]
+): CodingAgent[] {
+  const compatible = AGENT_COMPATIBILITY[type];
+  return agents.filter((a) => compatible.includes(a));
 }

@@ -206,7 +206,7 @@ Do NOT blindly use the description from plugin.json or SKILL.md frontmatter. Ins
 
 **`description` rules:**
 
-A single sentence that tells the user what the extension is capable of.
+A single sentence that tells the user what the item does.
 
 - One clear sentence — naturally short because it focuses on the core capability
 - Lead with what it *does*, not what it *is* ("Manage GitLab repos, MRs, and CI/CD pipelines from Claude Code" not "GitLab DevOps platform integration")
@@ -290,7 +290,7 @@ Item shape:
   "compatibility": ["<from user>"],
   "sourceType": "community",
   "pluginType": "<package|wrapper|integration>",
-  "wrapper": "<extension type if wrapper>",
+  "wrapper": "<capability type if wrapper>",
   "package": { "<type>": <count>, ... },
   "author": {
     "name": "<from plugin.json or repo owner>",
@@ -311,7 +311,7 @@ Notes:
 
 **Plugin classification** — after building the file tree, classify the plugin:
 
-Count extension types by scanning root-level and `.claude/` subdirectories:
+Count capability types by scanning root-level and `.claude/` subdirectories:
 - `skills/` → count `.md` files or skill directories
 - `agents/` → count `.md` files or agent directories
 - `commands/` → count `.md` files or command directories
@@ -319,9 +319,9 @@ Count extension types by scanning root-level and `.claude/` subdirectories:
 - `mcp-servers/` or `.mcp.json` → count MCP servers. Also check `plugin.json` for `mcpServers` field
 
 Then classify:
-- **0 or 1 extension types** with single item → `pluginType: "wrapper"`, `wrapper: "<type>"` (e.g., `"mcp"`, `"hook"`, `"skill"`)
-- **Multiple extension types** → `pluginType: "package"`, `package: { "skill": N, "agent": N, ... }`
-- **No extensions, only docs** → ask user if this is an `integration` (e.g., LSP setup guide)
+- **0 or 1 capability types** with single item → `pluginType: "wrapper"`, `wrapper: "<type>"` (e.g., `"mcp"`, `"hook"`, `"skill"`)
+- **Multiple capability types** → `pluginType: "package"`, `package: { "skill": N, "agent": N, ... }`
+- **No capabilities, only docs** → ask user if this is an `integration` (e.g., LSP setup guide)
 
 Write with `JSON.stringify(item, null, 2) + "\n"`.
 

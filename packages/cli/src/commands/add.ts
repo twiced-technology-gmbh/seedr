@@ -1,16 +1,16 @@
 import { Command } from "commander";
 import chalk from "chalk";
-import type { AITool, InstallScope, InstallMethod, RegistryItem } from "../types.js";
+import type { CodingAgent, InstallScope, InstallMethod, RegistryItem } from "../types.js";
 import type { ComponentType } from "@seedr/shared";
 import { listItems, getItem, searchItems } from "../config/registry.js";
-import { parseToolsArg } from "../utils/detection.js";
+import { parseAgentsArg } from "../utils/detection.js";
 import * as ui from "../utils/ui.js";
 import { getHandler } from "../handlers/registry.js";
 import type { InstallResult } from "../handlers/types.js";
 import { handleCommandError } from "../utils/errors.js";
 import { trackInstalls } from "../utils/analytics.js";
-import { AI_TOOLS, getContentPath } from "../config/tools.js";
-import { filterCompatibleTools } from "../config/compatibility.js";
+import { CODING_AGENTS, getContentPath } from "../config/agents.js";
+import { filterCompatibleAgents } from "../config/compatibility.js";
 import { getAgentsPath } from "../utils/fs.js";
 
 // Ensure handlers are registered
@@ -67,30 +67,30 @@ async function resolveItem(
   return selected as RegistryItem;
 }
 
-function resolveTools(
+function resolveAgents(
   agentsArg: string | undefined,
   item: RegistryItem
-): AITool[] {
-  // Filter tools by both item compatibility and type compatibility
-  const typeCompatible = filterCompatibleTools(item.type, item.compatibility);
+): CodingAgent[] {
+  // Filter agents by both item compatibility and type compatibility
+  const typeCompatible = filterCompatibleAgents(item.type, item.compatibility);
 
   if (!agentsArg) return [];
 
-  const tools = parseToolsArg(agentsArg, typeCompatible);
+  const agents = parseAgentsArg(agentsArg, typeCompatible);
 
-  if (agentsArg === "all") return tools;
+  if (agentsArg === "all") return agents;
 
-  const incompatible = tools.filter((t) => !typeCompatible.includes(t));
+  const incompatible = agents.filter((a) => !typeCompatible.includes(a));
   if (incompatible.length > 0) {
     ui.warn(`${incompatible.join(", ")} not compatible with this ${item.type}`);
-    return tools.filter((t) => typeCompatible.includes(t));
+    return agents.filter((a) => typeCompatible.includes(a));
   }
-  return tools;
+  return agents;
 }
 
 function printDryRunSummary(
   item: RegistryItem,
-  tools: AITool[],
+  agents: CodingAgent[],
   scope: InstallScope,
   method: InstallMethod,
   cwd: string
@@ -109,14 +109,14 @@ function printDryRunSummary(
     console.log(chalk.cyan("  Central storage:"));
     console.log(`    ${chalk.gray("→")} ${chalk.gray(centralPath)}`);
     console.log();
-    console.log(chalk.cyan("  Symlinks from tool folders:"));
+    console.log(chalk.cyan("  Symlinks from agent folders:"));
   } else {
     console.log(chalk.cyan("  Target locations:"));
   }
 
-  for (const tool of tools) {
-    const config = AI_TOOLS[tool];
-    const contentPath = getContentPath(tool, item.type, scope, cwd);
+  for (const agent of agents) {
+    const config = CODING_AGENTS[agent];
+    const contentPath = getContentPath(agent, item.type, scope, cwd);
     if (!contentPath) {
       console.log(`    ${chalk.gray("→")} ${chalk.white(config.name)}: ${chalk.red("not supported")}`);
       continue;
@@ -133,16 +133,16 @@ function printInstallSummary(results: InstallResult[]): void {
   const failed = results.filter((r) => !r.success);
 
   if (successful.length > 0) {
-    ui.success(`Installed for ${successful.length} tool(s)`);
+    ui.success(`Installed for ${successful.length} agent(s)`);
     for (const r of successful) {
       console.log(chalk.gray(`    → ${r.path}`));
     }
   }
 
   if (failed.length > 0) {
-    ui.error(`Failed for ${failed.length} tool(s)`);
+    ui.error(`Failed for ${failed.length} agent(s)`);
     for (const r of failed) {
-      console.log(chalk.red(`    × ${r.tool}: ${r.error}`));
+      console.log(chalk.red(`    × ${r.agent}: ${r.error}`));
     }
     process.exit(1);
   }
@@ -153,8 +153,8 @@ export const addCommand = new Command("add")
   .argument("[name]", "Name of the item to install")
   .option("-t, --type <type>", "Content type: skill, agent, hook, mcp, plugin, settings")
   .option(
-    "-a, --agents <tools>",
-    "Comma-separated AI tools or 'all' (claude,copilot,gemini,codex,opencode)"
+    "-a, --agents <agents>",
+    "Comma-separated coding agents or 'all' (claude,copilot,gemini,codex,opencode)"
   )
   .option("-s, --scope <scope>", "Installation scope: project, user, or local")
   .option("-m, --method <method>", "Installation method: symlink or copy")
@@ -182,30 +182,30 @@ export const addCommand = new Command("add")
         process.exit(1);
       }
 
-      // Step 2: Get or prompt for tools
-      let tools = resolveTools(options.agents, item);
-      const typeCompatible = filterCompatibleTools(item.type, item.compatibility);
+      // Step 2: Get or prompt for agents
+      let agents = resolveAgents(options.agents, item);
+      const typeCompatible = filterCompatibleAgents(item.type, item.compatibility);
 
-      if (tools.length === 0) {
+      if (agents.length === 0) {
         if (typeCompatible.length === 1) {
-          // Only one compatible tool, use it directly
-          tools = typeCompatible;
+          // Only one compatible agent, use it directly
+          agents = typeCompatible;
         } else {
-          const selected = await ui.selectTools(typeCompatible);
+          const selected = await ui.selectAgents(typeCompatible);
           if (ui.prompts.isCancel(selected)) {
             ui.cancelled();
             return;
           }
-          tools = selected as AITool[];
+          agents = selected as CodingAgent[];
         }
       }
 
-      if (tools.length === 0) {
-        ui.error("No valid tools selected");
+      if (agents.length === 0) {
+        ui.error("No valid agents selected");
         process.exit(1);
       }
 
-      ui.step(`Tools: ${chalk.cyan(tools.join(", "))}`);
+      ui.step(`Agents: ${chalk.cyan(agents.join(", "))}`);
 
       // Step 3: Get or prompt for scope
       let scope: InstallScope;
@@ -223,12 +223,12 @@ export const addCommand = new Command("add")
 
       ui.step(`Scope: ${chalk.cyan(scope)}`);
 
-      // Step 4: Get or prompt for method (only if multiple tools selected)
+      // Step 4: Get or prompt for method (only if multiple agents selected)
       let method: InstallMethod;
       if (options.method) {
         method = options.method;
-      } else if (tools.length === 1) {
-        // Single tool - always use copy (symlink only makes sense for shared central storage)
+      } else if (agents.length === 1) {
+        // Single agent - always use copy (symlink only makes sense for shared central storage)
         method = "copy";
       } else {
         const symlinkPath = getAgentsPath(item.type, item.slug, process.cwd());
@@ -245,7 +245,7 @@ export const addCommand = new Command("add")
       // Dry run: show what would happen and exit
       if (options.dryRun) {
         console.log();
-        printDryRunSummary(item, tools, scope, method, process.cwd());
+        printDryRunSummary(item, agents, scope, method, process.cwd());
         ui.outro("Dry run complete");
         return;
       }
@@ -262,7 +262,7 @@ export const addCommand = new Command("add")
 
       // Step 6: Install using the handler and print summary
       console.log();
-      const results = await handler.install(item, tools, scope, method, process.cwd());
+      const results = await handler.install(item, agents, scope, method, process.cwd());
       trackInstalls(item.slug, item.type, results, scope);
       printInstallSummary(results);
 

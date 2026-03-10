@@ -2,34 +2,34 @@ import { Command } from "commander";
 import chalk from "chalk";
 import ora from "ora";
 import { join } from "node:path";
-import { ALL_TOOLS, AI_TOOLS, getToolPath } from "../config/tools.js";
-import { parseToolsArg } from "../utils/detection.js";
+import { ALL_AGENTS, CODING_AGENTS, getAgentPath } from "../config/agents.js";
+import { parseAgentsArg } from "../utils/detection.js";
 import { promptConfirm } from "../utils/prompts.js";
 import { ensureDir, exists, writeTextFile } from "../utils/fs.js";
 import { handleCommandError } from "../utils/errors.js";
 
 export const initCommand = new Command("init")
-  .description("Initialize AI tool configuration directories")
+  .description("Initialize coding agent configuration directories")
   .option(
-    "-a, --agents <tools>",
-    "Comma-separated AI tools or 'all'",
+    "-a, --agents <agents>",
+    "Comma-separated coding agents or 'all'",
     "claude"
   )
   .option("-y, --yes", "Skip confirmation prompts")
   .action(async (options) => {
     try {
-      // Determine which tools to initialize
-      const tools = parseToolsArg(options.agents, ALL_TOOLS);
+      // Determine which agents to initialize
+      const agents = parseAgentsArg(options.agents, ALL_AGENTS);
 
-      if (tools.length === 0) {
-        console.error(chalk.red("No valid tools specified"));
+      if (agents.length === 0) {
+        console.error(chalk.red("No valid agents specified"));
         process.exit(1);
       }
 
       console.log(chalk.cyan("\nWill initialize configuration for:"));
-      for (const tool of tools) {
-        const path = getToolPath(tool, "project");
-        console.log(`  - ${AI_TOOLS[tool].name} → ${path}`);
+      for (const agent of agents) {
+        const path = getAgentPath(agent, "project");
+        console.log(`  - ${CODING_AGENTS[agent].name} → ${path}`);
       }
       console.log("");
 
@@ -41,14 +41,14 @@ export const initCommand = new Command("init")
         }
       }
 
-      for (const tool of tools) {
-        const spinner = ora(`Initializing ${AI_TOOLS[tool].name}...`).start();
+      for (const agent of agents) {
+        const spinner = ora(`Initializing ${CODING_AGENTS[agent].name}...`).start();
 
-        const path = getToolPath(tool, "project");
+        const path = getAgentPath(agent, "project");
 
         if (await exists(path)) {
           spinner.info(
-            chalk.gray(`${AI_TOOLS[tool].name} already initialized`)
+            chalk.gray(`${CODING_AGENTS[agent].name} already initialized`)
           );
           continue;
         }
@@ -59,20 +59,20 @@ export const initCommand = new Command("init")
         const readmePath = join(path, "README.md");
         await writeTextFile(
           readmePath,
-          `# ${AI_TOOLS[tool].name} Configuration
+          `# ${CODING_AGENTS[agent].name} Configuration
 
-This directory contains AI configuration files for ${AI_TOOLS[tool].name}.
+This directory contains AI configuration files for ${CODING_AGENTS[agent].name}.
 
 Add skills with:
 \`\`\`bash
-npx @toolr/seedr add <skill-name> --agents ${tool}
+npx @toolr/seedr add <skill-name> --agents ${agent}
 \`\`\`
 
 Browse available skills at https://seedr.toolr.dev
 `
         );
 
-        spinner.succeed(chalk.green(`Initialized ${AI_TOOLS[tool].name}`));
+        spinner.succeed(chalk.green(`Initialized ${CODING_AGENTS[agent].name}`));
       }
 
       console.log("");

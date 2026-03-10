@@ -2,28 +2,28 @@ import { join } from "node:path";
 import { readdir } from "node:fs/promises";
 import chalk from "chalk";
 import ora from "ora";
-import type { AITool, InstallScope, InstallMethod } from "../types.js";
+import type { CodingAgent, InstallScope, InstallMethod } from "../types.js";
 import type { RegistryItem } from "@seedr/shared";
 import { getItemContent, getItemSourcePath } from "../config/registry.js";
-import { getContentPath, AI_TOOLS } from "../config/tools.js";
+import { getContentPath, CODING_AGENTS } from "../config/agents.js";
 import { exists, ensureDir, writeTextFile, installFile, removeFile } from "../utils/fs.js";
 import type { ContentHandler, InstallResult } from "./types.js";
 
-async function installAgentForTool(
+async function installAgentForCodingAgent(
   item: RegistryItem,
-  tool: AITool,
+  agent: CodingAgent,
   scope: InstallScope,
   method: InstallMethod,
   cwd: string
 ): Promise<InstallResult> {
   const spinner = ora(
-    `Installing ${item.name} for ${AI_TOOLS[tool].name}...`
+    `Installing ${item.name} for ${CODING_AGENTS[agent].name}...`
   ).start();
 
   try {
-    const destDir = getContentPath(tool, "agent", scope, cwd);
+    const destDir = getContentPath(agent, "agent", scope, cwd);
     if (!destDir) {
-      throw new Error(`${AI_TOOLS[tool].name} does not support agents`);
+      throw new Error(`${CODING_AGENTS[agent].name} does not support agents`);
     }
 
     const destPath = join(destDir, `${item.slug}.md`);
@@ -47,29 +47,29 @@ async function installAgentForTool(
     }
 
     spinner.succeed(
-      chalk.green(`Installed ${item.name} for ${AI_TOOLS[tool].name}`)
+      chalk.green(`Installed ${item.name} for ${CODING_AGENTS[agent].name}`)
     );
-    return { tool, success: true, path: destPath };
+    return { agent, success: true, path: destPath };
   } catch (error) {
     const errorMsg = error instanceof Error ? error.message : "Unknown error";
     spinner.fail(
-      chalk.red(`Failed to install for ${AI_TOOLS[tool].name}: ${errorMsg}`)
+      chalk.red(`Failed to install for ${CODING_AGENTS[agent].name}: ${errorMsg}`)
     );
-    return { tool, success: false, path: "", error: errorMsg };
+    return { agent, success: false, path: "", error: errorMsg };
   }
 }
 
 export async function installAgent(
   item: RegistryItem,
-  tools: AITool[],
+  agents: CodingAgent[],
   scope: InstallScope,
   method: InstallMethod,
   cwd: string = process.cwd()
 ): Promise<InstallResult[]> {
   const results: InstallResult[] = [];
 
-  for (const tool of tools) {
-    const result = await installAgentForTool(item, tool, scope, method, cwd);
+  for (const agent of agents) {
+    const result = await installAgentForCodingAgent(item, agent, scope, method, cwd);
     results.push(result);
   }
 
@@ -78,11 +78,11 @@ export async function installAgent(
 
 export async function uninstallAgent(
   slug: string,
-  tool: AITool,
+  agent: CodingAgent,
   scope: InstallScope,
   cwd: string = process.cwd()
 ): Promise<boolean> {
-  const destDir = getContentPath(tool, "agent", scope, cwd);
+  const destDir = getContentPath(agent, "agent", scope, cwd);
   if (!destDir) return false;
 
   const destPath = join(destDir, `${slug}.md`);
@@ -95,11 +95,11 @@ export async function uninstallAgent(
 }
 
 export async function getInstalledAgents(
-  tool: AITool,
+  agent: CodingAgent,
   scope: InstallScope,
   cwd: string = process.cwd()
 ): Promise<string[]> {
-  const destDir = getContentPath(tool, "agent", scope, cwd);
+  const destDir = getContentPath(agent, "agent", scope, cwd);
   if (!destDir || !(await exists(destDir))) {
     return [];
   }
@@ -118,28 +118,28 @@ export const agentHandler: ContentHandler = {
 
   async install(
     item: RegistryItem,
-    tools: AITool[],
+    agents: CodingAgent[],
     scope: InstallScope,
     method: InstallMethod,
     cwd?: string
   ): Promise<InstallResult[]> {
-    return installAgent(item, tools, scope, method, cwd);
+    return installAgent(item, agents, scope, method, cwd);
   },
 
   async uninstall(
     slug: string,
-    tool: AITool,
+    agent: CodingAgent,
     scope: InstallScope,
     cwd?: string
   ): Promise<boolean> {
-    return uninstallAgent(slug, tool, scope, cwd);
+    return uninstallAgent(slug, agent, scope, cwd);
   },
 
   async listInstalled(
-    tool: AITool,
+    agent: CodingAgent,
     scope: InstallScope,
     cwd?: string
   ): Promise<string[]> {
-    return getInstalledAgents(tool, scope, cwd);
+    return getInstalledAgents(agent, scope, cwd);
   },
 };

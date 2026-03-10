@@ -1,5 +1,5 @@
 import type { LabelColor, IconName } from "@toolr/ui-design";
-import type { ComponentType, AITool, SourceType, ScopeType } from "./types";
+import type { ComponentType, CodingAgent, SourceType, ScopeType } from "./types";
 
 export type BadgeColor = LabelColor;
 
@@ -25,7 +25,7 @@ export const typeLabelPlural: Record<ComponentType, string> = {
   mcp: "MCP Servers",
 };
 
-// Type to badge color mapping (matching configr's extensionColors)
+// Type to badge color mapping (matching configr's capabilityColors)
 export const typeToBadgeColor: Record<ComponentType, BadgeColor> = {
   skill: "pink",
   command: "amber",
@@ -92,7 +92,7 @@ export const sourceLabels: Record<SourceType, string> = {
   community: "Community",
 };
 
-export const toolLabels: Record<AITool, string> = {
+export const agentLabels: Record<CodingAgent, string> = {
   claude: "Claude Code",
   copilot: "GitHub Copilot",
   gemini: "Gemini",
@@ -100,8 +100,8 @@ export const toolLabels: Record<AITool, string> = {
   opencode: "OpenCode",
 };
 
-// Tool badge colors
-export const toolToBadgeColor: Record<AITool, BadgeColor> = {
+// Coding agent badge colors
+export const agentToBadgeColor: Record<CodingAgent, BadgeColor> = {
   claude: "orange",
   copilot: "green",
   gemini: "blue",

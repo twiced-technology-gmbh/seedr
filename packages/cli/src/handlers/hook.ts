@@ -3,10 +3,10 @@ import { homedir } from "node:os";
 import { mkdir, copyFile, chmod, rm } from "node:fs/promises";
 import chalk from "chalk";
 import ora from "ora";
-import type { AITool, InstallScope, InstallMethod } from "../types.js";
+import type { CodingAgent, InstallScope, InstallMethod } from "../types.js";
 import type { RegistryItem } from "@seedr/shared";
 import { getItem, getItemSourcePath, fetchItemToDestination } from "../config/registry.js";
-import { getSettingsPath, AI_TOOLS } from "../config/tools.js";
+import { getSettingsPath, CODING_AGENTS } from "../config/agents.js";
 import { exists } from "../utils/fs.js";
 import { readJson, writeJson } from "../utils/json.js";
 import type { ContentHandler, InstallResult } from "./types.js";
@@ -67,19 +67,19 @@ function findScriptFile(item: RegistryItem): string | null {
   return null;
 }
 
-async function installHookForTool(
+async function installHookForAgent(
   item: RegistryItem,
-  tool: AITool,
+  agent: CodingAgent,
   scope: InstallScope,
   _method: InstallMethod,
   cwd: string
 ): Promise<InstallResult> {
   const spinner = ora(
-    `Installing ${item.name} for ${AI_TOOLS[tool].name}...`
+    `Installing ${item.name} for ${CODING_AGENTS[agent].name}...`
   ).start();
 
   try {
-    if (tool !== "claude") {
+    if (agent !== "claude") {
       throw new Error("Hooks are only supported for Claude Code");
     }
 
@@ -164,29 +164,29 @@ async function installHookForTool(
     await writeJson(settingsPath, settings);
 
     spinner.succeed(
-      chalk.green(`Installed ${item.name} for ${AI_TOOLS[tool].name}`)
+      chalk.green(`Installed ${item.name} for ${CODING_AGENTS[agent].name}`)
     );
-    return { tool, success: true, path: destScriptPath };
+    return { agent, success: true, path: destScriptPath };
   } catch (error) {
     const errorMsg = error instanceof Error ? error.message : "Unknown error";
     spinner.fail(
-      chalk.red(`Failed to install for ${AI_TOOLS[tool].name}: ${errorMsg}`)
+      chalk.red(`Failed to install for ${CODING_AGENTS[agent].name}: ${errorMsg}`)
     );
-    return { tool, success: false, path: "", error: errorMsg };
+    return { agent, success: false, path: "", error: errorMsg };
   }
 }
 
 export async function installHook(
   item: RegistryItem,
-  tools: AITool[],
+  agents: CodingAgent[],
   scope: InstallScope,
   method: InstallMethod,
   cwd: string = process.cwd()
 ): Promise<InstallResult[]> {
   const results: InstallResult[] = [];
 
-  for (const tool of tools) {
-    const result = await installHookForTool(item, tool, scope, method, cwd);
+  for (const agent of agents) {
+    const result = await installHookForAgent(item, agent, scope, method, cwd);
     results.push(result);
   }
 
@@ -195,11 +195,11 @@ export async function installHook(
 
 export async function uninstallHook(
   slug: string,
-  tool: AITool,
+  agent: CodingAgent,
   scope: InstallScope,
   cwd: string = process.cwd()
 ): Promise<boolean> {
-  if (tool !== "claude") return false;
+  if (agent !== "claude") return false;
 
   const settingsPath = getSettingsPath(scope, cwd);
   if (!(await exists(settingsPath))) return false;
@@ -273,11 +273,11 @@ export async function uninstallHook(
 }
 
 export async function getInstalledHooks(
-  tool: AITool,
+  agent: CodingAgent,
   scope: InstallScope,
   cwd: string = process.cwd()
 ): Promise<string[]> {
-  if (tool !== "claude") return [];
+  if (agent !== "claude") return [];
 
   const settingsPath = getSettingsPath(scope, cwd);
   if (!(await exists(settingsPath))) return [];
@@ -285,7 +285,7 @@ export async function getInstalledHooks(
   const settings = await readJson<SettingsJson>(settingsPath);
   if (!settings.hooks) return [];
 
-  // Extract slugs from hook command paths (e.g. ".claude/hooks/my-hook.sh" → "my-hook")
+  // Extract slugs from hook command paths (e.g. ".claude/hooks/my-hook.sh" -> "my-hook")
   const slugs = new Set<string>();
   for (const entries of Object.values(settings.hooks)) {
     for (const entry of entries) {
@@ -307,28 +307,28 @@ export const hookHandler: ContentHandler = {
 
   async install(
     item: RegistryItem,
-    tools: AITool[],
+    agents: CodingAgent[],
     scope: InstallScope,
     method: InstallMethod,
     cwd?: string
   ): Promise<InstallResult[]> {
-    return installHook(item, tools, scope, method, cwd);
+    return installHook(item, agents, scope, method, cwd);
   },
 
   async uninstall(
     slug: string,
-    tool: AITool,
+    agent: CodingAgent,
     scope: InstallScope,
     cwd?: string
   ): Promise<boolean> {
-    return uninstallHook(slug, tool, scope, cwd);
+    return uninstallHook(slug, agent, scope, cwd);
   },
 
   async listInstalled(
-    tool: AITool,
+    agent: CodingAgent,
     scope: InstallScope,
     cwd?: string
   ): Promise<string[]> {
-    return getInstalledHooks(tool, scope, cwd);
+    return getInstalledHooks(agent, scope, cwd);
   },
 };

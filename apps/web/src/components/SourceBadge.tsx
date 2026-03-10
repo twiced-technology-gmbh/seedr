@@ -18,7 +18,7 @@ export function SourceBadge({ source, className = "", size = "sm" }: SourceBadge
   return (
     <Label
       text={sourceLabels[source]}
-      color={sourceToBadgeColor[source]}
+      accentColor={sourceToBadgeColor[source]}
       icon="shield"
       size={size}
       tooltip={{ title: sourceLabels[source], description: sourceDescriptions[source] }}

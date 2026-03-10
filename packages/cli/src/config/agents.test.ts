@@ -1,33 +1,33 @@
 import { describe, it, expect, vi } from "vitest";
 import {
-  AI_TOOLS,
-  ALL_TOOLS,
-  getToolConfig,
+  CODING_AGENTS,
+  ALL_AGENTS,
+  getAgentConfig,
   getContentTypeConfig,
-  getToolRoot,
+  getAgentRoot,
   getContentPath,
   getSettingsPath,
   getMcpPath,
-} from "./tools.js";
+} from "./agents.js";
 
 // Mock homedir to return a consistent path for testing
 vi.mock("node:os", () => ({
   homedir: () => "/home/testuser",
 }));
 
-describe("tools", () => {
-  describe("AI_TOOLS", () => {
-    it("should have all 5 tools defined", () => {
-      expect(Object.keys(AI_TOOLS)).toHaveLength(5);
-      expect(AI_TOOLS).toHaveProperty("claude");
-      expect(AI_TOOLS).toHaveProperty("copilot");
-      expect(AI_TOOLS).toHaveProperty("gemini");
-      expect(AI_TOOLS).toHaveProperty("codex");
-      expect(AI_TOOLS).toHaveProperty("opencode");
+describe("agents", () => {
+  describe("CODING_AGENTS", () => {
+    it("should have all 5 agents defined", () => {
+      expect(Object.keys(CODING_AGENTS)).toHaveLength(5);
+      expect(CODING_AGENTS).toHaveProperty("claude");
+      expect(CODING_AGENTS).toHaveProperty("copilot");
+      expect(CODING_AGENTS).toHaveProperty("gemini");
+      expect(CODING_AGENTS).toHaveProperty("codex");
+      expect(CODING_AGENTS).toHaveProperty("opencode");
     });
 
     it("should have correct structure for claude", () => {
-      const claude = AI_TOOLS.claude;
+      const claude = CODING_AGENTS.claude;
       expect(claude.name).toBe("Claude Code");
       expect(claude.shortName).toBe("claude");
       expect(claude.projectRoot).toBe(".claude");
@@ -37,9 +37,9 @@ describe("tools", () => {
       expect(claude.contentTypes).toHaveProperty("mcp");
     });
 
-    it("should have directory structure for skills in all tools", () => {
-      for (const tool of ALL_TOOLS) {
-        const skillConfig = AI_TOOLS[tool].contentTypes.skill;
+    it("should have directory structure for skills in all agents", () => {
+      for (const agent of ALL_AGENTS) {
+        const skillConfig = CODING_AGENTS[agent].contentTypes.skill;
         expect(skillConfig).toBeDefined();
         expect(skillConfig?.structure).toBe("directory");
         expect(skillConfig?.mainFile).toBe("SKILL.md");
@@ -48,9 +48,9 @@ describe("tools", () => {
     });
   });
 
-  describe("getToolConfig", () => {
-    it("should return config for a valid tool", () => {
-      const config = getToolConfig("claude");
+  describe("getAgentConfig", () => {
+    it("should return config for a valid agent", () => {
+      const config = getAgentConfig("claude");
       expect(config.name).toBe("Claude Code");
     });
   });
@@ -75,27 +75,27 @@ describe("tools", () => {
     });
   });
 
-  describe("getToolRoot", () => {
+  describe("getAgentRoot", () => {
     it("should return project root for project scope", () => {
-      const root = getToolRoot("claude", "project", "/my/project");
+      const root = getAgentRoot("claude", "project", "/my/project");
       expect(root).toBe("/my/project/.claude");
     });
 
     it("should return user root for user scope", () => {
-      const root = getToolRoot("claude", "user", "/my/project");
+      const root = getAgentRoot("claude", "user", "/my/project");
       expect(root).toContain(".claude");
     });
 
     it("should return project root for local scope", () => {
-      const root = getToolRoot("claude", "local", "/my/project");
+      const root = getAgentRoot("claude", "local", "/my/project");
       expect(root).toBe("/my/project/.claude");
     });
 
-    it("should use correct project root for each tool", () => {
-      expect(getToolRoot("copilot", "project", "/project")).toBe("/project/.github");
-      expect(getToolRoot("gemini", "project", "/project")).toBe("/project/.gemini");
-      expect(getToolRoot("codex", "project", "/project")).toBe("/project/.codex");
-      expect(getToolRoot("opencode", "project", "/project")).toBe("/project/.opencode");
+    it("should use correct project root for each agent", () => {
+      expect(getAgentRoot("copilot", "project", "/project")).toBe("/project/.github");
+      expect(getAgentRoot("gemini", "project", "/project")).toBe("/project/.gemini");
+      expect(getAgentRoot("codex", "project", "/project")).toBe("/project/.codex");
+      expect(getAgentRoot("opencode", "project", "/project")).toBe("/project/.opencode");
     });
   });
 

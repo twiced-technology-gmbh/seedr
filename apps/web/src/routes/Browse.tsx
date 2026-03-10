@@ -8,10 +8,10 @@ import type { SortField } from "@toolr/ui-design";
 import { ItemCard } from "@/components/ItemCard";
 import { getItemsByType, fuseOptions } from "@/lib/registry";
 import { pluralize } from "@/lib/text";
-import type { ComponentType, AITool, SourceType, ScopeType, PluginType, RegistryItem } from "@/lib/types";
+import type { ComponentType, CodingAgent, SourceType, ScopeType, PluginType, RegistryItem } from "@/lib/types";
 import { typeLabelPlural, typeBreadcrumbIcon, typeBreadcrumbColor } from "@/lib/colors";
 
-import { toolOptions, sourceOptions, scopeOptions } from "@/lib/filterOptions";
+import { agentOptions, sourceOptions, scopeOptions } from "@/lib/filterOptions";
 
 const pluginTypeOptions = [
   { value: "package", label: "Package" },
@@ -25,8 +25,8 @@ const kindOptions = [
   { value: "wrapper", label: "Wrapper" },
 ];
 
-type ExtensionType = "skill" | "hook" | "agent" | "command" | "mcp";
-const extensionOptions = [
+type CapabilityType = "skill" | "hook" | "agent" | "command" | "mcp";
+const capabilityOptions = [
   { value: "skill", label: "Skill" },
   { value: "hook", label: "Hook" },
   { value: "agent", label: "Agent" },
@@ -67,11 +67,11 @@ export function Browse() {
 
   // Read state from URL search params
   const query = searchParams.get("q") ?? "";
-  const toolFilter = (searchParams.get("tool") as AITool | null);
+  const toolFilter = (searchParams.get("tool") as CodingAgent | null);
   const sourceFilter = (searchParams.get("source") as SourceType | null);
   const scopeFilter = (searchParams.get("scope") as ScopeType | null);
   const pluginTypeFilter = (searchParams.get("pluginType") as PluginType | null);
-  const extFilter = (searchParams.get("ext") as ExtensionType | null);
+  const capabilityFilter = (searchParams.get("ext") as CapabilityType | null);
   const kindFilter = (searchParams.get("kind") as ItemKind | null);
   const sortField = searchParams.get("sortField") ?? "name";
   const sortAsc = searchParams.get("sortAsc") !== "false";
@@ -89,14 +89,14 @@ export function Browse() {
   };
   const setScopeFilter = (value: string) => updateParams({ scope: toParam(value) });
   const setPluginTypeFilter = (value: string) => {
-    // Extension filter only applies to wrappers — clear it when switching away
+    // Capability filter only applies to wrappers — clear it when switching away
     if (value !== "wrapper") {
       updateParams({ pluginType: toParam(value), ext: null });
     } else {
       updateParams({ pluginType: value });
     }
   };
-  const setExtFilter = (value: string) => updateParams({ ext: toParam(value) });
+  const setCapabilityFilter = (value: string) => updateParams({ ext: toParam(value) });
   const setKindFilter = (value: string) => updateParams({ kind: toParam(value) });
   const setSortField = (value: string) => updateParams({ sortField: value === "name" ? null : value });
   const toggleSortDir = () => updateParams({ sortAsc: sortAsc ? "false" : null });
@@ -131,11 +131,11 @@ export function Browse() {
       result = result.filter((item) => (item.pluginType ?? "package") === pluginTypeFilter);
     }
 
-    if (extFilter) {
+    if (capabilityFilter) {
       result = result.filter((item) => {
-        if (item.pluginType === "wrapper") return item.wrapper === extFilter;
-        if (item.pluginType === "integration") return item.integration === extFilter;
-        if (item.package) return (item.package[extFilter] ?? 0) > 0;
+        if (item.pluginType === "wrapper") return item.wrapper === capabilityFilter;
+        if (item.pluginType === "integration") return item.integration === capabilityFilter;
+        if (item.package) return (item.package[capabilityFilter] ?? 0) > 0;
         return false;
       });
     }
@@ -149,10 +149,10 @@ export function Browse() {
     }
 
     return sortItems(result, sortField, sortAsc);
-  }, [items, query, toolFilter, sourceFilter, scopeFilter, pluginTypeFilter, extFilter, kindFilter, sortField, sortAsc, fuse, isPlugins, componentType]);
+  }, [items, query, toolFilter, sourceFilter, scopeFilter, pluginTypeFilter, capabilityFilter, kindFilter, sortField, sortAsc, fuse, isPlugins, componentType]);
 
   // Check if any filters are active
-  const hasActiveFilters = query !== "" || toolFilter !== null || sourceFilter !== null || scopeFilter !== null || pluginTypeFilter !== null || extFilter !== null || kindFilter !== null;
+  const hasActiveFilters = query !== "" || toolFilter !== null || sourceFilter !== null || scopeFilter !== null || pluginTypeFilter !== null || capabilityFilter !== null || kindFilter !== null;
 
   if (!componentType || !typeLabelPlural[componentType]) {
     return (
@@ -211,21 +211,21 @@ export function Browse() {
             size="sm"
             value={query}
             onChange={setQuery}
-            color="cyan"
+            accentColor="cyan"
           />
         </div>
 
         {/* Spacer */}
         <div className="flex-1" />
 
-        {/* Kind filter for extension pages with wrappers */}
+        {/* Kind filter for capability pages with wrappers */}
         {hasWrappers && (
           <FilterDropdown
             value={kindFilter ?? "all"}
             options={kindOptions}
             onChange={setKindFilter}
             allLabel="Kind"
-            color="cyan"
+            accentColor="cyan"
           />
         )}
 
@@ -236,17 +236,17 @@ export function Browse() {
             options={pluginTypeOptions}
             onChange={setPluginTypeFilter}
             allLabel="Type"
-            color="cyan"
+            accentColor="cyan"
           />
         )}
 
         {isPlugins && pluginTypeFilter === "wrapper" && (
           <FilterDropdown
-            value={extFilter ?? "all"}
-            options={extensionOptions}
-            onChange={setExtFilter}
-            allLabel="Extension"
-            color="cyan"
+            value={capabilityFilter ?? "all"}
+            options={capabilityOptions}
+            onChange={setCapabilityFilter}
+            allLabel="Capability"
+            accentColor="cyan"
           />
         )}
 
@@ -256,7 +256,7 @@ export function Browse() {
           options={sourceOptions}
           onChange={setSourceFilter}
           allLabel="Source"
-          color="cyan"
+          accentColor="cyan"
         />
 
         {sourceFilter === "toolr" && (
@@ -265,16 +265,16 @@ export function Browse() {
             options={scopeOptions}
             onChange={setScopeFilter}
             allLabel="Scope"
-            color="cyan"
+            accentColor="cyan"
           />
         )}
 
         <FilterDropdown
           value={toolFilter ?? "all"}
-          options={toolOptions}
+          options={agentOptions}
           onChange={setToolFilter}
-          allLabel="Tool"
-          color="cyan"
+          allLabel="Agent"
+          accentColor="cyan"
         />
 
         <SortDropdown
@@ -283,7 +283,7 @@ export function Browse() {
           onFieldChange={setSortField}
           onToggleDirection={toggleSortDir}
           fields={sortFields}
-          color="cyan"
+          accentColor="cyan"
         />
       </div>
 

@@ -5,10 +5,10 @@ import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import chalk from "chalk";
 import ora from "ora";
-import type { AITool, InstallScope, InstallMethod } from "../types.js";
+import type { CodingAgent, InstallScope, InstallMethod } from "../types.js";
 import type { RegistryItem } from "@seedr/shared";
 import { getItemSourcePath, fetchItemToDestination } from "../config/registry.js";
-import { getSettingsPath, AI_TOOLS } from "../config/tools.js";
+import { getSettingsPath, CODING_AGENTS } from "../config/agents.js";
 import { installDirectory } from "../utils/fs.js";
 import { readJson, writeJson } from "../utils/json.js";
 import type { ContentHandler, InstallResult } from "./types.js";
@@ -118,19 +118,19 @@ async function ensureMarketplaceRegistered(
   await writeJson(KNOWN_MARKETPLACES_PATH, known);
 }
 
-async function installPluginForTool(
+async function installPluginForAgent(
   item: RegistryItem,
-  tool: AITool,
+  agent: CodingAgent,
   scope: InstallScope,
   method: InstallMethod,
   cwd: string
 ): Promise<InstallResult> {
   const spinner = ora(
-    `Installing ${item.name} for ${AI_TOOLS[tool].name}...`
+    `Installing ${item.name} for ${CODING_AGENTS[agent].name}...`
   ).start();
 
   try {
-    if (tool !== "claude") {
+    if (agent !== "claude") {
       throw new Error("Plugins are only supported for Claude Code");
     }
 
@@ -195,29 +195,29 @@ async function installPluginForTool(
     await writeJson(settingsPath, settings);
 
     spinner.succeed(
-      chalk.green(`Installed ${item.name} for ${AI_TOOLS[tool].name}`)
+      chalk.green(`Installed ${item.name} for ${CODING_AGENTS[agent].name}`)
     );
-    return { tool, success: true, path: cachePath };
+    return { agent, success: true, path: cachePath };
   } catch (error) {
     const errorMsg = error instanceof Error ? error.message : "Unknown error";
     spinner.fail(
-      chalk.red(`Failed to install for ${AI_TOOLS[tool].name}: ${errorMsg}`)
+      chalk.red(`Failed to install for ${CODING_AGENTS[agent].name}: ${errorMsg}`)
     );
-    return { tool, success: false, path: "", error: errorMsg };
+    return { agent, success: false, path: "", error: errorMsg };
   }
 }
 
 export async function installPlugin(
   item: RegistryItem,
-  tools: AITool[],
+  agents: CodingAgent[],
   scope: InstallScope,
   method: InstallMethod,
   cwd: string = process.cwd()
 ): Promise<InstallResult[]> {
   const results: InstallResult[] = [];
 
-  for (const tool of tools) {
-    const result = await installPluginForTool(item, tool, scope, method, cwd);
+  for (const agent of agents) {
+    const result = await installPluginForAgent(item, agent, scope, method, cwd);
     results.push(result);
   }
 
@@ -226,11 +226,11 @@ export async function installPlugin(
 
 export async function uninstallPlugin(
   slug: string,
-  tool: AITool,
+  agent: CodingAgent,
   scope: InstallScope,
   cwd: string = process.cwd()
 ): Promise<boolean> {
-  if (tool !== "claude") return false;
+  if (agent !== "claude") return false;
 
   // Find the plugin in the registry
   const registry = await readJson<InstalledPluginsRegistry>(INSTALLED_PLUGINS_PATH);
@@ -268,11 +268,11 @@ export async function uninstallPlugin(
 }
 
 export async function getInstalledPlugins(
-  tool: AITool,
+  agent: CodingAgent,
   scope: InstallScope,
   cwd: string = process.cwd()
 ): Promise<string[]> {
-  if (tool !== "claude") return [];
+  if (agent !== "claude") return [];
 
   const registry = await readJson<InstalledPluginsRegistry>(INSTALLED_PLUGINS_PATH);
   if (!registry.plugins) return [];
@@ -303,28 +303,28 @@ export const pluginHandler: ContentHandler = {
 
   async install(
     item: RegistryItem,
-    tools: AITool[],
+    agents: CodingAgent[],
     scope: InstallScope,
     method: InstallMethod,
     cwd?: string
   ): Promise<InstallResult[]> {
-    return installPlugin(item, tools, scope, method, cwd);
+    return installPlugin(item, agents, scope, method, cwd);
   },
 
   async uninstall(
     slug: string,
-    tool: AITool,
+    agent: CodingAgent,
     scope: InstallScope,
     cwd?: string
   ): Promise<boolean> {
-    return uninstallPlugin(slug, tool, scope, cwd);
+    return uninstallPlugin(slug, agent, scope, cwd);
   },
 
   async listInstalled(
-    tool: AITool,
+    agent: CodingAgent,
     scope: InstallScope,
     cwd?: string
   ): Promise<string[]> {
-    return getInstalledPlugins(tool, scope, cwd);
+    return getInstalledPlugins(agent, scope, cwd);
   },
 };

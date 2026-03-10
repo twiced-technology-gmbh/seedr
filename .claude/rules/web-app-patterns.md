@@ -75,10 +75,10 @@ const { type, name } = useParams()
 
 Plugins have two classification types that determine where they appear in the UI:
 
-- **`wrapper`**: Wraps a single extension type (e.g., `wrapper: "skill"`). These ARE cross-listed on extension type pages because they're essentially that type packaged as a plugin.
+- **`wrapper`**: Wraps a single capability type (e.g., `wrapper: "skill"`). These ARE cross-listed on capability type pages because they're essentially that type packaged as a plugin.
 - **`package`**: Contains multiple content types (e.g., `package: { skill: 1, mcp: 1 }`). These are NOT cross-listed — they only appear on the plugins page.
 
-Only wrapper plugins should be included in `getItemsByType()`, `getTypeCount()`, and `getTypeCounts()` for non-plugin types. If upstream reclassifies a plugin from wrapper to package (e.g., by adding `.mcp.json`), it correctly disappears from extension type views.
+Only wrapper plugins should be included in `getItemsByType()`, `getTypeCount()`, and `getTypeCounts()` for non-plugin types. If upstream reclassifies a plugin from wrapper to package (e.g., by adding `.mcp.json`), it correctly disappears from capability type views.
 
 ## Anti-Patterns
 

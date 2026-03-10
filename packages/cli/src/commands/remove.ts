@@ -1,10 +1,10 @@
 import { Command } from "commander";
 import chalk from "chalk";
 import ora from "ora";
-import type { AITool, InstallScope } from "../types.js";
+import type { CodingAgent, InstallScope } from "../types.js";
 import type { ComponentType } from "@seedr/shared";
-import { ALL_TOOLS, AI_TOOLS } from "../config/tools.js";
-import { parseToolsArg } from "../utils/detection.js";
+import { ALL_AGENTS, CODING_AGENTS } from "../config/agents.js";
+import { parseAgentsArg } from "../utils/detection.js";
 import { promptConfirm } from "../utils/prompts.js";
 import { getHandler } from "../handlers/registry.js";
 import { handleCommandError } from "../utils/errors.js";
@@ -12,43 +12,43 @@ import { handleCommandError } from "../utils/errors.js";
 // Ensure handlers are registered
 import "../handlers/index.js";
 
-async function findInstalledTools(
+async function findInstalledAgents(
   slug: string,
   type: ComponentType,
   scope: InstallScope
-): Promise<AITool[]> {
+): Promise<CodingAgent[]> {
   const handler = getHandler(type);
   if (!handler) return [];
 
-  const tools: AITool[] = [];
-  for (const tool of ALL_TOOLS) {
-    const installed = await handler.listInstalled(tool, scope);
+  const agents: CodingAgent[] = [];
+  for (const agent of ALL_AGENTS) {
+    const installed = await handler.listInstalled(agent, scope);
     if (installed.includes(slug)) {
-      tools.push(tool);
+      agents.push(agent);
     }
   }
-  return tools;
+  return agents;
 }
 
-async function removeFromTools(
+async function removeFromAgents(
   slug: string,
   type: ComponentType,
-  tools: AITool[],
+  agents: CodingAgent[],
   scope: InstallScope
 ): Promise<number> {
   const handler = getHandler(type);
   if (!handler) return 0;
 
   let successCount = 0;
-  for (const tool of tools) {
-    const spinner = ora(`Removing from ${AI_TOOLS[tool].name}...`).start();
+  for (const agent of agents) {
+    const spinner = ora(`Removing from ${CODING_AGENTS[agent].name}...`).start();
 
-    const removed = await handler.uninstall(slug, tool, scope);
+    const removed = await handler.uninstall(slug, agent, scope);
     if (removed) {
-      spinner.succeed(chalk.green(`Removed from ${AI_TOOLS[tool].name}`));
+      spinner.succeed(chalk.green(`Removed from ${CODING_AGENTS[agent].name}`));
       successCount++;
     } else {
-      spinner.info(chalk.gray(`Not found in ${AI_TOOLS[tool].name}`));
+      spinner.info(chalk.gray(`Not found in ${CODING_AGENTS[agent].name}`));
     }
   }
   return successCount;
@@ -60,8 +60,8 @@ export const removeCommand = new Command("remove")
   .argument("<name>", "Name/slug of the item to remove")
   .option("-t, --type <type>", "Content type: skill, agent, hook, mcp, plugin, settings")
   .option(
-    "-a, --agents <tools>",
-    "Comma-separated AI tools or 'all'"
+    "-a, --agents <agents>",
+    "Comma-separated coding agents or 'all'"
   )
   .option(
     "--scope <scope>",
@@ -87,12 +87,12 @@ export const removeCommand = new Command("remove")
         process.exit(1);
       }
 
-      // Determine which tools to uninstall from
-      const tools = options.agents
-        ? parseToolsArg(options.agents, ALL_TOOLS)
-        : await findInstalledTools(name, type, scope);
+      // Determine which agents to uninstall from
+      const agents = options.agents
+        ? parseAgentsArg(options.agents, ALL_AGENTS)
+        : await findInstalledAgents(name, type, scope);
 
-      if (tools.length === 0) {
+      if (agents.length === 0) {
         console.log(
           chalk.yellow(`${type} "${name}" is not installed in ${scope} scope`)
         );
@@ -102,8 +102,8 @@ export const removeCommand = new Command("remove")
       // Confirm
       if (!options.yes) {
         console.log(chalk.cyan(`\nWill remove ${type} "${name}" from:`));
-        for (const tool of tools) {
-          console.log(`  - ${AI_TOOLS[tool].name}`);
+        for (const agent of agents) {
+          console.log(`  - ${CODING_AGENTS[agent].name}`);
         }
         console.log("");
 
@@ -115,12 +115,12 @@ export const removeCommand = new Command("remove")
       }
 
       // Remove and report
-      const successCount = await removeFromTools(name, type, tools, scope);
+      const successCount = await removeFromAgents(name, type, agents, scope);
 
       console.log("");
       if (successCount > 0) {
         console.log(
-          chalk.green(`Successfully removed from ${successCount} tool(s)`)
+          chalk.green(`Successfully removed from ${successCount} agent(s)`)
         );
       } else {
         console.log(chalk.yellow("Nothing to remove"));

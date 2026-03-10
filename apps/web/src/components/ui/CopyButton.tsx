@@ -20,7 +20,7 @@ export function CopyButton({ text }: CopyButtonProps) {
   return (
     <IconButton
       icon={copied ? "check" : "copy"}
-      color={copied ? "green" : "cyan"}
+      accentColor={copied ? "green" : "cyan"}
       size="xs"
       tooltip={{ description: copied ? "Copied!" : "Copy" }}
       onClick={handleCopy}

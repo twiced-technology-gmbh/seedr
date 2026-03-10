@@ -1,4 +1,4 @@
-export type AITool = "claude" | "copilot" | "gemini" | "codex" | "opencode";
+export type CodingAgent = "claude" | "copilot" | "gemini" | "codex" | "opencode";
 
 export type ComponentType =
   | "skill"
@@ -42,7 +42,7 @@ export interface RegistryItem {
   type: ComponentType;
   description: string;
   longDescription?: string;
-  compatibility: AITool[];
+  compatibility: CodingAgent[];
   featured?: boolean;
   pluginType?: PluginType;
   wrapper?: string;

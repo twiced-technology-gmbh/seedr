@@ -73,7 +73,7 @@ export function getItemsByType(type: ComponentType): RegistryItem[] {
   if (type === "plugin") {
     return manifest.items.filter((item) => item.type === type);
   }
-  // Include wrapper plugins that wrap this extension type
+  // Include wrapper plugins that wrap this capability type
   return manifest.items.filter(
     (item) =>
       item.type === type ||

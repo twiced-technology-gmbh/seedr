@@ -1,9 +1,9 @@
 import chalk from "chalk";
 import ora from "ora";
-import type { AITool, InstallScope, InstallMethod } from "../types.js";
+import type { CodingAgent, InstallScope, InstallMethod } from "../types.js";
 import type { RegistryItem } from "@seedr/shared";
 import { getItemContent } from "../config/registry.js";
-import { getMcpPath, AI_TOOLS } from "../config/tools.js";
+import { getMcpPath, CODING_AGENTS } from "../config/agents.js";
 import { exists } from "../utils/fs.js";
 import { readJson, writeJson } from "../utils/json.js";
 import type { ContentHandler, InstallResult } from "./types.js";
@@ -39,15 +39,15 @@ function parseMcpDefinition(content: string): McpDefinition {
   }
 }
 
-async function installMcpForTool(
+async function installMcpForAgent(
   item: RegistryItem,
-  tool: AITool,
+  agent: CodingAgent,
   scope: InstallScope,
   _method: InstallMethod,
   cwd: string
 ): Promise<InstallResult> {
   const spinner = ora(
-    `Installing ${item.name} for ${AI_TOOLS[tool].name}...`
+    `Installing ${item.name} for ${CODING_AGENTS[agent].name}...`
   ).start();
 
   try {
@@ -66,29 +66,29 @@ async function installMcpForTool(
     await writeJson(configPath, config);
 
     spinner.succeed(
-      chalk.green(`Installed ${item.name} for ${AI_TOOLS[tool].name}`)
+      chalk.green(`Installed ${item.name} for ${CODING_AGENTS[agent].name}`)
     );
-    return { tool, success: true, path: configPath };
+    return { agent, success: true, path: configPath };
   } catch (error) {
     const errorMsg = error instanceof Error ? error.message : "Unknown error";
     spinner.fail(
-      chalk.red(`Failed to install for ${AI_TOOLS[tool].name}: ${errorMsg}`)
+      chalk.red(`Failed to install for ${CODING_AGENTS[agent].name}: ${errorMsg}`)
     );
-    return { tool, success: false, path: "", error: errorMsg };
+    return { agent, success: false, path: "", error: errorMsg };
   }
 }
 
 export async function installMcp(
   item: RegistryItem,
-  tools: AITool[],
+  agents: CodingAgent[],
   scope: InstallScope,
   method: InstallMethod,
   cwd: string = process.cwd()
 ): Promise<InstallResult[]> {
   const results: InstallResult[] = [];
 
-  for (const tool of tools) {
-    const result = await installMcpForTool(item, tool, scope, method, cwd);
+  for (const agent of agents) {
+    const result = await installMcpForAgent(item, agent, scope, method, cwd);
     results.push(result);
   }
 
@@ -97,7 +97,7 @@ export async function installMcp(
 
 export async function uninstallMcp(
   slug: string,
-  _tool: AITool,
+  _agent: CodingAgent,
   scope: InstallScope,
   cwd: string = process.cwd()
 ): Promise<boolean> {
@@ -115,7 +115,7 @@ export async function uninstallMcp(
 }
 
 export async function getInstalledMcpServers(
-  _tool: AITool,
+  _agent: CodingAgent,
   scope: InstallScope,
   cwd: string = process.cwd()
 ): Promise<string[]> {
@@ -134,28 +134,28 @@ export const mcpHandler: ContentHandler = {
 
   async install(
     item: RegistryItem,
-    tools: AITool[],
+    agents: CodingAgent[],
     scope: InstallScope,
     method: InstallMethod,
     cwd?: string
   ): Promise<InstallResult[]> {
-    return installMcp(item, tools, scope, method, cwd);
+    return installMcp(item, agents, scope, method, cwd);
   },
 
   async uninstall(
     slug: string,
-    tool: AITool,
+    agent: CodingAgent,
     scope: InstallScope,
     cwd?: string
   ): Promise<boolean> {
-    return uninstallMcp(slug, tool, scope, cwd);
+    return uninstallMcp(slug, agent, scope, cwd);
   },
 
   async listInstalled(
-    tool: AITool,
+    agent: CodingAgent,
     scope: InstallScope,
     cwd?: string
   ): Promise<string[]> {
-    return getInstalledMcpServers(tool, scope, cwd);
+    return getInstalledMcpServers(agent, scope, cwd);
   },
 };

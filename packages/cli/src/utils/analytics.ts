@@ -22,7 +22,7 @@ export function trackInstalls(
       body: JSON.stringify({
         slug,
         type,
-        tool: result.tool,
+        agent: result.agent,
         scope,
         version: CLI_VERSION,
       }),

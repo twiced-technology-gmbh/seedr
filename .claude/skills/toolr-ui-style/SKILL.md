@@ -54,7 +54,7 @@ Warning:  orange-400/500, yellow-400
 Info:     cyan-400/500
 ```
 
-### Extension Type Colors (matching configr)
+### Capability Type Colors (matching configr)
 ```
 Skill:       pink-500      (border-l-pink-500, text-pink-500, bg-pink-500/20)
 Command:     amber-500     (border-l-amber-500, text-amber-500, bg-amber-500/20)
@@ -66,7 +66,7 @@ Plugin:      indigo-500    (border-l-indigo-500, text-indigo-500, bg-indigo-500/
 Instruction: slate-400     (border-l-slate-400, text-slate-400, bg-slate-500/20)
 Prompt:      cyan-500      (border-l-cyan-500, text-cyan-500, bg-cyan-500/20)
 Config:      gray-500      (border-l-gray-500, text-gray-500, bg-gray-500/20)
-Extension:   emerald-500   (border-l-emerald-500, text-emerald-500, bg-emerald-500/20)
+Capability:  emerald-500   (border-l-emerald-500, text-emerald-500, bg-emerald-500/20)
 ```
 
 ## Components

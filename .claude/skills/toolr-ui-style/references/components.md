@@ -353,9 +353,9 @@ interface SourcesCardProps {
 
 ---
 
-## Extension Type Color Mapping
+## Capability Type Color Mapping
 
-Use these colors for extension type indicators (matching configr):
+Use these colors for capability type indicators (matching configr):
 
 ```tsx
 // Badge color mapping
@@ -370,7 +370,7 @@ const typeToBadgeColor: Record<string, BadgeColor> = {
   instruction: 'slate',
   prompt: 'cyan',
   config: 'gray',
-  extension: 'emerald',
+  capability: 'emerald',
 };
 
 // Border colors for cards (using -500 variant)

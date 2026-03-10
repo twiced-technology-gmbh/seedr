@@ -1,6 +1,6 @@
 // Re-export shared types
 export type {
-  AITool,
+  CodingAgent,
   ComponentType,
   SourceType,
   ScopeType,

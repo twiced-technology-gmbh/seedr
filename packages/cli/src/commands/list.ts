@@ -2,7 +2,7 @@ import { Command } from "commander";
 import chalk from "chalk";
 import type { ComponentType } from "../types.js";
 import { listItems } from "../config/registry.js";
-import { ALL_TOOLS, AI_TOOLS } from "../config/tools.js";
+import { ALL_AGENTS, CODING_AGENTS } from "../config/agents.js";
 import { getInstalledSkills } from "../handlers/skill.js";
 import { handleCommandError } from "../utils/errors.js";
 
@@ -57,7 +57,7 @@ async function listAvailable(type?: ComponentType): Promise<void> {
 
     for (const item of typeItems) {
       const compatIcons = item.compatibility
-        .map((t) => AI_TOOLS[t].shortName)
+        .map((a) => CODING_AGENTS[a].shortName)
         .join(" ");
       const featured = item.featured ? chalk.yellow("★ ") : "  ";
       console.log(
@@ -77,14 +77,14 @@ async function listInstalled(scope: string): Promise<void> {
   console.log(chalk.cyan(`\nInstalled skills (${scope} scope):\n`));
 
   let total = 0;
-  for (const tool of ALL_TOOLS) {
+  for (const agent of ALL_AGENTS) {
     const installed = await getInstalledSkills(
-      tool,
+      agent,
       scope as "project" | "user"
     );
 
     if (installed.length > 0) {
-      console.log(chalk.blue(AI_TOOLS[tool].name));
+      console.log(chalk.blue(CODING_AGENTS[agent].name));
       for (const skill of installed) {
         console.log(`  ${chalk.white(skill)}`);
         total++;

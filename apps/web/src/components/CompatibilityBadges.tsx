@@ -1,9 +1,9 @@
-import type { AITool } from "@/lib/types";
-import { toolLabels } from "@/lib/colors";
-import { AiToolIcon, Tooltip } from "@toolr/ui-design";
+import type { CodingAgent } from "@/lib/types";
+import { agentLabels } from "@/lib/colors";
+import { CodingAgentIcon, Tooltip } from "@toolr/ui-design";
 
 interface CompatibilityBadgesProps {
-  tools: AITool[];
+  tools: CodingAgent[];
   className?: string;
   size?: "sm" | "md";
 }
@@ -19,8 +19,8 @@ export function CompatibilityBadges({
   return (
     <div className={`flex flex-wrap ${gapSizes[size]} ${className}`}>
       {tools.map((tool) => (
-        <Tooltip key={tool} content={{ description: toolLabels[tool] }} position="top">
-          <AiToolIcon tool={tool} size={iconSizes[size]} />
+        <Tooltip key={tool} content={{ description: agentLabels[tool] }} position="top">
+          <CodingAgentIcon agent={tool} size={iconSizes[size]} />
         </Tooltip>
       ))}
     </div>

@@ -60,9 +60,9 @@
   --color-prompt-light: #67e8f9;
   --color-prompt-dark: #06b6d4;
 
-  --color-extension: #34d399;
-  --color-extension-light: #6ee7b7;
-  --color-extension-dark: #10b981;
+  --color-capability: #34d399;
+  --color-capability-light: #6ee7b7;
+  --color-capability-dark: #10b981;
 
   /* Interactive */
   --color-primary: var(--primary);

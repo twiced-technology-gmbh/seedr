@@ -1,8 +1,8 @@
-import type { AITool, InstallScope, InstallMethod } from "../types.js";
+import type { CodingAgent, InstallScope, InstallMethod } from "../types.js";
 import type { ComponentType, RegistryItem } from "@seedr/shared";
 
 export interface InstallResult {
-  tool: AITool;
+  agent: CodingAgent;
   success: boolean;
   path: string;
   error?: string;
@@ -12,31 +12,31 @@ export interface ContentHandler {
   readonly type: ComponentType;
 
   /**
-   * Install content for the specified tools.
+   * Install content for the specified agents.
    */
   install(
     item: RegistryItem,
-    tools: AITool[],
+    agents: CodingAgent[],
     scope: InstallScope,
     method: InstallMethod,
     cwd?: string
   ): Promise<InstallResult[]>;
 
   /**
-   * Uninstall content for a specific tool.
+   * Uninstall content for a specific agent.
    */
   uninstall(
     slug: string,
-    tool: AITool,
+    agent: CodingAgent,
     scope: InstallScope,
     cwd?: string
   ): Promise<boolean>;
 
   /**
-   * List installed content for a specific tool.
+   * List installed content for a specific agent.
    */
   listInstalled(
-    tool: AITool,
+    agent: CodingAgent,
     scope: InstallScope,
     cwd?: string
   ): Promise<string[]>;

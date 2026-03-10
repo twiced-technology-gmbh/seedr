@@ -11,7 +11,7 @@
  */
 
 import matter from "gray-matter";
-import type { AITool } from "../types.js";
+import type { CodingAgent } from "../types.js";
 import type { SkillConverter, ParsedSkill, SkillFrontmatter } from "./types.js";
 import { claudeConverter } from "./claude.js";
 import { copilotConverter } from "./copilot.js";
@@ -26,7 +26,7 @@ export type { SkillConverter, ParsedSkill, SkillFrontmatter } from "./types.js";
  * Registry of converters for each AI tool.
  * New tools should be added here.
  */
-const converters: Record<AITool, SkillConverter> = {
+const converters: Record<CodingAgent, SkillConverter> = {
   claude: claudeConverter,
   copilot: copilotConverter,
   gemini: geminiConverter,
@@ -53,7 +53,7 @@ export function parseSkillMarkdown(content: string): ParsedSkill {
  * @param targetTool - The AI tool to convert for
  * @returns Converted content string
  */
-export function convertSkillToTool(content: string, targetTool: AITool): string {
+export function convertSkillToTool(content: string, targetTool: CodingAgent): string {
   const converter = converters[targetTool];
   if (!converter) {
     // Fallback for unknown tools - return as-is
@@ -68,13 +68,13 @@ export function convertSkillToTool(content: string, targetTool: AITool): string 
  * Get the converter for a specific tool.
  * Useful for testing or advanced use cases.
  */
-export function getConverter(tool: AITool): SkillConverter | undefined {
+export function getConverter(tool: CodingAgent): SkillConverter | undefined {
   return converters[tool];
 }
 
 /**
  * Check if a converter exists for a tool.
  */
-export function hasConverter(tool: AITool): boolean {
+export function hasConverter(tool: CodingAgent): boolean {
   return tool in converters;
 }

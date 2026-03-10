@@ -2,13 +2,13 @@ import { join, relative, dirname } from "node:path";
 import { readdir, symlink, rm } from "node:fs/promises";
 import chalk from "chalk";
 import ora from "ora";
-import type { AITool, InstallScope, InstallMethod } from "../types.js";
+import type { CodingAgent, InstallScope, InstallMethod } from "../types.js";
 import type { RegistryItem } from "@seedr/shared";
 import {
   getItemSourcePath,
   fetchItemToDestination,
 } from "../config/registry.js";
-import { getContentPath, AI_TOOLS } from "../config/tools.js";
+import { getContentPath, CODING_AGENTS } from "../config/agents.js";
 import {
   exists,
   installDirectory,
@@ -42,9 +42,9 @@ async function installToCentralLocation(
 }
 
 /**
- * Create a symlink from the tool's skill directory to the central location.
+ * Create a symlink from the agent's skill directory to the central location.
  */
-async function createToolSymlink(
+async function createAgentSymlink(
   centralPath: string,
   destPath: string
 ): Promise<void> {
@@ -57,30 +57,30 @@ async function createToolSymlink(
   await symlink(relPath, destPath);
 }
 
-async function installSkillForTool(
+async function installSkillForAgent(
   item: RegistryItem,
-  tool: AITool,
+  agent: CodingAgent,
   scope: InstallScope,
   method: InstallMethod,
   cwd: string,
   centralPath?: string
 ): Promise<InstallResult> {
   const spinner = ora(
-    `Installing ${item.name} for ${AI_TOOLS[tool].name}...`
+    `Installing ${item.name} for ${CODING_AGENTS[agent].name}...`
   ).start();
 
   try {
-    const destDir = getContentPath(tool, "skill", scope, cwd);
+    const destDir = getContentPath(agent, "skill", scope, cwd);
     if (!destDir) {
-      throw new Error(`${AI_TOOLS[tool].name} does not support skills`);
+      throw new Error(`${CODING_AGENTS[agent].name} does not support skills`);
     }
 
     const destPath = join(destDir, item.slug);
     const sourcePath = getItemSourcePath(item);
 
     if (method === "symlink" && centralPath) {
-      // Symlink mode: link from tool folder to central .agents location
-      await createToolSymlink(centralPath, destPath);
+      // Symlink mode: link from agent folder to central .agents location
+      await createAgentSymlink(centralPath, destPath);
     } else if (sourcePath && (await exists(sourcePath))) {
       // Copy mode: copy directly from local registry
       await installDirectory(sourcePath, destPath, "copy");
@@ -90,21 +90,21 @@ async function installSkillForTool(
     }
 
     spinner.succeed(
-      chalk.green(`Installed ${item.name} for ${AI_TOOLS[tool].name}`)
+      chalk.green(`Installed ${item.name} for ${CODING_AGENTS[agent].name}`)
     );
-    return { tool, success: true, path: destPath };
+    return { agent, success: true, path: destPath };
   } catch (error) {
     const errorMsg = error instanceof Error ? error.message : "Unknown error";
     spinner.fail(
-      chalk.red(`Failed to install for ${AI_TOOLS[tool].name}: ${errorMsg}`)
+      chalk.red(`Failed to install for ${CODING_AGENTS[agent].name}: ${errorMsg}`)
     );
-    return { tool, success: false, path: "", error: errorMsg };
+    return { agent, success: false, path: "", error: errorMsg };
   }
 }
 
 export async function installSkill(
   item: RegistryItem,
-  tools: AITool[],
+  agents: CodingAgent[],
   scope: InstallScope,
   method: InstallMethod,
   cwd: string = process.cwd()
@@ -118,19 +118,19 @@ export async function installSkill(
     centralPath = await installToCentralLocation(item, sourcePath, cwd);
   }
 
-  for (const tool of tools) {
+  for (const agent of agents) {
     // Gemini, Codex, and OpenCode already read .agents/skills/, so skip
-    // the symlink when content is installed centrally. For single-tool
-    // installs, copy directly to the tool's own directory instead.
-    const readsAgentsDir = tool === "gemini" || tool === "codex" || tool === "opencode";
+    // the symlink when content is installed centrally. For single-agent
+    // installs, copy directly to the agent's own directory instead.
+    const readsAgentsDir = agent === "gemini" || agent === "codex" || agent === "opencode";
     if (readsAgentsDir && method === "symlink" && centralPath) {
-      results.push({ tool, success: true, path: centralPath });
+      results.push({ agent, success: true, path: centralPath });
       continue;
     }
 
-    const result = await installSkillForTool(
+    const result = await installSkillForAgent(
       item,
-      tool,
+      agent,
       scope,
       method,
       cwd,
@@ -144,11 +144,11 @@ export async function installSkill(
 
 export async function uninstallSkill(
   slug: string,
-  tool: AITool,
+  agent: CodingAgent,
   scope: InstallScope,
   cwd: string = process.cwd()
 ): Promise<boolean> {
-  const destDir = getContentPath(tool, "skill", scope, cwd);
+  const destDir = getContentPath(agent, "skill", scope, cwd);
   if (!destDir) return false;
 
   const destPath = join(destDir, slug);
@@ -162,11 +162,11 @@ export async function uninstallSkill(
 }
 
 export async function getInstalledSkills(
-  tool: AITool,
+  agent: CodingAgent,
   scope: InstallScope,
   cwd: string = process.cwd()
 ): Promise<string[]> {
-  const destDir = getContentPath(tool, "skill", scope, cwd);
+  const destDir = getContentPath(agent, "skill", scope, cwd);
   if (!destDir || !(await exists(destDir))) {
     return [];
   }
@@ -183,29 +183,29 @@ export const skillHandler: ContentHandler = {
 
   async install(
     item: RegistryItem,
-    tools: AITool[],
+    agents: CodingAgent[],
     scope: InstallScope,
     method: InstallMethod,
     cwd?: string
   ): Promise<InstallResult[]> {
-    return installSkill(item, tools, scope, method, cwd);
+    return installSkill(item, agents, scope, method, cwd);
   },
 
   async uninstall(
     slug: string,
-    tool: AITool,
+    agent: CodingAgent,
     scope: InstallScope,
     cwd?: string
   ): Promise<boolean> {
-    return uninstallSkill(slug, tool, scope, cwd);
+    return uninstallSkill(slug, agent, scope, cwd);
   },
 
   async listInstalled(
-    tool: AITool,
+    agent: CodingAgent,
     scope: InstallScope,
     cwd?: string
   ): Promise<string[]> {
-    return getInstalledSkills(tool, scope, cwd);
+    return getInstalledSkills(agent, scope, cwd);
   },
 };
 

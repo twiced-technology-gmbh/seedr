@@ -99,7 +99,7 @@ After the user answers batch 1, read ALL source content (SKILL.md, hook scripts,
 
 **`description` rules:**
 
-A single sentence that tells the user what the extension is capable of.
+A single sentence that tells the user what the item does.
 
 - One clear sentence — naturally short because it focuses on the core capability
 - Lead with what it *does*, not what it *is* ("Analyze code for 23 classic code smells" not "A code analysis tool")

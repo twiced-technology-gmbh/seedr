@@ -1,7 +1,7 @@
 // toolr-design-ignore-next-line
 import { Sparkles, Bot, Webhook, Terminal, Plug } from "lucide-react";
 
-export const extensionTypes = [
+export const capabilityTypes = [
   { type: "skill", icon: Sparkles, label: "Skill", labelPlural: "Skills" },
   { type: "agent", icon: Bot, label: "Agent", labelPlural: "Agents" },
   { type: "hook", icon: Webhook, label: "Hook", labelPlural: "Hooks" },

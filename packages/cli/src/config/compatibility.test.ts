@@ -1,87 +1,87 @@
 import { describe, it, expect } from "vitest";
 import {
-  TOOL_COMPATIBILITY,
+  AGENT_COMPATIBILITY,
   isTypeSupported,
-  getCompatibleTools,
-  filterCompatibleTools,
+  getCompatibleAgents,
+  filterCompatibleAgents,
 } from "./compatibility.js";
 
 describe("compatibility", () => {
-  describe("TOOL_COMPATIBILITY", () => {
+  describe("AGENT_COMPATIBILITY", () => {
     it("should have all content types defined", () => {
-      expect(TOOL_COMPATIBILITY).toHaveProperty("skill");
-      expect(TOOL_COMPATIBILITY).toHaveProperty("command");
-      expect(TOOL_COMPATIBILITY).toHaveProperty("agent");
-      expect(TOOL_COMPATIBILITY).toHaveProperty("hook");
-      expect(TOOL_COMPATIBILITY).toHaveProperty("plugin");
-      expect(TOOL_COMPATIBILITY).toHaveProperty("settings");
-      expect(TOOL_COMPATIBILITY).toHaveProperty("mcp");
+      expect(AGENT_COMPATIBILITY).toHaveProperty("skill");
+      expect(AGENT_COMPATIBILITY).toHaveProperty("command");
+      expect(AGENT_COMPATIBILITY).toHaveProperty("agent");
+      expect(AGENT_COMPATIBILITY).toHaveProperty("hook");
+      expect(AGENT_COMPATIBILITY).toHaveProperty("plugin");
+      expect(AGENT_COMPATIBILITY).toHaveProperty("settings");
+      expect(AGENT_COMPATIBILITY).toHaveProperty("mcp");
     });
 
-    it("should have skills compatible with all tools", () => {
-      expect(TOOL_COMPATIBILITY.skill).toContain("claude");
-      expect(TOOL_COMPATIBILITY.skill).toContain("copilot");
-      expect(TOOL_COMPATIBILITY.skill).toContain("gemini");
-      expect(TOOL_COMPATIBILITY.skill).toContain("codex");
-      expect(TOOL_COMPATIBILITY.skill).toContain("opencode");
+    it("should have skills compatible with all agents", () => {
+      expect(AGENT_COMPATIBILITY.skill).toContain("claude");
+      expect(AGENT_COMPATIBILITY.skill).toContain("copilot");
+      expect(AGENT_COMPATIBILITY.skill).toContain("gemini");
+      expect(AGENT_COMPATIBILITY.skill).toContain("codex");
+      expect(AGENT_COMPATIBILITY.skill).toContain("opencode");
     });
 
     it("should have Claude-only types", () => {
-      expect(TOOL_COMPATIBILITY.agent).toEqual(["claude"]);
-      expect(TOOL_COMPATIBILITY.hook).toEqual(["claude"]);
-      expect(TOOL_COMPATIBILITY.plugin).toEqual(["claude"]);
-      expect(TOOL_COMPATIBILITY.settings).toEqual(["claude"]);
-      expect(TOOL_COMPATIBILITY.command).toEqual(["claude"]);
+      expect(AGENT_COMPATIBILITY.agent).toEqual(["claude"]);
+      expect(AGENT_COMPATIBILITY.hook).toEqual(["claude"]);
+      expect(AGENT_COMPATIBILITY.plugin).toEqual(["claude"]);
+      expect(AGENT_COMPATIBILITY.settings).toEqual(["claude"]);
+      expect(AGENT_COMPATIBILITY.command).toEqual(["claude"]);
     });
 
-    it("should have MCP compatible with all tools", () => {
-      expect(TOOL_COMPATIBILITY.mcp).toContain("claude");
-      expect(TOOL_COMPATIBILITY.mcp).toContain("copilot");
+    it("should have MCP compatible with all agents", () => {
+      expect(AGENT_COMPATIBILITY.mcp).toContain("claude");
+      expect(AGENT_COMPATIBILITY.mcp).toContain("copilot");
     });
   });
 
   describe("isTypeSupported", () => {
-    it("should return true for supported type/tool combinations", () => {
+    it("should return true for supported type/agent combinations", () => {
       expect(isTypeSupported("skill", "claude")).toBe(true);
       expect(isTypeSupported("skill", "copilot")).toBe(true);
       expect(isTypeSupported("agent", "claude")).toBe(true);
     });
 
-    it("should return false for unsupported type/tool combinations", () => {
+    it("should return false for unsupported type/agent combinations", () => {
       expect(isTypeSupported("agent", "copilot")).toBe(false);
       expect(isTypeSupported("hook", "gemini")).toBe(false);
       expect(isTypeSupported("plugin", "codex")).toBe(false);
     });
   });
 
-  describe("getCompatibleTools", () => {
-    it("should return all tools for skills", () => {
-      const tools = getCompatibleTools("skill");
-      expect(tools).toHaveLength(5);
-      expect(tools).toContain("claude");
-      expect(tools).toContain("copilot");
+  describe("getCompatibleAgents", () => {
+    it("should return all agents for skills", () => {
+      const agents = getCompatibleAgents("skill");
+      expect(agents).toHaveLength(5);
+      expect(agents).toContain("claude");
+      expect(agents).toContain("copilot");
     });
 
     it("should return only claude for agents", () => {
-      const tools = getCompatibleTools("agent");
-      expect(tools).toEqual(["claude"]);
+      const agents = getCompatibleAgents("agent");
+      expect(agents).toEqual(["claude"]);
     });
   });
 
-  describe("filterCompatibleTools", () => {
-    it("should filter tools to only compatible ones", () => {
-      const tools = filterCompatibleTools("agent", ["claude", "copilot", "gemini"]);
-      expect(tools).toEqual(["claude"]);
+  describe("filterCompatibleAgents", () => {
+    it("should filter agents to only compatible ones", () => {
+      const agents = filterCompatibleAgents("agent", ["claude", "copilot", "gemini"]);
+      expect(agents).toEqual(["claude"]);
     });
 
-    it("should return all tools if all are compatible", () => {
-      const tools = filterCompatibleTools("skill", ["claude", "copilot"]);
-      expect(tools).toEqual(["claude", "copilot"]);
+    it("should return all agents if all are compatible", () => {
+      const agents = filterCompatibleAgents("skill", ["claude", "copilot"]);
+      expect(agents).toEqual(["claude", "copilot"]);
     });
 
-    it("should return empty array if no tools are compatible", () => {
-      const tools = filterCompatibleTools("agent", ["copilot", "gemini"]);
-      expect(tools).toEqual([]);
+    it("should return empty array if no agents are compatible", () => {
+      const agents = filterCompatibleAgents("agent", ["copilot", "gemini"]);
+      expect(agents).toEqual([]);
     });
   });
 });

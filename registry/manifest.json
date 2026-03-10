@@ -3,7 +3,7 @@
   "types": {
     "skill": {
       "file": "skills/manifest.json",
-      "count": 28
+      "count": 29
     },
     "plugin": {
       "file": "plugins/manifest.json",

@@ -1,65 +1,65 @@
 import { exists } from "./fs.js";
-import { AI_TOOLS, ALL_TOOLS, getToolPath } from "../config/tools.js";
-import type { AITool, InstallScope } from "../types.js";
+import { CODING_AGENTS, ALL_AGENTS, getAgentPath } from "../config/agents.js";
+import type { CodingAgent, InstallScope } from "../types.js";
 
-export interface DetectedTool {
-  tool: AITool;
+export interface DetectedAgent {
+  agent: CodingAgent;
   scope: InstallScope;
   path: string;
 }
 
-export async function detectInstalledTools(
+export async function detectInstalledAgents(
   cwd: string = process.cwd()
-): Promise<DetectedTool[]> {
-  const checks = ALL_TOOLS.flatMap((tool) => {
-    const projectPath = getToolPath(tool, "project", cwd);
-    const userPath = getToolPath(tool, "user", cwd);
+): Promise<DetectedAgent[]> {
+  const checks = ALL_AGENTS.flatMap((agent) => {
+    const projectPath = getAgentPath(agent, "project", cwd);
+    const userPath = getAgentPath(agent, "user", cwd);
     return [
-      exists(projectPath).then((found): DetectedTool | null => found ? { tool, scope: "project", path: projectPath } : null),
-      exists(userPath).then((found): DetectedTool | null => found ? { tool, scope: "user", path: userPath } : null),
+      exists(projectPath).then((found): DetectedAgent | null => found ? { agent, scope: "project", path: projectPath } : null),
+      exists(userPath).then((found): DetectedAgent | null => found ? { agent, scope: "user", path: userPath } : null),
     ];
   });
   const results = await Promise.all(checks);
-  return results.filter((r): r is DetectedTool => r !== null);
+  return results.filter((r): r is DetectedAgent => r !== null);
 }
 
-export async function detectProjectTools(
+export async function detectProjectAgents(
   cwd: string = process.cwd()
-): Promise<AITool[]> {
-  const checks = ALL_TOOLS.map(async (tool) => {
-    const projectPath = getToolPath(tool, "project", cwd);
-    return (await exists(projectPath)) ? tool : null;
+): Promise<CodingAgent[]> {
+  const checks = ALL_AGENTS.map(async (agent) => {
+    const projectPath = getAgentPath(agent, "project", cwd);
+    return (await exists(projectPath)) ? agent : null;
   });
   const results = await Promise.all(checks);
-  return results.filter((t): t is AITool => t !== null);
+  return results.filter((a): a is CodingAgent => a !== null);
 }
 
-export async function isToolInstalled(
-  tool: AITool,
+export async function isAgentInstalled(
+  agent: CodingAgent,
   scope: InstallScope,
   cwd: string = process.cwd()
 ): Promise<boolean> {
-  // getToolPath only supports project and user scopes
+  // getAgentPath only supports project and user scopes
   // local scope uses same path as project for skill detection
   const effectiveScope = scope === "local" ? "project" : scope;
-  const path = getToolPath(tool, effectiveScope, cwd);
+  const path = getAgentPath(agent, effectiveScope, cwd);
   return exists(path);
 }
 
-export function getToolDisplayName(tool: AITool): string {
-  return AI_TOOLS[tool].name;
+export function getAgentDisplayName(agent: CodingAgent): string {
+  return CODING_AGENTS[agent].name;
 }
 
-export function parseToolArg(arg: string): AITool | null {
+export function parseAgentArg(arg: string): CodingAgent | null {
   const normalized = arg.toLowerCase().trim();
 
   // Direct match
-  if (ALL_TOOLS.includes(normalized as AITool)) {
-    return normalized as AITool;
+  if (ALL_AGENTS.includes(normalized as CodingAgent)) {
+    return normalized as CodingAgent;
   }
 
   // Alias matching
-  const aliases: Record<string, AITool> = {
+  const aliases: Record<string, CodingAgent> = {
     "claude-code": "claude",
     claudecode: "claude",
     cc: "claude",
@@ -74,12 +74,12 @@ export function parseToolArg(arg: string): AITool | null {
   return aliases[normalized] ?? null;
 }
 
-export function parseToolsArg(agents: string, allTools: AITool[]): AITool[] {
+export function parseAgentsArg(agents: string, allAgents: CodingAgent[]): CodingAgent[] {
   if (agents === "all") {
-    return allTools;
+    return allAgents;
   }
   return agents
     .split(",")
-    .map((t) => parseToolArg(t.trim()))
-    .filter((t): t is AITool => t !== null);
+    .map((a) => parseAgentArg(a.trim()))
+    .filter((a): a is CodingAgent => a !== null);
 }

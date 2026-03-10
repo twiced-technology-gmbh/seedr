@@ -1,9 +1,9 @@
 import chalk from "chalk";
 import ora from "ora";
-import type { AITool, InstallScope, InstallMethod } from "../types.js";
+import type { CodingAgent, InstallScope, InstallMethod } from "../types.js";
 import type { RegistryItem } from "@seedr/shared";
 import { getItem, getItemContent } from "../config/registry.js";
-import { getSettingsPath, AI_TOOLS } from "../config/tools.js";
+import { getSettingsPath, CODING_AGENTS } from "../config/agents.js";
 import { exists } from "../utils/fs.js";
 import { readJson, writeJson, deepMerge } from "../utils/json.js";
 import type { ContentHandler, InstallResult } from "./types.js";
@@ -22,19 +22,19 @@ function parseSettings(content: string): SettingsJson {
   }
 }
 
-async function installSettingsForTool(
+async function installSettingsForAgent(
   item: RegistryItem,
-  tool: AITool,
+  agent: CodingAgent,
   scope: InstallScope,
   _method: InstallMethod,
   cwd: string
 ): Promise<InstallResult> {
   const spinner = ora(
-    `Installing ${item.name} for ${AI_TOOLS[tool].name}...`
+    `Installing ${item.name} for ${CODING_AGENTS[agent].name}...`
   ).start();
 
   try {
-    if (tool !== "claude") {
+    if (agent !== "claude") {
       throw new Error("Settings are only supported for Claude Code");
     }
 
@@ -50,29 +50,29 @@ async function installSettingsForTool(
     await writeJson(settingsPath, merged);
 
     spinner.succeed(
-      chalk.green(`Installed ${item.name} for ${AI_TOOLS[tool].name}`)
+      chalk.green(`Installed ${item.name} for ${CODING_AGENTS[agent].name}`)
     );
-    return { tool, success: true, path: settingsPath };
+    return { agent, success: true, path: settingsPath };
   } catch (error) {
     const errorMsg = error instanceof Error ? error.message : "Unknown error";
     spinner.fail(
-      chalk.red(`Failed to install for ${AI_TOOLS[tool].name}: ${errorMsg}`)
+      chalk.red(`Failed to install for ${CODING_AGENTS[agent].name}: ${errorMsg}`)
     );
-    return { tool, success: false, path: "", error: errorMsg };
+    return { agent, success: false, path: "", error: errorMsg };
   }
 }
 
 export async function installSettings(
   item: RegistryItem,
-  tools: AITool[],
+  agents: CodingAgent[],
   scope: InstallScope,
   method: InstallMethod,
   cwd: string = process.cwd()
 ): Promise<InstallResult[]> {
   const results: InstallResult[] = [];
 
-  for (const tool of tools) {
-    const result = await installSettingsForTool(item, tool, scope, method, cwd);
+  for (const agent of agents) {
+    const result = await installSettingsForAgent(item, agent, scope, method, cwd);
     results.push(result);
   }
 
@@ -130,11 +130,11 @@ function deepUnmerge(
 
 export async function uninstallSettings(
   slug: string,
-  tool: AITool,
+  agent: CodingAgent,
   scope: InstallScope,
   cwd: string = process.cwd()
 ): Promise<boolean> {
-  if (tool !== "claude") return false;
+  if (agent !== "claude") return false;
 
   // Look up the registry item to get the settings content
   const item = await getItem(slug, "settings");
@@ -163,11 +163,11 @@ export async function uninstallSettings(
 }
 
 export async function getInstalledSettings(
-  tool: AITool,
+  agent: CodingAgent,
   scope: InstallScope,
   cwd: string = process.cwd()
 ): Promise<string[]> {
-  if (tool !== "claude") return [];
+  if (agent !== "claude") return [];
 
   const settingsPath = getSettingsPath(scope, cwd);
   if (!(await exists(settingsPath))) return [];
@@ -184,28 +184,28 @@ export const settingsHandler: ContentHandler = {
 
   async install(
     item: RegistryItem,
-    tools: AITool[],
+    agents: CodingAgent[],
     scope: InstallScope,
     method: InstallMethod,
     cwd?: string
   ): Promise<InstallResult[]> {
-    return installSettings(item, tools, scope, method, cwd);
+    return installSettings(item, agents, scope, method, cwd);
   },
 
   async uninstall(
     slug: string,
-    tool: AITool,
+    agent: CodingAgent,
     scope: InstallScope,
     cwd?: string
   ): Promise<boolean> {
-    return uninstallSettings(slug, tool, scope, cwd);
+    return uninstallSettings(slug, agent, scope, cwd);
   },
 
   async listInstalled(
-    tool: AITool,
+    agent: CodingAgent,
     scope: InstallScope,
     cwd?: string
   ): Promise<string[]> {
-    return getInstalledSettings(tool, scope, cwd);
+    return getInstalledSettings(agent, scope, cwd);
   },
 };

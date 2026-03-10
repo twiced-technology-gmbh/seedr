@@ -1,11 +1,11 @@
 import { homedir } from "node:os";
 import { join } from "node:path";
-import type { AITool, AIToolConfig, InstallScope, ContentTypeConfig } from "../types.js";
-import type { ComponentType } from "@seedr/shared";
+import type { CodingAgentConfig, InstallScope, ContentTypeConfig } from "../types.js";
+import type { CodingAgent, ComponentType } from "@seedr/shared";
 
 const home = homedir();
 
-export const AI_TOOLS: Record<AITool, AIToolConfig> = {
+export const CODING_AGENTS: Record<CodingAgent, CodingAgentConfig> = {
   claude: {
     name: "Claude Code",
     shortName: "claude",
@@ -114,32 +114,32 @@ export const AI_TOOLS: Record<AITool, AIToolConfig> = {
   },
 };
 
-export const ALL_TOOLS = Object.keys(AI_TOOLS) as AITool[];
+export const ALL_AGENTS = Object.keys(CODING_AGENTS) as CodingAgent[];
 
-export function getToolConfig(tool: AITool): AIToolConfig {
-  return AI_TOOLS[tool];
+export function getAgentConfig(agent: CodingAgent): CodingAgentConfig {
+  return CODING_AGENTS[agent];
 }
 
 /**
- * Get the content type configuration for a tool/type combination.
- * Returns undefined if the tool doesn't support that content type.
+ * Get the content type configuration for an agent/type combination.
+ * Returns undefined if the agent doesn't support that content type.
  */
 export function getContentTypeConfig(
-  tool: AITool,
+  agent: CodingAgent,
   type: ComponentType
 ): ContentTypeConfig | undefined {
-  return AI_TOOLS[tool].contentTypes[type];
+  return CODING_AGENTS[agent].contentTypes[type];
 }
 
 /**
- * Get the root path for a tool based on scope.
+ * Get the root path for an agent based on scope.
  */
-export function getToolRoot(
-  tool: AITool,
+export function getAgentRoot(
+  agent: CodingAgent,
   scope: InstallScope,
   cwd: string = process.cwd()
 ): string {
-  const config = AI_TOOLS[tool];
+  const config = CODING_AGENTS[agent];
   switch (scope) {
     case "project":
     case "local":
@@ -153,15 +153,15 @@ export function getToolRoot(
  * Get the full path for installing content of a given type.
  */
 export function getContentPath(
-  tool: AITool,
+  agent: CodingAgent,
   type: ComponentType,
   scope: InstallScope,
   cwd: string = process.cwd()
 ): string | undefined {
-  const typeConfig = getContentTypeConfig(tool, type);
+  const typeConfig = getContentTypeConfig(agent, type);
   if (!typeConfig) return undefined;
 
-  const root = getToolRoot(tool, scope, cwd);
+  const root = getAgentRoot(agent, scope, cwd);
   return typeConfig.path ? join(root, typeConfig.path) : root;
 }
 
@@ -199,10 +199,10 @@ export function getMcpPath(
 }
 
 // Legacy compatibility - will be removed
-export function getToolPath(
-  tool: AITool,
+export function getAgentPath(
+  agent: CodingAgent,
   scope: "project" | "user",
   cwd: string = process.cwd()
 ): string {
-  return getContentPath(tool, "skill", scope, cwd) || "";
+  return getContentPath(agent, "skill", scope, cwd) || "";
 }

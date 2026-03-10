@@ -1,17 +1,17 @@
 // Public API exports
 export type {
-  AITool,
+  CodingAgent,
   ComponentType,
   InstallScope,
   InstallMethod,
-  AIToolConfig,
+  CodingAgentConfig,
   RegistryItem,
   RegistryManifest,
   InstallOptions,
   InstalledItem,
 } from "./types.js";
 
-export { AI_TOOLS, ALL_TOOLS, getToolConfig, getToolPath } from "./config/tools.js";
+export { CODING_AGENTS, ALL_AGENTS, getAgentConfig, getAgentPath } from "./config/agents.js";
 export {
   loadManifest,
   getItem,
@@ -22,4 +22,4 @@ export {
 
 export { installSkill, uninstallSkill, getInstalledSkills } from "./handlers/skill.js";
 export { convertSkillToTool, parseSkillMarkdown } from "./converters/index.js";
-export { detectInstalledTools, detectProjectTools, isToolInstalled } from "./utils/detection.js";
+export { detectInstalledAgents, detectProjectAgents, isAgentInstalled } from "./utils/detection.js";
