@@ -1,7 +1,7 @@
 {
   "name": "@toolr/seedr",
-  "version": "0.1.71",
-  "description": "Seed your projects with capabilities",
+  "version": "0.1.72",
+  "description": "Seed your projects with AI configurations",
   "type": "module",
   "bin": {
     "seedr": "./dist/cli.js"
