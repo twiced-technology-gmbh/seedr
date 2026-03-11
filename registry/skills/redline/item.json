@@ -3,7 +3,7 @@
   "name": "Redline",
   "type": "skill",
   "description": "Annotate elements in a running web app with visual feedback, then auto-fix the flagged issues in source code.",
-  "longDescription": "Two modes: `/redline setup` installs a dev-only annotation overlay into any web project (Vite, Next.js, Remix, SvelteKit, CRA, Tauri, plain HTML) — activated via `Cmd+Shift+A` hotkey, click elements to add feedback, exports a JSON file with selectors, outerHTML, child hints, and full computed CSS.\n\n`/redline <filename>` reads the annotation JSON, locates source components by tracing `html` attributes and selector paths through the JSX tree, then dispatches parallel fix agents per file. Handles large annotation files (100K+ tokens) via targeted node extraction. Ambiguous comments are flagged for clarification instead of guessed.",
+  "longDescription": "Two modes: `/redline setup` guides installation of the Chrome extension or Tauri plugin for annotation capture — activated via `Cmd+Option+Shift+A` hotkey. Supports click-to-select (high confidence), arrows, circles, boxes, freehand drawing, and text labels. Exports JSON with selectors, outerHTML, computed CSS (~40 curated properties), child hints, and base64 screenshots.\n\n`/redline <filename>` classifies each annotation by confidence level (`select` → high, `arrow`/`circle`/`box`/`text` → medium, `freehand` → low), uses screenshot disambiguation for ambiguous targets, locates source components via selector tracing, then dispatches parallel fix agents per file. Ambiguous comments are flagged for clarification.",
   "compatibility": ["claude", "copilot", "gemini", "opencode", "codex"],
   "sourceType": "toolr",
   "author": { "name": "Toolr Suite", "url": "https://github.com/toolr-suite" },
@@ -14,16 +14,6 @@
       {
         "name": "SKILL.md",
         "type": "file"
-      },
-      {
-        "name": "assets",
-        "type": "directory",
-        "children": [
-          {
-            "name": "annotation-overlay.js",
-            "type": "file"
-          }
-        ]
       }
     ]
   }

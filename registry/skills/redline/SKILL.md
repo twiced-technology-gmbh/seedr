@@ -2,7 +2,7 @@
 name: redline
 description: |
   Visual UI feedback tool — annotate elements in a running web app, then fix them from annotation files.
-  Two modes: `/redline setup` installs a lightweight annotation overlay into any web project (Tauri, React, Vue, Svelte, plain HTML).
+  Two modes: `/redline setup` guides installation of the Chrome extension or Tauri plugin.
   `/redline <path>` reads an annotation JSON file and fixes all annotated issues in the codebase.
   Use this skill whenever the user mentions: redline, UI annotations, visual feedback, annotate elements,
   fix annotations, paint feedback on UI, mark up the UI, visual code review of a running app,
@@ -18,82 +18,78 @@ Annotate elements in a running web app, then process those annotations to fix th
 
 ### `/redline setup`
 
-Installs the annotation overlay into the current project. This is a one-time setup per project.
+Guide the user to install the Redline annotation overlay for their environment.
 
-#### Step 1: Detect the project type and HTML entry point
+#### Step 1: Detect environment
 
-Search for the HTML entry point. Check these paths in order:
+Check the project type:
 
-1. `index.html` (Vite, Tauri, plain HTML)
-2. `src/index.html`
-3. `public/index.html` (CRA)
-4. `src/app.html` (SvelteKit)
-5. `app/layout.tsx` or `app/layout.jsx` (Next.js App Router — use Script component)
-6. `pages/_document.tsx` or `pages/_document.jsx` (Next.js Pages Router)
-7. `app/root.tsx` (Remix)
+- If the project has a `src-tauri/` directory → **Tauri app** → recommend the Tauri plugin
+- Otherwise → **Web app in browser** → recommend the Chrome extension
 
-If none found, ask the user for the path.
+Ask the user to confirm if unclear.
 
-#### Step 2: Create the overlay file
+#### Step 2a: Chrome Extension (for web apps in Chrome)
 
-Write the annotation overlay to `dev/annotation-overlay.js` in the project root.
+Tell the user:
 
-Read the bundled asset file at `SKILL_DIR/assets/annotation-overlay.js` and write it to `<project-root>/dev/annotation-overlay.js`.
+1. Install from the [Chrome Web Store](https://chromewebstore.google.com/detail/egdjiaglidnecgjbddcbdboffbhdlgdn), or clone from `https://github.com/twiced-technology-gmbh/redline-plugin-chrome` and load unpacked
+2. Pin the extension icon for quick access
+3. Press `Cmd+Option+Shift+A` (Mac) / `Ctrl+Alt+Shift+A` (Win/Linux) to toggle
 
-SKILL_DIR is the directory containing this SKILL.md file. Use the path of this skill file to resolve it.
+#### Step 2b: Tauri Plugin (for Tauri desktop apps)
 
-#### Step 3: Add the script tag
+Guide the user through these changes:
 
-Add a dev-only script tag to the HTML entry point. The tag should be conditional so it only loads in development:
+1. **Add dependency** to `src-tauri/Cargo.toml`:
+   ```toml
+   tauri-plugin-redline = "0.1"
+   ```
+   Or for a local path (e.g., monorepo):
+   ```toml
+   tauri-plugin-redline = { path = "../path/to/tauri-plugin-redline" }
+   ```
 
-**For HTML files** (index.html, app.html, etc.):
-```html
-<!-- Redline: dev-only annotation overlay -->
-<script data-dev-only src="/dev/annotation-overlay.js"></script>
-```
-Add it just before `</body>` or at the end of `<head>`.
+2. **Register the plugin** in `src-tauri/src/lib.rs` — must be on the Builder (before `.setup()`), not inside `setup()`, because the plugin uses `js_init_script`:
+   ```rust
+   let mut builder = tauri::Builder::default()
+       .plugin(tauri_plugin_shell::init());
 
-**For Next.js App Router** (app/layout.tsx):
-```tsx
-import Script from 'next/script'
-// ... in the layout body:
-{process.env.NODE_ENV === 'development' && (
-  <Script src="/dev/annotation-overlay.js" strategy="lazyOnload" />
-)}
-```
+   if cfg!(debug_assertions) {
+       builder = builder.plugin(tauri_plugin_redline::init());
+   }
 
-**For Next.js Pages Router** (_document.tsx):
-```tsx
-{process.env.NODE_ENV === 'development' && (
-  <script src="/dev/annotation-overlay.js" />
-)}
-```
+   builder.setup(|app| { /* ... */ })
+   ```
 
-**For Remix** (app/root.tsx):
-Add a `<script>` tag inside the document body, conditionally on dev mode.
+3. **Add permission** to `src-tauri/capabilities/default.json`:
+   ```json
+   "redline:default"
+   ```
 
-#### Step 4: Update .gitignore
+4. Run `cargo build` to verify compilation.
 
-Add these entries to `.gitignore` if not already present:
-```
-.claude/redline/
-```
-
-Do NOT gitignore `dev/annotation-overlay.js` — it should be committed so other developers on the team can use it too.
-
-#### Step 5: Create redline directory
+#### Step 3: Create redline directory
 
 ```bash
 mkdir -p .claude/redline
 ```
 
-#### Step 6: Confirm to the user
+#### Step 4: Update .gitignore
+
+Add this entry to `.gitignore` if not already present:
+```
+.claude/redline/
+```
+
+#### Step 5: Confirm to the user
 
 Tell the user:
 - Setup is complete
-- How to use it: press `Cmd+Shift+A` (Mac) or `Ctrl+Shift+A` (Windows/Linux) while the app is running
+- How to use: press `Cmd+Option+Shift+A` (Mac) or `Ctrl+Alt+Shift+A` (Win/Linux) while the app is running
 - They'll name the annotation session, click elements and type feedback, then press the hotkey again to finish
-- The filename gets copied to clipboard — paste it to any coding agent with `/redline <filename>`
+- The annotation file downloads automatically — the filename gets copied to clipboard
+- Paste it to any coding agent with `/redline <filename>`
 
 ---
 
@@ -101,122 +97,147 @@ Tell the user:
 
 Process an annotation file and fix the issues in the codebase.
 
-#### Step 1: Find and read the annotation file
+#### Step 1: Read the annotation file
 
 The argument is a filename (e.g. `home-2026-03-10-1430.json`). Search for it in this order:
 
-1. `~/Downloads/<filename>` (default browser download location on macOS/Windows/Linux)
-2. If not found, run: `find ~ -maxdepth 2 -name "<filename>" -type f 2>/dev/null | head -1` to check other common locations
-3. If still not found, try the argument as an absolute or relative path
+1. `~/Downloads/<filename>`
+2. If not found: `find ~ -maxdepth 2 -name "<filename>" -type f 2>/dev/null | head -1`
+3. If still not found, try as an absolute or relative path
 
-**IMPORTANT**: Annotation files can be very large (100K+ tokens) because `computedCss` contains thousands of CSS properties. Do NOT read the raw file with the Read tool — it will exceed token limits. Instead, use a node script to extract the fields you need:
+**Reading strategy**: The file contains large base64 screenshot strings at the end. Use Bash to extract the annotation data without screenshots first:
 
 ```bash
-node -e "
-const data = require('<path>');
-console.log('View:', data.view);
-console.log('Annotations:', data.annotations.length);
-data.annotations.forEach((a, i) => {
-  console.log('--- Annotation', i+1, '---');
-  console.log('Comment:', a.comment);
-  console.log('HTML:', a.html);
-  console.log('Selector:', a.selector);
-  console.log('ChildHints:', JSON.stringify(a.childHints));
-  console.log('TagName:', a.tagName);
-  console.log('Classes:', a.classes);
-  console.log('Text:', (a.text || '').substring(0, 200));
-  console.log('Position:', JSON.stringify(a.position));
-});
-"
+python3 -c "
+import json,sys
+d=json.load(sys.stdin)
+ss={}
+if 'screenshots' in d:
+    ss['has_page']=bool(d['screenshots'].get('page'))
+    ss['has_annotations']=bool(d['screenshots'].get('annotations'))
+    d.pop('screenshots')
+d.pop('screenshot',None)
+d['_screenshot_availability']=ss
+print(json.dumps(d, indent=2))
+" < FILE_PATH
 ```
 
-To read specific computed CSS properties for a visual fix (e.g., padding, color), use a targeted query:
+This gives you all annotation data with their `computedCss` included (needed for fixes) while keeping context manageable.
+
+#### Step 2: Classify each annotation by confidence
+
+Every annotation has a `type` field. The type determines how reliably the captured element data identifies the user's actual target:
+
+**HIGH confidence — `select` type:**
+The user clicked directly on a DOM element. The `selector`, `html`, `computedCss`, and `childHints` are **exact**. Proceed directly to source location (Step 3).
+
+**MEDIUM confidence — `arrow`, `circle`, `box`, `text` types:**
+The user drew a shape near an element. Element data comes from `document.elementFromPoint()` at the shape's center or endpoint. Usually correct, but may capture a parent wrapper instead of the intended child.
+
+Check the `html` field:
+- If it contains specific identifiers (`data-testid`, `id`, meaningful classes, text content) → treat as reliable
+- If the `comment` refers to something specific (e.g., "change icon color") but the `html` is a generic wrapper (e.g., `<a class="card-link">`) → the target is likely a child element. Check `childHints` for the actual target (e.g., `<svg>` for an icon comment).
+
+For **arrows**: The `to` point (arrow tip) determines the captured element. The user is pointing AT this element — focus on it, not the `from` point.
+
+**LOW confidence — `freehand` type:**
+The bounding box center of freehand strokes can land anywhere — often a parent container. If the `html` is a generic container (`<div>`, `<main>`, `<section>`, `<article>`) with 4+ childHints, the captured element is almost certainly NOT the actual target.
+
+**→ For LOW confidence annotations, you MUST use the screenshot for disambiguation (Step 2b).**
+**→ For MEDIUM confidence annotations where the comment doesn't match the captured element, also use the screenshot.**
+
+#### Step 2b: Screenshot disambiguation (for LOW/ambiguous annotations)
+
+The JSON includes a `screenshots` object with two base64 images:
+- `screenshots.page` — the app content with the overlay hidden (JPEG)
+- `screenshots.annotations` — the drawn shapes on transparent background (PNG)
+
+**Extract and read both screenshots** using the Read tool on the original JSON file, or extract them:
+
 ```bash
-node -e "
-const a = require('<path>').annotations[0];
-const css = a.computedCss || {};
-const keys = ['padding','margin','color','background-color','font-size','border','gap','width','height'];
-keys.forEach(k => { if (css[k]) console.log(k + ':', css[k]); });
-"
+python3 -c "
+import json,sys,base64
+d=json.load(sys.stdin)
+ss=d.get('screenshots',{})
+if ss.get('page'):
+    with open('/tmp/redline-page.jpg','wb') as f: f.write(base64.b64decode(ss['page'].split(',')[1]))
+    print('Page screenshot: /tmp/redline-page.jpg')
+if ss.get('annotations'):
+    with open('/tmp/redline-annotations.png','wb') as f: f.write(base64.b64decode(ss['annotations'].split(',')[1]))
+    print('Annotations screenshot: /tmp/redline-annotations.png')
+" < FILE_PATH
 ```
 
-The JSON file has this structure:
+Then Read both image files. You are a multimodal model — you can see images. Use them to:
 
-```json
-{
-  "view": "/dashboard",
-  "url": "http://localhost:1420/dashboard",
-  "timestamp": "2026-03-10T14:30:00Z",
-  "annotations": [
-    {
-      "selector": "div.card > h2.title",
-      "comment": "too much padding",
-      "tagName": "H2",
-      "classes": "title text-lg font-bold",
-      "text": "Product Name",
-      "position": { "x": 340, "y": 210 },
-      "html": "<h2 class=\"title text-lg font-bold\" data-testid=\"product-title\">Product Name</h2>",
-      "childHints": ["<span class=\"price\">"],
-      "computedCss": { "padding": "24px", "..." : "..." }
-    }
-  ]
-}
-```
+1. **Look at the annotations screenshot** — see exactly where the user drew arrows, circles, boxes, freehand strokes, and text labels. Each annotation has a numbered label with the comment text.
+2. **Look at the page screenshot** — see the actual UI state at the time of annotation.
+3. **Mentally composite** — determine which UI element each drawn shape targets.
+4. **Cross-reference** with the annotation data: the visual identification tells you the ACTUAL target; the `nearSelector`/`html`/`childHints` tell you WHERE in the DOM that target is (or its parent is).
 
-Key fields for element identification (in priority order):
-- **`html`**: The actual rendered outerHTML of the element. Contains `data-testid`, `id`, `aria-label`, and other attributes that uniquely identify the component. **Read this first.**
-- **`selector`**: The exact DOM path from root to the element. Use to trace through the component tree.
-- **`childHints`**: Opening tags of direct children — helps confirm you found the right element.
-- **`computedCss`**: Full computed CSS — useful for understanding current styling when applying visual fixes.
-- `classes`, `text`, `tagName`, `position`: Secondary confirmation signals.
+**Example**: An arrow with comment "Change icon color to yellow" has `nearSelector` pointing to `<a href="/skills">` (a card wrapper). The screenshot shows the arrow tip pointing at the SVG icon inside that card. The `childHints` confirm `<svg>` is the first child. → Target is the SVG icon component inside the Skills card, not the card wrapper itself.
 
-#### Step 2: Locate the source component for each annotation
+**Example**: A freehand with `nearSelector` pointing to `#main-content` (the entire page body). This is useless alone. The screenshot shows freehand strokes circling a specific table row. → Target is that table row, identifiable by cross-referencing the position with the page layout.
 
-For each annotation, identify the source file using this strict order:
+#### Step 3: Locate the source component
 
-1. **Extract identifiers from `html`** (FASTEST path — always try first):
-   - Read the `html` field — it contains the actual rendered outerHTML
+For each annotation, find the source file. Strategy depends on confidence:
+
+**For HIGH confidence (`select`) and confirmed MEDIUM/LOW annotations:**
+
+1. **Extract identifiers from `html`** (fastest path):
    - Look for `data-testid`, `id`, `aria-label`, or other unique attributes
-   - If found, grep for that attribute value (e.g., `data-testid="editor-info-toggle"`) — this directly locates the source component
-   - If the `html` field uniquely identifies the element, you're done — skip to verification
+   - Grep for that attribute value — this directly locates the source component
+   - If uniquely identified, done
 
-2. **Trace the selector path** (use when `html` has no unique identifiers):
+2. **Trace the selector path** (when `html` has no unique identifiers):
    - Break the selector into segments (split on ` > `)
-   - Walk the path top-down through the component tree: match each segment's classes/tag to the JSX in source files
-   - Pay attention to `:nth-child(N)` — count the actual children in the parent component's JSX to identify which child element the selector points to
-   - If a segment targets a portal container (e.g., a div with an `id` used by `createPortal`), follow the portal: search for which component renders INTO that portal target
-   - The final segment is the annotated element — the component that renders it is your target file
+   - Walk top-down through the component tree matching segments to JSX
+   - `:nth-child(N)` — count children in the parent's JSX
+   - Portal containers → follow `createPortal` to the rendering component
+   - The final segment is the annotated element
 
-3. **Verify with secondary signals** (confirmation, not identification):
-   - `childHints`: confirm the element's children match
-   - `text`: confirm the element renders matching text content
-   - `position`: x/y coordinates should be consistent with the element's layout position (left/center/right, top/bottom)
-   - `tagName`: confirm the HTML tag matches
+3. **For draw annotations where the target is a CHILD of the captured element**:
+   - Use the captured element's selector to find the parent component
+   - Then locate the specific child element matching the comment (e.g., find the `<svg>` icon inside the card component)
+   - The `childHints` array shows direct children — match the one relevant to the comment
 
-4. **NEVER do this**:
-   - Do NOT grep for a class name from the `classes` field, find a match in some file, and assume that's the target without verifying against `html` or `selector`. Classes can appear in multiple unrelated components.
-   - Do NOT ignore contradictions between the selector path and a class-name grep result. If the selector points to component A but your grep points to component B, the selector is right.
+4. **Verify with secondary signals**:
+   - `childHints`: confirm children match
+   - `text`: confirm rendered text
+   - `tagName`: confirm HTML tag
+   - `position`/`from`/`to`: consistent with layout position
 
-Group confirmed annotations by source file. This determines which fixes can be parallelized.
+**NEVER do this:**
+- Grep for a class name, find a match, and assume it's the target without verifying against `html` or `selector`
+- Ignore contradictions between selector and grep results — the selector is right
 
-#### Step 3: Apply fixes
+Group confirmed annotations by source file for parallel fixes.
+
+#### Step 4: Apply fixes
 
 For annotations that map to different files, dispatch parallel agents — one per file. Each agent receives the full annotation data and:
 
 1. Reads the source file
-2. Locates the element identified in Step 2 by matching the selector path through the JSX tree (not by grepping for classes)
-3. Uses the annotation data to understand the element and apply the fix:
-   - **`html`**: The actual rendered outerHTML — shows the element's attributes, structure, and content as they appear in the browser
-   - **`computedCss`**: The full computed CSS of the element — use this to understand current visual state (padding, margin, colors, font sizes, etc.) when applying visual fixes. Extract only relevant properties for the comment (e.g., for "too much padding", read `padding-*` properties)
-   - **`childHints`**: Opening tags of direct children — helps understand the element's inner structure
-   - **`comment`**: The user's feedback (e.g., "too much padding" → reduce padding, "wrong color" → check design system or nearby elements for the intended color)
+2. Locates the element from Step 3
+3. Interprets the comment in context:
+   - **`comment`**: The user's feedback — this is the PRIMARY instruction
+   - **`computedCss`**: Current styling — use to understand what needs to change (e.g., for "too much padding", read `padding-*` values)
+   - **`html`**: Rendered outerHTML — shows attributes and structure
+   - **`childHints`**: Direct children — helps navigate inner structure
 4. Applies the minimal fix
 
-For ambiguous comments (e.g., "fix this", "wrong", "ugly"), flag them in the summary rather than guessing. Include the selector and current styles so the user can clarify.
+**`computedCss` reference** — curated subset of ~40 properties:
+- **Layout**: `display`, `position`, `width`, `height`, `min-*`, `max-*`, `padding-*`, `margin-*`, `gap`, `flex-*`, `align-*`, `justify-content`, `grid-*`, `top`/`right`/`bottom`/`left`, `z-index`, `overflow`
+- **Visual**: `color`, `background-color`, `background`, `border`, `border-radius`, `box-shadow`, `opacity`
+- **Typography**: `font-size`, `font-weight`, `font-family`, `line-height`, `text-align`, `text-decoration`, `letter-spacing`, `white-space`
+- **Transform**: `transform`, `transition`
 
-#### Step 4: Summary
+Default/empty values (`none`, `normal`, `auto`, `0px`, transparent) are omitted.
 
-After all fixes are applied, show a summary:
+**For ambiguous comments** (e.g., "fix this", "wrong", "ugly"): flag in the summary rather than guessing. Include the selector, current styles, and what the screenshot shows so the user can clarify.
+
+#### Step 5: Summary
 
 ```
 Redline: processed <N> annotations from <view>
@@ -227,6 +248,9 @@ Fixed:
 
 Skipped (ambiguous):
   - nav > a.active: comment was "fix this" — please clarify what needs to change
+
+Skipped (low confidence, no screenshot):
+  - #main-content: freehand annotation "adjust spacing" — nearSelector hit the page container, could not determine target without screenshot
 
 Files modified:
   - src/components/Card.tsx

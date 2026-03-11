@@ -306,20 +306,10 @@
           {
             "name": "SKILL.md",
             "type": "file"
-          },
-          {
-            "name": "assets",
-            "type": "directory",
-            "children": [
-              {
-                "name": "annotation-overlay.js",
-                "type": "file"
-              }
-            ]
           }
         ]
       },
-      "contentHash": "c53287aa1232f7e8"
+      "contentHash": "ad2246a3a68def8f"
     },
     {
       "slug": "refactoring-techniques",
