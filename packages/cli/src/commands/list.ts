@@ -1,6 +1,7 @@
 import { Command } from "commander";
 import chalk from "chalk";
 import type { ComponentType } from "../types.js";
+import { brand } from "../utils/ui.js";
 import { listItems } from "../config/registry.js";
 import { ALL_AGENTS, CODING_AGENTS } from "../config/agents.js";
 import { getInstalledSkills } from "../handlers/skill.js";
@@ -74,7 +75,7 @@ async function listAvailable(type?: ComponentType): Promise<void> {
 }
 
 async function listInstalled(scope: string): Promise<void> {
-  console.log(chalk.cyan(`\nInstalled skills (${scope} scope):\n`));
+  console.log(brand(`\nInstalled skills (${scope} scope):\n`));
 
   let total = 0;
   for (const agent of ALL_AGENTS) {

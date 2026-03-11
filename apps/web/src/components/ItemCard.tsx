@@ -7,7 +7,7 @@ import { TypeIcon } from "./TypeIcon";
 import { SourceBadge } from "./SourceBadge";
 import { ScopeBadge } from "./ScopeBadge";
 import { formatRelativeTime } from "@/lib/text";
-import { typeLabels, typeTextColors, agentLabels } from "@/lib/colors";
+import { typeLabels, typeTextColors, agentLabels, pluginTypeToBadgeColor } from "@/lib/colors";
 import { capabilityTypes } from "@/lib/capabilityTypes";
 import type { RegistryItem, SourceType, ScopeType, CodingAgent, PluginType } from "@/lib/types";
 
@@ -76,17 +76,17 @@ export function ItemCard({ item, browseType, onSourceClick, onScopeClick, onTool
             )}
             {item.pluginType === "package" && (
               <span onClick={clickable(onPluginTypeClick ? () => onPluginTypeClick("package") : undefined)} className={onPluginTypeClick ? interactive : ""}>
-                <Label text="Package" accentColor="indigo" icon="package" tooltip={{ description: "Bundles multiple capabilities (skills, hooks, agents, etc.) into a single plugin" }} />
+                <Label text="Package" accentColor={pluginTypeToBadgeColor.package} icon="package" tooltip={{ description: "Bundles multiple capabilities (skills, hooks, agents, etc.) into a single plugin" }} />
               </span>
             )}
             {item.pluginType === "wrapper" && (
               <span onClick={clickable(onPluginTypeClick ? () => onPluginTypeClick("wrapper") : undefined)} className={onPluginTypeClick ? interactive : ""}>
-                <Label text="Wrapper" accentColor="teal" icon="puzzle" tooltip={{ description: `Wraps a single ${item.wrapper} capability as a plugin` }} />
+                <Label text="Wrapper" accentColor={pluginTypeToBadgeColor.wrapper} icon="puzzle" tooltip={{ description: `Wraps a single ${item.wrapper} capability as a plugin` }} />
               </span>
             )}
             {item.pluginType === "integration" && (
               <span onClick={clickable(onPluginTypeClick ? () => onPluginTypeClick("integration") : undefined)} className={onPluginTypeClick ? interactive : ""}>
-                <Label text="Integration" accentColor="purple" icon="plug" tooltip={{ description: "Integrates an external tool with your AI assistant. Installing adds it to enabledPlugins — the README explains how to set up the tool itself." }} />
+                <Label text="Integration" accentColor={pluginTypeToBadgeColor.integration} icon="plug" tooltip={{ description: "Integrates an external tool with your AI assistant. Installing adds it to enabledPlugins — the README explains how to set up the tool itself." }} />
               </span>
             )}
             {item.sourceType === "toolr" && item.targetScope && (

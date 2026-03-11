@@ -82,7 +82,7 @@ export const typeBreadcrumbColor: Record<ComponentType, string> = {
 // Source to badge color mapping (matches configr)
 export const sourceToBadgeColor: Record<SourceType, BadgeColor> = {
   official: "amber",
-  toolr: "cyan",
+  toolr: "blue",
   community: "violet",
 };
 
@@ -112,8 +112,8 @@ export const agentToBadgeColor: Record<CodingAgent, BadgeColor> = {
 // Scope to badge color mapping (matches configr)
 export const scopeToBadgeColor: Record<ScopeType, BadgeColor> = {
   user: "emerald",
-  project: "blue",
-  local: "pink",
+  project: "pink",
+  local: "orange",
 };
 
 export const scopeLabels: Record<ScopeType, string> = {
@@ -130,7 +130,7 @@ export const pluginTypeLabels: Record<string, string> = {
 };
 
 export const pluginTypeToBadgeColor: Record<string, BadgeColor> = {
-  package: "indigo",
-  wrapper: "teal",
-  integration: "purple",
+  package: "teal",
+  wrapper: "neutral",
+  integration: "red",
 };

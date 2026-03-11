@@ -4,7 +4,6 @@ export function CookieConsent() {
   return (
     <CookieConsentBase
       storageKey="seedr-cookie-consent"
-      accentColor="cyan"
     />
   );
 }

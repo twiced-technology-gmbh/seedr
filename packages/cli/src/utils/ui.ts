@@ -3,6 +3,9 @@ import chalk from "chalk";
 import type { CodingAgent, InstallScope, InstallMethod, RegistryItem } from "../types.js";
 import { CODING_AGENTS } from "../config/agents.js";
 
+export const brand = chalk.hex("#22c55e");
+export const bgBrand = chalk.bgHex("#22c55e").black;
+
 const LOGO = `
 ███████╗███████╗███████╗██████╗ ██████╗
 ██╔════╝██╔════╝██╔════╝██╔══██╗██╔══██╗
@@ -17,13 +20,14 @@ const URLS = {
 };
 
 export function printLogo(): void {
-  console.log(chalk.cyan(LOGO));
-  console.log(chalk.gray(`  ${URLS.seedr}  ·  ${URLS.toolr}`));
+  console.log(brand(LOGO));
+  console.log(brand("  Seed your projects with capabilities"));
+  console.log(chalk.gray(`  ${URLS.seedr}`));
   console.log();
 }
 
 export function printHeader(text: string): void {
-  console.log(chalk.bgCyan.black(` ${text} `));
+  console.log(bgBrand(` ${text} `));
   console.log();
 }
 
@@ -98,11 +102,11 @@ export function cancelled(): void {
 }
 
 export function intro(message: string): void {
-  p.intro(chalk.bgCyan.black(` ${message} `));
+  p.intro(bgBrand(` ${message} `));
 }
 
 export function outro(message: string): void {
-  p.outro(chalk.green(message));
+  p.outro(brand(message));
 }
 
 export function step(message: string): void {

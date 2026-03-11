@@ -13,7 +13,7 @@ const isEmbed = new URLSearchParams(window.location.search).has("embed");
 
 export function App() {
   return (
-    <AccentColorProvider value="cyan">
+    <AccentColorProvider value="green">
       <BrowserRouter>
         <div className="min-h-screen flex flex-col">
           {!isEmbed && <Header />}

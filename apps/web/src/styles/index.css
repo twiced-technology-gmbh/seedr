@@ -2,7 +2,7 @@
 @import "@toolr/ui-design/tokens";
 @source "../../node_modules/@toolr/ui-design";
 
-@source inline("text-pink-500 text-amber-500 text-purple-500 text-blue-500 text-teal-500 text-orange-500 text-indigo-500 text-slate-400 text-cyan-500 text-gray-500 text-emerald-500 border-l-pink-500 border-l-amber-500 border-l-purple-500 border-l-blue-500 border-l-teal-500 border-l-orange-500 border-l-indigo-500 border-l-slate-400 border-l-cyan-500 border-l-gray-500 border-l-emerald-500");
+@source inline("text-pink-500 text-amber-500 text-purple-500 text-blue-500 text-teal-500 text-orange-500 text-indigo-500 text-slate-400 text-green-500 text-gray-500 text-emerald-500 border-l-pink-500 border-l-amber-500 border-l-purple-500 border-l-blue-500 border-l-teal-500 border-l-orange-500 border-l-indigo-500 border-l-slate-400 border-l-green-500 border-l-gray-500 border-l-emerald-500");
 
 @theme {
   /* Type scale */
@@ -56,9 +56,9 @@
   --color-mcp-light: #2dd4bf;
   --color-mcp-dark: #0d9488;
 
-  --color-prompt: #22d3ee;
-  --color-prompt-light: #67e8f9;
-  --color-prompt-dark: #06b6d4;
+  --color-prompt: #4ade80;
+  --color-prompt-light: #86efac;
+  --color-prompt-dark: #22c55e;
 
   --color-capability: #34d399;
   --color-capability-light: #6ee7b7;

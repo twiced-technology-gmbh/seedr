@@ -18,7 +18,7 @@ export function Header() {
             className="group-hover:opacity-80 transition-opacity"
           />
           <div className="flex flex-col">
-            <span className="text-sm font-medium text-text tracking-tight group-hover:text-teal-300 transition-colors leading-none">
+            <span className="text-sm font-medium text-text tracking-tight group-hover:text-green-300 transition-colors leading-none">
               Seedr
             </span>
             <span className="text-xs text-text-dim tracking-wide uppercase leading-none mt-0.5">

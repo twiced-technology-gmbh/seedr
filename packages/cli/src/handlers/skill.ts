@@ -4,6 +4,7 @@ import chalk from "chalk";
 import ora from "ora";
 import type { CodingAgent, InstallScope, InstallMethod } from "../types.js";
 import type { RegistryItem } from "@seedr/shared";
+import { brand } from "../utils/ui.js";
 import {
   getItemSourcePath,
   fetchItemToDestination,
@@ -90,7 +91,7 @@ async function installSkillForAgent(
     }
 
     spinner.succeed(
-      chalk.green(`Installed ${item.name} for ${CODING_AGENTS[agent].name}`)
+      brand(`Installed ${item.name} for ${CODING_AGENTS[agent].name}`)
     );
     return { agent, success: true, path: destPath };
   } catch (error) {

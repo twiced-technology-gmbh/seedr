@@ -2,6 +2,7 @@ import { Command } from "commander";
 import chalk from "chalk";
 import ora from "ora";
 import { join } from "node:path";
+import { brand } from "../utils/ui.js";
 import { ALL_AGENTS, CODING_AGENTS, getAgentPath } from "../config/agents.js";
 import { parseAgentsArg } from "../utils/detection.js";
 import { promptConfirm } from "../utils/prompts.js";
@@ -26,7 +27,7 @@ export const initCommand = new Command("init")
         process.exit(1);
       }
 
-      console.log(chalk.cyan("\nWill initialize configuration for:"));
+      console.log(brand("\nWill initialize configuration for:"));
       for (const agent of agents) {
         const path = getAgentPath(agent, "project");
         console.log(`  - ${CODING_AGENTS[agent].name} → ${path}`);
@@ -72,12 +73,12 @@ Browse available skills at https://seedr.toolr.dev
 `
         );
 
-        spinner.succeed(chalk.green(`Initialized ${CODING_AGENTS[agent].name}`));
+        spinner.succeed(brand(`Initialized ${CODING_AGENTS[agent].name}`));
       }
 
       console.log("");
       console.log(
-        chalk.green("Done! Use 'npx @toolr/seedr add <skill>' to install skills.")
+        brand("Done! Use 'npx @toolr/seedr add <skill>' to install skills.")
       );
     } catch (error) {
       handleCommandError(error);

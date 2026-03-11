@@ -7,7 +7,7 @@ import { Clock } from "lucide-react";
 import { Breadcrumb, FileStructureSection, RegistryDetail } from "@toolr/ui-design";
 import type { LabelProps, IconName } from "@toolr/ui-design";
 import { CodeBlock } from "@/components/ui";
-import { typeLabelPlural, typeLabels, typeTextColors, typeBreadcrumbIcon, typeBreadcrumbColor, sourceToBadgeColor, sourceLabels, scopeToBadgeColor, scopeLabels } from "@/lib/colors";
+import { typeLabelPlural, typeLabels, typeTextColors, typeBreadcrumbIcon, typeBreadcrumbColor, sourceToBadgeColor, sourceLabels, scopeToBadgeColor, scopeLabels, pluginTypeToBadgeColor } from "@/lib/colors";
 import { typeIcons } from "@/components/TypeIcon";
 import { AuthorLink } from "@/components/AuthorLink";
 import { PluginContents } from "@/components/PluginContents";
@@ -157,7 +157,7 @@ export function Detail() {
   if (item.pluginType === "package") {
     labels.push({
       text: "Package",
-      accentColor: "indigo",
+      accentColor: pluginTypeToBadgeColor.package,
       icon: "package",
       tooltip: { description: "Bundles multiple capabilities (skills, hooks, agents, etc.) into a single plugin" },
     });
@@ -165,7 +165,7 @@ export function Detail() {
   if (item.pluginType === "wrapper") {
     labels.push({
       text: "Wrapper",
-      accentColor: "teal",
+      accentColor: pluginTypeToBadgeColor.wrapper,
       icon: "puzzle",
       tooltip: { description: `Wraps a single ${item.wrapper} capability as a plugin` },
     });
@@ -173,7 +173,7 @@ export function Detail() {
   if (item.pluginType === "integration") {
     labels.push({
       text: "Integration",
-      accentColor: "purple",
+      accentColor: pluginTypeToBadgeColor.integration,
       icon: "plug",
       tooltip: { description: "Integrates an external tool with your AI assistant. Installing adds it to enabledPlugins — the README explains how to set up the tool itself." },
     });
@@ -206,7 +206,8 @@ export function Detail() {
 
   return (
     <>
-      <div className="max-w-6xl mx-auto px-4 pt-8">
+      <div className="px-6 pt-8">
+        <div className="max-w-6xl mx-auto">
         {/* Breadcrumb — uses referring type if navigated from a capability page */}
         <Breadcrumb
           variant="plain"
@@ -232,6 +233,7 @@ export function Detail() {
           ]}
           className="mb-6"
         />
+        </div>
       </div>
 
       <RegistryDetail
@@ -247,16 +249,16 @@ export function Detail() {
         maxWidth="max-w-6xl"
       >
         {/* Install command */}
-        <div>
+        <div className="pt-2">
           <h3 className="text-sm font-medium text-neutral-500 uppercase tracking-wider mb-3">Install</h3>
           <CodeBlock code={installCommand} />
         </div>
 
         {/* Plugin type explanation */}
         {item.pluginType === "wrapper" && item.wrapper && (
-          <div>
+          <div className="pt-2">
             <h3 className="text-sm font-medium text-neutral-500 uppercase tracking-wider mb-3">Wrapped Capability</h3>
-            <p className="text-md text-neutral-400 leading-relaxed mb-3">
+            <p className="text-md text-neutral-400 leading-relaxed mb-1">
               This plugin wraps a single capability as an installable plugin.
               Functionally equivalent to installing the {typeLabels[item.wrapper as keyof typeof typeLabels]?.toLowerCase() || item.wrapper} directly, but delivered and managed as a plugin package.
             </p>
@@ -265,9 +267,9 @@ export function Detail() {
         )}
 
         {item.pluginType === "package" && item.package && Object.keys(item.package).length > 0 && (
-          <div>
+          <div className="pt-2">
             <h3 className="text-sm font-medium text-neutral-500 uppercase tracking-wider mb-3">Package Contents</h3>
-            <p className="text-md text-neutral-400 leading-relaxed mb-3">
+            <p className="text-md text-neutral-400 leading-relaxed mb-1">
               This plugin bundles multiple capabilities into a single installable package.
             </p>
             <PluginContents counts={item.package} />
@@ -280,7 +282,6 @@ export function Detail() {
             variant="split"
             files={fileTree}
             rootName={item.slug}
-            accentColor="teal"
             initialHeight={500}
             language
             renderPreview={(content, _filePath, lang) => <MonacoPreview content={content} language={lang} />}
@@ -289,7 +290,7 @@ export function Detail() {
         )}
 
         {/* CLI Reference */}
-        <div>
+        <div className="pt-2">
           <h3 className="text-sm font-medium text-neutral-500 uppercase tracking-wider mb-3">CLI Reference</h3>
           <div className="bg-surface border border-overlay rounded-lg overflow-hidden">
             <table className="w-full text-sm table-fixed">
@@ -308,23 +309,23 @@ export function Detail() {
               <tbody className="divide-y divide-overlay">
                 <tr>
                   <td className="px-4 py-2 font-mono text-xs text-text whitespace-nowrap">-t, --type &lt;type&gt;</td>
-                  <td className="px-4 py-2 text-subtext">Content type: <code className="text-cyan-500">skill</code>, <code className="text-cyan-500">agent</code>, <code className="text-cyan-500">hook</code>, <code className="text-cyan-500">mcp</code>, <code className="text-cyan-500">plugin</code>, <code className="text-cyan-500">settings</code><br /><span className="text-text-dim text-xs">We recommend always setting this, but it's only needed when the same slug exists in multiple types</span></td>
+                  <td className="px-4 py-2 text-subtext">Content type: <code className="text-green-500">skill</code>, <code className="text-green-500">agent</code>, <code className="text-green-500">hook</code>, <code className="text-green-500">mcp</code>, <code className="text-green-500">plugin</code>, <code className="text-green-500">settings</code><br /><span className="text-text-dim text-xs">We recommend always setting this, but it's only needed when the same slug exists in multiple types</span></td>
                   <td className="px-4 py-2 text-text-dim text-xs">First match</td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-2 font-mono text-xs text-text whitespace-nowrap">-a, --agents &lt;tools&gt;</td>
-                  <td className="px-4 py-2 text-subtext">AI tools to install for: <code className="text-cyan-500">claude</code>, <code className="text-cyan-500">copilot</code>, <code className="text-cyan-500">gemini</code>, <code className="text-cyan-500">codex</code>, <code className="text-cyan-500">opencode</code>, or <code className="text-cyan-500">all</code></td>
+                  <td className="px-4 py-2 font-mono text-xs text-text whitespace-nowrap">-a, --agents &lt;agents&gt;</td>
+                  <td className="px-4 py-2 text-subtext">Coding agents to install for: <code className="text-green-500">claude</code>, <code className="text-green-500">copilot</code>, <code className="text-green-500">gemini</code>, <code className="text-green-500">codex</code>, <code className="text-green-500">opencode</code>, or <code className="text-green-500">all</code></td>
                   <td className="px-4 py-2 text-text-dim text-xs">Prompted</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-2 font-mono text-xs text-text whitespace-nowrap">-s, --scope &lt;scope&gt;</td>
-                  <td className="px-4 py-2 text-subtext">Installation scope: <code className="text-cyan-500">project</code>, <code className="text-cyan-500">user</code>, or <code className="text-cyan-500">local</code> (gitignored)</td>
+                  <td className="px-4 py-2 text-subtext">Installation scope: <code className="text-green-500">project</code>, <code className="text-green-500">user</code>, or <code className="text-green-500">local</code> (gitignored)</td>
                   <td className="px-4 py-2 text-text-dim text-xs">Prompted</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-2 font-mono text-xs text-text whitespace-nowrap">-m, --method &lt;method&gt;</td>
-                  <td className="px-4 py-2 text-subtext">Installation method: <code className="text-cyan-500">symlink</code> or <code className="text-cyan-500">copy</code></td>
-                  <td className="px-4 py-2 text-text-dim text-xs"><code className="text-cyan-500">copy</code> (single tool)<br />prompted (multiple)</td>
+                  <td className="px-4 py-2 text-subtext">Installation method: <code className="text-green-500">symlink</code> or <code className="text-green-500">copy</code></td>
+                  <td className="px-4 py-2 text-text-dim text-xs"><code className="text-green-500">copy</code> (single agent)<br />prompted (multiple)</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-2 font-mono text-xs text-text whitespace-nowrap">-y, --yes</td>
@@ -351,11 +352,11 @@ export function Detail() {
           <h3 className="text-sm font-medium text-neutral-500 uppercase tracking-wider mb-3">Examples</h3>
           <div className="space-y-4">
             <CodeBlock
-              label="Install for all compatible tools"
+              label="Install for all compatible coding agents"
               code={`npx @toolr/seedr add ${item.slug} --type ${item.type} --agents all --method symlink`}
             />
             <CodeBlock
-              label="Install for specific tool"
+              label="Install for specific coding agent"
               code={`npx @toolr/seedr add ${item.slug} --type ${item.type} --agents claude`}
             />
             <CodeBlock

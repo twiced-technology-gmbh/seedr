@@ -97,7 +97,7 @@ function printDryRunSummary(
 ): void {
   ui.info("Dry run - no files will be written\n");
 
-  console.log(chalk.cyan("  Would install:"));
+  console.log(ui.brand("  Would install:"));
   console.log(`    ${item.type}: ${chalk.white(item.name)}`);
   console.log(`    Scope: ${chalk.white(scope)}`);
   console.log(`    Method: ${chalk.white(method)}`);
@@ -106,12 +106,12 @@ function printDryRunSummary(
   // Show central location for symlink method
   if (method === "symlink" && item.type === "skill") {
     const centralPath = getAgentsPath("skill", item.slug, cwd);
-    console.log(chalk.cyan("  Central storage:"));
+    console.log(ui.brand("  Central storage:"));
     console.log(`    ${chalk.gray("→")} ${chalk.gray(centralPath)}`);
     console.log();
-    console.log(chalk.cyan("  Symlinks from agent folders:"));
+    console.log(ui.brand("  Symlinks from agent folders:"));
   } else {
-    console.log(chalk.cyan("  Target locations:"));
+    console.log(ui.brand("  Target locations:"));
   }
 
   for (const agent of agents) {
@@ -173,7 +173,7 @@ export const addCommand = new Command("add")
       const item = await resolveItem(itemName, contentType);
       if (!item) process.exit(1);
 
-      ui.step(`Selected: ${chalk.cyan(item.name)} ${chalk.gray(`(${item.type})`)} ${chalk.gray(`- ${item.description}`)}`);
+      ui.step(`Selected: ${ui.brand(item.name)} ${chalk.gray(`(${item.type})`)} ${chalk.gray(`- ${item.description}`)}`);
 
       // Verify handler exists for this type
       const handler = getHandler(item.type);
@@ -205,7 +205,7 @@ export const addCommand = new Command("add")
         process.exit(1);
       }
 
-      ui.step(`Agents: ${chalk.cyan(agents.join(", "))}`);
+      ui.step(`Agents: ${ui.brand(agents.join(", "))}`);
 
       // Step 3: Get or prompt for scope
       let scope: InstallScope;
@@ -221,7 +221,7 @@ export const addCommand = new Command("add")
         scope = selected as InstallScope;
       }
 
-      ui.step(`Scope: ${chalk.cyan(scope)}`);
+      ui.step(`Scope: ${ui.brand(scope)}`);
 
       // Step 4: Get or prompt for method (only if multiple agents selected)
       let method: InstallMethod;
@@ -240,7 +240,7 @@ export const addCommand = new Command("add")
         method = selected as InstallMethod;
       }
 
-      ui.step(`Method: ${chalk.cyan(method)}`);
+      ui.step(`Method: ${ui.brand(method)}`);
 
       // Dry run: show what would happen and exit
       if (options.dryRun) {

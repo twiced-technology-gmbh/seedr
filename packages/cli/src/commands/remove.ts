@@ -2,6 +2,7 @@ import { Command } from "commander";
 import chalk from "chalk";
 import ora from "ora";
 import type { CodingAgent, InstallScope } from "../types.js";
+import { brand } from "../utils/ui.js";
 import type { ComponentType } from "@seedr/shared";
 import { ALL_AGENTS, CODING_AGENTS } from "../config/agents.js";
 import { parseAgentsArg } from "../utils/detection.js";
@@ -45,7 +46,7 @@ async function removeFromAgents(
 
     const removed = await handler.uninstall(slug, agent, scope);
     if (removed) {
-      spinner.succeed(chalk.green(`Removed from ${CODING_AGENTS[agent].name}`));
+      spinner.succeed(brand(`Removed from ${CODING_AGENTS[agent].name}`));
       successCount++;
     } else {
       spinner.info(chalk.gray(`Not found in ${CODING_AGENTS[agent].name}`));
@@ -101,7 +102,7 @@ export const removeCommand = new Command("remove")
 
       // Confirm
       if (!options.yes) {
-        console.log(chalk.cyan(`\nWill remove ${type} "${name}" from:`));
+        console.log(brand(`\nWill remove ${type} "${name}" from:`));
         for (const agent of agents) {
           console.log(`  - ${CODING_AGENTS[agent].name}`);
         }
@@ -120,7 +121,7 @@ export const removeCommand = new Command("remove")
       console.log("");
       if (successCount > 0) {
         console.log(
-          chalk.green(`Successfully removed from ${successCount} agent(s)`)
+          brand(`Successfully removed from ${successCount} agent(s)`)
         );
       } else {
         console.log(chalk.yellow("Nothing to remove"));

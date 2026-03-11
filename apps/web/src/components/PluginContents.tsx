@@ -19,7 +19,7 @@ export function PluginContents({ counts, className = "" }: PluginContentsProps) 
 
   return (
     <div className={className}>
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      <div className="flex flex-wrap gap-x-4 gap-y-1">
         {items.map((item) => {
           if (!item) return null;
           const Icon = item.icon;
@@ -27,7 +27,7 @@ export function PluginContents({ counts, className = "" }: PluginContentsProps) 
           return (
             <div
               key={item.type}
-              className="flex items-center gap-2 bg-surface rounded-lg px-3 py-2"
+              className="flex items-center gap-2 px-3 py-1"
             >
               <Icon className={`w-4 h-4 ${colorClass}`} />
               <span className="text-sm text-text font-medium">{item.count}</span>

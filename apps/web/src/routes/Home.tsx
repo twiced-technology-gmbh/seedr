@@ -98,9 +98,9 @@ export function Home() {
     <div className="max-w-6xl mx-auto px-4 py-8">
       {/* Hero */}
       <div className="text-center mb-8">
-        <p className="text-sm text-subtext mb-8">
-          Seed your projects with AI configurations
-        </p>
+        <h1 className="text-sm text-subtext mb-8">
+          Seed your projects with capabilities
+        </h1>
 
         <div className="max-w-md mx-auto">
           <Input
@@ -109,7 +109,7 @@ export function Home() {
             size="sm"
             value={query}
             onChange={setQuery}
-            accentColor="cyan"
+
           />
         </div>
       </div>
@@ -129,7 +129,7 @@ export function Home() {
                 options={sourceOptions}
                 onChange={setSourceFilter}
                 allLabel="Source"
-                accentColor="cyan"
+    
               />
 
               {sourceFilter === "toolr" && (
@@ -138,7 +138,7 @@ export function Home() {
                   options={scopeOptions}
                   onChange={setScopeFilter}
                   allLabel="Scope"
-                  accentColor="cyan"
+      
                 />
               )}
 
@@ -146,8 +146,8 @@ export function Home() {
                 value={toolFilter ?? ""}
                 options={agentOptions}
                 onChange={setToolFilter}
-                allLabel="Agent"
-                accentColor="cyan"
+                allLabel="Coding Agent"
+    
               />
 
               {hasActiveFilters && (
@@ -200,8 +200,8 @@ export function Home() {
           {/* Curation notice */}
           <div className="mt-8 text-center text-sm text-text-dim max-w-2xl mx-auto">
             <p>
-              Quality over quantity. One well-crafted configuration beats a thousand mediocre ones.
-              We only include official configurations, Toolr Suite creations, and carefully
+              Quality over quantity. One well-crafted capability beats a thousand mediocre ones.
+              We only include official capabilities, Toolr Suite creations, and carefully
               vetted community contributions.
             </p>
           </div>

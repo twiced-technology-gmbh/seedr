@@ -1,6 +1,6 @@
 # Seedr
 
-Seed your projects with AI configurations. Part of the [toolr-suite](https://toolr.dev) ecosystem.
+Seed your projects with capabilities. Part of the [toolr-suite](https://toolr.dev) ecosystem.
 
 ## What is Seedr?
 

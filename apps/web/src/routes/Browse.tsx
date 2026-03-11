@@ -211,7 +211,7 @@ export function Browse() {
             size="sm"
             value={query}
             onChange={setQuery}
-            accentColor="cyan"
+
           />
         </div>
 
@@ -225,7 +225,7 @@ export function Browse() {
             options={kindOptions}
             onChange={setKindFilter}
             allLabel="Kind"
-            accentColor="cyan"
+
           />
         )}
 
@@ -236,7 +236,7 @@ export function Browse() {
             options={pluginTypeOptions}
             onChange={setPluginTypeFilter}
             allLabel="Type"
-            accentColor="cyan"
+
           />
         )}
 
@@ -246,7 +246,7 @@ export function Browse() {
             options={capabilityOptions}
             onChange={setCapabilityFilter}
             allLabel="Capability"
-            accentColor="cyan"
+
           />
         )}
 
@@ -256,7 +256,7 @@ export function Browse() {
           options={sourceOptions}
           onChange={setSourceFilter}
           allLabel="Source"
-          accentColor="cyan"
+
         />
 
         {sourceFilter === "toolr" && (
@@ -265,7 +265,7 @@ export function Browse() {
             options={scopeOptions}
             onChange={setScopeFilter}
             allLabel="Scope"
-            accentColor="cyan"
+
           />
         )}
 
@@ -273,8 +273,8 @@ export function Browse() {
           value={toolFilter ?? "all"}
           options={agentOptions}
           onChange={setToolFilter}
-          allLabel="Agent"
-          accentColor="cyan"
+          allLabel="Coding Agent"
+
         />
 
         <SortDropdown
@@ -283,7 +283,7 @@ export function Browse() {
           onFieldChange={setSortField}
           onToggleDirection={toggleSortDir}
           fields={sortFields}
-          accentColor="cyan"
+
         />
       </div>
 
