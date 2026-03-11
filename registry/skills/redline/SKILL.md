@@ -109,7 +109,38 @@ The argument is a filename (e.g. `home-2026-03-10-1430.json`). Search for it in 
 2. If not found, run: `find ~ -maxdepth 2 -name "<filename>" -type f 2>/dev/null | head -1` to check other common locations
 3. If still not found, try the argument as an absolute or relative path
 
-Read the JSON file. It has this structure:
+**IMPORTANT**: Annotation files can be very large (100K+ tokens) because `computedCss` contains thousands of CSS properties. Do NOT read the raw file with the Read tool — it will exceed token limits. Instead, use a node script to extract the fields you need:
+
+```bash
+node -e "
+const data = require('<path>');
+console.log('View:', data.view);
+console.log('Annotations:', data.annotations.length);
+data.annotations.forEach((a, i) => {
+  console.log('--- Annotation', i+1, '---');
+  console.log('Comment:', a.comment);
+  console.log('HTML:', a.html);
+  console.log('Selector:', a.selector);
+  console.log('ChildHints:', JSON.stringify(a.childHints));
+  console.log('TagName:', a.tagName);
+  console.log('Classes:', a.classes);
+  console.log('Text:', (a.text || '').substring(0, 200));
+  console.log('Position:', JSON.stringify(a.position));
+});
+"
+```
+
+To read specific computed CSS properties for a visual fix (e.g., padding, color), use a targeted query:
+```bash
+node -e "
+const a = require('<path>').annotations[0];
+const css = a.computedCss || {};
+const keys = ['padding','margin','color','background-color','font-size','border','gap','width','height'];
+keys.forEach(k => { if (css[k]) console.log(k + ':', css[k]); });
+"
+```
+
+The JSON file has this structure:
 
 ```json
 {
@@ -123,30 +154,62 @@ Read the JSON file. It has this structure:
       "tagName": "H2",
       "classes": "title text-lg font-bold",
       "text": "Product Name",
-      "position": { "x": 340, "y": 210 }
+      "position": { "x": 340, "y": 210 },
+      "html": "<h2 class=\"title text-lg font-bold\" data-testid=\"product-title\">Product Name</h2>",
+      "childHints": ["<span class=\"price\">"],
+      "computedCss": { "padding": "24px", "..." : "..." }
     }
   ]
 }
 ```
 
-#### Step 2: Analyze annotations and group by file
+Key fields for element identification (in priority order):
+- **`html`**: The actual rendered outerHTML of the element. Contains `data-testid`, `id`, `aria-label`, and other attributes that uniquely identify the component. **Read this first.**
+- **`selector`**: The exact DOM path from root to the element. Use to trace through the component tree.
+- **`childHints`**: Opening tags of direct children — helps confirm you found the right element.
+- **`computedCss`**: Full computed CSS — useful for understanding current styling when applying visual fixes.
+- `classes`, `text`, `tagName`, `position`: Secondary confirmation signals.
 
-For each annotation, find the source file(s) that define the element:
+#### Step 2: Locate the source component for each annotation
 
-1. **Search by class names**: Grep for the CSS classes in the `classes` field across `.css`, `.scss`, `.less`, `.tsx`, `.jsx`, `.vue`, `.svelte`, `.html` files
-2. **Search by selector**: If classes aren't unique enough, search for the full selector pattern
-3. **Search by text content**: Use the `text` field to locate the component that renders this element
-4. **Cross-reference**: The `view` field (route) helps narrow down which component/page file to look at
+For each annotation, identify the source file using this strict order:
 
-Group annotations by the source file they map to. This determines which fixes can be parallelized.
+1. **Extract identifiers from `html`** (FASTEST path — always try first):
+   - Read the `html` field — it contains the actual rendered outerHTML
+   - Look for `data-testid`, `id`, `aria-label`, or other unique attributes
+   - If found, grep for that attribute value (e.g., `data-testid="editor-info-toggle"`) — this directly locates the source component
+   - If the `html` field uniquely identifies the element, you're done — skip to verification
+
+2. **Trace the selector path** (use when `html` has no unique identifiers):
+   - Break the selector into segments (split on ` > `)
+   - Walk the path top-down through the component tree: match each segment's classes/tag to the JSX in source files
+   - Pay attention to `:nth-child(N)` — count the actual children in the parent component's JSX to identify which child element the selector points to
+   - If a segment targets a portal container (e.g., a div with an `id` used by `createPortal`), follow the portal: search for which component renders INTO that portal target
+   - The final segment is the annotated element — the component that renders it is your target file
+
+3. **Verify with secondary signals** (confirmation, not identification):
+   - `childHints`: confirm the element's children match
+   - `text`: confirm the element renders matching text content
+   - `position`: x/y coordinates should be consistent with the element's layout position (left/center/right, top/bottom)
+   - `tagName`: confirm the HTML tag matches
+
+4. **NEVER do this**:
+   - Do NOT grep for a class name from the `classes` field, find a match in some file, and assume that's the target without verifying against `html` or `selector`. Classes can appear in multiple unrelated components.
+   - Do NOT ignore contradictions between the selector path and a class-name grep result. If the selector points to component A but your grep points to component B, the selector is right.
+
+Group confirmed annotations by source file. This determines which fixes can be parallelized.
 
 #### Step 3: Apply fixes
 
-For annotations that map to different files, dispatch parallel agents — one per file. Each agent:
+For annotations that map to different files, dispatch parallel agents — one per file. Each agent receives the full annotation data and:
 
 1. Reads the source file
-2. Locates the element matching the annotation's selector/classes
-3. Interprets the comment (e.g., "too much padding" → reduce padding, "wrong color" → check design system or nearby elements for the intended color)
+2. Locates the element identified in Step 2 by matching the selector path through the JSX tree (not by grepping for classes)
+3. Uses the annotation data to understand the element and apply the fix:
+   - **`html`**: The actual rendered outerHTML — shows the element's attributes, structure, and content as they appear in the browser
+   - **`computedCss`**: The full computed CSS of the element — use this to understand current visual state (padding, margin, colors, font sizes, etc.) when applying visual fixes. Extract only relevant properties for the comment (e.g., for "too much padding", read `padding-*` properties)
+   - **`childHints`**: Opening tags of direct children — helps understand the element's inner structure
+   - **`comment`**: The user's feedback (e.g., "too much padding" → reduce padding, "wrong color" → check design system or nearby elements for the intended color)
 4. Applies the minimal fix
 
 For ambiguous comments (e.g., "fix this", "wrong", "ugly"), flag them in the summary rather than guessing. Include the selector and current styles so the user can clarify.

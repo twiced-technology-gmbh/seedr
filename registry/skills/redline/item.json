@@ -2,13 +2,13 @@
   "slug": "redline",
   "name": "Redline",
   "type": "skill",
-  "description": "Annotate elements in a running web app and auto-fix the flagged issues in code.",
-  "longDescription": "Two modes: `/redline setup` installs a dev-only annotation overlay (hotkey-activated, click-to-annotate, exports JSON), and `/redline <path>` reads the annotation file, maps each annotation to source files via selector/class/text search, and dispatches parallel fix agents. Supports Vite, Next.js, Remix, SvelteKit, CRA, Tauri, and plain HTML. Ambiguous annotations are flagged for clarification instead of guessed.",
+  "description": "Annotate elements in a running web app with visual feedback, then auto-fix the flagged issues in source code.",
+  "longDescription": "Two modes: `/redline setup` installs a dev-only annotation overlay into any web project (Vite, Next.js, Remix, SvelteKit, CRA, Tauri, plain HTML) — activated via `Cmd+Shift+A` hotkey, click elements to add feedback, exports a JSON file with selectors, outerHTML, child hints, and full computed CSS.\n\n`/redline <filename>` reads the annotation JSON, locates source components by tracing `html` attributes and selector paths through the JSX tree, then dispatches parallel fix agents per file. Handles large annotation files (100K+ tokens) via targeted node extraction. Ambiguous comments are flagged for clarification instead of guessed.",
   "compatibility": ["claude", "copilot", "gemini", "opencode", "codex"],
   "sourceType": "toolr",
   "author": { "name": "Toolr Suite", "url": "https://github.com/toolr-suite" },
   "externalUrl": "https://github.com/twiced-technology-gmbh/seedr/tree/main/registry/skills/redline",
-  "updatedAt": "2026-03-10",
+  "updatedAt": "2026-03-11",
   "contents": {
     "files": [
       {
