@@ -129,7 +129,7 @@ export const pluginTypeLabels: Record<string, string> = {
   integration: "Integration",
 };
 
-export const pluginTypeToBadgeColor: Record<string, BadgeColor> = {
+export const pluginTypeToBadgeColor: Record<"package" | "wrapper" | "integration", BadgeColor> = {
   package: "teal",
   wrapper: "neutral",
   integration: "red",
