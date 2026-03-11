@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 export function Footer() {
   return (
-    <footer className="border-t border-overlay bg-surface mt-auto">
-      <div className="px-4 py-4 flex items-center justify-end gap-3 text-xs text-subtext">
+    <footer className="border-t border-overlay bg-neutral-950 mt-auto">
+      <div className="px-4 py-4 flex items-center justify-end gap-3 text-sm text-subtext">
         <nav className="flex items-center gap-3">
           <Link
             to="/privacy"

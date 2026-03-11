@@ -1,15 +1,17 @@
 import { useState, useEffect, useCallback } from "react";
-import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Editor, { type Monaco } from "@monaco-editor/react";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 // toolr-design-ignore-next-line
 import { Clock } from "lucide-react";
-import { Breadcrumb, FileStructureSection, RegistryDetail } from "@toolr/ui-design";
+import { FileStructureSection, RegistryDetail } from "@toolr/ui-design";
 import type { LabelProps, IconName } from "@toolr/ui-design";
 import { CodeBlock } from "@/components/ui";
-import { typeLabelPlural, typeLabels, typeTextColors, typeBreadcrumbIcon, typeBreadcrumbColor, sourceToBadgeColor, sourceLabels, scopeToBadgeColor, scopeLabels, pluginTypeToBadgeColor } from "@/lib/colors";
+import { typeLabels, typeTextColors, sourceToBadgeColor, sourceLabels, scopeToBadgeColor, scopeLabels, pluginTypeToBadgeColor } from "@/lib/colors";
 import { typeIcons } from "@/components/TypeIcon";
 import { AuthorLink } from "@/components/AuthorLink";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { PluginContents } from "@/components/PluginContents";
 import { getItem, getLongDescription, getFileTree } from "@/lib/registry";
 import type { ComponentType, FileTreeNode, ScopeType, SourceType } from "@/lib/types";
@@ -107,10 +109,6 @@ const scopeDescriptions: Record<ScopeType, string> = {
 export function Detail() {
   const { type, slug } = useParams<{ type: string; slug: string }>();
   const componentType = type?.replace(/s$/, "") as ComponentType;
-  const location = useLocation();
-  const navigate = useNavigate();
-  const fromType = (location.state as { from?: string } | null)?.from as ComponentType | undefined;
-  const breadcrumbType = fromType && fromType !== componentType ? fromType : componentType;
   useScrollRestoration();
 
   const item = slug ? getItem(slug, componentType) : undefined;
@@ -206,36 +204,6 @@ export function Detail() {
 
   return (
     <>
-      <div className="px-6 pt-8">
-        <div className="max-w-6xl mx-auto">
-        {/* Breadcrumb — uses referring type if navigated from a capability page */}
-        <Breadcrumb
-          variant="plain"
-          segments={[
-            {
-              id: "home",
-              label: "Home",
-              icon: "home",
-              color: "emerald",
-              onClick: () => navigate("/"),
-            },
-            {
-              id: breadcrumbType,
-              label: typeLabelPlural[breadcrumbType],
-              icon: typeBreadcrumbIcon[breadcrumbType],
-              color: typeBreadcrumbColor[breadcrumbType],
-              onClick: () => navigate(`/${breadcrumbType}s`),
-            },
-            {
-              id: item.slug,
-              label: item.name,
-            },
-          ]}
-          className="mb-6"
-        />
-        </div>
-      </div>
-
       <RegistryDetail
         icon={typeIcons[item.type]}
         iconColor={typeTextColors[item.type]}
@@ -243,20 +211,20 @@ export function Detail() {
         labels={labels}
         subtitle={subtitle}
         description={item.description}
-        longDescription={longDescription}
+        longDescription={longDescription ? <Markdown remarkPlugins={[remarkGfm]}>{longDescription}</Markdown> : undefined}
         integration={item.pluginType === "integration"}
         compatibleTools={item.compatibility}
         maxWidth="max-w-6xl"
       >
         {/* Install command */}
-        <div className="pt-2">
+        <div>
           <h3 className="text-sm font-medium text-neutral-500 uppercase tracking-wider mb-3">Install</h3>
           <CodeBlock code={installCommand} />
         </div>
 
         {/* Plugin type explanation */}
         {item.pluginType === "wrapper" && item.wrapper && (
-          <div className="pt-2">
+          <div>
             <h3 className="text-sm font-medium text-neutral-500 uppercase tracking-wider mb-3">Wrapped Capability</h3>
             <p className="text-md text-neutral-400 leading-relaxed mb-1">
               This plugin wraps a single capability as an installable plugin.
@@ -267,7 +235,7 @@ export function Detail() {
         )}
 
         {item.pluginType === "package" && item.package && Object.keys(item.package).length > 0 && (
-          <div className="pt-2">
+          <div>
             <h3 className="text-sm font-medium text-neutral-500 uppercase tracking-wider mb-3">Package Contents</h3>
             <p className="text-md text-neutral-400 leading-relaxed mb-1">
               This plugin bundles multiple capabilities into a single installable package.
@@ -290,7 +258,7 @@ export function Detail() {
         )}
 
         {/* CLI Reference */}
-        <div className="pt-2">
+        <div>
           <h3 className="text-sm font-medium text-neutral-500 uppercase tracking-wider mb-3">CLI Reference</h3>
           <div className="bg-surface border border-overlay rounded-lg overflow-hidden">
             <table className="w-full text-sm table-fixed">

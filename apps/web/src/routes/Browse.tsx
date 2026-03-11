@@ -1,15 +1,15 @@
 import { useMemo } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import { useUpdateParams } from "@/hooks/useUpdateParams";
 import Fuse from "fuse.js";
-import { Breadcrumb, Input, FilterDropdown, SortDropdown } from "@toolr/ui-design";
+import { Input, FilterDropdown, SortDropdown } from "@toolr/ui-design";
 import type { SortField } from "@toolr/ui-design";
 import { ItemCard } from "@/components/ItemCard";
 import { getItemsByType, fuseOptions } from "@/lib/registry";
 import { pluralize } from "@/lib/text";
 import type { ComponentType, CodingAgent, SourceType, ScopeType, PluginType, RegistryItem } from "@/lib/types";
-import { typeLabelPlural, typeBreadcrumbIcon, typeBreadcrumbColor } from "@/lib/colors";
+import { typeLabelPlural } from "@/lib/colors";
 
 import { agentOptions, sourceOptions, scopeOptions } from "@/lib/filterOptions";
 
@@ -60,7 +60,6 @@ export function Browse() {
   const { type } = useParams<{ type: string }>();
   const componentType = type?.replace(/s$/, "") as ComponentType;
   const { searchParams, updateParams } = useUpdateParams();
-  const navigate = useNavigate();
   useScrollRestoration();
 
   const isPlugins = componentType === "plugin";
@@ -167,27 +166,6 @@ export function Browse() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      {/* Breadcrumb */}
-      <Breadcrumb
-        variant="plain"
-        segments={[
-          {
-            id: "home",
-            label: "Home",
-            icon: "home",
-            color: "emerald",
-            onClick: () => navigate("/"),
-          },
-          {
-            id: componentType,
-            label: typeLabelPlural[componentType],
-            icon: typeBreadcrumbIcon[componentType],
-            color: typeBreadcrumbColor[componentType],
-          },
-        ]}
-        className="mb-6"
-      />
-
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-lg font-bold text-text mb-2">

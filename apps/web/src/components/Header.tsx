@@ -1,33 +1,70 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 // toolr-design-ignore-next-line
 import { Github } from "lucide-react";
-import { ToolrAppLogo, IconButton } from "@toolr/ui-design";
+import { ToolrAppLogo, IconButton, NavigationBar } from "@toolr/ui-design";
 import { TwiceDLogo } from "./TwiceDLogo";
+import { useNavigation } from "@/contexts/NavigationContext";
 
 export function Header() {
-  return (
-    <header className="h-[44px] border-b border-overlay bg-surface">
-      <div className="px-4 h-full flex items-center justify-between">
-        <Link
-          to="/"
-          className="group flex items-center gap-3 transition-all"
-        >
-          <ToolrAppLogo
-            app="seedr"
-            size={28}
-            className="group-hover:opacity-80 transition-opacity"
-          />
-          <div className="flex flex-col">
-            <span className="text-sm font-medium text-text tracking-tight group-hover:text-green-300 transition-colors leading-none">
-              Seedr
-            </span>
-            <span className="text-xs text-text-dim tracking-wide uppercase leading-none mt-0.5">
-              Toolr Suite
-            </span>
-          </div>
-        </Link>
+  const {
+    segments,
+    canGoBack,
+    canGoForward,
+    goBack,
+    goForward,
+    historyEntries,
+    currentHistoryIndex,
+    goToHistory,
+  } = useNavigation();
 
-        <nav className="flex items-center gap-2">
+  const isHome = useLocation().pathname === "/";
+
+  return (
+    <header className="h-[48px] border-b border-overlay bg-neutral-950 px-4">
+      <div className="h-full flex items-center">
+        {/* Left: Logo (takes remaining space) */}
+        <div className="flex-1 flex items-center">
+          <Link
+            to="/"
+            className="group flex items-center gap-2 transition-all"
+          >
+            <ToolrAppLogo
+              app="seedr"
+              size={28}
+              className="group-hover:opacity-80 transition-opacity"
+            />
+            <div className="flex flex-col">
+              <span className="text-md font-medium text-text tracking-tight group-hover:text-green-300 transition-colors leading-none">
+                Seedr
+              </span>
+              <span className="text-sm text-text-dim tracking-wide uppercase leading-none mt-0.5">
+                Toolr Suite
+              </span>
+            </div>
+          </Link>
+        </div>
+
+        {/* Center: NavigationBar with same max-w as page content */}
+        {!isHome && (
+          <div className="w-full max-w-6xl px-4">
+            <NavigationBar
+              layout="header"
+              segments={segments}
+              onBack={goBack}
+              onForward={goForward}
+              canGoBack={canGoBack}
+              canGoForward={canGoForward}
+              showHistory
+              historyEntries={historyEntries}
+              currentHistoryIndex={currentHistoryIndex}
+              onHistorySelect={goToHistory}
+              accentColor="neutral"
+            />
+          </div>
+        )}
+
+        {/* Right: External links (takes remaining space) */}
+        <div className="flex-1 flex items-center justify-end gap-2">
           <IconButton
             icon={<ToolrAppLogo app="toolr" size={14} />}
             href="https://toolr.dev"
@@ -37,7 +74,7 @@ export function Header() {
             tooltipPosition="bottom"
           />
           <IconButton
-            icon={<TwiceDLogo size={14} />}
+            icon={<TwiceDLogo size={14} className="text-blue-400" />}
             href="https://twiced.de"
             size="sm"
             tooltip={{ description: "Visit twiced.de" }}
@@ -51,7 +88,7 @@ export function Header() {
             tooltip={{ description: "View source code" }}
             tooltipPosition="bottom"
           />
-        </nav>
+        </div>
       </div>
     </header>
   );
