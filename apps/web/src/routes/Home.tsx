@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import { useUpdateParams } from "@/hooks/useUpdateParams";
 import Fuse from "fuse.js";
+// toolr-design-ignore-next-line
+import { Sprout } from "lucide-react";
 import { Input, FilterDropdown, IconButton } from "@toolr/ui-design";
 import { ItemCard } from "@/components/ItemCard";
 import { typeIcons } from "@/components/TypeIcon";
@@ -98,8 +100,9 @@ export function Home() {
     <div className="max-w-6xl mx-auto px-4 py-8">
       {/* Hero */}
       <div className="text-center mb-8">
-        <h1 className="text-sm text-subtext mb-8">
-          Seed your projects with capabilities
+        <Sprout className="w-6 h-6 text-green-500 mx-auto mb-2" />
+        <h1 className="text-md text-green-500 mb-8">
+          Seed your Coding Agents with capabilities
         </h1>
 
         <div className="max-w-md mx-auto">

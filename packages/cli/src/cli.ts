@@ -9,7 +9,7 @@ const program = new Command();
 
 program
   .name("seedr")
-  .description("Seed your projects with capabilities")
+  .description("Seed your Coding Agents with capabilities")
   .version("0.1.0")
   .addCommand(addCommand)
   .addCommand(listCommand)

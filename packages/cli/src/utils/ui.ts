@@ -21,7 +21,7 @@ const URLS = {
 
 export function printLogo(): void {
   console.log(brand(LOGO));
-  console.log(brand("  Seed your projects with capabilities"));
+  console.log(brand("  🌱 Seed your Coding Agents with capabilities"));
   console.log(chalk.gray(`  ${URLS.seedr}`));
   console.log();
 }
