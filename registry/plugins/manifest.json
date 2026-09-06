@@ -99,27 +99,27 @@
       "author": {
         "name": "Kieran Klaassen and Trevin Chow"
       },
-      "externalUrl": "https://github.com/EveryInc/compound-engineering-plugin/tree/57e409e5c8c2c472106bd7d87ac72b724b70826b",
+      "externalUrl": "https://github.com/EveryInc/compound-engineering-plugin/tree/b159e1fa4c70efa995742269d38269bcc7524dd2",
       "marketplace": "compound-engineering-plugin",
       "version": "3.24.0",
-      "sourceRevision": "57e409e5c8c2c472106bd7d87ac72b724b70826b",
-      "contentDigest": "31cfa1ccaadde52f01dfe3bcdae444879f33c6d05626f72232528441928ea442",
-      "contentHash": "9588f5af9d7741c0",
+      "sourceRevision": "b159e1fa4c70efa995742269d38269bcc7524dd2",
+      "contentDigest": "626565dd5fe87649d3ae234bf27434835a6776f89d9411ed2cc270fa196ada7f",
+      "contentHash": "0820b6ea8be6667c",
       "pluginSource": {
         "kind": "url",
         "url": "https://github.com/EveryInc/compound-engineering-plugin.git",
-        "sha": "57e409e5c8c2c472106bd7d87ac72b724b70826b"
+        "sha": "b159e1fa4c70efa995742269d38269bcc7524dd2"
       },
       "marketplaceRef": {
         "name": "compound-engineering-plugin",
         "url": "https://github.com/EveryInc/compound-engineering-plugin.git",
-        "sha": "57e409e5c8c2c472106bd7d87ac72b724b70826b"
+        "sha": "b159e1fa4c70efa995742269d38269bcc7524dd2"
       },
       "license": {
         "spdx": "MIT",
         "file": "LICENSE"
       },
-      "updatedAt": "2026-09-04T21:18:53Z"
+      "updatedAt": "2026-09-06T02:17:06Z"
     },
     {
       "slug": "gh-cli",
@@ -259,28 +259,28 @@
       "author": {
         "name": "Paul Bakaus"
       },
-      "externalUrl": "https://github.com/pbakaus/impeccable/tree/8dac6ae7e020c43ab10ce9b41939f6fd42627b96/plugin",
+      "externalUrl": "https://github.com/pbakaus/impeccable/tree/831cabee8b4bc1a2b66e5ae22003e9a19b57d464/plugin",
       "marketplace": "impeccable",
-      "version": "4.2.0",
-      "sourceRevision": "8dac6ae7e020c43ab10ce9b41939f6fd42627b96",
-      "contentDigest": "285987512a058b04cf7e5d6b6d08eb0fbeff3c928278ab05f5cca3373bb2bbb1",
-      "contentHash": "468a42f86af2d1ad",
+      "version": "4.2.1",
+      "sourceRevision": "831cabee8b4bc1a2b66e5ae22003e9a19b57d464",
+      "contentDigest": "260ea3889ef9ab593b70d33fca9ac2ed9050f06e4c31fa4afc1267b8b9f73012",
+      "contentHash": "300573fb678a16c1",
       "pluginSource": {
         "kind": "marketplace-path",
         "path": "plugin",
-        "sha": "8dac6ae7e020c43ab10ce9b41939f6fd42627b96"
+        "sha": "831cabee8b4bc1a2b66e5ae22003e9a19b57d464"
       },
       "marketplaceRef": {
         "name": "impeccable",
         "url": "https://github.com/pbakaus/impeccable.git",
-        "sha": "8dac6ae7e020c43ab10ce9b41939f6fd42627b96"
+        "sha": "831cabee8b4bc1a2b66e5ae22003e9a19b57d464"
       },
       "license": {
         "spdx": "Apache-2.0",
         "file": "LICENSE",
         "installAs": "LICENSE"
       },
-      "updatedAt": "2026-09-04T19:30:50Z"
+      "updatedAt": "2026-09-05T23:34:46Z"
     },
     {
       "slug": "last30days",
