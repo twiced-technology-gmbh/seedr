@@ -20,27 +20,27 @@
   "author": {
     "name": "Kieran Klaassen and Trevin Chow"
   },
-  "externalUrl": "https://github.com/EveryInc/compound-engineering-plugin/tree/57e409e5c8c2c472106bd7d87ac72b724b70826b",
+  "externalUrl": "https://github.com/EveryInc/compound-engineering-plugin/tree/b159e1fa4c70efa995742269d38269bcc7524dd2",
   "marketplace": "compound-engineering-plugin",
   "version": "3.24.0",
-  "sourceRevision": "57e409e5c8c2c472106bd7d87ac72b724b70826b",
-  "contentDigest": "31cfa1ccaadde52f01dfe3bcdae444879f33c6d05626f72232528441928ea442",
-  "contentHash": "9588f5af9d7741c0",
+  "sourceRevision": "b159e1fa4c70efa995742269d38269bcc7524dd2",
+  "contentDigest": "626565dd5fe87649d3ae234bf27434835a6776f89d9411ed2cc270fa196ada7f",
+  "contentHash": "0820b6ea8be6667c",
   "pluginSource": {
     "kind": "url",
     "url": "https://github.com/EveryInc/compound-engineering-plugin.git",
-    "sha": "57e409e5c8c2c472106bd7d87ac72b724b70826b"
+    "sha": "b159e1fa4c70efa995742269d38269bcc7524dd2"
   },
   "marketplaceRef": {
     "name": "compound-engineering-plugin",
     "url": "https://github.com/EveryInc/compound-engineering-plugin.git",
-    "sha": "57e409e5c8c2c472106bd7d87ac72b724b70826b"
+    "sha": "b159e1fa4c70efa995742269d38269bcc7524dd2"
   },
   "license": {
     "spdx": "MIT",
     "file": "LICENSE"
   },
-  "updatedAt": "2026-09-04T21:18:53Z",
+  "updatedAt": "2026-09-06T02:17:06Z",
   "contents": {
     "files": [
       {
@@ -1105,6 +1105,10 @@
               },
               {
                 "name": "2026-08-28-0211-fix-doc-claims-absolute-paths-plan.md",
+                "type": "file"
+              },
+              {
+                "name": "2026-09-02-001-feat-prototype-live-annotation-plan.md",
                 "type": "file"
               },
               {
@@ -3034,9 +3038,27 @@
             "type": "directory",
             "children": [
               {
+                "name": "assets",
+                "type": "directory",
+                "children": [
+                  {
+                    "name": "annotate.css",
+                    "type": "file"
+                  },
+                  {
+                    "name": "annotate.js",
+                    "type": "file"
+                  }
+                ]
+              },
+              {
                 "name": "references",
                 "type": "directory",
                 "children": [
+                  {
+                    "name": "annotation-loop.md",
+                    "type": "file"
+                  },
                   {
                     "name": "build.md",
                     "type": "file"
@@ -4882,6 +4904,22 @@
                       {
                         "name": "README.md",
                         "type": "file"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "prototype-annotation-batch",
+                    "type": "directory",
+                    "children": [
+                      {
+                        "name": "screens",
+                        "type": "directory",
+                        "children": [
+                          {
+                            "name": "001-home.html",
+                            "type": "file"
+                          }
+                        ]
                       }
                     ]
                   },
